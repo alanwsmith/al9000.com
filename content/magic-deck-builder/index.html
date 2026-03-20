@@ -15,6 +15,9 @@
 <div class="columns">
   <div class="sidebar">
     <div>
+      Results: <span data-r="resultCount"></span>
+    </div>
+    <div>
       <label class="block" for="typeLineSearch">Card Name:</label>
       <input type="search" data-r="uiCardName"  data-s="search" autocomplete="off" />
     </div>
@@ -28,13 +31,13 @@
   </div>
 </div>
 
+<div data-r="uiDebuggingSwitch"></div>
 
 [! endblock !]
 
 
 
 [! block templates !]
-
 <script type="text/html" id="colorTemplate">
 <label class="block">
   <input class="isColor" data-color="__COLOR_CODE__" type="checkbox" data-s="search" __ID_CHECKED__ />
@@ -44,13 +47,12 @@
 </script>
 
 <script type="text/html" id="cardTemplate">
-<div 
-<div>__CARD_NAME__</div>
-<img src="" alt="__CARD_NAME__ from Magic: The Gathering" />
+<div class="card">
+  <div>__CARD_NAME__</div>
+  <div>__CARD_ID__</div>
+  <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
+</div>
 </script>
-
-
-
 [! endblock !]
 
 

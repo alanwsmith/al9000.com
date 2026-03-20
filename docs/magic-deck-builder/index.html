@@ -186,6 +186,9 @@ body {
 <div class="columns">
   <div class="sidebar">
     <div>
+      Results: <span data-r="resultCount"></span>
+    </div>
+    <div>
       <label class="block" for="typeLineSearch">Card Name:</label>
       <input type="search" data-r="uiCardName"  data-s="search" autocomplete="off" />
     </div>
@@ -199,6 +202,7 @@ body {
   </div>
 </div>
 
+<div data-r="uiDebuggingSwitch"></div>
 
       </main>
 
@@ -207,7 +211,6 @@ body {
 
   </div>
 </footer>
-
 
 <script type="text/html" id="colorTemplate">
 <label class="block">
@@ -218,13 +221,12 @@ body {
 </script>
 
 <script type="text/html" id="cardTemplate">
-<div 
-<div>__CARD_NAME__</div>
-<img src="" alt="__CARD_NAME__ from Magic: The Gathering" />
+<div class="card">
+  <div>__CARD_NAME__</div>
+  <div>__CARD_ID__</div>
+  <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
+</div>
 </script>
-
-
-
 
   </body>
 </html>

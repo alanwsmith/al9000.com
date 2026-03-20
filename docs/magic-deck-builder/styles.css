@@ -1,3 +1,7 @@
+.card {
+  max-width: 10rem;
+}
+
 .columns {
   display: grid; 
   grid-template-columns: 8rem 1fr;
@@ -7,3 +11,9 @@
   border: var(--faded-default-border);
 }
 
+
+[data-r=results] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

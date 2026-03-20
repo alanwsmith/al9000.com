@@ -33,12 +33,33 @@ export async function init() {
       });
     }
   }
-  b.trigger("uiCardName");
+  b.trigger("uiCardName uiColors uiDebuggingSwitch results");
+}
+
+function filterCardName(card) {
+  const value = b.qs("[data-r=uiCardName]").value.trim();
+  if (value === "") return true;
+  const pattern = new RegExp(value, "gi");
+  return card.name.match(pattern) !== null;
+}
+
+export function resultCount(count, __, el) {
+  el.innerHTML = count;
+}
+
+export function saveState() {
+  state.cardName = b.qs("[data-r=uiCardName]").value.trim();
+  b.savePage("state", state);
+  b.debug("saved state");
+}
+
+export function search(ev, __, ___) {
+  b.debounce("results", "results saveState", 200);
 }
 
 export function uiCardName(_, __, el) {
   el.value = state.cardName;
-  b.trigger("uiColors");
+  el.focus();
 }
 
 export function uiColors(_, __, el) {
@@ -50,15 +71,14 @@ export function uiColors(_, __, el) {
       });
     }),
   );
-  b.trigger("results");
 }
 
-export function focusName(_, __, el) {
-  el.focus();
-}
-
-export function search(ev, __, ___) {
-  b.debounce("results", "results saveState", 200);
+export function uiDebuggingSwitch(_, __, el) {
+  const subs = {
+    __APPEND__: "Debugging",
+    __SEND__: "toggleDebugging",
+  };
+  el.replaceChildren(b.switch(subs));
 }
 
 export function results(_, __, el) {
@@ -66,35 +86,31 @@ export function results(_, __, el) {
     .filter((card) => filterCardName(card));
   if (output.length === cards.length) {
     el.innerHTML = "waiting";
+    b.send("tbd", "resultCount");
   } else {
-    output.filter((card, index) => index < 20);
-    el.innerHTML = output.length;
+    b.send(output.length, "resultCount");
+    el.replaceChildren(
+      ...output
+        .sort((a, b) =>
+          a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+        )
+        .filter((card, index) => index < 20)
+        .map((card) => {
+          const subs = {
+            __CARD_NAME__: card.name,
+            __CARD_ID__: card.id,
+            __IMG_SRC__: card.image_uris.png,
+          };
+          return b.render("cardTemplate", subs);
+        }),
+    );
   }
 }
 
-function filterCardName(card) {
-  const value = b.qs("[data-r=uiCardName]").value.trim();
-  if (value === "") {
-    return true;
-  }
-  const pattern = new RegExp(value, "gi");
-  return card.name.match(pattern) !== null;
+export function toggleDebugging(_, sender, ___) {
+  b.debug(`Debugging: ${sender.aria("checked")}`);
+  sender.toggleAria("checked");
+  state.debugging = sender.ariaBool("checked");
+  b.debuggins = state.debugging;
+  b.trigger("saveState");
 }
-
-export function saveState() {
-  state.cardName = b.qs("[data-r=uiCardName]").value.trim();
-  b.savePage("state", state);
-  b.debug("saved state");
-}
-
-// export function results(_, __, el) {
-//   el.replaceChildren(
-//     ...cards.filter((card) => {
-//     }).map((card) => {
-//       const subs = {
-//         __CARD_NAME__: card.name,
-//       };
-//       return b.render("card", subs);
-//     }),
-//   );
-// }
