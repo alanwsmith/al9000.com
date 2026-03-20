@@ -143,9 +143,9 @@ class BittyJs extends HTMLElement {
 
   addToggleSwitchTemplate(target) {
     target.b.templates.switch = `
-<label for="__ID__" class="__CLASS__" data-key="__KEY__" data-r="__RECEIVE__">
+<label for="__ID__" class="__CLASS__">
   __PREPEND__
-  <button id="__ID__" data-s="__SEND__" role="switch" aria-checked="__STATE__">
+  <button id="__ID__" role="switch" __SEND_ATTR__ __RECEIVE_ATTR__ __KEY_ATTR__ aria-checked="__STATE__">
     <span></span><span></span>
   </button>
   __APPEND__
@@ -942,14 +942,21 @@ class BittyJs extends HTMLElement {
   }
 
   _switch(subs = {}) {
+    // Set the leading/trailing text
     subs.__APPEND__ = subs.__APPEND__ ? subs.__APPEND__ : "";
+    subs.__PREPEND__ = subs.__PREPEND__ ? subs.__PREPEND__ : "";
+    // There's always a class, id, and state
     subs.__CLASS__ = subs.__CLASS__ ? subs.__CLASS__ : "bitty-switch";
     subs.__ID__ = subs.__ID__ ? subs.__ID__ : `switch_${this.b.uuid(false)}`;
-    subs.__KEY__ = subs.__KEY__ ? subs.__KEY__ : "";
-    subs.__PREPEND__ = subs.__PREPEND__ ? subs.__PREPEND__ : "";
-    subs.__RECEIVE__ = subs.__RECEIVE__ ? subs.__RECEIVE__ : "";
-    subs.__SEND__ = subs.__SEND__ ? subs.__SEND__ : "";
     subs.__STATE__ = subs.__STATE__ ? subs.__STATE__ : "false";
+    // These attributes are optional. The input is only the
+    // values. They are converted into the full attribute
+    // strings here. The prevents outputting empty attributes.
+    subs.__RECEIVE_ATTR__ = subs.__RECEIVE__
+      ? `data-r="${subs.__RECEIVE__}"`
+      : "";
+    subs.__SEND_ATTR__ = subs.__SEND__ ? `data-s="${subs.__SEND__}"` : "";
+    subs.__KEY_ATTR__ = subs.__KEY__ ? `data-s="${subs.__KEY__}"` : "";
     return this.b.render("switch", subs);
   }
 
@@ -1078,6 +1085,17 @@ class BittyJs extends HTMLElement {
         return undefined;
       }
     };
+    el.ariaOrNull = (key) => {
+      const ariaSearch = el.closest(`[aria-${key}]`);
+      if (ariaSearch === null) {
+        return undefined;
+      }
+      const ariaValue = araiSearch.getAttribute(key);
+      if (ariaValue.trim() === "") {
+        return null;
+      }
+      return ariaValue;
+    };
     el.copy = async function () {
       if (el.value) {
         try {
@@ -1097,16 +1115,25 @@ class BittyJs extends HTMLElement {
       return true;
     };
     el.innerHTMLBool = () => {
-      if (el.innerHTML !== undefined) {
-        return this.b._getBool(el.innerHTML);
+      if (el.innerHTML === undefined) {
+        return undefined;
       }
-      return undefined;
+      return this.b._getBool(el.innerHTML);
     };
     el.innerHTMLFloat = () => {
       return parseFloat(el.innerHTML.trim().replace(",", ""));
     };
     el.innerHTMLInt = () => {
       return parseInt(el.innerHTML.trim().replace(",", ""), 10);
+    };
+    el.innerHTMLOrNull = () => {
+      if (el.innerHTML !== undefined) {
+        return undefined;
+      }
+      if (el.innerHTML.trim() === "") {
+        return null;
+      }
+      return el.innerHTML;
     };
     el.prop = (key) => {
       if (el.dataset && el.dataset[key] !== undefined) {
@@ -1147,6 +1174,16 @@ class BittyJs extends HTMLElement {
         return parseInt(propAncestor.dataset[key], 10);
       }
       return undefined;
+    };
+    el.propOrNull = (key) => {
+      const propSearch = el.closest(`[data-${key}]`);
+      if (propSearch === null) {
+        return undefined;
+      }
+      if (propSearch.dataset[key].trim() === "") {
+        return null;
+      }
+      return propSearch.dataset[key];
     };
     el.setAria = (key, value) => {
       const ariaEl = el.closest(`[aria-${key}]`);
@@ -1210,6 +1247,13 @@ class BittyJs extends HTMLElement {
     };
     el.valueInt = () => {
       return parseInt(el.value, 10);
+    };
+    el.valueOrNull = () => {
+      if (el.value && el.value.trim() === "") {
+        return null;
+      } else {
+        return el.value;
+      }
     };
     el.bittyUpdated = true;
   }
