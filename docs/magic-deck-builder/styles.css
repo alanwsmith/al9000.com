@@ -1,0 +1,9 @@
+.columns {
+  display: grid; 
+  grid-template-columns: 8rem 1fr;
+}
+
+.columns > :nth-child(1) {
+  border: var(--faded-default-border);
+}
+

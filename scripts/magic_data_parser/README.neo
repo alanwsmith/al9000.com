@@ -1,0 +1,8 @@
+-- title
+
+Magic Card Data Parser
+
+TODO: Used to pull data from scryfall into
+a format that can be used from PageFind
+on the site in a static manner. 
+

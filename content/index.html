@@ -1,10 +1,14 @@
-[!- extends "_wrappers/main.html" -!]
+[!- extends "__wrappers/main.html" -!]
 
 [!- block main -!]
   <hgroup>
     <h1>al9000.com</h1>
   </hgroup>
 
-  <p>The future home of alan w. smith</p>
+  <p>The future web home of alan w. smith</p>
+
+[! filter markdown|safe !]
+- [Magic Deck Builder](/magic-deck-builder/)
+[! endfilter !]
 
 [!- endblock -!]

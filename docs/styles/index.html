@@ -120,7 +120,7 @@
     --faded-default-color: var(--switch--faded-default-color, var(--dark--faded-default-color));
     --heading-color: var(--switch--heading-color, var(--dark--heading-color));
     --faded-heading-color: var(--switch--faded-heading-color, var(--dark--faded-heading-color));
-    --link-color: var(-switch--link-color-, var(--dark--link-color));
+    --link-color: var(--switch--link-color, var(--dark--link-color));
     --faded-link-color: var(--switch--faded-link-color, var(--dark--faded-link-color));
     --accent-color: var(--switch--accent-color, var(--dark--accent-color));
     --faded-accent-color: var(--switch--faded-accent-color, var(--dark--faded-accent-color));
@@ -150,7 +150,7 @@ body {
 }
 
 </style>    <script src="/styles/styles.js"></script>
-    <script src="&#x2f;components&#x2f;bitty-7.0.0.js" type="module"></script>
+    <script src="/scripts/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
     <link rel="stylesheet" href="/styles/main.css" />
 <link rel="shortcut icon" href="/favicon.ico" />
 <title>al9000.com</title>
@@ -158,38 +158,21 @@ body {
 <meta name="description" content="the future home of alan w. smith" />
 <meta property="og:description" content="the future home of alan w. smith" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.al9000.com/" />
-<meta property="og:image" content="https://www.al9000.com&#x2f;images&#x2f;og-image.jpg" />
+<meta property="og:url" content="" />
+<meta property="og:image" content="" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
 <link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
 <link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.al9000.com&#x2f;images&#x2f;og-image.jpg">
+<meta name="twitter:image" content="">
   </head>
   <body>
-    <bitty-7-0
-      data-connect="/bits/default.js Main" 
-      class="load-hider">
-      <bitty-7-0 data-connect="/bits/default.js CodeBlockControls">
-        <bitty-7-0 data-connect="/bits/default.js ImageUpdater">
-          <bitty-7-0 data-connect="/bits/default.js DetailsOpener">
 
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Most content will be fine, but some things won't work.
-  </p>
-  <style>:root { --load-hider: 1; }</style>
-</noscript>
-<header class="default-wrapper xxlarge-bottom-margin xxlarge-bottom-padding">
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
   <div class="top-nav">
     <a href="/">Home</a>
-    <bitty-7-0 
-      data-connect="/bits/default.js ThemeSwitcher"
-      data-location="top"
-      data-init="themeSwitcher"></bitty-7-0>
   </div>
 </header>
       <main class="default-wrapper default-flow">
@@ -365,15 +348,12 @@ body {
 
       </main>
 
-          </bitty-7-0>
-        </bitty-7-0>
-      </bitty-7-0>
-    </bitty-7-0>
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
 
-    <script>
-      setTimeout(() => { 
-        document.documentElement.style.setProperty("--load-hider", "1");
-      }, 1300);
-    </script>
+  </div>
+</footer>
+
+
   </body>
 </html>

@@ -53,6 +53,10 @@ bitty-7-0 {
   display: block;
 }
 
+.block {
+  display: block;
+}
+
 blockquote {
   margin: var(--large-margin);
   padding: var(--default-padding);
@@ -294,8 +298,22 @@ img {
   max-width: 100%;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 input {
   font: inherit;
+}
+
+input[type=search] {
+  font-size: var(--small-font-size);
+  max-width: 100%;
+}
+
+input[type=text] {
+  font-size: var(--small-font-size);
+  max-width: 100%;
 }
 
 kbd {

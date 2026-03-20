@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
 :root {
   --light--background-color: oklch(0.9634 0.02097 105.642);
   --light--default-color: oklch(0.1951 0.23 105.642);
@@ -129,4 +135,96 @@
     --reverse-color: var(--switch--reverse-color, var(--dark--reverse-color));
     --faded-reverse-color: var(--switch--faded-reverse-color, var(--dark--faded-reverse-color));
   }
+}</style><style>
+:root {
+  --load-hider: 0;
 }
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <script src="/scripts/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="the future home of alan w. smith" />
+<meta property="og:description" content="the future home of alan w. smith" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="" />
+<meta property="og:image" content="" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="">
+    <link rel="stylesheet" href="&#x2f;magic-deck-builder&#x2f;styles.css" />
+  </head>
+  <body>
+
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+  <div class="top-nav">
+    <a href="/">Home</a>
+  </div>
+</header>
+      <main class="default-wrapper default-flow">
+<bitty-8-0 data-connect="/magic-deck-builder/builder.js"></bitty-8-0>
+
+<hgroup>
+  <h1>Magic Deck Builder</h1>
+</hgroup>
+
+<div class="columns">
+  <div class="sidebar">
+    <div>
+      <label class="block" for="typeLineSearch">Card Name:</label>
+      <input type="search" data-r="uiCardName"  data-s="search" autocomplete="off" />
+    </div>
+    <div>
+      Colors:
+      <div data-r="uiColors"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div data-r="results"></div>
+  </div>
+</div>
+
+
+      </main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+
+  </div>
+</footer>
+
+
+<script type="text/html" id="colorTemplate">
+<label class="block">
+  <input class="isColor" data-color="__COLOR_CODE__" type="checkbox" data-s="search" __ID_CHECKED__ />
+  <input class="hasColor" data-color="__COLOR_CODE__" type="checkbox" data-s="search" __COLORS_CHECKED__ />
+  __COLOR_NAME__ 
+</label>
+</script>
+
+<script type="text/html" id="cardTemplate">
+<div 
+<div>__CARD_NAME__</div>
+<img src="" alt="__CARD_NAME__ from Magic: The Gathering" />
+</script>
+
+
+
+
+  </body>
+</html>

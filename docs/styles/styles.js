@@ -34,12 +34,12 @@ const baseParams = {
     classString: `.SIZE-KEY { KEY: var(--SIZE-KEY);}`,
     varString: `--SIZE-KEY: VALUE;`,
     values: [
+      "clamp(0.48rem, calc(0.47rem + 0.03vw), 0.6rem)",
       "clamp(0.58rem, calc(0.57rem + 0.03vw), 0.6rem)",
       "clamp(0.68rem, calc(0.67rem + 0.03vw), 0.7rem)",
       "clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem)",
       "clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem)",
       "clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem)",
-      "clamp(1.35rem, calc(1.28rem + 0.37vw), 1.56rem)",
       "clamp(1.32rem, calc(1.5rem + 0.58vw), 1.65rem)",
       "clamp(1.84rem, calc(1.77rem + 0.87vw), 2.14rem)",
       "clamp(2.8rem, calc(2rem + 1.25vw), 3.1rem)",
