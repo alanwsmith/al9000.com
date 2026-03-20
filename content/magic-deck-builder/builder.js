@@ -58,6 +58,9 @@ export function restoreState() {
         if (payload.value) {
           el.value = payload.value;
         }
+        if (payload.checked) {
+          el.checked = payload.checked;
+        }
       }
     }
   }
@@ -95,14 +98,27 @@ export function update_debuggingToggle(_, sender, ___) {
 export function updateState() {
   b.qsa(`[data-r^="display_"]`).forEach((el) => {
     const id = el.dataset.r;
+    if (!state[id]) {
+      state[id] = {};
+    }
     const key = el.dataset.key;
+    let typeAttr = el.getAttribute("type")
+      ? el.getAttribute("type").toLowerCase()
+      : undefined;
     if (key === undefined) {
+      console.log(el);
       state[id] = {
         dataset: {},
         aria: {},
       };
-      if (el.value) {
+      if (typeAttr === "text" && el.value) {
         state[id].value = el.value;
+      }
+      if (typeAttr === "search" && el.value) {
+        state[id].value = el.value;
+      }
+      if (typeAttr === "checkbox" && el.checked) {
+        state[id].checked = el.checked;
       }
       for (const dsKey in el.dataset) {
         if (dsKey !== "s" && dsKey !== "r") {
@@ -116,7 +132,30 @@ export function updateState() {
         }
       }
     } else {
-      state[id] = [];
+      state[id][key] = {
+        dataset: {},
+        aria: {},
+      };
+      if (typeAttr === "text" && el.value) {
+        state[id][key].value = el.value;
+      }
+      if (typeAttr === "search" && el.value) {
+        state[id][key].value = el.value;
+      }
+      if (typeAttr === "checkbox" && el.checked) {
+        state[id][key].checked = el.checked;
+      }
+      for (const dsKey in el.dataset) {
+        if (dsKey !== "s" && dsKey !== "r" && dsKey !== "key") {
+          state[id][key].dataset[dsKey] = el.dataset[dsKey];
+        }
+      }
+      for (const attr of el.attributes) {
+        if (attr.name.startsWith("aria-")) {
+          const ariaKey = attr.name.replace("aria-", "");
+          state[id][key].aria[ariaKey] = attr.value;
+        }
+      }
     }
   });
   b.savePage("state", state);
