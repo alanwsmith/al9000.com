@@ -7,22 +7,10 @@ preludes = {}
 top_keys = ["cmc", "edhrec_rank", "game_changer", "id", "layout", "name", "oracle_id"]
 
 one_face_keys = ["name", "mana_cost", "type_line", "oracle_text", "power", "toughness"]
+#  image: string|None - color: [] - color_identity: [] 
 
-
-# TODO: create a faces array. 
-# name, 
-# mana_cost,
-# type_line
-# oracle_text, 
-# power
-# toughness
-
-# image_uris
-# colors: [],
-# color_identity: []
-
-
-#arrayKeys = ["colors", "color_identity"]
+two_face_keys = ["name", "mana_cost", "type_line", "oracle_text", "power", "toughness"]
+#  image: string|None - color: [] - color_identity: [] - color_indicator goes to color_identity
 
 with open("/Users/alan/workshop/data/scryfall-bulk-data/oracle-cards.json") as _json_in:
     data = json.load(_json_in)
@@ -47,12 +35,28 @@ for raw in data:
             else:
                 card[top_key] = None
     if "card_faces" in raw:
-        pass
+        for face in raw["card_faces"]:
+            details = {}
+            for two_face_key in two_face_keys:
+                if two_face_key in face:
+                    if face[two_face_key] == "":
+                        details[two_face_key] = None
+                    else:
+                        details[two_face_key] = face[two_face_key]
+                else:
+                    details[two_face_key] = None
+            card["faces"].append(details)
+
     else:
         details = {}
         for one_face_key in one_face_keys:
             if one_face_key in raw:
-                details[one_face_key] = raw[one_face_key]
+                if raw[one_face_key] == "":
+                    details[one_face_key] = None
+                else:
+                    details[one_face_key] = raw[one_face_key]
+            else:
+                details[one_face_key] = None
         card["faces"].append(details)
         if "colors" in raw:
             details["colors"] = raw["colors"]
@@ -63,6 +67,8 @@ for raw in data:
         else:
             details["color_identity"] = []
         details["image"] = raw["image_uris"]["normal"]
+
+    preludes[prelude].append(card)
 
         # details["name"] = raw["name"]
         # details["mana_cost"] = raw["mana_cost"]
@@ -94,7 +100,6 @@ for raw in data:
 
         # if "image_uris" in raw:
         #     card["image_uris"]["png"] = raw["image_uris"]["png"]
-        preludes[prelude].append(card)
 
 for p in preludes:
     with open(f"../../content/magic-data/scryfall-cards/{p}.json", "w") as _json_out:
