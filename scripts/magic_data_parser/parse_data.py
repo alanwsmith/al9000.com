@@ -45,6 +45,14 @@ for raw in data:
                         details[two_face_key] = face[two_face_key]
                 else:
                     details[two_face_key] = None
+            if "colors" in face:
+                details["colors"] = face["colors"]
+            else:
+                details["colors"] = []
+            if "color_indicator" in face:
+                details["color_identity"] = face["color_indicator"]
+            else:
+                details["color_identity"] = []
             card["faces"].append(details)
 
     else:

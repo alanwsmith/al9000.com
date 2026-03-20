@@ -2318,6 +2318,10 @@
       "edhrec_rank": 15579,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "B"
+          ],
           "mana_cost": "{2}{B}",
           "name": "Graveyard Trespasser",
           "oracle_text": "Ward\u2014Discard a card.\nWhenever this creature enters or attacks, exile up to one target card from a graveyard. If a creature card was exiled this way, each opponent loses 1 life and you gain 1 life.\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)",
@@ -2326,6 +2330,12 @@
           "type_line": "Creature \u2014 Human Werewolf"
         },
         {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
           "mana_cost": null,
           "name": "Graveyard Glutton",
           "oracle_text": "Ward\u2014Discard a card.\nWhenever this creature enters or attacks, exile up to two target cards from graveyards. For each creature card exiled this way, each opponent loses 1 life and you gain 1 life.\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)",
@@ -5761,6 +5771,8 @@
       "edhrec_rank": 737,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": null,
           "name": "Brightclimb Pathway",
           "oracle_text": "{T}: Add {W}.",
@@ -5769,6 +5781,8 @@
           "type_line": "Land"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": null,
           "name": "Grimclimb Pathway",
           "oracle_text": "{T}: Add {B}.",
@@ -7297,6 +7311,10 @@
       "edhrec_rank": 23348,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "G"
+          ],
           "mana_cost": "{2}{G}",
           "name": "Autumnal Gloom",
           "oracle_text": "{B}: Mill a card.\nDelirium \u2014 At the beginning of your end step, if there are four or more card types among cards in your graveyard, transform this enchantment.",
@@ -7305,6 +7323,12 @@
           "type_line": "Enchantment"
         },
         {
+          "color_identity": [
+            "G"
+          ],
+          "colors": [
+            "G"
+          ],
           "mana_cost": null,
           "name": "Ancient of the Equinox",
           "oracle_text": "Trample, hexproof",
@@ -8456,6 +8480,8 @@
       "edhrec_rank": 6268,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{4}{U}",
           "name": "Illithid Harvester",
           "oracle_text": "Ceremorphosis \u2014 When this creature enters, turn any number of target tapped nontoken creatures face down. They're 2/2 Horror creatures.",
@@ -8464,6 +8490,8 @@
           "type_line": "Creature \u2014 Horror"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{X}{U}{U}",
           "name": "Plant Tadpoles",
           "oracle_text": "Tap X target creatures. They don't untap during their controllers' next untap steps. (Then exile this card. You may cast the creature later from exile.)",
@@ -9375,6 +9403,8 @@
       "edhrec_rank": 10846,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{3}{R}",
           "name": "Young Red Dragon",
           "oracle_text": "Flying\nThis creature can't block.",
@@ -9383,6 +9413,8 @@
           "type_line": "Creature \u2014 Dragon"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{1}{R}",
           "name": "Bathe in Gold",
           "oracle_text": "Create a Treasure token. (Then exile this card. You may cast the creature later from exile.)",
@@ -16538,6 +16570,10 @@
       "edhrec_rank": 19372,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "R"
+          ],
           "mana_cost": "{2}{R}",
           "name": "Spellrune Painter",
           "oracle_text": "Whenever you cast an instant or sorcery spell, this creature gets +1/+1 until end of turn.\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)",
@@ -16546,6 +16582,12 @@
           "type_line": "Creature \u2014 Human Shaman Werewolf"
         },
         {
+          "color_identity": [
+            "R"
+          ],
+          "colors": [
+            "R"
+          ],
           "mana_cost": null,
           "name": "Spellrune Howler",
           "oracle_text": "Whenever you cast an instant or sorcery spell, this creature gets +2/+2 until end of turn.\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)",
@@ -18064,6 +18106,8 @@
       "edhrec_rank": 20523,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{3}{G}",
           "name": "Alive",
           "oracle_text": "Create a 3/3 green Centaur creature token.\nFuse (You may cast one or both halves of this card from your hand.)",
@@ -18072,6 +18116,8 @@
           "type_line": "Sorcery"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{W}",
           "name": "Well",
           "oracle_text": "You gain 2 life for each creature you control.\nFuse (You may cast one or both halves of this card from your hand.)",
@@ -20429,6 +20475,10 @@
       "edhrec_rank": 3859,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "W"
+          ],
           "mana_cost": "{2}{W}{W}",
           "name": "Elesh Norn",
           "oracle_text": "Vigilance\nWhenever a source an opponent controls deals damage to you or a permanent you control, that source's controller loses 2 life unless they pay {1}.\n{2}{W}, Sacrifice three other creatures: Exile Elesh Norn, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.",
@@ -20437,6 +20487,12 @@
           "type_line": "Legendary Creature \u2014 Phyrexian Praetor"
         },
         {
+          "color_identity": [
+            "W"
+          ],
+          "colors": [
+            "W"
+          ],
           "mana_cost": null,
           "name": "The Argent Etchings",
           "oracle_text": "(As this Saga enters and after your draw step, add a lore counter.)\nI \u2014 Incubate 2 five times, then transform all Incubator tokens you control.\nII \u2014 Creatures you control get +1/+1 and gain double strike until end of turn.\nIII \u2014 Destroy all other permanents except for artifacts, lands, and Phyrexians. Exile this Saga, then return it to the battlefield (front face up).",
@@ -21887,6 +21943,10 @@
       "edhrec_rank": 11573,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "G"
+          ],
           "mana_cost": "{2}{G}",
           "name": "Hermit of the Natterknolls",
           "oracle_text": "Whenever an opponent casts a spell during your turn, draw a card.\nAt the beginning of each upkeep, if no spells were cast last turn, transform this creature.",
@@ -21895,6 +21955,12 @@
           "type_line": "Creature \u2014 Human Werewolf"
         },
         {
+          "color_identity": [
+            "G"
+          ],
+          "colors": [
+            "G"
+          ],
           "mana_cost": null,
           "name": "Lone Wolf of the Natterknolls",
           "oracle_text": "Whenever an opponent casts a spell during your turn, draw two cards.\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform this creature.",
@@ -22015,6 +22081,8 @@
       "edhrec_rank": 8423,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{2}{U/B}{U/B}",
           "name": "Connive",
           "oracle_text": "Gain control of target creature with power 2 or less.",
@@ -22023,6 +22091,8 @@
           "type_line": "Sorcery"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{3}{U}{B}",
           "name": "Concoct",
           "oracle_text": "Surveil 3, then return a creature card from your graveyard to the battlefield.",
@@ -22877,6 +22947,8 @@
       "edhrec_rank": 997,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": null,
           "name": "Cragcrown Pathway",
           "oracle_text": "{T}: Add {R}.",
@@ -22885,6 +22957,8 @@
           "type_line": "Land"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": null,
           "name": "Timbercrown Pathway",
           "oracle_text": "{T}: Add {G}.",
@@ -22905,6 +22979,10 @@
       "edhrec_rank": 716,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "B"
+          ],
           "mana_cost": "{2}{B}",
           "name": "Boggart Trawler",
           "oracle_text": "When this creature enters, exile target player's graveyard.",
@@ -22913,6 +22991,8 @@
           "type_line": "Creature \u2014 Goblin"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": null,
           "name": "Boggart Bog",
           "oracle_text": "As this land enters, you may pay 3 life. If you don't, it enters tapped.\n{T}: Add {B}.",
@@ -23632,6 +23712,11 @@
       "edhrec_rank": 12144,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "B",
+            "R"
+          ],
           "mana_cost": "{B}{R}",
           "name": "Garland, Knight of Cornelia",
           "oracle_text": "Whenever you cast a noncreature spell, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\n{3}{B}{B}{R}{R}: Return this card from your graveyard to the battlefield transformed. Activate only as a sorcery.",
@@ -23640,6 +23725,14 @@
           "type_line": "Legendary Creature \u2014 Human Knight"
         },
         {
+          "color_identity": [
+            "B",
+            "R"
+          ],
+          "colors": [
+            "B",
+            "R"
+          ],
           "mana_cost": null,
           "name": "Chaos, the Endless",
           "oracle_text": "Flying\nWhen Chaos dies, put it on the bottom of its owner's library.",
@@ -24216,6 +24309,8 @@
       "edhrec_rank": 16198,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{4}{U}",
           "name": "Sea Hag",
           "oracle_text": "When this creature enters, creatures your opponents control get -4/-0 until end of turn.",
@@ -24224,6 +24319,8 @@
           "type_line": "Creature \u2014 Hag"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{2}{U}",
           "name": "Aquatic Ingress",
           "oracle_text": "Up to two target creatures each get +1/+0 until end of turn and can't be blocked this turn. (Then exile this card. You may cast the creature later from exile.)",
@@ -25136,6 +25233,8 @@
       "edhrec_rank": 7126,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{4}{G}",
           "name": "Sagu Wildling",
           "oracle_text": "Flying\nWhen this creature enters, you gain 3 life.",
@@ -25144,6 +25243,8 @@
           "type_line": "Creature \u2014 Dragon"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{G}",
           "name": "Roost Seek",
           "oracle_text": "Search your library for a basic land card, reveal it, put it into your hand, then shuffle. (Also shuffle this card.)",
@@ -25355,6 +25456,11 @@
       "edhrec_rank": 3547,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "B",
+            "G"
+          ],
           "mana_cost": "{1}{B}{G}",
           "name": "Journey to Eternity",
           "oracle_text": "Enchant creature you control\nWhen enchanted creature dies, return it to the battlefield under your control, then return this card to the battlefield transformed under your control.",
@@ -25363,6 +25469,8 @@
           "type_line": "Legendary Enchantment \u2014 Aura"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": null,
           "name": "Atzal, Cave of Eternity",
           "oracle_text": "(Transforms from Journey to Eternity.)\n{T}: Add one mana of any color.\n{3}{B}{G}, {T}: Return target creature card from your graveyard to the battlefield.",
@@ -25894,6 +26002,10 @@
       "edhrec_rank": 18903,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "B"
+          ],
           "mana_cost": "{1}{B}",
           "name": "Aetherblade Agent",
           "oracle_text": "Deathtouch\n{4}{U/P}: Transform this creature. Activate only as a sorcery. ({U/P} can be paid with either {U} or 2 life.)",
@@ -25902,6 +26014,14 @@
           "type_line": "Creature \u2014 Human Rogue"
         },
         {
+          "color_identity": [
+            "B",
+            "U"
+          ],
+          "colors": [
+            "B",
+            "U"
+          ],
           "mana_cost": null,
           "name": "Gitaxian Mindstinger",
           "oracle_text": "Deathtouch\nWhenever this creature deals combat damage to a player or battle, draw a card.",
@@ -26300,6 +26420,10 @@
       "edhrec_rank": 10789,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "W"
+          ],
           "mana_cost": "{1}{W}{W}",
           "name": "Faithbound Judge",
           "oracle_text": "Defender, flying, vigilance\nAt the beginning of your upkeep, if this creature has two or fewer judgment counters on it, put a judgment counter on it.\nAs long as this creature has three or more judgment counters on it, it can attack as though it didn't have defender.\nDisturb {5}{W}{W}",
@@ -26308,6 +26432,12 @@
           "type_line": "Creature \u2014 Spirit Soldier"
         },
         {
+          "color_identity": [
+            "W"
+          ],
+          "colors": [
+            "W"
+          ],
           "mana_cost": null,
           "name": "Sinner's Judgment",
           "oracle_text": "Enchant player\nAt the beginning of your upkeep, put a judgment counter on this Aura. Then if there are three or more judgment counters on it, enchanted player loses the game.\nIf Sinner's Judgment would be put into a graveyard from anywhere, exile it instead.",
@@ -27193,6 +27323,10 @@
       "edhrec_rank": 4217,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "B"
+          ],
           "mana_cost": "{1}{B}",
           "name": "Tithing Blade",
           "oracle_text": "When this artifact enters, each opponent sacrifices a creature of their choice.\nCraft with creature {4}{B} ({4}{B}, Exile this artifact, Exile a creature you control or a creature card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)",
@@ -27201,6 +27335,12 @@
           "type_line": "Artifact"
         },
         {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
           "mana_cost": null,
           "name": "Consuming Sepulcher",
           "oracle_text": "At the beginning of your upkeep, each opponent loses 1 life and you gain 1 life.",
@@ -27997,6 +28137,10 @@
       "edhrec_rank": 21907,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "R"
+          ],
           "mana_cost": "{2}{R}",
           "name": "Hanweir Watchkeep",
           "oracle_text": "Defender\nAt the beginning of each upkeep, if no spells were cast last turn, transform this creature.",
@@ -28005,6 +28149,12 @@
           "type_line": "Creature \u2014 Human Warrior Werewolf"
         },
         {
+          "color_identity": [
+            "R"
+          ],
+          "colors": [
+            "R"
+          ],
           "mana_cost": null,
           "name": "Bane of Hanweir",
           "oracle_text": "This creature attacks each combat if able.\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform this creature.",
@@ -28323,6 +28473,8 @@
       "edhrec_rank": 2048,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{4}",
           "name": "Primal Amulet",
           "oracle_text": "Instant and sorcery spells you cast cost {1} less to cast.\nWhenever you cast an instant or sorcery spell, put a charge counter on this artifact. Then if there are four or more charge counters on it, you may remove those counters and transform it.",
@@ -28331,6 +28483,8 @@
           "type_line": "Artifact"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": null,
           "name": "Primal Wellspring",
           "oracle_text": "(Transforms from Primal Amulet.)\n{T}: Add one mana of any color. When that mana is spent to cast an instant or sorcery spell, copy that spell and you may choose new targets for the copy.",
@@ -28983,6 +29137,10 @@
       "edhrec_rank": 10579,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "G"
+          ],
           "mana_cost": "{1}{G}{G}",
           "name": "Augmenter Pugilist",
           "oracle_text": "Trample\nAs long as you control eight or more lands, this creature gets +5/+5.",
@@ -28991,6 +29149,10 @@
           "type_line": "Creature \u2014 Troll Druid"
         },
         {
+          "color_identity": [],
+          "colors": [
+            "U"
+          ],
           "mana_cost": "{3}{U}{U}",
           "name": "Echoing Equation",
           "oracle_text": "Choose target creature you control. Each other creature you control becomes a copy of it until end of turn, except those creatures aren't legendary.",
@@ -31156,6 +31318,10 @@
       "edhrec_rank": 8129,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "B"
+          ],
           "mana_cost": "{5}{B}",
           "name": "Blitzwing, Cruel Tormentor",
           "oracle_text": "More Than Meets the Eye {3}{B} (You may cast this card converted for {3}{B}.)\nAt the beginning of your end step, target opponent loses life equal to the life that player lost this turn. If no life is lost this way, convert Blitzwing.",
@@ -31164,6 +31330,12 @@
           "type_line": "Legendary Artifact Creature \u2014 Robot"
         },
         {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
           "mana_cost": null,
           "name": "Blitzwing, Adaptive Assailant",
           "oracle_text": "Living metal (During your turn, this Vehicle is also a creature.)\nAt the beginning of combat on your turn, choose flying or indestructible at random. Blitzwing gains that ability until end of turn.\nWhenever Blitzwing deals combat damage to a player, convert it.",
@@ -32801,6 +32973,8 @@
       "edhrec_rank": 6535,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{5}{W}{W}",
           "name": "Realm-Cloaked Giant",
           "oracle_text": "Vigilance",
@@ -32809,6 +32983,8 @@
           "type_line": "Creature \u2014 Giant"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{3}{W}{W}",
           "name": "Cast Off",
           "oracle_text": "Destroy all non-Giant creatures. (Then exile this card. You may cast the creature later from exile.)",
@@ -34407,6 +34583,10 @@
       "edhrec_rank": 7372,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "U"
+          ],
           "mana_cost": "{1}{U}",
           "name": "Norman Osborn",
           "oracle_text": "Norman Osborn can't be blocked.\nWhenever Norman Osborn deals combat damage to a player, he connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\n{1}{U}{B}{R}: Transform Norman Osborn. Activate only as a sorcery.",
@@ -34415,6 +34595,12 @@
           "type_line": "Legendary Creature \u2014 Human Scientist Villain"
         },
         {
+          "color_identity": [],
+          "colors": [
+            "B",
+            "R",
+            "U"
+          ],
           "mana_cost": "{1}{U}{B}{R}",
           "name": "Green Goblin",
           "oracle_text": "Flying, menace\nSpells you cast from your graveyard cost {2} less to cast.\nGoblin Formula \u2014 Each nonland card in your graveyard has mayhem. The mayhem cost is equal to its mana cost. (You may cast a card from your graveyard for its mayhem cost if you discarded it this turn. Timing rules still apply.)",
@@ -34726,6 +34912,8 @@
       "edhrec_rank": 10042,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{2}{R}",
           "name": "Indulge",
           "oracle_text": "Whenever a creature you control attacks this turn, create a 1/1 green and white Citizen creature token that's tapped and attacking.",
@@ -34734,6 +34922,8 @@
           "type_line": "Sorcery"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{1}{R}",
           "name": "Excess",
           "oracle_text": "Aftermath (Cast this spell only from your graveyard. Then exile it.)\nCreate a Treasure token for each creature you controlled that dealt combat damage to a player this turn.",
@@ -35508,6 +35698,10 @@
       "edhrec_rank": 1447,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "R"
+          ],
           "mana_cost": "{2}{R}",
           "name": "Brass's Tunnel-Grinder",
           "oracle_text": "When Brass's Tunnel-Grinder enters, discard any number of cards, then draw that many cards plus one.\nAt the beginning of your end step, if you descended this turn, put a bore counter on Brass's Tunnel-Grinder. Then if there are three or more bore counters on it, remove those counters and transform it. (You descended if a permanent card was put into your graveyard from anywhere.)",
@@ -35516,6 +35710,8 @@
           "type_line": "Legendary Artifact"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": null,
           "name": "Tecutlan, the Searing Rift",
           "oracle_text": "(Transforms from Brass's Tunnel-Grinder.)\n{T}: Add {R}.\nWhenever you cast a permanent spell using mana produced by Tecutlan, discover X, where X is that spell's mana value.",
@@ -35644,6 +35840,10 @@
       "edhrec_rank": 12342,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "R"
+          ],
           "mana_cost": "{5}{R}",
           "name": "Akoum Warrior",
           "oracle_text": "Trample",
@@ -35652,6 +35852,8 @@
           "type_line": "Creature \u2014 Minotaur Warrior"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": null,
           "name": "Akoum Teeth",
           "oracle_text": "This land enters tapped.\n{T}: Add {R}.",
@@ -35782,6 +35984,10 @@
       "edhrec_rank": 18734,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "R"
+          ],
           "mana_cost": "{1}{R}",
           "name": "Kessig Forgemaster",
           "oracle_text": "Whenever this creature blocks or becomes blocked by a creature, this creature deals 1 damage to that creature.\nAt the beginning of each upkeep, if no spells were cast last turn, transform this creature.",
@@ -35790,6 +35996,12 @@
           "type_line": "Creature \u2014 Human Shaman Werewolf"
         },
         {
+          "color_identity": [
+            "R"
+          ],
+          "colors": [
+            "R"
+          ],
           "mana_cost": null,
           "name": "Flameheart Werewolf",
           "oracle_text": "Whenever this creature blocks or becomes blocked by a creature, this creature deals 2 damage to that creature.\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform this creature.",
@@ -37170,6 +37382,10 @@
       "edhrec_rank": 10526,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "G"
+          ],
           "mana_cost": "{3}{G}",
           "name": "Casal, Lurkwood Pathfinder",
           "oracle_text": "Vigilance\nWhen Casal enters, search your library for a Forest card, put it onto the battlefield tapped, then shuffle.\nWhenever Casal attacks, you may pay {1}{G}. If you do, transform her.",
@@ -37178,6 +37394,12 @@
           "type_line": "Legendary Creature \u2014 Tiefling Druid"
         },
         {
+          "color_identity": [
+            "G"
+          ],
+          "colors": [
+            "G"
+          ],
           "mana_cost": null,
           "name": "Casal, Pathbreaker Owlbear",
           "oracle_text": "Vigilance, trample\nWhen this creature transforms into Casal, Pathbreaker Owlbear, other legendary creatures you control get +2/+2 and gain trample until end of turn.\nAt the beginning of your upkeep, transform Casal.",
@@ -37470,6 +37692,10 @@
       "edhrec_rank": 4184,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "B"
+          ],
           "mana_cost": "{1}{B}{B}",
           "name": "Liliana, Heretical Healer",
           "oracle_text": "Lifelink\nWhenever another nontoken creature you control dies, exile Liliana, Heretical Healer, then return her to the battlefield transformed under her owner's control. If you do, create a 2/2 black Zombie creature token.",
@@ -37478,6 +37704,12 @@
           "type_line": "Legendary Creature \u2014 Human Cleric"
         },
         {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
           "mana_cost": null,
           "name": "Liliana, Defiant Necromancer",
           "oracle_text": "+2: Each player discards a card.\n\u2212X: Return target nonlegendary creature card with mana value X from your graveyard to the battlefield.\n\u22128: You get an emblem with \"Whenever a creature dies, return it to the battlefield under your control at the beginning of the next end step.\"",
@@ -37525,6 +37757,8 @@
       "edhrec_rank": 22278,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{B/R}",
           "name": "Carnival",
           "oracle_text": "Carnival deals 1 damage to target creature or planeswalker and 1 damage to that permanent's controller.",
@@ -37533,6 +37767,8 @@
           "type_line": "Instant"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{2}{B}{R}",
           "name": "Carnage",
           "oracle_text": "Carnage deals 3 damage to target opponent. That player discards two cards.",
@@ -38321,6 +38557,8 @@
       "edhrec_rank": 15329,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{3}{U}",
           "name": "Threadbind Clique",
           "oracle_text": "Flying",
@@ -38329,6 +38567,8 @@
           "type_line": "Creature \u2014 Faerie"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{2}{W}",
           "name": "Rip the Seams",
           "oracle_text": "Destroy target tapped creature. (Then exile this card. You may cast the creature later from exile.)",
@@ -41042,6 +41282,10 @@
       "edhrec_rank": 10466,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "U"
+          ],
           "mana_cost": "{6}{U}{U}",
           "name": "Jadzi, Oracle of Arcavios",
           "oracle_text": "Discard a card: Return Jadzi to its owner's hand.\nMagecraft \u2014 Whenever you cast or copy an instant or sorcery spell, reveal the top card of your library. If it's a nonland card, you may cast it by paying {1} rather than paying its mana cost. If it's a land card, put it onto the battlefield.",
@@ -41050,6 +41294,10 @@
           "type_line": "Legendary Creature \u2014 Human Wizard"
         },
         {
+          "color_identity": [],
+          "colors": [
+            "G"
+          ],
           "mana_cost": "{2}{G}{G}",
           "name": "Journey to the Oracle",
           "oracle_text": "You may put any number of land cards from your hand onto the battlefield. Then if you control eight or more lands, you may discard a card. If you do, return Journey to the Oracle to its owner's hand.",
@@ -41176,6 +41424,8 @@
       "edhrec_rank": 22655,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{2}{U}",
           "name": "Reduce",
           "oracle_text": "Counter target spell unless its controller pays {3}.",
@@ -41184,6 +41434,8 @@
           "type_line": "Instant"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{2}{R}",
           "name": "Rubble",
           "oracle_text": "Aftermath (Cast this spell only from your graveyard. Then exile it.)\nUp to three target lands don't untap during their controller's next untap step.",
@@ -43899,6 +44151,8 @@
       "edhrec_rank": 18952,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{X}{G}{W}",
           "name": "Supply",
           "oracle_text": "Create X 1/1 green Saproling creature tokens.",
@@ -43907,6 +44161,8 @@
           "type_line": "Sorcery"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{1}{W}{U}",
           "name": "Demand",
           "oracle_text": "Search your library for a multicolored card, reveal it, put it into your hand, then shuffle.",
@@ -45078,6 +45334,10 @@
       "edhrec_rank": 16471,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "R"
+          ],
           "mana_cost": "{3}{R}",
           "name": "Fangblade Brigand",
           "oracle_text": "{1}{R}: This creature gets +1/+0 and gains first strike until end of turn.\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)",
@@ -45086,6 +45346,12 @@
           "type_line": "Creature \u2014 Human Werewolf"
         },
         {
+          "color_identity": [
+            "R"
+          ],
+          "colors": [
+            "R"
+          ],
           "mana_cost": null,
           "name": "Fangblade Eviscerator",
           "oracle_text": "{1}{R}: This creature gets +1/+0 and gains first strike until end of turn.\n{4}{R}: Creatures you control get +2/+0 until end of turn.\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)",
@@ -46719,6 +46985,8 @@
       "edhrec_rank": 14969,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{1}{U}",
           "name": "Far",
           "oracle_text": "Return target creature to its owner's hand.\nFuse (You may cast one or both halves of this card from your hand.)",
@@ -46727,6 +46995,8 @@
           "type_line": "Instant"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{2}{B}",
           "name": "Away",
           "oracle_text": "Target player sacrifices a creature of their choice.\nFuse (You may cast one or both halves of this card from your hand.)",
@@ -47450,6 +47720,10 @@
       "edhrec_rank": 18864,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "R"
+          ],
           "mana_cost": "{2}{R}",
           "name": "Idol of the Deep King",
           "oracle_text": "Flash\nWhen this artifact enters, it deals 2 damage to any target.\nCraft with artifact {2}{R} ({2}{R}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)",
@@ -47458,6 +47732,12 @@
           "type_line": "Artifact"
         },
         {
+          "color_identity": [
+            "R"
+          ],
+          "colors": [
+            "R"
+          ],
           "mana_cost": null,
           "name": "Sovereign's Macuahuitl",
           "oracle_text": "When this Equipment enters, attach it to target creature you control.\nEquipped creature gets +2/+0.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
@@ -49438,6 +49718,8 @@
       "edhrec_rank": 16274,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{1}{G}{G}",
           "name": "Sasaya, Orochi Ascendant",
           "oracle_text": "Reveal your hand: If you have seven or more land cards in your hand, flip Sasaya.",
@@ -49446,6 +49728,8 @@
           "type_line": "Legendary Creature \u2014 Snake Monk"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": null,
           "name": "Sasaya's Essence",
           "oracle_text": "Whenever a land you control is tapped for mana, add an additional one mana of any type that land produced for each other land you control with the same name as it.",
@@ -49466,6 +49750,10 @@
       "edhrec_rank": 10849,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "R"
+          ],
           "mana_cost": "{1}{R}",
           "name": "Khenra Spellspear",
           "oracle_text": "Trample\nProwess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\n{3}{U/P}: Transform this creature. Activate only as a sorcery. ({U/P} can be paid with either {U} or 2 life.)",
@@ -49474,6 +49762,14 @@
           "type_line": "Creature \u2014 Jackal Warrior"
         },
         {
+          "color_identity": [
+            "R",
+            "U"
+          ],
+          "colors": [
+            "R",
+            "U"
+          ],
           "mana_cost": null,
           "name": "Gitaxian Spellstalker",
           "oracle_text": "Trample, ward {2}, prowess, prowess (Each instance of prowess triggers separately.)",
@@ -49494,6 +49790,8 @@
       "edhrec_rank": 1924,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{4}{U}",
           "name": "Virtue of Knowledge",
           "oracle_text": "If a permanent entering causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",
@@ -49502,6 +49800,8 @@
           "type_line": "Enchantment"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{1}{U}",
           "name": "Vantress Visions",
           "oracle_text": "Copy target activated or triggered ability you control. You may choose new targets for the copy.",
@@ -50070,6 +50370,10 @@
       "edhrec_rank": 13518,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "U"
+          ],
           "mana_cost": "{1}{U}",
           "name": "Lodestone Needle",
           "oracle_text": "Flash\nWhen this artifact enters, tap up to one target artifact or creature and put two stun counters on it.\nCraft with artifact {2}{U} ({2}{U}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)",
@@ -50078,6 +50382,12 @@
           "type_line": "Artifact"
         },
         {
+          "color_identity": [
+            "U"
+          ],
+          "colors": [
+            "U"
+          ],
           "mana_cost": null,
           "name": "Guidestone Compass",
           "oracle_text": "{1}, {T}: Target creature you control explores. Activate only as a sorcery. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)",
@@ -50474,6 +50784,8 @@
       "edhrec_rank": 12407,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{2}{U}",
           "name": "Queen of Ice",
           "oracle_text": "Whenever this creature deals combat damage to a creature, tap that creature. It doesn't untap during its controller's next untap step.",
@@ -50482,6 +50794,8 @@
           "type_line": "Creature \u2014 Human Noble Wizard"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{1}{U}",
           "name": "Rage of Winter",
           "oracle_text": "Tap target creature. It doesn't untap during its controller's next untap step. (Then exile this card. You may cast the creature later from exile.)",
@@ -51103,6 +51417,8 @@
       "edhrec_rank": 5769,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{3}{B}",
           "name": "Defiled Crypt",
           "oracle_text": "Whenever one or more cards leave your graveyard, create a 2/2 black Horror enchantment creature token. This ability triggers only once each turn.\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
@@ -51111,6 +51427,8 @@
           "type_line": "Enchantment \u2014 Room"
         },
         {
+          "color_identity": [],
+          "colors": [],
           "mana_cost": "{B}",
           "name": "Cadaver Lab",
           "oracle_text": "When you unlock this door, return target creature card from your graveyard to your hand.\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
@@ -51869,6 +52187,10 @@
       "edhrec_rank": 7602,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "W"
+          ],
           "mana_cost": "{3}{W}{W}",
           "name": "Unstable Glyphbridge",
           "oracle_text": "When this artifact enters, if you cast it, for each player, choose a creature with power 2 or less that player controls. Then destroy all creatures except creatures chosen this way.\nCraft with artifact {3}{W}{W} ({3}{W}{W}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)",
@@ -51877,6 +52199,12 @@
           "type_line": "Artifact"
         },
         {
+          "color_identity": [
+            "W"
+          ],
+          "colors": [
+            "W"
+          ],
           "mana_cost": null,
           "name": "Sandswirl Wanderglyph",
           "oracle_text": "Flying\nWhenever an opponent casts a spell during their turn, they can't attack you or planeswalkers you control this turn.\nEach opponent who attacked you or a planeswalker you control this turn can't cast spells.",
@@ -52518,6 +52846,10 @@
       "edhrec_rank": 16541,
       "faces": [
         {
+          "color_identity": [],
+          "colors": [
+            "B"
+          ],
           "mana_cost": "{1}{B}",
           "name": "Vengeful Strangler",
           "oracle_text": "This creature can't block.\nWhen this creature dies, return it to the battlefield transformed under your control attached to target creature or planeswalker an opponent controls.",
@@ -52526,6 +52858,12 @@
           "type_line": "Creature \u2014 Human Rogue"
         },
         {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
           "mana_cost": null,
           "name": "Strangling Grasp",
           "oracle_text": "Enchant creature or planeswalker an opponent controls\nAt the beginning of your upkeep, enchanted permanent's controller sacrifices a nonland permanent of their choice, then that player loses 1 life.",
