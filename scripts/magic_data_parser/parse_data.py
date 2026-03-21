@@ -33,18 +33,18 @@ for raw in data:
             if top_key in raw:
                 card[top_key] = raw[top_key]
             else:
-                card[top_key] = None
+                card[top_key] ="" 
     if "card_faces" in raw:
         for face in raw["card_faces"]:
             details = {}
             for two_face_key in two_face_keys:
                 if two_face_key in face:
                     if face[two_face_key] == "":
-                        details[two_face_key] = None
+                        details[two_face_key] = ""
                     else:
                         details[two_face_key] = face[two_face_key]
                 else:
-                    details[two_face_key] = None
+                    details[two_face_key] = ""
             if "colors" in face:
                 details["colors"] = face["colors"]
             else:
@@ -56,7 +56,7 @@ for raw in data:
             if "image_uris" in face:
                 details["image"] = face["image_uris"]["normal"]
             else: 
-                details["image"] = None
+                details["image"] = "" 
             card["faces"].append(details)
 
     else:
@@ -64,11 +64,11 @@ for raw in data:
         for one_face_key in one_face_keys:
             if one_face_key in raw:
                 if raw[one_face_key] == "":
-                    details[one_face_key] = None
+                    details[one_face_key] = ""
                 else:
                     details[one_face_key] = raw[one_face_key]
             else:
-                details[one_face_key] = None
+                details[one_face_key] = "" 
         card["faces"].append(details)
         if "colors" in raw:
             details["colors"] = raw["colors"]

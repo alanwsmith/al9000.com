@@ -192,21 +192,26 @@ body {
   <div class="sidebar default-flow">
     <div class="default-bottom-border default-bottom-padding small-bottom-margin">
       <label class="block" for="nameSearch">Name</label>
-      <input type="search" id="nameSearch" data-r="displayNameSearch"  data-s="search" autocomplete="off" />
+      <input data-s="search" data-r="displayNameSearch" type="search" id="nameSearch" autocomplete="off" />
     </div>
 
     <div>
       <div class="inputSelect">
-        <label for="typeSearch">Type</label>
-        <select data-r="uiOptions" data-key="type" data-s="selectOption"></select>
+        <label for="type_line_search">Type</label>
+        <select data-s="selectOption" data-r="uiOptions" data-key="type_line"></select>
       </div>
-      <input type="search" id="typeSearch" data-r="displaySearch selectOption" data-key="type_line" data-include="yes" data-s="search" autocomplete="off" />
+      <input data-s="search" data-r="displaySearch selectOption" data-key="type_line" data-include="yes" data-instant="yes" type="search" id="type_line_search" autocomplete="off" />
     </div>
 
     <div>
-      <label class="block" for="textSearch">Text:</label>
-      <input type="search" id="textSearch" data-r="displayTextSearch"  data-s="search" autocomplete="off" />
+      <div class="inputSelect">
+        <label for="textSearch">Text</label>
+        <select data-s="selectOption" data-r="uiOptions" data-key="oracle_text"></select>
+      </div>
+      <input data-s="search" data-r="displaySearch selectOption" data-key="oracle_text" data-include="yes" data-instant="yes" type="search" id="typeSearch" autocomplete="off" />
     </div>
+
+
     <div>
       Colors:
       <div data-r="uiColors"></div>
@@ -232,7 +237,6 @@ body {
     </div>
   </div>
 </div>
-
       </main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
@@ -243,7 +247,7 @@ body {
 
 <script type="text/html" id="colorTemplate">
   <label class="block">
-    <input data-r="displayColorCheckbox" data-key="__COLOR_KEY__" type="checkbox" data-s="search" />
+    <input data-s="search" data-r="displayColorCheckbox" data-key="__COLOR_KEY__" data-instant="yes" type="checkbox" />
     __COLOR_NAME__ 
   </label>
 </script>

@@ -13,12 +13,17 @@ const colorKeys = {
 };
 
 const options = {
-  type: [
+  oracle_text: [
+    "Deathtouch",
+    "Lifelink",
+  ],
+  type_line: [
     "Artifact",
     "Creature",
     "Enchantment",
     "Equipment",
     "Instant",
+    "Planeswalker",
     "Sorcery",
   ],
 };
@@ -129,19 +134,24 @@ function filterIncludeType(card) {
     */
 }
 
-export function filterCards(card) {
-  for (const el of b.qsa(`[data-s~=search][data-include]`)) {
-    const pattern = new RegExp(el.value, "gi");
-    for (const face of card.faces) {
-      // console.log(el.dataset);
-      // console.log(face);
-      // console.log(el.dataset.key);
-      if (face[el.dataset.key].match(pattern)) {
-        return el.dataset.include === "yes";
+export function filterCards(card, key) {
+  for (const el of b.qsa(`[data-s~=search][data-key=${key}]`)) {
+    if (el.value) {
+      const pattern = new RegExp(el.value, "gi");
+      console.log(pattern);
+      for (const face of card.faces) {
+        // console.log(el.dataset);
+        console.log(face);
+        // console.log(el.dataset.key);
+        if (face[el.dataset.key].match(pattern)) {
+          return el.dataset.include === "yes";
+        }
+        // if(el.dataset.kind === "include") {
+        //     return true;
+        //   }
       }
-      // if(el.dataset.kind === "include") {
-      //     return true;
-      //   }
+    } else {
+      return true;
     }
   }
   return false;
@@ -156,7 +166,8 @@ export function filteredCards() {
   } else {
     selectedCards = allCards
       .filter((card) => filterColors(card))
-      .filter((card) => filterCards(card));
+      .filter((card) => filterCards(card, "type_line"))
+      .filter((card) => filterCards(card, "oracle_text"));
 
     // .filter((card) => filterIncludeType(card))
     // .filter((card) => filterExcludeText(card))
@@ -270,11 +281,15 @@ export function saveState() {
   b.trigger("results");
 }
 
-export function search(ev, __, ___) {
+export function search(ev, sender, ___) {
   if (ev.type !== "bittytrigger") {
     b.qs(`[data-r~="displayPageNumber"]`).value = 1;
   }
-  b.debounce("newSearch", "saveState", 200);
+  if (sender && sender.propBool("instant")) {
+    b.trigger("saveState");
+  } else {
+    b.debounce("newSearch", "saveState", 200);
+  }
 }
 
 export function selectOption(_, sender, el) {
