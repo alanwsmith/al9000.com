@@ -48,7 +48,7 @@
     <div>
       <label class="block" for="pageNumber">Page:</label>
       <button data-s="previousPage">&lt;</button>
-      <input size="3" type="text" id="pageNumber" data-r="displayPageNumber nextPage" data-s="changePage" autocomplete="off" />
+      <input size="3" type="text" id="pageNumber" data-r="displayPageNumber nextPage previousPage" data-s="changePage" autocomplete="off" />
       <button data-s="nextPage">&gt;</button>
     </div>
     <div data-r="uiDebuggingSwitch"></div>
@@ -73,6 +73,14 @@
 <script type="text/html" id="cardTemplate">
 <div class="card">
   <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
+    [#
+  <details>
+    <div>__CARD_NAME__</div>
+    <div>__CARD_TYPE__</div>
+    <div>__CARD_TEXT__</div>
+    <div>__CARD_ID__</div>
+  </details>
+    #]
 </div>
 </script>
 [! endblock !]

@@ -93,7 +93,6 @@ export function filteredCards() {
   const maxIndex = parseInt(b.qs(`[data-r~="displayPageNumber"]`).value) *
     cardsPerPage;
   const minIndex = maxIndex - cardsPerPage;
-  console.log(minIndex);
   return selectedCards.filter((
     card,
     index,
@@ -132,7 +131,7 @@ export function getDisplayState() {
 }
 
 export async function loadStateAndData() {
-  state = b.loadPage("state", { debugging: false });
+  state = b.loadPage("state", defaultState());
   b.debugging = state.debugging;
   const hexChars = "abcdef1234567890";
   let dataKeys = hexChars.split("");
@@ -148,6 +147,15 @@ export async function loadStateAndData() {
 }
 
 export function nextPage(_, __, el) {
+  el.value = el.valueInt() + 1;
+  b.trigger("results");
+}
+
+export function previousPage(_, __, el) {
+  if (el.valueInt() > 0) {
+    el.value = el.valueInt() - 1;
+    b.trigger("results");
+  }
 }
 
 export function resetState() {
@@ -172,7 +180,8 @@ export function results(_, __, el) {
         __CARD_NAME__: card.name,
         __CARD_ID__: card.id,
         __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
-        __TYPE_LINES__: card.faces.map((face) => face.type_line).join(),
+        __CARD_TYPE__: card.faces.map((face) => face.type_line).join(),
+        __CARD_TEXT__: card.faces.map((face) => face.oracle_text).join(),
       };
       return b.render("cardTemplate", subs);
     }),
@@ -226,7 +235,6 @@ export async function toggleDebugging(_, sender, ___) {
 export function updateState() {
   state.display = getDisplayState();
   b.savePage("state", state);
-  console.log(state);
   b.trigger("results");
 }
 
