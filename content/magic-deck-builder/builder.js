@@ -44,6 +44,32 @@ function filterCardName(card) {
   return card.name.match(pattern) !== null;
 }
 
+function filterColors(card) {
+  const hasColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
+    .filter((input) => input.checked)
+    .map((input) => input.dataset.key);
+  const doesNotHaveColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
+    .filter((input) => input.checked === false)
+    .map((input) => input.dataset.key);
+  let hasColor = false;
+  hasColors.forEach((color) => {
+    card.faces.forEach((face) => {
+      if (face.color_identity.includes(color)) {
+        hasColor = true;
+      }
+    });
+  });
+  let doesNotHaveColor = true;
+  doesNotHaveColors.forEach((color) => {
+    card.faces.forEach((face) => {
+      if (face.color_identity.includes(color)) {
+        doesNotHaveColor = false;
+      }
+    });
+  });
+  return hasColor === true && doesNotHaveColor === true;
+}
+
 function filterExcludeText(card) {
   const value = b.qs(`[data-r~="displayExcludeText"]`).value.trim();
   if (value === "") return true;
@@ -82,6 +108,7 @@ function filterIncludeType(card) {
 
 export function filteredCards() {
   const selectedCards = allCards
+    .filter((card) => filterColors(card))
     .filter((card) => filterIncludeType(card))
     .filter((card) => filterExcludeText(card))
     .filter((card) => filterExcludeType(card))
