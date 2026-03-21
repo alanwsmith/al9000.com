@@ -12,8 +12,12 @@ const colorKeys = {
   W: { name: "white" },
 };
 
+const options = {
+  type: ["Artifact", "Creature", "Equipment", "Instant", "Sorcery"],
+};
+
 export function buildUI() {
-  b.trigger("uiColors uiDebuggingSwitch restoreState");
+  b.trigger("uiColors uiDebuggingSwitch uiOptions restoreState");
 }
 
 export function cardCount(count, __, el) {
@@ -44,10 +48,19 @@ function filterCardName(card) {
   return card.name.match(pattern) !== null;
 }
 
+function filterCardNameIsActive() {
+  const value = b.qs(`[data-r~="displayNameSearch"]`).value.trim();
+  if (!value) return false;
+  return true;
+}
+
 function filterColors(card) {
   const hasColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
     .filter((input) => input.checked)
     .map((input) => input.dataset.key);
+  if (hasColors.length === 0) {
+    return true;
+  }
   const doesNotHaveColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
     .filter((input) => input.checked === false)
     .map((input) => input.dataset.key);
@@ -95,6 +108,8 @@ function filterExcludeType(card) {
 }
 
 function filterIncludeType(card) {
+  return true;
+  /*
   const value = b.qs(`[data-r~="displayTypeSearch"]`).value.trim();
   if (value === "") return true;
   const pattern = new RegExp(value, "gi");
@@ -104,16 +119,23 @@ function filterIncludeType(card) {
     }
   }
   return false;
+    */
 }
 
 export function filteredCards() {
-  const selectedCards = allCards
-    .filter((card) => filterColors(card))
-    .filter((card) => filterIncludeType(card))
-    .filter((card) => filterExcludeText(card))
-    .filter((card) => filterExcludeType(card))
-    .filter((card) => filterCardName(card))
-    .sort(cardSorter);
+  let selectedCards;
+
+  if (filterCardNameIsActive()) {
+    selectedCards = allCards
+      .filter((card) => filterCardName(card));
+  } else {
+    selectedCards = allCards
+      .filter((card) => filterColors(card))
+      .filter((card) => filterIncludeType(card))
+      .filter((card) => filterExcludeText(card))
+      .filter((card) => filterExcludeType(card));
+  }
+  selectedCards.sort(cardSorter);
   b.send(selectedCards.length, "cardCount");
   const cardsPerPage = 12; // zero index
   const pages = Math.ceil(selectedCards.length / cardsPerPage);
@@ -215,6 +237,12 @@ export function results(_, __, el) {
   );
 }
 
+export function saveState() {
+  state.display = getDisplayState();
+  b.savePage("state", state);
+  b.trigger("results");
+}
+
 export function search(ev, __, ___) {
   if (ev.type !== "bittytrigger") {
     b.qs(`[data-r~="displayPageNumber"]`).value = 1;
@@ -222,46 +250,9 @@ export function search(ev, __, ___) {
   b.debounce("newSearch", "saveState", 200);
 }
 
-export function uiColors(_, __, el) {
-  el.replaceChildren(
-    ...Object.keys(colorKeys).map((key) => {
-      return b.render("colorTemplate", {
-        __COLOR_KEY__: key,
-        __COLOR_NAME__: colorKeys[key].name,
-      });
-    }),
-  );
-}
-
-export function uiDebuggingSwitch(_, __, el) {
-  const subs = {
-    __APPEND__: "Debugging",
-    __RECEIVE__: "displayDebuggingToggle",
-    __SEND__: "toggleDebugging",
-  };
-  el.replaceChildren(b.switch(subs));
-}
-
-export async function toggleDebugging(_, sender, ___) {
-  sender.toggleAria("checked");
-  state.debugging = sender.ariaBool("checked");
-  b.debugging = state.debugging;
-  const hexChars = "abcdef1234567890";
-  let dataKeys = hexChars.split("");
-  if (b.debugging) dataKeys = ["debug"];
-  allCards = [];
-  for (let dataKey of dataKeys) {
-    const result = await b.get(`/magic-data/scryfall-cards/${dataKey}.json`);
-    if (result) {
-      result.cards.forEach((card) => allCards.push(card));
-    }
-  }
-  b.trigger("search");
-}
-
-export function saveState() {
-  state.display = getDisplayState();
-  b.savePage("state", state);
+export function selectOption(_, sender, el) {
+  el.value = sender.value.toLowerCase();
+  sender.selectedIndex = 0;
   b.trigger("results");
 }
 
@@ -295,5 +286,49 @@ export function setDisplayState(els) {
         }
       }
     }
+  }
+}
+
+export async function toggleDebugging(_, sender, ___) {
+  sender.toggleAria("checked");
+  state.debugging = sender.ariaBool("checked");
+  b.debugging = state.debugging;
+  const hexChars = "abcdef1234567890";
+  let dataKeys = hexChars.split("");
+  if (b.debugging) dataKeys = ["debug"];
+  allCards = [];
+  for (let dataKey of dataKeys) {
+    const result = await b.get(`/magic-data/scryfall-cards/${dataKey}.json`);
+    if (result) {
+      result.cards.forEach((card) => allCards.push(card));
+    }
+  }
+  b.trigger("search");
+}
+
+export function uiColors(_, __, el) {
+  el.replaceChildren(
+    ...Object.keys(colorKeys).map((key) => {
+      return b.render("colorTemplate", {
+        __COLOR_KEY__: key,
+        __COLOR_NAME__: colorKeys[key].name,
+      });
+    }),
+  );
+}
+
+export function uiDebuggingSwitch(_, __, el) {
+  el.replaceChildren(b.switch({
+    __APPEND__: "Debugging",
+    __RECEIVE__: "displayDebuggingToggle",
+    __SEND__: "toggleDebugging",
+  }));
+}
+
+export function uiOptions(_, __, el) {
+  el.replaceChildren();
+  el.appendChild(b.render("optionSpacerTemplate"));
+  for (const value of options[el.prop("key")]) {
+    el.appendChild(b.render("optionTemplate", { __VALUE__: value }));
   }
 }

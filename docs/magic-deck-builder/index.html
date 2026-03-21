@@ -189,18 +189,18 @@ body {
     <div data-r="results"></div>
   </div>
 
-  <div class="sidebar">
-    <div>
-      Results: <span data-r="cardCount"></span>
-    </div>
-    <div>
-      <label class="block" for="nameSearch">Name:</label>
+  <div class="sidebar default-flow">
+    <div class="default-bottom-border default-bottom-padding small-bottom-margin">
+      <label class="block" for="nameSearch">Name</label>
       <input type="search" id="nameSearch" data-r="displayNameSearch"  data-s="search" autocomplete="off" />
     </div>
 
     <div>
-      <label class="block" for="typeSearch">Type:</label>
-      <input type="search" id="typeSearch" data-r="displayTypeSearch"  data-s="search" autocomplete="off" />
+      <div class="inputSelect">
+        <label for="typeSearch">Type</label>
+        <select data-r="uiOptions" data-key="type" data-s="selectOption"></select>
+      </div>
+      <input type="search" id="typeSearch" data-r="displaySearch selectOption" data-key="type" data-kind="include" data-s="search" autocomplete="off" />
     </div>
 
     <div>
@@ -220,6 +220,7 @@ body {
       <input type="search" id="excludeText" data-r="displayExcludeText"  data-s="search" autocomplete="off" />
     </div>
     <div>
+      <div>Results: <span data-r="cardCount"></span></div>
       <label class="block" for="pageNumber">Page:</label>
       <button data-s="previousPage">&lt;</button>
       <input size="3" type="text" id="pageNumber" data-r="displayPageNumber nextPage previousPage" data-s="changePage" autocomplete="off" />
@@ -241,17 +242,27 @@ body {
 </footer>
 
 <script type="text/html" id="colorTemplate">
-<label class="block">
-  <input data-r="displayColorCheckbox" data-key="__COLOR_KEY__" type="checkbox" data-s="search" />
-  __COLOR_NAME__ 
-</label>
+  <label class="block">
+    <input data-r="displayColorCheckbox" data-key="__COLOR_KEY__" type="checkbox" data-s="search" />
+    __COLOR_NAME__ 
+  </label>
 </script>
 
 <script type="text/html" id="cardTemplate">
-<div class="card">
-  <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
-</div>
+  <div class="card">
+    <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
+  </div>
 </script>
+
+<script type="text/html" id="optionTemplate">
+  <option value="__VALUE__">__VALUE__</option>
+</script>
+
+<script type="text/html" id="optionSpacerTemplate">
+  <option value="">---</option>
+</script>
+
+
 
   </body>
 </html>
