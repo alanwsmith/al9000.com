@@ -45,7 +45,7 @@ function filterCardName(card) {
 }
 
 function filterExcludeText(card) {
-  const value = b.qs(`[data-r="displayExcludeText"]`).value.trim();
+  const value = b.qs(`[data-r~="displayExcludeText"]`).value.trim();
   if (value === "") return true;
   const pattern = new RegExp(value, "gi");
   for (const face of card.faces) {
@@ -57,7 +57,7 @@ function filterExcludeText(card) {
 }
 
 function filterExcludeType(card) {
-  const value = b.qs(`[data-r="displayExcludeType"]`).value.trim();
+  const value = b.qs(`[data-r~="displayExcludeType"]`).value.trim();
   if (value === "") return true;
   const pattern = new RegExp(value, "gi");
   for (const face of card.faces) {
@@ -69,7 +69,7 @@ function filterExcludeType(card) {
 }
 
 function filterIncludeType(card) {
-  const value = b.qs(`[data-r="displayTypeSearch"]`).value.trim();
+  const value = b.qs(`[data-r~="displayTypeSearch"]`).value.trim();
   if (value === "") return true;
   const pattern = new RegExp(value, "gi");
   for (const face of card.faces) {
@@ -88,11 +88,11 @@ export function filteredCards() {
     .filter((card) => filterCardName(card))
     .sort(cardSorter);
   b.send(selectedCards.length, "cardCount");
-  const cardsPerPage = 9; // zero index
+  const cardsPerPage = 12; // zero index
   const pages = Math.ceil(selectedCards.length / cardsPerPage);
-  const maxIndex = parseInt(b.qs(`[data-r~="displayPageNumber"]`).value) *
-    cardsPerPage;
-  const minIndex = maxIndex - cardsPerPage;
+  const maxIndex = (parseInt(b.qs(`[data-r~="displayPageNumber"]`).value) *
+    cardsPerPage) - 1;
+  const minIndex = maxIndex - cardsPerPage + 1;
   return selectedCards.filter((
     card,
     index,
@@ -148,13 +148,13 @@ export async function loadStateAndData() {
 
 export function nextPage(_, __, el) {
   el.value = el.valueInt() + 1;
-  b.trigger("results");
+  b.trigger("saveState");
 }
 
 export function previousPage(_, __, el) {
   if (el.valueInt() > 0) {
     el.value = el.valueInt() - 1;
-    b.trigger("results");
+    b.trigger("saveState");
   }
 }
 
@@ -170,7 +170,7 @@ export function resetState() {
 
 export function restoreState() {
   setDisplayState(state.display);
-  b.trigger("updateState");
+  b.trigger("saveState");
 }
 
 export function results(_, __, el) {
@@ -192,7 +192,7 @@ export function search(ev, __, ___) {
   if (ev.type !== "bittytrigger") {
     b.qs(`[data-r~="displayPageNumber"]`).value = 1;
   }
-  b.debounce("newSearch", "updateState", 200);
+  b.debounce("newSearch", "saveState", 200);
 }
 
 export function uiColors(_, __, el) {
@@ -232,13 +232,17 @@ export async function toggleDebugging(_, sender, ___) {
   b.trigger("search");
 }
 
-export function updateState() {
+export function saveState() {
   state.display = getDisplayState();
   b.savePage("state", state);
   b.trigger("results");
 }
 
 export function setDisplayState(els) {
+  // TODO: Update this and getDisplayState so that
+  // the data-r will find keys with `display`
+  // in them but can also have other signals
+  // as well.
   if (els) {
     for (const data of els) {
       const selector = data.dataset.key
