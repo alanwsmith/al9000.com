@@ -19,6 +19,10 @@ export function buildUI() {
 export async function loadStateAndData() {
   state = b.loadPage("state", { debugging: false });
   console.log(state);
+  // Clear the state
+  // state = {};
+  // b.savePage("state", state);
+
   b.debugging = state.debugging;
   let leaders = ["a", "b", "c", "d", "e", "f"];
   for (let i = 0; i <= 9; i += 1) leaders.push(`${i}`);
@@ -43,27 +47,30 @@ export async function loadStateAndData() {
 }
 
 export function restoreState() {
-  for (const [key, payload] of Object.entries(state)) {
-    if (key.startsWith("display_")) {
-      if (Array.isArray(payload)) {
-        // TODO: Handle unpacking keys here
-      } else {
-        const el = b.qs(`[data-r="${key}"]`);
-        for (const dsKey in payload.dataset) {
-          el.setAttribute(`data-${dsKey}`, payload.dataset[dsKey]);
-        }
-        for (const ariaKey in payload.aria) {
-          el.setAttribute(`aria-${ariaKey}`, payload.aria[ariaKey]);
-        }
-        if (payload.value) {
-          el.value = payload.value;
-        }
-        if (payload.checked) {
-          el.checked = payload.checked;
-        }
-      }
-    }
-  }
+  setDisplayState(state.display);
+
+  //
+
+  // for (const [key, payload] of Object.entries(state)) {
+  //   if (key.startsWith("display_")) {
+  //     const el = b.qs(`[data-r="${key}"]`);
+  //     console.log(payload);
+  //     for (const dsKey in payload.dataset) {
+  //       el.setAttribute(`data-${dsKey}`, payload.dataset[dsKey]);
+  //     }
+  //     for (const ariaKey in payload.aria) {
+  //       el.setAttribute(`aria-${ariaKey}`, payload.aria[ariaKey]);
+  //     }
+  //     if (payload.value) {
+  //       el.value = payload.value;
+  //     }
+  //     if (payload.checked) {
+  //       el.checked = payload.checked;
+  //     }
+  //   }
+  // }
+
+  //
 }
 
 export function search(ev, __, ___) {
@@ -84,82 +91,146 @@ export function ui_colors(_, __, el) {
 export function ui_debuggingSwitch(_, __, el) {
   const subs = {
     __APPEND__: "Debugging",
-    __RECEIVE__: "display_debuggingToggle",
-    __SEND__: "update_debuggingToggle",
+    __RECEIVE__: "displayDebuggingToggle",
+    __SEND__: "updateDebuggingToggle",
   };
   el.replaceChildren(b.switch(subs));
 }
 
-export function update_debuggingToggle(_, sender, ___) {
+export function updateDebuggingToggle(_, sender, ___) {
   sender.toggleAria("checked");
   updateState();
 }
 
 export function updateState() {
-  b.qsa(`[data-r^="display_"]`).forEach((el) => {
-    const id = el.dataset.r;
-    if (!state[id]) {
-      state[id] = {};
-    }
-    const key = el.dataset.key;
-    let typeAttr = el.getAttribute("type")
-      ? el.getAttribute("type").toLowerCase()
-      : undefined;
-    if (key === undefined) {
-      console.log(el);
-      state[id] = {
-        dataset: {},
-        aria: {},
-      };
-      if (typeAttr === "text" && el.value) {
-        state[id].value = el.value;
-      }
-      if (typeAttr === "search" && el.value) {
-        state[id].value = el.value;
-      }
-      if (typeAttr === "checkbox" && el.checked) {
-        state[id].checked = el.checked;
-      }
-      for (const dsKey in el.dataset) {
-        if (dsKey !== "s" && dsKey !== "r") {
-          state[id].dataset[dsKey] = el.dataset[dsKey];
-        }
-      }
-      for (const attr of el.attributes) {
-        if (attr.name.startsWith("aria-")) {
-          const ariaKey = attr.name.replace("aria-", "");
-          state[id].aria[ariaKey] = attr.value;
-        }
-      }
-    } else {
-      state[id][key] = {
-        dataset: {},
-        aria: {},
-      };
-      if (typeAttr === "text" && el.value) {
-        state[id][key].value = el.value;
-      }
-      if (typeAttr === "search" && el.value) {
-        state[id][key].value = el.value;
-      }
-      if (typeAttr === "checkbox" && el.checked) {
-        state[id][key].checked = el.checked;
-      }
-      for (const dsKey in el.dataset) {
-        if (dsKey !== "s" && dsKey !== "r" && dsKey !== "key") {
-          state[id][key].dataset[dsKey] = el.dataset[dsKey];
-        }
-      }
-      for (const attr of el.attributes) {
-        if (attr.name.startsWith("aria-")) {
-          const ariaKey = attr.name.replace("aria-", "");
-          state[id][key].aria[ariaKey] = attr.value;
-        }
-      }
-    }
-  });
+  state.display = getDisplayState();
+  console.log(state);
   b.savePage("state", state);
+  b.trigger("results");
 }
+
+export function getDisplayState() {
+  return [...b.qsa(`[data-r^="display"]`)].map((el) => {
+    const item = {
+      dataset: {},
+      aria: {},
+    };
+    let typeAttr = el.getAttribute("type");
+    if (typeAttr === "text" && el.value) {
+      item.value = el.value;
+    }
+    if (typeAttr === "search" && el.value) {
+      item.value = el.value;
+    }
+    if (typeAttr === "checkbox" && el.checked) {
+      item.checked = el.checked;
+    }
+    for (const dsKey in el.dataset) {
+      if (dsKey !== "s") {
+        item.dataset[dsKey] = el.dataset[dsKey];
+      }
+    }
+    for (const attr of el.attributes) {
+      if (attr.name.startsWith("aria-")) {
+        const ariaKey = attr.name.replace("aria-", "");
+        item.aria[ariaKey] = attr.value;
+      }
+    }
+    return item;
+  });
+}
+
+export function setDisplayState(els) {
+  for (const data of els) {
+    const selector = data.dataset.key
+      ? `[data-r="${data.dataset.r}"][data-key="${data.dataset.key}"]`
+      : `[data-r="${data.dataset.r}"]`;
+    const el = b.qs(selector);
+    if (el) {
+      if (data.value) {
+        el.value = data.value;
+      }
+      if (data.checked) {
+        el.checked = data.checked;
+      }
+      for (const dataKey in data.dataset) {
+        if (dataKey !== "r" && dataKey !== "key") {
+          el.dataset[dataKey] = data.dataset[dataKey];
+        }
+      }
+      for (const ariaKey in data.aria) {
+        if (ariaKey !== "r" && ariaKey !== "key") {
+          el.setAttribute(`aria-${ariaKey}`, data.aria[ariaKey]);
+        }
+      }
+    }
+  }
+}
+
+// const id = el.dataset.r;
+// const key = el.dataset.key;
+
+//
+
+// const id = el.dataset.r;
+// const key = el.dataset.key;
+// let typeAttr = el.getAttribute("type")
+//   ? el.getAttribute("type").toLowerCase()
+//   : undefined;
+// if (key === undefined) {
+//   state[id] = {
+//     dataset: {},
+//     aria: {},
+//   };
+//   if (typeAttr === "text" && el.value) {
+//     state[id].value = el.value;
+//   }
+//   if (typeAttr === "search" && el.value) {
+//     state[id].value = el.value;
+//   }
+//   if (typeAttr === "checkbox" && el.checked) {
+//     state[id].checked = el.checked;
+//   }
+//   for (const dsKey in el.dataset) {
+//     if (dsKey !== "s" && dsKey !== "r") {
+//       state[id].dataset[dsKey] = el.dataset[dsKey];
+//     }
+//   }
+//   for (const attr of el.attributes) {
+//     if (attr.name.startsWith("aria-")) {
+//       const ariaKey = attr.name.replace("aria-", "");
+//       state[id].aria[ariaKey] = attr.value;
+//     }
+//   }
+// } else {
+//   if (!state[id][key]) {
+//     state[id][key] = [];
+//   }
+//   const item = {};
+//   if (typeAttr === "text" && el.value) {
+//     item.value = el.value;
+//   }
+//   if (typeAttr === "search" && el.value) {
+//     item.value = el.value;
+//   }
+//   if (typeAttr === "checkbox" && el.checked) {
+//     item.checked = el.checked;
+//   }
+//   for (const dsKey in el.dataset) {
+//     if (dsKey !== "s" && dsKey !== "r" && dsKey !== "key") {
+//       item.dataset[dsKey] = el.dataset[dsKey];
+//     }
+//   }
+//   for (const attr of el.attributes) {
+//     if (attr.name.startsWith("aria-")) {
+//       const ariaKey = attr.name.replace("aria-", "");
+//       item.aria[ariaKey] = attr.value;
+//     }
+//   }
+//   state[id][key].push(item);
+// }
+
+//
 
 // } }
 
