@@ -24,8 +24,21 @@ function cardSorter(a, b) {
   return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
 }
 
+function defaultState() {
+  return {
+    debugging: false,
+    display: [
+      {
+        aria: {},
+        dataset: { r: "displayExcludeText" },
+        value: "name sticker|attraction",
+      },
+    ],
+  };
+}
+
 function filterCardName(card) {
-  const value = b.qs(`[data-r="displayNameSearch"]`).value.trim();
+  const value = b.qs(`[data-r~="displayNameSearch"]`).value.trim();
   if (value === "") return true;
   const pattern = new RegExp(value, "gi");
   return card.name.match(pattern) !== null;
@@ -138,7 +151,11 @@ export function nextPage(_, __, el) {
 }
 
 export function resetState() {
-  state = { debugging: true };
+  state = defaultState();
+  state.debugging = true;
+  state.display.push(
+    { aria: { checked: "true" }, dataset: { r: "displayDebuggingToggle" } },
+  );
   b.savePage("state", state);
   b.trigger("loadStateAndData");
 }
@@ -209,6 +226,7 @@ export async function toggleDebugging(_, sender, ___) {
 export function updateState() {
   state.display = getDisplayState();
   b.savePage("state", state);
+  console.log(state);
   b.trigger("results");
 }
 
