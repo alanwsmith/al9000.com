@@ -4,7 +4,6 @@ let allCards = [];
 let state;
 
 const colorKeys = {
-  C: { name: "colorless" },
   B: { name: "black" },
   U: { name: "blue" },
   G: { name: "green" },
@@ -13,11 +12,6 @@ const colorKeys = {
 };
 
 const options = {
-  oracle_text: [
-    "Deathtouch",
-    "Flying",
-    "Lifelink",
-  ],
   type_line: [
     "Artifact",
     "Creature",
@@ -26,6 +20,11 @@ const options = {
     "Instant",
     "Planeswalker",
     "Sorcery",
+  ],
+  oracle_text: [
+    "Deathtouch",
+    "Flying",
+    "Lifelink",
   ],
 };
 
@@ -44,10 +43,13 @@ function cardSorter(a, b) {
 function defaultState() {
   return {
     debugging: false,
-    display: [
+    values: [
       {
-        aria: {},
-        dataset: { r: "displayExcludeText" },
+        id: "type_list_search_exclude",
+        value: "battle",
+      },
+      {
+        id: "oraclue_text_search_exclude",
         value: "name sticker|attraction",
       },
     ],
@@ -96,45 +98,6 @@ function filterColors(card) {
   return hasColor === true && doesNotHaveColor === true;
 }
 
-function filterExcludeText(card) {
-  const value = b.qs(`[data-r~="displayExcludeText"]`).value.trim();
-  if (value === "") return true;
-  const pattern = new RegExp(value, "gi");
-  for (const face of card.faces) {
-    if (face.oracle_text && face.oracle_text.match(pattern)) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function filterExcludeType(card) {
-  const value = b.qs(`[data-r~="displayExcludeType"]`).value.trim();
-  if (value === "") return true;
-  const pattern = new RegExp(value, "gi");
-  for (const face of card.faces) {
-    if (face.type_line && face.type_line.match(pattern)) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function filterIncludeType(card) {
-  return true;
-  /*
-  const value = b.qs(`[data-r~="displayTypeSearch"]`).value.trim();
-  if (value === "") return true;
-  const pattern = new RegExp(value, "gi");
-  for (const face of card.faces) {
-    if (face.type_line && face.type_line.match(pattern)) {
-      return true;
-    }
-  }
-  return false;
-    */
-}
-
 export function filterCards(card, key, include) {
   const el = b.qs(`[data-s~=search][data-key=${key}][data-include=${include}]`);
   if (el.value) {
@@ -147,31 +110,6 @@ export function filterCards(card, key, include) {
     return !include;
   }
   return true;
-
-  //}
-
-  // for (
-  //   const el of b.qsa(
-  //     `[data-s~=search][data-key=${key}][data-include=${include}]`,
-  //   )
-  // ) {
-  //   if (el.value) {
-  //     const pattern = new RegExp(el.value, "gi");
-  //     for (const face of card.faces) {
-  //       // console.log(el.dataset);
-  //       // console.log(el.dataset.key);
-  //       if (face[el.dataset.key].match(pattern)) {
-  //         return el.dataset.include === "yes";
-  //       }
-  //       // if(el.dataset.kind === "include") {
-  //       //     return true;
-  //       //   }
-  //     }
-  //   } else {
-  //     return true;
-  //   }
-  // }
-  // return el.dataset.include === "no";
 }
 
 export function filteredCards() {
@@ -186,10 +124,6 @@ export function filteredCards() {
       .filter((card) => filterCards(card, "oracle_text", true))
       .filter((card) => filterCards(card, "type_line", false))
       .filter((card) => filterCards(card, "oracle_text", false));
-
-    // .filter((card) => filterIncludeType(card))
-    // .filter((card) => filterExcludeText(card))
-    // .filter((card) => filterExcludeType(card));
   }
   selectedCards.sort(cardSorter);
   b.send(selectedCards.length, "cardCount");

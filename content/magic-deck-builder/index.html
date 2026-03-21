@@ -26,7 +26,7 @@
         <label for="type_line_search_include">Type:</label>
         <select data-s="selectOption" data-r="uiOptions" data-key="type_line"></select>
       </div>
-      <input data-s="search" data-r="displaySearch selectOption" data-key="type_line" data-include="true" data-save="true" type="search" id="type_line_search_include" autocomplete="off" />
+      <input data-s="search" data-r="selectOption" data-key="type_line" data-include="true" data-save="true" type="search" id="type_line_search_include" autocomplete="off" />
     </div>
 
     <div>
@@ -34,48 +34,26 @@
         <label for="oracle_text_search_include">Text:</label>
         <select data-s="selectOption" data-r="uiOptions" data-key="oracle_text"></select>
       </div>
-      <input data-s="search" data-r="displaySearch selectOption" data-key="oracle_text" data-include="true" data-save="true" type="search" id="oracle_text_search_include" autocomplete="off" />
+      <input data-s="search" data-r="selectOption" data-key="oracle_text" data-include="true" data-save="true" type="search" id="oracle_text_search_include" autocomplete="off" />
     </div>
 
     <div>
-      Colors:
-      <div data-r="uiColors"></div>
+      Colors: <div data-r="uiColors"></div>
     </div>
 
     <div>
       <div class="inputSelect">
         <label for="type_line_search_exclude">Exclude Type:</label>
       </div>
-      <input data-s="search" data-r="displaySearch selectOption" data-key="type_line" data-include="false" data-save="true" type="search" id="type_line_search_exclude" autocomplete="off" />
+      <input data-s="search" data-r="selectOption" data-key="type_line" data-include="false" data-save="true" type="search" id="type_line_search_exclude" autocomplete="off" />
     </div>
 
     <div>
       <div class="inputSelect">
         <label for="oracle_text_search_exclude">Exclude Text:</label>
       </div>
-      <input data-s="search" data-r="displaySearch selectOption" data-key="oracle_text" data-include="false" data-save="true" type="search" id="oraclue_text_search_exclude" autocomplete="off" />
+      <input data-s="search" data-r="selectOption" data-key="oracle_text" data-include="false" data-save="true" type="search" id="oraclue_text_search_exclude" autocomplete="off" />
     </div>
-
-
-
-
-    [#
-    <div>
-      <label class="block" for="textSearch">Text:</label>
-      <input type="search" id="textSearch" data-r="displayTextSearch"  data-s="search" autocomplete="off" />
-    </div>
-    #]
-
-    [#
-    <div>
-      <label class="block" for="excludeType">Exclude Type</label>
-      <input type="search" id="excludeType" data-r="displayExcludeType"  data-s="search" autocomplete="off" />
-    </div>
-    <div>
-      <label class="block" for="excludeText">Exclude Text</label>
-      <input type="search" id="excludeText" data-r="displayExcludeText"  data-s="search" autocomplete="off" />
-    </div>
-    #]
 
     <div>
       <div>Results: <span data-r="cardCount"></span></div>
