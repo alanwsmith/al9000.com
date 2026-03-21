@@ -16,6 +16,10 @@ export function buildUI() {
   b.trigger("uiColors uiDebuggingSwitch restoreState");
 }
 
+export function cardCount(count, __, el) {
+  el.innerHTML = count;
+}
+
 function cardSorter(a, b) {
   return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
 }
@@ -27,7 +31,7 @@ function filterCardName(card) {
   return card.name.match(pattern) !== null;
 }
 
-function filterExclusions(card) {
+function filterExcludeText(card) {
   const value = b.qs(`[data-r="displayExcludeText"]`).value.trim();
   if (value === "") return true;
   const pattern = new RegExp(value, "gi");
@@ -39,12 +43,40 @@ function filterExclusions(card) {
   return true;
 }
 
+function filterExcludeType(card) {
+  const value = b.qs(`[data-r="displayExcludeType"]`).value.trim();
+  if (value === "") return true;
+  const pattern = new RegExp(value, "gi");
+  for (const face of card.faces) {
+    if (face.type_line && face.type_line.match(pattern)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function filterIncludeType(card) {
+  const value = b.qs(`[data-r="displayTypeSearch"]`).value.trim();
+  if (value === "") return true;
+  const pattern = new RegExp(value, "gi");
+  for (const face of card.faces) {
+    if (face.type_line && face.type_line.match(pattern)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export function filteredCards() {
-  return allCards
-    .filter((card) => filterExclusions(card))
+  const cardList = allCards
+    .filter((card) => filterIncludeType(card))
+    .filter((card) => filterExcludeText(card))
+    .filter((card) => filterExcludeType(card))
     .filter((card) => filterCardName(card))
     .sort(cardSorter)
-    .filter((card, index) => index < 20);
+    .filter((card, index) => index < 50);
+  b.send(cardList.length, "cardCount");
+  return cardList;
 
   // const output = allCards
   //   .filter((card) => filterCardName(card));
@@ -130,37 +162,11 @@ export function results(_, __, el) {
         __CARD_NAME__: card.name,
         __CARD_ID__: card.id,
         __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
+        __TYPE_LINES__: card.faces.map((face) => face.type_line).join(),
       };
       return b.render("cardTemplate", subs);
     }),
   );
-
-  // const output = allCards
-  //   .filter((card) => filterCardName(card));
-  // if (output.length === cards.length) {
-  //   el.innerHTML = "waiting";
-  //   b.send("tbd", "resultCount");
-  // } else {
-  //   b.send(output.length, "resultCount");
-  //   el.replaceChildren(
-  //     ...output
-  //       .sort((a, b) =>
-  //         a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-  //       )
-  //       .filter((card, index) => index < 20)
-  //       .map((card) => {
-  //         const subs = {
-  //           __CARD_NAME__: card.name,
-  //           __CARD_ID__: card.id,
-  //           __IMG_SRC__: card.image_uris.png,
-  //         };
-  //         return b.render("cardTemplate", subs);
-  //       }),
-  //   );
-  // }
-  // el.replaceChildren(output);
-
-  //
 }
 
 export function search(ev, __, ___) {

@@ -186,13 +186,23 @@ body {
 <div class="columns">
   <div class="sidebar">
     <div>
-      Results: <span data-r="resultCount"></span>
+      Results: <span data-r="cardCount"></span>
     </div>
+
     <div>
-      <label class="block" for="nameSearch">Card Name:</label>
+      <label class="block" for="nameSearch">Name:</label>
       <input type="search" id="nameSearch" data-r="displayNameSearch"  data-s="search" autocomplete="off" />
     </div>
 
+    <div>
+      <label class="block" for="typeSearch">Type:</label>
+      <input type="search" id="typeSearch" data-r="displayTypeSearch"  data-s="search" autocomplete="off" />
+    </div>
+
+    <div>
+      <label class="block" for="textSearch">Text:</label>
+      <input type="search" id="textSearch" data-r="displayTextSearch"  data-s="search" autocomplete="off" />
+    </div>
 
     <div>
       Colors:
@@ -200,9 +210,15 @@ body {
     </div>
 
     <div>
-      <label class="block" for="excludeText">Exclude Text</label>
-      <input type="search" data-r="displayExcludeText"  data-s="search" autocomplete="off" />
+      <label class="block" for="excludeType">Exclude Type</label>
+      <input type="search" id="excludeType" data-r="displayExcludeType"  data-s="search" autocomplete="off" />
     </div>
+
+    <div>
+      <label class="block" for="excludeText">Exclude Text</label>
+      <input type="search" id="excludeText" data-r="displayExcludeText"  data-s="search" autocomplete="off" />
+    </div>
+
 
   </div>
   <div class="content">
@@ -230,6 +246,11 @@ body {
 <script type="text/html" id="cardTemplate">
 <div class="card">
   <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
+  <details>
+    <div>__CARD_NAME__</div>
+    <div>__TYPE_LINES__</div>
+    <div>__ORACLE_TEXTS__</div>
+  </details>
 </div>
 </script>
 
