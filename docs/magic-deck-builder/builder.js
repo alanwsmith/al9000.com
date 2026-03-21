@@ -141,12 +141,13 @@ export function filterCards(card, key, include) {
     const pattern = new RegExp(el.value, "gi");
     for (const face of card.faces) {
       if (face[el.dataset.key].match(pattern)) {
-        return el.dataset.include === `${include}`;
+        return include;
       }
     }
-  } else {
-    return true;
+    return !include;
   }
+  return true;
+
   //}
 
   // for (
@@ -175,7 +176,6 @@ export function filterCards(card, key, include) {
 
 export function filteredCards() {
   let selectedCards;
-
   if (filterCardNameIsActive()) {
     selectedCards = allCards
       .filter((card) => filterCardName(card));
@@ -183,9 +183,9 @@ export function filteredCards() {
     selectedCards = allCards
       .filter((card) => filterColors(card))
       .filter((card) => filterCards(card, "type_line", true))
-      .filter((card) => filterCards(card, "oracle_text", true));
-    // .filter((card) => filterCards(card, "type_line", false));
-    // .filter((card) => filterCards(card, "oracle_text", false));
+      .filter((card) => filterCards(card, "oracle_text", true))
+      .filter((card) => filterCards(card, "type_line", false))
+      .filter((card) => filterCards(card, "oracle_text", false));
 
     // .filter((card) => filterIncludeType(card))
     // .filter((card) => filterExcludeText(card))
