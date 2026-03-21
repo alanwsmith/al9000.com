@@ -13,7 +13,14 @@ const colorKeys = {
 };
 
 const options = {
-  type: ["Artifact", "Creature", "Equipment", "Instant", "Sorcery"],
+  type: [
+    "Artifact",
+    "Creature",
+    "Enchantment",
+    "Equipment",
+    "Instant",
+    "Sorcery",
+  ],
 };
 
 export function buildUI() {
@@ -122,6 +129,24 @@ function filterIncludeType(card) {
     */
 }
 
+export function filterCards(card) {
+  for (const el of b.qsa(`[data-s~=search][data-include]`)) {
+    const pattern = new RegExp(el.value, "gi");
+    for (const face of card.faces) {
+      // console.log(el.dataset);
+      // console.log(face);
+      // console.log(el.dataset.key);
+      if (face[el.dataset.key].match(pattern)) {
+        return el.dataset.include === "yes";
+      }
+      // if(el.dataset.kind === "include") {
+      //     return true;
+      //   }
+    }
+  }
+  return false;
+}
+
 export function filteredCards() {
   let selectedCards;
 
@@ -131,13 +156,15 @@ export function filteredCards() {
   } else {
     selectedCards = allCards
       .filter((card) => filterColors(card))
-      .filter((card) => filterIncludeType(card))
-      .filter((card) => filterExcludeText(card))
-      .filter((card) => filterExcludeType(card));
+      .filter((card) => filterCards(card));
+
+    // .filter((card) => filterIncludeType(card))
+    // .filter((card) => filterExcludeText(card))
+    // .filter((card) => filterExcludeType(card));
   }
   selectedCards.sort(cardSorter);
   b.send(selectedCards.length, "cardCount");
-  const cardsPerPage = 12; // zero index
+  const cardsPerPage = 9;
   const pages = Math.ceil(selectedCards.length / cardsPerPage);
   const maxIndex = (parseInt(b.qs(`[data-r~="displayPageNumber"]`).value) *
     cardsPerPage) - 1;
