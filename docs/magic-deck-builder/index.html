@@ -176,7 +176,8 @@ body {
     <a href="/">Home</a>
   </div>
 </header>
-      <main class="default-wrapper default-flow">
+      <main class="full-wrapper default-flow
+">
 <bitty-8-0 data-connect="/magic-deck-builder/builder.js"></bitty-8-0>
 
 <hgroup>
@@ -184,11 +185,14 @@ body {
 </hgroup>
 
 <div class="columns">
+  <div class="content">
+    <div data-r="results"></div>
+  </div>
+
   <div class="sidebar">
     <div>
       Results: <span data-r="cardCount"></span>
     </div>
-
     <div>
       <label class="block" for="nameSearch">Name:</label>
       <input type="search" id="nameSearch" data-r="displayNameSearch"  data-s="search" autocomplete="off" />
@@ -203,30 +207,28 @@ body {
       <label class="block" for="textSearch">Text:</label>
       <input type="search" id="textSearch" data-r="displayTextSearch"  data-s="search" autocomplete="off" />
     </div>
-
     <div>
       Colors:
       <div data-r="uiColors"></div>
     </div>
-
     <div>
       <label class="block" for="excludeType">Exclude Type</label>
       <input type="search" id="excludeType" data-r="displayExcludeType"  data-s="search" autocomplete="off" />
     </div>
-
     <div>
       <label class="block" for="excludeText">Exclude Text</label>
       <input type="search" id="excludeText" data-r="displayExcludeText"  data-s="search" autocomplete="off" />
     </div>
-
-
-  </div>
-  <div class="content">
-    <div data-r="results"></div>
+    <div>
+      <label class="block" for="pageNumber">Page:</label>
+      <button data-s="previousPage">&lt;</button>
+      <input size="3" type="text" id="pageNumber" data-r="displayPageNumber" data-s="changePage" autocomplete="off" />
+      <button data-s="nextPage">&gt;</button>
+    </div>
+    <div data-r="uiDebuggingSwitch"></div>
   </div>
 </div>
 
-<div data-r="uiDebuggingSwitch"></div>
 
       </main>
 
@@ -246,11 +248,6 @@ body {
 <script type="text/html" id="cardTemplate">
 <div class="card">
   <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
-  <details>
-    <div>__CARD_NAME__</div>
-    <div>__TYPE_LINES__</div>
-    <div>__ORACLE_TEXTS__</div>
-  </details>
 </div>
 </script>
 

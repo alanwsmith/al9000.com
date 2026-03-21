@@ -68,40 +68,23 @@ function filterIncludeType(card) {
 }
 
 export function filteredCards() {
-  const cardList = allCards
+  const selectedCards = allCards
     .filter((card) => filterIncludeType(card))
     .filter((card) => filterExcludeText(card))
     .filter((card) => filterExcludeType(card))
     .filter((card) => filterCardName(card))
-    .sort(cardSorter)
-    .filter((card, index) => index < 50);
-  b.send(cardList.length, "cardCount");
-  return cardList;
-
-  // const output = allCards
-  //   .filter((card) => filterCardName(card));
-  // if (output.length === cards.length) {
-  //   el.innerHTML = "waiting";
-  //   b.send("tbd", "resultCount");
-  // } else {
-  //   b.send(output.length, "resultCount");
-  //   el.replaceChildren(
-  //     ...output
-  //       .sort((a, b) =>
-  //         a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-  //       )
-  //       .filter((card, index) => index < 20)
-  //       .map((card) => {
-  //         const subs = {
-  //           __CARD_NAME__: card.name,
-  //           __CARD_ID__: card.id,
-  //           __IMG_SRC__: card.image_uris.png,
-  //         };
-  //         return b.render("cardTemplate", subs);
-  //       }),
-  //   );
-  // }
-  // el.replaceChildren(output);
+    .sort(cardSorter);
+  b.send(selectedCards.length, "cardCount");
+  const cardsPerPage = 9; // zero index
+  const pages = Math.ceil(selectedCards.length / cardsPerPage);
+  const maxIndex = parseInt(b.qs(`[data-r="displayPageNumber"]`).value) *
+    cardsPerPage;
+  const minIndex = maxIndex - cardsPerPage;
+  console.log(minIndex);
+  return selectedCards.filter((
+    card,
+    index,
+  ) => (index >= minIndex && index <= maxIndex));
 }
 
 export function getDisplayState() {
@@ -152,7 +135,7 @@ export async function loadStateAndData() {
 
 export function restoreState() {
   setDisplayState(state.display);
-  b.trigger("search");
+  b.trigger("updateState");
 }
 
 export function results(_, __, el) {
@@ -170,6 +153,9 @@ export function results(_, __, el) {
 }
 
 export function search(ev, __, ___) {
+  if (ev.type !== "bittytrigger") {
+    b.qs(`[data-r="displayPageNumber"]`).value = 1;
+  }
   b.debounce("newSearch", "updateState", 200);
 }
 
@@ -242,172 +228,3 @@ export function setDisplayState(els) {
     }
   }
 }
-
-// const id = el.dataset.r;
-// const key = el.dataset.key;
-
-//
-
-// const id = el.dataset.r;
-// const key = el.dataset.key;
-// let typeAttr = el.getAttribute("type")
-//   ? el.getAttribute("type").toLowerCase()
-//   : undefined;
-// if (key === undefined) {
-//   state[id] = {
-//     dataset: {},
-//     aria: {},
-//   };
-//   if (typeAttr === "text" && el.value) {
-//     state[id].value = el.value;
-//   }
-//   if (typeAttr === "search" && el.value) {
-//     state[id].value = el.value;
-//   }
-//   if (typeAttr === "checkbox" && el.checked) {
-//     state[id].checked = el.checked;
-//   }
-//   for (const dsKey in el.dataset) {
-//     if (dsKey !== "s" && dsKey !== "r") {
-//       state[id].dataset[dsKey] = el.dataset[dsKey];
-//     }
-//   }
-//   for (const attr of el.attributes) {
-//     if (attr.name.startsWith("aria-")) {
-//       const ariaKey = attr.name.replace("aria-", "");
-//       state[id].aria[ariaKey] = attr.value;
-//     }
-//   }
-// } else {
-//   if (!state[id][key]) {
-//     state[id][key] = [];
-//   }
-//   const item = {};
-//   if (typeAttr === "text" && el.value) {
-//     item.value = el.value;
-//   }
-//   if (typeAttr === "search" && el.value) {
-//     item.value = el.value;
-//   }
-//   if (typeAttr === "checkbox" && el.checked) {
-//     item.checked = el.checked;
-//   }
-//   for (const dsKey in el.dataset) {
-//     if (dsKey !== "s" && dsKey !== "r" && dsKey !== "key") {
-//       item.dataset[dsKey] = el.dataset[dsKey];
-//     }
-//   }
-//   for (const attr of el.attributes) {
-//     if (attr.name.startsWith("aria-")) {
-//       const ariaKey = attr.name.replace("aria-", "");
-//       item.aria[ariaKey] = attr.value;
-//     }
-//   }
-//   state[id][key].push(item);
-// }
-
-//
-
-// } }
-
-//export function updateState() {
-//console.log(key);
-
-//// if it has a key, save the keys
-//console.log(el);
-//});
-//b.savePage("state", state);
-
-////state.nameSearch = b.qs("[data-r=init_nameSearch");
-//  console.log("updateState");
-//}
-
-// let leaders = ["a", "b", "c", "d", "e", "f"];
-// for (let i = 0; i <= 9; i += 1) leaders.push(`${i}`);
-// if (b.debugging) {
-//   leaders = ["debug"];
-// }
-// for (let leader of leaders) {
-//   const result = await b.get(`/magic-data/scryfall-cards/${leader}.json`);
-//   if (result) {
-//     result.cards.forEach((card) => {
-//       allCards.push(card);
-//     });
-//   }
-// }
-// b.trigger("init_colors init_nameSearch init_debuggingSwitch search");
-
-// export async function init() {
-//   state = b.loadPage("state", { debugging: false });
-//   b.debugging = state.debugging;
-//   let leaders = ["a", "b", "c", "d", "e", "f"];
-//   for (let i = 0; i <= 9; i += 1) leaders.push(`${i}`);
-//   if (b.debugging) {
-//     leaders = ["debug"];
-//   }
-//   for (let leader of leaders) {
-//     const result = await b.get(`/magic-data/scryfall-cards/${leader}.json`);
-//     if (result) {
-//       result.cards.forEach((card) => {
-//         allCards.push(card);
-//       });
-//     }
-//   }
-//   b.trigger("init_colors init_nameSearch init_debuggingSwitch search");
-// }
-
-// export function init_cardName(_, __, el) {
-//   if (state.cardName !== "") {
-//     el.value = state.cardName;
-//   }
-//   el.focus();
-// }
-
-// function filterCardName(card) {
-//   const value = b.qs("[data-r=uiCardName]").value.trim();
-//   if (value === "") return true;
-//   const pattern = new RegExp(value, "gi");
-//   return card.name.match(pattern) !== null;
-// }
-
-// export function resultCount(count, __, el) {
-//   el.innerHTML = count;
-// }
-
-// export function saveState() {
-//   b.savePage("state", state);
-// }
-
-// export function results(_, __, el) {
-//   const output = allCcards
-//     .filter((card) => filterCardName(card));
-//   if (output.length === cards.length) {
-//     el.innerHTML = "waiting";
-//     b.send("tbd", "resultCount");
-//   } else {
-//     b.send(output.length, "resultCount");
-//     el.replaceChildren(
-//       ...output
-//         .sort((a, b) =>
-//           a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-//         )
-//         .filter((card, index) => index < 20)
-//         .map((card) => {
-//           const subs = {
-//             __CARD_NAME__: card.name,
-//             __CARD_ID__: card.id,
-//             __IMG_SRC__: card.image_uris.png,
-//           };
-//           return b.render("cardTemplate", subs);
-//         }),
-//     );
-//   }
-// }
-
-// export function toggleDebugging(_, sender, ___) {
-//   b.debug(`Debugging: ${sender.aria("checked")}`);
-//   sender.toggleAria("checked");
-//   state.debugging = sender.ariaBool("checked");
-//   b.debuggins = state.debugging;
-//   b.trigger("saveState");
-// }

@@ -4,10 +4,10 @@
 
 .columns {
   display: grid; 
-  grid-template-columns: 8rem 1fr;
+  grid-template-columns: 1fr 9rem;
 }
 
-.columns > :nth-child(1) {
+.columns > :nth-child(2) {
   border: var(--faded-default-border);
 }
 
