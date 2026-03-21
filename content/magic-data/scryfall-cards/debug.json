@@ -1,661 +1,539 @@
 {
   "cards": [
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 2.0,
-      "color_identity": [
-        "U"
-      ],
-      "colors": [
-        "U"
-      ],
       "edhrec_rank": 19751,
+      "faces": [
+        {
+          "color_identity": [
+            "U"
+          ],
+          "colors": [
+            "U"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/3/036ef8c9-72ac-46ce-af07-83b79d736538.jpg?1562730661",
+          "mana_cost": "{1}{U}",
+          "name": "Storm Crow",
+          "oracle_text": "Flying (This creature can't be blocked except by creatures with flying or reach.)",
+          "power": "1",
+          "toughness": "2",
+          "type_line": "Creature — Bird"
+        }
+      ],
       "game_changer": false,
       "id": "036ef8c9-72ac-46ce-af07-83b79d736538",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/3/036ef8c9-72ac-46ce-af07-83b79d736538.png?1562730661"
-      },
-      "keywords": [
-        "Flying"
-      ],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{1}{U}",
       "name": "Storm Crow",
       "oracle_id": "000d5588-5a4c-434e-988d-396632ade42c",
-      "oracle_text": "Flying (This creature can't be blocked except by creatures with flying or reach.)",
-      "power": "1",
-      "prices": {
-        "usd": "0.09"
-      },
-      "rarity": "common",
-      "toughness": "2",
-      "type_line": "Creature — Bird"
+      "price": 0.09
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 1.0,
-      "color_identity": [
-        "U"
-      ],
-      "colors": [
-        "U"
-      ],
       "edhrec_rank": 14762,
+      "faces": [
+        {
+          "color_identity": [
+            "U"
+          ],
+          "colors": [
+            "U"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/0/0072bbbf-a695-47dd-9615-db2659f357db.jpg?1712354189",
+          "mana_cost": "{U}",
+          "name": "Pteramander",
+          "oracle_text": "Flying\n{7}{U}: Adapt 4. This ability costs {1} less to activate for each instant and sorcery card in your graveyard. (If this creature has no +1/+1 counters on it, put four +1/+1 counters on it.)",
+          "power": "1",
+          "toughness": "1",
+          "type_line": "Creature — Salamander Drake"
+        }
+      ],
       "game_changer": false,
       "id": "0072bbbf-a695-47dd-9615-db2659f357db",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/0/0072bbbf-a695-47dd-9615-db2659f357db.png?1712354189"
-      },
-      "keywords": [
-        "Flying",
-        "Adapt"
-      ],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{U}",
       "name": "Pteramander",
       "oracle_id": "00187de2-bc48-4137-97d8-a9a0fafc76c1",
-      "oracle_text": "Flying\n{7}{U}: Adapt 4. This ability costs {1} less to activate for each instant and sorcery card in your graveyard. (If this creature has no +1/+1 counters on it, put four +1/+1 counters on it.)",
-      "power": "1",
-      "prices": {
-        "usd": "0.09"
-      },
-      "rarity": "uncommon",
-      "toughness": "1",
-      "type_line": "Creature — Salamander Drake"
+      "price": 0.09
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 3.0,
-      "color_identity": [
-        "B"
-      ],
-      "colors": [
-        "B"
-      ],
       "edhrec_rank": 26340,
+      "faces": [
+        {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/b/0b4cc234-f6b7-4801-a6d0-c98b72f446cf.jpg?1562897354",
+          "mana_cost": "{2}{B}",
+          "name": "Wei Strike Force",
+          "oracle_text": "Horsemanship (This creature can't be blocked except by creatures with horsemanship.)",
+          "power": "2",
+          "toughness": "1",
+          "type_line": "Creature — Human Soldier"
+        }
+      ],
       "game_changer": false,
       "id": "0b4cc234-f6b7-4801-a6d0-c98b72f446cf",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/b/0b4cc234-f6b7-4801-a6d0-c98b72f446cf.png?1562897354"
-      },
-      "keywords": [
-        "Horsemanship"
-      ],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{2}{B}",
       "name": "Wei Strike Force",
       "oracle_id": "002ad5fa-a20c-4d30-beef-401d89868d67",
-      "oracle_text": "Horsemanship (This creature can't be blocked except by creatures with horsemanship.)",
-      "power": "2",
-      "prices": {
-        "usd": null
-      },
-      "rarity": "common",
-      "toughness": "1",
-      "type_line": "Creature — Human Soldier"
+      "price": 0.0
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 0.0,
-      "color_identity": [
-        "G",
-        "U"
-      ],
-      "colors": [],
       "edhrec_rank": 4546,
+      "faces": [
+        {
+          "color_identity": [
+            "G",
+            "U"
+          ],
+          "colors": [],
+          "image": "https://cards.scryfall.io/normal/front/0/b/0b5e219b-28fa-40e3-8afb-355ae767326d.jpg?1771424639",
+          "mana_cost": null,
+          "name": "Sodden Verdure",
+          "oracle_text": "({T}: Add {G} or {U}.)\nThis land enters tapped unless you control two or more basic lands.",
+          "power": null,
+          "toughness": null,
+          "type_line": "Land — Forest Island"
+        }
+      ],
       "game_changer": false,
       "id": "0b5e219b-28fa-40e3-8afb-355ae767326d",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/b/0b5e219b-28fa-40e3-8afb-355ae767326d.png?1771424639"
-      },
-      "keywords": [],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "",
       "name": "Sodden Verdure",
       "oracle_id": "0070db93-142b-4d04-afd3-836792dc134b",
-      "oracle_text": "({T}: Add {G} or {U}.)\nThis land enters tapped unless you control two or more basic lands.",
-      "power": null,
-      "prices": {
-        "usd": "0.52"
-      },
-      "rarity": "rare",
-      "toughness": null,
-      "type_line": "Land — Forest Island"
+      "price": 0.52
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 2.0,
-      "color_identity": [
-        "R"
-      ],
-      "colors": [
-        "R"
-      ],
       "edhrec_rank": 3983,
+      "faces": [
+        {
+          "color_identity": [
+            "R"
+          ],
+          "colors": [
+            "R"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/6/0685afcb-06f6-4d18-b8c2-510764558dc1.jpg?1692938637",
+          "mana_cost": "{1}{R}",
+          "name": "Witch's Mark",
+          "oracle_text": "You may discard a card. If you do, draw two cards.\nCreate a Wicked Role token attached to up to one target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1. When this token is put into a graveyard, each opponent loses 1 life.)",
+          "power": null,
+          "toughness": null,
+          "type_line": "Sorcery"
+        }
+      ],
       "game_changer": false,
       "id": "0685afcb-06f6-4d18-b8c2-510764558dc1",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/6/0685afcb-06f6-4d18-b8c2-510764558dc1.png?1692938637"
-      },
-      "keywords": [
-        "Role token"
-      ],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{1}{R}",
       "name": "Witch's Mark",
       "oracle_id": "00807825-88e5-4b88-8527-a49f553a91be",
-      "oracle_text": "You may discard a card. If you do, draw two cards.\nCreate a Wicked Role token attached to up to one target creature you control. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1. When this token is put into a graveyard, each opponent loses 1 life.)",
-      "power": null,
-      "prices": {
-        "usd": "0.31"
-      },
-      "rarity": "common",
-      "toughness": null,
-      "type_line": "Sorcery"
+      "price": 0.31
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 0.0,
-      "color_identity": [
-        "B"
-      ],
-      "colors": [],
       "edhrec_rank": 593,
+      "faces": [
+        {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [],
+          "image": "https://cards.scryfall.io/normal/front/0/9/099352e2-38c8-4fb4-a25f-6d928aa20f9e.jpg?1673306226",
+          "mana_cost": null,
+          "name": "Shizo, Death's Storehouse",
+          "oracle_text": "{T}: Add {B}.\n{B}, {T}: Target legendary creature gains fear until end of turn. (It can't be blocked except by artifact creatures and/or black creatures.)",
+          "power": null,
+          "toughness": null,
+          "type_line": "Legendary Land"
+        }
+      ],
       "game_changer": false,
       "id": "099352e2-38c8-4fb4-a25f-6d928aa20f9e",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/9/099352e2-38c8-4fb4-a25f-6d928aa20f9e.png?1673306226"
-      },
-      "keywords": [],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "",
       "name": "Shizo, Death's Storehouse",
       "oracle_id": "008f2698-1721-45a3-8353-10f2f400dc8f",
-      "oracle_text": "{T}: Add {B}.\n{B}, {T}: Target legendary creature gains fear until end of turn. (It can't be blocked except by artifact creatures and/or black creatures.)",
-      "power": null,
-      "prices": {
-        "usd": "36.11"
-      },
-      "rarity": "rare",
-      "toughness": null,
-      "type_line": "Legendary Land"
+      "price": 36.11
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 0.0,
-      "color_identity": [
-        "G",
-        "R"
-      ],
-      "colors": [],
       "edhrec_rank": 8370,
+      "faces": [
+        {
+          "color_identity": [
+            "G",
+            "R"
+          ],
+          "colors": [],
+          "image": "https://cards.scryfall.io/normal/front/0/7/07076412-18fe-4e15-bdb5-17111b4a66db.jpg?1562300278",
+          "mana_cost": null,
+          "name": "Timber Gorge",
+          "oracle_text": "This land enters tapped.\n{T}: Add {R} or {G}.",
+          "power": null,
+          "toughness": null,
+          "type_line": "Land"
+        }
+      ],
       "game_changer": false,
       "id": "07076412-18fe-4e15-bdb5-17111b4a66db",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/7/07076412-18fe-4e15-bdb5-17111b4a66db.png?1562300278"
-      },
-      "keywords": [],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "",
       "name": "Timber Gorge",
       "oracle_id": "00b34fab-5a80-4a4d-b6cf-72479197677a",
-      "oracle_text": "This land enters tapped.\n{T}: Add {R} or {G}.",
-      "power": null,
-      "prices": {
-        "usd": "0.17"
-      },
-      "rarity": "common",
-      "toughness": null,
-      "type_line": "Land"
+      "price": 0.17
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 2.0,
-      "color_identity": [
-        "B"
-      ],
-      "colors": [
-        "B"
-      ],
       "edhrec_rank": 24605,
+      "faces": [
+        {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/3/0382cb94-0836-4e23-99b7-034faa363203.jpg?1592708795",
+          "mana_cost": "{1}{B}",
+          "name": "Crypt Creeper",
+          "oracle_text": "Sacrifice this creature: Exile target card from a graveyard.",
+          "power": "2",
+          "toughness": "1",
+          "type_line": "Creature — Zombie"
+        }
+      ],
       "game_changer": false,
       "id": "0382cb94-0836-4e23-99b7-034faa363203",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/3/0382cb94-0836-4e23-99b7-034faa363203.png?1592708795"
-      },
-      "keywords": [],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{1}{B}",
       "name": "Crypt Creeper",
       "oracle_id": "00b3971b-5bf7-4a3f-9607-6265f9af9098",
-      "oracle_text": "Sacrifice this creature: Exile target card from a graveyard.",
-      "power": "2",
-      "prices": {
-        "usd": "0.03"
-      },
-      "rarity": "common",
-      "toughness": "1",
-      "type_line": "Creature — Zombie"
+      "price": 0.03
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 5.0,
-      "color_identity": [
-        "U"
-      ],
-      "colors": [
-        "U"
-      ],
       "edhrec_rank": 18532,
+      "faces": [
+        {
+          "color_identity": [
+            "U"
+          ],
+          "colors": [
+            "U"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/e/0e814e48-cd9d-428f-90e2-74d97cb9c8f1.jpg?1726286065",
+          "mana_cost": "{3}{U}{U}",
+          "name": "Fear of Falling",
+          "oracle_text": "Flying\nWhenever this creature attacks, target creature defending player controls gets -2/-0 and loses flying until your next turn.",
+          "power": "4",
+          "toughness": "4",
+          "type_line": "Enchantment Creature — Nightmare"
+        }
+      ],
       "game_changer": false,
       "id": "0e814e48-cd9d-428f-90e2-74d97cb9c8f1",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/e/0e814e48-cd9d-428f-90e2-74d97cb9c8f1.png?1726286065"
-      },
-      "keywords": [
-        "Flying"
-      ],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{3}{U}{U}",
       "name": "Fear of Falling",
       "oracle_id": "00ba96e0-42a7-432a-a500-5e607d75a358",
-      "oracle_text": "Flying\nWhenever this creature attacks, target creature defending player controls gets -2/-0 and loses flying until your next turn.",
-      "power": "4",
-      "prices": {
-        "usd": "0.08"
-      },
-      "rarity": "uncommon",
-      "toughness": "4",
-      "type_line": "Enchantment Creature — Nightmare"
+      "price": 0.08
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 1.0,
-      "color_identity": [
-        "B"
-      ],
-      "colors": [
-        "B"
-      ],
       "edhrec_rank": 12403,
+      "faces": [
+        {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/9/09950456-09d6-4675-9995-0dc540ddb6e4.jpg?1562731072",
+          "mana_cost": "{B}",
+          "name": "Demonic Vigor",
+          "oracle_text": "Enchant creature\nEnchanted creature gets +1/+1.\nWhen enchanted creature dies, return that card to its owner's hand.",
+          "power": null,
+          "toughness": null,
+          "type_line": "Enchantment — Aura"
+        }
+      ],
       "game_changer": false,
       "id": "09950456-09d6-4675-9995-0dc540ddb6e4",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/9/09950456-09d6-4675-9995-0dc540ddb6e4.png?1562731072"
-      },
-      "keywords": [
-        "Enchant"
-      ],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{B}",
       "name": "Demonic Vigor",
       "oracle_id": "00cb93a8-5d33-4c6a-9e2a-4b3560f76f3f",
-      "oracle_text": "Enchant creature\nEnchanted creature gets +1/+1.\nWhen enchanted creature dies, return that card to its owner's hand.",
-      "power": null,
-      "prices": {
-        "usd": "0.23"
-      },
-      "rarity": "common",
-      "toughness": null,
-      "type_line": "Enchantment — Aura"
+      "price": 0.23
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 1.0,
-      "color_identity": [
-        "R"
-      ],
-      "colors": [
-        "R"
-      ],
       "edhrec_rank": 17832,
+      "faces": [
+        {
+          "color_identity": [
+            "R"
+          ],
+          "colors": [
+            "R"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/f/0f0a90ae-b3b3-4f52-8997-eac514b29e57.jpg?1767952140",
+          "mana_cost": "{X}{R}",
+          "name": "End-Blaze Epiphany",
+          "oracle_text": "End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",
+          "power": null,
+          "toughness": null,
+          "type_line": "Instant"
+        }
+      ],
       "game_changer": false,
       "id": "0f0a90ae-b3b3-4f52-8997-eac514b29e57",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/f/0f0a90ae-b3b3-4f52-8997-eac514b29e57.png?1767952140"
-      },
-      "keywords": [],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{X}{R}",
       "name": "End-Blaze Epiphany",
       "oracle_id": "00cfbea0-e862-468b-90d5-7478eb9847c0",
-      "oracle_text": "End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",
-      "power": null,
-      "prices": {
-        "usd": "0.20"
-      },
-      "rarity": "rare",
-      "toughness": null,
-      "type_line": "Instant"
+      "price": 0.2
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 2.0,
-      "color_identity": [
-        "W"
-      ],
-      "colors": [
-        "W"
-      ],
       "edhrec_rank": 23172,
+      "faces": [
+        {
+          "color_identity": [
+            "W"
+          ],
+          "colors": [
+            "W"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/7/07cb9f87-7ba4-408c-952d-fc9a7611df42.jpg?1562896810",
+          "mana_cost": "{1}{W}",
+          "name": "Ondu Rising",
+          "oracle_text": "Whenever a creature attacks this turn, it gains lifelink until end of turn.\nAwaken 4—{4}{W} (If you cast this spell for {4}{W}, also put four +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
+          "power": null,
+          "toughness": null,
+          "type_line": "Sorcery"
+        }
+      ],
       "game_changer": false,
       "id": "07cb9f87-7ba4-408c-952d-fc9a7611df42",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/7/07cb9f87-7ba4-408c-952d-fc9a7611df42.png?1562896810"
-      },
-      "keywords": [
-        "Awaken"
-      ],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{1}{W}",
       "name": "Ondu Rising",
       "oracle_id": "01081f81-f588-43ab-8d47-13593aa19ce1",
-      "oracle_text": "Whenever a creature attacks this turn, it gains lifelink until end of turn.\nAwaken 4—{4}{W} (If you cast this spell for {4}{W}, also put four +1/+1 counters on target land you control and it becomes a 0/0 Elemental creature with haste. It's still a land.)",
-      "power": null,
-      "prices": {
-        "usd": "0.08"
-      },
-      "rarity": "uncommon",
-      "toughness": null,
-      "type_line": "Sorcery"
+      "price": 0.08
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 4.0,
-      "color_identity": [
-        "B"
-      ],
-      "colors": [
-        "B"
-      ],
       "edhrec_rank": 14866,
+      "faces": [
+        {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/3/03a26ca7-b26f-4b86-a060-712f15f4bf7f.jpg?1730490923",
+          "mana_cost": "{3}{B}",
+          "name": "Sanguine Indulgence",
+          "oracle_text": "This spell costs {3} less to cast if you've gained 3 or more life this turn.\nReturn up to two target creature cards from your graveyard to your hand.",
+          "power": null,
+          "toughness": null,
+          "type_line": "Sorcery"
+        }
+      ],
       "game_changer": false,
       "id": "03a26ca7-b26f-4b86-a060-712f15f4bf7f",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/3/03a26ca7-b26f-4b86-a060-712f15f4bf7f.png?1730490923"
-      },
-      "keywords": [],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{3}{B}",
       "name": "Sanguine Indulgence",
       "oracle_id": "010ec11a-0484-486d-b7c0-de65593bf457",
-      "oracle_text": "This spell costs {3} less to cast if you've gained 3 or more life this turn.\nReturn up to two target creature cards from your graveyard to your hand.",
-      "power": null,
-      "prices": {
-        "usd": "0.13"
-      },
-      "rarity": "common",
-      "toughness": null,
-      "type_line": "Sorcery"
+      "price": 0.13
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 1.0,
-      "color_identity": [
-        "B"
-      ],
-      "colors": [
-        "B"
-      ],
       "edhrec_rank": 17324,
+      "faces": [
+        {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/c/0c5a25d9-926e-4004-8830-2b2bf7bc0775.jpg?1712860615",
+          "mana_cost": "{B}",
+          "name": "Unfortunate Accident",
+          "oracle_text": "Spree (Choose one or more additional costs.)\n+ {2}{B} — Destroy target creature.\n+ {1} — Create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"",
+          "power": null,
+          "toughness": null,
+          "type_line": "Instant"
+        }
+      ],
       "game_changer": false,
       "id": "0c5a25d9-926e-4004-8830-2b2bf7bc0775",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/c/0c5a25d9-926e-4004-8830-2b2bf7bc0775.png?1712860615"
-      },
-      "keywords": [
-        "Spree"
-      ],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{B}",
       "name": "Unfortunate Accident",
       "oracle_id": "011558f3-3c23-430e-a08b-8f91238e7971",
-      "oracle_text": "Spree (Choose one or more additional costs.)\n+ {2}{B} — Destroy target creature.\n+ {1} — Create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"",
-      "power": null,
-      "prices": {
-        "usd": "0.04"
-      },
-      "rarity": "uncommon",
-      "toughness": null,
-      "type_line": "Instant"
+      "price": 0.04
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 1.0,
-      "color_identity": [
-        "G"
-      ],
-      "colors": [
-        "G"
-      ],
       "edhrec_rank": 25530,
+      "faces": [
+        {
+          "color_identity": [
+            "G"
+          ],
+          "colors": [
+            "G"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/e/0e609448-7868-4e28-b399-3750556a693c.jpg?1562525426",
+          "mana_cost": "{G}",
+          "name": "Divergent Growth",
+          "oracle_text": "Until end of turn, lands you control gain \"{T}: Add one mana of any color.\"",
+          "power": null,
+          "toughness": null,
+          "type_line": "Instant"
+        }
+      ],
       "game_changer": false,
       "id": "0e609448-7868-4e28-b399-3750556a693c",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/e/0e609448-7868-4e28-b399-3750556a693c.png?1562525426"
-      },
-      "keywords": [],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{G}",
       "name": "Divergent Growth",
       "oracle_id": "0123b162-0413-4022-acc0-e5bd061d3fb4",
-      "oracle_text": "Until end of turn, lands you control gain \"{T}: Add one mana of any color.\"",
-      "power": null,
-      "prices": {
-        "usd": "0.16"
-      },
-      "rarity": "common",
-      "toughness": null,
-      "type_line": "Instant"
+      "price": 0.16
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 2.0,
-      "color_identity": [
-        "W"
-      ],
-      "colors": [
-        "W"
-      ],
       "edhrec_rank": 16923,
+      "faces": [
+        {
+          "color_identity": [
+            "W"
+          ],
+          "colors": [
+            "W"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/e/0ea1dfb4-1983-41f7-956c-f2a1d1489b54.jpg?1562300343",
+          "mana_cost": "{1}{W}",
+          "name": "Oreskos Swiftclaw",
+          "oracle_text": null,
+          "power": "3",
+          "toughness": "1",
+          "type_line": "Creature — Cat Warrior"
+        }
+      ],
       "game_changer": false,
       "id": "0ea1dfb4-1983-41f7-956c-f2a1d1489b54",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/e/0ea1dfb4-1983-41f7-956c-f2a1d1489b54.png?1562300343"
-      },
-      "keywords": [],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{1}{W}",
       "name": "Oreskos Swiftclaw",
       "oracle_id": "014d00fc-434a-4b06-84b2-afd930677d61",
-      "oracle_text": "",
-      "power": "3",
-      "prices": {
-        "usd": "0.10"
-      },
-      "rarity": "common",
-      "toughness": "1",
-      "type_line": "Creature — Cat Warrior"
+      "price": 0.1
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 3.0,
-      "color_identity": [
-        "G"
-      ],
-      "colors": [
-        "G"
-      ],
       "edhrec_rank": 5827,
+      "faces": [
+        {
+          "color_identity": [
+            "G"
+          ],
+          "colors": [
+            "G"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/f/0f1686aa-6b34-4eb7-9811-bc1a8d8b46e9.jpg?1698993161",
+          "mana_cost": "{2}{G}",
+          "name": "Topography Tracker",
+          "oracle_text": "When this creature enters, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Target creature you control explores. Activate only as a sorcery.\")\nIf a creature you control would explore, instead it explores, then it explores again.",
+          "power": "2",
+          "toughness": "2",
+          "type_line": "Creature — Merfolk Scout"
+        }
+      ],
       "game_changer": false,
       "id": "0f1686aa-6b34-4eb7-9811-bc1a8d8b46e9",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/f/0f1686aa-6b34-4eb7-9811-bc1a8d8b46e9.png?1698993161"
-      },
-      "keywords": [
-        "Explore"
-      ],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{2}{G}",
       "name": "Topography Tracker",
       "oracle_id": "0171861e-98d5-4e58-834f-899d8ad7acea",
-      "oracle_text": "When this creature enters, create a Map token. (It's an artifact with \"{1}, {T}, Sacrifice this token: Target creature you control explores. Activate only as a sorcery.\")\nIf a creature you control would explore, instead it explores, then it explores again.",
-      "power": "2",
-      "prices": {
-        "usd": "0.23"
-      },
-      "rarity": "rare",
-      "toughness": "2",
-      "type_line": "Creature — Merfolk Scout"
+      "price": 0.23
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 5.0,
-      "color_identity": [
-        "R"
-      ],
-      "colors": [
-        "R"
-      ],
       "edhrec_rank": 10542,
+      "faces": [
+        {
+          "color_identity": [
+            "R"
+          ],
+          "colors": [
+            "R"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/f/0f342fe9-aa73-4222-b908-d4035b5746be.jpg?1562550370",
+          "mana_cost": "{4}{R}",
+          "name": "Mindclaw Shaman",
+          "oracle_text": "When this creature enters, target opponent reveals their hand. You may cast an instant or sorcery spell from among those cards without paying its mana cost.",
+          "power": "2",
+          "toughness": "2",
+          "type_line": "Creature — Lizard Shaman"
+        }
+      ],
       "game_changer": false,
       "id": "0f342fe9-aa73-4222-b908-d4035b5746be",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/f/0f342fe9-aa73-4222-b908-d4035b5746be.png?1562550370"
-      },
-      "keywords": [],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{4}{R}",
       "name": "Mindclaw Shaman",
       "oracle_id": "018985f5-6a67-4f2f-855c-efa7254ad3f8",
-      "oracle_text": "When this creature enters, target opponent reveals their hand. You may cast an instant or sorcery spell from among those cards without paying its mana cost.",
-      "power": "2",
-      "prices": {
-        "usd": "0.28"
-      },
-      "rarity": "uncommon",
-      "toughness": "2",
-      "type_line": "Creature — Lizard Shaman"
+      "price": 0.28
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 5.0,
-      "color_identity": [
-        "B"
-      ],
-      "colors": [
-        "B"
-      ],
       "edhrec_rank": 9772,
+      "faces": [
+        {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/a/0a968eac-2840-41ba-b7de-3182964d4913.jpg?1673308787",
+          "mana_cost": "{3}{B}{B}",
+          "name": "Royal Warden",
+          "oracle_text": "Phalanx Commander — When this creature enters, create two tapped 2/2 black Necron Warrior artifact creature tokens.\nUnearth {3}{B} ({3}{B}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)",
+          "power": "3",
+          "toughness": "2",
+          "type_line": "Artifact Creature — Necron"
+        }
+      ],
       "game_changer": false,
       "id": "0a968eac-2840-41ba-b7de-3182964d4913",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/a/0a968eac-2840-41ba-b7de-3182964d4913.png?1673308787"
-      },
-      "keywords": [
-        "Phalanx Commander",
-        "Unearth"
-      ],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "{3}{B}{B}",
       "name": "Royal Warden",
       "oracle_id": "0192ba05-6144-4fec-a803-462ecdf64195",
-      "oracle_text": "Phalanx Commander — When this creature enters, create two tapped 2/2 black Necron Warrior artifact creature tokens.\nUnearth {3}{B} ({3}{B}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)",
-      "power": "3",
-      "prices": {
-        "usd": "0.44"
-      },
-      "rarity": "rare",
-      "toughness": "2",
-      "type_line": "Artifact Creature — Necron"
+      "price": 0.44
     },
     {
-      "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
       "cmc": 0.0,
-      "color_identity": [
-        "R",
-        "U"
-      ],
-      "colors": [],
       "edhrec_rank": 8431,
+      "faces": [
+        {
+          "color_identity": [
+            "R",
+            "U"
+          ],
+          "colors": [],
+          "image": "https://cards.scryfall.io/normal/front/0/b/0b98ba34-f251-4bd0-9d75-1d4445be5cfd.jpg?1764121949",
+          "mana_cost": null,
+          "name": "Airship Engine Room",
+          "oracle_text": "This land enters tapped.\n{T}: Add {U} or {R}.\n{4}, {T}, Sacrifice this land: Draw a card.",
+          "power": null,
+          "toughness": null,
+          "type_line": "Land"
+        }
+      ],
       "game_changer": false,
       "id": "0b98ba34-f251-4bd0-9d75-1d4445be5cfd",
-      "image_uris": {
-        "png": "https://cards.scryfall.io/png/front/0/b/0b98ba34-f251-4bd0-9d75-1d4445be5cfd.png?1764121949"
-      },
-      "keywords": [],
       "layout": "normal",
-      "legalities": {
-        "commander": "legal"
-      },
-      "mana_cost": "",
       "name": "Airship Engine Room",
       "oracle_id": "01ed9139-293d-4477-a145-3c6fe59266c7",
-      "oracle_text": "This land enters tapped.\n{T}: Add {U} or {R}.\n{4}, {T}, Sacrifice this land: Draw a card.",
-      "power": null,
-      "prices": {
-        "usd": "0.17"
-      },
-      "rarity": "common",
-      "toughness": null,
-      "type_line": "Land"
+      "price": 0.17
     }
   ]
 }

@@ -16,6 +16,10 @@ export function buildUI() {
   b.trigger("uiColors uiDebuggingSwitch restoreState");
 }
 
+function cardSorter(a, b) {
+  return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+}
+
 function filterCardName(card) {
   const value = b.qs(`[data-r="displayNameSearch"]`).value.trim();
   if (value === "") return true;
@@ -23,9 +27,23 @@ function filterCardName(card) {
   return card.name.match(pattern) !== null;
 }
 
+function filterExclusions(card) {
+  const value = b.qs(`[data-r="displayExcludeText"]`).value.trim();
+  if (value === "") return true;
+  const pattern = new RegExp(value, "gi");
+  for (const face of card.faces) {
+    if (face.oracle_text && face.oracle_text.match(pattern)) {
+      return false;
+    }
+  }
+  return true;
+}
+
 export function filteredCards() {
   return allCards
+    .filter((card) => filterExclusions(card))
     .filter((card) => filterCardName(card))
+    .sort(cardSorter)
     .filter((card, index) => index < 20);
 
   // const output = allCards
@@ -108,7 +126,12 @@ export function restoreState() {
 export function results(_, __, el) {
   el.replaceChildren(
     ...filteredCards().map((card) => {
-      return b.render("cardTemplate");
+      const subs = {
+        __CARD_NAME__: card.name,
+        __CARD_ID__: card.id,
+        __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
+      };
+      return b.render("cardTemplate", subs);
     }),
   );
 
@@ -159,14 +182,26 @@ export function uiDebuggingSwitch(_, __, el) {
   const subs = {
     __APPEND__: "Debugging",
     __RECEIVE__: "displayDebuggingToggle",
-    __SEND__: "updateDebuggingToggle",
+    __SEND__: "toggleDebugging",
   };
   el.replaceChildren(b.switch(subs));
 }
 
-export function updateDebuggingToggle(_, sender, ___) {
+export async function toggleDebugging(_, sender, ___) {
   sender.toggleAria("checked");
-  updateState();
+  state.debugging = sender.ariaBool("checked");
+  b.debugging = state.debugging;
+  const hexChars = "abcdef1234567890";
+  let dataKeys = hexChars.split("");
+  if (b.debugging) dataKeys = ["debug"];
+  allCards = [];
+  for (let dataKey of dataKeys) {
+    const result = await b.get(`/magic-data/scryfall-cards/${dataKey}.json`);
+    if (result) {
+      result.cards.forEach((card) => allCards.push(card));
+    }
+  }
+  b.trigger("search");
 }
 
 export function updateState() {

@@ -189,13 +189,21 @@ body {
       Results: <span data-r="resultCount"></span>
     </div>
     <div>
-      <label class="block" for="typeLineSearch">Card Name:</label>
-      <input type="search" data-r="displayNameSearch"  data-s="search" autocomplete="off" />
+      <label class="block" for="nameSearch">Card Name:</label>
+      <input type="search" id="nameSearch" data-r="displayNameSearch"  data-s="search" autocomplete="off" />
     </div>
+
+
     <div>
       Colors:
       <div data-r="uiColors"></div>
     </div>
+
+    <div>
+      <label class="block" for="excludeText">Exclude Text</label>
+      <input type="search" data-r="displayExcludeText"  data-s="search" autocomplete="off" />
+    </div>
+
   </div>
   <div class="content">
     <div data-r="results"></div>
@@ -221,8 +229,6 @@ body {
 
 <script type="text/html" id="cardTemplate">
 <div class="card">
-  <div>__CARD_NAME__</div>
-  <div>__CARD_ID__</div>
   <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
 </div>
 </script>

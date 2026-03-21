@@ -53,6 +53,10 @@ for raw in data:
                 details["color_identity"] = face["color_indicator"]
             else:
                 details["color_identity"] = []
+            if "image_uris" in face:
+                details["image"] = face["image_uris"]["normal"]
+            else: 
+                details["image"] = None
             card["faces"].append(details)
 
     else:

@@ -1875,6 +1875,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{5}{G}",
           "name": "Tuinvale Treefolk",
           "oracle_text": null,
@@ -1885,6 +1886,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{3}{G}",
           "name": "Oaken Boon",
           "oracle_text": "Put two +1/+1 counters on target creature. (Then exile this card. You may cast the creature later from exile.)",
@@ -2507,6 +2509,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/a/8ac3d2c9-5978-4cfb-a746-c901decff093.jpg?1755635585",
           "mana_cost": "{3}{U}",
           "name": "Sidequest: Card Collection",
           "oracle_text": "When this enchantment enters, draw three cards, then discard two cards.\nAt the beginning of your end step, if eight or more cards are in your graveyard, transform this enchantment.",
@@ -2521,6 +2524,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/a/8ac3d2c9-5978-4cfb-a746-c901decff093.jpg?1755635585",
           "mana_cost": null,
           "name": "Magicked Card",
           "oracle_text": "Flying\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",
@@ -3617,6 +3621,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{1}{B}{B}",
           "name": "Murderous Rider",
           "oracle_text": "Lifelink\nWhen this creature dies, put it on the bottom of its owner's library.",
@@ -3627,6 +3632,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{1}{B}{B}",
           "name": "Swift End",
           "oracle_text": "Destroy target creature or planeswalker. You lose 2 life. (Then exile this card. You may cast the creature later from exile.)",
@@ -4322,6 +4328,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/3/832288fd-8031-4c2b-ad3e-b1ec9f94d379.jpg?1739650891",
           "mana_cost": "{2}{U}",
           "name": "Overwhelmed Archivist",
           "oracle_text": "When this creature enters, draw a card, then discard a card.\nDisturb {3}{U} (You may cast this card from your graveyard transformed for its disturb cost.)",
@@ -4336,6 +4343,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/3/832288fd-8031-4c2b-ad3e-b1ec9f94d379.jpg?1739650891",
           "mana_cost": null,
           "name": "Archive Haunt",
           "oracle_text": "Flying\nWhenever this creature attacks, draw a card, then discard a card.\nIf Archive Haunt would be put into a graveyard from anywhere, exile it instead.",
@@ -5503,6 +5511,7 @@
           "colors": [
             "G"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/b/8bcaa944-4e45-457c-be9c-07377b6ed08b.jpg?1691507290",
           "mana_cost": "{2}{G}",
           "name": "Oakshade Stalker",
           "oracle_text": "You may cast this spell as though it had flash if you pay {2} more to cast it.\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)",
@@ -5517,6 +5526,7 @@
           "colors": [
             "G"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/b/8bcaa944-4e45-457c-be9c-07377b6ed08b.jpg?1691507290",
           "mana_cost": null,
           "name": "Moonlit Ambusher",
           "oracle_text": "Nightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)",
@@ -6432,6 +6442,7 @@
           "colors": [
             "B"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/8/88db324f-11f1-43d3-a897-f4e3caf8d642.jpg?1562833493",
           "mana_cost": "{2}{B}",
           "name": "Screeching Bat",
           "oracle_text": "Flying\nAt the beginning of your upkeep, you may pay {2}{B}{B}. If you do, transform this creature.",
@@ -6446,6 +6457,7 @@
           "colors": [
             "B"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/8/88db324f-11f1-43d3-a897-f4e3caf8d642.jpg?1562833493",
           "mana_cost": null,
           "name": "Stalking Vampire",
           "oracle_text": "At the beginning of your upkeep, you may pay {2}{B}{B}. If you do, transform this creature.",
@@ -6574,6 +6586,7 @@
           "colors": [
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/7/87a02ac1-c43a-43cc-9c2b-628cfdeb4cbf.jpg?1739654286",
           "mana_cost": "{3}{R}{R}",
           "name": "Volatile Arsonist",
           "oracle_text": "Menace, haste\nWhenever this creature attacks, it deals 1 damage to each of up to one target creature, up to one target player, and/or up to one target planeswalker.\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)",
@@ -6588,6 +6601,7 @@
           "colors": [
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/7/87a02ac1-c43a-43cc-9c2b-628cfdeb4cbf.jpg?1739654286",
           "mana_cost": null,
           "name": "Dire-Strain Anarchist",
           "oracle_text": "Menace, haste\nWhenever this creature attacks, it deals 2 damage to each of up to one target creature, up to one target player, and/or up to one target planeswalker.\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)",
@@ -8408,6 +8422,7 @@
             "U",
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/c/8c927707-abb5-4a9d-ac53-25df182d6e9b.jpg?1643594012",
           "mana_cost": "{W}{U}",
           "name": "Dorothea, Vengeful Victim",
           "oracle_text": "Flying\nWhen Dorothea attacks or blocks, sacrifice it at end of combat.\nDisturb {1}{W}{U} (You may cast this card from your graveyard transformed for its disturb cost.)",
@@ -8424,6 +8439,7 @@
             "U",
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/c/8c927707-abb5-4a9d-ac53-25df182d6e9b.jpg?1643594012",
           "mana_cost": null,
           "name": "Dorothea's Retribution",
           "oracle_text": "Enchant creature\nEnchanted creature has \"Whenever this creature attacks, create a 4/4 white Spirit creature token with flying that's tapped and attacking. Sacrifice that token at end of combat.\"\nIf Dorothea's Retribution would be put into a graveyard from anywhere, exile it instead.",
@@ -8523,6 +8539,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{1}{B}",
           "name": "Order of Midnight",
           "oracle_text": "Flying\nThis creature can't block.",
@@ -8533,6 +8550,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{1}{B}",
           "name": "Alter Fate",
           "oracle_text": "Return target creature card from your graveyard to your hand. (Then exile this card. You may cast the creature later from exile.)",
@@ -8751,6 +8769,7 @@
           "colors": [
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/a/8ad44884-ae0d-40ae-87a9-bad043d4e9ad.jpg?1656453019",
           "mana_cost": "{3}{W}",
           "name": "Befriending the Moths",
           "oracle_text": "(As this Saga enters and after your draw step, add a lore counter.)\nI, II \u2014 Target creature you control gets +1/+1 and gains flying until end of turn.\nIII \u2014 Exile this Saga, then return it to the battlefield transformed under your control.",
@@ -8765,6 +8784,7 @@
           "colors": [
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/a/8ad44884-ae0d-40ae-87a9-bad043d4e9ad.jpg?1656453019",
           "mana_cost": null,
           "name": "Imperial Moth",
           "oracle_text": "Flying",
@@ -11406,6 +11426,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{1}{W}",
           "name": "Heartflame Duelist",
           "oracle_text": "Instant and sorcery spells you control have lifelink.",
@@ -11416,6 +11437,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{2}{R}",
           "name": "Heartflame Slash",
           "oracle_text": "Heartflame Slash deals 3 damage to any target. (Then exile this card. You may cast the creature later from exile.)",
@@ -12003,6 +12025,7 @@
           "colors": [
             "B"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/2/8234ea77-9ed6-4f3e-acc2-f52fb7003ed2.jpg?1763297347",
           "mana_cost": "{3}{B}",
           "name": "Starscream, Power Hungry",
           "oracle_text": "More Than Meets the Eye {2}{B} (You may cast this card converted for {2}{B}.)\nFlying\nWhenever you draw a card, if you're the monarch, target opponent loses 2 life.\nWhenever one or more creatures deal combat damage to you, convert Starscream.",
@@ -12017,6 +12040,7 @@
           "colors": [
             "B"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/2/8234ea77-9ed6-4f3e-acc2-f52fb7003ed2.jpg?1763297347",
           "mana_cost": null,
           "name": "Starscream, Seeker Leader",
           "oracle_text": "Living metal (During your turn, this Vehicle is also a creature.)\nFlying, menace, haste\nWhenever Starscream deals combat damage to a player, if there is no monarch, that player becomes the monarch.\nWhenever you become the monarch, convert Starscream.",
@@ -12903,6 +12927,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{2}{U}",
           "name": "Turn",
           "oracle_text": "Until end of turn, target creature loses all abilities and becomes a red Weird with base power and toughness 0/1.\nFuse (You may cast one or both halves of this card from your hand.)",
@@ -12913,6 +12938,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{1}{R}",
           "name": "Burn",
           "oracle_text": "Burn deals 2 damage to any target.\nFuse (You may cast one or both halves of this card from your hand.)",
@@ -13508,6 +13534,7 @@
           "colors": [
             "G"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/3/8325c570-4d74-4e65-891c-3e153abf4bf9.jpg?1562833164",
           "mana_cost": "{2}{G}{G}",
           "name": "Ulvenwald Mystics",
           "oracle_text": "At the beginning of each upkeep, if no spells were cast last turn, transform this creature.",
@@ -13522,6 +13549,7 @@
           "colors": [
             "G"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/3/8325c570-4d74-4e65-891c-3e153abf4bf9.jpg?1562833164",
           "mana_cost": null,
           "name": "Ulvenwald Primordials",
           "oracle_text": "{G}: Regenerate this creature.\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform this creature.",
@@ -13654,6 +13682,7 @@
           "colors": [
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/9/8982ff88-8595-4363-8cde-6e87fb57a2d8.jpg?1634060533",
           "mana_cost": "{2}{W}",
           "name": "Selfless Glyphweaver",
           "oracle_text": "Exile this creature: Creatures you control gain indestructible until end of turn.",
@@ -13666,6 +13695,7 @@
           "colors": [
             "B"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/9/8982ff88-8595-4363-8cde-6e87fb57a2d8.jpg?1634060533",
           "mana_cost": "{5}{B}{B}{B}",
           "name": "Deadly Vanity",
           "oracle_text": "Choose a creature or planeswalker, then destroy all other creatures and planeswalkers.",
@@ -14597,6 +14627,7 @@
           "colors": [
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/c/8c0f9306-2058-476d-a711-bd37a6e15e42.jpg?1748707801",
           "mana_cost": "{3}{W}",
           "name": "Dion, Bahamut's Dominant",
           "oracle_text": "Dragonfire Dive \u2014 During your turn, Dion and other Knights you control have flying.\nWhen Dion enters, create a 2/2 white Knight creature token.\n{4}{W}{W}, {T}: Exile Dion, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.",
@@ -14611,6 +14642,7 @@
           "colors": [
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/c/8c0f9306-2058-476d-a711-bd37a6e15e42.jpg?1748707801",
           "mana_cost": null,
           "name": "Bahamut, Warden of Light",
           "oracle_text": "(As this Saga enters and after your draw step, add a lore counter.)\nI, II \u2014 Wings of Light \u2014 Put a +1/+1 counter on each other creature you control. Those creatures gain flying until end of turn.\nIII \u2014 Gigaflare \u2014 Destroy target permanent. Exile Bahamut, then return it to the battlefield (front face up).\nFlying",
@@ -14905,6 +14937,7 @@
           "colors": [
             "G"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/f/8fed056f-a8f5-41ec-a7d2-a80a238872d1.jpg?1739656250",
           "mana_cost": "{3}{G}",
           "name": "Invasion of Zendikar",
           "oracle_text": "(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\nWhen this Siege enters, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.",
@@ -14919,6 +14952,7 @@
           "colors": [
             "G"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/f/8fed056f-a8f5-41ec-a7d2-a80a238872d1.jpg?1739656250",
           "mana_cost": null,
           "name": "Awakened Skyclave",
           "oracle_text": "Vigilance, haste\nAs long as this creature is on the battlefield, it's a land in addition to its other types.\n{T}: Add one mana of any color.",
@@ -15363,6 +15397,7 @@
           "colors": [
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/8/88bc8cdf-adfa-4a11-a8c0-484bc03edc65.jpg?1736467623",
           "mana_cost": "{1}{W}",
           "name": "Twinblade Geist",
           "oracle_text": "Double strike\nDisturb {2}{W} (You may cast this card from your graveyard transformed for its disturb cost.)",
@@ -15377,6 +15412,7 @@
           "colors": [
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/8/88bc8cdf-adfa-4a11-a8c0-484bc03edc65.jpg?1736467623",
           "mana_cost": null,
           "name": "Twinblade Invocation",
           "oracle_text": "Enchant creature\nEnchanted creature has double strike.\nIf Twinblade Invocation would be put into a graveyard from anywhere, exile it instead.",
@@ -15426,6 +15462,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": null,
           "name": "Midgar, City of Mako",
           "oracle_text": "This land enters tapped.\n{T}: Add {B}.",
@@ -15436,6 +15473,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{2}{B}",
           "name": "Reactor Raid",
           "oracle_text": "You may sacrifice an artifact or creature. If you do, draw two cards. (Then exile this card. You may play the land later from exile.)",
@@ -16032,6 +16070,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{1}{R}",
           "name": "Boom",
           "oracle_text": "Destroy target land you control and target land you don't control.",
@@ -16042,6 +16081,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{5}{R}",
           "name": "Bust",
           "oracle_text": "Destroy all lands.",
@@ -16276,6 +16316,7 @@
           "colors": [
             "B"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/1/81b8b9c9-725d-476d-a3cf-55e3dc3e433d.jpg?1739656409",
           "mana_cost": "{3}{B}",
           "name": "Grasping Shadows",
           "oracle_text": "Whenever a creature you control attacks alone, it gains deathtouch and lifelink until end of turn. Put a dread counter on this enchantment. Then if there are three or more dread counters on it, transform it.",
@@ -16286,6 +16327,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": "https://cards.scryfall.io/normal/back/8/1/81b8b9c9-725d-476d-a3cf-55e3dc3e433d.jpg?1739656409",
           "mana_cost": null,
           "name": "Shadows' Lair",
           "oracle_text": "(Transforms from Grasping Shadows.)\n{T}: Add {B}.\n{B}, {T}, Remove a dread counter from this land: You draw a card and you lose 1 life.",
@@ -16858,6 +16900,7 @@
             "G",
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/a/8ab5f2e6-0e0a-4f7d-a959-3d07948ff317.jpg?1636684556",
           "mana_cost": "{R}{G}",
           "name": "Kessig Naturalist",
           "oracle_text": "Whenever this creature attacks, add {R} or {G}. Until end of turn, you don't lose this mana as steps and phases end.\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)",
@@ -16874,6 +16917,7 @@
             "G",
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/a/8ab5f2e6-0e0a-4f7d-a959-3d07948ff317.jpg?1636684556",
           "mana_cost": null,
           "name": "Lord of the Ulvenwald",
           "oracle_text": "Other Wolves and Werewolves you control get +1/+1.\nWhenever this creature attacks, add {R} or {G}. Until end of turn, you don't lose this mana as steps and phases end.\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)",
@@ -17324,6 +17368,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{3}{U}",
           "name": "Commit",
           "oracle_text": "Put target spell or nonland permanent into its owner's library second from the top.",
@@ -17334,6 +17379,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{4}{U}{U}",
           "name": "Memory",
           "oracle_text": "Aftermath (Cast this spell only from your graveyard. Then exile it.)\nEach player shuffles their hand and graveyard into their library, then draws seven cards.",
@@ -17385,6 +17431,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/6/8689ecd7-e9a6-458b-99d2-6dbaca527f00.jpg?1717013178",
           "mana_cost": "{2}{U}",
           "name": "Hydroelectric Specimen",
           "oracle_text": "Flash\nWhen this creature enters, you may change the target of target instant or sorcery spell with a single target to this creature.",
@@ -17395,6 +17442,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": "https://cards.scryfall.io/normal/back/8/6/8689ecd7-e9a6-458b-99d2-6dbaca527f00.jpg?1717013178",
           "mana_cost": null,
           "name": "Hydroelectric Laboratory",
           "oracle_text": "As this land enters, you may pay 3 life. If you don't, it enters tapped.\n{T}: Add {U}.",
@@ -17419,6 +17467,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/2/823ad188-bd56-476d-9853-bed90bfad582.jpg?1643588179",
           "mana_cost": "{3}{U}",
           "name": "Mirrorhall Mimic",
           "oracle_text": "You may have this creature enter as a copy of any creature on the battlefield, except it's a Spirit in addition to its other types.\nDisturb {3}{U}{U} (You may cast this card from your graveyard transformed for its disturb cost.)",
@@ -17433,6 +17482,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/2/823ad188-bd56-476d-9853-bed90bfad582.jpg?1643588179",
           "mana_cost": null,
           "name": "Ghastly Mimicry",
           "oracle_text": "Enchant creature\nAt the beginning of your upkeep, create a token that's a copy of enchanted creature, except it's a Spirit in addition to its other types.\nIf Ghastly Mimicry would be put into a graveyard from anywhere, exile it instead.",
@@ -18365,6 +18415,7 @@
             "B",
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/e/8e910464-329a-4de1-930a-be85b1956676.jpg?1656453394",
           "mana_cost": "{1}{B}{R}",
           "name": "Hidetsugu Consumes All",
           "oracle_text": "(As this Saga enters and after your draw step, add a lore counter.)\nI \u2014 Destroy each nonland permanent with mana value 1 or less.\nII \u2014 Exile all graveyards.\nIII \u2014 Exile this Saga, then return it to the battlefield transformed under your control.",
@@ -18381,6 +18432,7 @@
             "B",
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/e/8e910464-329a-4de1-930a-be85b1956676.jpg?1656453394",
           "mana_cost": null,
           "name": "Vessel of the All-Consuming",
           "oracle_text": "Trample\nWhenever this creature deals damage, put a +1/+1 counter on it.\nWhenever this creature deals damage to a player, if it has dealt 10 or more damage to that player this turn, they lose the game.",
@@ -18955,6 +19007,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": null,
           "name": "Zanarkand, Ancient Metropolis",
           "oracle_text": "This land enters tapped.\n{T}: Add {G}.",
@@ -18965,6 +19018,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{4}{G}{G}",
           "name": "Lasting Fayth",
           "oracle_text": "Create a 1/1 colorless Hero creature token. Put a +1/+1 counter on it for each land you control. (Then exile this card. You may play the land later from exile.)",
@@ -20072,6 +20126,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/c/8cfd0887-0c83-4b33-a85e-8b8ec5bf758d.jpg?1634060550",
           "mana_cost": "{2}{U}",
           "name": "Uvilda, Dean of Perfection",
           "oracle_text": "{T}: You may exile an instant or sorcery card from your hand and put three hone counters on it. It gains \"At the beginning of your upkeep, if this card is exiled, remove a hone counter from it\" and \"When the last hone counter is removed from this card, if it's exiled, you may cast it. It costs {4} less to cast this way.\"",
@@ -20084,6 +20139,7 @@
           "colors": [
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/c/8cfd0887-0c83-4b33-a85e-8b8ec5bf758d.jpg?1634060550",
           "mana_cost": "{3}{R}{R}",
           "name": "Nassari, Dean of Expression",
           "oracle_text": "At the beginning of your upkeep, exile the top card of each opponent's library. Until end of turn, you may cast spells from among those exiled cards, and you may spend mana as though it were mana of any color to cast those spells.\nWhenever you cast a spell from exile, put a +1/+1 counter on Nassari.",
@@ -21782,6 +21838,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/9/890eee8d-a339-4143-adfa-1b17ec10c099.jpg?1604195112",
           "mana_cost": "{4}{U}",
           "name": "Umara Wizard",
           "oracle_text": "Whenever you cast an instant, sorcery, or Wizard spell, this creature gains flying until end of turn.",
@@ -21792,6 +21849,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": "https://cards.scryfall.io/normal/back/8/9/890eee8d-a339-4143-adfa-1b17ec10c099.jpg?1604195112",
           "mana_cost": null,
           "name": "Umara Skyfalls",
           "oracle_text": "This land enters tapped.\n{T}: Add {U}.",
@@ -22145,6 +22203,7 @@
             "R",
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/f/8fcf3fbb-1ddd-437e-81c1-f5a3133f5ee8.jpg?1748707830",
           "mana_cost": "{2}{U}{B}{R}",
           "name": "Kefka, Court Mage",
           "oracle_text": "Whenever Kefka enters or attacks, each player discards a card. Then you draw a card for each card type among cards discarded this way.\n{8}: Each opponent sacrifices a permanent of their choice. Transform Kefka. Activate only as a sorcery.",
@@ -22163,6 +22222,7 @@
             "R",
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/f/8fcf3fbb-1ddd-437e-81c1-f5a3133f5ee8.jpg?1748707830",
           "mana_cost": null,
           "name": "Kefka, Ruler of Ruin",
           "oracle_text": "Flying\nWhenever an opponent loses life during your turn, you draw that many cards.",
@@ -22679,6 +22739,7 @@
           "colors": [
             "B"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/5/85eaf5e7-77dc-4842-a70c-ce4ac7f724df.jpg?1748707811",
           "mana_cost": "{2}{B}",
           "name": "Sephiroth, Fabled SOLDIER",
           "oracle_text": "Whenever Sephiroth enters or attacks, you may sacrifice another creature. If you do, draw a card.\nWhenever another creature dies, target opponent loses 1 life and you gain 1 life. If this is the fourth time this ability has resolved this turn, transform Sephiroth.",
@@ -22693,6 +22754,7 @@
           "colors": [
             "B"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/5/85eaf5e7-77dc-4842-a70c-ce4ac7f724df.jpg?1748707811",
           "mana_cost": null,
           "name": "Sephiroth, One-Winged Angel",
           "oracle_text": "Flying\nSuper Nova \u2014 As this creature transforms into Sephiroth, One-Winged Angel, you get an emblem with \"Whenever a creature dies, target opponent loses 1 life and you gain 1 life.\"\nWhenever Sephiroth attacks, you may sacrifice any number of other creatures. If you do, draw that many cards.",
@@ -25367,6 +25429,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{1}{W/B}",
           "name": "Push",
           "oracle_text": "Destroy target tapped creature.",
@@ -25377,6 +25440,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{4}{B/R}{B/R}",
           "name": "Pull",
           "oracle_text": "Put up to two target creature cards from a single graveyard onto the battlefield under your control. They gain haste until end of turn. Sacrifice them at the beginning of the next end step.",
@@ -25945,6 +26009,7 @@
           "colors": [
             "B"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/0/8093f8b0-5d50-48ca-b616-e92535a47138.jpg?1576384328",
           "mana_cost": "{3}{B}",
           "name": "Accursed Witch",
           "oracle_text": "Spells your opponents cast that target this creature cost {1} less to cast.\nWhen this creature dies, return it to the battlefield transformed under your control attached to target opponent.",
@@ -25959,6 +26024,7 @@
           "colors": [
             "B"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/0/8093f8b0-5d50-48ca-b616-e92535a47138.jpg?1576384328",
           "mana_cost": null,
           "name": "Infectious Curse",
           "oracle_text": "Enchant player\nSpells you cast that target enchanted player cost {1} less to cast.\nAt the beginning of enchanted player's upkeep, that player loses 1 life and you gain 1 life.",
@@ -26471,6 +26537,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{W}",
           "name": "Bushi Tenderfoot",
           "oracle_text": "When a creature dealt damage by this creature this turn dies, flip this creature.",
@@ -26481,6 +26548,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": null,
           "name": "Kenzo the Hardhearted",
           "oracle_text": "Double strike; bushido 2 (Whenever this creature blocks or becomes blocked, it gets +2/+2 until end of turn.)",
@@ -27444,6 +27512,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": "https://cards.scryfall.io/normal/front/8/7/87a4e5fe-161f-42da-9ca2-67c8e8970e94.jpg?1669839402",
           "mana_cost": null,
           "name": "Darkbore Pathway",
           "oracle_text": "{T}: Add {B}.",
@@ -27454,6 +27523,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": "https://cards.scryfall.io/normal/back/8/7/87a4e5fe-161f-42da-9ca2-67c8e8970e94.jpg?1669839402",
           "mana_cost": null,
           "name": "Slitherbore Pathway",
           "oracle_text": "{T}: Add {G}.",
@@ -27905,6 +27975,7 @@
             "U",
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/d/8d233bc5-8a08-4d38-abd4-21a112141afd.jpg?1768338693",
           "mana_cost": "{1}{W}{U}",
           "name": "Brine Comber",
           "oracle_text": "Whenever this creature enters or becomes the target of an Aura spell, create a 1/1 white Spirit creature token with flying.\nDisturb {W}{U} (You may cast this card from your graveyard transformed for its disturb cost.)",
@@ -27921,6 +27992,7 @@
             "U",
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/d/8d233bc5-8a08-4d38-abd4-21a112141afd.jpg?1768338693",
           "mana_cost": null,
           "name": "Brinebound Gift",
           "oracle_text": "Enchant creature\nWhenever this Aura enters or enchanted creature becomes the target of an Aura spell, create a 1/1 white Spirit creature token with flying.\nIf this Aura would be put into a graveyard from anywhere, exile it instead.",
@@ -28353,6 +28425,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/7/87463b68-3642-41c7-a11c-67d524759b60.jpg?1634060547",
           "mana_cost": "{2}{U}{U}",
           "name": "Torrent Sculptor",
           "oracle_text": "Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\nWhen this creature enters, exile an instant or sorcery card from your graveyard. Put a number of +1/+1 counters on this creature equal to half that card's mana value, rounded up.",
@@ -28365,6 +28438,7 @@
           "colors": [
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/7/87463b68-3642-41c7-a11c-67d524759b60.jpg?1634060547",
           "mana_cost": "{1}{R}",
           "name": "Flamethrower Sonata",
           "oracle_text": "Discard a card, then draw a card. When you discard an instant or sorcery card this way, Flamethrower Sonata deals damage equal to that card's mana value to target creature or planeswalker you don't control.",
@@ -29886,6 +29960,7 @@
           "colors": [
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/a/8aece300-656b-4e0d-a45f-aa7feaff0a4e.jpg?1699125724",
           "mana_cost": "{1}{W}",
           "name": "Clay-Fired Bricks",
           "oracle_text": "When this artifact enters, search your library for a basic Plains card, reveal it, put it into your hand, then shuffle. You gain 2 life.\nCraft with artifact {5}{W}{W} ({5}{W}{W}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)",
@@ -29900,6 +29975,7 @@
           "colors": [
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/a/8aece300-656b-4e0d-a45f-aa7feaff0a4e.jpg?1699125724",
           "mana_cost": null,
           "name": "Cosmium Kiln",
           "oracle_text": "When this artifact enters, create two 1/1 colorless Gnome artifact creature tokens.\nCreatures you control get +1/+1.",
@@ -30477,6 +30553,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{3}{B}",
           "name": "Spellscorn Coven",
           "oracle_text": "Flying\nWhen this creature enters, each opponent discards a card.",
@@ -30487,6 +30564,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{2}{U}",
           "name": "Take It Back",
           "oracle_text": "Return target spell to its owner's hand. (Then exile this card. You may cast the creature later from exile.)",
@@ -30562,6 +30640,7 @@
             "G",
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/e/8e7554bc-8583-4059-8895-c3845bc27ae3.jpg?1555428629",
           "mana_cost": "{1}{G}{U}",
           "name": "Hadana's Climb",
           "oracle_text": "At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. Then if that creature has three or more +1/+1 counters on it, transform Hadana's Climb.",
@@ -30572,6 +30651,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": "https://cards.scryfall.io/normal/back/8/e/8e7554bc-8583-4059-8895-c3845bc27ae3.jpg?1555428629",
           "mana_cost": null,
           "name": "Winged Temple of Orazca",
           "oracle_text": "(Transforms from Hadana's Climb.)\n{T}: Add one mana of any color.\n{1}{G}{U}, {T}: Target creature you control gains flying and gets +X/+X until end of turn, where X is its power.",
@@ -32322,6 +32402,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{G/W}{G/W}{G/W}{G/W}",
           "name": "Oakhame Ranger",
           "oracle_text": "{T}: Creatures you control get +1/+1 until end of turn.",
@@ -32332,6 +32413,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{G/W}{G/W}{G/W}{G/W}",
           "name": "Bring Back",
           "oracle_text": "Create two 1/1 white Human creature tokens. (Then exile this card. You may cast the creature later from exile.)",
@@ -32952,6 +33034,7 @@
           "colors": [
             "G"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/b/8b45dc40-6827-46a7-a9b7-802be698d053.jpg?1634060520",
           "mana_cost": "{2}{G}",
           "name": "Kianne, Dean of Substance",
           "oracle_text": "{T}: Exile the top card of your library. If it's a land card, put it into your hand. Otherwise, put a study counter on it.\n{4}{G}: Create a 0/0 green and blue Fractal creature token. Put a +1/+1 counter on it for each different mana value among nonland cards you own in exile with study counters on them.",
@@ -32964,6 +33047,7 @@
           "colors": [
             "U"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/b/8b45dc40-6827-46a7-a9b7-802be698d053.jpg?1634060520",
           "mana_cost": "{2}{U}{U}",
           "name": "Imbraham, Dean of Theory",
           "oracle_text": "Flying\n{X}{U}{U}, {T}: Exile the top X cards of your library and put a study counter on each of them. Then you may put a card you own in exile with a study counter on it into your hand.",
@@ -36013,6 +36097,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{3}{R}{R}",
           "name": "Virtue of Courage",
           "oracle_text": "Whenever a source you control deals noncombat damage to an opponent, you may exile that many cards from the top of your library. You may play those cards this turn.",
@@ -36023,6 +36108,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{1}{R}",
           "name": "Embereth Blaze",
           "oracle_text": "Embereth Blaze deals 2 damage to any target. (Then exile this card. You may cast the enchantment later from exile.)",
@@ -38420,6 +38506,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{3}{W}",
           "name": "Order",
           "oracle_text": "Exile target attacking creature.",
@@ -38430,6 +38517,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{2}{R}",
           "name": "Chaos",
           "oracle_text": "Creatures can't block this turn.",
@@ -39861,6 +39949,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{3}{W}",
           "name": "Dazzling Theater",
           "oracle_text": "Creature spells you cast have convoke. (Your creatures can help cast those spells. Each creature you tap while casting a creature spell pays for {1} or one mana of that creature's color.)\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
@@ -39871,6 +39960,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{2}{W}",
           "name": "Prop Room",
           "oracle_text": "Untap each creature you control during each other player's untap step.\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
@@ -41364,6 +41454,7 @@
             "U",
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/2/82866a0e-485a-4f7e-8c49-f7d9ff3f4ad4.jpg?1764121420",
           "mana_cost": "{1}{W}{U}",
           "name": "Aang, Swift Savior",
           "oracle_text": "Flash\nFlying\nWhen Aang enters, airbend up to one other target creature or spell. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)\nWaterbend {8}: Transform Aang.",
@@ -41374,6 +41465,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": "https://cards.scryfall.io/normal/back/8/2/82866a0e-485a-4f7e-8c49-f7d9ff3f4ad4.jpg?1764121420",
           "mana_cost": null,
           "name": "Aang and La, Ocean's Fury",
           "oracle_text": "Reach, trample\nWhenever Aang and La attack, put a +1/+1 counter on each tapped creature you control.",
@@ -41400,6 +41492,7 @@
             "U",
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/7/8733cd6f-37e1-4e3a-bb25-7a238f04657e.jpg?1763297347",
           "mana_cost": "{1}{W}{U}{B}",
           "name": "Soundwave, Sonic Spy",
           "oracle_text": "More Than Meets the Eye {2}{W}{U}{B} (You may cast this card converted for {2}{W}{U}{B}.)\nWhenever one or more creature tokens you control deal combat damage to a player, exile target instant or sorcery card with mana value equal to the damage dealt from their graveyard. Copy it. You may cast the copy without paying its mana cost. If you do, convert Soundwave.",
@@ -41418,6 +41511,7 @@
             "U",
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/7/8733cd6f-37e1-4e3a-bb25-7a238f04657e.jpg?1763297347",
           "mana_cost": null,
           "name": "Soundwave, Superior Captain",
           "oracle_text": "Whenever you cast a spell with an odd mana value, convert Soundwave. If you do, create Ravage, a legendary 3/3 black Robot artifact creature token with menace and deathtouch.\nWhenever you cast a spell with an even mana value, convert Soundwave. If you do, create Laserbeak, a legendary 2/2 blue Robot artifact creature token with flying and hexproof.",
@@ -42286,6 +42380,7 @@
             "B",
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/7/876d9732-9201-4327-8748-7c87ec55453f.jpg?1763297344",
           "mana_cost": "{1}{B}{R}",
           "name": "Flamewar, Brash Veteran",
           "oracle_text": "More Than Meets the Eye {B}{R} (You may cast this card converted for {B}{R}.)\nSacrifice another artifact: Put a +1/+1 counter on Flamewar and convert it. Activate only as a sorcery.\n{1}, Discard your hand: Put all exiled cards you own with intel counters on them into your hand.",
@@ -42302,6 +42397,7 @@
             "B",
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/7/876d9732-9201-4327-8748-7c87ec55453f.jpg?1763297344",
           "mana_cost": null,
           "name": "Flamewar, Streetwise Operative",
           "oracle_text": "Living metal (During your turn, this Vehicle is also a creature.)\nMenace, deathtouch\nWhenever Flamewar deals combat damage to a player, exile that many cards from the top of your library face down. Put an intel counter on each of them. Convert Flamewar.",
@@ -42807,6 +42903,7 @@
             "U",
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1763297350",
           "mana_cost": "{1}{W}{U}",
           "name": "Goldbug, Humanity's Ally",
           "oracle_text": "More Than Meets the Eye {W}{U} (You may cast this card converted for {W}{U}.)\nPrevent all combat damage that would be dealt to attacking Humans you control.\nWhenever you cast your second spell each turn, convert Goldbug.",
@@ -42823,6 +42920,7 @@
             "U",
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1763297350",
           "mana_cost": null,
           "name": "Goldbug, Scrappy Scout",
           "oracle_text": "Living metal (During your turn, this Vehicle is also a creature.)\nHuman spells you control can't be countered.\nWhenever Goldbug and at least one Human attack, draw a card and convert Goldbug.",
@@ -45599,6 +45697,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{4}{G}",
           "name": "Ettercap",
           "oracle_text": "Reach",
@@ -45609,6 +45708,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{2}{G}",
           "name": "Web Shot",
           "oracle_text": "Destroy target creature with flying. (Then exile this card. You may cast the creature later from exile.)",
@@ -46991,6 +47091,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": "https://cards.scryfall.io/normal/front/8/2/823b019e-10c0-4712-8167-d4f37a71e782.jpg?1677763621",
           "mana_cost": null,
           "name": "Havengul Laboratory",
           "oracle_text": "{T}: Add {C}.\n{4}, {T}: Investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nAt the beginning of your end step, if you sacrificed three or more Clues this turn, transform Havengul Laboratory.",
@@ -47001,6 +47102,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": "https://cards.scryfall.io/normal/back/8/2/823b019e-10c0-4712-8167-d4f37a71e782.jpg?1677763621",
           "mana_cost": null,
           "name": "Havengul Mystery",
           "oracle_text": "When this land transforms into Havengul Mystery, return target creature card from your graveyard to the battlefield.\nWhen the creature put onto the battlefield with Havengul Mystery leaves the battlefield, transform Havengul Mystery.\n{T}, Pay 1 life: Add {B}.",
@@ -48618,6 +48720,7 @@
           "colors": [
             "W"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/e/8e4e0f81-f92b-4a3a-bb29-adcc3de211b4.jpg?1748260747",
           "mana_cost": "{1}{W}{W}",
           "name": "Mila, Crafty Companion",
           "oracle_text": "Whenever an opponent attacks one or more planeswalkers you control, put a loyalty counter on each planeswalker you control.\nWhenever a permanent you control becomes the target of a spell or ability an opponent controls, you may draw a card.",
@@ -48630,6 +48733,7 @@
           "colors": [
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/e/8e4e0f81-f92b-4a3a-bb29-adcc3de211b4.jpg?1748260747",
           "mana_cost": "{4}{R}{R}",
           "name": "Lukka, Wayward Bonder",
           "oracle_text": "+1: You may discard a card. If you do, draw a card. If a creature card was discarded this way, draw two cards instead.\n\u22122: Return target creature card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of your next upkeep.\n\u22127: You get an emblem with \"Whenever a creature you control enters, it deals damage equal to its power to any target.\"",
@@ -50084,6 +50188,7 @@
           "colors": [
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/front/8/b/8bdc98cd-d03a-4c24-8642-b9ffb1f144c6.jpg?1737775526",
           "mana_cost": "{R}",
           "name": "Village Messenger",
           "oracle_text": "Haste\nAt the beginning of each upkeep, if no spells were cast last turn, transform this creature.",
@@ -50098,6 +50203,7 @@
           "colors": [
             "R"
           ],
+          "image": "https://cards.scryfall.io/normal/back/8/b/8bdc98cd-d03a-4c24-8642-b9ffb1f144c6.jpg?1737775526",
           "mana_cost": null,
           "name": "Moonrise Intruder",
           "oracle_text": "Menace (This creature can't be blocked except by two or more creatures.)\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform this creature.",
@@ -50702,6 +50808,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": "{4}{R}{R}",
           "name": "Homura, Human Ascendant",
           "oracle_text": "Homura can't block.\nWhen Homura dies, return it to the battlefield flipped.",
@@ -50712,6 +50819,7 @@
         {
           "color_identity": [],
           "colors": [],
+          "image": null,
           "mana_cost": null,
           "name": "Homura's Essence",
           "oracle_text": "Creatures you control get +2/+2 and have flying and \"{R}: This creature gets +1/+0 until end of turn.\"",
