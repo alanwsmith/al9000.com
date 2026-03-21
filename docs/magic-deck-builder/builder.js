@@ -77,7 +77,7 @@ export function filteredCards() {
   b.send(selectedCards.length, "cardCount");
   const cardsPerPage = 9; // zero index
   const pages = Math.ceil(selectedCards.length / cardsPerPage);
-  const maxIndex = parseInt(b.qs(`[data-r="displayPageNumber"]`).value) *
+  const maxIndex = parseInt(b.qs(`[data-r~="displayPageNumber"]`).value) *
     cardsPerPage;
   const minIndex = maxIndex - cardsPerPage;
   console.log(minIndex);
@@ -124,6 +124,7 @@ export async function loadStateAndData() {
   const hexChars = "abcdef1234567890";
   let dataKeys = hexChars.split("");
   if (b.debugging) dataKeys = ["debug"];
+  allCards = [];
   for (let dataKey of dataKeys) {
     const result = await b.get(`/magic-data/scryfall-cards/${dataKey}.json`);
     if (result) {
@@ -131,6 +132,15 @@ export async function loadStateAndData() {
     }
   }
   b.trigger("buildUI");
+}
+
+export function nextPage(_, __, el) {
+}
+
+export function resetState() {
+  state = { debugging: true };
+  b.savePage("state", state);
+  b.trigger("loadStateAndData");
 }
 
 export function restoreState() {
@@ -154,7 +164,7 @@ export function results(_, __, el) {
 
 export function search(ev, __, ___) {
   if (ev.type !== "bittytrigger") {
-    b.qs(`[data-r="displayPageNumber"]`).value = 1;
+    b.qs(`[data-r~="displayPageNumber"]`).value = 1;
   }
   b.debounce("newSearch", "updateState", 200);
 }
@@ -203,26 +213,28 @@ export function updateState() {
 }
 
 export function setDisplayState(els) {
-  for (const data of els) {
-    const selector = data.dataset.key
-      ? `[data-r="${data.dataset.r}"][data-key="${data.dataset.key}"]`
-      : `[data-r="${data.dataset.r}"]`;
-    const el = b.qs(selector);
-    if (el) {
-      if (data.value) {
-        el.value = data.value;
-      }
-      if (data.checked) {
-        el.checked = data.checked;
-      }
-      for (const dataKey in data.dataset) {
-        if (dataKey !== "r" && dataKey !== "key") {
-          el.dataset[dataKey] = data.dataset[dataKey];
+  if (els) {
+    for (const data of els) {
+      const selector = data.dataset.key
+        ? `[data-r="${data.dataset.r}"][data-key="${data.dataset.key}"]`
+        : `[data-r="${data.dataset.r}"]`;
+      const el = b.qs(selector);
+      if (el) {
+        if (data.value) {
+          el.value = data.value;
         }
-      }
-      for (const ariaKey in data.aria) {
-        if (ariaKey !== "r" && ariaKey !== "key") {
-          el.setAttribute(`aria-${ariaKey}`, data.aria[ariaKey]);
+        if (data.checked) {
+          el.checked = data.checked;
+        }
+        for (const dataKey in data.dataset) {
+          if (dataKey !== "r" && dataKey !== "key") {
+            el.dataset[dataKey] = data.dataset[dataKey];
+          }
+        }
+        for (const ariaKey in data.aria) {
+          if (ariaKey !== "r" && ariaKey !== "key") {
+            el.setAttribute(`aria-${ariaKey}`, data.aria[ariaKey]);
+          }
         }
       }
     }
