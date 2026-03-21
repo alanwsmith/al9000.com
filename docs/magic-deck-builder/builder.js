@@ -15,6 +15,7 @@ const colorKeys = {
 const options = {
   oracle_text: [
     "Deathtouch",
+    "Flying",
     "Lifelink",
   ],
   type_line: [
@@ -138,10 +139,8 @@ export function filterCards(card, key) {
   for (const el of b.qsa(`[data-s~=search][data-key=${key}]`)) {
     if (el.value) {
       const pattern = new RegExp(el.value, "gi");
-      console.log(pattern);
       for (const face of card.faces) {
         // console.log(el.dataset);
-        console.log(face);
         // console.log(el.dataset.key);
         if (face[el.dataset.key].match(pattern)) {
           return el.dataset.include === "yes";
@@ -285,17 +284,15 @@ export function search(ev, sender, ___) {
   if (ev.type !== "bittytrigger") {
     b.qs(`[data-r~="displayPageNumber"]`).value = 1;
   }
-  if (sender && sender.propBool("instant")) {
-    b.trigger("saveState");
-  } else {
-    b.debounce("newSearch", "saveState", 200);
-  }
+  b.debounce("newSearch", "saveState", 200);
 }
 
 export function selectOption(_, sender, el) {
-  el.value = sender.value.toLowerCase();
-  sender.selectedIndex = 0;
-  b.trigger("results");
+  if (sender.prop("key") === el.prop("key")) {
+    el.value = sender.value.toLowerCase();
+    sender.selectedIndex = 0;
+    b.trigger("results");
+  }
 }
 
 export function setDisplayState(els) {
