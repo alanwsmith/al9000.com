@@ -29,7 +29,7 @@ const options = {
 };
 
 export function buildUI() {
-  b.trigger("uiColors uiDebuggingSwitch uiOptions restoreState");
+  b.trigger("uiColors uiDebuggingSwitch uiOptions results");
 }
 
 export function cardCount(count, __, el) {
@@ -138,38 +138,69 @@ export function filteredCards() {
   ) => (index >= minIndex && index <= maxIndex));
 }
 
-export function getDisplayState() {
-  return [...b.qsa(`[data-r^="display"]`)].map((el) => {
-    const item = {
-      dataset: {},
-      aria: {},
-    };
-    let typeAttr = el.getAttribute("type");
-    if (typeAttr === "text" && el.value) {
-      item.value = el.value;
-    }
-    if (typeAttr === "search" && el.value) {
-      item.value = el.value;
-    }
-    if (typeAttr === "checkbox" && el.checked) {
-      item.checked = el.checked;
-    }
-    for (const dsKey in el.dataset) {
-      if (dsKey !== "s") {
-        item.dataset[dsKey] = el.dataset[dsKey];
+export function getValues() {
+  const keys = [
+    "checked",
+    "diabled",
+    "hidden",
+    "readOnly",
+    "spellcheck",
+    "value",
+  ];
+  return [...b.qsa(`[data-save][id]`)]
+    .filter((el) => el.dataset.save === "true")
+    .map((el) => {
+      const item = {
+        id: el.id,
+        aria: {},
+        keys: {},
+      };
+      for (const key of keys) {
+        if (el[key]) item.keys[key] = el[key];
       }
-    }
-    for (const attr of el.attributes) {
-      if (attr.name.startsWith("aria-")) {
-        const ariaKey = attr.name.replace("aria-", "");
-        item.aria[ariaKey] = attr.value;
+      for (const attr of el.attributes) {
+        if (attr.name.startsWith("aria-")) {
+          const ariaKey = attr.name.replace("aria-", "");
+          item.aria[ariaKey] = attr.value;
+        }
       }
-    }
-    return item;
-  });
+      return item;
+    });
 }
 
+// export function getDisplayState() {
+//   return [...b.qsa(`[data-r^="display"]`)].map((el) => {
+//     const item = {
+//       dataset: {},
+//       aria: {},
+//     };
+//     let typeAttr = el.getAttribute("type");
+//     if (typeAttr === "text" && el.value) {
+//       item.value = el.value;
+//     }
+//     if (typeAttr === "search" && el.value) {
+//       item.value = el.value;
+//     }
+//     if (typeAttr === "checkbox" && el.checked) {
+//       item.checked = el.checked;
+//     }
+//     for (const dsKey in el.dataset) {
+//       if (dsKey !== "s") {
+//         item.dataset[dsKey] = el.dataset[dsKey];
+//       }
+//     }
+//     for (const attr of el.attributes) {
+//       if (attr.name.startsWith("aria-")) {
+//         const ariaKey = attr.name.replace("aria-", "");
+//         item.aria[ariaKey] = attr.value;
+//       }
+//     }
+//     return item;
+//   });
+// }
+
 export async function loadStateAndData() {
+  console.log("HERE2");
   state = b.loadPage("state", defaultState());
   b.debugging = state.debugging;
   const hexChars = "abcdef1234567890";
@@ -187,13 +218,13 @@ export async function loadStateAndData() {
 
 export function nextPage(_, __, el) {
   el.value = el.valueInt() + 1;
-  b.trigger("saveState");
+  b.trigger("results");
 }
 
 export function previousPage(_, __, el) {
   if (el.valueInt() > 0) {
     el.value = el.valueInt() - 1;
-    b.trigger("saveState");
+    b.trigger("results");
   }
 }
 
@@ -207,12 +238,10 @@ export function resetState() {
   b.trigger("loadStateAndData");
 }
 
-export function restoreState() {
-  setDisplayState(state.display);
-  b.trigger("saveState");
-}
-
 export function results(_, __, el) {
+  console.log("HERE1");
+  // state.values = getValues();
+  // b.savePage("state", state);
   el.replaceChildren(
     ...filteredCards().map((card) => {
       const subs = {
@@ -227,54 +256,49 @@ export function results(_, __, el) {
   );
 }
 
-export function saveState() {
-  // state.display = getDisplayState();
-  // b.savePage("state", state);
-  b.trigger("results");
-}
-
 export function search(ev, sender, ___) {
-  if (ev.type !== "bittytrigger") {
-    b.qs(`[data-r~="displayPageNumber"]`).value = 1;
-  }
-  b.debounce("newSearch", "saveState", 200);
+  b.qs(`[data-r~="displayPageNumber"]`).value = 1;
+  b.debounce("newSearch", "results", 200);
 }
 
 export function selectOption(_, sender, el) {
   if (sender.prop("key") === el.prop("key")) {
     el.value = sender.value.toLowerCase();
     sender.selectedIndex = 0;
-    b.trigger("results");
+    b.trigger("search");
   }
 }
 
-export function setDisplayState(els) {
-  // TODO: Update this and getDisplayState so that
-  // the data-r will find keys with `display`
-  // in them but can also have other signals
-  // as well.
-  if (els) {
-    for (const data of els) {
-      const selector = data.dataset.key
-        ? `[data-r="${data.dataset.r}"][data-key="${data.dataset.key}"]`
-        : `[data-r="${data.dataset.r}"]`;
-      const el = b.qs(selector);
-      if (el) {
-        if (data.value) {
-          el.value = data.value;
-        }
-        if (data.checked) {
-          el.checked = data.checked;
-        }
-        for (const ariaKey in data.aria) {
-          if (ariaKey !== "r" && ariaKey !== "key") {
-            el.setAttribute(`aria-${ariaKey}`, data.aria[ariaKey]);
-          }
-        }
-      }
-    }
-  }
+export function setValues(payload) {
 }
+
+// export function setDisplayState(els) {
+//   // TODO: Update this and getDisplayState so that
+//   // the data-r will find keys with `display`
+//   // in them but can also have other signals
+//   // as well.
+//   if (els) {
+//     for (const data of els) {
+//       const selector = data.dataset.key
+//         ? `[data-r="${data.dataset.r}"][data-key="${data.dataset.key}"]`
+//         : `[data-r="${data.dataset.r}"]`;
+//       const el = b.qs(selector);
+//       if (el) {
+//         if (data.value) {
+//           el.value = data.value;
+//         }
+//         if (data.checked) {
+//           el.checked = data.checked;
+//         }
+//         for (const ariaKey in data.aria) {
+//           if (ariaKey !== "r" && ariaKey !== "key") {
+//             el.setAttribute(`aria-${ariaKey}`, data.aria[ariaKey]);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 export async function toggleDebugging(_, sender, ___) {
   sender.toggleAria("checked");
@@ -309,6 +333,8 @@ export function uiDebuggingSwitch(_, __, el) {
     __APPEND__: "Debugging",
     __RECEIVE__: "displayDebuggingToggle",
     __SEND__: "toggleDebugging",
+    __SAVE__: "true",
+    __ID__: "search_debugging_toggle",
   }));
 }
 

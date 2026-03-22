@@ -143,9 +143,9 @@ class BittyJs extends HTMLElement {
 
   addToggleSwitchTemplate(target) {
     target.b.templates.switch = `
-<label for="__ID__" class="__CLASS__">
+<label for="__ID__" class="__CLASS__"__KEY_ATTR__>
   __PREPEND__
-  <button id="__ID__" role="switch" __SEND_ATTR__ __RECEIVE_ATTR__ __KEY_ATTR__ aria-checked="__STATE__">
+  <button id="__ID__" role="switch"__SEND_ATTR____RECEIVE_ATTR____KEY_ATTR____SAVE_ATTR__ aria-checked="__STATE__">
     <span></span><span></span>
   </button>
   __APPEND__
@@ -953,10 +953,11 @@ class BittyJs extends HTMLElement {
     // values. They are converted into the full attribute
     // strings here. The prevents outputting empty attributes.
     subs.__RECEIVE_ATTR__ = subs.__RECEIVE__
-      ? `data-r="${subs.__RECEIVE__}"`
+      ? ` data-r="${subs.__RECEIVE__}"`
       : "";
-    subs.__SEND_ATTR__ = subs.__SEND__ ? `data-s="${subs.__SEND__}"` : "";
-    subs.__KEY_ATTR__ = subs.__KEY__ ? `data-s="${subs.__KEY__}"` : "";
+    subs.__SEND_ATTR__ = subs.__SEND__ ? ` data-s="${subs.__SEND__}"` : "";
+    subs.__KEY_ATTR__ = subs.__KEY__ ? ` data-s="${subs.__KEY__}"` : "";
+    subs.__SAVE_ATTR__ = subs.__SAVE__ ? ` data-save="${subs.__SAVE__}"` : "";
     return this.b.render("switch", subs);
   }
 
