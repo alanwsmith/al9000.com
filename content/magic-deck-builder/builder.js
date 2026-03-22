@@ -1,4 +1,4 @@
-export const b = { init: "loadStateAndData" };
+export const b = { init: "buildUI" };
 
 let allCards = [];
 let state;
@@ -29,7 +29,7 @@ const options = {
 };
 
 export function buildUI() {
-  b.trigger("uiColors uiDebuggingSwitch uiOptions results");
+  b.trigger("uiColors uiDebuggingSwitch uiOptions loadStateAndData");
 }
 
 export function cardCount(count, __, el) {
@@ -128,6 +128,9 @@ export function filteredCards() {
   selectedCards.sort(cardSorter);
   b.send(selectedCards.length, "cardCount");
   const cardsPerPage = 9;
+  if (!b.qs(`[data-r~="displayPageNumber"]`).value) {
+    b.qs(`[data-r~="displayPageNumber"]`).value = 1;
+  }
   const pages = Math.ceil(selectedCards.length / cardsPerPage);
   const maxIndex = (parseInt(b.qs(`[data-r~="displayPageNumber"]`).value) *
     cardsPerPage) - 1;
@@ -200,7 +203,6 @@ export function getValues() {
 // }
 
 export async function loadStateAndData() {
-  console.log("HERE2");
   state = b.loadPage("state", defaultState());
   b.debugging = state.debugging;
   const hexChars = "abcdef1234567890";
@@ -213,7 +215,7 @@ export async function loadStateAndData() {
       result.cards.forEach((card) => allCards.push(card));
     }
   }
-  b.trigger("buildUI");
+  b.trigger("search");
 }
 
 export function nextPage(_, __, el) {
@@ -231,17 +233,13 @@ export function previousPage(_, __, el) {
 export function resetState() {
   state = defaultState();
   state.debugging = true;
-  state.display.push(
-    { aria: { checked: "true" }, dataset: { r: "displayDebuggingToggle" } },
-  );
   b.savePage("state", state);
   b.trigger("loadStateAndData");
 }
 
 export function results(_, __, el) {
-  console.log("HERE1");
-  // state.values = getValues();
-  // b.savePage("state", state);
+  state.values = getValues();
+  b.savePage("state", state);
   el.replaceChildren(
     ...filteredCards().map((card) => {
       const subs = {
@@ -257,7 +255,9 @@ export function results(_, __, el) {
 }
 
 export function search(ev, sender, ___) {
-  b.qs(`[data-r~="displayPageNumber"]`).value = 1;
+  if (sender && sender.propBool("include") === true) {
+    b.qs(`[data-r~="displayPageNumber"]`).value = 1;
+  }
   b.debounce("newSearch", "results", 200);
 }
 
