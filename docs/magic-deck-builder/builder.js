@@ -28,8 +28,13 @@ const options = {
   ],
 };
 
+const defaultExcludes = {
+  type_line: "battle",
+  oracle_text: "name sticker|attraction",
+};
+
 export function buildUI() {
-  b.trigger("uiColors uiDebuggingSwitch uiOptions loadStateAndData");
+  b.trigger("uiColors uiDebuggingSwitch uiOptions loadDataAndState");
 }
 
 export function cardCount(count, __, el) {
@@ -54,6 +59,13 @@ function defaultState() {
       },
     ],
   };
+}
+
+export function excludeDefaults(_, sender, el) {
+  if (sender.prop("key") === el.prop("key")) {
+    el.value = defaultExcludes[sender.prop("key")];
+    b.trigger("search");
+  }
 }
 
 function filterCardName(card) {
@@ -202,7 +214,7 @@ export function getValues() {
 //   });
 // }
 
-export async function loadStateAndData() {
+export async function loadDataAndState() {
   state = b.loadPage("state", defaultState());
   b.debugging = state.debugging;
   const hexChars = "abcdef1234567890";
@@ -215,6 +227,7 @@ export async function loadStateAndData() {
       result.cards.forEach((card) => allCards.push(card));
     }
   }
+  setValues(state.values);
   b.trigger("search");
 }
 
@@ -230,12 +243,12 @@ export function previousPage(_, __, el) {
   }
 }
 
-export function resetState() {
-  state = defaultState();
-  state.debugging = true;
-  b.savePage("state", state);
-  b.trigger("loadStateAndData");
-}
+// export function resetState() {
+//   state = defaultState();
+//   state.debugging = true;
+//   b.savePage("state", state);
+//   b.trigger("loadDataAndState");
+// }
 
 export function results(_, __, el) {
   state.values = getValues();
@@ -270,35 +283,16 @@ export function selectOption(_, sender, el) {
 }
 
 export function setValues(payload) {
+  for (const item of payload) {
+    const el = b.qs(`#${item.id}`);
+    for (const key in item.keys) {
+      el[key] = item.keys[key];
+    }
+    for (const key in item.aria) {
+      el.setAttribute(`aria-${key}`, item.aria[key]);
+    }
+  }
 }
-
-// export function setDisplayState(els) {
-//   // TODO: Update this and getDisplayState so that
-//   // the data-r will find keys with `display`
-//   // in them but can also have other signals
-//   // as well.
-//   if (els) {
-//     for (const data of els) {
-//       const selector = data.dataset.key
-//         ? `[data-r="${data.dataset.r}"][data-key="${data.dataset.key}"]`
-//         : `[data-r="${data.dataset.r}"]`;
-//       const el = b.qs(selector);
-//       if (el) {
-//         if (data.value) {
-//           el.value = data.value;
-//         }
-//         if (data.checked) {
-//           el.checked = data.checked;
-//         }
-//         for (const ariaKey in data.aria) {
-//           if (ariaKey !== "r" && ariaKey !== "key") {
-//             el.setAttribute(`aria-${ariaKey}`, data.aria[ariaKey]);
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
 
 export async function toggleDebugging(_, sender, ___) {
   sender.toggleAria("checked");
