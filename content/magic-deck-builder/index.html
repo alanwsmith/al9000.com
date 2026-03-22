@@ -61,11 +61,13 @@
       <div>Results: <span data-r="cardCount"></span></div>
       <label class="block" for="pageNumber">Page:</label>
       <button data-s="previousPage">&lt;</button>
-      <input size="3" type="text" id="pageNumber" data-r="displayPageNumber nextPage previousPage" data-s="changePage" autocomplete="off" />
+      <input data-s="changePage" data-r="displayPageNumber nextPage previousPage" data-save="true" size="3" type="text" id="pageNumber" autocomplete="off" />
       <button data-s="nextPage">&gt;</button>
     </div>
     <div data-r="uiDebuggingSwitch"></div>
 
+
+    <div data-r="testQueryBuilder"></div>
 
     [#
     <div>
@@ -81,7 +83,7 @@
 [! block templates !]
 <script type="text/html" id="colorTemplate">
   <label class="block">
-    <input data-s="search" data-r="displayColorCheckbox" data-key="__COLOR_KEY__" type="checkbox" />
+    <input data-s="search" data-r="displayColorCheckbox" data-key="__COLOR_KEY__" data-save="true" id="color_checkbox___COLOR_KEY__" type="checkbox" />
     __COLOR_NAME__ 
   </label>
 </script>
@@ -107,7 +109,6 @@
 <script type="text/html" id="optionSpacerTemplate">
   <option value="">---</option>
 </script>
-
 
 [! endblock !]
 

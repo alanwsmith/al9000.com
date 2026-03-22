@@ -1,4 +1,4 @@
-export const b = { init: "buildUI" };
+export const b = { init: "buildUI testQueryBuilder" };
 
 let allCards = [];
 let state;
@@ -113,12 +113,28 @@ function filterColors(card) {
 export function filterCards(card, key, include) {
   const el = b.qs(`[data-s~=search][data-key=${key}][data-include=${include}]`);
   if (el.value) {
-    const pattern = new RegExp(el.value, "gi");
-    for (const face of card.faces) {
-      if (face[el.dataset.key].match(pattern)) {
+    for (const query of queryBuilder(el.value)) {
+      let passes = 0;
+      for (const check of query) {
+        const pattern = new RegExp(check, "gi");
+        for (const face of card.faces) {
+          if (face[el.dataset.key].match(pattern)) {
+            passes += 1;
+          }
+        }
+      }
+      if (passes >= query.length) {
         return include;
       }
     }
+
+    // const pattern = new RegExp(el.value, "gi");
+    // for (const face of card.faces) {
+    //   if (face[el.dataset.key].match(pattern)) {
+    //     return include;
+    //   }
+    // }
+
     return !include;
   }
   return true;
@@ -250,6 +266,17 @@ export function previousPage(_, __, el) {
 //   b.trigger("loadDataAndState");
 // }
 
+function queryBuilder(input) {
+  const queries = input.split("||")
+    .map((theOr) => theOr.trim())
+    .map((rawOr) =>
+      rawOr.split("&&")
+        .map((rawAnd) => rawAnd.trim())
+    );
+  // console.log(queries);
+  return queries;
+}
+
 export function results(_, __, el) {
   state.values = getValues();
   b.savePage("state", state);
@@ -339,3 +366,12 @@ export function uiOptions(_, __, el) {
     el.appendChild(b.render("optionTemplate", { __VALUE__: value }));
   }
 }
+
+//export function testQueryBuilder(_, __, el) {
+
+// const tests = [
+//   {given: "alfa", expect: ["alfa"]}
+// ]
+
+//el.innerHTML = "asdf";
+//}
