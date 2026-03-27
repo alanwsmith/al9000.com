@@ -203,13 +203,31 @@ export function filterCards(card, key, include) {
 }
 
 function filterCardsV2(cards, query) {
+  // Do the name first if there is one.
   if (query.name) {
     const pattern = new RegExp(query.name, "gi");
     return cards.filter((card) => {
       return card.name.match(pattern) !== null;
     });
   }
-  return cards;
+
+  let selectedCards = cards.filter((card) => includeTypeV2(card, query));
+  // include type
+
+  return selectedCards;
+}
+
+function includeTypeV2(card, query) {
+  if (!query.include_type) {
+    return true;
+  }
+  const pattern = new RegExp(query.include_type, "gi");
+  for (const face of card.faces) {
+    if (face.type_line.match(pattern)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 export function filteredCards() {
