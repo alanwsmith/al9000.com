@@ -34,15 +34,6 @@ const defaultExcludes = {
   oracle_text: "name sticker|attraction",
 };
 
-// function getActiveColors(card) {
-//   const colorSet = new Set();
-//   card.faces.forEach((face) => {
-//     face.color_identity.forEach((color) => colorSet.add(color));
-//     face.colors.forEach((color) => colorSet.add(color));
-//   });
-//   return Array.from(colorSet);
-// }
-
 export function buildUI() {
   b.trigger(
     "uiColors uiDebuggingSwitch uiOptions loadDataAndState testResults",
@@ -80,45 +71,6 @@ function defaultState() {
   };
 }
 
-//function excludeColors(card) {
-//  const includeColorless =
-//    b.qs(`[data-r=displayColorlessCheckbox]`).checked === true;
-//  if (includeColorless && getActiveColors(card).length === 0) {
-//    return true;
-//  }
-//  const colorsToCheck = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
-//    .filter((input) => input.checked === false)
-//    .map((input) => input.dataset.key)
-//    .filter((key) => getActiveColors(card).includes(key));
-//  //.map((input) => input.dataset.key);
-//  console.log(colorsToCheck);
-//  // .filter((input) => getActiveColors(card).includes(input.dataset.key));
-//  if (colorsToCheck.length > 0) {
-//    return false;
-//  }
-//  return true;
-//  // const colors = getActiveColors(card);
-//  // console.log(colors);
-//  //   let hasColor = false;
-//  //   hasColors.forEach((color) => {
-//  //     card.faces.forEach((face) => {
-//  //       if (face.color_identity.includes(color)) {
-//  //         hasColor = true;
-//  //       }
-//  //     });
-//  //   });
-//  //   let doesNotHaveColor = true;
-//  //   doesNotHaveColors.forEach((color) => {
-//  //     card.faces.forEach((face) => {
-//  //       if (face.color_identity.includes(color)) {
-//  //         doesNotHaveColor = false;
-//  //       }
-//  //     });
-//  //   });
-//  //   return hasColor === true && doesNotHaveColor === true;
-//  // }
-//}
-
 export function excludeDefaults(_, sender, el) {
   if (sender.prop("key") === el.prop("key")) {
     el.value = defaultExcludes[sender.prop("key")];
@@ -146,76 +98,6 @@ function excludeTypeLineV2(card, query) {
   return passCard;
 }
 
-// function filterCardName(card) {
-//   const value = b.qs(`[data-r~="displayNameSearch"]`).value.trim();
-//   if (value === "") return true;
-//   const pattern = new RegExp(value, "gi");
-//   return card.name.match(pattern) !== null;
-// }
-
-// function filterCardNameIsActive() {
-//   const value = b.qs(`[data-r~="displayNameSearch"]`).value.trim();
-//   if (!value) return false;
-//   return true;
-// }
-
-// function filterColors(card) {
-//   const hasColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
-//     .filter((input) => input.checked)
-//     .map((input) => input.dataset.key);
-//   if (hasColors.length === 0) {
-//     return true;
-//   }
-//   const doesNotHaveColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
-//     .filter((input) => input.checked === false)
-//     .map((input) => input.dataset.key);
-//   let hasColor = false;
-//   hasColors.forEach((color) => {
-//     card.faces.forEach((face) => {
-//       if (face.color_identity.includes(color)) {
-//         hasColor = true;
-//       }
-//     });
-//   });
-//   let doesNotHaveColor = true;
-//   doesNotHaveColors.forEach((color) => {
-//     card.faces.forEach((face) => {
-//       if (face.color_identity.includes(color)) {
-//         doesNotHaveColor = false;
-//       }
-//     });
-//   });
-//   return hasColor === true && doesNotHaveColor === true;
-// }
-
-// export function filterCards(card, key, include) {
-//   const el = b.qs(`[data-s~=search][data-key=${key}][data-include=${include}]`);
-//   if (el.value) {
-//     for (const query of queryBuilder(el.value)) {
-//       let passes = 0;
-//       for (const check of query) {
-//         const pattern = new RegExp(check, "gi");
-//         for (const face of card.faces) {
-//           if (face[el.dataset.key].match(pattern)) {
-//             passes += 1;
-//           }
-//         }
-//       }
-//       if (passes >= query.length) {
-//         return include;
-//       }
-//     }
-//     // const pattern = new RegExp(el.value, "gi");
-//     // for (const face of card.faces) {
-//     //   if (face[el.dataset.key].match(pattern)) {
-//     //     return include;
-//     //   }
-//     // }
-//     return !include;
-//   }
-//   return true;
-// }
-
 function filterCardsV2(cards, query) {
   if (query.name) {
     const pattern = new RegExp(query.name, "gi");
@@ -229,26 +111,8 @@ function filterCardsV2(cards, query) {
     .filter((card) => excludeOracleTextV2(card, query))
     .filter((card) => excludeTypeLineV2(card, query))
     .filter((card) => includeColorsV2(card, query));
-  //    .filter((card) => includeColorlessV2(card, query));
   return selectedCards;
 }
-
-// function includeColorlessV2(card, query) {
-//   if (query.colorless === false) {
-//     for (const face of card.faces) {
-//       if (face.colors.length === 0 && face.color_identity.length === 0) {
-//         return false;
-//       }
-//     }
-//   } else {
-//     for (const face of card.faces) {
-//       if (face.colors.length > 0 || face.color_identity.length > 0) {
-//         return false;
-//       }
-//     }
-//   }
-//   return true;
-// }
 
 function cardIsColorless(card) {
   let colorlessCount = 0;
@@ -310,37 +174,6 @@ function includeTypeLineV2(card, query) {
   return false;
 }
 
-//export function filteredCards() {
-//  let selectedCards;
-//  if (filterCardNameIsActive()) {
-//    selectedCards = allCards
-//      .filter((card) => filterCardName(card));
-//  } else {
-//    selectedCards = allCards
-//      //.filter((card) => filterColors(card))
-//      .filter((card) => includeColors(card))
-//      .filter((card) => excludeColors(card))
-//      .filter((card) => filterCards(card, "type_line", true))
-//      .filter((card) => filterCards(card, "oracle_text", true))
-//      .filter((card) => filterCards(card, "type_line", false))
-//      .filter((card) => filterCards(card, "oracle_text", false));
-//  }
-//  selectedCards.sort(cardSorter);
-//  b.send(selectedCards.length, "cardCount");
-//  const cardsPerPage = 9;
-//  if (!b.qs(`[data-r~="displayPageNumber"]`).value) {
-//    b.qs(`[data-r~="displayPageNumber"]`).value = 1;
-//  }
-//  const pages = Math.ceil(selectedCards.length / cardsPerPage);
-//  const maxIndex = (parseInt(b.qs(`[data-r~="displayPageNumber"]`).value) *
-//    cardsPerPage) - 1;
-//  const minIndex = maxIndex - cardsPerPage + 1;
-//  return selectedCards.filter((
-//    card,
-//    index,
-//  ) => (index >= minIndex && index <= maxIndex));
-//}
-
 export function getValues() {
   const keys = [
     "checked",
@@ -370,62 +203,6 @@ export function getValues() {
       return item;
     });
 }
-
-// function includeColors(card) {
-//   const hasColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
-//     .filter((input) => input.checked)
-//     .map((input) => input.dataset.key);
-//   const includeColorless =
-//     b.qs(`[data-r=displayColorlessCheckbox]`).checked === true;
-//   if (hasColors.length === 0 && includeColorless === false) {
-//     return true;
-//   }
-//   let includeCard = false;
-//   card.faces.forEach((face) => {
-//     hasColors.forEach((color) => {
-//       if (face.colors.includes(color)) {
-//         includeCard = true;
-//       }
-//       if (face.color_identity.includes(color)) {
-//         includeCard = true;
-//       }
-//     });
-//     if (face.colors.length === 0 && includeColorless) {
-//       includeCard = true;
-//     }
-//     if (face.color_identity.length === 0 && includeColorless) {
-//       includeCard = true;
-//     }
-//   });
-//   return includeCard;
-
-// const hasColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
-//   .filter((input) => input.checked)
-//   .map((input) => input.dataset.key);
-// if (hasColors.length === 0) {
-//   return true;
-// }
-// const doesNotHaveColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
-//   .filter((input) => input.checked === false)
-//   .map((input) => input.dataset.key);
-// let hasColor = false;
-// hasColors.forEach((color) => {
-//   card.faces.forEach((face) => {
-//     if (face.color_identity.includes(color)) {
-//       hasColor = true;
-//     }
-//   });
-// });
-// let doesNotHaveColor = true;
-// doesNotHaveColors.forEach((color) => {
-//   card.faces.forEach((face) => {
-//     if (face.color_identity.includes(color)) {
-//       doesNotHaveColor = false;
-//     }
-//   });
-// });
-// return hasColor === true && doesNotHaveColor === true;
-//}
 
 export async function loadDataAndState() {
   state = b.loadPage("state", defaultState());
@@ -575,7 +352,6 @@ export async function testResults(_, __, el) {
           el.innerHTML += `ERROR LOADING: ${testFile}\n`;
         }
       }
-
       if (didSoloTest === false) {
         for (const testDir of testFileJSON.tests) {
           const cardsData = await b.get(`${testDir}/cards.json`);
@@ -658,12 +434,3 @@ export function uiOptions(_, __, el) {
     }
   }
 }
-
-//export function testQueryBuilder(_, __, el) {
-
-// const tests = [
-//   {given: "alfa", expect: ["alfa"]}
-// ]
-
-//el.innerHTML = "asdf";
-//}
