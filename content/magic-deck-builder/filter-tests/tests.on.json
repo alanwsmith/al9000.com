@@ -1,0 +1,10 @@
+{
+  "tests": [
+    [! for f in folders_in_folder("/magic-deck-builder/filter-tests/tests") !]
+      "/[@ f @]"
+    [! if not loop.last !]
+      ,
+    [! endif !]
+    [! endfor !]
+  ]
+}

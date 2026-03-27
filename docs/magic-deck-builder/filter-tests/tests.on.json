@@ -1,0 +1,7 @@
+{
+  "tests": [
+      "/magic-deck-builder/filter-tests/tests/0010-empty"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0020-name"
+  ]
+}

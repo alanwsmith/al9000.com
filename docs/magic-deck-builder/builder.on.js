@@ -203,7 +203,13 @@ export function filterCards(card, key, include) {
 }
 
 function filterCardsV2(cards, query) {
-  return ["Storm Crow"];
+  if (query.name) {
+    const pattern = new RegExp(query.name, "gi");
+    return cards.filter((card) => {
+      return card.name.match(pattern) !== null;
+    });
+  }
+  return cards;
 }
 
 export function filteredCards() {
@@ -415,29 +421,31 @@ export function setValues(payload) {
 
 export async function testResults(_, __, el) {
   if (el) {
-    const testFiles = [
-      "/magic-deck-builder/filter-tests/jsons/0010-empty.json",
-    ];
-    for (const testFile of testFiles) {
-      const testData = await b.get(testFile);
-      if (testData) {
-        el.innerHTML += `Checking: ${testFile}\n`;
-        if (
-          JSON.stringify(filterCardsV2(testData.cards, testData.query)) ===
-            JSON.stringify(testData.results)
-        ) {
-          el.innerHTML += `PASSED: ${testFile}\n`;
+    const testFileJSON = await b.get(
+      "/magic-deck-builder/filter-tests/tests.on.json",
+    );
+    if (testFileJSON) {
+      for (const testDir of testFileJSON.tests) {
+        const cardsData = await b.get(`${testDir}/cards.json`);
+        const queryData = await b.get(`${testDir}/query.json`);
+        const resultsData = await b.get(`${testDir}/results.json`);
+        if (cardsData && queryData && resultsData) {
+          el.innerHTML += `Checking: ${testDir}\n`;
+          const results = filterCardsV2(cardsData.cards, queryData.query);
+          const resultNames = results.map((card) => card.name);
+          if (
+            JSON.stringify(resultNames) ===
+              JSON.stringify(resultsData.resultNames)
+          ) {
+            el.innerHTML += `PASSED: ${testDir}\n`;
+          } else {
+            el.innerHTML += `FAILED: ${testDir}\n`;
+            console.log(resultNames);
+            console.log(resultsData.resultNames);
+          }
         } else {
-          el.innerHTML += `FAILED: ${testFile}\n`;
-          console.log(
-            filterCardsV2(testData.cards, testData.query),
-          );
-          console.log(
-            testData.results,
-          );
+          el.innerHTML += `ERROR LOADING: ${testFile}\n`;
         }
-      } else {
-        el.innerHTML += `ERROR LOADING: ${testFile}\n`;
       }
     }
   }
