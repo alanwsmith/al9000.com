@@ -73,7 +73,7 @@ function defaultState() {
         value: "battle",
       },
       {
-        id: "oraclue_text_search_exclude",
+        id: "oracle_text_search_exclude",
         value: "name sticker|attraction",
       },
     ],
@@ -435,6 +435,8 @@ function buildQuery() {
   query.name = b.qs(`#name_search`)?.value.trim();
   query.include_type_line = b.qs(`#type_line_search_include`)?.value.trim();
   query.include_oracle_text = b.qs(`#oracle_text_search_include`)?.value.trim();
+  query.exclude_type_line = b.qs(`#type_line_search_exclude`)?.value.trim();
+  query.exclude_oracle_text = b.qs(`#oracle_text_search_exclude`)?.value.trim();
   return query;
 }
 
@@ -442,6 +444,7 @@ export function results(_, __, el) {
   if (el) {
     state.values = getValues();
     b.savePage("state", state);
+    console.log(buildQuery());
     el.replaceChildren(
       ...filterCardsV2(allCards, buildQuery()).map((card) => {
         const subs = {
@@ -480,11 +483,13 @@ export function selectOption(_, sender, el) {
 export function setValues(payload) {
   for (const item of payload) {
     const el = b.qs(`#${item.id}`);
-    for (const key in item.keys) {
-      el[key] = item.keys[key];
-    }
-    for (const key in item.aria) {
-      el.setAttribute(`aria-${key}`, item.aria[key]);
+    if (el) {
+      for (const key in item.keys) {
+        el[key] = item.keys[key];
+      }
+      for (const key in item.aria) {
+        el.setAttribute(`aria-${key}`, item.aria[key]);
+      }
     }
   }
 }
