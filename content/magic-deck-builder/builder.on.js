@@ -311,61 +311,7 @@ function includeColorsV2(card, query) {
     }
   }
   return passCard;
-
-  // if (passCard === true && query.colorless == true) {
-  //   return false;
-  // }
-
-  // console.log(passCard);
-  // console.log(colorlessCount === card.faces.length);
-  // console.log(query.colorless);
-
-  // if (
-  //   passCard === true ||
-  //   (query.colorless === true && colorlessCount === card.faces.length)
-  // ) {
-  //   return true;
-  // }
-
-  // if (
-  //   passCard === true &&
-  //   (query.colorless === true && colorlessCount === card.faces.length)
-  // ) {
-  //   return true;
-  // }
-
-  // if (
-  //   passCard === true &&
-  //   colorlessCount !== card.faces.length
-  // ) {
-  //   return !query.colorless;
-  // }
-  //return passCard;
 }
-
-// function includeColorsV2(card, query) {
-//   if (!query.colors && !query.color_identity) return true;
-//   let passCard = false;
-//   for (const face of card.faces) {
-//     if (query.colors) {
-//       for (const color of query.colors) {
-//         if (face.colors.includes(color)) passCard = true;
-//       }
-//       for (const color of face.colors) {
-//         if (!query.colors.includes(color)) return false;
-//       }
-//     }
-//     if (query.color_identity) {
-//       for (const color of query.color_identity) {
-//         if (face.color_identity.includes(color)) passCard = true;
-//       }
-//       for (const color of face.color_identity) {
-//         if (!query.color_identity.includes(color)) return false;
-//       }
-//     }
-//   }
-//   return passCard;
-// }
 
 function includeOracleTextV2(card, query) {
   if (!query.include_oracle_text) return true;
