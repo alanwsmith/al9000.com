@@ -4,8 +4,10 @@
       ,
       "/magic-deck-builder/filter-tests/tests/0020-name"
       ,
-      "/magic-deck-builder/filter-tests/tests/0030-include-type"
+      "/magic-deck-builder/filter-tests/tests/0030-include-text"
       ,
-      "/magic-deck-builder/filter-tests/tests/0040-include-text"
+      "/magic-deck-builder/filter-tests/tests/0035-include-type"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0040-exclude-text"
   ]
 }

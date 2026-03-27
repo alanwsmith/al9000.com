@@ -130,6 +130,16 @@ export function excludeDefaults(_, sender, el) {
   }
 }
 
+function excludeTextV2(card, query) {
+  if (!query.exclude_text) return false;
+  let skipCard = true;
+  const pattern = new RegExp(query.exclude_text, "gi");
+  for (const face of card.faces) {
+    if (face.oracle_text.match(pattern)) skipCard = false;
+  }
+  return skipCard;
+}
+
 function filterCardName(card) {
   const value = b.qs(`[data-r~="displayNameSearch"]`).value.trim();
   if (value === "") return true;
@@ -212,32 +222,25 @@ function filterCardsV2(cards, query) {
   }
   let selectedCards = cards
     .filter((card) => includeTextV2(card, query))
-    .filter((card) => includeTypeV2(card, query));
+    .filter((card) => includeTypeV2(card, query))
+    .filter((card) => excludeTextV2(card, query));
   return selectedCards;
 }
 
 function includeTextV2(card, query) {
-  if (!query.include_text) {
-    return true;
-  }
+  if (!query.include_text) return true;
   const pattern = new RegExp(query.include_text, "gi");
   for (const face of card.faces) {
-    if (face.oracle_text.match(pattern)) {
-      return true;
-    }
+    if (face.oracle_text.match(pattern)) return true;
   }
   return false;
 }
 
 function includeTypeV2(card, query) {
-  if (!query.include_type) {
-    return true;
-  }
+  if (!query.include_type) return true;
   const pattern = new RegExp(query.include_type, "gi");
   for (const face of card.faces) {
-    if (face.type_line.match(pattern)) {
-      return true;
-    }
+    if (face.type_line.match(pattern)) return true;
   }
   return false;
 }
@@ -458,20 +461,19 @@ export async function testResults(_, __, el) {
       for (const testDir of testFileJSON.tests) {
         const cardsData = await b.get(`${testDir}/cards.json`);
         const queryData = await b.get(`${testDir}/query.json`);
-        const resultsData = await b.get(`${testDir}/results.json`);
-        if (cardsData && queryData && resultsData) {
+        if (cardsData && queryData) {
           el.innerHTML += `Checking: ${testDir}\n`;
           const results = filterCardsV2(cardsData.cards, queryData.query);
           const resultNames = results.map((card) => card.name);
           if (
             JSON.stringify(resultNames) ===
-              JSON.stringify(resultsData.resultNames)
+              JSON.stringify(queryData.resultNames)
           ) {
             el.innerHTML += `PASSED: ${testDir}\n`;
           } else {
             el.innerHTML += `FAILED: ${testDir}\n`;
             console.log(resultNames);
-            console.log(resultsData.resultNames);
+            console.log(queryData.resultNames);
           }
         } else {
           el.innerHTML += `ERROR LOADING: ${testFile}\n`;

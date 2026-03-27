@@ -12,5 +12,6 @@
     "power_min": null,
     "toughness_max": null,
     "toughness_min": null
-  }
+  },
+  "resultNames": ["Storm Crow", "Pteramander"]
 }
