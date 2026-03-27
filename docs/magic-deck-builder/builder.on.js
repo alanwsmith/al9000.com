@@ -263,7 +263,6 @@ function cardIsColorless(card) {
 }
 
 function includeColorsV2(card, query) {
-  console.log(card);
   if (
     query.colors.length === 0 && query.color_identity.length === 0 &&
     query.colorless === false
@@ -281,25 +280,22 @@ function includeColorsV2(card, query) {
   //   return true;
   // }
 
-  if (query.colorless === true && cardIsColorless(card)) {
+  if (query.colorless === true && cardIsColorless(card) === true) {
     return true;
   }
-  if (cardIsColorless(card) && query.colorless === false) {
-    return false;
-  }
 
-  if (
-    (query.colors.length !== 0 || query.color_identity.length === 0) &&
-    query.colorless === true
-  ) {
-    return false;
-  }
+  // if (
+  //   (query.colors.length !== 0 || query.color_identity.length === 0) &&
+  //   query.colorless === true
+  // ) {
+  //   return false;
+  // }
 
-  let passCard = true;
+  let passCard = false;
   for (const face of card.faces) {
     if (query.colors.length > 0) {
       for (const color of query.colors) {
-        if (!face.colors.includes(color)) passCard = false;
+        if (face.colors.includes(color)) passCard = true;
       }
       for (const color of face.colors) {
         if (!query.colors.includes(color)) return false;
@@ -307,15 +303,18 @@ function includeColorsV2(card, query) {
     }
     if (query.color_identity.length > 0) {
       for (const color of query.color_identity) {
-        if (!face.color_identity.includes(color)) passCard = false;
+        if (face.color_identity.includes(color)) passCard = true;
       }
       for (const color of face.color_identity) {
         if (!query.color_identity.includes(color)) return false;
       }
     }
   }
-
   return passCard;
+
+  // if (passCard === true && query.colorless == true) {
+  //   return false;
+  // }
 
   // console.log(passCard);
   // console.log(colorlessCount === card.faces.length);
@@ -581,7 +580,7 @@ export function results(_, __, el) {
           };
           return b.render("cardTemplate", subs);
         })
-        .filter((card, tmpIndex) => tmpIndex < 10),
+        .filter((card, tmpIndex) => tmpIndex < 30),
     );
   }
 }
