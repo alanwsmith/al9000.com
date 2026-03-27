@@ -146,18 +146,18 @@ function excludeTypeLineV2(card, query) {
   return passCard;
 }
 
-function filterCardName(card) {
-  const value = b.qs(`[data-r~="displayNameSearch"]`).value.trim();
-  if (value === "") return true;
-  const pattern = new RegExp(value, "gi");
-  return card.name.match(pattern) !== null;
-}
+// function filterCardName(card) {
+//   const value = b.qs(`[data-r~="displayNameSearch"]`).value.trim();
+//   if (value === "") return true;
+//   const pattern = new RegExp(value, "gi");
+//   return card.name.match(pattern) !== null;
+// }
 
-function filterCardNameIsActive() {
-  const value = b.qs(`[data-r~="displayNameSearch"]`).value.trim();
-  if (!value) return false;
-  return true;
-}
+// function filterCardNameIsActive() {
+//   const value = b.qs(`[data-r~="displayNameSearch"]`).value.trim();
+//   if (!value) return false;
+//   return true;
+// }
 
 // function filterColors(card) {
 //   const hasColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
@@ -188,35 +188,33 @@ function filterCardNameIsActive() {
 //   return hasColor === true && doesNotHaveColor === true;
 // }
 
-export function filterCards(card, key, include) {
-  const el = b.qs(`[data-s~=search][data-key=${key}][data-include=${include}]`);
-  if (el.value) {
-    for (const query of queryBuilder(el.value)) {
-      let passes = 0;
-      for (const check of query) {
-        const pattern = new RegExp(check, "gi");
-        for (const face of card.faces) {
-          if (face[el.dataset.key].match(pattern)) {
-            passes += 1;
-          }
-        }
-      }
-      if (passes >= query.length) {
-        return include;
-      }
-    }
-
-    // const pattern = new RegExp(el.value, "gi");
-    // for (const face of card.faces) {
-    //   if (face[el.dataset.key].match(pattern)) {
-    //     return include;
-    //   }
-    // }
-
-    return !include;
-  }
-  return true;
-}
+// export function filterCards(card, key, include) {
+//   const el = b.qs(`[data-s~=search][data-key=${key}][data-include=${include}]`);
+//   if (el.value) {
+//     for (const query of queryBuilder(el.value)) {
+//       let passes = 0;
+//       for (const check of query) {
+//         const pattern = new RegExp(check, "gi");
+//         for (const face of card.faces) {
+//           if (face[el.dataset.key].match(pattern)) {
+//             passes += 1;
+//           }
+//         }
+//       }
+//       if (passes >= query.length) {
+//         return include;
+//       }
+//     }
+//     // const pattern = new RegExp(el.value, "gi");
+//     // for (const face of card.faces) {
+//     //   if (face[el.dataset.key].match(pattern)) {
+//     //     return include;
+//     //   }
+//     // }
+//     return !include;
+//   }
+//   return true;
+// }
 
 function filterCardsV2(cards, query) {
   if (query.name) {
@@ -269,28 +267,9 @@ function includeColorsV2(card, query) {
   ) {
     return true;
   }
-
-  // let colorlessCount = 0;
-  // for (const face of card.faces) {
-  //   if (face.colors.length === 0 && face.color_identity.length === 0) {
-  //     colorlessCount += 1;
-  //   }
-  // }
-  // if (colorlessCount === card.faces.length && query.colorless === true) {
-  //   return true;
-  // }
-
   if (query.colorless === true && cardIsColorless(card) === true) {
     return true;
   }
-
-  // if (
-  //   (query.colors.length !== 0 || query.color_identity.length === 0) &&
-  //   query.colorless === true
-  // ) {
-  //   return false;
-  // }
-
   let passCard = false;
   for (const face of card.faces) {
     if (query.colors.length > 0) {
@@ -331,36 +310,36 @@ function includeTypeLineV2(card, query) {
   return false;
 }
 
-export function filteredCards() {
-  let selectedCards;
-  if (filterCardNameIsActive()) {
-    selectedCards = allCards
-      .filter((card) => filterCardName(card));
-  } else {
-    selectedCards = allCards
-      //.filter((card) => filterColors(card))
-      .filter((card) => includeColors(card))
-      .filter((card) => excludeColors(card))
-      .filter((card) => filterCards(card, "type_line", true))
-      .filter((card) => filterCards(card, "oracle_text", true))
-      .filter((card) => filterCards(card, "type_line", false))
-      .filter((card) => filterCards(card, "oracle_text", false));
-  }
-  selectedCards.sort(cardSorter);
-  b.send(selectedCards.length, "cardCount");
-  const cardsPerPage = 9;
-  if (!b.qs(`[data-r~="displayPageNumber"]`).value) {
-    b.qs(`[data-r~="displayPageNumber"]`).value = 1;
-  }
-  const pages = Math.ceil(selectedCards.length / cardsPerPage);
-  const maxIndex = (parseInt(b.qs(`[data-r~="displayPageNumber"]`).value) *
-    cardsPerPage) - 1;
-  const minIndex = maxIndex - cardsPerPage + 1;
-  return selectedCards.filter((
-    card,
-    index,
-  ) => (index >= minIndex && index <= maxIndex));
-}
+//export function filteredCards() {
+//  let selectedCards;
+//  if (filterCardNameIsActive()) {
+//    selectedCards = allCards
+//      .filter((card) => filterCardName(card));
+//  } else {
+//    selectedCards = allCards
+//      //.filter((card) => filterColors(card))
+//      .filter((card) => includeColors(card))
+//      .filter((card) => excludeColors(card))
+//      .filter((card) => filterCards(card, "type_line", true))
+//      .filter((card) => filterCards(card, "oracle_text", true))
+//      .filter((card) => filterCards(card, "type_line", false))
+//      .filter((card) => filterCards(card, "oracle_text", false));
+//  }
+//  selectedCards.sort(cardSorter);
+//  b.send(selectedCards.length, "cardCount");
+//  const cardsPerPage = 9;
+//  if (!b.qs(`[data-r~="displayPageNumber"]`).value) {
+//    b.qs(`[data-r~="displayPageNumber"]`).value = 1;
+//  }
+//  const pages = Math.ceil(selectedCards.length / cardsPerPage);
+//  const maxIndex = (parseInt(b.qs(`[data-r~="displayPageNumber"]`).value) *
+//    cardsPerPage) - 1;
+//  const minIndex = maxIndex - cardsPerPage + 1;
+//  return selectedCards.filter((
+//    card,
+//    index,
+//  ) => (index >= minIndex && index <= maxIndex));
+//}
 
 export function getValues() {
   const keys = [
@@ -392,61 +371,61 @@ export function getValues() {
     });
 }
 
-function includeColors(card) {
-  const hasColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
-    .filter((input) => input.checked)
-    .map((input) => input.dataset.key);
-  const includeColorless =
-    b.qs(`[data-r=displayColorlessCheckbox]`).checked === true;
-  if (hasColors.length === 0 && includeColorless === false) {
-    return true;
-  }
-  let includeCard = false;
-  card.faces.forEach((face) => {
-    hasColors.forEach((color) => {
-      if (face.colors.includes(color)) {
-        includeCard = true;
-      }
-      if (face.color_identity.includes(color)) {
-        includeCard = true;
-      }
-    });
-    if (face.colors.length === 0 && includeColorless) {
-      includeCard = true;
-    }
-    if (face.color_identity.length === 0 && includeColorless) {
-      includeCard = true;
-    }
-  });
-  return includeCard;
+// function includeColors(card) {
+//   const hasColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
+//     .filter((input) => input.checked)
+//     .map((input) => input.dataset.key);
+//   const includeColorless =
+//     b.qs(`[data-r=displayColorlessCheckbox]`).checked === true;
+//   if (hasColors.length === 0 && includeColorless === false) {
+//     return true;
+//   }
+//   let includeCard = false;
+//   card.faces.forEach((face) => {
+//     hasColors.forEach((color) => {
+//       if (face.colors.includes(color)) {
+//         includeCard = true;
+//       }
+//       if (face.color_identity.includes(color)) {
+//         includeCard = true;
+//       }
+//     });
+//     if (face.colors.length === 0 && includeColorless) {
+//       includeCard = true;
+//     }
+//     if (face.color_identity.length === 0 && includeColorless) {
+//       includeCard = true;
+//     }
+//   });
+//   return includeCard;
 
-  // const hasColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
-  //   .filter((input) => input.checked)
-  //   .map((input) => input.dataset.key);
-  // if (hasColors.length === 0) {
-  //   return true;
-  // }
-  // const doesNotHaveColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
-  //   .filter((input) => input.checked === false)
-  //   .map((input) => input.dataset.key);
-  // let hasColor = false;
-  // hasColors.forEach((color) => {
-  //   card.faces.forEach((face) => {
-  //     if (face.color_identity.includes(color)) {
-  //       hasColor = true;
-  //     }
-  //   });
-  // });
-  // let doesNotHaveColor = true;
-  // doesNotHaveColors.forEach((color) => {
-  //   card.faces.forEach((face) => {
-  //     if (face.color_identity.includes(color)) {
-  //       doesNotHaveColor = false;
-  //     }
-  //   });
-  // });
-  // return hasColor === true && doesNotHaveColor === true;
-}
+// const hasColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
+//   .filter((input) => input.checked)
+//   .map((input) => input.dataset.key);
+// if (hasColors.length === 0) {
+//   return true;
+// }
+// const doesNotHaveColors = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
+//   .filter((input) => input.checked === false)
+//   .map((input) => input.dataset.key);
+// let hasColor = false;
+// hasColors.forEach((color) => {
+//   card.faces.forEach((face) => {
+//     if (face.color_identity.includes(color)) {
+//       hasColor = true;
+//     }
+//   });
+// });
+// let doesNotHaveColor = true;
+// doesNotHaveColors.forEach((color) => {
+//   card.faces.forEach((face) => {
+//     if (face.color_identity.includes(color)) {
+//       doesNotHaveColor = false;
+//     }
+//   });
+// });
+// return hasColor === true && doesNotHaveColor === true;
+//}
 
 export async function loadDataAndState() {
   state = b.loadPage("state", defaultState());
