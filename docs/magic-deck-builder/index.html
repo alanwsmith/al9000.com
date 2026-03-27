@@ -188,7 +188,7 @@ body {
 
 <div class="columns">
   <div class="content">
-    <div data-r="results"></div>
+    <div class="results" data-r="results"></div>
   </div>
 
   <div class="sidebar default-flow">
@@ -269,9 +269,19 @@ body {
 </script>
 
 <script type="text/html" id="cardTemplate">
-  <div class="card">
-      <div>__CARD_NAME__</div>
-    <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
+  <div class="card" data-key="__CARD_ID__">
+    <div class="main-card">
+      <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
+      <div>
+        <div class="card-level" data-r="cardLevel">__CARD_LEVEL__</div>
+        <button data-s="setCardLevel" data-key="2">2</button>
+        <button data-s="setCardLevel" data-key="1">1</button>
+        <button data-s="setCardLevel" data-key="0">0</button>
+        <button data-s="setCardLevel" data-key="-1">-1</button>
+      </div>
+    </div>
+
+
   </div>
 </script>
 

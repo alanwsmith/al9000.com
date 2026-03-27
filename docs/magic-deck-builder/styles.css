@@ -2,6 +2,10 @@
   max-width: 10rem;
 }
 
+.card-level {
+  min-height: 1.4rem;
+}
+
 .columns {
   display: grid; 
   grid-template-columns: 1fr 12rem;
@@ -11,10 +15,13 @@
   border: var(--faded-default-border);
 }
 
+.main-card {
+  display: grid;
+  grid-template-columns: 1fr 4ch;
+}
 
-[data-r=results] {
+.results {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-

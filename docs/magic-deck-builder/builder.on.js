@@ -94,7 +94,7 @@ export function clearQuery(_, sender, el) {
 
 function defaultState() {
   return {
-    debugging: false,
+    debug: false,
     values: [
       {
         id: "type_list_search_exclude",
@@ -105,6 +105,7 @@ function defaultState() {
         value: "name sticker|attraction",
       },
     ],
+    cardLevels: {},
   };
 }
 
@@ -233,10 +234,9 @@ function includeTypeLineV2(card, query) {
 
 export async function loadDataAndState() {
   state = b.loadPage("state", defaultState());
-  b.debugging = state.debugging;
   const hexChars = "abcdef1234567890";
   let dataKeys = hexChars.split("");
-  if (b.debugging) dataKeys = ["debug"];
+  if (state.debug) dataKeys = ["debug"];
   allCards = [];
   for (let dataKey of dataKeys) {
     const result = await b.get(`/magic-data/scryfall-cards/${dataKey}.json`);
@@ -391,21 +391,12 @@ export async function testResults(_, __, el) {
   }
 }
 
-export async function toggleDebugging(_, sender, ___) {
+export function toggleDebugging(_, sender, ___) {
   sender.toggleAria("checked");
-  state.debugging = sender.ariaBool("checked");
-  b.debugging = state.debugging;
-  const hexChars = "abcdef1234567890";
-  let dataKeys = hexChars.split("");
-  if (b.debugging) dataKeys = ["debug"];
-  allCards = [];
-  for (let dataKey of dataKeys) {
-    const result = await b.get(`/magic-data/scryfall-cards/${dataKey}.json`);
-    if (result) {
-      result.cards.forEach((card) => allCards.push(card));
-    }
-  }
-  b.trigger("search");
+  state.debug = sender.ariaBool("checked");
+  state.values = getValues();
+  b.savePage("state", state);
+  b.trigger("loadDataAndState");
 }
 
 export function uiColors(_, __, el) {
