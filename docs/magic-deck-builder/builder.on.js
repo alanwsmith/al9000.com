@@ -297,9 +297,7 @@ export function results(_, __, el) {
 }
 
 export function search(_, sender, ___) {
-  if (sender && sender.propBool("include") === true) {
-    b.qs(`[data-r~="displayPageNumber"]`).value = 1;
-  }
+  console.log(state);
   b.debounce("newSearch", "results", 200);
 }
 
