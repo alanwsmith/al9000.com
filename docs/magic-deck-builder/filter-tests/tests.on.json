@@ -23,5 +23,9 @@
       "/magic-deck-builder/filter-tests/tests/0056-include-color-identity-only"
       ,
       "/magic-deck-builder/filter-tests/tests/0057-include-color-identity-pass-colorlesss"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0060-colorless-included"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0061-colorless-excluded"
   ]
 }

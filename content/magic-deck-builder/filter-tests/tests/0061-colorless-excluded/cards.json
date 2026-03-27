@@ -1,0 +1,54 @@
+{
+  "cards": [
+    {
+      "cmc": 3.0,
+      "edhrec_rank": 26340,
+      "faces": [
+        {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [
+            "B"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/b/0b4cc234-f6b7-4801-a6d0-c98b72f446cf.jpg?1562897354",
+          "mana_cost": "{2}{B}",
+          "name": "Wei Strike Force",
+          "oracle_text": "Horsemanship (This creature can't be blocked except by creatures with horsemanship.)",
+          "power": "2",
+          "toughness": "1",
+          "type_line": "Creature — Human Soldier"
+        }
+      ],
+      "game_changer": false,
+      "id": "0b4cc234-f6b7-4801-a6d0-c98b72f446cf",
+      "layout": "normal",
+      "name": "Wei Strike Force",
+      "oracle_id": "002ad5fa-a20c-4d30-beef-401d89868d67",
+      "price": 0.0
+    },
+    {
+      "cmc": 2.0,
+      "edhrec_rank": 17377,
+      "faces": [
+        {
+          "color_identity": [],
+          "colors": [],
+          "image": "https://cards.scryfall.io/normal/front/0/9/094b023e-d5a3-4a57-adf0-898f3dcc8de2.jpg?1562826506",
+          "mana_cost": "{2}",
+          "name": "Chainbreaker",
+          "oracle_text": "This creature enters with two -1/-1 counters on it.\n{3}, {T}: Remove a -1/-1 counter from target creature.",
+          "power": "3",
+          "toughness": "3",
+          "type_line": "Artifact Creature — Scarecrow"
+        }
+      ],
+      "game_changer": false,
+      "id": "094b023e-d5a3-4a57-adf0-898f3dcc8de2",
+      "layout": "normal",
+      "name": "Chainbreaker",
+      "oracle_id": "02765930-e15e-4cc1-ac0d-040334a9c5bc",
+      "price": 0.21
+    }
+  ]
+}
