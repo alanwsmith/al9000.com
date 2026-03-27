@@ -34,14 +34,14 @@ const defaultExcludes = {
   oracle_text: "name sticker|attraction",
 };
 
-function getActiveColors(card) {
-  const colorSet = new Set();
-  card.faces.forEach((face) => {
-    face.color_identity.forEach((color) => colorSet.add(color));
-    face.colors.forEach((color) => colorSet.add(color));
-  });
-  return Array.from(colorSet);
-}
+// function getActiveColors(card) {
+//   const colorSet = new Set();
+//   card.faces.forEach((face) => {
+//     face.color_identity.forEach((color) => colorSet.add(color));
+//     face.colors.forEach((color) => colorSet.add(color));
+//   });
+//   return Array.from(colorSet);
+// }
 
 export function buildUI() {
   b.trigger(
@@ -80,48 +80,44 @@ function defaultState() {
   };
 }
 
-function excludeColors(card) {
-  const includeColorless =
-    b.qs(`[data-r=displayColorlessCheckbox]`).checked === true;
-  if (includeColorless && getActiveColors(card).length === 0) {
-    return true;
-  }
-
-  const colorsToCheck = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
-    .filter((input) => input.checked === false)
-    .map((input) => input.dataset.key)
-    .filter((key) => getActiveColors(card).includes(key));
-  //.map((input) => input.dataset.key);
-  console.log(colorsToCheck);
-
-  // .filter((input) => getActiveColors(card).includes(input.dataset.key));
-  if (colorsToCheck.length > 0) {
-    return false;
-  }
-  return true;
-
-  // const colors = getActiveColors(card);
-  // console.log(colors);
-
-  //   let hasColor = false;
-  //   hasColors.forEach((color) => {
-  //     card.faces.forEach((face) => {
-  //       if (face.color_identity.includes(color)) {
-  //         hasColor = true;
-  //       }
-  //     });
-  //   });
-  //   let doesNotHaveColor = true;
-  //   doesNotHaveColors.forEach((color) => {
-  //     card.faces.forEach((face) => {
-  //       if (face.color_identity.includes(color)) {
-  //         doesNotHaveColor = false;
-  //       }
-  //     });
-  //   });
-  //   return hasColor === true && doesNotHaveColor === true;
-  // }
-}
+//function excludeColors(card) {
+//  const includeColorless =
+//    b.qs(`[data-r=displayColorlessCheckbox]`).checked === true;
+//  if (includeColorless && getActiveColors(card).length === 0) {
+//    return true;
+//  }
+//  const colorsToCheck = [...b.qsa(`[data-r~=displayColorCheckbox]`)]
+//    .filter((input) => input.checked === false)
+//    .map((input) => input.dataset.key)
+//    .filter((key) => getActiveColors(card).includes(key));
+//  //.map((input) => input.dataset.key);
+//  console.log(colorsToCheck);
+//  // .filter((input) => getActiveColors(card).includes(input.dataset.key));
+//  if (colorsToCheck.length > 0) {
+//    return false;
+//  }
+//  return true;
+//  // const colors = getActiveColors(card);
+//  // console.log(colors);
+//  //   let hasColor = false;
+//  //   hasColors.forEach((color) => {
+//  //     card.faces.forEach((face) => {
+//  //       if (face.color_identity.includes(color)) {
+//  //         hasColor = true;
+//  //       }
+//  //     });
+//  //   });
+//  //   let doesNotHaveColor = true;
+//  //   doesNotHaveColors.forEach((color) => {
+//  //     card.faces.forEach((face) => {
+//  //       if (face.color_identity.includes(color)) {
+//  //         doesNotHaveColor = false;
+//  //       }
+//  //     });
+//  //   });
+//  //   return hasColor === true && doesNotHaveColor === true;
+//  // }
+//}
 
 export function excludeDefaults(_, sender, el) {
   if (sender.prop("key") === el.prop("key")) {
@@ -437,6 +433,12 @@ function buildQuery() {
   query.include_oracle_text = b.qs(`#oracle_text_search_include`)?.value.trim();
   query.exclude_type_line = b.qs(`#type_line_search_exclude`)?.value.trim();
   query.exclude_oracle_text = b.qs(`#oracle_text_search_exclude`)?.value.trim();
+  query.colors = [];
+  for (const color in colorKeys) {
+    if (b.qs(`#color_checkbox_${color}`).checked) {
+      query.colors.push(color);
+    }
+  }
   return query;
 }
 
@@ -444,18 +446,19 @@ export function results(_, __, el) {
   if (el) {
     state.values = getValues();
     b.savePage("state", state);
-    console.log(buildQuery());
     el.replaceChildren(
-      ...filterCardsV2(allCards, buildQuery()).map((card) => {
-        const subs = {
-          __CARD_NAME__: card.name,
-          __CARD_ID__: card.id,
-          __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
-          __CARD_TYPE__: card.faces.map((face) => face.type_line).join(),
-          __CARD_TEXT__: card.faces.map((face) => face.oracle_text).join(),
-        };
-        return b.render("cardTemplate", subs);
-      }),
+      ...filterCardsV2(allCards, buildQuery())
+        .map((card) => {
+          const subs = {
+            __CARD_NAME__: card.name,
+            __CARD_ID__: card.id,
+            __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
+            __CARD_TYPE__: card.faces.map((face) => face.type_line).join(),
+            __CARD_TEXT__: card.faces.map((face) => face.oracle_text).join(),
+          };
+          return b.render("cardTemplate", subs);
+        })
+        .filter((card, tmpIndex) => tmpIndex < 10),
     );
   }
 }
