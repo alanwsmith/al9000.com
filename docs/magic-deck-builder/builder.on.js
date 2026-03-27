@@ -239,7 +239,7 @@ function filterCardsV2(cards, query) {
 }
 
 function includeColorsV2(card, query) {
-  if (query.colors.length === 0) return true;
+  if (!query.colors || query.colors.length === 0) return true;
   let passCard = false;
   for (const face of card.faces) {
     for (const color of face.colors) {
@@ -416,6 +416,10 @@ export function previousPage(_, __, el) {
   }
 }
 
+// TODO: Rename this to something else
+// since build query is for the full
+// query in V2 and it's confusing to
+// have this be named the same thing.
 function queryBuilder(input) {
   const queries = input.split("||")
     .map((theOr) => theOr.trim())
@@ -426,12 +430,21 @@ function queryBuilder(input) {
   return queries;
 }
 
+function buildQuery() {
+  const query = {
+    query: {},
+  };
+  query.name = b.qs(`[data-r~="displayNameSearch"]`)?.value.trim();
+  return query;
+}
+
 export function results(_, __, el) {
   if (el) {
     state.values = getValues();
     b.savePage("state", state);
+
     el.replaceChildren(
-      ...filteredCards().map((card) => {
+      ...filterCardsV2(allCards, buildQuery()).map((card) => {
         const subs = {
           __CARD_NAME__: card.name,
           __CARD_ID__: card.id,
@@ -442,6 +455,21 @@ export function results(_, __, el) {
         return b.render("cardTemplate", subs);
       }),
     );
+
+    // el.replaceChildren(
+    //   ...filteredCards().map((card) => {
+    //     const subs = {
+    //       __CARD_NAME__: card.name,
+    //       __CARD_ID__: card.id,
+    //       __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
+    //       __CARD_TYPE__: card.faces.map((face) => face.type_line).join(),
+    //       __CARD_TEXT__: card.faces.map((face) => face.oracle_text).join(),
+    //     };
+    //     return b.render("cardTemplate", subs);
+    //   }),
+    // );
+
+    //
   }
 }
 
