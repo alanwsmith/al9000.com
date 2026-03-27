@@ -4,7 +4,7 @@
 [! set stylesheets = ["/magic-deck-builder/styles.css"] !]
 
 [! block main !]
-<bitty-8-0 data-connect="/magic-deck-builder/builder.js"></bitty-8-0>
+<bitty-8-0 data-connect="/magic-deck-builder/builder.on.js"></bitty-8-0>
 
 <hgroup>
   <h1>Magic Deck Builder</h1>
@@ -87,6 +87,13 @@
   <label class="block">
     <input data-s="search" data-r="displayColorCheckbox" data-key="__COLOR_KEY__" data-save="true" id="color_checkbox___COLOR_KEY__" type="checkbox" />
     __COLOR_NAME__ 
+  </label>
+</script>
+
+<script type="text/html" id="colorlessTemplate">
+  <label class="block">
+    <input data-s="search" data-r="displayColorlessCheckbox" data-key="C" data-save="true" id="color_checkbox_C" type="checkbox" />
+    colorless
   </label>
 </script>
 
