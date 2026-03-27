@@ -1,0 +1,29 @@
+{
+  "cards": [
+    {
+      "cmc": 0.0,
+      "edhrec_rank": 593,
+      "faces": [
+        {
+          "color_identity": [
+            "B"
+          ],
+          "colors": [],
+          "image": "https://cards.scryfall.io/normal/front/0/9/099352e2-38c8-4fb4-a25f-6d928aa20f9e.jpg?1673306226",
+          "mana_cost": "",
+          "name": "Shizo, Death's Storehouse",
+          "oracle_text": "{T}: Add {B}.\n{B}, {T}: Target legendary creature gains fear until end of turn. (It can't be blocked except by artifact creatures and/or black creatures.)",
+          "power": "",
+          "toughness": "",
+          "type_line": "Legendary Land"
+        }
+      ],
+      "game_changer": false,
+      "id": "099352e2-38c8-4fb4-a25f-6d928aa20f9e",
+      "layout": "normal",
+      "name": "Shizo, Death's Storehouse",
+      "oracle_id": "008f2698-1721-45a3-8353-10f2f400dc8f",
+      "price": 36.11
+    }
+  ]
+}

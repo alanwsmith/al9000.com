@@ -245,6 +245,9 @@ function includeColorsV2(card, query) {
     for (const color of face.colors) {
       if (query.colors.includes(color)) passCard = true;
     }
+    for (const color of face.color_identity) {
+      if (query.colors.includes(color)) passCard = true;
+    }
   }
   return passCard;
 }

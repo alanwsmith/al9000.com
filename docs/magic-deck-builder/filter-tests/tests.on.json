@@ -13,5 +13,7 @@
       "/magic-deck-builder/filter-tests/tests/0045-exclude-type"
       ,
       "/magic-deck-builder/filter-tests/tests/0050-include-color"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0055-include-color-identity"
   ]
 }
