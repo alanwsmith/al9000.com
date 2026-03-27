@@ -235,18 +235,63 @@ function filterCardsV2(cards, query) {
 }
 
 function includeColorsV2(card, query) {
-  if (!query.colors || query.colors.length === 0) return true;
-  let passCard = false;
+  if (query.colors.length === 0 && query.color_identity.length === 0) {
+    return true;
+  }
+  let colorlessCount = 0;
   for (const face of card.faces) {
-    for (const color of face.colors) {
-      if (query.colors.includes(color)) passCard = true;
+    if (face.colors.length === 0 && face.color_identity.length === 0) {
+      colorlessCount += 1;
     }
-    for (const color of face.color_identity) {
-      if (query.colors.includes(color)) passCard = true;
+  }
+  if (colorlessCount === card.faces.length) {
+    return true;
+  }
+  let passCard = true;
+  for (const face of card.faces) {
+    if (query.colors.length > 0) {
+      for (const color of query.colors) {
+        if (!face.colors.includes(color)) passCard = false;
+      }
+      for (const color of face.colors) {
+        if (!query.colors.includes(color)) return false;
+      }
+    }
+    if (query.color_identity.length > 0) {
+      for (const color of query.color_identity) {
+        if (!face.color_identity.includes(color)) passCard = false;
+      }
+      for (const color of face.color_identity) {
+        if (!query.color_identity.includes(color)) return false;
+      }
     }
   }
   return passCard;
 }
+
+// function includeColorsV2(card, query) {
+//   if (!query.colors && !query.color_identity) return true;
+//   let passCard = false;
+//   for (const face of card.faces) {
+//     if (query.colors) {
+//       for (const color of query.colors) {
+//         if (face.colors.includes(color)) passCard = true;
+//       }
+//       for (const color of face.colors) {
+//         if (!query.colors.includes(color)) return false;
+//       }
+//     }
+//     if (query.color_identity) {
+//       for (const color of query.color_identity) {
+//         if (face.color_identity.includes(color)) passCard = true;
+//       }
+//       for (const color of face.color_identity) {
+//         if (!query.color_identity.includes(color)) return false;
+//       }
+//     }
+//   }
+//   return passCard;
+// }
 
 function includeOracleTextV2(card, query) {
   if (!query.include_oracle_text) return true;

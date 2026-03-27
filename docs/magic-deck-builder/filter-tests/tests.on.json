@@ -12,8 +12,16 @@
       ,
       "/magic-deck-builder/filter-tests/tests/0045-exclude-type-line"
       ,
-      "/magic-deck-builder/filter-tests/tests/0050-include-color"
+      "/magic-deck-builder/filter-tests/tests/0050-include-colors"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0051-include-colors-only"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0052-include-colors-pass-colorless"
       ,
       "/magic-deck-builder/filter-tests/tests/0055-include-color-identity"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0056-include-color-identity-only"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0057-include-color-identity-pass-colorlesss"
   ]
 }

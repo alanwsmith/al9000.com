@@ -1,5 +1,6 @@
 {
   "query": {
+    "color_identity": [],
     "colors": ["B"]
   },
   "resultNames": ["Wei Strike Force"]

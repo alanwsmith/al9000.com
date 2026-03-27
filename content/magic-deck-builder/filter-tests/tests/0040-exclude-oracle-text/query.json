@@ -1,5 +1,7 @@
 {
   "query": {
+    "colors": [],
+    "color_identity": [],
     "exclude_oracle_text": "blocked"
   },
   "resultNames": ["Sodden Verdure"]
