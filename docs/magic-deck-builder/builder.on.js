@@ -252,24 +252,46 @@ function filterCardsV2(cards, query) {
 //   return true;
 // }
 
-function includeColorsV2(card, query) {
-  if (
-    query.colors.length === 0 && query.color_identity.length === 0 &&
-    query.colorless === false
-  ) {
-    return true;
-  }
+function cardIsColorless(card) {
   let colorlessCount = 0;
   for (const face of card.faces) {
     if (face.colors.length === 0 && face.color_identity.length === 0) {
       colorlessCount += 1;
     }
   }
-  if (colorlessCount === card.faces.length && query.colorless === true) {
+  return colorlessCount === card.faces.length;
+}
+
+function includeColorsV2(card, query) {
+  console.log(card);
+  if (
+    query.colors.length === 0 && query.color_identity.length === 0 &&
+    query.colorless === false
+  ) {
     return true;
   }
 
-  if (colorlessCount < card.faces.length && query.colorless === true) {
+  // let colorlessCount = 0;
+  // for (const face of card.faces) {
+  //   if (face.colors.length === 0 && face.color_identity.length === 0) {
+  //     colorlessCount += 1;
+  //   }
+  // }
+  // if (colorlessCount === card.faces.length && query.colorless === true) {
+  //   return true;
+  // }
+
+  if (query.colorless === true && cardIsColorless(card)) {
+    return true;
+  }
+  if (cardIsColorless(card) && query.colorless === false) {
+    return false;
+  }
+
+  if (
+    (query.colors.length !== 0 || query.color_identity.length === 0) &&
+    query.colorless === true
+  ) {
     return false;
   }
 
@@ -292,7 +314,34 @@ function includeColorsV2(card, query) {
       }
     }
   }
+
   return passCard;
+
+  // console.log(passCard);
+  // console.log(colorlessCount === card.faces.length);
+  // console.log(query.colorless);
+
+  // if (
+  //   passCard === true ||
+  //   (query.colorless === true && colorlessCount === card.faces.length)
+  // ) {
+  //   return true;
+  // }
+
+  // if (
+  //   passCard === true &&
+  //   (query.colorless === true && colorlessCount === card.faces.length)
+  // ) {
+  //   return true;
+  // }
+
+  // if (
+  //   passCard === true &&
+  //   colorlessCount !== card.faces.length
+  // ) {
+  //   return !query.colorless;
+  // }
+  //return passCard;
 }
 
 // function includeColorsV2(card, query) {
