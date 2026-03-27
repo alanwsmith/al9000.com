@@ -45,6 +45,13 @@ function cardSorter(a, b) {
   return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
 }
 
+export function clearQuery(_, sender, el) {
+  if (sender.prop("key") === el.prop("key")) {
+    el.value = "";
+    b.trigger("searchFromStart");
+  }
+}
+
 function defaultState() {
   return {
     debugging: false,
@@ -199,37 +206,6 @@ export function getValues() {
     });
 }
 
-// export function getDisplayState() {
-//   return [...b.qsa(`[data-r^="display"]`)].map((el) => {
-//     const item = {
-//       dataset: {},
-//       aria: {},
-//     };
-//     let typeAttr = el.getAttribute("type");
-//     if (typeAttr === "text" && el.value) {
-//       item.value = el.value;
-//     }
-//     if (typeAttr === "search" && el.value) {
-//       item.value = el.value;
-//     }
-//     if (typeAttr === "checkbox" && el.checked) {
-//       item.checked = el.checked;
-//     }
-//     for (const dsKey in el.dataset) {
-//       if (dsKey !== "s") {
-//         item.dataset[dsKey] = el.dataset[dsKey];
-//       }
-//     }
-//     for (const attr of el.attributes) {
-//       if (attr.name.startsWith("aria-")) {
-//         const ariaKey = attr.name.replace("aria-", "");
-//         item.aria[ariaKey] = attr.value;
-//       }
-//     }
-//     return item;
-//   });
-// }
-
 export async function loadDataAndState() {
   state = b.loadPage("state", defaultState());
   b.debugging = state.debugging;
@@ -259,13 +235,6 @@ export function previousPage(_, __, el) {
   }
 }
 
-// export function resetState() {
-//   state = defaultState();
-//   state.debugging = true;
-//   b.savePage("state", state);
-//   b.trigger("loadDataAndState");
-// }
-
 function queryBuilder(input) {
   const queries = input.split("||")
     .map((theOr) => theOr.trim())
@@ -273,7 +242,6 @@ function queryBuilder(input) {
       rawOr.split("&&")
         .map((rawAnd) => rawAnd.trim())
     );
-  // console.log(queries);
   return queries;
 }
 
@@ -294,10 +262,15 @@ export function results(_, __, el) {
   );
 }
 
-export function search(ev, sender, ___) {
+export function search(_, sender, ___) {
   if (sender && sender.propBool("include") === true) {
     b.qs(`[data-r~="displayPageNumber"]`).value = 1;
   }
+  b.debounce("newSearch", "results", 200);
+}
+
+export function searchFromStart(_, __, ___) {
+  b.qs(`[data-r~="displayPageNumber"]`).value = 1;
   b.debounce("newSearch", "results", 200);
 }
 
