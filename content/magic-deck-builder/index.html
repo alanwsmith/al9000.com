@@ -70,9 +70,6 @@
     </div>
     <div data-r="uiDebuggingSwitch"></div>
 
-
-    <div data-r="testQueryBuilder"></div>
-
     [#
     <div>
       <button data-s="resetState">reset state</button>
@@ -87,14 +84,14 @@
 [! block templates !]
 <script type="text/html" id="colorTemplate">
   <label class="block">
-    <input data-s="search" data-r="displayColorCheckbox" data-key="__COLOR_KEY__" data-save="true" id="color_checkbox___COLOR_KEY__" type="checkbox" />
+    <input data-s="searchFromStart" data-r="displayColorCheckbox" data-key="__COLOR_KEY__" data-save="true" id="color_checkbox___COLOR_KEY__" type="checkbox" />
     __COLOR_NAME__ 
   </label>
 </script>
 
 <script type="text/html" id="colorlessTemplate">
   <label class="block">
-    <input data-s="search" data-r="displayColorlessCheckbox" data-key="C" data-save="true" id="color_checkbox_C" type="checkbox" />
+    <input data-s="searchFromStart" data-r="displayColorlessCheckbox" data-key="C" data-save="true" id="color_checkbox_C" type="checkbox" />
     colorless
   </label>
 </script>

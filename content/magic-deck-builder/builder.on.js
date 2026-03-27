@@ -1,6 +1,7 @@
 export const b = { init: "buildUI testQueryBuilder" };
 
 let allCards = [];
+let cardsOnPage = 30;
 let state;
 
 const colorKeys = {
@@ -71,6 +72,13 @@ function cardIsColorless(card) {
     }
   }
   return colorlessCount === card.faces.length;
+}
+
+function cardIsOnPage(index, length) {
+  const pageNum = parseInt(b.qs("#pageNumber").value, 10);
+  const cardMaxIndex = (cardsOnPage * pageNum) - 1;
+  const cardMinIndex = cardMaxIndex - cardsOnPage + 1;
+  return (cardMinIndex <= index && index <= cardMaxIndex);
 }
 
 function cardSorter(a, b) {
@@ -270,20 +278,21 @@ export function results(_, __, el) {
   if (el) {
     state.values = getValues();
     b.savePage("state", state);
-    el.replaceChildren(
-      ...filterCardsV2(allCards, buildQuery())
-        .map((card) => {
-          const subs = {
-            __CARD_NAME__: card.name,
-            __CARD_ID__: card.id,
-            __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
-            __CARD_TYPE__: card.faces.map((face) => face.type_line).join(),
-            __CARD_TEXT__: card.faces.map((face) => face.oracle_text).join(),
-          };
-          return b.render("cardTemplate", subs);
-        })
-        .filter((card, tmpIndex) => tmpIndex < 30),
-    );
+    const filteredCards = filterCardsV2(allCards, buildQuery())
+      .sort(cardSorter)
+      .map((card) => {
+        const subs = {
+          __CARD_NAME__: card.name,
+          __CARD_ID__: card.id,
+          __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
+          __CARD_TYPE__: card.faces.map((face) => face.type_line).join(),
+          __CARD_TEXT__: card.faces.map((face) => face.oracle_text).join(),
+        };
+        return b.render("cardTemplate", subs);
+      });
+    b.send(filteredCards.length, "cardCount");
+    el.replaceChildren(...filteredCards
+      .filter((card, index) => cardIsOnPage(index, filteredCards.length)));
   }
 }
 
@@ -295,7 +304,7 @@ export function search(_, sender, ___) {
 }
 
 export function searchFromStart(_, __, ___) {
-  b.qs(`[data-r~="displayPageNumber"]`).value = 1;
+  b.qs(`#pageNumber`).value = 1;
   b.debounce("newSearch", "results", 200);
 }
 
