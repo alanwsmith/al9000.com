@@ -12,6 +12,22 @@ const colorKeys = {
   W: { name: "white" },
 };
 
+const defaultState = {
+  cardLevels: {},
+  debug: false,
+  values: [
+    {
+      id: "type_list_search_exclude",
+      value: "battle",
+    },
+    {
+      id: "oracle_text_search_exclude",
+      value: "name sticker|attraction",
+    },
+  ],
+  viewLevel: 0,
+};
+
 const options = {
   type_line: [
     "Artifact",
@@ -92,23 +108,6 @@ export function clearQuery(_, sender, el) {
   }
 }
 
-function defaultState() {
-  return {
-    debug: false,
-    values: [
-      {
-        id: "type_list_search_exclude",
-        value: "battle",
-      },
-      {
-        id: "oracle_text_search_exclude",
-        value: "name sticker|attraction",
-      },
-    ],
-    cardLevels: {},
-  };
-}
-
 export function excludeDefaults(_, sender, el) {
   if (sender.prop("key") === el.prop("key")) {
     el.value = defaultExcludes[sender.prop("key")];
@@ -150,6 +149,12 @@ function filterCardsV2(cards, query) {
     .filter((card) => excludeTypeLineV2(card, query))
     .filter((card) => includeColorsV2(card, query));
   return selectedCards;
+}
+
+function getCardView() {
+  return allCards.filter((card) => {
+    return state.cardLevels[card.id] >= state.viewLevel;
+  });
 }
 
 export function getValues() {
@@ -233,7 +238,7 @@ function includeTypeLineV2(card, query) {
 }
 
 export async function loadDataAndState() {
-  state = b.loadPage("state", defaultState());
+  state = b.loadPage("state", defaultState);
   const hexChars = "abcdef1234567890";
   let dataKeys = hexChars.split("");
   if (state.debug) dataKeys = ["debug"];
@@ -278,13 +283,42 @@ export function results(_, __, el) {
   if (el) {
     state.values = getValues();
     b.savePage("state", state);
-    const filteredCards = filterCardsV2(allCards, buildQuery())
+    let filteredCards = [];
+    const query = buildQuery();
+    if (
+      query.name || query.include_type_line || query.include_oracle_text ||
+      query.colorless || query.colors.length > 0
+    ) {
+      filteredCards = filterCardsV2(allCards, query);
+
+      // .sort(cardSorter)
+      // .map((card) => {
+      //   const cardLevel = state.cardLevels[card.id] === undefined
+      //     ? ""
+      //     : state.cardLevels[card.id];
+      //   const subs = {
+      //     __CARD_NAME__: card.name,
+      //     __CARD_ID__: card.id,
+      //     __CARD_LEVEL__: cardLevel,
+      //     __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
+      //     __CARD_TYPE__: card.faces.map((face) => face.type_line).join(),
+      //     __CARD_TEXT__: card.faces.map((face) => face.oracle_text).join(),
+      //   };
+      //   return b.render("cardTemplate", subs);
+      // });
+    } else {
+      filteredCards = getCardView();
+    }
+
+    b.send(filteredCards.length, "cardCount");
+
+    const outputCards = filteredCards
       .sort(cardSorter)
+      .filter((card, index) => cardIsOnPage(index, filteredCards.length))
       .map((card) => {
         const cardLevel = state.cardLevels[card.id] === undefined
           ? ""
           : state.cardLevels[card.id];
-
         const subs = {
           __CARD_NAME__: card.name,
           __CARD_ID__: card.id,
@@ -295,9 +329,10 @@ export function results(_, __, el) {
         };
         return b.render("cardTemplate", subs);
       });
-    b.send(filteredCards.length, "cardCount");
-    el.replaceChildren(...filteredCards
-      .filter((card, index) => cardIsOnPage(index, filteredCards.length)));
+    el.replaceChildren(...outputCards);
+
+    // el.replaceChildren(...filteredCards
+    //   .filter((card, index) => cardIsOnPage(index, filteredCards.length)));
   }
 }
 
