@@ -435,6 +435,7 @@ function buildQuery() {
     query: {},
   };
   query.name = b.qs(`[data-r~="displayNameSearch"]`)?.value.trim();
+  query.include_type_line = b.qs(`#type_line_search_include`)?.value.trim();
   return query;
 }
 
