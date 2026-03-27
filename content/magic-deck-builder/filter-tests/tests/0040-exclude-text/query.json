@@ -1,17 +1,6 @@
 {
   "query": {
-    "cmc": null,
-    "colorless": false,
-    "colors": [],
-    "exclude_text": "blocked",
-    "exclude_type": null,
-    "include_text": null,
-    "include_type": null,
-    "name": null,
-    "power_max": null,
-    "power_min": null,
-    "toughness_max": null,
-    "toughness_min": null
+    "exclude_text": "blocked"
   },
   "resultNames": ["Sodden Verdure"]
 }

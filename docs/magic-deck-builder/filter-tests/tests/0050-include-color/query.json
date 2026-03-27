@@ -1,17 +1,6 @@
 {
   "query": {
-    "cmc": null,
-    "colorless": false,
-    "colors": ["B"],
-    "exclude_text": null,
-    "exclude_type": null,
-    "include_text": null,
-    "include_type": null,
-    "name": null,
-    "power_max": null,
-    "power_min": null,
-    "toughness_max": null,
-    "toughness_min": null
+    "colors": ["B"]
   },
   "resultNames": ["Wei Strike Force"]
 }
