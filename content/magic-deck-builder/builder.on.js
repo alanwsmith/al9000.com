@@ -281,9 +281,14 @@ export function results(_, __, el) {
     const filteredCards = filterCardsV2(allCards, buildQuery())
       .sort(cardSorter)
       .map((card) => {
+        const cardLevel = state.cardLevels[card.id] === undefined
+          ? ""
+          : state.cardLevels[card.id];
+
         const subs = {
           __CARD_NAME__: card.name,
           __CARD_ID__: card.id,
+          __CARD_LEVEL__: cardLevel,
           __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
           __CARD_TYPE__: card.faces.map((face) => face.type_line).join(),
           __CARD_TEXT__: card.faces.map((face) => face.oracle_text).join(),
@@ -297,7 +302,6 @@ export function results(_, __, el) {
 }
 
 export function search(_, sender, ___) {
-  console.log(state);
   b.debounce("newSearch", "results", 200);
 }
 
