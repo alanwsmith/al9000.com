@@ -1,6 +1,6 @@
 {
   "query": {
-    "include_text": "Horsemanship"
+    "include_oracle_text": "Horsemanship"
   },
   "resultNames": ["Wei Strike Force"]
 }

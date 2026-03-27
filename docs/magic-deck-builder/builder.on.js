@@ -230,7 +230,7 @@ function filterCardsV2(cards, query) {
     });
   }
   let selectedCards = cards
-    .filter((card) => includeTextV2(card, query))
+    .filter((card) => includeOracleTextV2(card, query))
     .filter((card) => includeTypeV2(card, query))
     .filter((card) => excludeTextV2(card, query))
     .filter((card) => excludeTypeV2(card, query))
@@ -252,9 +252,9 @@ function includeColorsV2(card, query) {
   return passCard;
 }
 
-function includeTextV2(card, query) {
-  if (!query.include_text) return true;
-  const pattern = new RegExp(query.include_text, "gi");
+function includeOracleTextV2(card, query) {
+  if (!query.include_oracle_text) return true;
+  const pattern = new RegExp(query.include_oracle_text, "gi");
   for (const face of card.faces) {
     if (face.oracle_text.match(pattern)) return true;
   }
