@@ -359,6 +359,9 @@ export function setCardLevel(_, sender, el) {
   if (sender.prop("id") === el.prop("id")) {
     el.innerHTML = sender.prop("key");
   }
+  if (sender.propInt("key") < state.viewLevel) {
+    b.trigger("results");
+  }
 }
 
 export function setValues(payload) {
