@@ -318,6 +318,14 @@ export function selectOption(_, sender, el) {
   }
 }
 
+export function setCardLevel(_, sender, el) {
+  state.cardLevels[sender.prop("id")] = sender.propInt("key");
+  b.savePage("state", state);
+  if (sender.prop("id") === el.prop("id")) {
+    el.innerHTML = sender.prop("key");
+  }
+}
+
 export function setValues(payload) {
   for (const item of payload) {
     const el = b.qs(`#${item.id}`);
