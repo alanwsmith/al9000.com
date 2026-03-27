@@ -1,6 +1,6 @@
 {
   "query": {
-    "exclude_text": "blocked"
+    "exclude_oracle_text": "blocked"
   },
   "resultNames": ["Sodden Verdure"]
 }

@@ -1,6 +1,6 @@
 {
   "query": {
-    "exclude_type": "land"
+    "exclude_type_line": "land"
   },
   "resultNames": ["Wei Strike Force"]
 }

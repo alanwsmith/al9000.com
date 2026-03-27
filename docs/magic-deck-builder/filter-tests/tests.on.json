@@ -4,13 +4,13 @@
       ,
       "/magic-deck-builder/filter-tests/tests/0020-name"
       ,
-      "/magic-deck-builder/filter-tests/tests/0030-include-text"
+      "/magic-deck-builder/filter-tests/tests/0030-include-oracle-text"
       ,
-      "/magic-deck-builder/filter-tests/tests/0035-include-type"
+      "/magic-deck-builder/filter-tests/tests/0035-include-type-line"
       ,
-      "/magic-deck-builder/filter-tests/tests/0040-exclude-text"
+      "/magic-deck-builder/filter-tests/tests/0040-exclude-oracle-text"
       ,
-      "/magic-deck-builder/filter-tests/tests/0045-exclude-type"
+      "/magic-deck-builder/filter-tests/tests/0045-exclude-type-line"
       ,
       "/magic-deck-builder/filter-tests/tests/0050-include-color"
       ,

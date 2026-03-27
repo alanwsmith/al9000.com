@@ -130,20 +130,20 @@ export function excludeDefaults(_, sender, el) {
   }
 }
 
-function excludeTextV2(card, query) {
-  if (!query.exclude_text) return true;
+function excludeOracleTextV2(card, query) {
+  if (!query.exclude_oracle_text) return true;
   let passCard = true;
-  const pattern = new RegExp(query.exclude_text, "gi");
+  const pattern = new RegExp(query.exclude_oracle_text, "gi");
   for (const face of card.faces) {
     if (face.oracle_text.match(pattern)) passCard = false;
   }
   return passCard;
 }
 
-function excludeTypeV2(card, query) {
-  if (!query.exclude_type) return true;
+function excludeTypeLineV2(card, query) {
+  if (!query.exclude_type_line) return true;
   let passCard = true;
-  const pattern = new RegExp(query.exclude_type, "gi");
+  const pattern = new RegExp(query.exclude_type_line, "gi");
   for (const face of card.faces) {
     if (face.type_line.match(pattern)) passCard = false;
   }
@@ -231,9 +231,9 @@ function filterCardsV2(cards, query) {
   }
   let selectedCards = cards
     .filter((card) => includeOracleTextV2(card, query))
-    .filter((card) => includeTypeV2(card, query))
-    .filter((card) => excludeTextV2(card, query))
-    .filter((card) => excludeTypeV2(card, query))
+    .filter((card) => includeTypeLineV2(card, query))
+    .filter((card) => excludeOracleTextV2(card, query))
+    .filter((card) => excludeTypeLineV2(card, query))
     .filter((card) => includeColorsV2(card, query));
   return selectedCards;
 }
@@ -261,9 +261,9 @@ function includeOracleTextV2(card, query) {
   return false;
 }
 
-function includeTypeV2(card, query) {
-  if (!query.include_type) return true;
-  const pattern = new RegExp(query.include_type, "gi");
+function includeTypeLineV2(card, query) {
+  if (!query.include_type_line) return true;
+  const pattern = new RegExp(query.include_type_line, "gi");
   for (const face of card.faces) {
     if (face.type_line.match(pattern)) return true;
   }

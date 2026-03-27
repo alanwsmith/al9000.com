@@ -1,6 +1,6 @@
 {
   "query": {
-    "include_type": "land"
+    "include_type_line": "land"
   },
   "resultNames": ["Sodden Verdure"]
 }
