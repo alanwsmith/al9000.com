@@ -27,5 +27,7 @@
       "/magic-deck-builder/filter-tests/tests/0060-colorless-included"
       ,
       "/magic-deck-builder/filter-tests/tests/0061-colorless-excluded"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0062-colorless-only"
   ]
 }

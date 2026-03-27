@@ -230,24 +230,33 @@ function filterCardsV2(cards, query) {
     .filter((card) => includeTypeLineV2(card, query))
     .filter((card) => excludeOracleTextV2(card, query))
     .filter((card) => excludeTypeLineV2(card, query))
-    .filter((card) => includeColorsV2(card, query))
-    .filter((card) => includeColorlessV2(card, query));
+    .filter((card) => includeColorsV2(card, query));
+  //    .filter((card) => includeColorlessV2(card, query));
   return selectedCards;
 }
 
-function includeColorlessV2(card, query) {
-  if (query.colorless === false) {
-    for (const face of card.faces) {
-      if (face.colors.length === 0 && face.color_identity.length === 0) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
+// function includeColorlessV2(card, query) {
+//   if (query.colorless === false) {
+//     for (const face of card.faces) {
+//       if (face.colors.length === 0 && face.color_identity.length === 0) {
+//         return false;
+//       }
+//     }
+//   } else {
+//     for (const face of card.faces) {
+//       if (face.colors.length > 0 || face.color_identity.length > 0) {
+//         return false;
+//       }
+//     }
+//   }
+//   return true;
+// }
 
 function includeColorsV2(card, query) {
-  if (query.colors.length === 0 && query.color_identity.length === 0) {
+  if (
+    query.colors.length === 0 && query.color_identity.length === 0 &&
+    query.colorless === false
+  ) {
     return true;
   }
   let colorlessCount = 0;
@@ -256,9 +265,14 @@ function includeColorsV2(card, query) {
       colorlessCount += 1;
     }
   }
-  if (colorlessCount === card.faces.length) {
+  if (colorlessCount === card.faces.length && query.colorless === true) {
     return true;
   }
+
+  if (colorlessCount < card.faces.length && query.colorless === true) {
+    return false;
+  }
+
   let passCard = true;
   for (const face of card.faces) {
     if (query.colors.length > 0) {
