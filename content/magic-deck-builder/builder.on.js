@@ -235,6 +235,7 @@ function filterCardsV2(cards, query) {
 }
 
 function includeColorsV2(card, query) {
+  console.log(card.name);
   if (query.colors.length === 0 && query.color_identity.length === 0) {
     return true;
   }
@@ -478,12 +479,15 @@ function buildQuery() {
   query.include_oracle_text = b.qs(`#oracle_text_search_include`)?.value.trim();
   query.exclude_type_line = b.qs(`#type_line_search_exclude`)?.value.trim();
   query.exclude_oracle_text = b.qs(`#oracle_text_search_exclude`)?.value.trim();
+  query.color_identity = [];
   query.colors = [];
   for (const color in colorKeys) {
     if (b.qs(`#color_checkbox_${color}`).checked) {
+      query.color_identity.push(color);
       query.colors.push(color);
     }
   }
+
   return query;
 }
 
