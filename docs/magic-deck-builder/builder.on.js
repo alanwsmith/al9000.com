@@ -223,7 +223,6 @@ export function filterCards(card, key, include) {
 }
 
 function filterCardsV2(cards, query) {
-  // Do the name first if there is one.
   if (query.name) {
     const pattern = new RegExp(query.name, "gi");
     return cards.filter((card) => {
@@ -234,8 +233,20 @@ function filterCardsV2(cards, query) {
     .filter((card) => includeTextV2(card, query))
     .filter((card) => includeTypeV2(card, query))
     .filter((card) => excludeTextV2(card, query))
-    .filter((card) => excludeTypeV2(card, query));
+    .filter((card) => excludeTypeV2(card, query))
+    .filter((card) => includeColorsV2(card, query));
   return selectedCards;
+}
+
+function includeColorsV2(card, query) {
+  if (query.colors.length === 0) return true;
+  let passCard = false;
+  for (const face of card.faces) {
+    for (const color of face.colors) {
+      if (query.colors.includes(color)) passCard = true;
+    }
+  }
+  return passCard;
 }
 
 function includeTextV2(card, query) {
