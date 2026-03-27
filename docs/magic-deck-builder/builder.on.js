@@ -131,13 +131,23 @@ export function excludeDefaults(_, sender, el) {
 }
 
 function excludeTextV2(card, query) {
-  if (!query.exclude_text) return false;
-  let skipCard = true;
+  if (!query.exclude_text) return true;
+  let passCard = true;
   const pattern = new RegExp(query.exclude_text, "gi");
   for (const face of card.faces) {
-    if (face.oracle_text.match(pattern)) skipCard = false;
+    if (face.oracle_text.match(pattern)) passCard = false;
   }
-  return skipCard;
+  return passCard;
+}
+
+function excludeTypeV2(card, query) {
+  if (!query.exclude_type) return true;
+  let passCard = true;
+  const pattern = new RegExp(query.exclude_type, "gi");
+  for (const face of card.faces) {
+    if (face.type_line.match(pattern)) passCard = false;
+  }
+  return passCard;
 }
 
 function filterCardName(card) {
@@ -223,7 +233,8 @@ function filterCardsV2(cards, query) {
   let selectedCards = cards
     .filter((card) => includeTextV2(card, query))
     .filter((card) => includeTypeV2(card, query))
-    .filter((card) => excludeTextV2(card, query));
+    .filter((card) => excludeTextV2(card, query))
+    .filter((card) => excludeTypeV2(card, query));
   return selectedCards;
 }
 
@@ -458,25 +469,56 @@ export async function testResults(_, __, el) {
       "/magic-deck-builder/filter-tests/tests.on.json",
     );
     if (testFileJSON) {
+      let didSoloTest = false;
       for (const testDir of testFileJSON.tests) {
         const cardsData = await b.get(`${testDir}/cards.json`);
         const queryData = await b.get(`${testDir}/query.json`);
         if (cardsData && queryData) {
-          el.innerHTML += `Checking: ${testDir}\n`;
-          const results = filterCardsV2(cardsData.cards, queryData.query);
-          const resultNames = results.map((card) => card.name);
-          if (
-            JSON.stringify(resultNames) ===
-              JSON.stringify(queryData.resultNames)
-          ) {
-            el.innerHTML += `PASSED: ${testDir}\n`;
-          } else {
-            el.innerHTML += `FAILED: ${testDir}\n`;
-            console.log(resultNames);
-            console.log(queryData.resultNames);
+          if (queryData.solo) {
+            didSoloTest = true;
+            //el.innerHTML += `Checking: ${testDir}\n`;
+            const results = filterCardsV2(cardsData.cards, queryData.query);
+            const resultNames = results.map((card) => card.name);
+            if (
+              JSON.stringify(resultNames) ===
+                JSON.stringify(queryData.resultNames)
+            ) {
+              el.innerHTML += `PASSED: ${testDir}\n`;
+            } else {
+              el.innerHTML += `FAILED: ${testDir}\n`;
+              console.log(resultNames);
+              console.log(queryData.resultNames);
+            }
           }
         } else {
           el.innerHTML += `ERROR LOADING: ${testFile}\n`;
+        }
+      }
+
+      if (didSoloTest === false) {
+        for (const testDir of testFileJSON.tests) {
+          const cardsData = await b.get(`${testDir}/cards.json`);
+          const queryData = await b.get(`${testDir}/query.json`);
+          if (cardsData && queryData) {
+            if (!queryData.solo) {
+              didSoloTest = true;
+              //el.innerHTML += `Checking: ${testDir}\n`;
+              const results = filterCardsV2(cardsData.cards, queryData.query);
+              const resultNames = results.map((card) => card.name);
+              if (
+                JSON.stringify(resultNames) ===
+                  JSON.stringify(queryData.resultNames)
+              ) {
+                el.innerHTML += `PASSED: ${testDir}\n`;
+              } else {
+                el.innerHTML += `FAILED: ${testDir}\n`;
+                console.log(resultNames);
+                console.log(queryData.resultNames);
+              }
+            }
+          } else {
+            el.innerHTML += `ERROR LOADING: ${testFile}\n`;
+          }
         }
       }
     }

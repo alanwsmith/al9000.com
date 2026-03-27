@@ -9,5 +9,7 @@
       "/magic-deck-builder/filter-tests/tests/0035-include-type"
       ,
       "/magic-deck-builder/filter-tests/tests/0040-exclude-text"
+      ,
+      "/magic-deck-builder/filter-tests/tests/0045-exclude-type"
   ]
 }
