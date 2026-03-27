@@ -34,6 +34,25 @@ const defaultExcludes = {
   oracle_text: "name sticker|attraction",
 };
 
+function buildQuery() {
+  const query = { query: {} };
+  query.name = b.qs(`#name_search`)?.value.trim();
+  query.include_type_line = b.qs(`#type_line_search_include`)?.value.trim();
+  query.include_oracle_text = b.qs(`#oracle_text_search_include`)?.value.trim();
+  query.exclude_type_line = b.qs(`#type_line_search_exclude`)?.value.trim();
+  query.exclude_oracle_text = b.qs(`#oracle_text_search_exclude`)?.value.trim();
+  query.color_identity = [];
+  query.colors = [];
+  for (const color in colorKeys) {
+    if (b.qs(`#color_checkbox_${color}`).checked) {
+      query.color_identity.push(color);
+      query.colors.push(color);
+    }
+  }
+  query.colorless = b.qs(`#color_checkbox_C`).checked === true;
+  return query;
+}
+
 export function buildUI() {
   b.trigger(
     "uiColors uiDebuggingSwitch uiOptions loadDataAndState testResults",
@@ -42,6 +61,16 @@ export function buildUI() {
 
 export function cardCount(count, __, el) {
   el.innerHTML = count;
+}
+
+function cardIsColorless(card) {
+  let colorlessCount = 0;
+  for (const face of card.faces) {
+    if (face.colors.length === 0 && face.color_identity.length === 0) {
+      colorlessCount += 1;
+    }
+  }
+  return colorlessCount === card.faces.length;
 }
 
 function cardSorter(a, b) {
@@ -114,14 +143,34 @@ function filterCardsV2(cards, query) {
   return selectedCards;
 }
 
-function cardIsColorless(card) {
-  let colorlessCount = 0;
-  for (const face of card.faces) {
-    if (face.colors.length === 0 && face.color_identity.length === 0) {
-      colorlessCount += 1;
-    }
-  }
-  return colorlessCount === card.faces.length;
+export function getValues() {
+  const keys = [
+    "checked",
+    "diabled",
+    "hidden",
+    "readOnly",
+    "spellcheck",
+    "value",
+  ];
+  return [...b.qsa(`[data-save][id]`)]
+    .filter((el) => el.dataset.save === "true")
+    .map((el) => {
+      const item = {
+        id: el.id,
+        aria: {},
+        keys: {},
+      };
+      for (const key of keys) {
+        if (el[key]) item.keys[key] = el[key];
+      }
+      for (const attr of el.attributes) {
+        if (attr.name.startsWith("aria-")) {
+          const ariaKey = attr.name.replace("aria-", "");
+          item.aria[ariaKey] = attr.value;
+        }
+      }
+      return item;
+    });
 }
 
 function includeColorsV2(card, query) {
@@ -174,36 +223,6 @@ function includeTypeLineV2(card, query) {
   return false;
 }
 
-export function getValues() {
-  const keys = [
-    "checked",
-    "diabled",
-    "hidden",
-    "readOnly",
-    "spellcheck",
-    "value",
-  ];
-  return [...b.qsa(`[data-save][id]`)]
-    .filter((el) => el.dataset.save === "true")
-    .map((el) => {
-      const item = {
-        id: el.id,
-        aria: {},
-        keys: {},
-      };
-      for (const key of keys) {
-        if (el[key]) item.keys[key] = el[key];
-      }
-      for (const attr of el.attributes) {
-        if (attr.name.startsWith("aria-")) {
-          const ariaKey = attr.name.replace("aria-", "");
-          item.aria[ariaKey] = attr.value;
-        }
-      }
-      return item;
-    });
-}
-
 export async function loadDataAndState() {
   state = b.loadPage("state", defaultState());
   b.debugging = state.debugging;
@@ -245,25 +264,6 @@ function queryBuilder(input) {
         .map((rawAnd) => rawAnd.trim())
     );
   return queries;
-}
-
-function buildQuery() {
-  const query = { query: {} };
-  query.name = b.qs(`#name_search`)?.value.trim();
-  query.include_type_line = b.qs(`#type_line_search_include`)?.value.trim();
-  query.include_oracle_text = b.qs(`#oracle_text_search_include`)?.value.trim();
-  query.exclude_type_line = b.qs(`#type_line_search_exclude`)?.value.trim();
-  query.exclude_oracle_text = b.qs(`#oracle_text_search_exclude`)?.value.trim();
-  query.color_identity = [];
-  query.colors = [];
-  for (const color in colorKeys) {
-    if (b.qs(`#color_checkbox_${color}`).checked) {
-      query.color_identity.push(color);
-      query.colors.push(color);
-    }
-  }
-  query.colorless = b.qs(`#color_checkbox_C`).checked === true;
-  return query;
 }
 
 export function results(_, __, el) {
