@@ -431,11 +431,10 @@ function queryBuilder(input) {
 }
 
 function buildQuery() {
-  const query = {
-    query: {},
-  };
-  query.name = b.qs(`[data-r~="displayNameSearch"]`)?.value.trim();
+  const query = { query: {} };
+  query.name = b.qs(`#name_search`)?.value.trim();
   query.include_type_line = b.qs(`#type_line_search_include`)?.value.trim();
+  query.include_oracle_text = b.qs(`#oracle_text_search_include`)?.value.trim();
   return query;
 }
 
