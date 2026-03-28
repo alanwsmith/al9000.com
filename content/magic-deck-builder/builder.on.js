@@ -58,6 +58,7 @@ const options = {
 };
 
 function buildQuery() {
+  console.log("x");
   const query = { query: {} };
   query.name = b.qs(`#name_search`)?.value.trim();
   query.include_type_line = b.qs(`#type_line_search_include`)?.value.trim();
@@ -110,10 +111,10 @@ function cardSorter(a, b) {
 export function clearCardLevel(_, sender, el) {
   if (sender.prop("id") === el.prop("id")) {
     delete state.cardLevels[sender.prop("id")];
-    b.savePage("state", state);
+    b.savePage(state, "state");
     el.innerHTML = "";
   }
-  if (sender.propInt("key") < state.viewLevel) {
+  if (sender.propAsInt("key") < state.viewLevel) {
     b.trigger("results");
   }
 }
@@ -299,17 +300,18 @@ function queryBuilder(input) {
 export function results(_, __, el) {
   if (el) {
     state.values = b.getValues();
-    b.savePage("state", state);
+    b.savePage(state, "state");
     let filteredCards = [];
     const query = buildQuery();
-    if (
-      query.name || query.include_type_line || query.include_oracle_text ||
-      query.colorless || query.colors.length > 0
-    ) {
-      filteredCards = filterCardsV2(allCards, query);
-    } else {
-      filteredCards = getCardView();
-    }
+    filteredCards = filterCardsV2(allCards, query);
+    // if (
+    //   query.name || query.include_type_line || query.include_oracle_text ||
+    //   query.colorless || query.colors.length > 0
+    // ) {
+    //    filteredCards = filterCardsV2(allCards, query);
+    //    } else {
+    //   filteredCards = getCardView();
+    //   }
     b.send(filteredCards.length, "cardCount");
     const outputCards = filteredCards
       .sort(cardSorter)
@@ -332,10 +334,10 @@ export function results(_, __, el) {
   }
 }
 
-export function save(_, __, ___) {
+export function saveData(_, __, ___) {
   state.values = b.getValues();
-  b.savePage("state", state);
-  b.savePage("stars", stars);
+  b.savePage(state, "state");
+  b.savePage(stars, "stars");
 }
 
 export function search(_, sender, ___) {
@@ -355,21 +357,21 @@ export function selectOption(_, sender, el) {
   }
 }
 
-export function setCardLevel(_, sender, el) {
+export function setCardStars(_, sender, el) {
   if (sender.prop("id") === el.prop("id")) {
-    state.cardLevels[sender.prop("id")] = sender.propInt("key");
-    b.savePage("state", state);
+    state.cardLevels[sender.prop("id")] = sender.propAsInt("key");
+    b.savePage(state, "state");
     el.innerHTML = sender.prop("key");
-  }
-  if (sender.propInt("key") < state.viewLevel) {
-    b.trigger("results");
+    if (sender.propAsInt("key") < state.viewLevel) {
+      b.trigger("results");
+    }
   }
 }
 
 export function setStars(_, sender, ___) {
   state.starLevel = sender.valueInt();
   state.values = b.getValues();
-  b.savePage("state", state);
+  b.savePage(state, "state");
   b.trigger("result");
 }
 
@@ -452,7 +454,7 @@ export function toggleDebugging(_, sender, ___) {
   sender.toggleAria("checked");
   state.debug = sender.ariaBool("checked");
   state.values = b.getValues();
-  b.savePage("state", state);
+  b.savePage(state, "state");
   b.trigger("loadDataAndState");
 }
 
@@ -493,7 +495,7 @@ export function uiOptions(_, __, el) {
 }
 
 export function uiStars(_, __, el) {
-  for (let i = -1; i <= 3; i += 1) {
+  for (let i = -1; i <= 2; i += 1) {
     const subs = { __VALUE__: i };
     el.appendChild(b.render("starsTemplate", subs));
   }

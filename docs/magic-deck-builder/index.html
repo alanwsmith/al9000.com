@@ -280,12 +280,11 @@ body {
     <div class="main-card">
       <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
       <div>
-        <div class="card-level" data-r="setCardLevel clearCardLevel">__CARD_LEVEL__</div>
-        <button data-s="setCardLevel" data-key="2">2</button>
-        <button data-s="setCardLevel" data-key="1">1</button>
-        <button data-s="setCardLevel" data-key="0">0</button>
-        <button data-s="setCardLevel" data-key="-1">-1</button>
-        <button data-s="clearCardLevel">x</button>
+        <div class="card-level" data-r="setCardStars">__CARD_LEVEL__</div>
+        <button data-s="setCardStars" data-key="2">2</button>
+        <button data-s="setCardStars" data-key="1">1</button>
+        <button data-s="setCardStars" data-key="0">0</button>
+        <button data-s="setCardStars" data-key="-1">-1</button>
       </div>
     </div>
 
@@ -308,7 +307,7 @@ body {
 
 <script type="text/html" id="starsTemplate">
   <label>
-    <input data-s="setStars" data-save="true" id="radioStars__VALUE__" type="radio" name="stars" value="__VALUE__" />
+    <input class="star-radio-button" data-s="setStars" data-save="true" id="radioStars__VALUE__" type="radio" name="stars" value="__VALUE__" />
     __VALUE__
   </label>
 </script>
