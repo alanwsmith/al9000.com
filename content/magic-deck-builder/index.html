@@ -12,13 +12,6 @@
 
 <a href="filter-tests">filter tests</a>
 
-<div>
-  <button data-s="view" data-key="-1">-1</button>
-  <button data-s="view" data-key="0">0</button>
-  <button data-s="view" data-key="1">1</button>
-  <button data-s="view" data-key="2">2</button>
-</div>
-
 
 <div class="columns">
   <div class="content">
@@ -30,6 +23,12 @@
       <label class="block" for="name_search">Name</label>
       <input data-s="search" data-r="displayNameSearch" data-save="true" type="search" id="name_search" autocomplete="off" />
     </div>
+
+    <div>
+      Stars:
+      <div data-r="uiStars"></div>
+    </div>
+
 
     <div>
       <div class="inputSelect">
@@ -109,24 +108,24 @@
     <div class="main-card">
       <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
       <div>
-        <div class="card-level" data-r="setCardLevel">__CARD_LEVEL__</div>
+        <div class="card-level" data-r="setCardLevel clearCardLevel">__CARD_LEVEL__</div>
         <button data-s="setCardLevel" data-key="2">2</button>
         <button data-s="setCardLevel" data-key="1">1</button>
         <button data-s="setCardLevel" data-key="0">0</button>
         <button data-s="setCardLevel" data-key="-1">-1</button>
+        <button data-s="clearCardLevel">x</button>
       </div>
     </div>
 
-
-    [#
+[#
       <div>__CARD_NAME__</div>
+    #]
     <details>
       <div>__CARD_NAME__</div>
       <div>__CARD_TYPE__</div>
       <div>__CARD_TEXT__</div>
       <div>__CARD_ID__</div>
     </details>
-    #]
   </div>
 </script>
 
@@ -137,6 +136,14 @@
 <script type="text/html" id="optionSpacerTemplate">
   <option value="">---</option>
 </script>
+
+<script type="text/html" id="starsTemplate">
+  <label>
+    <input data-s="setStars" data-save="true" id="radioStars__VALUE__" type="radio" name="stars" value="__VALUE__" />
+    __VALUE__
+  </label>
+</script>
+
 
 [! endblock !]
 

@@ -52,9 +52,6 @@ class BittyJs extends HTMLElement {
         if (incoming.b.templates === undefined) {
           incoming.b.templates = {};
         }
-        if (incoming.b.debugging === undefined) {
-          incoming.b.debugging = false;
-        }
         this.addToggleSwitchTemplate(incoming);
         incoming.b.data = {};
         this.loadPageAssets(incoming);
@@ -185,12 +182,6 @@ class BittyJs extends HTMLElement {
     }, ms);
   }
 
-  _debug(payload) {
-    if (this.b.debugging === true) {
-      console.log(payload);
-    }
-  }
-
   _dedup(array) {
     return [...new Set(array)];
   }
@@ -283,6 +274,36 @@ class BittyJs extends HTMLElement {
       return false;
     }
     return undefined;
+  }
+
+  _getValues() {
+    const keys = [
+      "checked",
+      "diabled",
+      "hidden",
+      "readOnly",
+      "spellcheck",
+      "value",
+    ];
+    return [...this.b.qsa(`[data-save][id]`)]
+      .filter((el) => el.dataset.save === "true")
+      .map((el) => {
+        const item = {
+          id: el.id,
+          aria: {},
+          keys: {},
+        };
+        for (const key of keys) {
+          if (el[key]) item.keys[key] = el[key];
+        }
+        for (const attr of el.attributes) {
+          if (attr.name.startsWith("aria-")) {
+            const ariaKey = attr.name.replace("aria-", "");
+            item.aria[ariaKey] = attr.value;
+          }
+        }
+        return item;
+      });
   }
 
   loadPageAssets(target) {
@@ -921,6 +942,20 @@ class BittyJs extends HTMLElement {
     return result.content;
   }
 
+  _setValues(payload) {
+    for (const item of payload) {
+      const el = this.b.qs(`#${item.id}`);
+      if (el) {
+        for (const key in item.keys) {
+          el[key] = item.keys[key];
+        }
+        for (const key in item.aria) {
+          el.setAttribute(`aria-${key}`, item.aria[key]);
+        }
+      }
+    }
+  }
+
   _load(key, fallback) {
     const storage = localStorage.getItem(key);
     if (storage !== null) {
@@ -961,14 +996,14 @@ class BittyJs extends HTMLElement {
     return this.b.render("switch", subs);
   }
 
-  _save(key, data) {
+  _save(data, key) {
     localStorage.setItem(key, JSON.stringify(data));
     return true;
   }
 
-  _savePage(key, data) {
+  _savePage(data, key) {
     const url = new URL(window.location.href);
-    return this.b.save(`${url.pathname}-${key}`, data);
+    return this.b.save(data, `${url.pathname}-${key}`);
   }
 
   _send(payload, signals) {
@@ -1061,7 +1096,7 @@ class BittyJs extends HTMLElement {
         return undefined;
       }
     };
-    el.ariaBool = (key) => {
+    el.ariaAsBool = (key) => {
       const ariaEl = el.closest(`[aria-${key}]`);
       if (ariaEl) {
         const value = ariaEl.getAttribute(`aria-${key}`);
@@ -1070,7 +1105,7 @@ class BittyJs extends HTMLElement {
         return undefined;
       }
     };
-    el.ariaFloat = (key) => {
+    el.ariaAsFloat = (key) => {
       const ariaEl = el.closest(`[aria-${key}]`);
       if (ariaEl) {
         return parseFloat(ariaEl.getAttribute(`aria-${key}`));
@@ -1078,24 +1113,13 @@ class BittyJs extends HTMLElement {
         return undefined;
       }
     };
-    el.ariaInt = (key) => {
+    el.ariaAsInt = (key) => {
       const ariaEl = el.closest(`[aria-${key}]`);
       if (ariaEl) {
         return parseInt(ariaEl.getAttribute(`aria-${key}`), 10);
       } else {
         return undefined;
       }
-    };
-    el.ariaOrNull = (key) => {
-      const ariaSearch = el.closest(`[aria-${key}]`);
-      if (ariaSearch === null) {
-        return undefined;
-      }
-      const ariaValue = araiSearch.getAttribute(key);
-      if (ariaValue.trim() === "") {
-        return null;
-      }
-      return ariaValue;
     };
     el.copy = async function () {
       if (el.value) {
@@ -1115,26 +1139,17 @@ class BittyJs extends HTMLElement {
       }
       return true;
     };
-    el.innerHTMLBool = () => {
+    el.innerHTMLAsBool = () => {
       if (el.innerHTML === undefined) {
         return undefined;
       }
       return this.b._getBool(el.innerHTML);
     };
-    el.innerHTMLFloat = () => {
+    el.innerHTMLAsFloat = () => {
       return parseFloat(el.innerHTML.trim().replace(",", ""));
     };
-    el.innerHTMLInt = () => {
+    el.innerHTMLAsInt = () => {
       return parseInt(el.innerHTML.trim().replace(",", ""), 10);
-    };
-    el.innerHTMLOrNull = () => {
-      if (el.innerHTML !== undefined) {
-        return undefined;
-      }
-      if (el.innerHTML.trim() === "") {
-        return null;
-      }
-      return el.innerHTML;
     };
     el.prop = (key) => {
       if (el.dataset && el.dataset[key] !== undefined) {
@@ -1146,7 +1161,7 @@ class BittyJs extends HTMLElement {
       }
       return undefined;
     };
-    el.propBool = (key) => {
+    el.propAsBool = (key) => {
       if (el.dataset && el.dataset[key] !== undefined) {
         return this.b._getBool(el.dataset[key]);
       }
@@ -1156,7 +1171,7 @@ class BittyJs extends HTMLElement {
       }
       return undefined;
     };
-    el.propFloat = (key) => {
+    el.propAsFloat = (key) => {
       if (el.dataset && el.dataset[key] !== undefined) {
         return parseFloat(el.dataset[key]);
       }
@@ -1166,7 +1181,7 @@ class BittyJs extends HTMLElement {
       }
       return undefined;
     };
-    el.propInt = (key) => {
+    el.propAsInt = (key) => {
       if (el.dataset && el.dataset[key] !== undefined) {
         return parseInt(el.dataset[key], 10);
       }
@@ -1175,16 +1190,6 @@ class BittyJs extends HTMLElement {
         return parseInt(propAncestor.dataset[key], 10);
       }
       return undefined;
-    };
-    el.propOrNull = (key) => {
-      const propSearch = el.closest(`[data-${key}]`);
-      if (propSearch === null) {
-        return undefined;
-      }
-      if (propSearch.dataset[key].trim() === "") {
-        return null;
-      }
-      return propSearch.dataset[key];
     };
     el.setAria = (key, value) => {
       const ariaEl = el.closest(`[aria-${key}]`);
@@ -1248,13 +1253,6 @@ class BittyJs extends HTMLElement {
     };
     el.valueInt = () => {
       return parseInt(el.value, 10);
-    };
-    el.valueOrNull = () => {
-      if (el.value && el.value.trim() === "") {
-        return null;
-      } else {
-        return el.value;
-      }
     };
     el.bittyUpdated = true;
   }
