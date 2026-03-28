@@ -3,7 +3,7 @@ export const b = { init: "buildUI testQueryBuilder" };
 let allCards = [];
 let cardsOnPage = 100;
 let state;
-let stars;
+let cards;
 
 const colorKeys = {
   B: { name: "black" },
@@ -58,7 +58,7 @@ const options = {
 };
 
 function buildQuery() {
-  console.log("x");
+  console.log(b.qs(`.star-radio-button:checked`));
   const query = { query: {} };
   query.name = b.qs(`#name_search`)?.value.trim();
   query.include_type_line = b.qs(`#type_line_search_include`)?.value.trim();
@@ -256,6 +256,7 @@ function includeTypeLineV2(card, query) {
 }
 
 export async function loadDataAndState() {
+  cards = b.loadPage("cards", {});
   state = b.loadPage("state", defaultState);
   const hexChars = "abcdef1234567890";
   let dataKeys = hexChars.split("");
@@ -264,7 +265,9 @@ export async function loadDataAndState() {
   for (let dataKey of dataKeys) {
     const result = await b.get(`/magic-data/scryfall-cards/${dataKey}.json`);
     if (result) {
-      result.cards.forEach((card) => allCards.push(card));
+      result.cards.forEach((card) => {
+        allCards.push(card);
+      });
     }
   }
   b.setValues(state.values);
@@ -337,7 +340,7 @@ export function results(_, __, el) {
 export function saveData(_, __, ___) {
   state.values = b.getValues();
   b.savePage(state, "state");
-  b.savePage(stars, "stars");
+  b.savePage(cards, "cards");
 }
 
 export function search(_, sender, ___) {
@@ -359,8 +362,8 @@ export function selectOption(_, sender, el) {
 
 export function setCardStars(_, sender, el) {
   if (sender.prop("id") === el.prop("id")) {
-    state.cardLevels[sender.prop("id")] = sender.propAsInt("key");
-    b.savePage(state, "state");
+    cards[sender.prop("id")].stars = sender.propAsInt("key");
+    // saveData();
     el.innerHTML = sender.prop("key");
     if (sender.propAsInt("key") < state.viewLevel) {
       b.trigger("results");
@@ -372,7 +375,7 @@ export function setStars(_, sender, ___) {
   state.starLevel = sender.valueInt();
   state.values = b.getValues();
   b.savePage(state, "state");
-  b.trigger("result");
+  b.trigger("results");
 }
 
 // export function setValues(payload) {
