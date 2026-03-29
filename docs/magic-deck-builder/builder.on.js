@@ -58,7 +58,7 @@ const options = {
 };
 
 function buildQuery() {
-  console.log(b.qs(`.star-radio-button:checked`));
+  // console.log(b.qs(`.star-radio-button:checked`));
   const query = { query: {} };
   query.name = b.qs(`#name_search`)?.value.trim();
   query.include_type_line = b.qs(`#type_line_search_include`)?.value.trim();
@@ -108,10 +108,10 @@ function cardSorter(a, b) {
   return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
 }
 
-export function clearCardLevel(_, sender, el) {
+export async function clearCardLevel(_, sender, el) {
   if (sender.prop("id") === el.prop("id")) {
     delete state.cardLevels[sender.prop("id")];
-    b.savePage(state, "state");
+    // await b.savePageData(state, "state");
     el.innerHTML = "";
   }
   if (sender.propAsInt("key") < state.viewLevel) {
@@ -175,7 +175,7 @@ function getCardView() {
   });
 }
 
-// export function getValues() {
+// export function getState() {
 //   const keys = [
 //     "checked",
 //     "diabled",
@@ -256,32 +256,34 @@ function includeTypeLineV2(card, query) {
 }
 
 export async function loadDataAndState() {
-  cards = b.loadPage("cards", {});
-  state = b.loadPage("state", defaultState);
+  cards = b.loadPageData("cards", {});
+  state = b.loadPageData("state", defaultState);
   const hexChars = "abcdef1234567890";
   let dataKeys = hexChars.split("");
   if (state.debug) dataKeys = ["debug"];
   allCards = [];
   for (let dataKey of dataKeys) {
-    const result = await b.get(`/magic-data/scryfall-cards/${dataKey}.json`);
+    const result = await b.getData(
+      `/magic-data/scryfall-cards/${dataKey}.json`,
+    );
     if (result) {
       result.cards.forEach((card) => {
         allCards.push(card);
       });
     }
   }
-  b.setValues(state.values);
+  // b.setState(state.values);
   b.trigger("search");
 }
 
 export function nextPage(_, __, el) {
-  el.value = el.valueInt() + 1;
+  el.value = el.valueAsInt() + 1;
   b.trigger("results");
 }
 
 export function previousPage(_, __, el) {
-  if (el.valueInt() > 0) {
-    el.value = el.valueInt() - 1;
+  if (el.valueAsInt() > 0) {
+    el.value = el.valueAsInt() - 1;
     b.trigger("results");
   }
 }
@@ -300,10 +302,10 @@ function queryBuilder(input) {
   return queries;
 }
 
-export function results(_, __, el) {
+export async function results(_, __, el) {
   if (el) {
-    state.values = b.getValues();
-    b.savePage(state, "state");
+    state.values = b.getState();
+    // await b.savePageData(state, "state");
     let filteredCards = [];
     const query = buildQuery();
     filteredCards = filterCardsV2(allCards, query);
@@ -320,13 +322,13 @@ export function results(_, __, el) {
       .sort(cardSorter)
       .filter((card, index) => cardIsOnPage(index, filteredCards.length))
       .map((card) => {
-        const cardLevel = state.cardLevels[card.id] === undefined
-          ? ""
-          : state.cardLevels[card.id];
+        // const cardLevel = state.cardLevels[card.id] === undefined
+        //   ? ""
+        //   : state.cardLevels[card.id];
         const subs = {
           __CARD_NAME__: card.name,
           __CARD_ID__: card.id,
-          __CARD_LEVEL__: cardLevel,
+          // __CARD_LEVEL__: cardLevel,
           __IMG_SRC__: card.faces[0].image ? card.faces[0].image : "",
           __CARD_TYPE__: card.faces.map((face) => face.type_line).join(),
           __CARD_TEXT__: card.faces.map((face) => face.oracle_text).join(),
@@ -337,10 +339,10 @@ export function results(_, __, el) {
   }
 }
 
-export function saveData(_, __, ___) {
-  state.values = b.getValues();
-  b.savePage(state, "state");
-  b.savePage(cards, "cards");
+export async function saveData(_, __, ___) {
+  state.values = b.getState();
+  // await b.savePageData(state, "state");
+  // await b.savePageData(cards, "cards");
 }
 
 export function search(_, sender, ___) {
@@ -371,14 +373,14 @@ export function setCardStars(_, sender, el) {
   }
 }
 
-export function setStars(_, sender, ___) {
-  state.starLevel = sender.valueInt();
-  state.values = b.getValues();
-  b.savePage(state, "state");
+export async function setStars(_, sender, ___) {
+  state.starLevel = sender.valueAsInt();
+  state.values = b.getState();
+  // await b.savePageData(state, "state");
   b.trigger("results");
 }
 
-// export function setValues(payload) {
+// export function setState(payload) {
 //   for (const item of payload) {
 //     const el = b.qs(`#${item.id}`);
 //     if (el) {
@@ -394,14 +396,14 @@ export function setStars(_, sender, ___) {
 
 export async function testResults(_, __, el) {
   if (el) {
-    const testFileJSON = await b.get(
+    const testFileJSON = await b.getData(
       "/magic-deck-builder/filter-tests/tests.on.json",
     );
     if (testFileJSON) {
       let didSoloTest = false;
       for (const testDir of testFileJSON.tests) {
-        const cardsData = await b.get(`${testDir}/cards.json`);
-        const queryData = await b.get(`${testDir}/query.json`);
+        const cardsData = await b.getData(`${testDir}/cards.json`);
+        const queryData = await b.getData(`${testDir}/query.json`);
         if (cardsData && queryData) {
           if (queryData.solo) {
             didSoloTest = true;
@@ -425,8 +427,8 @@ export async function testResults(_, __, el) {
       }
       if (didSoloTest === false) {
         for (const testDir of testFileJSON.tests) {
-          const cardsData = await b.get(`${testDir}/cards.json`);
-          const queryData = await b.get(`${testDir}/query.json`);
+          const cardsData = await b.getData(`${testDir}/cards.json`);
+          const queryData = await b.getData(`${testDir}/query.json`);
           if (cardsData && queryData) {
             if (!queryData.solo) {
               didSoloTest = true;
@@ -453,11 +455,11 @@ export async function testResults(_, __, el) {
   }
 }
 
-export function toggleDebugging(_, sender, ___) {
+export async function toggleDebugging(_, sender, ___) {
   sender.toggleAria("checked");
   state.debug = sender.ariaBool("checked");
-  state.values = b.getValues();
-  b.savePage(state, "state");
+  state.values = b.getState();
+  // b.savePageData(state, "state");
   b.trigger("loadDataAndState");
 }
 

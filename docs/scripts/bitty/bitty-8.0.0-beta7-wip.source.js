@@ -32,6 +32,9 @@ const inputFormTypes = [
   "number",
 ];
 
+const STORE_NAME = "bitty_store";
+const DB_VERSION = 1;
+
 class BittyJs extends HTMLElement {
   static bits = [];
 
@@ -51,6 +54,36 @@ class BittyJs extends HTMLElement {
         incoming.b.svgs = {};
         if (incoming.b.templates === undefined) {
           incoming.b.templates = {};
+        }
+        if (incoming.b.config === undefined) {
+          incoming.b.config = {};
+        }
+        if (incoming.b.config.getState === undefined) {
+          incoming.b.config.getState = {
+            attributes: [
+              "aria-autoComplete",
+              "aria-checked",
+              "aria-disabled",
+              "aria-expended",
+              "aria-hidden",
+              "aria-pressed",
+              "aria-read-only",
+              "aria-selected",
+              "aria-value-now",
+              "aria-value-text",
+            ],
+            keys: [
+              "checked",
+              "diabled",
+              "hidden",
+              "readOnly",
+              // TODO: Confirm selected is what to look for
+              // for options.
+              "selected",
+              "spellcheck",
+              "value",
+            ],
+          };
         }
         this.addToggleSwitchTemplate(incoming);
         incoming.b.data = {};
@@ -88,6 +121,8 @@ class BittyJs extends HTMLElement {
             }
           }
         });
+        // TODO: Attach data listeners directly to elements
+        // instead of to window.
         [...document.querySelectorAll("[data-listen]")].forEach(
           (el) => {
             incoming.b._splitSignalString(el.dataset.listen).forEach(
@@ -140,13 +175,10 @@ class BittyJs extends HTMLElement {
 
   addToggleSwitchTemplate(target) {
     target.b.templates.switch = `
-<label for="__ID__" class="__CLASS__"__KEY_ATTR__>
-  __PREPEND__
-  <button id="__ID__" role="switch"__SEND_ATTR____RECEIVE_ATTR____KEY_ATTR____SAVE_ATTR__ aria-checked="__STATE__">
+<label for="__ID__" class="__CLASS__"__KEY_ATTR____LABLE_MISC__>__PREPEND__
+  <button id="__ID__" role="switch"__SEND_ATTR____RECEIVE_ATTR____KEY_ATTR____SAVE_ATTR__ aria-checked="__STATE__"__BUTTON_MISC__>
     <span></span><span></span>
-  </button>
-  __APPEND__
-</label>`;
+  </button>__APPEND__</label>`;
   }
 
   _ce(tag, options = {}) {
@@ -186,6 +218,43 @@ class BittyJs extends HTMLElement {
     return [...new Set(array)];
   }
 
+  async _deletePageData(key) {
+    const db = await this.b._initPageDB();
+    return new Promise((resolve, reject) => {
+      const store = db
+        .transaction(STORE_NAME, "readwrite")
+        .objectStore(STORE_NAME);
+      const request = store.delete(key);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.result);
+    });
+  }
+
+  async _deleteSiteData(key) {
+    const db = await this.b._initSiteDB();
+    return new Promise((resolve, reject) => {
+      const store = db
+        .transaction(STORE_NAME, "readwrite")
+        .objectStore(STORE_NAME);
+      const request = store.delete(key);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.result);
+    });
+  }
+
+  // TODO: Needs testing.
+  async __deleteValueFromSiteDB(key) {
+    const db = await this.b._initSiteDB();
+    return new Promise((resolve, reject) => {
+      const store = db
+        .transaction(STORE_NAME, "readwrite")
+        .objectStore(STORE_NAME);
+      const request = store.delete(key);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.result);
+    });
+  }
+
   __findSenders(el) {
     const senders = [];
     while (el) {
@@ -197,7 +266,7 @@ class BittyJs extends HTMLElement {
     return senders;
   }
 
-  async _get(url, fallback = null, options = {}) {
+  async _getData(url, fallback = null, options = {}) {
     let response = await fetch(url, options);
     try {
       if (response.ok === true) {
@@ -276,34 +345,88 @@ class BittyJs extends HTMLElement {
     return undefined;
   }
 
-  _getValues() {
-    const keys = [
-      "checked",
-      "diabled",
-      "hidden",
-      "readOnly",
-      "spellcheck",
-      "value",
-    ];
+  // async __getValueFromSiteDB(key) {
+  //   const db = await this.b._initSiteDB();
+  //   return new Promise((resolve, reject) => {
+  //     const store = db
+  //       .transaction(STORE_NAME, "readonly")
+  //       .objectStore(STORE_NAME);
+  //     const request = store.get(key);
+  //     request.onsuccess = () => resolve(request.result);
+  //     request.onerror = () => reject(request.result);
+  //   });
+  // }
+
+  _getState() {
     return [...this.b.qsa(`[data-save][id]`)]
+      // TODO: Set this up to check for general booleans
+      // instead of just lower case true.
       .filter((el) => el.dataset.save === "true")
       .map((el) => {
-        const item = {
-          id: el.id,
-          aria: {},
-          keys: {},
-        };
-        for (const key of keys) {
-          if (el[key]) item.keys[key] = el[key];
-        }
-        for (const attr of el.attributes) {
-          if (attr.name.startsWith("aria-")) {
-            const ariaKey = attr.name.replace("aria-", "");
-            item.aria[ariaKey] = attr.value;
+        const item = { id: el.id, attributes: {}, keys: {} };
+
+        for (const attr of this.b.config.getState.attributes) {
+          if (el.getAttribute(attr)) {
+            item.attributes[attr] = el.getAttribute(attr);
           }
         }
+        for (const key of this.b.config.getState.keys) {
+          if (el[key]) {
+            item.keys[key] = el[key];
+          }
+        }
+
+        // for (const attr of this.b.config.getState.dataset) {
+        //   if (el.dataset[attr]) item.dataset[attr] = el.dataset[attr];
+        // }
+
+        // for (const attr of this.b.config.getState) {
+        //   if (el[attr]) item.attributes[attr] = el[attr];
+        // }
+
+        // for (const attr of this.b.config.getState.attributes) {
+        //   if (el[attr]) item.attributes[attr] = el[attr];
+        // }
+
+        // for (const attr of el.attributes) {
+        //   if (attr.name.startsWith("aria-")) {
+        //     const ariaKey = attr.name.replace("aria-", "");
+        //     item.aria[ariaKey] = attr.value;
+        //   }
+        // }
+
         return item;
       });
+  }
+
+  async __initPageDB() {
+    const url = new URL(window.location.href);
+    const pageID = btoa(url.pathname);
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(`bitty_page_db_${pageID}`, DB_VERSION);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.result);
+      request.onupgradeneeded = (event) => {
+        const db = event.target.result;
+        if (!db.objectStoreNames.contains(STORE_NAME)) {
+          db.createObjectStore(STORE_NAME);
+        }
+      };
+    });
+  }
+
+  async __initSiteDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open("bitty_site_db", DB_VERSION);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.result);
+      request.onupgradeneeded = (event) => {
+        const db = event.target.result;
+        if (!db.objectStoreNames.contains(STORE_NAME)) {
+          db.createObjectStore(STORE_NAME);
+        }
+      };
+    });
   }
 
   loadPageAssets(target) {
@@ -803,6 +926,18 @@ class BittyJs extends HTMLElement {
     }
   }
 
+  // async __putValueInSiteDB(value, key) {
+  //   const db = await this.b._initSiteDB();
+  //   return new Promise((resolve, reject) => {
+  //     const store = db
+  //       .transaction(STORE_NAME, "readwrite")
+  //       .objectStore(STORE_NAME);
+  //     const request = store.put(value, key);
+  //     request.onsuccess = () => resolve(request.result);
+  //     request.onerror = () => reject(request.result);
+  //   });
+  // }
+
   _qs(selector, el = null) {
     if (el === null) {
       return document.querySelector(selector);
@@ -878,6 +1013,9 @@ class BittyJs extends HTMLElement {
     return result;
   }
 
+  // TODO: Look for incoming `data-listen` attributes
+  // and attach listeners directly to respective
+  // elements.
   _render(input, subs = {}) {
     if (input instanceof Array === false) {
       input = [input];
@@ -942,38 +1080,75 @@ class BittyJs extends HTMLElement {
     return result.content;
   }
 
-  _setValues(payload) {
+  _setState(payload) {
     for (const item of payload) {
       const el = this.b.qs(`#${item.id}`);
       if (el) {
+        for (const attribute in item.attributes) {
+          el.setAttribute(attribute, item.attributes[attribute]);
+        }
         for (const key in item.keys) {
           el[key] = item.keys[key];
         }
-        for (const key in item.aria) {
-          el.setAttribute(`aria-${key}`, item.aria[key]);
-        }
+        // for (const key in item.keys) {
+        //   el[key] = item.keys[key];
+        // }
+        // for (const key in item.aria) {
+        //   el.setAttribute(`aria-${key}`, item.aria[key]);
+        // }
       }
     }
   }
 
-  _load(key, fallback) {
-    const storage = localStorage.getItem(key);
-    if (storage !== null) {
-      try {
-        return JSON.parse(storage);
-      } catch (error) {
-        return undefined;
-      }
-    }
-    if (fallback !== undefined) {
+  async _loadSiteData(key, fallback) {
+    const db = await this.b._initSiteDB();
+    const result = await new Promise((resolve, reject) => {
+      const store = db
+        .transaction(STORE_NAME, "readonly")
+        .objectStore(STORE_NAME);
+      const request = store.get(key);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.result);
+    });
+    if (result === undefined && fallback !== undefined) {
+      await this.b.saveSiteData(fallback, key);
       return fallback;
     }
-    return undefined;
+    return result;
+
+    // const result = await this.b._getValueFromSiteDB(key);
+    // return result;
+    // const storage = localStorage.getItem(key);
+    // if (storage !== null) {
+    //   try {
+    //     return JSON.parse(storage);
+    //   } catch (error) {
+    //     return undefined;
+    //   }
+    // }
+    // if (fallback !== undefined) {
+    //   return fallback;
+    // }
+    // return undefined;
   }
 
-  _loadPage(key, fallback) {
-    const url = new URL(window.location.href);
-    return this.b.load(`${url.pathname}-${key}`, fallback);
+  async _loadPageData(key, fallback) {
+    const db = await this.b._initPageDB();
+    const result = await new Promise((resolve, reject) => {
+      const store = db
+        .transaction(STORE_NAME, "readonly")
+        .objectStore(STORE_NAME);
+      const request = store.get(key);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.result);
+    });
+    if (result === undefined && fallback !== undefined) {
+      await this.b.savePageData(fallback, key);
+      return fallback;
+    }
+    return result;
+    // const url = new URL(window.location.href);
+    // return this.b.loadData(`${url.pathname}-${key}`, fallback);
   }
 
   _switch(subs = {}) {
@@ -993,17 +1168,48 @@ class BittyJs extends HTMLElement {
     subs.__SEND_ATTR__ = subs.__SEND__ ? ` data-s="${subs.__SEND__}"` : "";
     subs.__KEY_ATTR__ = subs.__KEY__ ? ` data-s="${subs.__KEY__}"` : "";
     subs.__SAVE_ATTR__ = subs.__SAVE__ ? ` data-save="${subs.__SAVE__}"` : "";
+    subs.__LABEL_MISC__ = subs.__LABEL_MISC__ ? ` ${subs.__LABEL_MISC__}` : "";
+    subs.__BUTTON_MISC__ = subs.__BUTTON_MISC__
+      ? ` ${subs.__BUTTON_MISC__}`
+      : "";
     return this.b.render("switch", subs);
   }
 
-  _save(data, key) {
-    localStorage.setItem(key, JSON.stringify(data));
-    return true;
+  async _savePageData(value, key) {
+    const db = await this.b._initPageDB();
+    const result = await new Promise((resolve, reject) => {
+      const store = db
+        .transaction(STORE_NAME, "readwrite")
+        .objectStore(STORE_NAME);
+      const request = store.put(value, key);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.result);
+    });
+    return result;
+
+    // const url = new URL(window.location.href);
+    // return this.b.saveData(data, `${url.pathname}-${key}`);
   }
 
-  _savePage(data, key) {
-    const url = new URL(window.location.href);
-    return this.b.save(data, `${url.pathname}-${key}`);
+  async _saveSiteData(value, key) {
+    const db = await this.b._initSiteDB();
+    const result = await new Promise((resolve, reject) => {
+      const store = db
+        .transaction(STORE_NAME, "readwrite")
+        .objectStore(STORE_NAME);
+      const request = store.put(value, key);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.result);
+    });
+    return result;
+
+    // TODO: Pull _pubValueInPageDB code here instead
+    // of calling out to it since it's not used
+    // anywhere else.
+    //const result = await this.b._putValueInSiteDB(value, key);
+    //return result;
+    // localStorage.setItem(key, JSON.stringify(data));
+    //return true;
   }
 
   _send(payload, signals) {
@@ -1245,13 +1451,13 @@ class BittyJs extends HTMLElement {
         }
       }
     };
-    el.valueBool = () => {
+    el.valueAsBool = () => {
       return this.b._getBool(el.value);
     };
-    el.valueFloat = () => {
+    el.valueAsFloat = () => {
       return parseFloat(el.value);
     };
-    el.valueInt = () => {
+    el.valueAsInt = () => {
       return parseInt(el.value, 10);
     };
     el.bittyUpdated = true;

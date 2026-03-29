@@ -9,7 +9,7 @@
     [! include "styles/_includes/initial-colors.html" !]
     [! include "styles/_includes/initial-styles.html" !]
     <script src="/styles/styles.js"></script>
-    <script src="/scripts/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
+    <script src="/scripts/bitty/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
     <link rel="stylesheet" href="/styles/main.css" />
     [! include "__wrappers/includes/metadata.html" !]
     [! if stylesheets !]
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="[@ stylesheet @]" />
     [! endfor !]
     [! endif !]
+    [! block head !][! endblock !]
   </head>
   <body>
 
