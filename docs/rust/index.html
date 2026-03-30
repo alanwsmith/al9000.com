@@ -167,25 +167,6 @@ body {
 <link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="">
-<style>
-.unicodeCharacter {
-  color: var(--default-color);
-  display: inline-block;
-  height: 2.2em;
-  padding: 0.3rem;
-  width: 2rem;
-  border: 1px solid rgb(128 128 128 / 0);
-}
-
-.unicodeCharacter:hover {
-  border: var(--faded-info-border);
-}
-
-.hidden {
-  display: none;
-}
-
-</style>
   </head>
   <body>
 
@@ -198,53 +179,12 @@ body {
         <hgroup>
         </hgroup>
               
-
-<bitty-8 data-connect="/unicode/unicode.js"></bitty-8>
-
-<h3>Warning</h3>
-<div class="info-border default-padding default-maring default-border-radius default-flow">
-  <ul>
-    <li>
-      This page generates over 120K unicode 
-      character glyphs. 
-    </li>
-    <li>
-      The button below starts the process. It can
-      take a few minutes depending on your device. 
-    </li>
-    <li>
-      While the output is done in chunks, it can still bog down 
-      a browser tab. It may become unresponsive.
-    </li>
-    <li>
-      Clicking on a character copies it.
-    </li>
-    <li>
-      <details><summary>More Details</summary>
-        <ul>
-          <li>
-            Different fonts include different sets
-            of character glyphs. The page attempts
-            to remove those that are unavailable
-            on your device. This currently works best in
-            Google Chrome, okay in Safari, and
-            not at all in Firefox.
-          </li>
-          <li>
-            Missing character glyphs show up as box
-            with four letters/numbers split into
-            two rows on Firefox. 
-          </li>
-        </ul>
-      </details>
-    </li>
-  </ul>
-</div>
-
-<h3>The Characters</h3>
-<button data-s="addCharacters">Read the warnings above then use this button to generate the characters</button>
-<div data-r="characters"></div>
-<div data-r="status"></div>
+<p>The place for two things:</p>
+<ul>
+<li>The source code for the al9000 static site
+generator that builds this site.</li>
+<li>My rust snippets and prototypes.</li>
+</ul>
       </main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
@@ -253,13 +193,6 @@ body {
   </div>
 </footer>
 
-<script type="text/html" id="displayTemplate">
-<div>__CHARACTERS__</div>
-</script>
-
-<script type="text/html" id="characterTemplate">
-<button class="unicodeCharacter __HIDDEN__" data-s="copyCharacter" id="id__HEX__">__CHARACTER__</button>
-</script>
 
   </body>
 </html>

@@ -1,4 +1,4 @@
-[!- extends "__wrappers/vars.html" -!]
+[!- extends "/wrappers.inc/vars.html" -!]
 
 [!- block wrapper -!]
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
     <script src="/styles/styles.js"></script>
     <script src="/scripts/bitty/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
     <link rel="stylesheet" href="/styles/main.css" />
-    [! include "__wrappers/includes/metadata.html" !]
+    [! include "/wrappers.inc/includes/metadata.html" !]
     [! if stylesheets !]
     [! for stylesheet in stylesheets !]
     <link rel="stylesheet" href="[@ stylesheet @]" />
@@ -22,15 +22,21 @@
   <body>
 
     [! block header !]
-    [! include "__wrappers/includes/header.html" !]
+    [! include "/wrappers.inc/includes/header.html" !]
     [! endblock !]
 
       <main class="[! block main_classes !]default-wrapper default-flow[! endblock !]">
+        <hgroup>
+          [! if title !]
+          <h1>[@ title @]</h1>
+          [! endif !]
+        </hgroup>
+              
         [! block main !][! endblock !]
       </main>
 
     [! block footer !]
-    [! include "__wrappers/includes/footer.html" !]
+    [! include "/wrappers.inc/includes/footer.html" !]
     [! endblock !]
 
     [! block templates !]
