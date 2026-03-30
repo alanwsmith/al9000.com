@@ -1,32 +1,60 @@
-export const b = {};
+export const b = {
+  init: "addCharacters",
+};
 
 let state = {
   cellsAdded: false,
+  current: 33,
+  // end: 126686,
+  end: 3686,
 };
 
 export async function addCharacters(_, __, el) {
   if (state.cellsAdded === false) {
-    state.cellsAdded = true;
-    const characterEls = [];
-    for (let c = 33; c <= 1000; c++) {
-      //for (let c = 33; c <= 126686; c++) {
-      const hex = c.toString(16);
-      //const unicodeCode = `#x${hex};`;
-      characterEls.push(b.render("characterTemplate", {
-        __HEX__: hex,
-      }));
-      //charEl.innerHTML = `&${unicodeCode} `;
-      //      el.appendChild(charEl);
-    }
-    el.replaceChildren(b.render("displayTemplate", {
-      __CHARACTERS__: characterEls,
-    }));
-    b.trigger("outputCharacter");
+    b.trigger("characters");
+    //state.cellsAdded = true;
+    //const characterEls = [];
+    //for (let c = 33; c <= 1000; c++) {
+    //  //for (let c = 33; c <= 126686; c++) {
+    //  const hex = c.toString(16);
+    //  //const unicodeCode = `#x${hex};`;
+    //  characterEls.push(b.render("characterTemplate", {
+    //    __HEX__: hex,
+    //  }));
+    //  //charEl.innerHTML = `&${unicodeCode} `;
+    //  //      el.appendChild(charEl);
+    //}
+    // el.replaceChildren(b.render("displayTemplate", {
+    //   __CHARACTERS__: characterEls,
+    // }));
   }
+}
+
+export async function characters(_, __, el) {
+  if (state.current <= state.end) {
+    const count = Math.min(state.end - state.current + 1, 500);
+    const numbers = Array.from({ length: count }, (_, i) => i + state.current);
+    el.appendChild(b.render("displayTemplate", {
+      __CHARACTERS__: numbers.map((num) => span(num)),
+    }));
+    state.current = state.current + count;
+    if (state.current !== state.end) {
+      await b.sleep(100);
+      b.trigger("characters");
+    }
+  }
+}
+
+function span(number) {
+  const hex = number.toString(16);
+  return b.render("characterTemplate", {
+    __CHARACTER__: `&#x${hex};`,
+  });
 }
 
 export async function outputCharacter(_, __, el) {
   el.innerHTML = `&#x${el.prop("hex")};`;
+
   //el.innerHTML = `${el.prop("hex")`;
 }
 
