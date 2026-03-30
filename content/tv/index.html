@@ -1,0 +1,59 @@
+[!- extends "__wrappers/default-v1.html" -!]
+
+[! set title = "tv" !]
+
+[! block main !]
+
+[! filter markdown|safe !]
+
+## The Idea
+
+- Set up a new version of
+surftech.tv (which is no longer a thing).
+
+- Contains a list of videos and selects
+one at random every time you hit the
+page. 
+
+- You can't see the list. Just what's
+currently being shown. 
+
+- Three buttons for video selection:
+"done", "later", and "never" where 
+"done" marks the video as watched
+and takes it out of rotation,
+"later" skips to a new video but
+keeps the skipped on in rotation, 
+and "never" which skips to a
+new video taking the skipped  
+one out of rotation (which is
+probably really the same thing
+as "done", but with a different
+mental context)
+
+- it'll keep track of what you've watched
+in local storage. 
+
+- will see about using https://dexie.org/ 
+to allow login and saving user state. 
+
+- two categories to start: 
+"coding/tech", "misc".
+you can have one or both. 
+
+- filter for duration: less 
+than 5 minutes or any length. 
+
+[! endfilter !]
+
+<p>Some links to start with</p>
+
+<p>Music</p>
+<pre>
+https://www.youtube.com/watch?v=3Lxqjzik-8w
+</pre>
+
+
+
+
+[! endblock !]

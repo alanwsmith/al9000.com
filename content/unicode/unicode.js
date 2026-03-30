@@ -1,6 +1,4 @@
-export const b = {
-  init: "addCharacters",
-};
+export const b = {};
 
 let state = {
   cellsAdded: false,
@@ -9,9 +7,12 @@ let state = {
   // end: 3686,
 };
 
-export async function addCharacters(_, __, el) {
+export async function addCharacters(_, sender, ___) {
   if (state.cellsAdded === false) {
+    sender.remove();
+    await b.sleep(100);
     b.trigger("characters");
+
     //state.cellsAdded = true;
     //const characterEls = [];
     //for (let c = 33; c <= 1000; c++) {
@@ -31,8 +32,9 @@ export async function addCharacters(_, __, el) {
 }
 
 export async function characters(_, __, el) {
+  b.trigger("status");
   if (state.current <= state.end) {
-    const count = Math.min(state.end - state.current + 1, 500);
+    const count = Math.min(state.end - state.current + 1, 1000);
     const numbers = Array.from({ length: count }, (_, i) => i + state.current);
     el.appendChild(b.render("displayTemplate", {
       __CHARACTERS__: numbers.map((num) => span(num)),
@@ -45,12 +47,22 @@ export async function characters(_, __, el) {
   }
 }
 
+export async function copyCharacter(_, sender, ___) {
+  const id = `#${sender.id}`;
+  b.copy(id);
+}
+
+export async function status(_, __, el) {
+  el.innerHTML = `Characters remaining to render: ${
+    Math.max(state.end - state.current, 0)
+  }`;
+}
+
 function span(number) {
   const hex = number.toString(16);
   return b.render("characterTemplate", {
     __CHARACTER__: `&#x${hex};`,
-    //__CHARACTER__: ``,
-    //__CHARACTER__: isAvailable(hex) ? "x" : "y",
+    __HEX__: hex,
     __HIDDEN__: isAvailable(hex) ? "" : "hidden",
   });
 }
@@ -67,13 +79,14 @@ function isAvailable(
     referenceCanvas.width =
     testCanvas.height =
     referenceCanvas.height =
-      50;
+      30;
+
   let testContext = testCanvas.getContext("2d");
   let referenceContext = referenceCanvas.getContext("2d");
-  testContext.font = referenceContext.font = "30px " + font;
+  testContext.font = referenceContext.font = "12px " + font;
   testContext.fillStyle = referenceContext.fillStyle = "black";
-  testContext.fillText(character, 0, 30);
-  referenceContext.fillText("\uffff", 0, 30);
+  testContext.fillText(character, 0, 12);
+  referenceContext.fillText("\uffff", 0, 12);
   // Taking out the firefox attempt since it's not working
   // for me.
   // if (!recursion && characterIsSupported("\ufffe", font, true)) {

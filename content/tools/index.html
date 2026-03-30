@@ -1,0 +1,22 @@
+[!- extends "__wrappers/default-v1.html" -!]
+
+[! set title = "tools" !]
+
+[! block main!]
+
+<p>This is where I'll be moving the tools from <a href="https://tools.alanwsmith.com/">tools.alanwsmith.com</a></p>
+
+[! for fldr in folders_in_folder("tools/tools") !]
+  [! set include_file = "/" + fldr + "/index.html" !]
+  [! set title_file = "/" + fldr + "/title.html" !]
+  [! set bit_path = "/" + fldr + "/bit.js" !]
+<bitty-8 data-connect="[@ bit_path @]"></bitty-8>
+<details><summary>[! include title_file ignore missing !]</summary>
+  [! include include_file ignore missing !]
+</details>
+[! endfor !]
+
+
+[! endblock !]
+
+

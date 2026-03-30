@@ -3,12 +3,18 @@
 [! block head !]
 <style>
 .unicodeCharacter {
-  border: var(--info-border);
+  color: var(--default-color);
   display: inline-block;
   height: 2.2em;
   padding: 0.3rem;
   width: 2rem;
+  border: 1px solid rgb(128 128 128 / 0);
 }
+
+.unicodeCharacter:hover {
+  border: var(--faded-info-border);
+}
+
 .hidden {
   display: none;
 }
@@ -18,7 +24,7 @@
 
 [! block main !]
 
-<bitty-8-0 data-connect="/unicode/unicode.js"></bitty-8-0>
+<bitty-8 data-connect="/unicode/unicode.js"></bitty-8>
 
 <h3>Warning</h3>
 <div class="info-border default-padding default-maring default-border-radius default-flow">
@@ -34,6 +40,9 @@
     <li>
       While the output is done in chunks, it can still bog down 
       a browser tab. It may become unresponsive.
+    </li>
+    <li>
+      Clicking on a character copies it.
     </li>
     <li>
       <details><summary>More Details</summary>
@@ -69,6 +78,6 @@
 </script>
 
 <script type="text/html" id="characterTemplate">
-<span class="unicodeCharacter __HIDDEN__">__CHARACTER__</span>
+<button class="unicodeCharacter __HIDDEN__" data-s="copyCharacter" id="id__HEX__">__CHARACTER__</button>
 </script>
 [! endblock !]

@@ -426,8 +426,13 @@ svg {
 
 textarea {
   font: inherit;
-  max-width: 100%;
+  width: 100%;
 }
+
+textarea.default {
+  min-height: 8rem;
+}
+
 
 th {
   font-weight: var(--weight-900);
@@ -459,8 +464,9 @@ th {
 .two-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--default-padding);
+  gap: var(--large-margin);
 }
+
 
 ul > :where(:not(:first-child)) {
   margin-top: var(--flow-space, var(--default-flow));
