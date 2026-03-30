@@ -1,23 +1,48 @@
 [!- extends "__wrappers/main.html" -!]
 
-[! block head !][! endblock !]
+[! block head !]
+<style>
+.unicodeCharacter {
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.6rem;
+  border: var(--info-border);
+}
+
+</style>
+[! endblock !]
 
 [! block main !]
 
 <bitty-8-0 data-connect="/unicode/unicode.js"></bitty-8-0>
 
 <h3>Warning</h3>
-<p class="info-border default-padding default-maring default-border-radius">
-  This page generates 126,686 unicode characters. Most
-  browsers lock up for anywhere between a few seconds
-  to a minute while the generation happens. It's
-  entirely possible the browser tab will crash to. 
-  Only press the button if you're cool with that. 
-</p>
+<div class="info-border default-padding default-maring default-border-radius default-flow">
+  <p>
+    This page generates 126,686 unicode characters. Most
+    browsers lock up for anywhere between a few seconds
+    to a minute while the generation happens. It's
+    entirely possible the browser tab will crash to. 
+  </p>
+  <p>
+    Only hit the button if you're cool with that. 
+  </p>
+</div>
 
 <h3>The Characters</h3>
 
-<button data-s="characters">Read the warnings above then use this button to generate the characters</button>
+<button data-s="addCharacters">Read the warnings above then use this button to generate the characters</button>
 
-<div data-r="characters"></div>
+
+<div data-r="addCharacters"></div>
+[! endblock !]
+
+[! block templates !]
+<script type="text/html" id="displayTemplate">
+<div>__CHARACTERS__</div>
+</script>
+
+<script type="text/html" id="characterTemplate">
+<span class="unicodeCharacter" data-hex="__HEX__" data-r="outputCharacter"></span>
+</script>
 [! endblock !]
