@@ -49,16 +49,46 @@ function span(number) {
   const hex = number.toString(16);
   return b.render("characterTemplate", {
     __CHARACTER__: `&#x${hex};`,
+    //__CHARACTER__: ``,
+    //__CHARACTER__: isAvailable(hex) ? "x" : "y",
+    __HIDDEN__: isAvailable(hex) ? "" : "hidden",
   });
 }
 
-export async function outputCharacter(_, __, el) {
-  el.innerHTML = `&#x${el.prop("hex")};`;
-
-  //el.innerHTML = `${el.prop("hex")`;
+function isAvailable(
+  hex,
+  font = getComputedStyle(document.body).fontFamily,
+  recursion = false,
+) {
+  const character = String.fromCodePoint(`0x${hex}`);
+  let testCanvas = document.createElement("canvas");
+  let referenceCanvas = document.createElement("canvas");
+  testCanvas.width =
+    referenceCanvas.width =
+    testCanvas.height =
+    referenceCanvas.height =
+      150;
+  let testContext = testCanvas.getContext("2d");
+  let referenceContext = referenceCanvas.getContext("2d");
+  testContext.font = referenceContext.font = "100px " + font;
+  testContext.fillStyle = referenceContext.fillStyle = "black";
+  testContext.fillText(character, 0, 100);
+  referenceContext.fillText("\uffff", 0, 100);
+  if (!recursion && characterIsSupported("\ufffe", font, true)) {
+    testContext.fillStyle = referenceContext.fillStyle = "black";
+    testContext.fillRect(10, 10, 80, 80);
+    referenceContext.fillRect(10, 10, 80, 80);
+  }
+  return testCanvas.toDataURL() != referenceCanvas.toDataURL();
 }
 
-// CODE FROM: https://stackoverflow.com/a/63520666/102401
+//export async function outputCharacter(_, __, el) {
+//  el.innerHTML = `&#x${el.prop("hex")};`;
+//  //el.innerHTML = `${el.prop("hex")`;
+//}
+//
+
+// ORIGINAL CODE FROM: https://stackoverflow.com/a/63520666/102401
 //The first argument is the character you want to test, and the second argument is the font you want to test it in.
 //If the second argument is left out, it defaults to the font of the <body> element.
 //The third argument isn't used under normal circumstances, it's just used internally to avoid infinite recursion.

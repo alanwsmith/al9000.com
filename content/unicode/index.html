@@ -3,10 +3,14 @@
 [! block head !]
 <style>
 .unicodeCharacter {
-  display: inline-block;
-  width: 1.4rem;
-  height: 1.6rem;
   border: var(--info-border);
+  display: inline-block;
+  height: 2.2em;
+  padding: 0.3rem;
+  width: 2rem;
+}
+.hidden {
+  display: none;
 }
 
 </style>
@@ -43,6 +47,6 @@
 </script>
 
 <script type="text/html" id="characterTemplate">
-<span class="unicodeCharacter">__CHARACTER__</span>
+<span class="unicodeCharacter __HIDDEN__">__CHARACTER__</span>
 </script>
 [! endblock !]
