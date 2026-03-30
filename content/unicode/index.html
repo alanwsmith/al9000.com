@@ -22,23 +22,45 @@
 
 <h3>Warning</h3>
 <div class="info-border default-padding default-maring default-border-radius default-flow">
-  <p>
-    This page generates 126,686 unicode characters. Most
-    browsers lock up for anywhere between a few seconds
-    to a minute while the generation happens. It's
-    entirely possible the browser tab will crash to. 
-  </p>
-  <p>
-    Only hit the button if you're cool with that. 
-  </p>
+  <ul>
+    <li>
+      This page generates over 120K unicode 
+      character glyphs. 
+    </li>
+    <li>
+      The button below starts the process. It can
+      take a few minutes depending on your device. 
+    </li>
+    <li>
+      While the output is done in chunks, it can still bog down 
+      a browser tab. It may become unresponsive.
+    </li>
+    <li>
+      <details><summary>More Details</summary>
+        <ul>
+          <li>
+            Different fonts include different sets
+            of character glyphs. The page attempts
+            to remove those that are unavailable
+            on your device. This currently works best in
+            Google Chrome, okay in Safari, and
+            not at all in Firefox.
+          </li>
+          <li>
+            Missing character glyphs show up as box
+            with four letters/numbers split into
+            two rows on Firefox. 
+          </li>
+        </ul>
+      </details>
+    </li>
+  </ul>
 </div>
 
 <h3>The Characters</h3>
-
 <button data-s="addCharacters">Read the warnings above then use this button to generate the characters</button>
-
-
 <div data-r="characters"></div>
+<div data-r="status"></div>
 [! endblock !]
 
 [! block templates !]
