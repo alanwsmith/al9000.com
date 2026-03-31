@@ -1,0 +1,17 @@
+[!- extends "/templates.inc/wrappers/default.html" -!]
+
+[!- block body -!]
+
+    [! include "/templates.inc/includes/header.html" !]
+
+    <main class="[@ main_classes @]">
+      [! block title !][! endblock !]
+      [! block main !][! endblock !]
+    </main>
+
+    [! include "/templates.inc/includes/footer.html" !]
+
+    [! block templates !]
+    [! endblock !]
+
+[!- endblock -!]
