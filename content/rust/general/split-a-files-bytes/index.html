@@ -1,0 +1,31 @@
+[!- extends "/templates.inc/pages/rust.html" -!]
+
+[!- block title -!]
+<h1>Split a Files Bytes</h1>
+[!- endblock -!]
+
+[!- block main -!]
+[! filter markdown|safe !]
+This started as an idea for how to split
+things up so that fair use files doing
+get pinged by automatic bots. The idea
+being to split a file into two with 
+every other byte alternating between
+the outputs. Reassembly to be
+done with WASM. 
+
+Then, I realized, why not just encrypt
+the files? They could be decoded
+automatically by simply including
+the password in the javascript 
+on the page. Or, you could set up
+a form so that only folks with
+the password could get them. 
+
+I really like that idea in general. 
+Basically, a way to serve
+encrypted content on a static site. 
+[! endfilter !]
+
+
+[!- endblock -!]

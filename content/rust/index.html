@@ -1,12 +1,15 @@
-[!- extends "/wrappers.inc/default-v1.html" -!]
+[!- extends "/templates.inc/pages/default.html" -!]
+
+[! block title !]
+<h1>Rust Grimoire</h1>
+[! endblock !]
 
 [! block main !]
 [! filter markdown|safe !]
-The place for two things:
+### al9000.com 
 
-- The source code for the al9000 static site 
-generator that builds this site.
-- My rust snippets and prototypes. 
+[static site builder](/rust/al9000/)
+
 [! endfilter !]
 [! endblock !]
 

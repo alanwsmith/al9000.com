@@ -1,0 +1,44 @@
+[!- extends "/templates.inc/pages/default.html" -!]
+
+[! block title !]
+<h1>wasm - hello, world</h1>
+[! endblock !]
+
+[! block main !]
+<p>
+  This is a basic `Hello, World` WASM 
+  app written in rust.
+</p>
+
+<h4>Cargo.toml</h4>
+[! filter block_highlight("html") !]
+[! include "/" + file.parent + "/Cargo.toml" !]
+[! endfilter !]
+
+<h4>src/lib.rs</h4>
+[! filter block_highlight("rust") !]
+[! include "/" + file.parent + "/src/lib.rs" !]
+[! endfilter !]
+
+<h4>HTML</h4>
+[! filter block_highlight("html") !]
+[! include "/" + file.parent + "/html.html" !]
+[! endfilter !]
+
+<h4>JavaScript</h4>
+[! filter block_highlight("html") !]
+[! include "/" + file.parent + "/script.html" !]
+[! endfilter !]
+
+
+<h4>Build Script</h4>
+[! filter block_highlight("bash") !]
+[! include "/" + file.parent + "/build_release" !]
+[! endfilter !]
+
+
+<h4>Output</h4>
+[! include "/" + file.parent + "/script.html" !]
+[! include "/" + file.parent + "/html.html" !]
+
+[! endblock !]
