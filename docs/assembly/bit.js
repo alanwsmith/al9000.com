@@ -1,13 +1,13 @@
 export const b = { init: "playerEls" };
 
 let ytApiPromise;
-let players = [];
+let players = [[], []];
 
 export async function playerEls(_, __, el) {
   for (let i = 0; i < 4; i += 1) {
-    const player = await addPlayer(el);
-    players.push(player);
-    seekAndPlay(i);
+    // const player = await addPlayer(el);
+    // players.push(player);
+    // seekAndPlay(i);
   }
 }
 
