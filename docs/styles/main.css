@@ -118,10 +118,6 @@ b {
   left: 0.25rem;
 }
 
-.block {
-  display: block;
-}
-
 blockquote {
   margin: var(--large-margin);
   padding: var(--default-padding);

@@ -1,0 +1,82 @@
+[!- extends "/templates.inc/pages/default.html" -!]
+
+
+[! block head !]
+<style>
+  form {
+    display: grid;
+    gap: 0.7rem;
+  }
+  label {
+    display: block;
+  }
+</style>
+
+[! endblock !]
+
+[! block title !]
+<h1>rust wasm: serve static encrypted files</h1>
+[! endblock !]
+
+
+[! block main !]
+<h4>Output</h4>
+[! include "/" + file.parent + "/script.html" !]
+[! include "/" + file.parent + "/html.html" !]
+
+<p>
+  Goal: Provide a way to encrypt and decrypt 
+  files so they can be served
+  on static sites
+</p>
+
+<h4>Cargo.toml</h4>
+[! filter block_highlight("html") !]
+[! include "/" + file.parent + "/Cargo.toml" !]
+[! endfilter !]
+
+
+<h4>src/lib.rs</h4>
+[! filter block_highlight("rust") !]
+[! include "/" + file.parent + "/src/lib.rs" !]
+[! endfilter !]
+
+
+<h4>HTML</h4>
+[! filter block_highlight("html") !]
+[! include "/" + file.parent + "/html.html" !]
+[! endfilter !]
+
+
+<h4>JavaScript</h4>
+[! filter block_highlight("html") !]
+[! include "/" + file.parent + "/script.html" !]
+[! endfilter !]
+
+
+<h4>Build Script</h4>
+[! filter block_highlight("bash") !]
+[! include "/" + file.parent + "/build_release" !]
+[! endfilter !]
+
+
+<pre>
+References:
+
+https://docs.rs/orion/latest/orion/
+
+https://docs.rs/orion/latest/orion/aead/index.html
+
+https://docs.rs/orion/latest/orion/kdf/index.html
+
+https://docs.rs/orion/latest/orion/kdf/struct.Salt.html
+
+https://docs.rs/wasm-bindgen/latest/wasm_bindgen/
+
+https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters
+
+https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+
+</pre>
+
+[! endblock !]
