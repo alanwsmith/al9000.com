@@ -216,47 +216,14 @@ higher security requirements.</p>
         const blob = await response.blob();
         const buffer = await blob.arrayBuffer();
         const bytes = new Uint8Array(buffer);
-        console.log(bytes);
-        //const responseBytes = await decrypt_file(bytes, password.trim());
-        const responseBytes = await decrypt_file(bytes, "wasm");
+        const responseBytes = await decrypt_file(bytes, password);
         const text = new TextDecoder().decode(responseBytes);
         resultsEl.innerHTML = text;
       }
     } catch(error) {
       resultsEl.innerHTML = `ERROR: ${error}`;
     }
-      
-/*
-async function fetchJson(url) {
-}
-*/
-
-
   }
-
-  /*
-  async function handleEncryption(event) {
-    event.preventDefault();
-    const password = document.querySelector("#password").value;
-    const fileInput = document.querySelector("#fileToEncrypt");
-    const file = fileInput.files[0];
-    if (!file || !password) {
-      console.error("Handle missing inputs here");
-      return;
-    }
-    const arrayBuffer = await file.arrayBuffer();
-    const bytes = new Uint8Array(arrayBuffer);
-    const responseBytes = await encrypt_file(bytes, password);
-    const blob = new Blob([responseBytes], { type: "applicaiton/octet-stream" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${file.name}.bin`;
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-  */
-
 
   async function main() {
     await init();

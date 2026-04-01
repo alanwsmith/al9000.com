@@ -12,17 +12,14 @@
     }
     const arrayBuffer = await file.arrayBuffer();
     const bytes = new Uint8Array(arrayBuffer);
-    console.log(bytes);
-    //const responseBytes = await encrypt_file(bytes, password.trim());
-    const responseBytes = await encrypt_file(bytes, "wasm");
-    console.log('responseBytes type:', responseBytes.constructor.name);
+    const responseBytes = await encrypt_file(bytes, password);
     const blob = new Blob([responseBytes], { type: "application/octet-stream" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
     a.download = `${file.name}.bin`;
     a.click();
-    // URL.revokeObjectURL(url);
+    URL.revokeObjectURL(url);
   }
 
 
