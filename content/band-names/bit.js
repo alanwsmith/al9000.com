@@ -340,7 +340,6 @@ Slingshot Chickens
 The Solo Twins
 The String Literals
 Tack Sharp
-The Transparent Acoustic
 The Decision Tree
 The Unfortunately Erect
 Useful MacGuffins
@@ -457,12 +456,18 @@ Yak Shavers Kink
 The Yoda Talking Ninjas
 `;
 
+export function isLatest(text, __, el) {
+  el.innerHTML = text;
+}
+
 export function latest(_, __, el) {
   el.innerHTML = names.split("\n").filter((line) => line.trim() !== "")[0];
+  b.send("(latest)", "isLatest");
 }
 
 export function random(_, __, el) {
   const list = names.split("\n").filter((line) => line.trim() !== "");
   const index = b.randomInt(0, list.length - 1);
   el.innerHTML = list[index];
+  b.send("", "isLatest");
 }

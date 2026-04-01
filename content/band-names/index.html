@@ -1,16 +1,28 @@
 [!- extends "/templates.inc/pages/default.html" -!]
 
+[! block head !]
+<style>
+[data-r~=isLatest] {
+  min-height: 2rem;
+}
+
+
+</style>
+[! endblock !]
+
 [! block title !]
 <h1>The Name(s) of My New Band</h1>
 [! endblock !]
 
+
 [! block main !]
-
-
-<div data-r="latest random" class="text-align-center xxlarge-font-size xxxlarge-block-margin xxxlarge-block-padding"></div>
+<div class="text-align-center xxxlarge-block-margin xxxlarge-block-padding">
+  <div data-r="latest random" class="xxlarge-font-size"></div>
+  <div data-r="isLatest"></div>
+</div>
 
 <div class="text-align-center">
-<button data-s="random">get another one</button>
+<button data-s="random">get a previous one</button>
 </div>
 
 [! block templates !]
