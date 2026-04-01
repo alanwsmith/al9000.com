@@ -214,7 +214,7 @@ class BittyJs extends HTMLElement {
     }, ms);
   }
 
-  _dedup(array) {
+  _dedupe(array) {
     return [...new Set(array)];
   }
 
