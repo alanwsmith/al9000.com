@@ -1,0 +1,32 @@
+[!- extends "/templates.inc/pages/default.html" -!]
+
+
+[! block title !]
+<h1>static site file decryption [rust: wasm]</h1>
+[! endblock !]
+
+[! block main !]
+
+[! filter markdown|safe !]
+## Overview
+
+- This is the process I'm using on this
+site to encrypt files so they require
+a password to access. 
+
+- Security is tricky. This process
+works for me given that nothing
+is very sensitive. Get with 
+a security professional if you have
+higher security requirements. 
+
+[! endfilter !]
+
+
+<h4>Output</h4>
+[! include "/" + file.parent + "/_includes.inc/script.html" !]
+[! include "/" + file.parent + "/_includes.inc/html.html" !]
+
+[! endblock !]
+
+

@@ -1,0 +1,44 @@
+<script type="module">
+  import init, {decrypt_file} from "./pkg/static_site_file_decryption.js";
+
+  async function decryptFile(event) {
+    event.preventDefault();
+    const password = document.querySelector("#password").value;
+
+    console.log(event);
+  }
+
+  /*
+  async function handleEncryption(event) {
+    event.preventDefault();
+    const password = document.querySelector("#password").value;
+    const fileInput = document.querySelector("#fileToEncrypt");
+    const file = fileInput.files[0];
+    if (!file || !password) {
+      console.error("Handle missing inputs here");
+      return;
+    }
+    const arrayBuffer = await file.arrayBuffer();
+    const bytes = new Uint8Array(arrayBuffer);
+    const responseBytes = await encrypt_file(bytes, password);
+    const blob = new Blob([responseBytes], { type: "applicaiton/octet-stream" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${file.name}.bin`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  */
+
+
+  async function main() {
+    await init();
+    const fileInput = document.querySelector("#decryptForm");
+    fileInput.addEventListener("submit", (event) => {
+      decryptFile(event);
+    });
+  }
+
+  main();
+</script>

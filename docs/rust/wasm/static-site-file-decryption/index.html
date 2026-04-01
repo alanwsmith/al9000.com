@@ -175,17 +175,77 @@ body {
 </header>
     <main class="default-wrapper default-flow">
       <hgroup>
-<h1>Rust Grimoire</h1>
+<h1>static site file decryption [rust: wasm]</h1>
       </hgroup>
-<h3>al9000.com</h3>
-<p><a href="/rust/al9000/">static site builder</a></p>
-<h3>wasm</h3>
 
-<ul class="d">
-<li><a href="/rust/wasm/static-site-file-decryption/">static site file decryption</a>
-<li><a href="/rust/wasm/static-site-file-encryption/">static site file encryption</a>
+<h2>Overview</h2>
+<ul>
+<li>
+<p>This is the process I'm using on this
+site to encrypt files so they require
+a password to access.</p>
+</li>
+<li>
+<p>Security is tricky. This process
+works for me given that nothing
+is very sensitive. Get with
+a security professional if you have
+higher security requirements.</p>
+</li>
 </ul>
 
+
+<h4>Output</h4>
+<script type="module">
+  import init, {decrypt_file} from "./pkg/static_site_file_decryption.js";
+
+  async function decryptFile(event) {
+    event.preventDefault();
+    const password = document.querySelector("#password").value;
+
+    console.log(event);
+  }
+
+  /*
+  async function handleEncryption(event) {
+    event.preventDefault();
+    const password = document.querySelector("#password").value;
+    const fileInput = document.querySelector("#fileToEncrypt");
+    const file = fileInput.files[0];
+    if (!file || !password) {
+      console.error("Handle missing inputs here");
+      return;
+    }
+    const arrayBuffer = await file.arrayBuffer();
+    const bytes = new Uint8Array(arrayBuffer);
+    const responseBytes = await encrypt_file(bytes, password);
+    const blob = new Blob([responseBytes], { type: "applicaiton/octet-stream" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${file.name}.bin`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  */
+
+
+  async function main() {
+    await init();
+    const fileInput = document.querySelector("#decryptForm");
+    fileInput.addEventListener("submit", (event) => {
+      decryptFile(event);
+    });
+  }
+
+  main();
+</script><form id="decryptForm">
+  <label>
+    <div>Password:</div>
+    <input type="password" id="password" />
+  </label>
+  <input type="submit" value="Decrypt File">
+</form>
 
     </main>
 

@@ -7,9 +7,18 @@
 [! block main !]
 [! filter markdown|safe !]
 ### al9000.com 
-
 [static site builder](/rust/al9000/)
-
+### wasm
 [! endfilter !]
+
+<ul class="d">
+[! for key in json.rust.wasm !]
+[! if json.rust.wasm[key].index !]
+<li><a href="/rust/wasm/[@ key @]/">[@ json.rust.wasm[key].index.link_title @]</a>
+[! endif !]
+[! endfor !]
+</ul>
+
+
 [! endblock !]
 
