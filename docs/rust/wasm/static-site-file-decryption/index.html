@@ -167,6 +167,12 @@ body {
 <link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="">
+<style>
+#results {
+  border-top: var(--faded-default-border);
+  padding-top: var(--default-padding);
+}
+</style>
   </head>
   <body>
 <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
@@ -176,80 +182,227 @@ body {
     <main class="default-wrapper default-flow">
       <hgroup>
 <h1>static site file decryption [rust: wasm]</h1>
+<div class="subtitle">Or, How to Password Protect Files on a Static Site</div>
+<div class="subtitle">March 2026</div>
       </hgroup>
 
-<h2>Overview</h2>
-<ul>
-<li>
-<p>This is the process I'm using on this
-site to encrypt files so they require
-a password to access.</p>
-</li>
-<li>
-<p>Security is tricky. This process
-works for me given that nothing
-is very sensitive. Get with
-a security professional if you have
-higher security requirements.</p>
-</li>
-</ul>
-
-
-<h4>Output</h4>
-<script type="module">
-  import init, {decrypt_file} from "./pkg/static_site_file_decryption.js";
-
-  async function decryptFile(event) {
-    event.preventDefault();
-    const resultsEl = document.querySelector("#results");
-    const password = document.querySelector("#password").value;
-    if (!password) {
-      resultsEl.innerHTML  = "A password is required";
-      return; 
-    }
-    const url = "samples/encrypt-decrypt-example.json.bin";
-    const response = await fetch(url);
-    try {  
-      if (!response.ok) {
-        resultsEl.innerHTML = `ERROR: ${response.status} [${response.statusText}] - ${url}`;
-      } else {
-        const blob = await response.blob();
-        const buffer = await blob.arrayBuffer();
-        const bytes = new Uint8Array(buffer);
-        const responseBytes = await decrypt_file(bytes, password);
-        const text = new TextDecoder().decode(responseBytes);
-        resultsEl.innerHTML = text;
-      }
-    } catch(error) {
-      resultsEl.innerHTML = `ERROR: ${error}`;
-    }
-  }
-
-  async function main() {
-    await init();
-    const fileInput = document.querySelector("#decryptForm");
-    fileInput.addEventListener("submit", (event) => {
-      decryptFile(event);
-    });
-  }
-
-  main();
-</script><div>Encrypted File: 
-  <a href="/rust&#x2f;wasm&#x2f;static-site-file-decryption/samples/encrypt-decrypt-example.json.bin">
-  encrypt-decrypt-example.json.bin
-  </a>
+<div class="warning-box">
+  <p><strong>Heads Up</strong></p>
+  <p>
+    Security and encrypted are super complicated. 
+    I'm comfortable with the process outlined
+    here given my understanding of the topics. 
+    But, I'm not an expert. You'll want to 
+    consult with one if you're hosting 
+    critical content. 
+  <p>
 </div>
 
-<form id="decryptForm">
-  <label>
-    <div>Password:</div>
-    <input type="password" id="password" />
-  </label>
-  <input type="submit" value="Decrypt File">
-</form>
+<h2>Introduction</h2>
+<p>I use static site generators for
+<a href="https://links.alanwsmith.com">my sites</a>.
+I call out to external APIs to do
+anything dynamic.
+The exception is password protection.
+I'd always thought that needed to
+be done dynamically on a site's
+host server. I realized
+with WASM that's not the case.
+Files can be encrypted and served
+statically with a WASM process
+providing decryption directly
+on the front end.</p>
+<h2>An Example</h2>
+<p>I've encrypted a file and put copy on my server. It's
+<a href="/rust/wasm/static-site-file-decryption/samples/encrypt-decrypt-example.txt.bin">encrypt-decrypt-example.txt.bin</a>.
+The file is static. You can download it directly.
+It won't do you much good, though. Being encrypted and all.</p>
+<p>Enter the password &quot;wasm&quot; here and hit
+the &quot;Decrypt File&quot; button to view the content.</p>
+<script type="module">
+import init, { decrypt_file } from "./pkg/static_site_file_decryption.js";
 
-<h4>Results</h4>
-<pre id="results"></pre>
+async function decryptTextFileFromForm(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const url = formData.get("url");
+  const password = formData.get("password");
+  const resultsEl = event.target.querySelector("#results");
+  if (!password) {
+    resultsEl.innerHTML = "A password is required";
+    return;
+  }
+  const response = await fetch(url);
+  try {
+    if (!response.ok) {
+      resultsEl.innerHTML =
+        `ERROR: ${response.status} - ${response.statusText} - ${url}`;
+    } else {
+      const blob = await response.blob();
+      const buffer = await blob.arrayBuffer();
+      const bytes = new Uint8Array(buffer);
+      const responseBytes = await decrypt_file(bytes, password);
+      const text = new TextDecoder().decode(responseBytes);
+      resultsEl.innerHTML = text;
+    }
+  } catch (error) {
+    resultsEl.innerHTML = `ERROR: ${error}`;
+  }
+}
+
+async function main() {
+  await init();
+  document.querySelectorAll(".decryptTextFile").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      decryptTextFileFromForm(event);
+    });
+  });
+}
+
+main();</script>
+<div class="example-box">
+  <form class="decryptTextFile" action=".">
+    <label>
+      <div>Password:</div>
+      <input type="password" name="password" />
+    </label>
+    <input type="hidden" name="url" value="samples/encrypt-decrypt-example.txt.bin" />
+    <input type="submit" value="Decrypt File">
+    <pre id="results">waiting for output</pre>
+  </form>
+</div>
+<p>
+If you got the password right (it's all lowercase), you'll
+see the text "This is the content of the encrypted file."
+If you got it wrong, you'll get an incorrect password
+message. 
+</p>
+<h2>How It Works</h2>
+
+
+
+<h3>HTML and JavaScript</h3>
+
+<p>Here's the HTML and JavaScript for the page:</p>
+
+<pre class="code-block"><code><span class="line-marker"></span><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">example-box</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>  <span class="meta tag block form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block form html">form</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">decryptTextFile</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">action</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>.<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>    <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>      <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>Password:<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>      <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>password<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">name</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>password<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
+<span class="line-marker"></span>    <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>    <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>hidden<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">name</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>url<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">value</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>samples/encrypt-decrypt-example.txt.bin<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
+<span class="line-marker"></span>    <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>submit<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">value</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>Decrypt File<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">pre</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">results</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>waiting for output<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">pre</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>  <span class="meta tag block form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block form html">form</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre>
+<pre class="code-block"><code><span class="line-marker"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span><span class="source js embedded html"><span class="source js">
+<span class="line-marker"></span><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="variable other readwrite js">init</span><span class="punctuation separator comma js">,</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">decrypt_file</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>./pkg/static_site_file_decryption.js<span class="punctuation definition string end js">&quot;</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function declaration js"><span class="storage type js">async</span> <span class="storage type function js">function</span> <span class="entity name function js">decryptTextFileFromForm</span><span class="punctuation section group begin js">(</span><span class="variable parameter function js">event</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>  <span class="variable other object js">event</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">preventDefault</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">formData</span> <span class="keyword operator assignment js">=</span> <span class="meta instance constructor js"><span class="keyword operator word new js">new</span><span class="meta function-call constructor js"> <span class="variable type js">FormData</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">event</span><span class="punctuation accessor js">.</span><span class="meta property object js">target</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="storage type js">const</span> <span class="support module node js">url</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">formData</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">get</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>url<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">password</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">formData</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">get</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>password<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">resultsEl</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">event</span><span class="punctuation accessor js">.</span><span class="meta property object js">target</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">querySelector</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>#results<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="keyword operator logical js">!</span><span class="variable other readwrite js">password</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="variable other object js">resultsEl</span><span class="punctuation accessor js">.</span><span class="meta property object js">innerHTML</span> <span class="keyword operator assignment js">=</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>A password is required<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    <span class="keyword control flow js">return</span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">response</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="meta function-call js"><span class="variable function js">fetch</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="support module node js">url</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="meta try js"><span class="keyword control trycatch js">try</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="keyword operator logical js">!</span><span class="variable other object js">response</span><span class="punctuation accessor js">.</span><span class="meta property object js">ok</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>      <span class="variable other object js">resultsEl</span><span class="punctuation accessor js">.</span><span class="meta property object js">innerHTML</span> <span class="keyword operator assignment js">=</span>
+<span class="line-marker"></span>        <span class="string template js"><span class="punctuation definition string template begin js">`</span>ERROR: </span><span class="meta template expression js"><span class="punctuation definition template-expression begin js">${</span></span><span class="meta template expression js"><span class="source js embedded expression"><span class="variable other object js">response</span><span class="punctuation accessor js">.</span><span class="meta property object js">status</span></span><span class="punctuation definition template-expression end js">}</span></span><span class="string template js"> - </span><span class="meta template expression js"><span class="punctuation definition template-expression begin js">${</span></span><span class="meta template expression js"><span class="source js embedded expression"><span class="variable other object js">response</span><span class="punctuation accessor js">.</span><span class="meta property object js">statusText</span></span><span class="punctuation definition template-expression end js">}</span></span><span class="string template js"> - </span><span class="meta template expression js"><span class="punctuation definition template-expression begin js">${</span></span><span class="meta template expression js"><span class="source js embedded expression"><span class="support module node js">url</span></span><span class="punctuation definition template-expression end js">}</span></span><span class="string template js"><span class="punctuation definition string template end js">`</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>      <span class="storage type js">const</span> <span class="variable other readwrite js">blob</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="variable other object js">response</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">blob</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="storage type js">const</span> <span class="support module node js">buffer</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="variable other object js">blob</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">arrayBuffer</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="storage type js">const</span> <span class="variable other readwrite js">bytes</span> <span class="keyword operator assignment js">=</span> <span class="meta instance constructor js"><span class="keyword operator word new js">new</span><span class="meta function-call constructor js"> <span class="variable type js">Uint8Array</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="support module node js">buffer</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="storage type js">const</span> <span class="variable other readwrite js">responseBytes</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="meta function-call js"><span class="variable function js">decrypt_file</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">bytes</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">password</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="storage type js">const</span> <span class="variable other readwrite js">text</span> <span class="keyword operator assignment js">=</span> <span class="meta instance constructor js"><span class="keyword operator word new js">new</span><span class="meta function-call constructor js"> <span class="variable type js">TextDecoder</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span></span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">decode</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">responseBytes</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="variable other object js">resultsEl</span><span class="punctuation accessor js">.</span><span class="meta property object js">innerHTML</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">text</span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta catch js"><span class="keyword control trycatch js">catch</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">error</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="variable other object js">resultsEl</span><span class="punctuation accessor js">.</span><span class="meta property object js">innerHTML</span> <span class="keyword operator assignment js">=</span> <span class="string template js"><span class="punctuation definition string template begin js">`</span>ERROR: </span><span class="meta template expression js"><span class="punctuation definition template-expression begin js">${</span></span><span class="meta template expression js"><span class="source js embedded expression"><span class="variable other readwrite js">error</span></span><span class="punctuation definition template-expression end js">}</span></span><span class="string template js"><span class="punctuation definition string template end js">`</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span><span class="punctuation section block js">}</span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function declaration js"><span class="storage type js">async</span> <span class="storage type function js">function</span> <span class="entity name function js">main</span><span class="punctuation section group begin js">(</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>  <span class="keyword control flow js">await</span> <span class="meta function-call js"><span class="variable function js">init</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="support type object dom js">document</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">querySelectorAll</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>.decryptTextFile<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">forEach</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="meta function declaration js"><span class="punctuation section group begin js">(</span><span class="variable parameter function js">form</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span><span class="storage type function arrow js">=&gt;</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="variable other object js">form</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">addEventListener</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>submit<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="meta function declaration js"><span class="punctuation section group begin js">(</span><span class="variable parameter function js">event</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span><span class="storage type function arrow js">=&gt;</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>      <span class="meta function-call js"><span class="variable function js">decryptTextFileFromForm</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">event</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span><span class="punctuation section block js">}</span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function-call js"><span class="variable function js">main</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre>
+
+<h4>src/lib.rs</h4>
+<pre class="code-block"><code><span class="line-marker"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">orion<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>aead<span class="punctuation separator rust">,</span> kdf</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">wasm_bindgen<span class="punctuation accessor rust">::</span></span><span class="meta path rust">prelude<span class="punctuation accessor rust">::</span></span><span class="keyword operator rust">*</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta annotation rust"><span class="punctuation definition annotation rust">#</span><span class="punctuation section group begin rust">[</span><span class="variable annotation rust">wasm_bindgen</span><span class="punctuation section group end rust">]</span></span>
+<span class="line-marker"></span><span class="meta function rust"><span class="meta function rust"><span class="storage modifier rust">pub</span> <span class="storage type function rust">fn</span> </span><span class="entity name function rust">decrypt_file</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span>
+<span class="line-marker"></span>  <span class="variable parameter rust">bytes</span><span class="punctuation separator rust">:</span> <span class="meta generic rust">Vec<span class="punctuation definition generic begin rust">&lt;</span><span class="storage type rust">u8</span><span class="punctuation definition generic end rust">&gt;</span></span>,
+<span class="line-marker"></span>  <span class="variable parameter rust">password</span><span class="punctuation separator rust">:</span> String,
+<span class="line-marker"></span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Vec<span class="punctuation definition generic begin rust">&lt;</span><span class="storage type rust">u8</span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> kdf_password <span class="keyword operator rust">=</span>
+<span class="line-marker"></span>    <span class="meta path rust">kdf<span class="punctuation accessor rust">::</span></span><span class="meta path rust">Password<span class="punctuation accessor rust">::</span></span>from_slice<span class="meta group rust"><span class="punctuation section group begin rust">(</span>password.<span class="support function rust">trim</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">as_bytes</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> salt <span class="keyword operator rust">=</span>
+<span class="line-marker"></span>    <span class="meta path rust">kdf<span class="punctuation accessor rust">::</span></span><span class="meta path rust">Salt<span class="punctuation accessor rust">::</span></span>from_slice<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="storage type string rust">b</span><span class="punctuation definition string begin rust">&quot;</span>ca0beb1d-5a8a-4da9-b278-058087d00125<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>      .<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> kdf_key <span class="keyword operator rust">=</span>
+<span class="line-marker"></span>    <span class="meta path rust">kdf<span class="punctuation accessor rust">::</span></span>derive_key<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>kdf_password<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>salt<span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">3</span><span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">1</span> <span class="keyword operator rust">&lt;</span><span class="keyword operator rust">&lt;</span> <span class="constant numeric integer decimal rust">16</span><span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">32</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="keyword control rust">match</span> <span class="meta path rust">aead<span class="punctuation accessor rust">::</span></span>open<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>kdf_key<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>bytes</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>    <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>response</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=&gt;</span> response<span class="punctuation separator rust">,</span>
+<span class="line-marker"></span>    <span class="support type rust">Err</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">_</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=&gt;</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>The password you entered<span class="constant character escape rust">\n</span>was incorrect.<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker"></span>      .<span class="support function rust">as_bytes</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>      .<span class="support function rust">to_vec</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation separator rust">,</span>
+<span class="line-marker"></span>  </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
+<span class="line-marker"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre>
+
+<h4>Cargo.toml</h4>
+<pre class="code-block"><code><span class="line-marker"></span><span class="text html basic">[package]
+<span class="line-marker"></span>name = &quot;static-site-file-decryption&quot;
+<span class="line-marker"></span>version = &quot;0.1.0&quot;
+<span class="line-marker"></span>edition = &quot;2024&quot;
+<span class="line-marker"></span>
+<span class="line-marker"></span>[lib]
+<span class="line-marker"></span>crate-type = [&quot;cdylib&quot;]
+<span class="line-marker"></span>
+<span class="line-marker"></span>[dependencies]
+<span class="line-marker"></span>getrandom = { version = &quot;0.4.2&quot;, features = [&quot;wasm_js&quot;] }
+<span class="line-marker"></span>orion = &quot;0.17.13&quot;
+<span class="line-marker"></span>wasm-bindgen = &quot;0.2.117&quot;</span></code></pre>
+
+<h4>Build Script</h4>
+<pre class="code-block"><code><span class="line-marker"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker"></span></span>
+<span class="line-marker"></span><span class="support function test begin shell">[</span><span class="meta function-call arguments shell"> <span class="variable parameter option shell"><span class="punctuation definition parameter shell">-</span>e</span> pkg <span class="support function test end shell">]</span></span> <span class="keyword operator logical and shell">&amp;&amp;</span> <span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>rf</span> pkg </span>
+<span class="line-marker"></span><span class="meta function-call shell"><span class="variable function shell">wasm-pack</span></span><span class="meta function-call arguments shell"> build<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> --</span>target</span> web</span></span></code></pre>
+
+<pre>
+References:
+
+https://docs.rs/orion/latest/orion/
+
+https://docs.rs/orion/latest/orion/aead/index.html
+
+https://docs.rs/orion/latest/orion/kdf/index.html
+
+https://docs.rs/orion/latest/orion/kdf/struct.Salt.html
+
+https://docs.rs/wasm-bindgen/latest/wasm_bindgen/
+
+https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters
+
+https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+</pre>
+
     </main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">

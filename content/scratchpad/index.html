@@ -1,0 +1,34 @@
+[!- extends "/templates.inc/pages/default.html" -!]
+
+[! block title !]
+<h1>scratchpad</h1>
+<div class="subtitle">a quick place for me to mess around with ideas</div>
+[! endblock !]
+
+
+[! block main !]
+
+<form class="testForm">
+  <label>
+    <div>Password</div>
+    <input type="password" name="password" />
+  </label>
+  <input type="submit" value="submit" />
+</form>
+
+<script type="module">
+function checkFormValues(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  console.log(formData);
+}
+
+document.querySelectorAll(".testForm")
+  .forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      checkFormValues(event)
+    });
+  });
+</script>
+
+[! endblock !]

@@ -213,6 +213,17 @@ details.d > :where(:not(:first-child)) {
   margin-top: var(--flow-space, var(--default-flow));
 }
 
+.example-box {
+  background-color: var(--match-color);
+  border: var(--default-border);
+  border-radius: var(--default-border-radius);
+  padding: var(--default-padding);
+}
+
+.example-box > :where(:not(:first-child)) {
+  margin-top: var(--flow-space, var(--default-flow));
+}
+
 footer {
   color: var(--default-color);
   font-size: var(--small-font);
@@ -469,4 +480,11 @@ th {
 
 ul > :where(:not(:first-child)) {
   margin-top: var(--flow-space, var(--default-flow));
+}
+
+.warning-box {
+  border: var(--info-border);
+  border-radius: var(--default-border-radius);
+  margin: var(--default-margin);
+  padding: var(--default-padding);
 }

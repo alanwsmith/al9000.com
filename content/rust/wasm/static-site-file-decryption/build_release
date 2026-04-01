@@ -1,4 +1,4 @@
 #!/bin/bash
 
-trash pkg
+[ -e pkg ] && rm -rf pkg 
 wasm-pack build --target web

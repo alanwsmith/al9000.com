@@ -1,31 +1,134 @@
 [!- extends "/templates.inc/pages/default.html" -!]
 
+[! block head !]
+<style>
+#results {
+  border-top: var(--faded-default-border);
+  padding-top: var(--default-padding);
+}
+</style>
+[! endblock !]
 
 [! block title !]
 <h1>static site file decryption [rust: wasm]</h1>
+<div class="subtitle">Or, How to Password Protect Files on a Static Site</div>
+<div class="subtitle">March 2026</div>
 [! endblock !]
 
 [! block main !]
 
+<div class="warning-box">
+  <p><strong>Heads Up</strong></p>
+  <p>
+    Security and encrypted are super complicated. 
+    I'm comfortable with the process outlined
+    here given my understanding of the topics. 
+    But, I'm not an expert. You'll want to 
+    consult with one if you're hosting 
+    critical content. 
+  <p>
+</div>
+
 [! filter markdown|safe !]
-## Overview
+## Introduction
 
-- This is the process I'm using on this
-site to encrypt files so they require
-a password to access. 
+I use static site generators for 
+[my sites](https://links.alanwsmith.com). 
+I call out to external APIs to do
+anything dynamic. 
+The exception is password protection. 
+I'd always thought that needed to
+be done dynamically on a site's
+host server. I realized 
+with WASM that's not the case. 
+Files can be encrypted and served
+statically with a WASM process
+providing decryption directly
+on the front end. 
 
-- Security is tricky. This process
-works for me given that nothing
-is very sensitive. Get with 
-a security professional if you have
-higher security requirements. 
+## An Example
+
+I've encrypted a file and put copy on my server. It's
+[encrypt-decrypt-example.txt.bin](/rust/wasm/static-site-file-decryption/samples/encrypt-decrypt-example.txt.bin).
+The file is static. You can download it directly. 
+It won't do you much good, though. Being encrypted and all. 
+
+Enter the password "wasm" here and hit
+the "Decrypt File" button to view the content. 
+
+<script type="module">
+[! include "/" + file.parent + "/script.inc.js" !]
+</script>
+
+[! include "/" + file.parent + "/html.inc.html" !]
+
+<p>
+If you got the password right (it's all lowercase), you'll
+see the text "This is the content of the encrypted file."
+If you got it wrong, you'll get an incorrect password
+message. 
+</p>
+
+## How It Works
+
 
 [! endfilter !]
 
 
-<h4>Output</h4>
-[! include "/" + file.parent + "/_includes.inc/script.html" !]
-[! include "/" + file.parent + "/_includes.inc/html.html" !]
+
+<h3>HTML and JavaScript</h3>
+
+<p>Here's the HTML and JavaScript for the page:</p>
+
+[! filter block_highlight("html") !]
+[! include "/" + file.parent + "/html.inc.html" !]
+[! endfilter !]
+
+[! filter block_highlight("html") !]
+<script type="module">
+
+[! include "/" + file.parent + "/script.inc.js" !]
+
+
+</script>
+[! endfilter !]
+
+
+<h4>src/lib.rs</h4>
+[! filter block_highlight("rust") !]
+[! include "/" + file.parent + "/src/lib.rs" !]
+[! endfilter !]
+
+
+<h4>Cargo.toml</h4>
+[! filter block_highlight("html") !]
+[! include "/" + file.parent + "/Cargo.toml" !]
+[! endfilter !]
+
+
+<h4>Build Script</h4>
+[! filter block_highlight("bash") !]
+[! include "/" + file.parent + "/build_release" !]
+[! endfilter !]
+
+
+<pre>
+References:
+
+https://docs.rs/orion/latest/orion/
+
+https://docs.rs/orion/latest/orion/aead/index.html
+
+https://docs.rs/orion/latest/orion/kdf/index.html
+
+https://docs.rs/orion/latest/orion/kdf/struct.Salt.html
+
+https://docs.rs/wasm-bindgen/latest/wasm_bindgen/
+
+https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters
+
+https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+</pre>
 
 [! endblock !]
 

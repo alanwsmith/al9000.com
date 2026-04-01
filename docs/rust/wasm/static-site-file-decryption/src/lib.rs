@@ -13,5 +13,10 @@ pub fn decrypt_file(
       .unwrap();
   let kdf_key =
     kdf::derive_key(&kdf_password, &salt, 3, 1 << 16, 32).unwrap();
-  aead::open(&kdf_key, &bytes).unwrap()
+  match aead::open(&kdf_key, &bytes) {
+    Ok(response) => response,
+    Err(_) => "The password you entered\nwas incorrect."
+      .as_bytes()
+      .to_vec(),
+  }
 }

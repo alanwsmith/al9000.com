@@ -36,7 +36,7 @@
 [! for dir in json !]
 [! if "index" in json[dir] and "status" in json[dir].index and json[dir].index.status == "done" !]
   <li>
-  <a href="/[@ dir @]">[@ json[dir].index.title @]</a>
+  <a href="/[@ dir @]">[@ json[dir].index.link_title @]</a>
   </li>
 [! endif !]
 [! endfor !]
@@ -47,7 +47,7 @@
 [! for dir in json !]
 [! if "index" in json[dir] and "status" in json[dir].index and json[dir].index.status == "wip" !]
   <li>
-  <a href="/[@ dir @]">[@ json[dir].index.title @]</a>
+  <a href="/[@ dir @]">[@ json[dir].index.link_title @]</a>
   </li>
 [! endif !]
 [! endfor !]
@@ -58,7 +58,7 @@
 [! for dir in json !]
 [! if "index" in json[dir] and "status" in json[dir].index and json[dir].index.status == "idea" !]
   <li>
-  <a href="/[@ dir @]">[@ json[dir].index.title @]</a>
+  <a href="/[@ dir @]">[@ json[dir].index.link_title @]</a>
   </li>
 [! endif !]
 [! endfor !]

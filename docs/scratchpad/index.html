@@ -171,75 +171,38 @@ body {
   <body>
 <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
   <div class="top-nav">
-home<a href="/tools">tools</a>  </div>
+<a href="/">home</a><a href="/tools">tools</a>  </div>
 </header>
     <main class="default-wrapper default-flow">
-<hgroup>
-    <h1>Welcome to al9000</h1>
-  </hgroup><p>
-  My main site is <a href="https://www.alanwsmith.com/">alanwsmith.com</a>.
-  It's been around for ~25 years. It's been great, but
-  I like the idea of a site that's not my name. So, I'm
-  making this one. 
-</p>
-<p>
-  I've made <a href="https://links.alanwsmith.com">a
-    ton of sites little sites</a> that are under
-  the alanwsmith.com domain. A big reason for that is because
-  the tools I use to build the main site weren't well set up
-  to make independent pages. I'm writing new software
-  to make that easier to do here. It'll make 
-  maintaining and navigating between different 
-  experiments a lot easier. 
-</p>
-<p>
-  The current list of stuff and statuses is below. 
-  Stop back by every now and then to check for updates. 
-  (Getting an RSS Feed in place is on the list.)
-</p>
-<p>-a<p>
+      <hgroup>
+<h1>scratchpad</h1>
+<div class="subtitle">a quick place for me to mess around with ideas</div>
+      </hgroup>
 
-<h2>Done</h2>
-<ul>
-  <li>
-  <a href="/scratchpad">Scratchpad</a>
-  </li>
-  <li>
-  <a href="/unicode">Unicode Characters</a>
-  </li>
-</ul>
+<form class="testForm">
+  <label>
+    <div>Password</div>
+    <input type="password" name="password" />
+  </label>
+  <input type="submit" value="submit" />
+</form>
 
-<h2>Work-In-Progress</h2>
-<ul>
-  <li>
-  <a href="/magic-deck-builder">Magic Deck Builder</a>
-  </li>
-  <li>
-  <a href="/minecraft">Minecraft Notes</a>
-  </li>
-  <li>
-  <a href="/rust">Rust Grimoire</a>
-  </li>
-  <li>
-  <a href="/tools">Tools</a>
-  </li>
-</ul>
+<script type="module">
+function checkFormValues(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  console.log(formData);
+}
 
-<h2>Ideas</h2>
-<ul>
-  <li>
-  <a href="/assembly">Assembly</a>
-  </li>
-  <li>
-  <a href="/radio">Radio</a>
-  </li>
-  <li>
-  <a href="/tv">TV</a>
-  </li>
-  <li>
-  <a href="/voxels">Voxels</a>
-  </li>
-</ul>    </main>
+document.querySelectorAll(".testForm")
+  .forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      checkFormValues(event)
+    });
+  });
+</script>
+
+    </main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
   <div class="small-font-size text-align-center">
