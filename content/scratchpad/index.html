@@ -8,27 +8,11 @@
 
 [! block main !]
 
-<form class="testForm">
-  <label>
-    <div>Password</div>
-    <input type="password" name="password" />
-  </label>
-  <input type="submit" value="submit" />
-</form>
+[! include file.parent + "/html.inc.html" !]
 
-<script type="module">
-function checkFormValues(event) {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-  console.log(formData);
-}
 
-document.querySelectorAll(".testForm")
-  .forEach((form) => {
-    form.addEventListener("submit", (event) => {
-      checkFormValues(event)
-    });
-  });
-</script>
+[! filter block_highlight("html") !]
+[! include file.parent + "/html.inc.html" !]
+[! endfilter !]
 
 [! endblock !]

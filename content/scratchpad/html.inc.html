@@ -1,0 +1,23 @@
+<form class="testForm">
+  <label>
+    <div>Password</div>
+    <input type="password" name="password" />
+  </label>
+  <input type="submit" value="submit" />
+</form>
+
+<script type="module">
+function checkFormValues(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  console.log(formData);
+}
+
+document.querySelectorAll(".testForm")
+  .forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      checkFormValues(event)
+    });
+  });
+</script>
+
