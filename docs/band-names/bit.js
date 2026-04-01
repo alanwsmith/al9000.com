@@ -1,4 +1,6 @@
-export const b = {};
+export const b = {
+  init: "latest",
+};
 
 const names = `
 Woke Scissors
@@ -456,4 +458,11 @@ The Yoda Talking Ninjas
 `;
 
 export function latest(_, __, el) {
+  el.innerHTML = names.split("\n").filter((line) => line.trim() !== "")[0];
+}
+
+export function random(_, __, el) {
+  const list = names.split("\n").filter((line) => line.trim() !== "");
+  const index = b.randomInt(0, list.length - 1);
+  el.innerHTML = list[index];
 }

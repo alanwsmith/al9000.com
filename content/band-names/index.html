@@ -6,11 +6,16 @@
 
 [! block main !]
 
-<h2>Latest</h2>
 
-<div></div>
+<div data-r="latest random" class="text-align-center xxlarge-font-size xxxlarge-block-margin xxxlarge-block-padding"></div>
 
+<div class="text-align-center">
+<button data-s="random">get another one</button>
+</div>
 
+[! block templates !]
+<bitty-8 data-connect="/[@ file.parent + '/bit.js' @]"></bitty-8>
+[! endblock !]
 
 
 
