@@ -1,5 +1,5 @@
 <script type="module">
-  import init, {encrypt_file} from "./pkg/serve_static_encrypted_files.js";
+  import init, {encrypt_file} from "./pkg/static_site_file_encryption.js";
 
   async function handleEncryption(event) {
     event.preventDefault();
@@ -12,14 +12,17 @@
     }
     const arrayBuffer = await file.arrayBuffer();
     const bytes = new Uint8Array(arrayBuffer);
-    const responseBytes = await encrypt_file(bytes, password);
-    const blob = new Blob([responseBytes], { type: "applicaiton/octet-stream" });
+    console.log(bytes);
+    //const responseBytes = await encrypt_file(bytes, password.trim());
+    const responseBytes = await encrypt_file(bytes, "wasm");
+    console.log('responseBytes type:', responseBytes.constructor.name);
+    const blob = new Blob([responseBytes], { type: "application/octet-stream" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
     a.download = `${file.name}.bin`;
     a.click();
-    URL.revokeObjectURL(url);
+    // URL.revokeObjectURL(url);
   }
 
 

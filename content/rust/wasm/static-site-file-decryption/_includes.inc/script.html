@@ -3,9 +3,37 @@
 
   async function decryptFile(event) {
     event.preventDefault();
+    const resultsEl = document.querySelector("#results");
     const password = document.querySelector("#password").value;
+    if (!password) {
+      resultsEl.innerHTML  = "A password is required";
+      return; 
+    }
+    const url = "samples/encrypt-decrypt-example.json.bin";
+    const response = await fetch(url);
+    try {  
+      if (!response.ok) {
+        resultsEl.innerHTML = `ERROR: ${response.status} [${response.statusText}] - ${url}`;
+      } else {
+        const blob = await response.blob();
+        const buffer = await blob.arrayBuffer();
+        const bytes = new Uint8Array(buffer);
+        console.log(bytes);
+        //const responseBytes = await decrypt_file(bytes, password.trim());
+        const responseBytes = await decrypt_file(bytes, "wasm");
+        const text = new TextDecoder().decode(responseBytes);
+        resultsEl.innerHTML = text;
+      }
+    } catch(error) {
+      resultsEl.innerHTML = `ERROR: ${error}`;
+    }
+      
+/*
+async function fetchJson(url) {
+}
+*/
 
-    console.log(event);
+
   }
 
   /*

@@ -201,9 +201,37 @@ higher security requirements.</p>
 
   async function decryptFile(event) {
     event.preventDefault();
+    const resultsEl = document.querySelector("#results");
     const password = document.querySelector("#password").value;
+    if (!password) {
+      resultsEl.innerHTML  = "A password is required";
+      return; 
+    }
+    const url = "samples/encrypt-decrypt-example.json.bin";
+    const response = await fetch(url);
+    try {  
+      if (!response.ok) {
+        resultsEl.innerHTML = `ERROR: ${response.status} [${response.statusText}] - ${url}`;
+      } else {
+        const blob = await response.blob();
+        const buffer = await blob.arrayBuffer();
+        const bytes = new Uint8Array(buffer);
+        console.log(bytes);
+        //const responseBytes = await decrypt_file(bytes, password.trim());
+        const responseBytes = await decrypt_file(bytes, "wasm");
+        const text = new TextDecoder().decode(responseBytes);
+        resultsEl.innerHTML = text;
+      }
+    } catch(error) {
+      resultsEl.innerHTML = `ERROR: ${error}`;
+    }
+      
+/*
+async function fetchJson(url) {
+}
+*/
 
-    console.log(event);
+
   }
 
   /*
@@ -239,7 +267,13 @@ higher security requirements.</p>
   }
 
   main();
-</script><form id="decryptForm">
+</script><div>Encrypted File: 
+  <a href="/rust&#x2f;wasm&#x2f;static-site-file-decryption/samples/encrypt-decrypt-example.json.bin">
+  encrypt-decrypt-example.json.bin
+  </a>
+</div>
+
+<form id="decryptForm">
   <label>
     <div>Password:</div>
     <input type="password" id="password" />
@@ -247,6 +281,8 @@ higher security requirements.</p>
   <input type="submit" value="Decrypt File">
 </form>
 
+<h4>Results</h4>
+<pre id="results"></pre>
     </main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
