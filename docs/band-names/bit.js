@@ -19,7 +19,7 @@ Constant Crimes
 Commie Bullshit
 Righteous Hack
 Invisible Goldfish
-DJ &amp;
+DJ &amp;amp;
 Miniature Giant Space Hamster
 Danger Piñata 
 Specific North West
@@ -64,7 +64,7 @@ Death By Monkeys
 Odo Fucks
 Fuck Hitler
 Dead Cat Bounce
-Angry Owl
+Angry Owls
 Monkey Typewriter
 Cute Monkey
 Mutable World
@@ -82,14 +82,14 @@ Weed Pizza
 Dystopian Bingo
 Voice Porn
 Lord Nikon
-Teeth Spinach
+Spinach Teeth 
 Funk Punch
 Network Time Protocol
 Ninja Society
 Boob Shadow
 The Full Naked Sting
 Whoop Ass Gallon
-The Polyfill Path
+The Polyfill 
 Rabbit Hole Dive
 Bath Bacon
 Schrödinger's Shotgun
@@ -111,7 +111,7 @@ Yak 7
 Seared Tofu
 The Pedantic Dev
 Event Horizon Telescope
-Hitchcock Zoom
+The Hitchcock Zoom
 Bust of Mao
 Giraffe Weevil
 Fish Mafia
@@ -128,7 +128,7 @@ Ascot
 Baby Groot Doodle
 Bad Loop
 Baseline Syndrome
-Billion Laughs Attack
+The Billion Laughs Attack
 Goku Banana Hammock
 Block Sender
 Booze Box
@@ -145,7 +145,7 @@ Craving Catharsis
 Crime School
 Celebrity Professor
 Chaos Grenade
-Hangover Cheeseburger 
+Cheeseburger Hangover 
 Whiskey Chocolate 
 Church Giggles
 Code Smell
@@ -156,7 +156,7 @@ Concussion Protocol
 Context Drift
 Date Time Zulu
 De-orbit Burn
-The Dead Dragonflies
+Dead Dragonflies
 Dead Jury
 Decision Tree
 Deeper Epiphany
@@ -178,7 +178,6 @@ Gjallarhorn
 Go / No-Go
 Grabthar's Hammer
 Hard Stop
-Helpful Hotkeys
 Here Be Dragons
 Hobbit Mode
 Hot Chicken
@@ -262,7 +261,7 @@ Separation of Concerns
 Sex-O-Tron 9000
 Sex Socks
 Shameless Commerce Division
-#! (pronunced shabang)
+#!
 Smash Factor
 The Smooth Jazz Situation
 Snake Juice
@@ -307,14 +306,13 @@ Future Historians
 The Gated Snare
 The Giant Spoon
 The Great Hypothesis
-Greater Nerd Syndrome
 Hapax Legomenon
 The Happy Path
 Hard Naming 
 Hawthorne Effect
 Hermit Tendencies
 The Idempotent
-Infinite Scroll
+The Infinite Scroll
 Ink Drinkers
 The Intentionally Blank
 The Irregardless
@@ -331,7 +329,6 @@ Plucky Comic Relief
 The Polyphasic Nappers
 Poor Proxies
 The Psychoacoustics
-The Psychovisuals
 Raw Text Blobs
 Representative State Transfer
 The Risky Mouth
@@ -346,7 +343,7 @@ Useful MacGuffins
 Various Memes
 The Vectors
 The Yak Shavers
-Thought Criminals
+The Thought Criminals
 God Thunderbolt 
 Delta Time
 Tone Curve
@@ -377,12 +374,12 @@ Yoda Talking Ninjas
 ii–V–I
 kill -9
 local 3k
-sudo !! (pronounced sudo bang bang)
+sudo !!
 Noise Floor
 Vendor Lock-In
 Schrödinger Fanta
 atmo mod
-Rejected Font
+Reject Font
 Thoof Haskell
 Stacked Divs
 Vampire Sex
@@ -394,7 +391,7 @@ Sexy Trains
 Shinny Tits
 Falcon Sex Hats
 .zip file
-Subjective Pleasures
+The Subjective Pleasures
 The Infinite Descent
 Fallback Cascade
 The Abyss
@@ -418,13 +415,11 @@ The Fast Facades
 The Flaming Balls
 Former Titans
 The Future Historians
-The Gated Snares
 God Thunderbolt
 The Greater Nerd Syndrome
 Hangover Cheeseburger
 The Hapax Legomenon
 Hard Naming
-The Helpful Hotkeys
 The Hermit Tendencies
 The Knowledge Tools
 Left Eye Jesus
@@ -435,13 +430,11 @@ The Mythical Monsters
 Nocebo
 The Past Close Sellers
 The Perceptual Motion Machine
-Piracy Invasion
+Privacy Invasion
 The Pleasures Subjective
 The Post Cold Loogies
 The Prosperity
-The Recursive Acronym
 The Representative State Transfer
-The School Night Drinking Club
 The Shameless Commerce Division
 The Space Station Windows
 Talkers Tangent
