@@ -201,13 +201,16 @@ code {
   }
 }
 
-
 .contrast-button.active:hover {
   color: var(--reverse-color);
 }
 
 del {
   text-decoration: line-through;
+}
+
+details.d > :where(:not(:first-child)) {
+  margin-top: var(--flow-space, var(--default-flow));
 }
 
 footer {

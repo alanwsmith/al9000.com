@@ -23,18 +23,16 @@ This is a counterpart to
 It works fine, but it's a manual process. It
 exists mainly for the example. 
 Generally speaking I'll use an offline process during
-site generation to encrypt files. 
-
-
-
+site generation to encrypt files. For example:
+[/rust/general/encrypt-a-file-with-a-password/]()
 
 
 
 [! endfilter !]
 
 <h4>Output</h4>
-[! include "/" + file.parent + "/script.html" !]
-[! include "/" + file.parent + "/html.html" !]
+[! include "/" + file.parent + "/_includes.inc/script.html" !]
+[! include "/" + file.parent + "/_includes.inc/html.html" !]
 
 <p>
   Goal: Provide a way to encrypt and decrypt 
@@ -56,13 +54,13 @@ site generation to encrypt files.
 
 <h4>HTML</h4>
 [! filter block_highlight("html") !]
-[! include "/" + file.parent + "/html.html" !]
+[! include "/" + file.parent + "/_includes.inc/html.html" !]
 [! endfilter !]
 
 
 <h4>JavaScript</h4>
 [! filter block_highlight("html") !]
-[! include "/" + file.parent + "/script.html" !]
+[! include "/" + file.parent + "/includes.inc/script.html" !]
 [! endfilter !]
 
 

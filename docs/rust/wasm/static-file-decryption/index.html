@@ -171,32 +171,38 @@ body {
   <body>
 <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
   <div class="top-nav">
-<a href="/">home</a>tools  </div>
+<a href="/">home</a><a href="/tools">tools</a>  </div>
 </header>
     <main class="default-wrapper default-flow">
       <hgroup>
-<h1>tools</h1>
+<h1>rust wasm: static file decryption</h1>
       </hgroup>
 
-<p>This is where I'll be moving the tools from <a href="https://tools.alanwsmith.com/">tools.alanwsmith.com</a></p>
+<h2>Overview</h2>
+<ul>
+<li>
+<p>This is the process I'm using on this
+site to encrypt files so they require
+a password to access.</p>
+</li>
+<li>
+<p>Security is tricky. This process
+works for me given that nothing
+is very sensitive. Get with
+a security professional if you have
+higher security requirements.</p>
+</li>
+</ul>
 
-<bitty-8 data-connect="&#x2f;tools&#x2f;tools&#x2f;uuid-generator&#x2f;bit.js"></bitty-8>
-<details class="d"><summary>UUID Generator</summary>
-<div data-r="makeUUID copyUUID"></div>
-<button data-s="copyUUID">Copy</button>
-<button data-s="makeUUID">Get a new one</button>
-</details>
-<bitty-8 data-connect="&#x2f;tools&#x2f;tools&#x2f;youtube-link-converter&#x2f;bit.js"></bitty-8>
-<details class="d"><summary>YouTube to Neopolitan Link Converter</summary>
-<div class="two-columns">
-  <div>
-    <textarea class="default" data-s="convertYouTubeLinks" autocomplete="off"></textarea>
-  </div>
-  <div>
-    <textarea class="default" data-r="convertYouTubeLinks" autocomplete="off"></textarea>
-  </div>
-</div></details>
 
+<h4>Output</h4>
+<script type="module">
+
+
+</script><form id="decryptForm">
+
+
+</form>
 
     </main>
 

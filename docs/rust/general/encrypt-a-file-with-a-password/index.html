@@ -175,8 +175,7 @@ body {
   <body>
 <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
   <div class="top-nav">
-    <a href="/">Home</a>
-  </div>
+<a href="/">home</a><a href="/tools">tools</a>  </div>
 </header>
     <main class="default-wrapper default-flow">
       <hgroup>
@@ -185,16 +184,24 @@ body {
 
 <h2>Overview</h2>
 <ul>
-<li>This encrypts a file with a password.</li>
-<li>It's the prototype for the process
+<li>
+<p>This encrypts a file with a password.</p>
+</li>
+<li>
+<p>It's the prototype for the process
 I'm using to encrypt files for my site
-that I want to protect with a password.</li>
-<li>I'm not protecting anything valuable.
+that I want to protect with a password.
+They are served statically then decrypted
+with <a href="/rust/wasm/static-file-decryption">/rust/wasm/static-file-decryption/</a>.</p>
+</li>
+<li>
+<p>I'm not protecting anything valuable.
 It's just a way for me to section off
 some data on my site. Check with
 a security expert before working
 off this if you have higher security
-needs.</li>
+needs.</p>
+</li>
 </ul>
 <h2>The Files</h2>
 
@@ -242,29 +249,27 @@ needs.</li>
 <h2>References</h2>
 <ul>
 <li>
-<p><a href="">https://docs.rs/orion/latest/orion/</a></p>
+<p>https://docs.rs/orion/latest/orion/</p>
 </li>
 <li>
-<p><a href="">https://docs.rs/orion/latest/orion/aead/index.html</a></p>
+<p>https://docs.rs/orion/latest/orion/aead/index.html</p>
 </li>
 <li>
-<p><a href="">https://docs.rs/orion/latest/orion/kdf/index.html</a></p>
+<p>https://docs.rs/orion/latest/orion/kdf/index.html</p>
 </li>
 <li>
-<p><a href="">https://docs.rs/orion/latest/orion/kdf/struct.Salt.html</a></p>
+<p>https://docs.rs/orion/latest/orion/kdf/struct.Salt.html</p>
 </li>
 <li>
-<p><a href="">https://docs.rs/wasm-bindgen/latest/wasm_bindgen/</a></p>
+<p>https://docs.rs/wasm-bindgen/latest/wasm_bindgen/</p>
 </li>
 <li>
-<p><a href="">https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters</a></p>
+<p>https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters</p>
 </li>
 <li>
-<p><a href="">https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html</a></p>
+<p>https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html</p>
 </li>
 </ul>
-
-
     </main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">

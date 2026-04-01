@@ -19,9 +19,13 @@
 ## Overview
 
 - This encrypts a file with a password. 
+
 - It's the prototype for the process
 I'm using to encrypt files for my site
 that I want to protect with a password. 
+They are served statically then decrypted
+with [/rust/wasm/static-file-decryption/](/rust/wasm/static-file-decryption).
+
 - I'm not protecting anything valuable. 
 It's just a way for me to section off 
 some data on my site. Check with 
@@ -46,65 +50,19 @@ needs.
 [! filter markdown|safe !]
 ## References 
 
-- [https://docs.rs/orion/latest/orion/]()
+- https://docs.rs/orion/latest/orion/
 
-- [https://docs.rs/orion/latest/orion/aead/index.html]()
+- https://docs.rs/orion/latest/orion/aead/index.html
 
-- [https://docs.rs/orion/latest/orion/kdf/index.html]()
+- https://docs.rs/orion/latest/orion/kdf/index.html
 
-- [https://docs.rs/orion/latest/orion/kdf/struct.Salt.html]()
+- https://docs.rs/orion/latest/orion/kdf/struct.Salt.html
 
-- [https://docs.rs/wasm-bindgen/latest/wasm_bindgen/]()
+- https://docs.rs/wasm-bindgen/latest/wasm_bindgen/
 
-- [https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters]()
+- https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters
 
-- [https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html]()
+- https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
 [! endfilter !]
-
-[#
-
-
-
-
-
-
-<h4>HTML</h4>
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/html.html" !]
-[! endfilter !]
-
-
-<h4>JavaScript</h4>
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/script.html" !]
-[! endfilter !]
-
-
-<h4>Build Script</h4>
-[! filter block_highlight("bash") !]
-[! include "/" + file.parent + "/build_release" !]
-[! endfilter !]
-
-
-<pre>
-References:
-
-https://docs.rs/orion/latest/orion/
-
-https://docs.rs/orion/latest/orion/aead/index.html
-
-https://docs.rs/orion/latest/orion/kdf/index.html
-
-https://docs.rs/orion/latest/orion/kdf/struct.Salt.html
-
-https://docs.rs/wasm-bindgen/latest/wasm_bindgen/
-
-https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters
-
-https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
-</pre>
-
-#]
-
 [! endblock !]
 
