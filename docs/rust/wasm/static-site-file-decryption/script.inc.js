@@ -1,6 +1,6 @@
 import init, { decrypt_file } from "./pkg/static_site_file_decryption.js";
 
-async function decryptTextFileFromForm(event) {
+async function handleDecryptTextFileForm(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
   const url = formData.get("url");
@@ -32,7 +32,7 @@ async function main() {
   await init();
   document.querySelectorAll(".decryptTextFile").forEach((form) => {
     form.addEventListener("submit", (event) => {
-      decryptTextFileFromForm(event);
+      handleDecryptTextFileForm(event);
     });
   });
 }

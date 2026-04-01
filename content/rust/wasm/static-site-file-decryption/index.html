@@ -12,7 +12,7 @@
 [! block title !]
 <h1>static site file decryption [rust: wasm]</h1>
 <div class="subtitle">Or, How to Password Protect Files on a Static Site</div>
-<div class="subtitle">March 2026</div>
+<div class="subtitle">April 2026</div>
 [! endblock !]
 
 [! block main !]
@@ -21,11 +21,11 @@
   <p><strong>Heads Up</strong></p>
   <p>
     Security and encrypted are super complicated. 
-    I'm comfortable with the process outlined
-    here given my understanding of the topics. 
-    But, I'm not an expert. You'll want to 
-    consult with one if you're hosting 
-    critical content. 
+    I'm comfortable with this process 
+    given my understanding of the topics
+    and the fact that I'm using a library
+    for the encryption. But, I'm not an expert. 
+    You should consult with one if you're hosting critical content. 
   <p>
 </div>
 
@@ -76,13 +76,41 @@ message.
 
 
 
-<h3>HTML and JavaScript</h3>
+<h3>HTML</h3>
 
-<p>Here's the HTML and JavaScript for the page:</p>
+<p>
+  The HTML for the page boils down to a form
+  with an input for the password, a submit
+  button, and a hidden field to hold the URL
+  of the file to decrypt. 
+</p>
 
 [! filter block_highlight("html") !]
 [! include "/" + file.parent + "/html.inc.html" !]
 [! endfilter !]
+
+<h3>JavaScript</h3>
+
+<p>
+  The JavaScript is a module that does four things:
+</p>
+
+<ol>
+  <li>
+    Imports the WASM module responsible for the decryption.
+  </li>
+  <li>
+    Creates a function to handle form submissions that trigger the decryption.
+  </li>
+  <li>
+    Creates a <code>main()</code> function that initializes the
+    WASM module and adds form event listeners.
+  </li>
+  <li>
+    Calls the <code>main()</code> function to kick things off.
+  </li>
+</ol>
+
 
 [! filter block_highlight("html") !]
 <script type="module">
@@ -93,11 +121,60 @@ message.
 </script>
 [! endfilter !]
 
+<p>
+  When a form submission fires, the script 
+  parses the incoming <code>FormData</code>
+  (lines 7-14), does 
+  a fetch to pull in the encrypted file (starting
+  on line 15), sends it 
+  to the wasm module (lines 21-24), 
+  then outputs the response (lines 25 and 26). 
+</p>
+
+<h4>The JavaScript/WASM Connection</h4>
+
+<p>
+  Communication between the JavaScript's
+  <code>handleDecryptTextFileForm()</code> function
+  and the WASM module is done by passing 
+  an arrays of bytes back and forth. 
+  This is done by loading the fetch response 
+  as a <code>.blob()</code> (line 21), grabbing 
+  it's <code>.arrayBuffer()</code> (line 22), and 
+  turning it into a <code>Uint8Array</code>
+  (line 23)
+  to send to the WASM <code>decrypt_file</code>
+  function (line 24). 
+</p>
+
+<p>
+  The bytes that come back from the WASM module
+  are turned back in to text with <code>TextDecoder()</code>
+  (line 25)
+  and output to the page via an update to the result
+  element's
+  <code>.innerHTML</code> (line 26).
+</p>
+
+<h3>The WASM Code</h3>
+
+<p>
+  I wrote the WASM module in Rust. It's 
+  basically just a wrapper around 
+  a library called <a href="https://docs.rs/orion/latest/orion/index.html">orion</a>
+  that handles all the encryption work. 
+  The code looks like this: 
+</p>
 
 <h4>src/lib.rs</h4>
 [! filter block_highlight("rust") !]
 [! include "/" + file.parent + "/src/lib.rs" !]
 [! endfilter !]
+
+<p>
+  The only other file in the Rust project
+  is the <code>Cargo.toml</code> file:
+</p>
 
 
 <h4>Cargo.toml</h4>
@@ -105,12 +182,119 @@ message.
 [! include "/" + file.parent + "/Cargo.toml" !]
 [! endfilter !]
 
+<p>
+  The project is built with <code>wasm-pack</code>
+  (which I installed with <code>cargo install wasm-pack</code>). 
+  I use this script to clean the <code>pkg</code>
+  directory it outputs to before each run:
+</p>
 
 <h4>Build Script</h4>
 [! filter block_highlight("bash") !]
 [! include "/" + file.parent + "/build_release" !]
 [! endfilter !]
 
+<h2>Usage</h2>
+
+<p>
+  This version of the tool is a prototype 
+  I built to figure out how everything 
+  works. The longer term goal is to build
+  a version that works with multiple 
+  files instead of one at a time. 
+</p>
+<p>
+  That said, this version works if
+  you only need to deal with one file
+  at a time. You can download
+  the TKTKTK files to place on your 
+  server and use the JavaScript
+  above as a starting point for using
+  them. (You'll also need a way to encrypt
+  your files. That can be done
+  with <a href="http://localhost:5445/rust/wasm/static-site-file-encryption/">
+    the static-site-file-encryption tool</a>.)
+</p>
+
+<h2>Wrap-up</h2>
+
+<p>
+  As evident by the fact that I've been running
+  a static site for like decade without
+  a password feature, it's not something
+  I have a lot of need for. There's been a few things
+  over the years that I haven't done because
+  of it. It's not a lot, but now I've got a 
+  solution. 
+</p>
+
+<p>
+  -a
+</p>
+
+<div class="xxlarge-top-margin xxlarge-bottom-margin xsmall-font-size faded-reverse-color text-align-right faded-reverse-block-border">end of line</div>
+
+
+<h2 class="xxxlarge-top-margin xxxlarge-top-padding">Endnotes</h2>
+<ul>
+  <li>
+    To reiterate: I'm not a security professional. 
+    I'm comfortable with this code primarily 
+    because it uses the <a href="https://docs.rs/orion/latest/orion/">orion</a>
+    library which has <a href="https://crates.io/crates/orion">over 9 million downloads</a>.
+    I'm also not protecting anything critical. 
+  </li>
+  <li>
+    It's possible to protect pages this way without
+    using WASM using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto">Crypto
+      Web API</a>. I looked at it before, but
+    got overwhelmed by it. 
+  </li>
+  <li>
+    This JavaScript is all vanilla. The code
+    you see in the samples is the actual code
+    powering the page. No extra JavaScript 
+    tooling is required. 
+  </li>
+  <li>
+    This example works with form input where the
+    password is entered each time. I'm working
+    on a more full featured version where
+    the password only needs to be entered once
+    and let you encrypt all the content
+    for a single or multi-page app. 
+  </li>
+  <li>
+    TODO: Confirm  can download wasm .js and .wasm
+    files and use them directly with the same
+    javascript on another site. 
+  </li>
+  <li>
+    The file for this example was encrypted with
+    <a href="/rust/wasm/static-site-file-encryption/">the 
+      tool on the static-site-file-encryption pages</a>.
+    It's also designed to work with one file at a time. 
+    Part of the new project is building a tool 
+    to encrypt an entire directory of content
+    in one run. 
+  </li>
+  <li>
+    It should be possible to encrypt images as well. 
+    The biggest difference I can think of is the
+    error handling (i.e. you need some way to 
+    deliver the image if it decrypts and a message
+    if it doesn't). I expect that should be strait
+    forward to do by returning an object with 
+    a status that lets you switch on the output. 
+    That's something I'll address in the 
+    new project. 
+  </li>
+</ul>
+
+<h2>References</h2>
+
+<ul>
+</ul>
 
 <pre>
 References:
