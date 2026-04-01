@@ -13,9 +13,6 @@
     const arrayBuffer = await file.arrayBuffer();
     const bytes = new Uint8Array(arrayBuffer);
     const responseBytes = await encrypt_file(bytes, password);
-    console.log(responseBytes);
-
-    /*
     const blob = new Blob([responseBytes], { type: "applicaiton/octet-stream" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -23,8 +20,6 @@
     a.download = `${file.name}.bin`;
     a.click();
     URL.revokeObjectURL(url);
-    */
-
   }
 
 

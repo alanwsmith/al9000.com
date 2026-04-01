@@ -2,24 +2,21 @@ use orion::{aead, kdf};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
+pub fn decrypt_file() -> String {
+  "Hello, world!".to_string()
+}
+
+#[wasm_bindgen]
 pub fn encrypt_file(
   bytes: Vec<u8>,
   password: String,
 ) -> Vec<u8> {
-  //) -> String {
-
   let user_password =
-    kdf::Password::from_slice(b"User password").unwrap();
-
-  // NOTE: The salt should always be generated using
-  // a Cryptographically Secure Pseudo-Random
-  // Number Generator (CSPRNG).
-  let salt = kdf::Salt::from_slice(b"some salt value").unwrap();
-
+    kdf::Password::from_slice(password.as_bytes()).unwrap();
+  let salt = kdf::Salt::from_slice(b"Your salt value").unwrap();
   let derived_key =
     kdf::derive_key(&user_password, &salt, 3, 1 << 16, 32).unwrap();
-
-  aead::seal(&derived_key, b"asdf").unwrap()
+  aead::seal(&derived_key, &bytes).unwrap()
 
   // let secret_key =
   //   aead::SecretKey::from_slice(&derived_key).unwrap();
@@ -52,9 +49,4 @@ pub fn encrypt_file(
   // }
 
   //bytes
-}
-
-#[wasm_bindgen]
-pub fn decrypt_file() -> String {
-  "Hello, world!".to_string()
 }

@@ -1,25 +1,37 @@
 [!- extends "/templates.inc/pages/default.html" -!]
 
-
 [! block head !]
 <style>
-  form {
-    display: grid;
-    gap: 0.7rem;
-  }
-  label {
-    display: block;
-  }
+  form { display: grid; gap: 0.7rem; }
+  label { display: block; }
 </style>
-
 [! endblock !]
 
+
 [! block title !]
-<h1>rust wasm: serve static encrypted files</h1>
+<h1>rust wasm: static file encryption</h1>
 [! endblock !]
 
 
 [! block main !]
+
+[! filter markdown|safe !]
+## Overview
+
+This is a counterpart to 
+[/rust/wasm/static-file-decryption/](/rust/wasm/static-file-decryption/). 
+It works fine, but it's a manual process. It
+exists mainly for the example. 
+Generally speaking I'll use an offline process during
+site generation to encrypt files. 
+
+
+
+
+
+
+[! endfilter !]
+
 <h4>Output</h4>
 [! include "/" + file.parent + "/script.html" !]
 [! include "/" + file.parent + "/html.html" !]
@@ -76,7 +88,7 @@ https://docs.rs/wasm-bindgen/latest/wasm_bindgen/
 https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters
 
 https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
-
 </pre>
+
 
 [! endblock !]
