@@ -21,11 +21,7 @@ async fn main() -> Result<()> {
   let content_root = PathBuf::from("../../../content");
   let docs_root = PathBuf::from("../../../docs");
 
-  let watcher = Watcher::new(
-    content_root.clone(),
-    docs_root.clone(),
-    tx.clone(),
-  );
+  let watcher = Watcher::new(content_root.clone(), tx.clone());
 
   let builder = Builder::new(
     content_root.clone(),
