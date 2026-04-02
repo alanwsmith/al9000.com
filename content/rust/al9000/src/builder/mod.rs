@@ -1,9 +1,11 @@
 #![allow(unused)]
-pub struct Builder {}
 use chrono::{DateTime, Local};
 use std::path::PathBuf;
 use tokio::sync::mpsc::Receiver;
 use tower_livereload::Reloader;
+use tracing::info;
+
+pub struct Builder {}
 
 impl Builder {
   pub fn new(
@@ -13,5 +15,9 @@ impl Builder {
     rx: Receiver<DateTime<Local>>,
   ) -> Builder {
     Builder {}
+  }
+
+  pub async fn start(self) {
+    info!("Staring Builder");
   }
 }

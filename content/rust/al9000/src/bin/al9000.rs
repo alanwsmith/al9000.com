@@ -18,19 +18,38 @@ async fn main() -> Result<()> {
   let live_reload = LiveReloadLayer::new();
   let reloader = live_reload.reloader();
   let (tx, rx) = mpsc::channel::<DateTime<Local>>(32);
-  let input_root = PathBuf::from("../../content");
-  let output_root = PathBuf::from("../../docs");
-  let watcher_input_root = input_root.clone();
-  tokio::spawn(async move {
-    let _ = watch_files(watcher_input_root.clone(), tx).await;
-  });
+  let content_root = PathBuf::from("../../content");
+  let docs_root = PathBuf::from("../../docs");
+
+  let watcher = Watcher::new(
+    content_root.clone(),
+    docs_root.clone(),
+    tx.clone(),
+  );
 
   let builder = Builder::new(
-    input_root.clone(),
-    output_root.clone(),
-    reloader,
+    content_root.clone(),
+    docs_root.clone(),
+    reloader.clone(),
     rx,
   );
+
+  let server =
+    Server::new(docs_root.clone(), port, reloader.clone());
+
+  tokio::spawn(async move {
+    let _ = watcher.start().await;
+  });
+
+  tokio::spawn(async move {
+    let _ = builder.start().await;
+  });
+
+  let server_handle = tokio::spawn(async move {
+    let _ = server.start().await;
+  });
+
+  server_handle.await.unwrap();
 
   Ok(())
 }
