@@ -3,7 +3,7 @@ print("Running startup.lua")
 downloadFile = function(fileName)
   print("Getting: " .. fileName)
   local domain = "https://al9000.com"
-  local url = domain .. "/local-scripts/" .. fileName
+  local url = domain .. "/computercraft/local-scripts/" .. fileName
   local response = http.get(url)
   if response then
     local status = response.getResponseCode()
