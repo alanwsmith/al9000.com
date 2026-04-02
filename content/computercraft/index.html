@@ -1,0 +1,31 @@
+[!- extends "/templates.inc/pages/default.html" -!]
+
+[! block title!]
+<h1>ComputerCraft aka CC-Tweaked</h1>
+[! endblock !]
+
+[! block main !]
+[! filter markdown|safe !]
+- This is where I'm moving all my ComputerCraft/CC-Tweaked
+lua scripts for Minecraft. 
+- TODO: You can load everything by calling
+
+  `wget run https://al9000.com/computercraft/init.lua`
+
+  That runs an initialization script 
+the sets up a computer/turtle. 
+
+- TODO: The `local-scripts` folder contains scripts
+that are copied directly to the computer/turtle. 
+
+- TODO: The `remote-scripts` folder contains
+scripts that are called remotely each time they
+are run so I can edit them in a text editor
+outside of Minecraft itself. 
+
+- NOTE: As of March 2026 version 26.x of Minecraft
+is out but CC:Tweaked only runs on 1.21 or earlier. 
+We'll see if it gets updated. 
+
+[! endfilter !]
+[! endblock !]
