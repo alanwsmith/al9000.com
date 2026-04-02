@@ -350,7 +350,7 @@ class r extends HTMLElement {
     this.b._updateElement(t.sender);
     const e = this.b._splitSignalString(t.signals);
     for (const s of e) {
-      if (console.log(s), "function" == typeof this[s]) {
+      if ("function" == typeof this[s]) {
         const e = document.querySelectorAll(`[data-r~='${s}']`);
         if (e.length > 0) {
           for (const n of e) {

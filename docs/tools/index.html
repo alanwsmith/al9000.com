@@ -191,17 +191,19 @@ body {
 <details class="d"><summary>Dedupe Lines</summary>
 <div class="two-columns">
   <div>
-    <textarea class="d" data-s="uniqueLines" data-r="showExample clearInput" autocomplete="off"></textarea>
+    <textarea class="d" data-s="updateDedupeLines" data-r="showDedupeLinesExample clearDedupeLines" autocomplete="off"></textarea>
   </div>
   <div>
-    <textarea class="d" data-r="uniqueLines copyUniqueLines" autocomplete="off"></textarea>
+    <textarea class="d" data-r="updateDedupeLines copyDedupeLines" autocomplete="off"></textarea>
   </div>
   <div>
-    <button data-s="showExample">Show Example</button>
-    <button data-s="clearInput">Clear Input</button>
-    <button data-s="copyUniqueLines">Copy Lines</button>
+    <button data-s="showDedupeLinesExample">Show Example</button>
+    <button data-s="clearDedupeLines">Clear Input</button>
+    <button data-s="copyDedupeLines">Copy Lines</button>
   </div>
 </div>
+
+
 
 </details>
 <bitty-8 data-connect="/tools/tools/lines-to-line-items/bit.js"></bitty-8>
@@ -243,17 +245,22 @@ body {
 <bitty-8 data-connect="/tools/tools/uuid-generator/bit.js"></bitty-8>
 <details class="d"><summary>UUID Generator</summary>
 <div data-r="makeUUID copyUUID"></div>
-<button data-s="copyUUID">Copy</button>
 <button data-s="makeUUID">Get a new one</button>
+<button data-s="copyUUID">Copy</button>
 </details>
 <bitty-8 data-connect="/tools/tools/youtube-link-converter/bit.js"></bitty-8>
 <details class="d"><summary>YouTube Links to Neopolitan</summary>
 <div class="two-columns">
   <div>
-    <textarea class="default" data-s="convertYouTubeLinks" autocomplete="off"></textarea>
+    <textarea class="d" data-s="updateYouTubeLinksToNeopolitan" data-r="showYouTubeLinksToNeopolitanExample clearYouTubeLinksToNeopolitan" autocomplete="off"></textarea>
   </div>
   <div>
-    <textarea class="default" data-r="convertYouTubeLinks" autocomplete="off"></textarea>
+    <textarea class="d" data-r="updateYouTubeLinksToNeopolitan copyYouTubeLinksToNeopolitan" autocomplete="off"></textarea>
+  </div>
+  <div>
+    <button data-s="showYouTubeLinksToNeopolitanExample">Show Example</button>
+    <button data-s="clearYouTubeLinksToNeopolitan">Clear Input</button>
+    <button data-s="copyYouTubeLinksToNeopolitan">Copy Lines</button>
   </div>
 </div></details>
 

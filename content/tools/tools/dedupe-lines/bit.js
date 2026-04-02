@@ -1,27 +1,29 @@
 export const b = {};
 
-export function clearInput(_, __, el) {
+export function clearDedupeLines(_, __, el) {
   el.value = "";
-  b.forwardSender(el, "uniqueLines");
+  b.forwardSender(el, "updateDedupeLines");
 }
 
-export function copyUniqueLines(_, sender, el) {
+export function copyDedupeLines(_, sender, el) {
   b.quickCopy(el, sender);
 }
 
-export function showExample(_, __, el) {
-  el.value = `alfa
+export function showDedupeLinesExample(_, __, el) {
+  el.value = `
+alfa
 bravo
 alfa
 charlie
 bravo
 delta
 alfa
-echo`;
-  b.forwardSender(el, "uniqueLines");
+echo
+`.trim();
+  b.forwardSender(el, "updateDedupeLines");
 }
 
-export function uniqueLines(_, sender, el) {
+export function updateDedupeLines(_, sender, el) {
   const lines = new Set(
     [...sender.value.split("\n").filter((line) => line.trim() !== "")],
   );
