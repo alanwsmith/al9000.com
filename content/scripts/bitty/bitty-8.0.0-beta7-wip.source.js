@@ -1,65 +1,45 @@
-const version = [8, 0, 0];
-const tagName = `bitty-${version[0]}`;
-
-const changeFormTypes = [
-  "checkbox",
-  "color",
-  "date",
-  "datetime-local",
-  "file",
-  "form",
-  "option",
-  "radio",
-  "search",
-  "time",
-];
-
-const enterFormTypes = [
-  "email",
-  "month",
-  "number",
-  "password",
-  "search",
-  "tel",
-  "text",
-  "url",
-  "week",
-];
-
-const inputFormTypes = [
-  "range",
-  "search",
-  "number",
-];
-
-const STORE_NAME = "bitty_store";
-const DB_VERSION = 1;
-
-class BittyJs extends HTMLElement {
+const t = [
+    "checkbox",
+    "color",
+    "date",
+    "datetime-local",
+    "file",
+    "form",
+    "option",
+    "radio",
+    "search",
+    "time",
+  ],
+  e = [
+    "email",
+    "month",
+    "number",
+    "password",
+    "search",
+    "tel",
+    "text",
+    "url",
+    "week",
+  ],
+  s = ["range", "search", "number"],
+  n = "bitty_store";
+class r extends HTMLElement {
   static bits = [];
-
   constructor() {
     super();
   }
-
   async connectedCallback() {
     if (this.dataset.connect) {
-      const connString = this.dataset.connect.trim();
-      const incoming = await import(connString);
-      if (incoming.b !== undefined) {
-        incoming.b._trueValues = ["true", "yes", "on", "1"];
-        incoming.b._falseValues = ["false", "no", "off", "0"];
-        incoming.b._debouncers = {};
-        incoming.b._marks = {};
-        incoming.b.svgs = {};
-        if (incoming.b.templates === undefined) {
-          incoming.b.templates = {};
-        }
-        if (incoming.b.config === undefined) {
-          incoming.b.config = {};
-        }
-        if (incoming.b.config.getState === undefined) {
-          incoming.b.config.getState = {
+      const t = this.dataset.connect.trim(), s = await import(t);
+      void 0 !== s.b &&
+        (s.b._trueValues = ["true", "yes", "on", "1"],
+          s.b._falseValues = ["false", "no", "off", "0"],
+          s.b._debouncers = {},
+          s.b._marks = {},
+          s.b.svgs = {},
+          void 0 === s.b.templates && (s.b.templates = {}),
+          void 0 === s.b.config && (s.b.config = {}),
+          void 0 === s.b.config.getState && (s.b.config.getState = {
             attributes: [
               "aria-autoComplete",
               "aria-checked",
@@ -77,57 +57,49 @@ class BittyJs extends HTMLElement {
               "diabled",
               "hidden",
               "readOnly",
-              // TODO: Confirm selected is what to look for
-              // for options.
               "selected",
               "spellcheck",
               "value",
             ],
-          };
-        }
-        this.addToggleSwitchTemplate(incoming);
-        incoming.b.data = {};
-        this.loadPageAssets(incoming);
-        this.addBittyClasses(incoming);
-        this.constructor.bits.push(incoming);
-        window.addEventListener("bittysend", (ev) => {
-          incoming.b._processBittySend(ev);
-        });
-        window.addEventListener("bittytrigger", (ev) => {
-          incoming.b._processBittyTrigger(ev);
-        });
-        window.addEventListener("click", (ev) => {
-          incoming.b._processEvent(ev);
-        });
-        window.addEventListener("input", (ev) => {
-          incoming.b._processInputEvent(ev);
-        });
-        window.addEventListener("change", (ev) => {
-          incoming.b._processChangeEvent(ev);
-        });
-        document.addEventListener("submit", (ev) => {
-          incoming.b._processEvent(ev);
-        });
-        document.addEventListener("keydown", (ev) => {
-          if (
-            ev.keyCode === 13 &&
-            ev.target &&
-            ev.target.tagName &&
-            ev.target.tagName.toLowerCase() === "input"
-          ) {
-            const checkAttr = ev.target.getAttribute("type");
-            if (enterFormTypes.includes(checkAttr.toLowerCase())) {
-              incoming.b._processInputTextEnter(ev);
+          }),
+          this.addToggleSwitchTemplate(s),
+          s.b.data = {},
+          this.loadPageAssets(s),
+          this.addBittyClasses(s),
+          this.constructor.bits.push(s),
+          window.addEventListener("bittyforwardsender", (t) => {
+            s.b._processBittyForwardSender(t);
+          }),
+          window.addEventListener("bittysend", (t) => {
+            s.b._processBittySend(t);
+          }),
+          window.addEventListener("bittytrigger", (t) => {
+            s.b._processBittyTrigger(t);
+          }),
+          window.addEventListener("click", (t) => {
+            s.b._processEvent(t);
+          }),
+          window.addEventListener("input", (t) => {
+            s.b._processInputEvent(t);
+          }),
+          window.addEventListener("change", (t) => {
+            s.b._processChangeEvent(t);
+          }),
+          document.addEventListener("submit", (t) => {
+            s.b._processEvent(t);
+          }),
+          document.addEventListener("keydown", (t) => {
+            if (
+              13 === t.keyCode && t.target && t.target.tagName &&
+              "input" === t.target.tagName.toLowerCase()
+            ) {
+              const n = t.target.getAttribute("type");
+              e.includes(n.toLowerCase()) && s.b._processInputTextEnter(t);
             }
-          }
-        });
-        // TODO: Attach data listeners directly to elements
-        // instead of to window.
-        [...document.querySelectorAll("[data-listen]")].forEach(
-          (el) => {
-            incoming.b._splitSignalString(el.dataset.listen).forEach(
-              (listener) => {
-                if (
+          }),
+          [...document.querySelectorAll("[data-listen]")].forEach((t) => {
+            s.b._splitSignalString(t.dataset.listen).forEach((t) => {
+              !1 ===
                   [
                     "bittysend",
                     "bittytrigger",
@@ -135,381 +107,227 @@ class BittyJs extends HTMLElement {
                     "click",
                     "input",
                     "submit",
-                  ].includes(
-                    listener,
-                  ) === false
-                ) {
-                  window.addEventListener(listener, (ev) => {
-                    incoming.b._processEvent(ev);
-                  });
-                }
-              },
-            );
-          },
-        );
-        incoming.b._processInit();
-      }
+                  ].includes(t) && window.addEventListener(t, (t) => {
+                  s.b._processEvent(t);
+                });
+            });
+          }),
+          s.b._processInit());
     }
   }
-
-  addBittyClasses(target) {
-    Object.getOwnPropertyNames(Object.getPrototypeOf(this)).filter((method) =>
-      method.substring(0, 1) === "_"
-    ).forEach((method) => {
-      target.b[method.substring(1)] = this[method].bind(target);
+  addBittyClasses(t) {
+    Object.getOwnPropertyNames(Object.getPrototypeOf(this)).filter((t) =>
+      "_" === t.substring(0, 1)
+    ).forEach((e) => {
+      t.b[e.substring(1)] = this[e].bind(t);
     });
   }
-
-  _addListener(event, signals) {
-    window.addEventListener(event, (ev) => {
-      this.b._processCustomEvent(ev, signals);
+  _addListener(t, e) {
+    window.addEventListener(t, (t) => {
+      this.b._processCustomEvent(t, e);
     });
   }
-
-  _addStyles(css) {
-    const sheet = new CSSStyleSheet();
-    sheet.replaceSync(css);
-    document.adoptedStyleSheets.push(sheet);
-    return sheet;
+  _addStyles(t) {
+    const e = new CSSStyleSheet();
+    return e.replaceSync(t), document.adoptedStyleSheets.push(e), e;
   }
-
-  addToggleSwitchTemplate(target) {
-    target.b.templates.switch = `
-<label for="__ID__" class="__CLASS__"__KEY_ATTR____LABLE_MISC__>__PREPEND__
-  <button id="__ID__" role="switch"__SEND_ATTR____RECEIVE_ATTR____KEY_ATTR____SAVE_ATTR__ aria-checked="__STATE__"__BUTTON_MISC__>
-    <span></span><span></span>
-  </button>__APPEND__</label>`;
+  addToggleSwitchTemplate(t) {
+    t.b.templates.switch =
+      '\n<label for="__ID__" class="__CLASS__"__KEY_ATTR____LABLE_MISC__>\n  __PREPEND__\n  <button id="__ID__" role="switch"__SEND_ATTR____RECEIVE_ATTR____KEY_ATTR____SAVE_ATTR__ aria-checked="__STATE__"__BUTTON_MISC__>\n    <span></span><span></span>\n  </button>\n  __APPEND__\n</label>';
   }
-
-  _ce(tag, options = {}) {
-    return document.createElement(tag, options);
+  _ce(t, e = {}) {
+    return document.createElement(t, e);
   }
-
-  async _copy(selector) {
-    const el = document.querySelector(selector);
-    if (el.value !== undefined && el.value !== "") {
+  async _copy(t) {
+    const e = document.querySelector(t);
+    if (void 0 !== e.value && "" !== e.value) {
       try {
-        await navigator.clipboard.writeText(el.value);
-      } catch (error) {
-        console.error(`Could not copy .value from ${selector}`);
-        return false;
+        await navigator.clipboard.writeText(e.value);
+      } catch (e) {
+        return console.error(`Could not copy .value from ${t}`), !1;
       }
-    } else {
-      try {
-        await navigator.clipboard.writeText(el.innerText);
-      } catch (error) {
-        console.error(`Could not copy .innerHTML from ${selector}`);
-        return false;
-      }
-    }
-    return true;
+    } else {try {
+        await navigator.clipboard.writeText(e.innerText);
+      } catch (e) {
+        return console.error(`Could not copy .innerHTML from ${t}`), !1;
+      }}
+    return !0;
   }
-
-  _debounce(key, signals, ms, payload = {}) {
-    if (this.b._debouncers[key]) {
-      window.clearTimeout(this.b._debouncers[key]);
-    }
-    this.b._debouncers[key] = setTimeout(() => {
-      this.b.send.apply(this, [payload, signals]);
-    }, ms);
+  _debounce(t, e, s, n = {}) {
+    this.b._debouncers[t] && window.clearTimeout(this.b._debouncers[t]),
+      this.b._debouncers[t] = setTimeout(() => {
+        this.b.send.apply(this, [n, e]);
+      }, s);
   }
-
-  _dedupe(array) {
-    return [...new Set(array)];
+  _dedupe(t) {
+    return [...new Set(t)];
   }
-
-  async _deletePageData(key) {
-    const db = await this.b._initPageDB();
-    return new Promise((resolve, reject) => {
-      const store = db
-        .transaction(STORE_NAME, "readwrite")
-        .objectStore(STORE_NAME);
-      const request = store.delete(key);
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.result);
+  async _deletePageData(t) {
+    const e = await this.b._initPageDB();
+    return new Promise((s, r) => {
+      const i = e.transaction(n, "readwrite").objectStore(n).delete(t);
+      i.onsuccess = () => s(i.result), i.onerror = () => r(i.result);
     });
   }
-
-  async _deleteSiteData(key) {
-    const db = await this.b._initSiteDB();
-    return new Promise((resolve, reject) => {
-      const store = db
-        .transaction(STORE_NAME, "readwrite")
-        .objectStore(STORE_NAME);
-      const request = store.delete(key);
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.result);
+  async _deleteSiteData(t) {
+    const e = await this.b._initSiteDB();
+    return new Promise((s, r) => {
+      const i = e.transaction(n, "readwrite").objectStore(n).delete(t);
+      i.onsuccess = () => s(i.result), i.onerror = () => r(i.result);
     });
   }
-
-  // TODO: Needs testing.
-  async __deleteValueFromSiteDB(key) {
-    const db = await this.b._initSiteDB();
-    return new Promise((resolve, reject) => {
-      const store = db
-        .transaction(STORE_NAME, "readwrite")
-        .objectStore(STORE_NAME);
-      const request = store.delete(key);
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.result);
+  async __deleteValueFromSiteDB(t) {
+    const e = await this.b._initSiteDB();
+    return new Promise((s, r) => {
+      const i = e.transaction(n, "readwrite").objectStore(n).delete(t);
+      i.onsuccess = () => s(i.result), i.onerror = () => r(i.result);
     });
   }
-
-  __findSenders(el) {
-    const senders = [];
-    while (el) {
-      if (el.dataset !== undefined && el.dataset.s !== undefined) {
-        senders.push(el);
-      }
-      el = el.parentElement;
+  __findSenders(t) {
+    const e = [];
+    for (; t;) {
+      void 0 !== t.dataset && void 0 !== t.dataset.s && e.push(t),
+        t = t.parentElement;
     }
-    return senders;
+    return e;
   }
-
-  async _getData(url, fallback = null, options = {}) {
-    let response = await fetch(url, options);
+  _forwardSender(t, e) {
+    const s = new i(t, e);
+    dispatchEvent(s);
+  }
+  async _getData(t, e = void 0, s = {}) {
+    let n = await fetch(t, s);
     try {
-      if (response.ok === true) {
+      if (!0 === n.ok) {
         try {
-          const json = await response.json();
-          return json;
-        } catch (parseError) {
-          console.error(parseError);
+          return await n.json();
+        } catch (t) {
+          console.error(t);
         }
-      } else {
-        console.error(response);
-      }
-    } catch (error) {
-      console.error(error);
+      } else console.error(n);
+    } catch (t) {
+      console.error(t);
     }
-    return undefined;
   }
-
-  _getMarks(key) {
-    return this.b._marks[key];
+  _getMarks(t) {
+    return this.b._marks[t];
   }
-
-  async _getTemplates(url, options = {}) {
-    let response = await fetch(url, options);
+  async _getTemplates(t, e = {}) {
+    let s = await fetch(t, e);
     try {
-      if (response.ok === true) {
+      if (!0 === s.ok) {
         try {
-          const templates = {};
-          const content = await response.text();
-          const container = document.createElement("div");
-          container.innerHTML = content;
-          container.querySelectorAll("script").forEach((script) => {
-            if (script.type === "text/html" && script.id !== undefined) {
-              this.b.templates[script.id] = script.innerHTML.trim();
-            }
-            if (script.type === "image/svg" && script.id !== undefined) {
-              this.b.svgs[script.id] = script.innerHTML.trim();
-            }
-            if (script.type === "application/json" && script.id !== undefined) {
-              this.b.data[script.id] = JSON.parse(script.innerHTML.trim());
-            }
-          });
-          return true;
-        } catch (parseError) {
-          console.error(parseError);
-          return false;
+          const t = await s.text(), e = document.createElement("div");
+          return e.innerHTML = t,
+            e.querySelectorAll("script").forEach((t) => {
+              "text/html" === t.type && void 0 !== t.id &&
+              (this.b.templates[t.id] = t.innerHTML.trim()),
+                "image/svg" === t.type && void 0 !== t.id &&
+                (this.b.svgs[t.id] = t.innerHTML.trim()),
+                "application/json" === t.type && void 0 !== t.id &&
+                (this.b.data[t.id] = JSON.parse(t.innerHTML.trim()));
+            }),
+            !0;
+        } catch (t) {
+          return console.error(t), !1;
         }
       }
-    } catch (error) {
-      console.error(error);
-      return false;
+    } catch (t) {
+      return console.error(t), !1;
     }
   }
-
-  __getBool(value) {
-    if (value === undefined) {
-      return undefined;
-    }
-    if (value === null) {
-      return undefined;
-    }
-    const checkNum = parseInt(value, 10);
-    if (checkNum !== NaN && checkNum > 0) {
-      return true;
-    }
-    if (checkNum !== NaN && checkNum <= 0) {
-      return false;
-    }
-    const lcValue = value.toLowerCase();
-    if (this.b._trueValues.includes(lcValue)) {
-      return true;
-    }
-    if (this.b._falseValues.includes(lcValue)) {
-      return false;
-    }
-    return undefined;
+  __getBool(t) {
+    if (void 0 === t) return;
+    if (null === t) return;
+    const e = parseInt(t, 10);
+    if (NaN !== e && e > 0) return !0;
+    if (NaN !== e && e <= 0) return !1;
+    const s = t.toLowerCase();
+    return !!this.b._trueValues.includes(s) ||
+      !this.b._falseValues.includes(s) && void 0;
   }
-
-  // async __getValueFromSiteDB(key) {
-  //   const db = await this.b._initSiteDB();
-  //   return new Promise((resolve, reject) => {
-  //     const store = db
-  //       .transaction(STORE_NAME, "readonly")
-  //       .objectStore(STORE_NAME);
-  //     const request = store.get(key);
-  //     request.onsuccess = () => resolve(request.result);
-  //     request.onerror = () => reject(request.result);
-  //   });
-  // }
-
   _getState() {
-    return [...this.b.qsa(`[data-save][id]`)]
-      // TODO: Set this up to check for general booleans
-      // instead of just lower case true.
-      .filter((el) => el.dataset.save === "true")
-      .map((el) => {
-        const item = { id: el.id, attributes: {}, keys: {} };
-
-        for (const attr of this.b.config.getState.attributes) {
-          if (el.getAttribute(attr)) {
-            item.attributes[attr] = el.getAttribute(attr);
-          }
-        }
-        for (const key of this.b.config.getState.keys) {
-          if (el[key]) {
-            item.keys[key] = el[key];
-          }
-        }
-
-        // for (const attr of this.b.config.getState.dataset) {
-        //   if (el.dataset[attr]) item.dataset[attr] = el.dataset[attr];
-        // }
-
-        // for (const attr of this.b.config.getState) {
-        //   if (el[attr]) item.attributes[attr] = el[attr];
-        // }
-
-        // for (const attr of this.b.config.getState.attributes) {
-        //   if (el[attr]) item.attributes[attr] = el[attr];
-        // }
-
-        // for (const attr of el.attributes) {
-        //   if (attr.name.startsWith("aria-")) {
-        //     const ariaKey = attr.name.replace("aria-", "");
-        //     item.aria[ariaKey] = attr.value;
-        //   }
-        // }
-
-        return item;
-      });
+    return [...this.b.qsa("[data-save][id]")].filter((t) =>
+      "true" === t.dataset.save
+    ).map((t) => {
+      const e = { id: t.id, attributes: {}, keys: {} };
+      for (const s of this.b.config.getState.attributes) {
+        t.getAttribute(s) && (e.attributes[s] = t.getAttribute(s));
+      }
+      for (const s of this.b.config.getState.keys) t[s] && (e.keys[s] = t[s]);
+      return e;
+    });
   }
-
   async __initPageDB() {
-    const url = new URL(window.location.href);
-    const pageID = btoa(url.pathname);
-    return new Promise((resolve, reject) => {
-      const request = indexedDB.open(`bitty_page_db_${pageID}`, DB_VERSION);
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.result);
-      request.onupgradeneeded = (event) => {
-        const db = event.target.result;
-        if (!db.objectStoreNames.contains(STORE_NAME)) {
-          db.createObjectStore(STORE_NAME);
-        }
-      };
+    const t = new URL(window.location.href), e = btoa(t.pathname);
+    return new Promise((t, s) => {
+      const r = indexedDB.open(`bitty_page_db_${e}`, 1);
+      r.onsuccess = () => t(r.result),
+        r.onerror = () => s(r.result),
+        r.onupgradeneeded = (t) => {
+          const e = t.target.result;
+          e.objectStoreNames.contains(n) || e.createObjectStore(n);
+        };
     });
   }
-
   async __initSiteDB() {
-    return new Promise((resolve, reject) => {
-      const request = indexedDB.open("bitty_site_db", DB_VERSION);
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.result);
-      request.onupgradeneeded = (event) => {
-        const db = event.target.result;
-        if (!db.objectStoreNames.contains(STORE_NAME)) {
-          db.createObjectStore(STORE_NAME);
-        }
-      };
+    return new Promise((t, e) => {
+      const s = indexedDB.open("bitty_site_db", 1);
+      s.onsuccess = () => t(s.result),
+        s.onerror = () => e(s.result),
+        s.onupgradeneeded = (t) => {
+          const e = t.target.result;
+          e.objectStoreNames.contains(n) || e.createObjectStore(n);
+        };
     });
   }
-
-  loadPageAssets(target) {
-    document.querySelectorAll("script").forEach((script) => {
-      if (script.type === "text/html" && script.id !== undefined) {
-        target.b.templates[script.id] = script.innerHTML.trim();
-      }
-      if (script.type === "image/svg" && script.id !== undefined) {
-        target.b.svgs[script.id] = script.innerHTML.trim();
-      }
-      if (script.type === "application/json" && script.id !== undefined) {
-        target.b.data[script.id] = JSON.parse(script.innerHTML.trim());
-      }
+  loadPageAssets(t) {
+    document.querySelectorAll("script").forEach((e) => {
+      "text/html" === e.type && void 0 !== e.id &&
+      (t.b.templates[e.id] = e.innerHTML.trim()),
+        "image/svg" === e.type && void 0 !== e.id &&
+        (t.b.svgs[e.id] = e.innerHTML.trim()),
+        "application/json" === e.type && void 0 !== e.id &&
+        (t.b.data[e.id] = JSON.parse(e.innerHTML.trim()));
     });
   }
-
-  _mapKey(
-    key,
-    signals,
-    modKeys = [],
-    options = {},
-  ) {
-    const keyCode = typeof key === "string" ? null : key;
-    if (modKeys === null) {
-      modKeys = [];
-    }
-    if (options.preventDefault === undefined) {
-      options.preventDefault = false;
-    }
-    if (options.listener === undefined) {
-      options.listener = "keydown";
-    }
-    for (let i = 0; i < modKeys.length; i += 1) {
-      if (this.b.modKeyAliases()[modKeys[i].toLowerCase()] !== undefined) {
-        modKeys[i] = this.b.modKeyAliases()[modKeys[i].toLowerCase()];
-      } else {
-        console.error(
-          `ERROR: Tried to use invalid modifier key '${
-            modKeys[i]
-          }' in mapKey()`,
+  _mapKey(t, e, s = [], n = {}) {
+    const r = "string" == typeof t ? null : t;
+    null === s && (s = []),
+      void 0 === n.preventDefault && (n.preventDefault = !1),
+      void 0 === n.listener && (n.listener = "keydown");
+    for (let t = 0; t < s.length; t += 1) {
+      if (void 0 === this.b.modKeyAliases()[s[t].toLowerCase()]) {
+        return void console.error(
+          `ERROR: Tried to use invalid modifier key '${s[t]}' in mapKey()`,
         );
-        return;
       }
+      s[t] = this.b.modKeyAliases()[s[t].toLowerCase()];
     }
-    if (options.preventDefault === true) {
-      window.addEventListener(options.listener, (ev) => {
-        if (ev.key === key || ev.keyCode === keyCode) {
-          for (const mod of modKeys) {
-            if (ev[mod] === false) {
-              return;
-            }
-          }
-          ev.preventDefault();
-          this.b._processKeypress(ev, signals);
+    !0 === n.preventDefault
+      ? window.addEventListener(n.listener, (n) => {
+        if (n.key === t || n.keyCode === r) {
+          for (const t of s) if (!1 === n[t]) return;
+          n.preventDefault(), this.b._processKeypress(n, e);
+        }
+      })
+      : window.addEventListener(n.listener, (n) => {
+        if (n.key === t || n.keyCode === r) {
+          for (const t of s) if (!1 === n[t]) return;
+          this.b._processKeypress(n, e);
         }
       });
-    } else {
-      window.addEventListener(options.listener, (ev) => {
-        if (ev.key === key || ev.keyCode === keyCode) {
-          for (const mod of modKeys) {
-            if (ev[mod] === false) {
-              return;
-            }
-          }
-          this.b._processKeypress(ev, signals);
-        }
-      });
-    }
   }
-
-  _mark(key) {
+  _mark(t) {
     try {
-      this.b._marks[key].push(performance.now());
-    } catch (_) {
-      this.b._marks[key] = [];
-      this.b._marks[key].push(performance.now());
+      this.b._marks[t].push(performance.now());
+    } catch (e) {
+      this.b._marks[t] = [], this.b._marks[t].push(performance.now());
     }
   }
-
-  __markEventAsUpdated(ev) {
-    ev.bittyUpdated = true;
+  __markEventAsUpdated(t) {
+    t.bittyUpdated = !0;
   }
-
   _modKeyAliases() {
     return {
       alt: "altKey",
@@ -528,964 +346,565 @@ class BittyJs extends HTMLElement {
       windows: "metaKey",
     };
   }
-
-  __processBittySend(ev) {
-    this.b._updateElement(ev.target);
-    const signals = this.b._splitSignalString(ev.signals);
-    for (const signal of signals) {
-      if (typeof this[signal] === "function") {
-        const receivers = document.querySelectorAll(
-          `[data-r~='${signal}']`,
-        );
-        if (receivers.length > 0) {
-          for (const receiver of receivers) {
-            this.b._updateElement(receiver);
-            receiver.isSender = () => {
-              return false;
-            };
-            receiver.isTarget = () => {
-              return false;
-            };
-            this[signal](ev.payload, null, receiver);
+  __processBittyForwardSender(t) {
+    this.b._updateElement(t.sender);
+    const e = this.b._splitSignalString(t.signals);
+    for (const s of e) {
+      if (console.log(s), "function" == typeof this[s]) {
+        const e = document.querySelectorAll(`[data-r~='${s}']`);
+        if (e.length > 0) {
+          for (const n of e) {
+            this.b._updateElement(n),
+              n.isSender = () => !1,
+              n.isTarget = () => !1,
+              this[s](void 0, t.sender, n);
           }
-        } else {
-          this[signal](ev.payload, null, null);
-        }
+        } else this[s](void 0, t.sender, void 0);
       }
     }
   }
-
-  __processBittyTrigger(ev) {
-    this.b._updateElement(ev.target);
-    const signals = this.b._splitSignalString(ev.signals);
-    for (const signal of signals) {
-      if (typeof this[signal] === "function") {
-        const receivers = document.querySelectorAll(
-          `[data-r~='${signal}']`,
-        );
-        if (receivers.length > 0) {
-          for (const receiver of receivers) {
-            this.b._updateElement(receiver);
-            receiver.isSender = () => {
-              return false;
-            };
-            receiver.isTarget = () => {
-              return false;
-            };
-            this[signal](ev, null, receiver);
+  __processBittySend(t) {
+    this.b._updateElement(t.target);
+    const e = this.b._splitSignalString(t.signals);
+    for (const s of e) {
+      if ("function" == typeof this[s]) {
+        const e = document.querySelectorAll(`[data-r~='${s}']`);
+        if (e.length > 0) {
+          for (const n of e) {
+            this.b._updateElement(n),
+              n.isSender = () => !1,
+              n.isTarget = () => !1,
+              this[s](t.payload, void 0, n);
           }
-        } else {
-          this[signal](ev, null, null);
-        }
+        } else this[s](t.payload, void 0, void 0);
       }
     }
   }
-
-  __processChangeEvent(ev) {
-    this.b._updateElement(ev.target);
-    const senders = this.b._findSenders(ev.target);
-    for (const sender of senders) {
-      this.b._updateElement(sender);
-      const signals = this.b._splitSignalString(sender.dataset.s);
-      const listeners = this.b._splitSignalString(
-        sender.dataset.listen,
-      );
-      if (listeners.length === 0) {
-        const checkAttr = sender.getAttribute("type");
-        if (checkAttr && enterFormTypes.includes(checkAttr.toLowerCase())) {
-          return;
-        }
-        if (checkAttr && inputFormTypes.includes(checkAttr.toLowerCase())) {
-          return;
-        }
-        if (
-          sender.tagName && sender.tagName.toLowerCase() === "form"
-        ) {
-          return;
-        }
-        for (const signal of signals) {
-          if (typeof this[signal] === "function") {
-            const receivers = document.querySelectorAll(
-              `[data-r~='${signal}']`,
-            );
-            if (receivers.length > 0) {
-              for (const receiver of receivers) {
-                this.b._updateElement(receiver);
-                this[signal](ev, sender, receiver);
-              }
-            } else {
-              this[signal](ev, sender, null);
-            }
+  __processBittyTrigger(t) {
+    this.b._updateElement(t.target);
+    const e = this.b._splitSignalString(t.signals);
+    for (const s of e) {
+      if ("function" == typeof this[s]) {
+        const e = document.querySelectorAll(`[data-r~='${s}']`);
+        if (e.length > 0) {
+          for (const n of e) {
+            this.b._updateElement(n),
+              n.isSender = () => !1,
+              n.isTarget = () => !1,
+              this[s](t, void 0, n);
+          }
+        } else this[s](t, void 0, void 0);
+      }
+    }
+  }
+  __processChangeEvent(t) {
+    this.b._updateElement(t.target);
+    const n = this.b._findSenders(t.target);
+    for (const r of n) {
+      this.b._updateElement(r);
+      const n = this.b._splitSignalString(r.dataset.s),
+        i = this.b._splitSignalString(r.dataset.listen);
+      if (0 === i.length) {
+        const i = r.getAttribute("type");
+        if (i && e.includes(i.toLowerCase())) return;
+        if (i && s.includes(i.toLowerCase())) return;
+        if (r.tagName && "form" === r.tagName.toLowerCase()) return;
+        for (const e of n) {
+          if ("function" == typeof this[e]) {
+            const s = document.querySelectorAll(`[data-r~='${e}']`);
+            if (s.length > 0) {
+              for (const n of s) this.b._updateElement(n), this[e](t, r, n);
+            } else this[e](t, r, void 0);
           }
         }
-      } else {
-        if (listeners.includes(ev.type)) {
-          for (const signal of signals) {
-            if (typeof this[signal] === "function") {
-              const receivers = document.querySelectorAll(
-                `[data-r~='${signal}']`,
-              );
-              if (receivers.length > 0) {
-                for (const receiver of receivers) {
-                  this.b._updateElement(receiver);
-                  this[signal](ev, sender, receiver);
-                }
-              } else {
-                this[signal](ev, sender, null);
-              }
-            }
+      } else if (i.includes(t.type)) {
+        for (const e of n) {
+          if ("function" == typeof this[e]) {
+            const s = document.querySelectorAll(`[data-r~='${e}']`);
+            if (s.length > 0) {
+              for (const n of s) this.b._updateElement(n), this[e](t, r, n);
+            } else this[e](t, r, void 0);
           }
         }
       }
     }
   }
-
-  __processCustomEvent(ev, signalsString) {
-    this.b._updateElement(ev.target);
-    const signals = this.b._splitSignalString(signalsString);
-    for (const signal of signals) {
-      if (typeof this[signal] === "function") {
-        const receivers = document.querySelectorAll(
-          `[data-r~='${signal}']`,
-        );
-        if (receivers.length > 0) {
-          for (const receiver of receivers) {
-            this.b._updateElement(receiver);
-            this.b._updateElement(ev.target);
-            this[signal](ev, ev.target, receiver);
+  __processCustomEvent(t, e) {
+    this.b._updateElement(t.target);
+    const s = this.b._splitSignalString(e);
+    for (const e of s) {
+      if ("function" == typeof this[e]) {
+        const s = document.querySelectorAll(`[data-r~='${e}']`);
+        if (s.length > 0) {
+          for (const n of s) {
+            this.b._updateElement(n),
+              this.b._updateElement(t.target),
+              this[e](t, t.target, n);
           }
-        } else {
-          this[signal](ev, null, null);
-        }
+        } else this[e](t, void 0, void 0);
       }
     }
   }
-
-  __processEvent(ev) {
-    this.b._updateElement(ev.target);
-    const senders = this.b._findSenders(ev.target);
-    for (const sender of senders) {
-      this.b._updateElement(sender);
-      const signals = this.b._splitSignalString(sender.dataset.s);
-      const listeners = this.b._splitSignalString(
-        sender.dataset.listen,
-      );
-      if (listeners.length === 0) {
-        if (ev.target) {
-          const checkAttr = sender.getAttribute("type");
-          if (checkAttr && changeFormTypes.includes(checkAttr.toLowerCase())) {
-            return;
-          }
-          if (checkAttr && enterFormTypes.includes(checkAttr.toLowerCase())) {
-            return;
-          }
-          if (checkAttr && inputFormTypes.includes(checkAttr.toLowerCase())) {
-            return;
-          }
-          if (
-            sender.tagName && sender.tagName.toLowerCase() === "select"
-          ) {
-            return;
-          }
-          if (
-            sender.tagName && sender.tagName.toLowerCase() === "textarea"
-          ) {
-            return;
-          }
-
-          // if (checkArg && checkArg.toLowerCase() === "text") {
-          //   return;
-          // }
-          // if (checkArg && checkArg.toLowerCase() === "month") {
-          //   return;
-          // }
-          // if (checkArg && checkArg.toLowerCase() === "password") {
-          //   return;
-          // }
-
-          // if (
-          //   checkArg &&
-          //   changeFormTypes.includes(checkArg.toLowerCase())
-          // ) {
-          //   return;
-          // }
+  __processEvent(n) {
+    this.b._updateElement(n.target);
+    const r = this.b._findSenders(n.target);
+    for (const i of r) {
+      this.b._updateElement(i);
+      const r = this.b._splitSignalString(i.dataset.s),
+        o = this.b._splitSignalString(i.dataset.listen);
+      if (0 === o.length) {
+        if (n.target) {
+          const n = i.getAttribute("type");
+          if (n && t.includes(n.toLowerCase())) return;
+          if (n && e.includes(n.toLowerCase())) return;
+          if (n && s.includes(n.toLowerCase())) return;
+          if (i.tagName && "select" === i.tagName.toLowerCase()) return;
+          if (i.tagName && "textarea" === i.tagName.toLowerCase()) return;
         }
-        if (sender.isContentEditable === true && ev.type === "click") {
-          return;
-        }
-
-        // if (
-        //   sender.tagName &&
-        //   changeFormTypes.includes(sender.tagName.toLowerCase()) &&
-        //   ev.type === "click"
-        // ) {
-        //   return;
-        // }
-
-        for (const signal of signals) {
-          if (typeof this[signal] === "function") {
-            const receivers = document.querySelectorAll(
-              `[data-r~='${signal}']`,
-            );
-            if (receivers.length > 0) {
-              for (const receiver of receivers) {
-                this.b._updateElement(receiver);
-                this[signal](ev, sender, receiver);
-              }
-            } else {
-              this[signal](ev, sender, null);
-            }
+        if (!0 === i.isContentEditable && "click" === n.type) return;
+        for (const t of r) {
+          if ("function" == typeof this[t]) {
+            const e = document.querySelectorAll(`[data-r~='${t}']`);
+            if (e.length > 0) {
+              for (const s of e) this.b._updateElement(s), this[t](n, i, s);
+            } else this[t](n, i, void 0);
           }
         }
-      } else {
-        if (listeners.includes(ev.type)) {
-          for (const signal of signals) {
-            if (typeof this[signal] === "function") {
-              const receivers = document.querySelectorAll(
-                `[data-r~='${signal}']`,
-              );
-              if (receivers.length > 0) {
-                for (const receiver of receivers) {
-                  this.b._updateElement(receiver);
-                  this[signal](ev, sender, receiver);
-                }
-              } else {
-                this[signal](ev, sender, null);
-              }
-            }
+      } else if (o.includes(n.type)) {
+        for (const t of r) {
+          if ("function" == typeof this[t]) {
+            const e = document.querySelectorAll(`[data-r~='${t}']`);
+            if (e.length > 0) {
+              for (const s of e) this.b._updateElement(s), this[t](n, i, s);
+            } else this[t](n, i, void 0);
           }
         }
       }
     }
   }
-
   __processInit() {
-    if (this.b.init !== undefined) {
-      const signals = this.b._splitSignalString(this.b.init);
-      for (const signal of signals) {
-        if (typeof this[signal] === "function") {
-          const receivers = document.querySelectorAll(
-            `[data-r~='${signal}']`,
-          );
-          if (receivers.length > 0) {
-            for (const receiver of receivers) {
-              this.b._updateElement(receiver);
-              receiver.isSender = () => {
-                return false;
-              };
-              receiver.isTarget = () => {
-                return false;
-              };
-              this[signal]({}, null, receiver);
+    if (void 0 !== this.b.init) {
+      const t = this.b._splitSignalString(this.b.init);
+      for (const e of t) {
+        if ("function" == typeof this[e]) {
+          const t = document.querySelectorAll(`[data-r~='${e}']`);
+          if (t.length > 0) {
+            for (const s of t) {
+              this.b._updateElement(s),
+                s.isSender = () => !1,
+                s.isTarget = () => !1,
+                this[e]({}, void 0, s);
             }
-          } else {
-            this[signal]({}, null, null);
+          } else this[e]({}, void 0, void 0);
+        }
+      }
+    }
+  }
+  __processInputEvent(t) {
+    this.b._updateElement(t.target);
+    const e = this.b._findSenders(t.target);
+    for (const n of e) {
+      this.b._updateElement(n);
+      const e = this.b._splitSignalString(n.dataset.s),
+        r = this.b._splitSignalString(n.dataset.listen);
+      if (0 === r.length) {
+        const r = n.getAttribute("type");
+        if (r && !s.includes(r.toLowerCase())) return;
+        if (n.tagName && "select" === n.tagName.toLowerCase()) return;
+        for (const s of e) {
+          if ("function" == typeof this[s]) {
+            const e = document.querySelectorAll(`[data-r~='${s}']`);
+            if (e.length > 0) {
+              for (const r of e) this.b._updateElement(r), this[s](t, n, r);
+            } else this[s](t, n, void 0);
+          }
+        }
+      } else if (r.includes(t.type)) {
+        for (const s of e) {
+          if ("function" == typeof this[s]) {
+            const e = document.querySelectorAll(`[data-r~='${s}']`);
+            if (e.length > 0) {
+              for (const r of e) this.b._updateElement(r), this[s](t, n, r);
+            } else this[s](t, n, void 0);
           }
         }
       }
     }
   }
-
-  __processInputEvent(ev) {
-    this.b._updateElement(ev.target);
-    const senders = this.b._findSenders(ev.target);
-    for (const sender of senders) {
-      this.b._updateElement(sender);
-      const signals = this.b._splitSignalString(sender.dataset.s);
-      const listeners = this.b._splitSignalString(
-        sender.dataset.listen,
-      );
-      if (listeners.length === 0) {
-        const checkAttr = sender.getAttribute("type");
-        if (checkAttr && !inputFormTypes.includes(checkAttr.toLowerCase())) {
-          return;
-        }
-        if (
-          sender.tagName && sender.tagName.toLowerCase() === "select"
-        ) {
-          return;
-        }
-
-        // if (
-        //   sender.tagName &&
-        //   changeFormTypes.includes(sender.tagName.toLowerCase())
-        // ) {
-        //   return;
-        // } else if (
-        //   sender.type && changeFormTypes.includes(sender.type.toLowerCase())
-        // ) {
-        //   return;
-        // }
-
-        for (const signal of signals) {
-          if (typeof this[signal] === "function") {
-            const receivers = document.querySelectorAll(
-              `[data-r~='${signal}']`,
-            );
-            if (receivers.length > 0) {
-              for (const receiver of receivers) {
-                this.b._updateElement(receiver);
-                this[signal](ev, sender, receiver);
-              }
-            } else {
-              this[signal](ev, sender, null);
-            }
+  __processInputTextEnter(t) {
+    this.b._updateElement(t.target);
+    const s = this.b._findSenders(t.target);
+    for (const n of s) {
+      this.b._updateElement(n);
+      const s = this.b._splitSignalString(n.dataset.s),
+        r = this.b._splitSignalString(n.dataset.listen);
+      if (0 === r.length) {
+        const r = n.getAttribute("type");
+        if (r && !e.includes(r.toLowerCase())) return;
+        for (const e of s) {
+          if ("function" == typeof this[e]) {
+            const s = document.querySelectorAll(`[data-r~='${e}']`);
+            if (s.length > 0) {
+              for (const r of s) this.b._updateElement(r), this[e](t, n, r);
+            } else this[e](t, n, void 0);
           }
         }
-      } else {
-        if (listeners.includes(ev.type)) {
-          for (const signal of signals) {
-            if (typeof this[signal] === "function") {
-              const receivers = document.querySelectorAll(
-                `[data-r~='${signal}']`,
-              );
-              if (receivers.length > 0) {
-                for (const receiver of receivers) {
-                  this.b._updateElement(receiver);
-                  this[signal](ev, sender, receiver);
-                }
-              } else {
-                this[signal](ev, sender, null);
-              }
-            }
+      } else if (r.includes(t.type)) {
+        for (const e of s) {
+          if ("function" == typeof this[e]) {
+            const s = document.querySelectorAll(`[data-r~='${e}']`);
+            if (s.length > 0) {
+              for (const r of s) this.b._updateElement(r), this[e](t, n, r);
+            } else this[e](t, n, void 0);
           }
         }
       }
     }
   }
-
-  __processInputTextEnter(ev) {
-    this.b._updateElement(ev.target);
-    const senders = this.b._findSenders(ev.target);
-    for (const sender of senders) {
-      this.b._updateElement(sender);
-      const signals = this.b._splitSignalString(sender.dataset.s);
-      const listeners = this.b._splitSignalString(
-        sender.dataset.listen,
-      );
-      if (listeners.length === 0) {
-        const checkAttr = sender.getAttribute("type");
-        if (checkAttr && !enterFormTypes.includes(checkAttr.toLowerCase())) {
-          return;
-        }
-        for (const signal of signals) {
-          if (typeof this[signal] === "function") {
-            const receivers = document.querySelectorAll(
-              `[data-r~='${signal}']`,
-            );
-            if (receivers.length > 0) {
-              for (const receiver of receivers) {
-                this.b._updateElement(receiver);
-                this[signal](ev, sender, receiver);
-              }
-            } else {
-              this[signal](ev, sender, null);
-            }
-          }
-        }
-      } else {
-        if (listeners.includes(ev.type)) {
-          for (const signal of signals) {
-            if (typeof this[signal] === "function") {
-              const receivers = document.querySelectorAll(
-                `[data-r~='${signal}']`,
-              );
-              if (receivers.length > 0) {
-                for (const receiver of receivers) {
-                  this.b._updateElement(receiver);
-                  this[signal](ev, sender, receiver);
-                }
-              } else {
-                this[signal](ev, sender, null);
-              }
-            }
-          }
-        }
+  __processKeypress(t, e) {
+    this.b._updateElement(t.target);
+    const s = t.target, n = this.b._splitSignalString(e);
+    for (const e of n) {
+      if ("function" == typeof this[e]) {
+        const n = document.querySelectorAll(`[data-r~='${e}']`);
+        if (n.length > 0) {
+          for (const r of n) this.b._updateElement(r), this[e](t, s, r);
+        } else this[e](t, s, void 0);
       }
     }
   }
-
-  __processKeypress(ev, signalString) {
-    this.b._updateElement(ev.target);
-    const sender = ev.target;
-    const signals = this.b._splitSignalString(signalString);
-    for (const signal of signals) {
-      if (typeof this[signal] === "function") {
-        const receivers = document.querySelectorAll(
-          `[data-r~='${signal}']`,
-        );
-        if (receivers.length > 0) {
-          for (const receiver of receivers) {
-            this.b._updateElement(receiver);
-            this[signal](ev, sender, receiver);
-          }
-        } else {
-          this[signal](ev, sender, null);
-        }
-      }
-    }
+  _qs(t, e) {
+    return void 0 === e ? document.querySelector(t) : e.querySelector(t);
   }
-
-  // async __putValueInSiteDB(value, key) {
-  //   const db = await this.b._initSiteDB();
-  //   return new Promise((resolve, reject) => {
-  //     const store = db
-  //       .transaction(STORE_NAME, "readwrite")
-  //       .objectStore(STORE_NAME);
-  //     const request = store.put(value, key);
-  //     request.onsuccess = () => resolve(request.result);
-  //     request.onerror = () => reject(request.result);
-  //   });
-  // }
-
-  _qs(selector, el = null) {
-    if (el === null) {
-      return document.querySelector(selector);
-    } else {
-      return el.querySelector(selector);
-    }
+  _qsa(t, e) {
+    return void 0 === e ? document.querySelectorAll(t) : e.querySelectorAll(t);
   }
-
-  _qsa(selector, el = null) {
-    if (el === null) {
-      return document.querySelectorAll(selector);
-    } else {
-      return el.querySelectorAll(selector);
-    }
-  }
-
-  async _quickCopy(el, sender, options = {}) {
-    if (options.success === undefined) {
-      options.success = "Copied";
-    }
-    if (options.failed === undefined) {
-      options.failed = "Could not copy";
-    }
-    if (options.ms === undefined) {
-      options.ms = 2000;
-    }
-    if (sender.copyId === undefined) {
-      sender.copyId === this.b.uuid();
-    }
-    if (this.b._debouncers[sender.copyId]) {
-      window.clearTimeout(this.b._debouncers[sender.copyId]);
-    }
-    const copyPayload = el.value !== undefined ? el.value : el.innerHTML;
+  async _quickCopy(t, e, s = {}) {
+    void 0 === s.success && (s.success = "Copied"),
+      void 0 === s.failed && (s.failed = "Could not copy"),
+      void 0 === s.ms && (s.ms = 2e3),
+      void 0 === e.copyId && (e.copyId, this.b.uuid()),
+      this.b._debouncers[e.copyId] &&
+      window.clearTimeout(this.b._debouncers[e.copyId]);
+    const n = void 0 !== t.value ? t.value : t.innerHTML;
     try {
-      await navigator.clipboard.writeText(copyPayload);
-      if (sender.originalInnerHTML === undefined) {
-        sender.originalInnerHTML = JSON.stringify({ value: sender.innerHTML });
-        sender.innerHTML = options.success;
-      }
-      this.b._debouncers[sender.copyId] = setTimeout(() => {
-        sender.innerHTML = JSON.parse(sender.originalInnerHTML).value;
-        delete sender.originalInnerHTML;
-      }, options.ms);
-      return true;
-    } catch (error) {
-      if (sender.originalInnerHTML === undefined) {
-        sender.originalInnerHTML = JSON.stringify({ value: sender.innerHTML });
-        sender.innerHTML = options.failed;
-      }
-      this.b._debouncers[sender.copyId] = setTimeout(() => {
-        sender.innerHTML = JSON.parse(sender.originalInnerHTML).value;
-        delete sender.originalInnerHTML;
-      }, options.ms);
-      return false;
+      return await navigator.clipboard.writeText(n),
+        void 0 === e.originalInnerHTML &&
+        (e.originalInnerHTML = JSON.stringify({ value: e.innerHTML }),
+          e.innerHTML = s.success),
+        this.b._debouncers[e.copyId] = setTimeout(() => {
+          e.innerHTML = JSON.parse(e.originalInnerHTML).value,
+            delete e.originalInnerHTML;
+        }, s.ms),
+        !0;
+    } catch (t) {
+      return void 0 === e.originalInnerHTML &&
+        (e.originalInnerHTML = JSON.stringify({ value: e.innerHTML }),
+          e.innerHTML = s.failed),
+        this.b._debouncers[e.copyId] = setTimeout(() => {
+          e.innerHTML = JSON.parse(e.originalInnerHTML).value,
+            delete e.originalInnerHTML;
+        }, s.ms),
+        !1;
     }
   }
-
-  _randomFloat(min, max) {
-    const seeker = new Uint32Array(1);
-    crypto.getRandomValues(seeker);
-    const base = seeker[0] / (0xFFFFFFFF + 1);
-    const distance = Math.abs(max - min);
-    let result = (base * distance) + Math.min(min, max);
-    return result;
+  _randomFloat(t, e) {
+    const s = new Uint32Array(1);
+    crypto.getRandomValues(s);
+    return s[0] / 4294967296 * Math.abs(e - t) + Math.min(t, e);
   }
-
-  _randomInt(min, max) {
-    const seeker = new Uint32Array(1);
-    crypto.getRandomValues(seeker);
-    const base = seeker[0];
-    const modder = Math.abs(max - min) + 1;
-    let result = (base % modder) + Math.min(min, max);
-    return result;
+  _randomInt(t, e) {
+    const s = new Uint32Array(1);
+    crypto.getRandomValues(s);
+    return s[0] % (Math.abs(e - t) + 1) + Math.min(t, e);
   }
-
-  // TODO: Look for incoming `data-listen` attributes
-  // and attach listeners directly to respective
-  // elements.
-  _render(input, subs = {}) {
-    if (input instanceof Array === false) {
-      input = [input];
-    }
-    if (typeof input[0] === "string" && this.b.svgs[input[0]] !== undefined) {
-      let content = this.b.svgs[input[0]];
-      for (const needle of Object.keys(subs)) {
-        const updates = subs[needle] instanceof Array === true
-          ? subs[needle]
-          : [subs[needle]];
-        const replacement = updates.map((update) => {
-          if (typeof update === "string") {
-            return update;
-          } else {
-            const tmpWrapper = document.createElement("div");
-            tmpWrapper.appendChild(update);
-            return tmpWrapper.innerHTML;
+  _render(t, e = {}) {
+    if (
+      t instanceof Array == !1 && (t = [t]),
+        "string" == typeof t[0] && void 0 !== this.b.svgs[t[0]]
+    ) {
+      let s = this.b.svgs[t[0]];
+      for (const t of Object.keys(e)) {
+        const n = (e[t] instanceof Array == !0 ? e[t] : [e[t]]).map((t) => {
+          if ("string" == typeof t) return t;
+          {
+            const e = document.createElement("div");
+            return e.appendChild(t), e.innerHTML;
           }
         }).join("");
-        content = content.replaceAll(needle, replacement);
+        s = s.replaceAll(t, n);
       }
-      const tmpWrapper = document.createElement("div");
-      tmpWrapper.innerHTML = content;
-      return tmpWrapper.firstChild;
+      const n = document.createElement("div");
+      return n.innerHTML = s, n.firstChild;
     }
-    let content = input.map((item) => {
-      if (typeof item === "string") {
-        if (this.b.templates[item] !== undefined) {
-          return this.b.templates[item];
-        } else {
-          return item;
-        }
-      } else {
-        const tmpWrapper = document.createElement("div");
-        tmpWrapper.appendChild(item);
-        return tmpWrapper.innerHTML;
+    let s = t.map((t) => {
+      if ("string" == typeof t) {
+        return void 0 !== this.b.templates[t] ? this.b.templates[t] : t;
+      }
+      {
+        const e = document.createElement("div");
+        return e.appendChild(t), e.innerHTML;
       }
     }).join("");
-    for (const needle of Object.keys(subs)) {
-      const updates = subs[needle] instanceof Array === true
-        ? subs[needle]
-        : [subs[needle]];
-      const replacement = updates.map((update) => {
-        if (update === null) {
-          return "null";
-        } else if (update instanceof DocumentFragment) {
-          const tmpWrapper = document.createElement("div");
-          tmpWrapper.appendChild(update);
-          return tmpWrapper.innerHTML;
-        } else if (update instanceof Element) {
-          const tmpWrapper = document.createElement("div");
-          tmpWrapper.appendChild(update);
-          return tmpWrapper.innerHTML;
-        } else {
-          return update;
+    for (const t of Object.keys(e)) {
+      const n = (e[t] instanceof Array == !0 ? e[t] : [e[t]]).map((t) => {
+        if (null === t) return "null";
+        if (t instanceof DocumentFragment) {
+          const e = document.createElement("div");
+          return e.appendChild(t), e.innerHTML;
         }
+        if (t instanceof Element) {
+          const e = document.createElement("div");
+          return e.appendChild(t), e.innerHTML;
+        }
+        return t;
       }).join("");
-      content = content.replaceAll(needle, replacement);
+      s = s.replaceAll(t, n);
     }
-    const result = document.createElement("template");
-    result.innerHTML = content;
-    return result.content;
+    const n = document.createElement("template");
+    return n.innerHTML = s, n.content;
   }
-
-  _setState(payload) {
-    for (const item of payload) {
-      const el = this.b.qs(`#${item.id}`);
-      if (el) {
-        for (const attribute in item.attributes) {
-          el.setAttribute(attribute, item.attributes[attribute]);
-        }
-        for (const key in item.keys) {
-          el[key] = item.keys[key];
-        }
-        // for (const key in item.keys) {
-        //   el[key] = item.keys[key];
-        // }
-        // for (const key in item.aria) {
-        //   el.setAttribute(`aria-${key}`, item.aria[key]);
-        // }
+  _setState(t) {
+    for (const e of t) {
+      const t = this.b.qs(`#${e.id}`);
+      if (t) {
+        for (const s in e.attributes) t.setAttribute(s, e.attributes[s]);
+        for (const s in e.keys) t[s] = e.keys[s];
       }
     }
   }
-
-  async _loadSiteData(key, fallback) {
-    const db = await this.b._initSiteDB();
-    const result = await new Promise((resolve, reject) => {
-      const store = db
-        .transaction(STORE_NAME, "readonly")
-        .objectStore(STORE_NAME);
-      const request = store.get(key);
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.result);
+  async _loadSiteData(t, e) {
+    const s = await this.b._initSiteDB(),
+      r = await new Promise((e, r) => {
+        const i = s.transaction(n, "readonly").objectStore(n).get(t);
+        i.onsuccess = () => e(i.result), i.onerror = () => r(i.result);
+      });
+    return void 0 === r && void 0 !== e
+      ? (await this.b.saveSiteData(e, t), e)
+      : r;
+  }
+  async _loadPageData(t, e) {
+    const s = await this.b._initPageDB(),
+      r = await new Promise((e, r) => {
+        const i = s.transaction(n, "readonly").objectStore(n).get(t);
+        i.onsuccess = () => e(i.result), i.onerror = () => r(i.result);
+      });
+    return void 0 === r && void 0 !== e
+      ? (await this.b.savePageData(e, t), e)
+      : r;
+  }
+  _switch(t = {}) {
+    return t.__APPEND__ = t.__APPEND__ ? t.__APPEND__ : "",
+      t.__PREPEND__ = t.__PREPEND__ ? t.__PREPEND__ : "",
+      t.__CLASS__ = t.__CLASS__ ? t.__CLASS__ : "bitty-switch",
+      t.__ID__ = t.__ID__ ? t.__ID__ : `switch_${this.b.uuid(!1)}`,
+      t.__STATE__ = t.__STATE__ ? t.__STATE__ : "false",
+      t.__RECEIVE_ATTR__ = t.__RECEIVE__ ? ` data-r="${t.__RECEIVE__}"` : "",
+      t.__SEND_ATTR__ = t.__SEND__ ? ` data-s="${t.__SEND__}"` : "",
+      t.__KEY_ATTR__ = t.__KEY__ ? ` data-s="${t.__KEY__}"` : "",
+      t.__SAVE_ATTR__ = t.__SAVE__ ? ` data-save="${t.__SAVE__}"` : "",
+      t.__LABEL_MISC__ = t.__LABEL_MISC__ ? ` ${t.__LABEL_MISC__}` : "",
+      t.__BUTTON_MISC__ = t.__BUTTON_MISC__ ? ` ${t.__BUTTON_MISC__}` : "",
+      this.b.render("switch", t);
+  }
+  async _savePageData(t, e) {
+    const s = await this.b._initPageDB();
+    return await new Promise((r, i) => {
+      const o = s.transaction(n, "readwrite").objectStore(n).put(t, e);
+      o.onsuccess = () => r(o.result), o.onerror = () => i(o.result);
     });
-    if (result === undefined && fallback !== undefined) {
-      await this.b.saveSiteData(fallback, key);
-      return fallback;
-    }
-    return result;
-
-    // const result = await this.b._getValueFromSiteDB(key);
-    // return result;
-    // const storage = localStorage.getItem(key);
-    // if (storage !== null) {
-    //   try {
-    //     return JSON.parse(storage);
-    //   } catch (error) {
-    //     return undefined;
-    //   }
-    // }
-    // if (fallback !== undefined) {
-    //   return fallback;
-    // }
-    // return undefined;
   }
-
-  async _loadPageData(key, fallback) {
-    const db = await this.b._initPageDB();
-    const result = await new Promise((resolve, reject) => {
-      const store = db
-        .transaction(STORE_NAME, "readonly")
-        .objectStore(STORE_NAME);
-      const request = store.get(key);
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.result);
+  async _saveSiteData(t, e) {
+    const s = await this.b._initSiteDB();
+    return await new Promise((r, i) => {
+      const o = s.transaction(n, "readwrite").objectStore(n).put(t, e);
+      o.onsuccess = () => r(o.result), o.onerror = () => i(o.result);
     });
-    if (result === undefined && fallback !== undefined) {
-      await this.b.savePageData(fallback, key);
-      return fallback;
-    }
-    return result;
-    // const url = new URL(window.location.href);
-    // return this.b.loadData(`${url.pathname}-${key}`, fallback);
   }
-
-  _switch(subs = {}) {
-    // Set the leading/trailing text
-    subs.__APPEND__ = subs.__APPEND__ ? subs.__APPEND__ : "";
-    subs.__PREPEND__ = subs.__PREPEND__ ? subs.__PREPEND__ : "";
-    // There's always a class, id, and state
-    subs.__CLASS__ = subs.__CLASS__ ? subs.__CLASS__ : "bitty-switch";
-    subs.__ID__ = subs.__ID__ ? subs.__ID__ : `switch_${this.b.uuid(false)}`;
-    subs.__STATE__ = subs.__STATE__ ? subs.__STATE__ : "false";
-    // These attributes are optional. The input is only the
-    // values. They are converted into the full attribute
-    // strings here. The prevents outputting empty attributes.
-    subs.__RECEIVE_ATTR__ = subs.__RECEIVE__
-      ? ` data-r="${subs.__RECEIVE__}"`
-      : "";
-    subs.__SEND_ATTR__ = subs.__SEND__ ? ` data-s="${subs.__SEND__}"` : "";
-    subs.__KEY_ATTR__ = subs.__KEY__ ? ` data-s="${subs.__KEY__}"` : "";
-    subs.__SAVE_ATTR__ = subs.__SAVE__ ? ` data-save="${subs.__SAVE__}"` : "";
-    subs.__LABEL_MISC__ = subs.__LABEL_MISC__ ? ` ${subs.__LABEL_MISC__}` : "";
-    subs.__BUTTON_MISC__ = subs.__BUTTON_MISC__
-      ? ` ${subs.__BUTTON_MISC__}`
-      : "";
-    return this.b.render("switch", subs);
+  _send(t, e) {
+    const s = new o(t, e);
+    dispatchEvent(s);
   }
-
-  async _savePageData(value, key) {
-    const db = await this.b._initPageDB();
-    const result = await new Promise((resolve, reject) => {
-      const store = db
-        .transaction(STORE_NAME, "readwrite")
-        .objectStore(STORE_NAME);
-      const request = store.put(value, key);
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.result);
-    });
-    return result;
-
-    // const url = new URL(window.location.href);
-    // return this.b.saveData(data, `${url.pathname}-${key}`);
+  _setCSS(t, e) {
+    document.documentElement.style.setProperty(t, e);
   }
-
-  async _saveSiteData(value, key) {
-    const db = await this.b._initSiteDB();
-    const result = await new Promise((resolve, reject) => {
-      const store = db
-        .transaction(STORE_NAME, "readwrite")
-        .objectStore(STORE_NAME);
-      const request = store.put(value, key);
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.result);
-    });
-    return result;
-
-    // TODO: Pull _pubValueInPageDB code here instead
-    // of calling out to it since it's not used
-    // anywhere else.
-    //const result = await this.b._putValueInSiteDB(value, key);
-    //return result;
-    // localStorage.setItem(key, JSON.stringify(data));
-    //return true;
-  }
-
-  _send(payload, signals) {
-    const ev = new BittySend(payload, signals);
-    dispatchEvent(ev);
-  }
-
-  _setCSS(key, value) {
-    document.documentElement.style.setProperty(key, value);
-  }
-
-  _shuffle(array) {
-    for (let i = array.length - 1; i >= 1; i--) {
-      const r = new Uint32Array(1);
-      crypto.getRandomValues(r);
-      const j = r[0] % i;
-      [array[i], array[j]] = [array[j], array[i]];
+  _shuffle(t) {
+    for (let e = t.length - 1; e >= 1; e--) {
+      const s = new Uint32Array(1);
+      crypto.getRandomValues(s);
+      const n = s[0] % e;
+      [t[e], t[n]] = [t[n], t[e]];
     }
   }
-
-  async _sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  async _sleep(t) {
+    return new Promise((e) => setTimeout(e, t));
   }
-
-  _sort(a, b) {
-    return a.toLowerCase().localeCompare(b.toLowerCase());
+  _sort(t, e) {
+    return t.toLowerCase().localeCompare(e.toLowerCase());
   }
-
-  __splitSignalString(input) {
-    if (input !== undefined) {
-      return input
-        .trim()
-        .split(/\s+/m)
-        .map((l) => l.trim());
-    } else {
-      return [];
-    }
+  __splitSignalString(t) {
+    return void 0 !== t ? t.trim().split(/\s+/m).map((t) => t.trim()) : [];
   }
-
-  _tee(input, log = true) {
-    if (log !== false && log !== 0) {
-      console.log(input);
-    }
-    return input;
+  _tee(t, e = !0) {
+    return !1 !== e && 0 !== e && console.log(t), t;
   }
-
-  _time(datetime = new Date(), ms = false) {
-    const options = {
+  _time(t = new Date(), e = !1) {
+    const s = {};
+    new Intl.DateTimeFormat(void 0, {
       day: "2-digit",
       fractionalSecondDigits: 3,
       hour: "2-digit",
-      hour12: false,
+      hour12: !1,
       minute: "2-digit",
       month: "2-digit",
       second: "2-digit",
       year: "numeric",
-    };
-    const parts = {};
-    new Intl.DateTimeFormat(undefined, options)
-      .formatToParts(datetime)
-      .filter((part) => part.type !== "literal")
-      .forEach((part) => parts[part.type] = part.value);
-    const date = [parts.year, parts.month, parts.day].join("-");
-    const time = [parts.hour, parts.minute, parts.second].join(":");
-    if (ms === true) {
-      return `${date}T${time}.${parts.fractionalSecond}`;
-    } else {
-      return `${date}T${time}`;
-    }
+    }).formatToParts(t).filter((t) => "literal" !== t.type).forEach((t) =>
+      s[t.type] = t.value
+    );
+    const n = [s.year, s.month, s.day].join("-"),
+      r = [s.hour, s.minute, s.second].join(":");
+    return !0 === e ? `${n}T${r}.${s.fractionalSecond}` : `${n}T${r}`;
   }
-
-  _timeMs(datetime) {
-    return this.b.time(datetime, true);
+  _timeMs(t) {
+    return this.b.time(t, !0);
   }
-
-  _trigger(signals) {
-    const ev = new BittyTrigger(signals);
-    dispatchEvent(ev);
+  _trigger(t) {
+    const e = new a(t);
+    dispatchEvent(e);
   }
-
-  __updateElement(el) {
-    if (el.bittyUpdated === true) {
-      return;
-    }
-    el.aria = (key) => {
-      const ariaEl = el.closest(`[aria-${key}]`);
-      if (ariaEl) {
-        return ariaEl.getAttribute(`aria-${key}`);
-      } else {
-        return undefined;
-      }
-    };
-    el.ariaAsBool = (key) => {
-      const ariaEl = el.closest(`[aria-${key}]`);
-      if (ariaEl) {
-        const value = ariaEl.getAttribute(`aria-${key}`);
-        return this.b._getBool(value);
-      } else {
-        return undefined;
-      }
-    };
-    el.ariaAsFloat = (key) => {
-      const ariaEl = el.closest(`[aria-${key}]`);
-      if (ariaEl) {
-        return parseFloat(ariaEl.getAttribute(`aria-${key}`));
-      } else {
-        return undefined;
-      }
-    };
-    el.ariaAsInt = (key) => {
-      const ariaEl = el.closest(`[aria-${key}]`);
-      if (ariaEl) {
-        return parseInt(ariaEl.getAttribute(`aria-${key}`), 10);
-      } else {
-        return undefined;
-      }
-    };
-    el.copy = async function () {
-      if (el.value) {
-        try {
-          await navigator.clipboard.writeText(el.value);
-        } catch (error) {
-          console.error(`Could not copy .value from el.`);
-          return false;
+  __updateElement(t) {
+    !0 !== t.bittyUpdated && (t.aria = (e) => {
+      const s = t.closest(`[aria-${e}]`);
+      return s ? s.getAttribute(`aria-${e}`) : void 0;
+    },
+      t.ariaAsBool = (e) => {
+        const s = t.closest(`[aria-${e}]`);
+        if (s) {
+          const t = s.getAttribute(`aria-${e}`);
+          return this.b._getBool(t);
         }
-      } else {
-        try {
-          await navigator.clipboard.writeText(el.innerHTML);
-        } catch (error) {
-          console.error(`Could not copy .innerHTML from el.`);
-          return false;
+      },
+      t.ariaAsFloat = (e) => {
+        const s = t.closest(`[aria-${e}]`);
+        return s ? parseFloat(s.getAttribute(`aria-${e}`)) : void 0;
+      },
+      t.ariaAsInt = (e) => {
+        const s = t.closest(`[aria-${e}]`);
+        return s ? parseInt(s.getAttribute(`aria-${e}`), 10) : void 0;
+      },
+      t.copy = async function () {
+        if (t.value) {
+          try {
+            await navigator.clipboard.writeText(t.value);
+          } catch (t) {
+            return console.error("Could not copy .value from el."), !1;
+          }
+        } else {try {
+            await navigator.clipboard.writeText(t.innerHTML);
+          } catch (t) {
+            return console.error("Could not copy .innerHTML from el."), !1;
+          }}
+        return !0;
+      },
+      t.innerHTMLAsBool = () => {
+        if (void 0 !== t.innerHTML) return this.b._getBool(t.innerHTML);
+      },
+      t.innerHTMLAsFloat = () =>
+        parseFloat(t.innerHTML.trim().replace(",", "")),
+      t.innerHTMLAsInt = () =>
+        parseInt(t.innerHTML.trim().replace(",", ""), 10),
+      t.prop = (e) => {
+        if (t.dataset && void 0 !== t.dataset[e]) return t.dataset[e];
+        const s = t.closest(`[data-${e}]`);
+        return null !== s ? s.dataset[e] : void 0;
+      },
+      t.propAsBool = (e) => {
+        if (t.dataset && void 0 !== t.dataset[e]) {
+          return this.b._getBool(t.dataset[e]);
         }
-      }
-      return true;
-    };
-    el.innerHTMLAsBool = () => {
-      if (el.innerHTML === undefined) {
-        return undefined;
-      }
-      return this.b._getBool(el.innerHTML);
-    };
-    el.innerHTMLAsFloat = () => {
-      return parseFloat(el.innerHTML.trim().replace(",", ""));
-    };
-    el.innerHTMLAsInt = () => {
-      return parseInt(el.innerHTML.trim().replace(",", ""), 10);
-    };
-    el.prop = (key) => {
-      if (el.dataset && el.dataset[key] !== undefined) {
-        return el.dataset[key];
-      }
-      const propAncestor = el.closest(`[data-${key}]`);
-      if (propAncestor !== null) {
-        return propAncestor.dataset[key];
-      }
-      return undefined;
-    };
-    el.propAsBool = (key) => {
-      if (el.dataset && el.dataset[key] !== undefined) {
-        return this.b._getBool(el.dataset[key]);
-      }
-      const propAncestor = el.closest(`[data-${key}]`);
-      if (propAncestor !== null) {
-        return this.b._getBool(propAncestor.dataset[key]);
-      }
-      return undefined;
-    };
-    el.propAsFloat = (key) => {
-      if (el.dataset && el.dataset[key] !== undefined) {
-        return parseFloat(el.dataset[key]);
-      }
-      const propAncestor = el.closest(`[data-${key}]`);
-      if (propAncestor !== null) {
-        return parseFloat(propAncestor.dataset[key]);
-      }
-      return undefined;
-    };
-    el.propAsInt = (key) => {
-      if (el.dataset && el.dataset[key] !== undefined) {
-        return parseInt(el.dataset[key], 10);
-      }
-      const propAncestor = el.closest(`[data-${key}]`);
-      if (propAncestor !== null) {
-        return parseInt(propAncestor.dataset[key], 10);
-      }
-      return undefined;
-    };
-    el.setAria = (key, value) => {
-      const ariaEl = el.closest(`[aria-${key}]`);
-      if (ariaEl) {
-        ariaEl.setAttribute(`aria-${key}`, value);
-      } else {
-        el.setAttribute(`aria-${key}`, value);
-      }
-    };
-    el.setProp = (key, value) => {
-      const propEl = el.closest(`[data-${key}]`);
-      if (propEl) {
-        propEl.dataset[key] = value;
-      } else {
-        el.dataset[key] = value;
-      }
-    };
-    el.toggleAria = (key) => {
-      const ariaEl = el.closest(`[aria-${key}]`);
-      if (ariaEl) {
-        let index = this.b._trueValues.indexOf(
-          ariaEl.getAttribute(`aria-${key}`).toLowerCase(),
-        );
-        if (index >= 0) {
-          ariaEl.setAttribute(`aria-${key}`, this.b._falseValues[index]);
-          return;
+        const s = t.closest(`[data-${e}]`);
+        return null !== s ? this.b._getBool(s.dataset[e]) : void 0;
+      },
+      t.propAsFloat = (e) => {
+        if (t.dataset && void 0 !== t.dataset[e]) {
+          return parseFloat(t.dataset[e]);
         }
-        index = this.b._falseValues.indexOf(
-          ariaEl.getAttribute(`aria-${key}`).toLowerCase(),
-        );
-        if (index >= 0) {
-          ariaEl.setAttribute(`aria-${key}`, this.b._trueValues[index]);
-          return;
+        const s = t.closest(`[data-${e}]`);
+        return null !== s ? parseFloat(s.dataset[e]) : void 0;
+      },
+      t.propAsInt = (e) => {
+        if (t.dataset && void 0 !== t.dataset[e]) {
+          return parseInt(t.dataset[e], 10);
         }
-      }
-    };
-    el.toggleProp = (key) => {
-      const propEl = el.closest(`[data-${key}]`);
-      if (propEl) {
-        let index = this.b._trueValues.indexOf(
-          propEl.getAttribute(`data-${key}`).toLowerCase(),
-        );
-        if (index >= 0) {
-          propEl.setAttribute(`data-${key}`, this.b._falseValues[index]);
-          return;
+        const s = t.closest(`[data-${e}]`);
+        return null !== s ? parseInt(s.dataset[e], 10) : void 0;
+      },
+      t.setAria = (e, s) => {
+        const n = t.closest(`[aria-${e}]`);
+        n ? n.setAttribute(`aria-${e}`, s) : t.setAttribute(`aria-${e}`, s);
+      },
+      t.setProp = (e, s) => {
+        const n = t.closest(`[data-${e}]`);
+        n ? n.dataset[e] = s : t.dataset[e] = s;
+      },
+      t.toggleAria = (e) => {
+        const s = t.closest(`[aria-${e}]`);
+        if (s) {
+          let t = this.b._trueValues.indexOf(
+            s.getAttribute(`aria-${e}`).toLowerCase(),
+          );
+          if (t >= 0) {
+            return void s.setAttribute(`aria-${e}`, this.b._falseValues[t]);
+          }
+          if (
+            t = this.b._falseValues.indexOf(
+              s.getAttribute(`aria-${e}`).toLowerCase(),
+            ), t >= 0
+          ) return void s.setAttribute(`aria-${e}`, this.b._trueValues[t]);
         }
-        index = this.b._falseValues.indexOf(
-          propEl.getAttribute(`data-${key}`).toLowerCase(),
-        );
-        if (index >= 0) {
-          propEl.setAttribute(`data-${key}`, this.b._trueValues[index]);
-          return;
+      },
+      t.toggleProp = (e) => {
+        const s = t.closest(`[data-${e}]`);
+        if (s) {
+          let t = this.b._trueValues.indexOf(
+            s.getAttribute(`data-${e}`).toLowerCase(),
+          );
+          if (t >= 0) {
+            return void s.setAttribute(`data-${e}`, this.b._falseValues[t]);
+          }
+          if (
+            t = this.b._falseValues.indexOf(
+              s.getAttribute(`data-${e}`).toLowerCase(),
+            ), t >= 0
+          ) return void s.setAttribute(`data-${e}`, this.b._trueValues[t]);
         }
-      }
-    };
-    el.valueAsBool = () => {
-      return this.b._getBool(el.value);
-    };
-    el.valueAsFloat = () => {
-      return parseFloat(el.value);
-    };
-    el.valueAsInt = () => {
-      return parseInt(el.value, 10);
-    };
-    el.bittyUpdated = true;
+      },
+      t.valueAsBool = () => this.b._getBool(t.value),
+      t.valueAsFloat = () => parseFloat(t.value),
+      t.valueAsInt = () => parseInt(t.value, 10),
+      t.bittyUpdated = !0);
   }
-
-  _uuid(dashes = true) {
-    if (dashes === false) {
-      const uuid = self.crypto.randomUUID();
-      return uuid.replaceAll("-", "");
-    } else {
-      return self.crypto.randomUUID();
-    }
+  _uuid(t = !0) {
+    if (!1 === t) return self.crypto.randomUUID().replaceAll("-", "");
+    return self.crypto.randomUUID();
   }
 }
-
-customElements.define(tagName, BittyJs);
-
-class BittyTrigger extends Event {
-  constructor(signals) {
-    super("bittytrigger", { bubbles: true });
-    this.signals = signals;
+customElements.define("bitty-8", r);
+class i extends Event {
+  constructor(t, e) {
+    super("bittyforwardsender", { bubbles: !0 }),
+      this.sender = t,
+      this.signals = e;
   }
 }
-
-class BittySend extends Event {
-  constructor(payload, signals) {
-    super("bittysend", { bubbles: true });
-    this.payload = payload;
-    this.signals = signals;
+class o extends Event {
+  constructor(t, e) {
+    super("bittysend", { bubbles: !0 }), this.payload = t, this.signals = e;
+  }
+}
+class a extends Event {
+  constructor(t) {
+    super("bittytrigger", { bubbles: !0 }), this.signals = t;
   }
 }

@@ -439,8 +439,8 @@ textarea {
   width: 100%;
 }
 
-textarea.default {
-  min-height: 8rem;
+textarea.d {
+  min-height: 12rem;
 }
 
 

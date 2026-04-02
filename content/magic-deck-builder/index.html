@@ -1,7 +1,10 @@
-[!- extends "/wrappers.inc/main.html" -!]
+[!- extends "/templates.inc/pages/default.html" -!]
+
+[! block head !]
+<link rel="stylesheet" href="/magic-deck-builder/styles.css" />
+[! endblock !]
 
 
-[! set stylesheets = ["/magic-deck-builder/styles.css"] !]
 
 [! block main !]
 <bitty-8-0 data-connect="/magic-deck-builder/builder.on.js"></bitty-8-0>

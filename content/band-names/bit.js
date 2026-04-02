@@ -3,24 +3,24 @@ export const b = {
 };
 
 const names = `
-Woke Scissors
+T Minus Zero
+Doom Goblin
 Puppy Muzzle
-The Rabbit-Hole Tangent
-Backwards Compatibility 
+Left Eye Jesus
 Mario Chess
-Hookers Green
+Hooker's Green
 The Two Column Situation
 Thrift Store Media
 Sloth Eyes
 Chaos List
-Good Defaults
+The Good Defaults
 Obscura
+MECO
 Constant Crimes
 Commie Bullshit
 Righteous Hack
 Invisible Goldfish
-DJ &amp;amp;
-Miniature Giant Space Hamster
+Giant Space Hamster
 Danger Piñata 
 Specific North West
 Anime Voice
@@ -33,11 +33,11 @@ Goulash Cannon
 Canonical Catboy
 Mishandling and War
 Dog Bite Awareness
+Black Erotica
 The Fictional Pachyderms
 The Inevitable Weirdness
 Killswitch Logger
 Unknown Senders
-Doom Goblin
 Voxel Sphere
 Designated Hole
 med check
@@ -64,7 +64,7 @@ Death By Monkeys
 Odo Fucks
 Fuck Hitler
 Dead Cat Bounce
-Angry Owls
+Angry Owl
 Monkey Typewriter
 Cute Monkey
 Mutable World
@@ -82,14 +82,14 @@ Weed Pizza
 Dystopian Bingo
 Voice Porn
 Lord Nikon
-Spinach Teeth 
+Teeth Spinach
 Funk Punch
 Network Time Protocol
 Ninja Society
 Boob Shadow
 The Full Naked Sting
 Whoop Ass Gallon
-The Polyfill 
+The Polyfill Path
 Rabbit Hole Dive
 Bath Bacon
 Schrödinger's Shotgun
@@ -111,7 +111,7 @@ Yak 7
 Seared Tofu
 The Pedantic Dev
 Event Horizon Telescope
-The Hitchcock Zoom
+Hitchcock Zoom
 Bust of Mao
 Giraffe Weevil
 Fish Mafia
@@ -119,24 +119,24 @@ Boomer Mode
 High School Selfie 
 Discount Danger 
 Atomic Space Gun
-Adama Maneuver
-Alt Defaults
+The Adama Maneuver
+The Alt Defaults
 Razor Apple
-Epoch Args
+The Epoch Args
 Merlin's Arthur
 Ascot
 Baby Groot Doodle
 Bad Loop
 Baseline Syndrome
-The Billion Laughs Attack
+Billion Laughs Attack
 Goku Banana Hammock
 Block Sender
 Booze Box
-Breaking Changes
+The Breaking Changes
 Blood Acid
 Bum Slider
 Burner Candles
-Busy Signal 
+The Busy Signal 
 Car Wash Selfie
 Cartoon Violence
 Cat Crocs
@@ -145,9 +145,9 @@ Craving Catharsis
 Crime School
 Celebrity Professor
 Chaos Grenade
-Cheeseburger Hangover 
+Hangover Cheeseburger 
 Whiskey Chocolate 
-Church Giggles
+The Church Giggles
 Code Smell
 Code Two
 Combo Curses
@@ -155,8 +155,8 @@ Comparator Fusebox
 Concussion Protocol
 Context Drift
 Date Time Zulu
-De-orbit Burn
-Dead Dragonflies
+The De-orbit Burn
+The Dead Dragonflies
 Dead Jury
 Decision Tree
 Deeper Epiphany
@@ -164,7 +164,7 @@ Disaster Recovery
 Double Hurricane and the Murder Hornets
 Dox Panic
 Dragon Launch
-Dramatic Pets
+The Dramatic Pets
 Eagle, Houston
 Electric Super Sex
 Day Fuck
@@ -178,6 +178,7 @@ Gjallarhorn
 Go / No-Go
 Grabthar's Hammer
 Hard Stop
+The Helpful Hotkeys
 Here Be Dragons
 Hobbit Mode
 Hot Chicken
@@ -194,6 +195,7 @@ Journey's Hero
 Jump Puzzle
 Justice Pizza
 Yak Shaver's Kink
+The Knowledge Tools
 Konami Code
 Language Lookers
 Lazy River
@@ -201,11 +203,11 @@ Lesbian Witch Hat
 Leeroy Jenkins
 Like, Share, Subscribe
 Ludicrous Speed
-MacGyver Mullet
+The MacGyver Mullet
 Magnetar
 Maximum Chaos
 Memento Mori
-Mermaid Diagrams
+The Mermaid Diagrams
 Meter of Fact
 Mind Physics
 Mirror Shine
@@ -230,16 +232,16 @@ Out Of Band
 Out of Scope
 Panic Sync
 Paranoia Fatigue
-Past Close Sellers
+The Past Close Sellers
 Former Titans 
 Peanut Butter Vengeance
-Perceptual Motion Machine
+The Perceptual Motion Machine
 Piracy Invasion 
 Playboi Descarti
 Please Read
 Poop Cult
 Port Clash
-Post Cold Loogies
+The Post Cold Loogies
 Post No Bills
 Presto Change-o
 Previous Preface
@@ -248,26 +250,27 @@ The Prosperity
 Quarantine Haircut
 Raster Vectors
 Real People. Not Actors.
+The Recursive Acronym
 Restless Energy
 Revolution Rain Out
 Rinse, Repeat
 Risk Profile
-Roomba Knife Fight
-School Night Drinking Club
+The Roomba Knife Fight
+The School Night Drinking Club
 Schrödinger Chat
 Scope Creep
 Sean Connery's Ghost
-Separation of Concerns
+Separation Concern
 Sex-O-Tron 9000
 Sex Socks
-Shameless Commerce Division
-#!
+The Shameless Commerce Division
+#! (pronunced shabang)
 Smash Factor
 The Smooth Jazz Situation
 Snake Juice
 Snake River Canyon
 Space Calculator
-Space Station Windows
+The Space Station Windows
 Spider Lightning
 Steve Martin's Banjo
 Strength of Shadows
@@ -279,6 +282,7 @@ Talkers Tangent
 Temporary Cyborgs
 Thanos Thelonious 
 Abstraction Boundaries
+The Abyss
 Ankle Blisters
 The Antipsychotics
 The Authority
@@ -288,31 +292,32 @@ The Buzz Threshold
 The Optimistic
 Chaos Fans
 The Church Coughers
-Cocaine Manic
+The Cocaine Manic
 Conspiracy Mechanics
 Dark Sometimes
-Dead Blow Hammers
+The Dead Blow Hammers
 The Dead Jellies
 Detritus
 Diacritic Symbiosis
-Dress Code Violation
-Edge Case
+The Dress Code Violations
+The Edge Case
 The Error Message
 Exhale
 The Fast Facades 
 The Fireable Offense
-Flaming Balls 
-Future Historians
-The Gated Snare
+The Flaming Balls 
+The Future Historians
+The Gated Snares
 The Giant Spoon
 The Great Hypothesis
-Hapax Legomenon
+The Greater Nerd Syndrome
+The Hapax Legomenon
 The Happy Path
 Hard Naming 
 Hawthorne Effect
-Hermit Tendencies
+The Hermit Tendencies
 The Idempotent
-The Infinite Scroll
+Infinite Scroll
 Ink Drinkers
 The Intentionally Blank
 The Irregardless
@@ -322,28 +327,31 @@ The Long Familiars
 The Merely Marginal
 The More Specific
 The Mute Mistake
-Mythical Monsters
+The Mythical Monsters
 The Neither Nor
 The Non-Trivials
+The Pleasures Subjective 
 Plucky Comic Relief
 The Polyphasic Nappers
 Poor Proxies
 The Psychoacoustics
+The Psychovisuals
 Raw Text Blobs
-Representative State Transfer
+The Representative State Transfer
 The Risky Mouth
 The See Also
 Slingshot Chickens
 The Solo Twins
 The String Literals
 Tack Sharp
+The Transparent Acoustic
 The Decision Tree
 The Unfortunately Erect
 Useful MacGuffins
 Various Memes
 The Vectors
 The Yak Shavers
-The Thought Criminals
+Thought Criminals
 God Thunderbolt 
 Delta Time
 Tone Curve
@@ -353,7 +361,7 @@ Truckstop Restroom
 The True Freshman
 Trust Chain
 Until Impossible
-Utopia Target
+The Utopia Target
 Vegas Coffee
 War Music
 War Rocket Ajax
@@ -374,14 +382,14 @@ Yoda Talking Ninjas
 ii–V–I
 kill -9
 local 3k
-sudo !!
+sudo !\! (pronounced sudo bang bang)
 Noise Floor
-Vendor Lock-In
+The Vendor Lock-In
 Schrödinger Fanta
 atmo mod
-Reject Font
+Rejected Font
 Thoof Haskell
-Stacked Divs
+The Stacked Divs
 Vampire Sex
 Zombie Chicken
 Agro Face
@@ -390,63 +398,89 @@ Pixar's Psycho
 Sexy Trains
 Shinny Tits
 Falcon Sex Hats
+Woke Scissors
+The Rabbit-Hole Tangent
+Backwards Compatibility 
+Hookers Green
+Good Defaults
+DJ &amp;amp;
+Miniature Giant Space Hamster
+Angry Owls
+Spinach Teeth 
+Full Naked Sting
+The Polyfill 
+The Hitchcock Zoom
+Adama Maneuver
+Alt Defaults
+Epoch Args
+The Billion Laughs Attack
+Breaking Changes
+Busy Signal 
+Cheeseburger Hangover 
+Church Giggles
+De-orbit Burn
+Dead Dragonflies
+Dramatic Pets
+MacGyver Mullet
+Mermaid Diagrams
+Past Close Sellers
+Perceptual Motion Machine
+Post Cold Loogies
+Roomba Knife Fight
+School Night Drinking Club
+Shameless Commerce Division
+#!
+Space Station Windows
+Temporary Cyborgs
+Cocaine Manic
+Dead Blow Hammers
+Dress Code Violation
+Edge Case
+Flaming Balls 
+Future Historians
+The Gated Snare
+Hapax Legomenon
+Hermit Tendencies
+The Infinite Scroll
+Mythical Monsters
+The Raw Text 
+The Thought Criminals
+Utopia Target
+sudo !!
+Vendor Lock-In
+Reject Font
+Stacked Divs
 .zip file
 The Subjective Pleasures
 The Infinite Descent
 Fallback Cascade
-The Abyss
-The Adama Maneuver
 Apple Razor Blade
 Arthur And The Merlins
 Async Comm
 The Baseline Syndrome
-The Breaking Changes
 The Busy Signal
-The Church Giggles
-The Cocaine Manic
 Comparator Fusebox
 Craving Catharsis
-The De-orbit Burn
-The Dead Blow Hammers
-The Dramatic Pets
-The Edge Case
 The Epoch Arguments
 The Fast Facades
 The Flaming Balls
 Former Titans
-The Future Historians
 God Thunderbolt
-The Greater Nerd Syndrome
 Hangover Cheeseburger
-The Hapax Legomenon
 Hard Naming
-The Hermit Tendencies
-The Knowledge Tools
-Left Eye Jesus
-The MacGyver Mullet
 Make It Up In Volume
-The Mermaid Diagrams
-The Mythical Monsters
 Nocebo
-The Past Close Sellers
-The Perceptual Motion Machine
 Privacy Invasion
 The Pleasures Subjective
-The Post Cold Loogies
 The Prosperity
-The Representative State Transfer
-The Shameless Commerce Division
-The Space Station Windows
+The State Transfer
 Talkers Tangent
-The Temporary Cyborgs
 Thanos Thelonious
 Transform Fourier
 Undead Dragon Butts
-The Utopia Target
-The Vendor Lock-In
 Whiskey Chocolate
 Yak Shavers Kink
-The Yoda Talking Ninjas
+Steely-Eyed Missile Man
 `;
 
 export function isLatest(text, __, el) {

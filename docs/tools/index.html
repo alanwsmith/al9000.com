@@ -187,22 +187,27 @@ body {
 
 <p>This is where I'll be moving the tools from <a href="https://tools.alanwsmith.com/">tools.alanwsmith.com</a></p>
 
-<bitty-8 data-connect="&#x2f;tools&#x2f;tools&#x2f;dedupe-lines&#x2f;bit.js"></bitty-8>
-<details class="d"><summary>Unique Lines</summary>
+<bitty-8 data-connect="/tools/tools/dedupe-lines/bit.js"></bitty-8>
+<details class="d"><summary>Dedupe Lines</summary>
 <div class="two-columns">
   <div>
-    <textarea class="default" data-s="uniqueLines" autocomplete="off"></textarea>
+    <textarea class="d" data-s="uniqueLines" data-r="showExample clearInput" autocomplete="off"></textarea>
   </div>
   <div>
-    <textarea class="default" data-r="uniqueLines copyUniqueLines" autocomplete="off"></textarea>
+    <textarea class="d" data-r="uniqueLines copyUniqueLines" autocomplete="off"></textarea>
   </div>
   <div>
+    <button data-s="showExample">Show Example</button>
+    <button data-s="clearInput">Clear Input</button>
     <button data-s="copyUniqueLines">Copy Lines</button>
   </div>
 </div>
 
 </details>
-<bitty-8 data-connect="&#x2f;tools&#x2f;tools&#x2f;urls-to-links&#x2f;bit.js"></bitty-8>
+<bitty-8 data-connect="/tools/tools/lines-to-line-items/bit.js"></bitty-8>
+<details class="d"><summary>Lines to Line Items</summary>
+</details>
+<bitty-8 data-connect="/tools/tools/urls-to-links/bit.js"></bitty-8>
 <details class="d"><summary>URLs to Links</summary>
 <div class="two-columns">
   <div>
@@ -216,14 +221,14 @@ body {
   </div>
 </div>
 </details>
-<bitty-8 data-connect="&#x2f;tools&#x2f;tools&#x2f;uuid-generator&#x2f;bit.js"></bitty-8>
+<bitty-8 data-connect="/tools/tools/uuid-generator/bit.js"></bitty-8>
 <details class="d"><summary>UUID Generator</summary>
 <div data-r="makeUUID copyUUID"></div>
 <button data-s="copyUUID">Copy</button>
 <button data-s="makeUUID">Get a new one</button>
 </details>
-<bitty-8 data-connect="&#x2f;tools&#x2f;tools&#x2f;youtube-link-converter&#x2f;bit.js"></bitty-8>
-<details class="d"><summary>YouTube to Neopolitan Link Converter</summary>
+<bitty-8 data-connect="/tools/tools/youtube-link-converter/bit.js"></bitty-8>
+<details class="d"><summary>YouTube Links to Neopolitan</summary>
 <div class="two-columns">
   <div>
     <textarea class="default" data-s="convertYouTubeLinks" autocomplete="off"></textarea>
@@ -246,5 +251,6 @@ body {
 
 </footer>
 
+    <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
   </body>
 </html>
