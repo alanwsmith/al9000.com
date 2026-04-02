@@ -1,13 +1,21 @@
 [!- extends "/templates.inc/pages/default.html" -!]
 
 [! block title!]
-<h1>ComputerCraft aka CC-Tweaked</h1>
+<h1>CC:Tweaked (aka ComputerCraft)</h1>
 [! endblock !]
 
 [! block main !]
 [! filter markdown|safe !]
 - This is where I'm moving all my ComputerCraft/CC-Tweaked
 lua scripts for Minecraft. 
+
+- NOTE: Most of the lua scripts are in place, but
+they don't currently deploy to the site because
+they start with a `_` which prevents them 
+from moving in the current iteration of the
+site builder. 
+
+
 - TODO: You can load everything by calling
 
   `wget run https://al9000.com/computercraft/init.lua`
