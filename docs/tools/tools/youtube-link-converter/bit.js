@@ -12,9 +12,7 @@ export function copyYouTubeLinksToNeopolitan(_, sender, el) {
 export function showYouTubeLinksToNeopolitanExample(_, __, el) {
   el.value = `
 https://www.youtube.com/watch?v=DvJRdS1CaYQ
-
 https://www.youtube.com/watch?v=-91vymvIH0c
-
 https://www.youtube.com/watch?v=fiShsfvbFUA
 
 `.trim();
