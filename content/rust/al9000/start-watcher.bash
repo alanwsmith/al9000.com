@@ -1,3 +1,8 @@
 #!/bin/bash
 
-cargo watch -c -x "run -- --release"
+watchexec\
+  --project-origin .\
+  -c\
+  -r\
+  -e rs\
+  "bash -c 'cargo test -- --nocapture && cargo run'"
