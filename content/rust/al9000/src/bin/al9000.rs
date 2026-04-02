@@ -18,8 +18,8 @@ async fn main() -> Result<()> {
   let live_reload = LiveReloadLayer::new();
   let reloader = live_reload.reloader();
   let (tx, rx) = mpsc::channel::<DateTime<Local>>(32);
-  let content_root = PathBuf::from("../../content");
-  let docs_root = PathBuf::from("../../docs");
+  let content_root = PathBuf::from("../../../content");
+  let docs_root = PathBuf::from("../../../docs");
 
   let watcher = Watcher::new(
     content_root.clone(),
@@ -34,8 +34,7 @@ async fn main() -> Result<()> {
     rx,
   );
 
-  let server =
-    Server::new(docs_root.clone(), port, reloader.clone());
+  let server = Server::new(docs_root.clone(), port, live_reload);
 
   tokio::spawn(async move {
     let _ = watcher.start().await;
