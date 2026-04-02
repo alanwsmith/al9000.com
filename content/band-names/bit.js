@@ -232,7 +232,7 @@ Out Of Band
 Out of Scope
 Panic Sync
 Paranoia Fatigue
-The Past Close Sellers
+Past Close Sellers
 Former Titans 
 Peanut Butter Vengeance
 The Perceptual Motion Machine
