@@ -3,6 +3,232 @@ export const b = {
 };
 
 const names = `
+Code Dreamer
+The New Shoe Ankle Blisters
+Snake River Canyon
+Previous Preface
+Separation of Concerns
+Truth in Music
+Greater Nerd Syndrome 
+Strength of Shadows
+Two-Class Boosted Decision Tree
+Iron Gjallarhorn
+Temporary Cyborgs
+The Abstraction Boundaries
+Stay Tuned
+Disaster Recovery
+Shebang #!
+The Poor Proxies
+Ima Gonna
+Presto Chango
+Fans of Chaos
+Trust Chain
+The Thought Criminals
+ii–V–I
+The Raw Text Blobs
+The Sometimes Dark
+The Intentionally Blank
+The Solo Twins
+Roomba Knife Fight
+The Invisible Clichés
+Suspicious Motives
+Candles In The Kitchen
+The Great Hypothesis
+The Nontrivials
+Negative Ghost Rider
+The Mythical Monsters
+Jeff Goldblum's Swagger
+Go / No-Go 
+Lack of Noise
+The Tack Sharp
+sudo !! (pronounced Pseudo Bang Bang )
+Arthur and Merlin's
+The Memento Mori 
+Targeting Utopia
+The Buzz Threshold
+The Exhale
+Dragon Launch
+Real People. Not Actors.
+Invasion of Piracy
+The Known Quantities
+The Risk Profile
+The Bizarrely Magical
+Wheels First
+Baby Groot Doodle
+Titans Of The Past
+Ludicrous Speed
+Armed with iPads
+Date Time Zulu
+The API Explorers
+The Hermit Tendencies
+Razor Blade Apple
+Panic Sync
+The Alchemical Tradition
+Python Time Delta
+The Mute Mistake
+The Gated Snares
+Bipolar One
+Arguing Epochs
+Shameless Commerce Division
+James-Luc Sky-Baggins
+The Cautiously Optimistic
+The Antipsychotics
+Booze Box 
+The Dead Blow Hammers
+Eagle, Houston
+Willie and What's His Name
+Ganesh's Garage
+The Dead Jury Members
+Midnight Vegas Coffee 
+Wolf Spider 
+Quarantine Haircut
+Mute Switch
+Double Hurricane and the Murder Hornets
+Swamp Ass 
+Breaking Changes
+Craving Catharsis
+The Ink Drinkers
+Cartoon Violence
+The Hard Stop
+A Meter of Fact
+The More Specific
+Chaos Grenade
+Schrödinger Chat
+Block Sender
+The Cocaine Manic
+ffs
+Stuck On Mute
+The Neither Nor 
+kill -9
+Out Of Band
+Off By One
+Sean Connery's Ghost
+Prince Hat
+The Yak Shavers
+The Irregardless
+Magnetar
+Code Two
+The Plucky Comic Relief
+The Detritus
+The Helpful Hotkeys
+The Abyss
+Hero's Journey
+Bum Slider
+Face Palm Picard
+The True Freshman
+Combo Curses
+Superman’s Socks
+Hangover Cheeseburger
+MacGyver Mullet
+rinse, repeat
+No More Nostalgia
+Electric Super Sex
+The Safely Ejected
+Steve Martin's Banjo
+Random Edge Cases
+Nightmare Machine
+The Naming Is Hard
+You've Been Warned
+Thelonious and Thanos
+LSS (Like, Share, and Subscribe)
+The Or Better Said
+Nose Whistle
+Acid Blood
+Smash Factor
+The Billion Laughs Attack
+Fail Whale
+The Tone Curve
+The Idempotent
+The Background Noise
+War Music
+The Adama Maneuver
+Dramatic Pets
+Decision Tree
+Burner GitHub
+Code Smell
+The Source Of Truth
+Mnemosyne
+Off Till January
+The Church Coughers
+The See Also
+Communication Async
+The String Literals
+Defaults and Alts
+Old Man Moves
+The Tone Setters
+Scope Creep
+Multi-Pass
+The Hapax Legomenon
+Occident
+localhost 3000
+School Night Drinking Club
+Make It Up In Volume
+Perceptual Motion Machine
+Rasters &amp; Vectors
+Inverse Octothorp Law
+Superseded Scientific Theory 
+Truckstop Restroom
+Inconsistent Rationality
+The Infinite Scroll
+Post No Bills
+The Jenga Tower of Assumptions
+Here Be Dragons
+Big Four Oh
+The Unfortunately Errect Ear
+Concussion Protocol
+Prosperity and Prosecution
+Baseline Syndrome
+Everything a Subscription
+Tools and Knowledge
+Abstraction Lair
+Within the Comparator
+Out of Scope
+Recursive Acronym
+Please Read
+An Open Letter
+Moral Combat 
+Trademark Symbol
+The Psychoacoustics
+Shoots Flaming Balls
+The Acoustically Transparent
+PhishStyx
+Paging Humanity
+The Fireable Offense
+The Future Historians
+Yak Shavers Local 151
+Grabthar's Hammer
+The Diacritic Symbols
+Paranoia Fatigue
+The Ain't No Jokes
+The Post Cold Loogies
+The Church Giggles
+Why Why Z
+The Rained Out Revolution
+The Past Close Sellers
+The Polyphasic Sleepers
+Nocebo Effect
+Jumping Puzzle
+Ideas and Execution
+Chocolate and Whiskey
+Guetzli’s Psychovisual Model
+The Representational State Transfer
+Not A Robot
+Moments of Vertigo
+Impossible Until
+The Happy Path
+Variations On A Meme
+The Dead Dragonflies
+The Dongle Suspense
+The Error Message
+The Tangents Talkers
+Bible of Wines
+Hot Chicken 
+Looking for Language
+Ideas and Accidents
+The Deorbit Burn
+Fuck That Noise
+The Editor Actions
+Lazy River
 T Minus Zero
 Doom Goblin
 Puppy Muzzle
@@ -119,76 +345,49 @@ Boomer Mode
 High School Selfie 
 Discount Danger 
 Atomic Space Gun
-The Adama Maneuver
 The Alt Defaults
 Razor Apple
 The Epoch Args
 Merlin's Arthur
 Ascot
-Baby Groot Doodle
 Bad Loop
-Baseline Syndrome
 Billion Laughs Attack
 Goku Banana Hammock
-Block Sender
 Booze Box
 The Breaking Changes
 Blood Acid
-Bum Slider
 Burner Candles
 The Busy Signal 
 Car Wash Selfie
-Cartoon Violence
 Cat Crocs
 Clowns Of The Bird World
 Craving Catharsis 
 Crime School
 Celebrity Professor
-Chaos Grenade
 Hangover Cheeseburger 
 Whiskey Chocolate 
-The Church Giggles
-Code Smell
-Code Two
-Combo Curses
 Comparator Fusebox 
-Concussion Protocol
 Context Drift
-Date Time Zulu
 The De-orbit Burn
-The Dead Dragonflies
 Dead Jury
-Decision Tree
 Deeper Epiphany
-Disaster Recovery
-Double Hurricane and the Murder Hornets
 Dox Panic
-Dragon Launch
 The Dramatic Pets
-Eagle, Houston
-Electric Super Sex
 Day Fuck
-Fuck That Noise
-Face Palm Picard
 Fail Wail
 Styx Fish
 Frequency Illusion
 Geometricus
 Gjallarhorn
 Go / No-Go
-Grabthar's Hammer
 Hard Stop
-The Helpful Hotkeys
-Here Be Dragons
 Hobbit Mode
 Hot Chicken
-Ideas and Accidents
 Imma Gonna
 Infinite Descent
 Inverse Octothorp
 Invisible Clichés
 Italian Spiderman
-James-Luc Sky-Baggins
 The Goldblum Swagger
 Jelly Rage
 Journey's Hero
@@ -198,58 +397,34 @@ Yak Shaver's Kink
 The Knowledge Tools
 Konami Code
 Language Lookers
-Lazy River
 Lesbian Witch Hat
 Leeroy Jenkins
 Like, Share, Subscribe
-Ludicrous Speed
 The MacGyver Mullet
-Magnetar
 Maximum Chaos
 Memento Mori
 The Mermaid Diagrams
 Meter of Fact
 Mind Physics
 Mirror Shine
-Mnemosyne
-Moments of Vertigo
 Moral Combat
 Morgic Borton
 Mullet Headlights
-Multi-Pass
-Mute Switch
-Negative Ghost Rider
 Nocebo 
-Nose Whistle
 Nostalgia No More
-Not A Robot
-Occident
 October Light
-Off By One
-Old Man Moves
 The Open Letter
-Out Of Band
-Out of Scope
-Panic Sync
-Paranoia Fatigue
 Past Close Sellers
 Former Titans 
 Peanut Butter Vengeance
 The Perceptual Motion Machine
 Piracy Invasion 
 Playboi Descarti
-Please Read
 Poop Cult
 Port Clash
-The Post Cold Loogies
-Post No Bills
 Presto Change-o
-Previous Preface
-Prince Hat
 The Prosperity 
-Quarantine Haircut
 Raster Vectors
-Real People. Not Actors.
 The Recursive Acronym
 Restless Energy
 Revolution Rain Out
@@ -257,92 +432,57 @@ Rinse, Repeat
 Risk Profile
 The Roomba Knife Fight
 The School Night Drinking Club
-Schrödinger Chat
-Scope Creep
-Sean Connery's Ghost
 Separation Concern
 Sex-O-Tron 9000
 Sex Socks
 The Shameless Commerce Division
 #! (pronunced shabang)
-Smash Factor
 The Smooth Jazz Situation
 Snake Juice
-Snake River Canyon
 Space Calculator
 The Space Station Windows
 Spider Lightning
-Steve Martin's Banjo
-Strength of Shadows
 Subliminal Roleplay
-Superman’s Socks
-Suspicious Motives
 Swamp Ass
 Talkers Tangent 
-Temporary Cyborgs
 Thanos Thelonious 
 Abstraction Boundaries
-The Abyss
 Ankle Blisters
-The Antipsychotics
 The Authority
 Backdoor Progression
 The Better Said
-The Buzz Threshold
 The Optimistic
 Chaos Fans
-The Church Coughers
-The Cocaine Manic
 Conspiracy Mechanics
 Dark Sometimes
-The Dead Blow Hammers
 The Dead Jellies
 Detritus
 Diacritic Symbiosis
 The Dress Code Violations
 The Edge Case
-The Error Message
 Exhale
 The Fast Facades 
-The Fireable Offense
 The Flaming Balls 
-The Future Historians
-The Gated Snares
 The Giant Spoon
-The Great Hypothesis
 The Greater Nerd Syndrome
-The Hapax Legomenon
-The Happy Path
 Hard Naming 
 Hawthorne Effect
-The Hermit Tendencies
-The Idempotent
 Infinite Scroll
 Ink Drinkers
-The Intentionally Blank
-The Irregardless
 The Jenga Assumptions
-The Known Quantities
 The Long Familiars
 The Merely Marginal
-The More Specific
-The Mute Mistake
-The Mythical Monsters
 The Neither Nor
 The Non-Trivials
 The Pleasures Subjective 
 Plucky Comic Relief
 The Polyphasic Nappers
 Poor Proxies
-The Psychoacoustics
 The Psychovisuals
 Raw Text Blobs
 The Representative State Transfer
 The Risky Mouth
-The See Also
 Slingshot Chickens
-The Solo Twins
-The String Literals
 Tack Sharp
 The Transparent Acoustic
 The Decision Tree
@@ -350,37 +490,26 @@ The Unfortunately Erect
 Useful MacGuffins
 Various Memes
 The Vectors
-The Yak Shavers
 Thought Criminals
 God Thunderbolt 
 Delta Time
 Tone Curve
 The Trademark Symbol
 Transform Fourier 
-Truckstop Restroom
-The True Freshman
-Trust Chain
 Until Impossible
 The Utopia Target
 Vegas Coffee
-War Music
 War Rocket Ajax
 Hot Hail
 War Tuba
 Warchalk
 Wave Dash
-Wheels First
-Why Why Z
 Wild Turkey Surprise
 Arnold Palmer's Penis
-Willie and What's His Name
 Wine Bible
 Wolf Spider
-Yak Shavers Local 151
 Yak Stack Attack
 Yoda Talking Ninjas
-ii–V–I
-kill -9
 local 3k
 sudo !\! (pronounced sudo bang bang)
 Noise Floor
@@ -400,8 +529,7 @@ Shinny Tits
 Falcon Sex Hats
 Woke Scissors
 The Rabbit-Hole Tangent
-Backwards Compatibility 
-Hookers Green
+Backwards Compatible
 Good Defaults
 DJ &amp;amp;
 Miniature Giant Space Hamster
@@ -413,25 +541,15 @@ The Hitchcock Zoom
 Adama Maneuver
 Alt Defaults
 Epoch Args
-The Billion Laughs Attack
-Breaking Changes
 Busy Signal 
 Cheeseburger Hangover 
 Church Giggles
 De-orbit Burn
 Dead Dragonflies
-Dramatic Pets
-MacGyver Mullet
 Mermaid Diagrams
-Past Close Sellers
-Perceptual Motion Machine
 Post Cold Loogies
-Roomba Knife Fight
-School Night Drinking Club
-Shameless Commerce Division
 #!
 Space Station Windows
-Temporary Cyborgs
 Cocaine Manic
 Dead Blow Hammers
 Dress Code Violation
@@ -441,10 +559,8 @@ Future Historians
 The Gated Snare
 Hapax Legomenon
 Hermit Tendencies
-The Infinite Scroll
 Mythical Monsters
 The Raw Text 
-The Thought Criminals
 Utopia Target
 sudo !!
 Vendor Lock-In
@@ -460,15 +576,12 @@ Async Comm
 The Baseline Syndrome
 The Busy Signal
 Comparator Fusebox
-Craving Catharsis
 The Epoch Arguments
 The Fast Facades
 The Flaming Balls
 Former Titans
 God Thunderbolt
-Hangover Cheeseburger
 Hard Naming
-Make It Up In Volume
 Nocebo
 Privacy Invasion
 The Pleasures Subjective

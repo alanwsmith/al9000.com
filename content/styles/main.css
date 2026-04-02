@@ -209,8 +209,9 @@ del {
   text-decoration: line-through;
 }
 
-details.d > :where(:not(:first-child)) {
+details.d > :where(:not(summary)) {
   margin-top: var(--flow-space, var(--default-flow));
+  padding-left: var(--default-padding);
 }
 
 .example-box {
