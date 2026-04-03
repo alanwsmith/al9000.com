@@ -24,7 +24,7 @@ async fn main() -> Result<()> {
 
   let watcher = Watcher::new(config.clone(), tx.clone());
   let mut builder =
-    Builder::new(config.clone(), reloader.clone(), rx);
+    Builder::new(config.clone(), rx, reloader.clone());
   let server = Server::new(config.clone(), live_reload);
 
   tokio::spawn(async move {

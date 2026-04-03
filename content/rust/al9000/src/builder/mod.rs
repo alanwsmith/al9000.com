@@ -19,8 +19,8 @@ pub struct Builder {
 impl Builder {
   pub fn new(
     config: Config,
-    reloader: Reloader,
     rx: mpsc::Receiver<DateTime<Local>>,
+    reloader: Reloader,
   ) -> Builder {
     Builder {
       config,
