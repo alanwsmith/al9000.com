@@ -1,3 +1,5 @@
+#![feature(path_is_empty)]
+
 pub mod builder;
 pub mod config;
 pub mod logger;

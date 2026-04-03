@@ -3,6 +3,7 @@ use crate::Config;
 use crate::builder::content_files;
 use crate::builder::get_env;
 use crate::builder::utils::write_file_with_mkdir;
+use crate::builder::*;
 use anyhow::Result;
 use minijinja::AutoEscape;
 use minijinja::Environment;
@@ -16,6 +17,7 @@ use tracing::info;
 pub fn transform_files(config: &Config) -> Result<()> {
   info!("Transforming files");
   let env = get_env(config);
+  let json = load_json(config);
   content_files(config).iter().for_each(|pb| {
     let template_name =
       pb.display().to_string().replace("../../../content", "");
@@ -25,7 +27,9 @@ pub fn transform_files(config: &Config) -> Result<()> {
         config.output_dir().display().to_string().as_str(),
       ));
     match env.get_template(&template_name) {
-      Ok(template) => match template.render(context!()) {
+      Ok(template) => match template.render(context!(
+        j => json
+      )) {
         Ok(content) => {
           let _ = write_file_with_mkdir(&output_path, &content);
         }

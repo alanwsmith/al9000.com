@@ -22,6 +22,7 @@ dependencies = [
  "notify-debouncer-full",
  "port_check",
  "serde",
+ "serde_json",
  "tokio",
  "tower-http",
  "tower-livereload",
@@ -556,6 +557,7 @@ dependencies = [
  "aho-corasick",
  "memo-map",
  "serde",
+ "serde_json",
 ]
 
 [[package]]
