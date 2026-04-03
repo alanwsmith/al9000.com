@@ -1,5 +1,6 @@
 #![allow(unused)]
 pub mod files;
+pub mod functions;
 pub mod utils;
 
 use crate::Config;

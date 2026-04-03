@@ -30,7 +30,8 @@ pub fn transform_files(config: &Config) -> Result<()> {
       ));
     match env.get_template(&template_name) {
       Ok(template) => match template.render(context!(
-        j => json
+        j => json,
+        file_path => template_name
       )) {
         Ok(content) => {
           let _ = write_file_with_mkdir(&output_path, &content);

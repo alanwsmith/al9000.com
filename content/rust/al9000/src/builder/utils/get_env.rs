@@ -1,6 +1,7 @@
 #![allow(warnings)]
 use crate::Config;
 use crate::builder::content_files;
+use crate::functions::parent;
 use anyhow::Result;
 use minijinja::AutoEscape;
 use minijinja::Environment;
@@ -34,5 +35,6 @@ pub fn get_env(config: &Config) -> Environment {
     }
   });
   env.set_loader(path_loader(config.content_dir()));
+  env.add_function("parent", parent);
   env
 }

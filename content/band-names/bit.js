@@ -221,7 +221,7 @@ Variations On A Meme
 The Dead Dragonflies
 The Dongle Suspense
 The Error Message
-The Tangents Talkers
+The Tangent Talkers
 Bible of Wines
 Hot Chicken 
 Looking for Language
