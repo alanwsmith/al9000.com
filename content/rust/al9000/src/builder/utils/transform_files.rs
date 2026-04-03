@@ -29,64 +29,16 @@ pub fn transform_files(config: &Config) -> Result<()> {
         Ok(content) => {
           let _ = write_file_with_mkdir(&output_path, &content);
         }
-        Err(e) => (),
+        Err(e) => {
+          let output = format!("{}", e);
+          let _ = write_file_with_mkdir(&output_path, &output);
+        }
       },
-      Err(e) => (),
+      Err(e) => {
+        let output = format!("{}", e);
+        let _ = write_file_with_mkdir(&output_path, &output);
+      }
     }
   });
-
-  //  .for_each(|pb| {
-  //    match env.get_template(&file_name) {
-  //      Ok(template) => match template.render(context!()) {
-  //        Ok(content) => {
-  //          let _ = write_file_with_mkdir(&output_path, &content);
-  //        }
-  //        Err(e) => {
-  //          let output = format!("{}", e);
-  //          let _ = write_file_with_mkdir(&output_path, &output);
-  //        }
-  //      },
-  //      Err(e) => {
-  //        let output = format!("{}", e);
-  //        let _ = write_file_with_mkdir(&output_path, &output);
-  //      }
-  //    }
-
-  //
   Ok(())
 }
-
-//content_files
-//  .iter()
-//  .filter(|pb| {
-//    if let Some(ext) = &pb.extension() {
-//      extensions.contains(&ext.display().to_string().as_str())
-//    } else {
-//      false
-//    }
-//  })
-//  .for_each(|pb| {
-//    let file_name =
-//      pb.display().to_string().replace("../../../content", "");
-//    let output_path = PathBuf::from(format!(
-//      "{}{}",
-//      &self.docs_root.display(),
-//      file_name
-//    ));
-//    match env.get_template(&file_name) {
-//      Ok(template) => match template.render(context!()) {
-//        Ok(content) => {
-//          let _ = write_file_with_mkdir(&output_path, &content);
-//        }
-//        Err(e) => {
-//          let output = format!("{}", e);
-//          let _ = write_file_with_mkdir(&output_path, &output);
-//        }
-//      },
-//      Err(e) => {
-//        let output = format!("{}", e);
-//        let _ = write_file_with_mkdir(&output_path, &output);
-//      }
-//    }
-//    //dbg!(file_name);
-//  });
