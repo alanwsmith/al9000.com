@@ -8,7 +8,7 @@ pub fn init_env(content_root: &Path) -> Environment<'static> {
   let mut env = Environment::new();
   env.set_syntax(
     SyntaxConfig::builder()
-      .line_statement_prefix("::")
+      .line_statement_prefix("==")
       .block_delimiters("[!", "!]")
       .variable_delimiters("[@", "@]")
       .comment_delimiters("[#", "#]")

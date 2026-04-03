@@ -3,6 +3,10 @@ name = "al9000"
 version = "0.1.0"
 edition = "2024"
 
+[lib]
+test = false
+doctest = false
+
 [dependencies]
 anyhow = "1.0.102"
 axum = "0.8.8"

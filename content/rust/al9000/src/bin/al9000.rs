@@ -37,7 +37,7 @@ async fn main() -> Result<()> {
   });
 
   tokio::spawn(async move {
-    let _ = builder.start().await;
+    let _ = builder.init().await;
   });
 
   let server_handle = tokio::spawn(async move {

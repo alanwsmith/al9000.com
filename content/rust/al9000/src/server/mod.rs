@@ -29,7 +29,7 @@ impl Server {
   }
 
   pub async fn start(self) -> Result<()> {
-    info!("Starting Server");
+    info!("Initializing Server:");
     let service = ServeDir::new(&self.docs_root)
       .append_index_html_on_directories(true)
       .not_found_service(get(missing_page));

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cargo -q run | tee output.txt
+

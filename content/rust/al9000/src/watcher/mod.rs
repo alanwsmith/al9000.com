@@ -29,7 +29,7 @@ impl Watcher {
   }
 
   pub async fn start(self) -> Result<()> {
-    info!("Starting Watcher");
+    info!("Initializing Watcher:");
     let (watcher_tx, mut watcher_rx) =
       channel::<chrono::DateTime<chrono::Local>>(1);
     let mut debouncer = new_debouncer(

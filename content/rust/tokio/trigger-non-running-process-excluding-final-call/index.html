@@ -1,0 +1,31 @@
+[! extends "/templates.inc/pages/rust.html !]
+
+== block title
+<h1>Only Trigger a Process if it's not Already Running Excluding a Final Call</h1> 
+== endblock
+
+
+== block main
+== filter md
+
+- NOTE: If the last signal comes in while
+the second process is running, then it
+is not triggered a final time. 
+See the ``restart-process...`` example
+for how to kill and restart a secondary
+process to deal with that. (Another thing
+worth figuring out is how to send a final
+cleanup type signal, but I don't need
+that at the moment.)
+
+- GOAL: send multiple signals at an interval
+that set an in progress flag that gets
+turned off after a delay. 
+
+- GOAL: Incoming signals don't block. 
+The processing keeps happening in the
+background and is only triggered 
+when it's freed up.
+
+== endfilter
+== endblock 
