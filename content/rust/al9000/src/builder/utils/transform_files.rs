@@ -18,7 +18,7 @@ pub fn transform_files(config: &Config) -> Result<()> {
   info!("Transforming files");
 
   let env = get_env(config);
-  // let json = load_json(config);
+  let json = load_json(config);
 
   content_files(config).iter().for_each(|pb| {
     let template_name =
@@ -30,8 +30,8 @@ pub fn transform_files(config: &Config) -> Result<()> {
       ));
     match env.get_template(&template_name) {
       Ok(template) => match template.render(context!(
-      //      j => json
-          )) {
+        j => json
+      )) {
         Ok(content) => {
           let _ = write_file_with_mkdir(&output_path, &content);
         }
