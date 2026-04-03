@@ -9,12 +9,22 @@ use minijinja::context;
 use minijinja::path_loader;
 use minijinja::syntax::SyntaxConfig;
 use std::path::Path;
+use std::path::PathBuf;
 use tracing::info;
 
 pub fn transform_files(config: &Config) -> Result<()> {
   info!("Transforming files");
   let env = get_env(config);
-  dbg!(content_files(config));
+  content_files(config).iter().for_each(|pb| {
+    // let template_name =
+    //   pb.display().to_string().replace("../../../content", "");
+    let output_path =
+      PathBuf::from(pb.display().to_string().replace(
+        config.content_dir().display().to_string().as_str(),
+        config.output_dir().display().to_string().as_str(),
+      ));
+    dbg!(output_path);
+  });
 
   // TODO: Don't copy files that have .inc in the name.
   // TODO: Don't transform files that have .off in the name.
