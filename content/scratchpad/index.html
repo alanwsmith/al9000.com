@@ -1,18 +1,17 @@
-[!- extends "/templates.inc/pages/default.html" -!]
+== extends "/templates.inc/pages/default.html" 
 
-[! block title !]
+== block title 
 <h1>scratchpad</h1>
 <div class="subtitle">a quick place to isolate code. whatever is here is the last thing I needed to poke at.</div>
-[! endblock !]
+== endblock 
 
 
-[! block main !]
+== block main 
 
-[! include file.parent + "/html.inc.html" !]
+== include parent(file_path) + "/html.inc.html" 
 
+== filter code("html") 
+== include parent(file_path) + "/html.inc.html" 
+== endfilter 
 
-[! filter block_highlight("html") !]
-[! include file.parent + "/html.inc.html" !]
-[! endfilter !]
-
-[! endblock !]
+== endblock 

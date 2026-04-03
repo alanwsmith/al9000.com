@@ -1,7 +1,8 @@
 #![allow(warnings)]
 use crate::Config;
 use crate::builder::content_files;
-use crate::functions::parent;
+use crate::filters::*;
+use crate::functions::*;
 use anyhow::Result;
 use minijinja::AutoEscape;
 use minijinja::Environment;
@@ -36,5 +37,7 @@ pub fn get_env(config: &Config) -> Environment {
   });
   env.set_loader(path_loader(config.content_dir()));
   env.add_function("parent", parent);
+  env.add_filter("highlight", highlight);
+  env.add_filter("code", code);
   env
 }

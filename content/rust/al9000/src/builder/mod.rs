@@ -1,5 +1,6 @@
 #![allow(unused)]
 pub mod files;
+pub mod filters;
 pub mod functions;
 pub mod utils;
 

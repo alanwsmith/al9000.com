@@ -17,8 +17,10 @@ minijinja = { version = "2.19.0", features = ["debug", "custom_syntax", "json", 
 notify = "8.2.0"
 notify-debouncer-full = "0.7.0"
 port_check = "0.3.0"
+regex = "1.12.3"
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.149"
+syntect = "5.3.0"
 tokio = { version = "1.50.0", features = ["rt-multi-thread", "macros"] }
 tower-http = { version = "0.6.8", features = ["fs"] }
 tower-livereload = "0.10.3"
