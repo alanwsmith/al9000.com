@@ -37,7 +37,7 @@ impl Builder {
     info!("Building Site");
     let env = init_env(&self.content_root);
     self.transform_files(env);
-    // let _ = &self.reloader.reload();
+    let _ = &self.reloader.reload();
     Ok(())
   }
 
@@ -79,11 +79,16 @@ impl Builder {
           Ok(template) => match template.render(context!()) {
             Ok(content) => {
               let _ = write_file_with_mkdir(&output_path, &content);
-              //dbg!(content);
             }
-            Err(_) => (),
+            Err(e) => {
+              let output = format!("{}", e);
+              let _ = write_file_with_mkdir(&output_path, &output);
+            }
           },
-          Err(_) => (),
+          Err(e) => {
+            let output = format!("{}", e);
+            let _ = write_file_with_mkdir(&output_path, &output);
+          }
         }
         dbg!(file_name);
       });
