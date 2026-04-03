@@ -49,7 +49,6 @@ impl Watcher {
             .unique()
             .collect();
           if !paths.is_empty() {
-            dbg!(paths);
             let local_tx = watcher_tx.clone();
             futures::executor::block_on(async {
               local_tx.send(chrono::prelude::Local::now()).await;

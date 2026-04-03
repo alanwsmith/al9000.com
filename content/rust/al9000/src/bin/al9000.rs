@@ -23,7 +23,7 @@ async fn main() -> Result<()> {
 
   let watcher = Watcher::new(content_root.clone(), tx.clone());
 
-  let builder = Builder::new(
+  let mut builder = Builder::new(
     content_root.clone(),
     docs_root.clone(),
     reloader.clone(),
