@@ -31,10 +31,12 @@ impl Builder {
 
   pub async fn init(&mut self) -> Result<()> {
     info!("Initializing Builder");
-    let _ = build_site(self.config.clone()).await;
+    let _ =
+      build_site(self.config.clone(), self.reloader.clone()).await;
     let mut build_process_handle: Option<JoinHandle<()>> = None;
     while let Some(count) = self.rx.recv().await {
       let build_config = self.config.clone();
+      let build_reloader = self.reloader.clone();
       if let Some(ref handle) = build_process_handle
         && handle.is_finished()
       {
@@ -42,12 +44,12 @@ impl Builder {
       }
       if build_process_handle.is_none() {
         build_process_handle = Some(tokio::spawn(async move {
-          let _ = build_site(build_config).await;
+          let _ = build_site(build_config, build_reloader).await;
         }));
       } else {
         build_process_handle.unwrap().abort();
         build_process_handle = Some(tokio::spawn(async move {
-          let _ = build_site(build_config).await;
+          let _ = build_site(build_config, build_reloader).await;
         }));
       }
     }
