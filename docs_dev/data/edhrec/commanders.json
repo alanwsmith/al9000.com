@@ -1,0 +1,1345 @@
+{
+  "appGip": true,
+  "buildId": "hh12vsY9F_fASDrXH4VE5",
+  "gssp": true,
+  "isExperimentalCompile": false,
+  "isFallback": false,
+  "page": "/commanders",
+  "props": {
+    "__N_SSP": true,
+    "pageProps": {
+      "data": {
+        "container": {
+          "breadcrumb": [
+            {
+              "/commanders/year": "Commanders"
+            },
+            {
+              "/commanders/year": "Year"
+            }
+          ],
+          "description": null,
+          "json_dict": {
+            "cardlists": [
+              {
+                "cardviews": [
+                  {
+                    "id": "10d42b35-844f-4a64-9981-c6118d45e826",
+                    "inclusion": 44949,
+                    "name": "The Ur-Dragon",
+                    "num_decks": 44949,
+                    "rank": 1,
+                    "sanitized": "the-ur-dragon",
+                    "url": "/commanders/the-ur-dragon"
+                  },
+                  {
+                    "id": "a577ba08-0aa8-45be-aa83-d5078770127c",
+                    "inclusion": 43762,
+                    "name": "Edgar Markov",
+                    "num_decks": 43762,
+                    "rank": 2,
+                    "sanitized": "edgar-markov",
+                    "url": "/commanders/edgar-markov"
+                  },
+                  {
+                    "id": "d0d33d52-3d28-4635-b985-51e126289259",
+                    "inclusion": 39744,
+                    "name": "Atraxa, Praetors' Voice",
+                    "num_decks": 39744,
+                    "rank": 3,
+                    "sanitized": "atraxa-praetors-voice",
+                    "url": "/commanders/atraxa-praetors-voice"
+                  },
+                  {
+                    "id": "824b2d73-2151-4e5e-9f05-8f63e2bdcaa9",
+                    "inclusion": 37524,
+                    "name": "Krenko, Mob Boss",
+                    "num_decks": 37524,
+                    "rank": 4,
+                    "sanitized": "krenko-mob-boss",
+                    "url": "/commanders/krenko-mob-boss"
+                  },
+                  {
+                    "id": "c7f2c2d5-e052-49e8-b5de-712858c2ea78",
+                    "inclusion": 36875,
+                    "name": "Y'shtola, Night's Blessed",
+                    "num_decks": 36875,
+                    "rank": 5,
+                    "sanitized": "yshtola-nights-blessed",
+                    "url": "/commanders/yshtola-nights-blessed"
+                  },
+                  {
+                    "id": "e71c8c39-3fbb-4a42-9cf6-b3224f5a56fc",
+                    "inclusion": 35183,
+                    "name": "Kaalia of the Vast",
+                    "num_decks": 35183,
+                    "rank": 6,
+                    "sanitized": "kaalia-of-the-vast",
+                    "url": "/commanders/kaalia-of-the-vast"
+                  },
+                  {
+                    "id": "2524645e-b066-4351-885b-10faa8d819d7",
+                    "inclusion": 31468,
+                    "name": "Pantlaza, Sun-Favored",
+                    "num_decks": 31468,
+                    "rank": 7,
+                    "sanitized": "pantlaza-sun-favored",
+                    "url": "/commanders/pantlaza-sun-favored"
+                  },
+                  {
+                    "id": "034e0929-b2c7-4b5f-94f2-8eaf4fb1a2a1",
+                    "inclusion": 31324,
+                    "name": "Sauron, the Dark Lord",
+                    "num_decks": 31324,
+                    "rank": 8,
+                    "sanitized": "sauron-the-dark-lord",
+                    "url": "/commanders/sauron-the-dark-lord"
+                  },
+                  {
+                    "id": "8d4e5480-a287-4a25-b855-a26dae555b1c",
+                    "inclusion": 30885,
+                    "name": "Lathril, Blade of the Elves",
+                    "num_decks": 30885,
+                    "rank": 9,
+                    "sanitized": "lathril-blade-of-the-elves",
+                    "url": "/commanders/lathril-blade-of-the-elves"
+                  },
+                  {
+                    "id": "fe9be3e0-076c-4703-9750-2a6b0a178bc9",
+                    "inclusion": 30317,
+                    "name": "Yuriko, the Tiger's Shadow",
+                    "num_decks": 30317,
+                    "rank": 10,
+                    "sanitized": "yuriko-the-tigers-shadow",
+                    "url": "/commanders/yuriko-the-tigers-shadow"
+                  },
+                  {
+                    "id": "cfb80c75-4b1b-4f25-923a-933855e7345c",
+                    "inclusion": 30138,
+                    "name": "The Wise Mothman",
+                    "num_decks": 30138,
+                    "rank": 11,
+                    "sanitized": "the-wise-mothman",
+                    "url": "/commanders/the-wise-mothman"
+                  },
+                  {
+                    "id": "42bbedc1-6b83-46b4-8b3b-a4e05ce77d87",
+                    "inclusion": 29953,
+                    "name": "Ms. Bumbleflower",
+                    "num_decks": 29953,
+                    "rank": 12,
+                    "sanitized": "ms-bumbleflower",
+                    "url": "/commanders/ms-bumbleflower"
+                  },
+                  {
+                    "id": "8ae6fc26-cfad-4da8-98d9-49c27c24d293",
+                    "inclusion": 29484,
+                    "name": "Giada, Font of Hope",
+                    "num_decks": 29484,
+                    "rank": 13,
+                    "sanitized": "giada-font-of-hope",
+                    "url": "/commanders/giada-font-of-hope"
+                  },
+                  {
+                    "id": "ecc1027a-8c07-44a0-bdde-fa2844cff694",
+                    "inclusion": 28831,
+                    "name": "Vivi Ornitier",
+                    "num_decks": 28831,
+                    "rank": 14,
+                    "sanitized": "vivi-ornitier",
+                    "url": "/commanders/vivi-ornitier"
+                  },
+                  {
+                    "id": "b5d1955a-9ff0-4f8b-9af8-341371957299",
+                    "inclusion": 28825,
+                    "name": "Teval, the Balanced Scale",
+                    "num_decks": 28825,
+                    "rank": 15,
+                    "sanitized": "teval-the-balanced-scale",
+                    "url": "/commanders/teval-the-balanced-scale"
+                  },
+                  {
+                    "id": "e4b1aa1e-b4e3-4346-8937-76b312501c70",
+                    "inclusion": 28779,
+                    "name": "Jodah, the Unifier",
+                    "num_decks": 28779,
+                    "rank": 16,
+                    "sanitized": "jodah-the-unifier",
+                    "url": "/commanders/jodah-the-unifier"
+                  },
+                  {
+                    "id": "0e259db1-14db-4314-998c-6a076a28d8cb",
+                    "inclusion": 28770,
+                    "name": "Kenrith, the Returned King",
+                    "num_decks": 28770,
+                    "rank": 17,
+                    "sanitized": "kenrith-the-returned-king",
+                    "url": "/commanders/kenrith-the-returned-king"
+                  },
+                  {
+                    "id": "4afdc65d-3c97-47af-83fa-df340389802e",
+                    "inclusion": 28033,
+                    "name": "Nekusar, the Mindrazer",
+                    "num_decks": 28033,
+                    "rank": 18,
+                    "sanitized": "nekusar-the-mindrazer",
+                    "url": "/commanders/nekusar-the-mindrazer"
+                  },
+                  {
+                    "id": "fdad1b0e-d3cc-4d76-ae7e-fee12558cf2c",
+                    "inclusion": 27052,
+                    "name": "Ulalek, Fused Atrocity",
+                    "num_decks": 27052,
+                    "rank": 19,
+                    "sanitized": "ulalek-fused-atrocity",
+                    "url": "/commanders/ulalek-fused-atrocity"
+                  },
+                  {
+                    "id": "a062a004-984e-4b62-960c-af7288f7a3e9",
+                    "inclusion": 26922,
+                    "name": "Isshin, Two Heavens as One",
+                    "num_decks": 26922,
+                    "rank": 20,
+                    "sanitized": "isshin-two-heavens-as-one",
+                    "url": "/commanders/isshin-two-heavens-as-one"
+                  },
+                  {
+                    "id": "a934590b-5c70-4f07-af67-fbe817a99531",
+                    "inclusion": 26412,
+                    "name": "Miirym, Sentinel Wyrm",
+                    "num_decks": 26412,
+                    "rank": 21,
+                    "sanitized": "miirym-sentinel-wyrm",
+                    "url": "/commanders/miirym-sentinel-wyrm"
+                  },
+                  {
+                    "id": "00e93be2-e06b-4774-8ba5-ccf82a6da1d8",
+                    "inclusion": 26063,
+                    "name": "Baylen, the Haymaker",
+                    "num_decks": 26063,
+                    "rank": 22,
+                    "sanitized": "baylen-the-haymaker",
+                    "url": "/commanders/baylen-the-haymaker"
+                  },
+                  {
+                    "id": "bc6146bf-f0c6-4557-af6a-74c643d5fc01",
+                    "inclusion": 25986,
+                    "name": "Fire Lord Azula",
+                    "num_decks": 25986,
+                    "rank": 23,
+                    "sanitized": "fire-lord-azula",
+                    "url": "/commanders/fire-lord-azula"
+                  },
+                  {
+                    "id": "8d7c1f6c-af45-4449-8cf8-e13830b3df8a",
+                    "inclusion": 25248,
+                    "name": "Valgavoth, Harrower of Souls",
+                    "num_decks": 25248,
+                    "rank": 24,
+                    "sanitized": "valgavoth-harrower-of-souls",
+                    "url": "/commanders/valgavoth-harrower-of-souls"
+                  },
+                  {
+                    "id": "1785cf85-1ac0-4246-9b89-1a8221a8e1b2",
+                    "inclusion": 24234,
+                    "name": "Chatterfang, Squirrel General",
+                    "num_decks": 24234,
+                    "rank": 25,
+                    "sanitized": "chatterfang-squirrel-general",
+                    "url": "/commanders/chatterfang-squirrel-general"
+                  },
+                  {
+                    "id": "31e4b7a1-b377-49d2-a92e-4bcb0db35f16",
+                    "inclusion": 23195,
+                    "name": "Bello, Bard of the Brambles",
+                    "num_decks": 23195,
+                    "rank": 26,
+                    "sanitized": "bello-bard-of-the-brambles",
+                    "url": "/commanders/bello-bard-of-the-brambles"
+                  },
+                  {
+                    "id": "8fcf68cf-0dac-4b29-90d5-c18c685182e6",
+                    "inclusion": 23153,
+                    "name": "The Necrobloom",
+                    "num_decks": 23153,
+                    "rank": 27,
+                    "sanitized": "the-necrobloom",
+                    "url": "/commanders/the-necrobloom"
+                  },
+                  {
+                    "cards": [
+                      {
+                        "name": "Esika, God of the Tree",
+                        "url": "esika-god-of-the-tree"
+                      },
+                      {
+                        "name": "The Prismatic Bridge",
+                        "url": "esika-god-of-the-tree"
+                      }
+                    ],
+                    "id": "f6cd7465-9dd0-473c-ac5e-dd9e2f22f5f6",
+                    "inclusion": 22831,
+                    "name": "Esika, God of the Tree",
+                    "num_decks": 22831,
+                    "rank": 28,
+                    "sanitized": "esika-god-of-the-tree",
+                    "url": "/commanders/esika-god-of-the-tree"
+                  },
+                  {
+                    "id": "e738e675-4fd1-4bc3-97f5-71d0e2fc3f2e",
+                    "inclusion": 22825,
+                    "name": "Hakbal of the Surging Soul",
+                    "num_decks": 22825,
+                    "rank": 29,
+                    "sanitized": "hakbal-of-the-surging-soul",
+                    "url": "/commanders/hakbal-of-the-surging-soul"
+                  },
+                  {
+                    "id": "705b4d97-2f50-47f7-9053-d748f4337553",
+                    "inclusion": 22464,
+                    "name": "Muldrotha, the Gravetide",
+                    "num_decks": 22464,
+                    "rank": 30,
+                    "sanitized": "muldrotha-the-gravetide",
+                    "url": "/commanders/muldrotha-the-gravetide"
+                  },
+                  {
+                    "cards": [
+                      {
+                        "name": "Kefka, Court Mage",
+                        "url": "kefka-court-mage"
+                      },
+                      {
+                        "name": "Kefka, Ruler of Ruin",
+                        "url": "kefka-court-mage"
+                      }
+                    ],
+                    "id": "8fcf3fbb-1ddd-437e-81c1-f5a3133f5ee8",
+                    "inclusion": 22454,
+                    "name": "Kefka, Court Mage",
+                    "num_decks": 22454,
+                    "rank": 31,
+                    "sanitized": "kefka-court-mage",
+                    "url": "/commanders/kefka-court-mage"
+                  },
+                  {
+                    "cards": [
+                      {
+                        "name": "Sephiroth, Fabled SOLDIER",
+                        "url": "sephiroth-fabled-soldier"
+                      },
+                      {
+                        "name": "Sephiroth, One-Winged Angel",
+                        "url": "sephiroth-fabled-soldier"
+                      }
+                    ],
+                    "id": "85eaf5e7-77dc-4842-a70c-ce4ac7f724df",
+                    "inclusion": 22213,
+                    "name": "Sephiroth, Fabled SOLDIER",
+                    "num_decks": 22213,
+                    "rank": 32,
+                    "sanitized": "sephiroth-fabled-soldier",
+                    "url": "/commanders/sephiroth-fabled-soldier"
+                  },
+                  {
+                    "id": "02645651-cd55-4bd0-8a4d-fa257270a0e0",
+                    "inclusion": 22139,
+                    "name": "Hashaton, Scarab's Fist",
+                    "num_decks": 22139,
+                    "rank": 33,
+                    "sanitized": "hashaton-scarabs-fist",
+                    "url": "/commanders/hashaton-scarabs-fist"
+                  },
+                  {
+                    "id": "70b6670f-a9fa-4d75-b0a7-c01b5071a514",
+                    "inclusion": 22138,
+                    "name": "Toph, the First Metalbender",
+                    "num_decks": 22138,
+                    "rank": 34,
+                    "sanitized": "toph-the-first-metalbender",
+                    "url": "/commanders/toph-the-first-metalbender"
+                  },
+                  {
+                    "id": "07b4e4f8-6a31-4533-be51-668ce3ddc84f",
+                    "inclusion": 21998,
+                    "name": "Cloud, Ex-SOLDIER",
+                    "num_decks": 21998,
+                    "rank": 35,
+                    "sanitized": "cloud-ex-soldier",
+                    "url": "/commanders/cloud-ex-soldier"
+                  },
+                  {
+                    "cards": [
+                      {
+                        "name": "Frodo, Adventurous Hobbit",
+                        "url": "frodo-adventurous-hobbit"
+                      },
+                      {
+                        "name": "Sam, Loyal Attendant",
+                        "url": "sam-loyal-attendant"
+                      }
+                    ],
+                    "id": "328df403-7428-4b17-bdd1-9759fc0f32d8",
+                    "inclusion": 21914,
+                    "is_partner": true,
+                    "name": "Frodo, Adventurous Hobbit // Sam, Loyal Attendant",
+                    "names": [
+                      "Frodo, Adventurous Hobbit",
+                      "Sam, Loyal Attendant"
+                    ],
+                    "num_decks": 21914,
+                    "rank": 36,
+                    "sanitized": "frodo-adventurous-hobbit-sam-loyal-attendant",
+                    "url": "/commanders/frodo-adventurous-hobbit-sam-loyal-attendant"
+                  },
+                  {
+                    "id": "41e58eb8-e5b9-4ef6-be1f-00e28cebb998",
+                    "inclusion": 21619,
+                    "name": "Flubs, the Fool",
+                    "num_decks": 21619,
+                    "rank": 37,
+                    "sanitized": "flubs-the-fool",
+                    "url": "/commanders/flubs-the-fool"
+                  },
+                  {
+                    "id": "a3da57d0-1ae3-4f05-a52d-eb76ad56cae7",
+                    "inclusion": 21608,
+                    "name": "Animar, Soul of Elements",
+                    "num_decks": 21608,
+                    "rank": 38,
+                    "sanitized": "animar-soul-of-elements",
+                    "url": "/commanders/animar-soul-of-elements"
+                  },
+                  {
+                    "id": "1e90c638-d4b2-4243-bbc4-1cc10516c40f",
+                    "inclusion": 21478,
+                    "name": "Arcades, the Strategist",
+                    "num_decks": 21478,
+                    "rank": 39,
+                    "sanitized": "arcades-the-strategist",
+                    "url": "/commanders/arcades-the-strategist"
+                  },
+                  {
+                    "id": "6b913e79-a9f6-44d4-bb37-c4f6f66b8151",
+                    "inclusion": 21444,
+                    "name": "Hearthhull, the Worldseed",
+                    "num_decks": 21444,
+                    "rank": 40,
+                    "sanitized": "hearthhull-the-worldseed",
+                    "url": "/commanders/hearthhull-the-worldseed"
+                  },
+                  {
+                    "id": "2501a911-d072-436d-ae3b-a5164e3b30aa",
+                    "inclusion": 21175,
+                    "name": "Wilhelt, the Rotcleaver",
+                    "num_decks": 21175,
+                    "rank": 41,
+                    "sanitized": "wilhelt-the-rotcleaver",
+                    "url": "/commanders/wilhelt-the-rotcleaver"
+                  },
+                  {
+                    "id": "23eb3cf7-c90d-4bfa-b125-4fbcb5614468",
+                    "inclusion": 21175,
+                    "name": "Mr. House, President and CEO",
+                    "num_decks": 21175,
+                    "rank": 42,
+                    "sanitized": "mr-house-president-and-ceo",
+                    "url": "/commanders/mr-house-president-and-ceo"
+                  },
+                  {
+                    "id": "246a7176-98bc-4f54-aa61-38747420f178",
+                    "inclusion": 20998,
+                    "name": "Caesar, Legion's Emperor",
+                    "num_decks": 20998,
+                    "rank": 43,
+                    "sanitized": "caesar-legions-emperor",
+                    "url": "/commanders/caesar-legions-emperor"
+                  },
+                  {
+                    "id": "e98d5321-ec09-456c-a9ea-c8ca2cfc6205",
+                    "inclusion": 20774,
+                    "name": "Aragorn, the Uniter",
+                    "num_decks": 20774,
+                    "rank": 44,
+                    "sanitized": "aragorn-the-uniter",
+                    "url": "/commanders/aragorn-the-uniter"
+                  },
+                  {
+                    "id": "992b2dd3-87e7-48a4-bd8d-84973ff0ee1f",
+                    "inclusion": 20497,
+                    "name": "Rin and Seri, Inseparable",
+                    "num_decks": 20497,
+                    "rank": 45,
+                    "sanitized": "rin-and-seri-inseparable",
+                    "url": "/commanders/rin-and-seri-inseparable"
+                  },
+                  {
+                    "id": "ffc70b2d-5a3a-49ea-97db-175a62248302",
+                    "inclusion": 20273,
+                    "name": "Glarb, Calamity's Augur",
+                    "num_decks": 20273,
+                    "rank": 46,
+                    "sanitized": "glarb-calamitys-augur",
+                    "url": "/commanders/glarb-calamitys-augur"
+                  },
+                  {
+                    "id": "a015461d-4214-4feb-8b04-519c537759eb",
+                    "inclusion": 20167,
+                    "name": "Zhulodok, Void Gorger",
+                    "num_decks": 20167,
+                    "rank": 47,
+                    "sanitized": "zhulodok-void-gorger",
+                    "url": "/commanders/zhulodok-void-gorger"
+                  },
+                  {
+                    "id": "bc4a65de-23b5-48f0-b8b7-94608eaced3e",
+                    "inclusion": 20145,
+                    "name": "Gishath, Sun's Avatar",
+                    "num_decks": 20145,
+                    "rank": 48,
+                    "sanitized": "gishath-suns-avatar",
+                    "url": "/commanders/gishath-suns-avatar"
+                  },
+                  {
+                    "id": "b9ac7673-eae8-4c4b-889e-5025213a6151",
+                    "inclusion": 20113,
+                    "name": "Ygra, Eater of All",
+                    "num_decks": 20113,
+                    "rank": 49,
+                    "sanitized": "ygra-eater-of-all",
+                    "url": "/commanders/ygra-eater-of-all"
+                  },
+                  {
+                    "id": "8bf3929c-957f-4ea2-a27d-7d53979844af",
+                    "inclusion": 20059,
+                    "name": "Breya, Etherium Shaper",
+                    "num_decks": 20059,
+                    "rank": 50,
+                    "sanitized": "breya-etherium-shaper",
+                    "url": "/commanders/breya-etherium-shaper"
+                  },
+                  {
+                    "id": "508b1442-bf2c-4ad6-9bcf-bd894e081ab6",
+                    "inclusion": 19935,
+                    "name": "Meren of Clan Nel Toth",
+                    "num_decks": 19935,
+                    "rank": 51,
+                    "sanitized": "meren-of-clan-nel-toth",
+                    "url": "/commanders/meren-of-clan-nel-toth"
+                  },
+                  {
+                    "id": "03415c42-086e-4a2e-9be8-5cdcde83f134",
+                    "inclusion": 19767,
+                    "name": "Obeka, Splitter of Seconds",
+                    "num_decks": 19767,
+                    "rank": 52,
+                    "sanitized": "obeka-splitter-of-seconds",
+                    "url": "/commanders/obeka-splitter-of-seconds"
+                  },
+                  {
+                    "id": "969ac7dd-f3aa-4888-9ff0-d16a31b5e7a9",
+                    "inclusion": 19726,
+                    "name": "Shorikai, Genesis Engine",
+                    "num_decks": 19726,
+                    "rank": 53,
+                    "sanitized": "shorikai-genesis-engine",
+                    "url": "/commanders/shorikai-genesis-engine"
+                  },
+                  {
+                    "id": "cd14f1ce-7fcd-485c-b7ca-01c5b45fdc01",
+                    "inclusion": 19465,
+                    "name": "Teysa Karlov",
+                    "num_decks": 19465,
+                    "rank": 54,
+                    "sanitized": "teysa-karlov",
+                    "url": "/commanders/teysa-karlov"
+                  },
+                  {
+                    "id": "9476fe67-d2d3-4835-8ba6-2a17d18cc141",
+                    "inclusion": 19225,
+                    "name": "Go-Shintai of Life's Origin",
+                    "num_decks": 19225,
+                    "rank": 55,
+                    "sanitized": "go-shintai-of-lifes-origin",
+                    "url": "/commanders/go-shintai-of-lifes-origin"
+                  },
+                  {
+                    "id": "abf8df47-405c-42d8-be9e-0f0d0a49589b",
+                    "inclusion": 19017,
+                    "name": "Oloro, Ageless Ascetic",
+                    "num_decks": 19017,
+                    "rank": 56,
+                    "sanitized": "oloro-ageless-ascetic",
+                    "url": "/commanders/oloro-ageless-ascetic"
+                  },
+                  {
+                    "id": "607c1793-8e5a-4ebf-87c6-7f9c99bbd29a",
+                    "inclusion": 18954,
+                    "name": "Korvold, Fae-Cursed King",
+                    "num_decks": 18954,
+                    "rank": 57,
+                    "sanitized": "korvold-fae-cursed-king",
+                    "url": "/commanders/korvold-fae-cursed-king"
+                  },
+                  {
+                    "id": "fa7349d9-c82f-4cf8-a852-92168d1f4966",
+                    "inclusion": 18948,
+                    "name": "Ghyrson Starn, Kelermorph",
+                    "num_decks": 18948,
+                    "rank": 58,
+                    "sanitized": "ghyrson-starn-kelermorph",
+                    "url": "/commanders/ghyrson-starn-kelermorph"
+                  },
+                  {
+                    "id": "4f087b1c-97e0-4379-a94d-beac53685314",
+                    "inclusion": 18916,
+                    "name": "K'rrik, Son of Yawgmoth",
+                    "num_decks": 18916,
+                    "rank": 59,
+                    "sanitized": "krrik-son-of-yawgmoth",
+                    "url": "/commanders/krrik-son-of-yawgmoth"
+                  },
+                  {
+                    "id": "f683d5a1-b8bf-446f-9fe3-88a4398bf3cf",
+                    "inclusion": 18685,
+                    "name": "Arabella, Abandoned Doll",
+                    "num_decks": 18685,
+                    "rank": 60,
+                    "sanitized": "arabella-abandoned-doll",
+                    "url": "/commanders/arabella-abandoned-doll"
+                  },
+                  {
+                    "id": "2ab04c49-76a1-4896-8dca-8cb4c615f489",
+                    "inclusion": 18563,
+                    "name": "Tom Bombadil",
+                    "num_decks": 18563,
+                    "rank": 61,
+                    "sanitized": "tom-bombadil",
+                    "url": "/commanders/tom-bombadil"
+                  },
+                  {
+                    "id": "63cda4a0-0dff-4edb-ae67-a2b7e2971350",
+                    "inclusion": 18452,
+                    "name": "Kinnan, Bonder Prodigy",
+                    "num_decks": 18452,
+                    "rank": 62,
+                    "sanitized": "kinnan-bonder-prodigy",
+                    "url": "/commanders/kinnan-bonder-prodigy"
+                  },
+                  {
+                    "id": "2b8414f7-22c3-4e1c-934b-4a0e7acf951d",
+                    "inclusion": 18423,
+                    "name": "Atla Palani, Nest Tender",
+                    "num_decks": 18423,
+                    "rank": 63,
+                    "sanitized": "atla-palani-nest-tender",
+                    "url": "/commanders/atla-palani-nest-tender"
+                  },
+                  {
+                    "id": "7b7a348a-51f7-4dc5-8fe7-1c70fea5e050",
+                    "inclusion": 18299,
+                    "name": "Urza, Lord High Artificer",
+                    "num_decks": 18299,
+                    "rank": 64,
+                    "sanitized": "urza-lord-high-artificer",
+                    "url": "/commanders/urza-lord-high-artificer"
+                  },
+                  {
+                    "id": "af0db1d6-5cb1-4917-8e8f-69d5dc184404",
+                    "inclusion": 18236,
+                    "name": "Xyris, the Writhing Storm",
+                    "num_decks": 18236,
+                    "rank": 65,
+                    "sanitized": "xyris-the-writhing-storm",
+                    "url": "/commanders/xyris-the-writhing-storm"
+                  },
+                  {
+                    "id": "bfa1bd2f-25bd-4fbd-877b-cef00ab7f92f",
+                    "inclusion": 18224,
+                    "name": "Voja, Jaws of the Conclave",
+                    "num_decks": 18224,
+                    "rank": 66,
+                    "sanitized": "voja-jaws-of-the-conclave",
+                    "url": "/commanders/voja-jaws-of-the-conclave"
+                  },
+                  {
+                    "id": "dae9ee75-30b8-4e24-af8b-031c816d3221",
+                    "inclusion": 18142,
+                    "name": "Ezio Auditore da Firenze",
+                    "num_decks": 18142,
+                    "rank": 67,
+                    "sanitized": "ezio-auditore-da-firenze",
+                    "url": "/commanders/ezio-auditore-da-firenze"
+                  },
+                  {
+                    "id": "06d4fbe1-8a2f-4958-bb85-1a1e5f1e8d87",
+                    "inclusion": 17487,
+                    "name": "The First Sliver",
+                    "num_decks": 17487,
+                    "rank": 68,
+                    "sanitized": "the-first-sliver",
+                    "url": "/commanders/the-first-sliver"
+                  },
+                  {
+                    "id": "6dc390da-75f8-490a-a724-c12d21cfe578",
+                    "inclusion": 17364,
+                    "name": "Zaxara, the Exemplary",
+                    "num_decks": 17364,
+                    "rank": 69,
+                    "sanitized": "zaxara-the-exemplary",
+                    "url": "/commanders/zaxara-the-exemplary"
+                  },
+                  {
+                    "id": "ecead4cd-47ae-4c42-b15c-1b29b5caba18",
+                    "inclusion": 17296,
+                    "name": "Eriette of the Charmed Apple",
+                    "num_decks": 17296,
+                    "rank": 70,
+                    "sanitized": "eriette-of-the-charmed-apple",
+                    "url": "/commanders/eriette-of-the-charmed-apple"
+                  },
+                  {
+                    "id": "ee228dcc-3170-4c24-80bc-28bcee07cb43",
+                    "inclusion": 17268,
+                    "name": "Henzie \"Toolbox\" Torre",
+                    "num_decks": 17268,
+                    "rank": 71,
+                    "sanitized": "henzie-toolbox-torre",
+                    "url": "/commanders/henzie-toolbox-torre"
+                  },
+                  {
+                    "id": "4e4fb50c-a81f-44d3-93c5-fa9a0b37f617",
+                    "inclusion": 17254,
+                    "name": "Omnath, Locus of Creation",
+                    "num_decks": 17254,
+                    "rank": 72,
+                    "sanitized": "omnath-locus-of-creation",
+                    "url": "/commanders/omnath-locus-of-creation"
+                  },
+                  {
+                    "id": "5fc707be-9286-4ba1-90f6-475265d19ed2",
+                    "inclusion": 17032,
+                    "name": "Sidar Jabari of Zhalfir",
+                    "num_decks": 17032,
+                    "rank": 73,
+                    "sanitized": "sidar-jabari-of-zhalfir",
+                    "url": "/commanders/sidar-jabari-of-zhalfir"
+                  },
+                  {
+                    "id": "5924c01f-2815-4e37-b700-3ba6cc81e0e4",
+                    "inclusion": 16843,
+                    "name": "Ashling, the Limitless",
+                    "num_decks": 16843,
+                    "rank": 74,
+                    "sanitized": "ashling-the-limitless",
+                    "url": "/commanders/ashling-the-limitless"
+                  },
+                  {
+                    "id": "40339715-22d0-4f99-822b-a00d9824f27a",
+                    "inclusion": 16836,
+                    "name": "Helga, Skittish Seer",
+                    "num_decks": 16836,
+                    "rank": 75,
+                    "sanitized": "helga-skittish-seer",
+                    "url": "/commanders/helga-skittish-seer"
+                  },
+                  {
+                    "id": "dfe36901-5841-4942-8b61-c273111f715e",
+                    "inclusion": 16730,
+                    "name": "Zinnia, Valley's Voice",
+                    "num_decks": 16730,
+                    "rank": 76,
+                    "sanitized": "zinnia-valleys-voice",
+                    "url": "/commanders/zinnia-valleys-voice"
+                  },
+                  {
+                    "id": "5a293c45-1e73-4527-be2f-2dcd5c47b610",
+                    "inclusion": 16722,
+                    "name": "Sisay, Weatherlight Captain",
+                    "num_decks": 16722,
+                    "rank": 77,
+                    "sanitized": "sisay-weatherlight-captain",
+                    "url": "/commanders/sisay-weatherlight-captain"
+                  },
+                  {
+                    "id": "55c02dc8-0743-400c-b334-ca029caf0463",
+                    "inclusion": 16606,
+                    "name": "Captain N'ghathrod",
+                    "num_decks": 16606,
+                    "rank": 78,
+                    "sanitized": "captain-nghathrod",
+                    "url": "/commanders/captain-nghathrod"
+                  },
+                  {
+                    "id": "dc8eb325-75c9-4331-830d-3f7d62d77290",
+                    "inclusion": 16412,
+                    "name": "Zurgo Stormrender",
+                    "num_decks": 16412,
+                    "rank": 79,
+                    "sanitized": "zurgo-stormrender",
+                    "url": "/commanders/zurgo-stormrender"
+                  },
+                  {
+                    "id": "4a1f905f-1d55-4d02-9d24-e58070793d3f",
+                    "inclusion": 16390,
+                    "name": "Atraxa, Grand Unifier",
+                    "num_decks": 16390,
+                    "rank": 80,
+                    "sanitized": "atraxa-grand-unifier",
+                    "url": "/commanders/atraxa-grand-unifier"
+                  },
+                  {
+                    "id": "f54ecbf1-83df-4486-bd6a-7d1f173b6863",
+                    "inclusion": 16340,
+                    "name": "Ureni of the Unwritten",
+                    "num_decks": 16340,
+                    "rank": 81,
+                    "sanitized": "ureni-of-the-unwritten",
+                    "url": "/commanders/ureni-of-the-unwritten"
+                  },
+                  {
+                    "id": "ea409050-4296-4b76-a6cd-2896ce1b88e4",
+                    "inclusion": 16249,
+                    "name": "Urza, Chief Artificer",
+                    "num_decks": 16249,
+                    "rank": 82,
+                    "sanitized": "urza-chief-artificer",
+                    "url": "/commanders/urza-chief-artificer"
+                  },
+                  {
+                    "id": "79ba5c35-6e5c-406a-b95f-844d5ec296ab",
+                    "inclusion": 16182,
+                    "name": "Alela, Cunning Conqueror",
+                    "num_decks": 16182,
+                    "rank": 83,
+                    "sanitized": "alela-cunning-conqueror",
+                    "url": "/commanders/alela-cunning-conqueror"
+                  },
+                  {
+                    "id": "0fdae05f-7bdc-45fb-b9b9-e5ec3766f965",
+                    "inclusion": 16116,
+                    "name": "Queen Marchesa",
+                    "num_decks": 16116,
+                    "rank": 84,
+                    "sanitized": "queen-marchesa",
+                    "url": "/commanders/queen-marchesa"
+                  },
+                  {
+                    "id": "7aa01ab4-26b0-49dc-8514-b3850d355a21",
+                    "inclusion": 16093,
+                    "name": "Urtet, Remnant of Memnarch",
+                    "num_decks": 16093,
+                    "rank": 85,
+                    "sanitized": "urtet-remnant-of-memnarch",
+                    "url": "/commanders/urtet-remnant-of-memnarch"
+                  },
+                  {
+                    "id": "079e6263-e54c-4899-a336-5315909b9322",
+                    "inclusion": 15962,
+                    "name": "Magda, Brazen Outlaw",
+                    "num_decks": 15962,
+                    "rank": 86,
+                    "sanitized": "magda-brazen-outlaw",
+                    "url": "/commanders/magda-brazen-outlaw"
+                  },
+                  {
+                    "id": "86c5c337-d25f-4c3e-9762-09ed0c2d36d7",
+                    "inclusion": 15798,
+                    "name": "Niv-Mizzet, Parun",
+                    "num_decks": 15798,
+                    "rank": 87,
+                    "sanitized": "niv-mizzet-parun",
+                    "url": "/commanders/niv-mizzet-parun"
+                  },
+                  {
+                    "cards": [
+                      {
+                        "name": "Kuja, Genome Sorcerer",
+                        "url": "kuja-genome-sorcerer"
+                      },
+                      {
+                        "name": "Trance Kuja, Fate Defied",
+                        "url": "kuja-genome-sorcerer"
+                      }
+                    ],
+                    "id": "008782d2-72b0-4554-b1ce-2db99969a4d8",
+                    "inclusion": 15720,
+                    "name": "Kuja, Genome Sorcerer",
+                    "num_decks": 15720,
+                    "rank": 88,
+                    "sanitized": "kuja-genome-sorcerer",
+                    "url": "/commanders/kuja-genome-sorcerer"
+                  },
+                  {
+                    "id": "d3736f17-f80b-4b2c-b919-2c963bc14682",
+                    "inclusion": 15656,
+                    "name": "Kotis, the Fangkeeper",
+                    "num_decks": 15656,
+                    "rank": 89,
+                    "sanitized": "kotis-the-fangkeeper",
+                    "url": "/commanders/kotis-the-fangkeeper"
+                  },
+                  {
+                    "id": "2c3549f6-25df-4ea7-84ad-922ccd4af6b2",
+                    "inclusion": 15610,
+                    "name": "Felothar the Steadfast",
+                    "num_decks": 15610,
+                    "rank": 90,
+                    "sanitized": "felothar-the-steadfast",
+                    "url": "/commanders/felothar-the-steadfast"
+                  },
+                  {
+                    "id": "e7517e8e-b424-4731-ba9d-6132bdefa6bf",
+                    "inclusion": 15550,
+                    "name": "Marneus Calgar",
+                    "num_decks": 15550,
+                    "rank": 91,
+                    "sanitized": "marneus-calgar",
+                    "url": "/commanders/marneus-calgar"
+                  },
+                  {
+                    "id": "409c305a-52dc-4538-8e72-efcd568eaf49",
+                    "inclusion": 15414,
+                    "name": "Choco, Seeker of Paradise",
+                    "num_decks": 15414,
+                    "rank": 92,
+                    "sanitized": "choco-seeker-of-paradise",
+                    "url": "/commanders/choco-seeker-of-paradise"
+                  },
+                  {
+                    "id": "abc9e41e-fd03-4b6f-8f44-17ba94fa44f5",
+                    "inclusion": 15383,
+                    "name": "Alela, Artful Provocateur",
+                    "num_decks": 15383,
+                    "rank": 93,
+                    "sanitized": "alela-artful-provocateur",
+                    "url": "/commanders/alela-artful-provocateur"
+                  },
+                  {
+                    "id": "9f868023-6035-403d-ba91-7a4840c6c392",
+                    "inclusion": 15306,
+                    "name": "Aminatou, Veil Piercer",
+                    "num_decks": 15306,
+                    "rank": 94,
+                    "sanitized": "aminatou-veil-piercer",
+                    "url": "/commanders/aminatou-veil-piercer"
+                  },
+                  {
+                    "id": "2a8a7696-b5d9-4378-9d5c-2c9007e4df63",
+                    "inclusion": 15199,
+                    "name": "Stella Lee, Wild Card",
+                    "num_decks": 15199,
+                    "rank": 95,
+                    "sanitized": "stella-lee-wild-card",
+                    "url": "/commanders/stella-lee-wild-card"
+                  },
+                  {
+                    "id": "673c21f8-02b6-4ac4-b2fc-df065b4ac662",
+                    "inclusion": 14910,
+                    "name": "Aesi, Tyrant of Gyre Strait",
+                    "num_decks": 14910,
+                    "rank": 96,
+                    "sanitized": "aesi-tyrant-of-gyre-strait",
+                    "url": "/commanders/aesi-tyrant-of-gyre-strait"
+                  },
+                  {
+                    "id": "2cfd4494-346c-4cbc-8072-e267254cefcc",
+                    "inclusion": 14902,
+                    "name": "Tidus, Yuna's Guardian",
+                    "num_decks": 14902,
+                    "rank": 97,
+                    "sanitized": "tidus-yunas-guardian",
+                    "url": "/commanders/tidus-yunas-guardian"
+                  },
+                  {
+                    "cards": [
+                      {
+                        "name": "Terra, Magical Adept",
+                        "url": "terra-magical-adept"
+                      },
+                      {
+                        "name": "Esper Terra",
+                        "url": "terra-magical-adept"
+                      }
+                    ],
+                    "id": "fbd447aa-588d-4c4d-925e-a7d3bdf6a65c",
+                    "inclusion": 14741,
+                    "name": "Terra, Magical Adept",
+                    "num_decks": 14741,
+                    "rank": 98,
+                    "sanitized": "terra-magical-adept",
+                    "url": "/commanders/terra-magical-adept"
+                  },
+                  {
+                    "id": "561cfc04-65ea-49a4-8638-b4631a7cf828",
+                    "inclusion": 14725,
+                    "name": "Zur the Enchanter",
+                    "num_decks": 14725,
+                    "rank": 99,
+                    "sanitized": "zur-the-enchanter",
+                    "url": "/commanders/zur-the-enchanter"
+                  },
+                  {
+                    "cards": [
+                      {
+                        "name": "Etali, Primal Conqueror",
+                        "url": "etali-primal-conqueror"
+                      },
+                      {
+                        "name": "Etali, Primal Sickness",
+                        "url": "etali-primal-conqueror"
+                      }
+                    ],
+                    "id": "95c14c4d-6c16-4826-8d93-d89ad04aee09",
+                    "inclusion": 14718,
+                    "name": "Etali, Primal Conqueror",
+                    "num_decks": 14718,
+                    "rank": 100,
+                    "sanitized": "etali-primal-conqueror",
+                    "url": "/commanders/etali-primal-conqueror"
+                  }
+                ],
+                "header": "Past 2 Years",
+                "more": "commanders/year-past2years-1.json",
+                "tag": "past2years"
+              }
+            ]
+          },
+          "keywords": "Top,Commanders,Past,2,Years",
+          "title": "Top Commanders (Past 2 Years)"
+        },
+        "description": "",
+        "header": "Top Commanders (Past 2 Years)",
+        "related_info": [
+          {
+            "header": "Monocolor",
+            "items": [
+              {
+                "colors": [
+                  "w"
+                ],
+                "count": 228256,
+                "textLeft": "Mono-White",
+                "url": "/commanders/mono-white"
+              },
+              {
+                "colors": [
+                  "u"
+                ],
+                "count": 239097,
+                "textLeft": "Mono-Blue",
+                "url": "/commanders/mono-blue"
+              },
+              {
+                "colors": [
+                  "b"
+                ],
+                "count": 332512,
+                "textLeft": "Mono-Black",
+                "url": "/commanders/mono-black"
+              },
+              {
+                "colors": [
+                  "r"
+                ],
+                "count": 304001,
+                "textLeft": "Mono-Red",
+                "url": "/commanders/mono-red"
+              },
+              {
+                "colors": [
+                  "g"
+                ],
+                "count": 260656,
+                "textLeft": "Mono-Green",
+                "url": "/commanders/mono-green"
+              },
+              {
+                "colors": [],
+                "count": 70870,
+                "textLeft": "Colorless",
+                "url": "/commanders/colorless"
+              }
+            ]
+          },
+          {
+            "header": "Two Color",
+            "items": [
+              {
+                "colors": [
+                  "w",
+                  "u"
+                ],
+                "count": 259311,
+                "textLeft": "Azorius",
+                "url": "/commanders/azorius"
+              },
+              {
+                "colors": [
+                  "u",
+                  "b"
+                ],
+                "count": 350501,
+                "textLeft": "Dimir",
+                "url": "/commanders/dimir"
+              },
+              {
+                "colors": [
+                  "b",
+                  "r"
+                ],
+                "count": 355420,
+                "textLeft": "Rakdos",
+                "url": "/commanders/rakdos"
+              },
+              {
+                "colors": [
+                  "r",
+                  "g"
+                ],
+                "count": 305612,
+                "textLeft": "Gruul",
+                "url": "/commanders/gruul"
+              },
+              {
+                "colors": [
+                  "g",
+                  "w"
+                ],
+                "count": 237010,
+                "textLeft": "Selesnya",
+                "url": "/commanders/selesnya"
+              },
+              {
+                "colors": [
+                  "w",
+                  "b"
+                ],
+                "count": 301713,
+                "textLeft": "Orzhov",
+                "url": "/commanders/orzhov"
+              },
+              {
+                "colors": [
+                  "u",
+                  "r"
+                ],
+                "count": 328373,
+                "textLeft": "Izzet",
+                "url": "/commanders/izzet"
+              },
+              {
+                "colors": [
+                  "b",
+                  "g"
+                ],
+                "count": 368466,
+                "textLeft": "Golgari",
+                "url": "/commanders/golgari"
+              },
+              {
+                "colors": [
+                  "r",
+                  "w"
+                ],
+                "count": 290503,
+                "textLeft": "Boros",
+                "url": "/commanders/boros"
+              },
+              {
+                "colors": [
+                  "g",
+                  "u"
+                ],
+                "count": 311943,
+                "textLeft": "Simic",
+                "url": "/commanders/simic"
+              }
+            ]
+          },
+          {
+            "header": "Three Color",
+            "items": [
+              {
+                "colors": [
+                  "w",
+                  "u",
+                  "b"
+                ],
+                "count": 366147,
+                "textLeft": "Esper",
+                "url": "/commanders/esper"
+              },
+              {
+                "colors": [
+                  "u",
+                  "b",
+                  "r"
+                ],
+                "count": 387704,
+                "textLeft": "Grixis",
+                "url": "/commanders/grixis"
+              },
+              {
+                "colors": [
+                  "b",
+                  "r",
+                  "g"
+                ],
+                "count": 240206,
+                "textLeft": "Jund",
+                "url": "/commanders/jund"
+              },
+              {
+                "colors": [
+                  "r",
+                  "g",
+                  "w"
+                ],
+                "count": 357429,
+                "textLeft": "Naya",
+                "url": "/commanders/naya"
+              },
+              {
+                "colors": [
+                  "g",
+                  "w",
+                  "u"
+                ],
+                "count": 272033,
+                "textLeft": "Bant",
+                "url": "/commanders/bant"
+              },
+              {
+                "colors": [
+                  "w",
+                  "b",
+                  "g"
+                ],
+                "count": 210647,
+                "textLeft": "Abzan",
+                "url": "/commanders/abzan"
+              },
+              {
+                "colors": [
+                  "u",
+                  "r",
+                  "w"
+                ],
+                "count": 285837,
+                "textLeft": "Jeskai",
+                "url": "/commanders/jeskai"
+              },
+              {
+                "colors": [
+                  "b",
+                  "g",
+                  "u"
+                ],
+                "count": 297243,
+                "textLeft": "Sultai",
+                "url": "/commanders/sultai"
+              },
+              {
+                "colors": [
+                  "r",
+                  "w",
+                  "b"
+                ],
+                "count": 340113,
+                "textLeft": "Mardu",
+                "url": "/commanders/mardu"
+              },
+              {
+                "colors": [
+                  "g",
+                  "u",
+                  "r"
+                ],
+                "count": 283894,
+                "textLeft": "Temur",
+                "url": "/commanders/temur"
+              }
+            ]
+          },
+          {
+            "header": "Four / Five Color",
+            "items": [
+              {
+                "colors": [
+                  "w",
+                  "u",
+                  "b",
+                  "r"
+                ],
+                "count": 39778,
+                "textLeft": "Yore-Tiller",
+                "url": "/commanders/yore-tiller"
+              },
+              {
+                "colors": [
+                  "u",
+                  "b",
+                  "r",
+                  "g"
+                ],
+                "count": 16724,
+                "textLeft": "Glint-Eye",
+                "url": "/commanders/glint-eye"
+              },
+              {
+                "colors": [
+                  "b",
+                  "r",
+                  "g",
+                  "w"
+                ],
+                "count": 14487,
+                "textLeft": "Dune-Brood",
+                "url": "/commanders/dune-brood"
+              },
+              {
+                "colors": [
+                  "r",
+                  "g",
+                  "w",
+                  "u"
+                ],
+                "count": 58004,
+                "textLeft": "Ink-Treader",
+                "url": "/commanders/ink-treader"
+              },
+              {
+                "colors": [
+                  "g",
+                  "w",
+                  "u",
+                  "b"
+                ],
+                "count": 71391,
+                "textLeft": "Witch-Maw",
+                "url": "/commanders/witch-maw"
+              },
+              {
+                "colors": [
+                  "w",
+                  "u",
+                  "b",
+                  "r",
+                  "g"
+                ],
+                "count": 559053,
+                "textLeft": "Five-Color",
+                "url": "/commanders/five-color"
+              }
+            ]
+          }
+        ]
+      },
+      "initCountry": "US",
+      "initRegion": "FL"
+    }
+  },
+  "query": {},
+  "scriptLoader": []
+}
