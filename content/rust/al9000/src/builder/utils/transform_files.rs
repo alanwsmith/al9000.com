@@ -36,12 +36,12 @@ pub fn transform_files(config: &Config) -> Result<()> {
           let _ = write_file_with_mkdir(&output_path, &content);
         }
         Err(e) => {
-          let output = format!("{}", e);
+          let output = error_page(&e.to_string());
           let _ = write_file_with_mkdir(&output_path, &output);
         }
       },
       Err(e) => {
-        let output = format!("{}", e);
+        let output = error_page(&e.to_string());
         let _ = write_file_with_mkdir(&output_path, &output);
       }
     }

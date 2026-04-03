@@ -1,13 +1,14 @@
-[!- extends "/templates.inc/pages/home-page.html" -!]
-
-[!- block title -!]
-  <hgroup>
-    <h1>Welcome to al9000</h1>
-  </hgroup>
-[!- endblock -!]
+== extends "/templates.inc/pages/home-page.html" 
 
 
-[!- block main -!]
+== block title 
+<hgroup>
+  <h1>Welcome to al9000</h1>
+</hgroup>
+== endblock
+
+
+== block main 
 <p>
   My main site is <a href="https://www.alanwsmith.com/">alanwsmith.com</a>.
   It's been around for ~25 years. It's been great, but
@@ -33,43 +34,37 @@
 
 <h2>Done</h2>
 <ul>
-[! for dir in j!]
-[! if "index" in j[dir] and "status" in j[dir].index and j[dir].index.status == "done" !]
-  <li>
-  <a href="/[@ dir @]">[@ j[dir].index.link_title @]</a>
-  </li>
-[! endif !]
-[! endfor !]
+  == for key in j 
+    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "done" 
+      <li>
+      <a href="/[@ key @]">[@ j[key].index.link_title @]</a>
+      </li>
+    == endif 
+  == endfor 
 </ul>
 
 <h2>Work-In-Progress</h2>
 <ul>
-[! for dir in json !]
-[! if "index" in json[dir] and "status" in json[dir].index and json[dir].index.status == "wip" !]
-  <li>
-  <a href="/[@ dir @]">[@ json[dir].index.link_title @]</a>
-  </li>
-[! endif !]
-[! endfor !]
+  == for key in j 
+    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "wip" 
+      <li>
+      <a href="/[@ key @]">[@ j[key].index.link_title @]</a>
+      </li>
+    == endif 
+  == endfor 
 </ul>
 
 <h2>Ideas</h2>
 <ul>
-[! for dir in json !]
-[! if "index" in json[dir] and "status" in json[dir].index and json[dir].index.status == "idea" !]
-  <li>
-  <a href="/[@ dir @]">[@ json[dir].index.link_title @]</a>
-  </li>
-[! endif !]
-[! endfor !]
+  == for key in j 
+    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "idea" 
+      <li>
+      <a href="/[@ key @]">[@ j[key].index.link_title @]</a>
+      </li>
+    == endif 
+  == endfor 
 </ul>
 
-<pre>
-[@ j.assembly.index.link_title @]
-</pre>
-
-
-[!- endblock -!]
-
+== endblock 
 
 

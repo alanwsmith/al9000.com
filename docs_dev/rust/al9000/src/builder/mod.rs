@@ -33,8 +33,7 @@ impl Builder {
 
   pub async fn init(&mut self) -> Result<()> {
     info!("Initializing Builder");
-    let _ =
-      build_site(self.config.clone(), self.reloader.clone()).await;
+    let _ = build_site(self.config.clone(), self.reloader.clone());
     let mut build_process_handle: Option<JoinHandle<()>> = None;
     while let Some(count) = self.rx.recv().await {
       let build_config = self.config.clone();
@@ -46,7 +45,7 @@ impl Builder {
       }
       if build_process_handle.is_none() {
         build_process_handle = Some(tokio::spawn(async move {
-          let _ = build_site(build_config, build_reloader).await;
+          let _ = build_site(build_config, build_reloader);
         }));
       } else {
         // TODO: Figure out why this isn't killing the
@@ -54,7 +53,7 @@ impl Builder {
         //  and does the reload of the browser)
         build_process_handle.unwrap().abort();
         build_process_handle = Some(tokio::spawn(async move {
-          let _ = build_site(build_config, build_reloader).await;
+          let _ = build_site(build_config, build_reloader);
         }));
       }
     }

@@ -7,7 +7,7 @@ use tokio::time::{Duration, sleep};
 use tower_livereload::Reloader;
 use tracing::info;
 
-pub async fn build_site(
+pub fn build_site(
   config: Config,
   reloader: Reloader,
 ) -> Result<()> {
