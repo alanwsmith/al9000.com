@@ -1,4 +1,3 @@
-#![allow(warnings)]
 use al9000::*;
 use anyhow::Result;
 use chrono::{DateTime, Local};

@@ -1,3 +1,4 @@
+#![allow(unused)]
 use anyhow::Result;
 use chrono::{DateTime, Local};
 use tokio::time::{Duration, sleep};

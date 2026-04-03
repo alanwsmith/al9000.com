@@ -1,5 +1,4 @@
-#![allow(warnings)]
-use anyhow::{Result, anyhow};
+use anyhow::anyhow;
 use port_check::free_local_port_in_range;
 use std::path::PathBuf;
 

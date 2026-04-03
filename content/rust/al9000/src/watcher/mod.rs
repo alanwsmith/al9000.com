@@ -1,4 +1,3 @@
-#![allow(warnings)]
 use crate::Config;
 use anyhow::Result;
 use chrono::{DateTime, Local};
@@ -7,7 +6,6 @@ use notify::EventKind;
 use notify::RecursiveMode;
 use notify_debouncer_full::DebounceEventResult;
 use notify_debouncer_full::new_debouncer;
-use std::path::PathBuf;
 use tokio::sync::mpsc::Sender;
 use tokio::sync::mpsc::channel;
 use tokio::time::Duration;
@@ -49,7 +47,8 @@ impl Watcher {
           if !paths.is_empty() {
             let local_tx = watcher_tx.clone();
             futures::executor::block_on(async {
-              local_tx.send(chrono::prelude::Local::now()).await;
+              let _ =
+                local_tx.send(chrono::prelude::Local::now()).await;
             });
           }
         }
@@ -62,7 +61,7 @@ impl Watcher {
       .unwrap();
     while watcher_rx.recv().await.is_some() {
       let tx = self.builder_tx.clone();
-      tx.send(chrono::prelude::Local::now()).await;
+      let _ = tx.send(chrono::prelude::Local::now()).await;
     }
     Ok(())
   }
