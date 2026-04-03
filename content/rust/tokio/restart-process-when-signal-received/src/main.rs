@@ -5,30 +5,9 @@ use tokio::time::{Duration, sleep};
 
 #[tokio::main]
 async fn main() -> Result<()> {
-  //let mut second_process_handle: Option<JoinHandle<()>> = None;
-
   let (tx, rx) = mpsc::channel::<usize>(100);
   start_sender(tx)?;
   start_listener(rx).await?;
-
-  // while let Some(count) = rx.recv().await {
-  //   if let Some(ref handle) = second_process_handle
-  //     && handle.is_finished()
-  //   {
-  //     second_process_handle = None;
-  //   }
-  //   if second_process_handle.is_none() {
-  //     second_process_handle = Some(tokio::spawn(async move {
-  //       secondary_process(count).await;
-  //     }));
-  //   } else {
-  //     second_process_handle.unwrap().abort();
-  //     second_process_handle = Some(tokio::spawn(async move {
-  //       secondary_process(count).await;
-  //     }));
-  //   }
-  // }
-
   Ok(())
 }
 
