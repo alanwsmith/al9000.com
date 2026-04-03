@@ -19,7 +19,7 @@ async fn main() -> Result<()> {
   let reloader = live_reload.reloader();
   let (tx, rx) = mpsc::channel::<DateTime<Local>>(32);
   let content_root = PathBuf::from("../../../content");
-  let docs_root = PathBuf::from("../../../docs");
+  let docs_root = PathBuf::from("../../../docs_dev");
 
   let watcher = Watcher::new(content_root.clone(), tx.clone());
 
