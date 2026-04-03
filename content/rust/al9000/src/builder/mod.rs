@@ -48,6 +48,7 @@ impl Builder {
         }));
       } else {
         build_process_handle.unwrap().abort();
+        dbg!("---------------");
         build_process_handle = Some(tokio::spawn(async move {
           let _ = build_site(build_config, build_reloader).await;
         }));

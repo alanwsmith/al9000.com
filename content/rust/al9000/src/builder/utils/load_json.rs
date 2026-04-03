@@ -1,5 +1,3 @@
-// TODO: Add feature that you can skip including json files with `.skip
-
 #![allow(unused)]
 use crate::Config;
 use crate::builder::utils::DataNode;

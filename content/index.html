@@ -33,10 +33,10 @@
 
 <h2>Done</h2>
 <ul>
-[! for dir in json !]
-[! if "index" in json[dir] and "status" in json[dir].index and json[dir].index.status == "done" !]
+[! for dir in j!]
+[! if "index" in j[dir] and "status" in j[dir].index and j[dir].index.status == "done" !]
   <li>
-  <a href="/[@ dir @]">[@ json[dir].index.link_title @]</a>
+  <a href="/[@ dir @]">[@ j[dir].index.link_title @]</a>
   </li>
 [! endif !]
 [! endfor !]
@@ -64,14 +64,7 @@
 [! endfor !]
 </ul>
 
-<pre>
-  [@ j["index"]|tojson(true) @]
 
-  ---
-
-
-  [@ j|tojson(true) @]
-</pre>
 
 [!- endblock -!]
 

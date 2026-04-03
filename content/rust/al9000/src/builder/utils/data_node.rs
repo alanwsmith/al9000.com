@@ -1,4 +1,3 @@
-#![allow(warnings)]
 use minijinja::Value;
 use serde::Serialize;
 use std::collections::HashMap;
@@ -10,6 +9,12 @@ use std::path::PathBuf;
 pub enum DataNode {
   Branch(HashMap<String, DataNode>),
   Leaf(Value),
+}
+
+impl Default for DataNode {
+  fn default() -> Self {
+    Self::new()
+  }
 }
 
 impl DataNode {
@@ -56,62 +61,22 @@ impl DataNode {
     } else {
       0
     };
-
-    if let DataNode::Branch(nodes) = self {
-      if let Some(component) =
+    if let DataNode::Branch(nodes) = self
+      && let Some(component) =
         no_extension_path.components().nth(skip_count)
-      {
-        let key =
-          component.as_os_str().to_string_lossy().to_string();
-        dbg!(&key);
-        let remainder: &PathBuf = &no_extension_path
-          .components()
-          .skip(skip_count + 1)
-          .collect();
-        dbg!(&remainder);
-
-        let next_node =
-          nodes.entry(key).or_insert(if remainder.is_empty() {
-            DataNode::Leaf(value.clone())
-          } else {
-            DataNode::Branch(HashMap::new())
-          });
-        next_node.insert(remainder, value);
-      }
+    {
+      let key = component.as_os_str().to_string_lossy().to_string();
+      let remainder: &PathBuf = &no_extension_path
+        .components()
+        .skip(skip_count + 1)
+        .collect();
+      let next_node =
+        nodes.entry(key).or_insert(if remainder.is_empty() {
+          DataNode::Leaf(value.clone())
+        } else {
+          DataNode::Branch(HashMap::new())
+        });
+      next_node.insert(remainder, value);
     }
-
-    // if let DataNode::Branch(nodes) = self {
-    //   let remainder = &path[1..];
-    //   let next_node = nodes.entry(path[0].clone()).or_insert(
-    //     if remainder.is_empty() {
-    //       DataNode::Leaf(value.clone())
-    //     } else {
-    //       DataNode::Branch(HashMap::new())
-    //     },
-    //   );
-    //   next_node.insert(remainder, value);
-    // }
-
-    // if remainder.is_empty() {
-    //   dbg!(no_extension);
-    // }
-
-    // if path.is_empty() {
-    //   return;
-    // }
-
-    // if let DataNode::Branch(nodes) = self {
-    //   let remainder = &path[1..];
-    //   let next_node = nodes.entry(path[0].clone()).or_insert(
-    //     if remainder.is_empty() {
-    //       DataNode::Leaf(value.clone())
-    //     } else {
-    //       DataNode::Branch(HashMap::new())
-    //     },
-    //   );
-    //   next_node.insert(remainder, value);
-    // }
-
-    //
   }
 }
