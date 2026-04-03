@@ -1,12 +1,8 @@
-[#
 <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
   <div class="top-nav">
-    [! if file.path_parts[0] == "index.html" !]home[! else !]<a href="/">home</a>[! endif !]
-    [! if file.path_parts[0] == "tools" !]tools[! else !]<a href="/tools">tools</a>[! endif !]
+    [! if file_path == "/index.html" !]home[! else !]<a href="/">home</a>[! endif !]
+    [! if parent(file_path) == "/tools" !]tools[! else !]<a href="/tools">tools</a>[! endif !]
   </div>
 </header>
-#]
-
-
 
 
