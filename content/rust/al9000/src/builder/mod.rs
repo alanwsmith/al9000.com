@@ -36,35 +36,25 @@ impl Builder {
 
   pub async fn init(&mut self) -> Result<()> {
     info!("Initializing Builder");
+    build_site().await;
     let mut build_process_handle: Option<JoinHandle<()>> = None;
-    let (build_tx, mut build_rx) = mpsc::channel::<()>(100);
-
-    while let Some(i) = self.rx.recv().await {
+    while let Some(count) = self.rx.recv().await {
       if let Some(ref handle) = build_process_handle
         && handle.is_finished()
       {
         build_process_handle = None;
       }
+      if build_process_handle.is_none() {
+        build_process_handle = Some(tokio::spawn(async move {
+          build_site().await;
+        }));
+      } else {
+        build_process_handle.unwrap().abort();
+        build_process_handle = Some(tokio::spawn(async move {
+          build_site().await;
+        }));
+      }
     }
     Ok(())
   }
 }
-
-//    //self.signals.push(chrono::prelude::Local::now());
-//    build_site().await.unwrap();
-//    // dbg!(self.last_build_complete);
-//    while let Some(ts) = self.rx.recv().await {
-//      //self.build_requested = true;
-//      if !self.build_in_progress {
-//        self.build_in_progress = true;
-//        tokio::spawn(async { build_site().await });
-//        //  build_site().await;
-//        self.build_in_progress = false;
-//      } else {
-//        info!("... already in progress")
-//      }
-//      //let trigger_time = chrono::prelude::Local::now();
-//      // self.signals.push(chrono::prelude::Local::now());
-//      //let join_handle = tokio::spawn(async { build_site().await });
-//      //dbg!(join_handle.await??);
-//    }
