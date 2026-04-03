@@ -1,4 +1,5 @@
-#![allow(unused)]
+#![allow(warnings)]
+use crate::Config;
 use anyhow::Result;
 use chrono::{DateTime, Local};
 use itertools::Itertools;
@@ -13,22 +14,19 @@ use tokio::time::Duration;
 use tracing::info;
 
 pub struct Watcher {
-  input_root: PathBuf,
+  config: Config,
   builder_tx: Sender<DateTime<Local>>,
 }
 
 impl Watcher {
   pub fn new(
-    input_root: PathBuf,
+    config: Config,
     builder_tx: Sender<DateTime<Local>>,
   ) -> Watcher {
-    Watcher {
-      input_root,
-      builder_tx,
-    }
+    Watcher { config, builder_tx }
   }
 
-  pub async fn start(self) -> Result<()> {
+  pub async fn init(self) -> Result<()> {
     info!("Initializing Watcher:");
     let (watcher_tx, mut watcher_rx) =
       channel::<chrono::DateTime<chrono::Local>>(1);
@@ -60,7 +58,7 @@ impl Watcher {
     )
     .unwrap();
     debouncer
-      .watch(self.input_root, RecursiveMode::Recursive)
+      .watch(self.config.content_dir(), RecursiveMode::Recursive)
       .unwrap();
     while watcher_rx.recv().await.is_some() {
       let tx = self.builder_tx.clone();
