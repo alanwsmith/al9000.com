@@ -23,28 +23,21 @@ async fn main() -> Result<()> {
   let live_reload = LiveReloadLayer::new();
   let reloader = live_reload.reloader();
 
-  // let content_root = PathBuf::from("../../../content");
-  // let docs_root = PathBuf::from("../../../docs_dev");
-
   let watcher = Watcher::new(config.clone(), tx.clone());
-
-  //let mut builder = Builder::new(&config, reloader.clone(), rx);
-
-  //let server = Server::new(docs_root.clone(), port, live_reload);
+  let mut builder =
+    Builder::new(config.clone(), reloader.clone(), rx);
+  let server = Server::new(config.clone(), live_reload);
 
   tokio::spawn(async move {
     let _ = watcher.init().await;
   });
-
-  // tokio::spawn(async move {
-  //   let _ = builder.init().await;
-  // });
-
-  // let server_handle = tokio::spawn(async move {
-  //   let _ = server.start().await;
-  // });
-
-  // server_handle.await.unwrap();
+  tokio::spawn(async move {
+    let _ = builder.init().await;
+  });
+  let server_handle = tokio::spawn(async move {
+    let _ = server.start().await;
+  });
+  server_handle.await.unwrap();
 
   Ok(())
 }

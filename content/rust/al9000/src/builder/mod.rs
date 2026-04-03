@@ -12,23 +12,22 @@ use tower_livereload::Reloader;
 use tracing::info;
 use utils::*;
 
+use crate::Config;
+
 pub struct Builder {
-  content_root: PathBuf,
-  docs_root: PathBuf,
+  config: Config,
   reloader: Reloader,
   rx: mpsc::Receiver<DateTime<Local>>,
 }
 
 impl Builder {
   pub fn new(
-    content_root: PathBuf,
-    docs_root: PathBuf,
+    config: Config,
     reloader: Reloader,
     rx: mpsc::Receiver<DateTime<Local>>,
   ) -> Builder {
     Builder {
-      content_root,
-      docs_root,
+      config,
       reloader,
       rx,
     }

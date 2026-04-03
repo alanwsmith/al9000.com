@@ -30,6 +30,10 @@ impl Config {
     &self._content_dir
   }
 
+  pub fn output_dir(&self) -> &PathBuf {
+    &self._output_dir
+  }
+
   pub fn port(&self) -> u16 {
     self._port
   }

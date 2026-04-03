@@ -31,7 +31,7 @@ impl Watcher {
     let (watcher_tx, mut watcher_rx) =
       channel::<chrono::DateTime<chrono::Local>>(1);
     let mut debouncer = new_debouncer(
-      Duration::from_millis(450),
+      Duration::from_millis(250),
       None,
       move |result: DebounceEventResult| match result {
         Ok(events) => {
