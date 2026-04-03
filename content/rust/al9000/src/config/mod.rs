@@ -7,6 +7,7 @@ pub struct Config {
   _content_dir: PathBuf,
   _output_dir: PathBuf,
   _port: u16,
+  _content_file_extensions: Vec<String>,
 }
 
 impl Config {
@@ -14,15 +15,21 @@ impl Config {
     _content_dir: PathBuf,
     _output_dir: PathBuf,
   ) -> Config {
-    // Reminder: This used to have a range. Leaving
-    // here for now since this works.
+    let _content_file_extensions =
+      vec!["html".to_string(), "js".to_string(), "txt".to_string()];
+
     let port = free_local_port_in_range(9000..=9000)
       .ok_or(anyhow!("Could not find port"));
     Config {
       _content_dir,
+      _content_file_extensions,
       _output_dir,
       _port: port.unwrap(),
     }
+  }
+
+  pub fn content_file_extensions(&self) -> &Vec<String> {
+    &self._content_file_extensions
   }
 
   pub fn content_dir(&self) -> &PathBuf {

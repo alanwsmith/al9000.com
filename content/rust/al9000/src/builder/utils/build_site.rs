@@ -1,5 +1,5 @@
 #![allow(unused)]
-use crate::Config;
+use crate::{Config, builder::utils::transform_files};
 use anyhow::Result;
 use chrono::{DateTime, Local};
 use tokio::time::{Duration, sleep};
@@ -11,7 +11,7 @@ pub async fn build_site(
   reloader: Reloader,
 ) -> Result<()> {
   info!("Building Site");
-  sleep(Duration::from_millis(1000)).await;
+  transform_files(&config)?;
   info!("Build Complete");
   reloader.reload();
   info!("Reloading Browser");

@@ -1,10 +1,16 @@
+#![allow(warnings)]
+use crate::Config;
+use crate::builder::content_files;
+use anyhow::Result;
 use minijinja::AutoEscape;
 use minijinja::Environment;
+use minijinja::context;
 use minijinja::path_loader;
 use minijinja::syntax::SyntaxConfig;
 use std::path::Path;
+use tracing::info;
 
-pub fn init_env(content_root: &Path) -> Environment<'static> {
+pub fn get_env(config: &Config) -> Environment {
   let mut env = Environment::new();
   env.set_syntax(
     SyntaxConfig::builder()
@@ -27,6 +33,6 @@ pub fn init_env(content_root: &Path) -> Environment<'static> {
       AutoEscape::None
     }
   });
-  env.set_loader(path_loader(content_root.display().to_string()));
+  env.set_loader(path_loader(config.content_dir()));
   env
 }

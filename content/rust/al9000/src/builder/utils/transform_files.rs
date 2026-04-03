@@ -1,20 +1,27 @@
 #![allow(warnings)]
+use crate::Config;
+use crate::builder::content_files;
+use crate::builder::get_env;
 use anyhow::Result;
+use minijinja::AutoEscape;
 use minijinja::Environment;
 use minijinja::context;
+use minijinja::path_loader;
+use minijinja::syntax::SyntaxConfig;
 use std::path::Path;
 use tracing::info;
 
-pub fn transform_files(
-  content_root: &Path,
-  output_root: &Path,
-) -> Result<()> {
+pub fn transform_files(config: &Config) -> Result<()> {
+  info!("Transforming files");
+  let env = get_env(config);
+  dbg!(content_files(config));
+
   // TODO: Don't copy files that have .inc in the name.
   // TODO: Don't transform files that have .off in the name.
 
-  ////
-  //let extensions = ["html", "js", "txt"];
-  //let content_files = get_content_files(&self.content_root);
+  // let extensions = ["html", "js", "txt"];
+  // let content_files = get_content_files(config.content_dir());
+
   //content_files
   //  .iter()
   //  .filter(|pb| {
