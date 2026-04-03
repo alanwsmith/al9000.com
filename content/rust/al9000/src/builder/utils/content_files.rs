@@ -4,9 +4,7 @@ use std::path::Path;
 use std::path::PathBuf;
 use walkdir::WalkDir;
 
-// Returns the vec of content files that
-// get transformed.
-
+// TODO: skip files that have have .inc in the name.
 pub fn content_files(config: &Config) -> Vec<PathBuf> {
   WalkDir::new(config.content_dir())
     .into_iter()

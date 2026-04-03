@@ -2,6 +2,7 @@
 use crate::Config;
 use crate::builder::content_files;
 use crate::builder::get_env;
+use crate::builder::utils::write_file_with_mkdir;
 use anyhow::Result;
 use minijinja::AutoEscape;
 use minijinja::Environment;
@@ -16,39 +17,25 @@ pub fn transform_files(config: &Config) -> Result<()> {
   info!("Transforming files");
   let env = get_env(config);
   content_files(config).iter().for_each(|pb| {
-    // let template_name =
-    //   pb.display().to_string().replace("../../../content", "");
+    let template_name =
+      pb.display().to_string().replace("../../../content", "");
     let output_path =
       PathBuf::from(pb.display().to_string().replace(
         config.content_dir().display().to_string().as_str(),
         config.output_dir().display().to_string().as_str(),
       ));
-    dbg!(output_path);
+    match env.get_template(&template_name) {
+      Ok(template) => match template.render(context!()) {
+        Ok(content) => {
+          let _ = write_file_with_mkdir(&output_path, &content);
+        }
+        Err(e) => (),
+      },
+      Err(e) => (),
+    }
   });
 
-  // TODO: Don't copy files that have .inc in the name.
-  // TODO: Don't transform files that have .off in the name.
-
-  // let extensions = ["html", "js", "txt"];
-  // let content_files = get_content_files(config.content_dir());
-
-  //content_files
-  //  .iter()
-  //  .filter(|pb| {
-  //    if let Some(ext) = &pb.extension() {
-  //      extensions.contains(&ext.display().to_string().as_str())
-  //    } else {
-  //      false
-  //    }
-  //  })
   //  .for_each(|pb| {
-  //    let file_name =
-  //      pb.display().to_string().replace("../../../content", "");
-  //    let output_path = PathBuf::from(format!(
-  //      "{}{}",
-  //      &self.docs_root.display(),
-  //      file_name
-  //    ));
   //    match env.get_template(&file_name) {
   //      Ok(template) => match template.render(context!()) {
   //        Ok(content) => {
@@ -64,9 +51,42 @@ pub fn transform_files(config: &Config) -> Result<()> {
   //        let _ = write_file_with_mkdir(&output_path, &output);
   //      }
   //    }
-  //    //dbg!(file_name);
-  //  });
 
   //
   Ok(())
 }
+
+//content_files
+//  .iter()
+//  .filter(|pb| {
+//    if let Some(ext) = &pb.extension() {
+//      extensions.contains(&ext.display().to_string().as_str())
+//    } else {
+//      false
+//    }
+//  })
+//  .for_each(|pb| {
+//    let file_name =
+//      pb.display().to_string().replace("../../../content", "");
+//    let output_path = PathBuf::from(format!(
+//      "{}{}",
+//      &self.docs_root.display(),
+//      file_name
+//    ));
+//    match env.get_template(&file_name) {
+//      Ok(template) => match template.render(context!()) {
+//        Ok(content) => {
+//          let _ = write_file_with_mkdir(&output_path, &content);
+//        }
+//        Err(e) => {
+//          let output = format!("{}", e);
+//          let _ = write_file_with_mkdir(&output_path, &output);
+//        }
+//      },
+//      Err(e) => {
+//        let output = format!("{}", e);
+//        let _ = write_file_with_mkdir(&output_path, &output);
+//      }
+//    }
+//    //dbg!(file_name);
+//  });
