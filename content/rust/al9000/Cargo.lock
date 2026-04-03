@@ -20,6 +20,7 @@ dependencies = [
  "tracing",
  "tracing-appender",
  "tracing-subscriber",
+ "walkdir",
 ]
 
 [[package]]
