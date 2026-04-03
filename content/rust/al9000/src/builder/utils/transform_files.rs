@@ -21,32 +21,30 @@ pub fn transform_files(config: &Config) -> Result<()> {
   // let json = load_json(config);
 
   content_files(config).iter().for_each(|pb| {
-    dbg!(&pb);
-
-    //   let template_name =
-    //     pb.display().to_string().replace("../../../content", "");
-    //   let output_path =
-    //     PathBuf::from(pb.display().to_string().replace(
-    //       config.content_dir().display().to_string().as_str(),
-    //       config.output_dir().display().to_string().as_str(),
-    //     ));
-    //   match env.get_template(&template_name) {
-    //     Ok(template) => match template.render(context!(
-    //     //      j => json
-    //         )) {
-    //       Ok(content) => {
-    //         let _ = write_file_with_mkdir(&output_path, &content);
-    //       }
-    //       Err(e) => {
-    //         let output = format!("{}", e);
-    //         let _ = write_file_with_mkdir(&output_path, &output);
-    //       }
-    //     },
-    //     Err(e) => {
-    //       let output = format!("{}", e);
-    //       let _ = write_file_with_mkdir(&output_path, &output);
-    //     }
-    //   }
+    let template_name =
+      pb.display().to_string().replace("../../../content", "");
+    let output_path =
+      PathBuf::from(pb.display().to_string().replace(
+        config.content_dir().display().to_string().as_str(),
+        config.output_dir().display().to_string().as_str(),
+      ));
+    match env.get_template(&template_name) {
+      Ok(template) => match template.render(context!(
+      //      j => json
+          )) {
+        Ok(content) => {
+          let _ = write_file_with_mkdir(&output_path, &content);
+        }
+        Err(e) => {
+          let output = format!("{}", e);
+          let _ = write_file_with_mkdir(&output_path, &output);
+        }
+      },
+      Err(e) => {
+        let output = format!("{}", e);
+        let _ = write_file_with_mkdir(&output_path, &output);
+      }
+    }
   });
 
   Ok(())

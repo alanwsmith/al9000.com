@@ -25,6 +25,12 @@ pub fn content_files(config: &Config) -> Vec<PathBuf> {
     .filter_entry(include_file)
     .filter_map(|e| e.ok())
     .map(|e| e.into_path().to_path_buf())
+    .filter(|pb| pb.extension().is_some())
+    .filter(|pb| {
+      config.content_file_extensions().contains(
+        &pb.extension().unwrap().to_string_lossy().to_string(),
+      )
+    })
     .collect()
 }
 
