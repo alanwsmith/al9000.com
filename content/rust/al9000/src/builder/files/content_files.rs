@@ -5,16 +5,20 @@ use std::path::PathBuf;
 use walkdir::DirEntry;
 use walkdir::WalkDir;
 
-// TODO: Exclude files and directories that
-// have `.inc` in their name.
 fn include_file(entry: &DirEntry) -> bool {
   let pb = entry.path().to_path_buf();
-  if pb
-    .components()
-    .map(|c| c.as_os_str().to_string_lossy().to_string())
-    .contains("target")
-  {
-    return false;
+  let components = pb.components();
+  for component in components {
+    let item = component.as_os_str().to_string_lossy().to_string();
+    if item.as_str() == "target" {
+      return false;
+    }
+    let parts = item.split(".");
+    for part in parts {
+      if part == "inc" {
+        return false;
+      }
+    }
   }
   true
 }
