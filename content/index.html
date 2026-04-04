@@ -2,24 +2,16 @@
 
 == block toml
 title = "Welcome to al9000"
-
 == endblock
 
 
 == block title 
 <hgroup>
-  <h1>[@ d.title @]</h1>
+  <h1>[@ p.title @]</h1>
 </hgroup>
 == endblock
 
-
-
 == block main 
-
-
--- [@ j.config @] --
--- [@ j.index.title @] --
-
 
 <p>
   My main site is <a href="https://www.alanwsmith.com/">alanwsmith.com</a>.

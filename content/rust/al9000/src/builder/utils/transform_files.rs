@@ -17,7 +17,7 @@ use tokio::task;
 use tracing::info;
 
 pub async fn transform_files(config: &Config) -> Result<()> {
-  info!("Transforming files");
+  // info!("Transforming files");
   let env = get_env(config);
   let json = load_json(config)?;
 
@@ -32,9 +32,9 @@ pub async fn transform_files(config: &Config) -> Result<()> {
       ));
     match env.get_template(&template_name) {
       Ok(template) => match template.render(context!(
-        d => &page_data,
-        j => &json,
-        file_path => &template_name
+        p => page_data,
+        j => json,
+        file_path => template_name
       )) {
         Ok(content) => {
           let _ = write_file_with_mkdir(&output_path, &content);

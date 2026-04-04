@@ -6,7 +6,7 @@ use tokio::task;
 use tracing::info;
 
 pub async fn copy_assets(config: &Config) -> Result<()> {
-  info!("Copying assets");
+  //   info!("Copying assets");
   for asset_path in asset_files(config) {
     task::yield_now().await;
     if let Ok(base_path) =

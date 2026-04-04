@@ -7,7 +7,7 @@ use toml::Table;
 pub fn get_page_data(pb: &Path) -> Result<Value> {
   let input = fs::read_to_string(pb)?;
   let parts = input.split("== block toml").collect::<Vec<&str>>();
-  if parts.len() == 2 {
+  if parts.len() > 1 {
     let extract =
       parts[1].split("== endblock").collect::<Vec<&str>>();
     if extract.len() > 1 {

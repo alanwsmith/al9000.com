@@ -164,115 +164,417 @@ body {
     </noscript>
 <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
   <div class="top-nav">
-home<a href="/tools">tools</a>  </div>
+<a href="/">home</a><a href="/tools">tools</a>  </div>
 </header>
 
 
     <main class="default-wrapper default-flow">
-<hgroup>
-  <h1>Welcome to al9000</h1>
-</hgroup>
+      <hgroup>
 
-<p>
-  My main site is <a href="https://www.alanwsmith.com/">alanwsmith.com</a>.
-  It's been around for ~25 years. It's been great, but
-  I like the idea of a site that's not my name. So, I'm
-  making this one. 
-</p>
-<p>
-  I've made 
-  <a href="https://links.alanwsmith.com">a ton of sites little sites</a> 
-  that are under the alanwsmith.com domain. A big reason for that is because
-  the tools I use to build the main site weren't well set up
-  to make independent pages. I'm writing new software
-  to make that easier to do here. It'll make 
-  maintaining and navigating between different 
-  experiments a lot easier. 
-</p>
-<p>
-  The current list of stuff and statuses is below. 
-  Stop back by every now and then to check for updates. 
-  (Getting an RSS Feed in place is on the list.)
-</p>
-<p>-a<p>
-
-<h2>Done</h2>
+<h1>al9000 Documentation</h1>
+<div class="subtitle">or: how the al9000.com static site generator works</div>
+      </hgroup>
+<h2>Overview</h2>
+<p>These are my notes on the static site builder that runs
+al9000.com. I wrote it in Rust with <a href="https://docs.rs/minijinja/latest/minijinja/syntax/index.html">MiniJinja</a>
+providing the horsepower (MiniJinja being the Rust
+version of Jinja). The implementation is based
+of dozens of prior iterations I've built over
+the past several years.</p>
+<p>The overall goal is
+to remove as much friction as possible from
+making web pages. And, not just blog posts,
+but pages with any given structure or content.
+The three keys that support that are:</p>
+<ol>
+<li>
+<p>All content files are templates with the
+full range of MiniJinja features available
+for processing.</p>
+</li>
+<li>
+<p>A global <code>j</code> variable is available in each
+template that contains the metadata from
+every content file as well as the data
+from every <code>.json</code> file on the site.</p>
+</li>
+<li>
+<p>TODO: Images don't require paths. They can be
+stored anywhere in the content tree
+and accessed with their filename alone.</p>
+</li>
+</ol>
+<h2>Content Processing</h2>
 <ul>
-      <li>
-      <a href="/band-names">
-        The Name(s) of My New Band
-      </a>
-      </li>
-      <li>
-      <a href="/scratchpad">
-        Scratchpad
-      </a>
-      </li>
-      <li>
-      <a href="/unicode">
-        Unicode Characters
-      </a>
-      </li>
+<li>
+<p>Every file in the content tree can be used
+as a template that can be processed to generate
+its output. This allows the use of all MiniJinja logic,
+filters, and functions inside each content file.</p>
+</li>
+<li>
+<p>Every file is available to be included in other
+templates.</p>
+</li>
+<li>
+<p>Files with <code>.html</code>, <code>.js</code>, and <code>.txt</code> are
+passed through the transformation engine
+by default.</p>
+</li>
+<li>
+<p>Files with other extensions are copied
+without transformation by default.
+(TBD on adding the ability to transform
+individual files with a config. It's not
+something I need currently.)</p>
+</li>
+<li>
+<p>Files and with <code>.inc</code> in their names
+are available to be included but
+are not copied to the output tree.</p>
+</li>
+<li>
+<p>TODO: Use Neopolitan instead of Markdown
+for non-html content files (Markdown
+can be used via the filter listed below).</p>
+</li>
+<li>
+<p>TODO: Neopolitan files (i.e. <code>.neo</code> files)
+become <code>.html</code> files in the output tree.</p>
+</li>
+<li>
+<p>All other files keep their file extensions.</p>
+</li>
+<li>
+<p>TODO: Each file can contain an <code>id</code> value
+defined in its metadata. Other pages
+can use the id in <code>link(ID)</code> functions
+to automatically create a link to the
+page with its title and a URL that
+points to the page regardless of where
+it's moved.</p>
+</li>
 </ul>
-
-<h2>Work-In-Progress</h2>
+<h2>Templates</h2>
 <ul>
-      <li>
-      <a href="/al9000-docs">
-        al9000 Documentation
-      </a>
-      </li>
-      <li>
-      <a href="/computercraft">
-        CC:Tweaked - aka ComputerCraft
-      </a>
-      </li>
-      <li>
-      <a href="/magic-deck-builder">
-        Magic Deck Builder
-      </a>
-      </li>
-      <li>
-      <a href="/minecraft">
-        Minecraft Notes
-      </a>
-      </li>
-      <li>
-      <a href="/rust">
-        Rust Grimoire
-      </a>
-      </li>
-      <li>
-      <a href="/tools">
-        Tools
-      </a>
-      </li>
+<li>
+<p>The default MiniJinja tags are converted to
+make them easier to read/scan:</p>
+<p><code>{% %}</code> becomes <code>[! !]</code></p>
+<p><code>{{ }}</code> becomes <code>[@ @]</code></p>
+<p><code>{# #}</code> becomes <code>[# #]</code></p>
+</li>
+<li>
+<p>MiniJinja line statements are enabled with
+<code>==</code> used as the token. For example, instead of
+creating a block with:</p>
+<pre><code>[! block main !]
+content
+[! endblock !]
+</code></pre>
+<p>I can do:</p>
+<pre><code>== block main
+content
+== endblock 
+</code></pre>
+<p>which is much nicer to look at.</p>
+</li>
 </ul>
-
-<h2>Ideas</h2>
+<h2>Global Data</h2>
 <ul>
-      <li>
-      <a href="/assembly">
-        Assembly
-      </a>
-      </li>
-      <li>
-      <a href="/radio">
-        Radio
-      </a>
-      </li>
-      <li>
-      <a href="/tv">
-        TV
-      </a>
-      </li>
-      <li>
-      <a href="/voxels">
-        Voxels
-      </a>
-      </li>
+<li>
+<p>All .json files are available in the global <code>j</code>
+variable inside each template. For example, give
+a JSON file at:</p>
+<pre><code>/path/to/data.json
+</code></pre>
+<p>with the content:</p>
+<pre><code>{ &quot;alfa&quot;: &quot;bravo&quot; }
+</code></pre>
+<p>Doing this:</p>
+<pre><code>[@ j.path.to.data.alfa @]
+</code></pre>
+<p>Outputs:</p>
+<pre><code>bravo
+</code></pre>
+</li>
+<li>
+<p>The global data can be used inside control flows
+inside any content file. For example:</p>
+<pre><code>&lt;ul&gt;
+  == for key in j.path.to.data
+    &lt;li&gt;[@ key @]&lt;/li&gt;
+  == endfor
+&lt;/ul&gt;
+</code></pre>
+</li>
 </ul>
+<h2>Page Metadata</h2>
+<ul>
+<li>
+<p>TODO: Page metadata is stored in <a href="https://toml.io/en/">TMOL</a>
+format.</p>
+</li>
+<li>
+<p>TODO: The metadata is stored inside a <code>toml</code> block. e.g.</p>
+<pre><code>== block toml
+title = &quot;page title&quot;
+== endblock
+</code></pre>
+<p>This block can be stored anywhere
+in the content file.</p>
+</li>
+<li>
+<p>TODO: The metadata for each page is added to the global
+<code>j</code> variable. For example, the <code>title</code> key from the
+toml metadata in the file:</p>
+<pre><code>/some/content/file.html
+</code></pre>
+<p>is available in:</p>
+<pre><code>[@ j.some.content.file.title @]
+</code></pre>
+</li>
+<li>
+<p>TODO: The metadata is available on the page via
+a <code>d</code> variable. For example:</p>
+<pre><code>[@ d.title @]
+</code></pre>
+</li>
+</ul>
+<h2>Images</h2>
+<ul>
+<li>
+<p>TODO: Source images can be stored anywhere
+in the content tree.</p>
+</li>
+<li>
+<p>TODO: A <code>/site-images</code> is automatically
+generated to house optimized versions
+of images.</p>
+</li>
+<li>
+<p>TODO: Optimized versions of each image are
+generated in</p>
+<pre><code>  /site-images/CHAR1/CHAR2/BASENAME/FILENAME-WxH.EXT
+</code></pre>
+</li>
+<li>
+<p>TODO: An <code>img</code> function takes the basename (i.e. without an
+extension) of an image and auto generates the img tag with
+the full proper paths. For example:</p>
+<pre><code>  [@ img(&quot;example-image&quot;) @]
 
+Generates images with source sets pointing to:
+
+  /site-images/e/x/example-image/example-image-WxH.jpg
+</code></pre>
+</li>
+<li>
+<p>TODO: The <code>img</code> function takes an optional <code>alt</code> argument that
+populates the alt text for the output <code>img</code> tag.</p>
+</li>
+<li>
+<p>TODO: The <code>img</code> function takes an optional <code>classes</code> argument that
+populates the <code>class</code> attribute of the output <code>img</code> tag.</p>
+</li>
+<li>
+<p>Create function that lets you call images with
+just their file basename without the extension
+to output the optimized image set (e.g.
+calling [@ img(&quot;some-img&quot;) @]would create the image tag with the path</p>
+</li>
+</ul>
+<h2>Filters</h2>
+<ul>
+<li>
+<p>code(&quot;LANGUAGE&quot;)</p>
+<ul>
+<li>
+<p>returns a syntax highlighted
+version of the input ready to be placed inside
+an inline <code>&lt;code&gt;</code> tag.</p>
+</li>
+<li>
+<p>Highlighting is done by defining classes on
+the individual span tags</p>
+</li>
+<li>
+<p>No additional spans are added to supports line
+numbers (the highlight function does that).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>highlight(&quot;LANGUAGE&quot;)</p>
+<ul>
+<li>
+<p>returns a syntax highlighted
+version of the input ready to be placed inside
+a <code>&lt;pre&gt;&lt;code&gt;</code> block.</p>
+</li>
+<li>
+<p>The <code>LANGUAGE</code> defines which language to use
+for the highlighting.</p>
+</li>
+<li>
+<p>Highlighting is done by defining classes on
+the individual span tags</p>
+</li>
+<li>
+<p>A span tag that can be used for placing line
+numbers is prepended to each line.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>highlight_block(&quot;LANGUAGE&quot; [, CLASSES])</p>
+<ul>
+<li>
+<p>returns a syntax highlighted
+version of the input including a surrounding
+<code>&lt;pre&gt;&lt;code&gt;</code> block.</p>
+</li>
+<li>
+<p>The <code>LANGUAGE</code> defines which language to use
+for the highlighting.</p>
+</li>
+<li>
+<p>Highlighting is done by defining classes on
+the individual span tags</p>
+</li>
+<li>
+<p>A span tag that can be used for placing line
+numbers is prepended to each line.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>md</p>
+<ul>
+<li>
+<p>Passes the content through a markdown
+parser and returns the result.</p>
+</li>
+<li>
+<p>The result is a MiniJinja <code>safe</code> value
+so no additional autoescaping is
+applied.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Functions</h2>
+<ul>
+<li>
+<p>TODO: date(DATE [, FORMAT])</p>
+<ul>
+<li>
+<p>Takes an RFC 9557 date and returns
+a string with the date.</p>
+</li>
+<li>
+<p>The default format is <code>MONTH, YEAR</code>.</p>
+</li>
+<li>
+<p>The optional <code>FORMAT</code> argument
+can be passed for other formats
+(the formatting is done with
+standard date formatting tokens).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>TODO: files_in_folder(PATH [, EXT])</p>
+<pre><code>- Takes a string that's the path
+  to a folder. 
+
+- Returns an array with the full
+  paths to all files in the folder. 
+
+- If the optional `EXT` arguments
+  is passed, then only files with
+  a matching file extension are
+  returned. 
+</code></pre>
+</li>
+<li>
+<p>TODO: folders_in_folder(PATH)</p>
+<pre><code>- Takes a string that's the path
+  to a folder. 
+
+- Returns an array with the full
+  paths to all folders in the folder. 
+</code></pre>
+</li>
+<li>
+<p>TODO: link(ID, classes=&quot;&quot;)</p>
+</li>
+<li>
+<p>parent(PATH)</p>
+<pre><code>- Takes a string that's the path to
+  a file or directory.
+
+- Returns a string with the path
+  to the parent directory. 
+</code></pre>
+</li>
+<li>
+<p>TODO: parts(PATH)</p>
+<pre><code>- Takes a string that's the path to
+  a file or directory.
+
+- Returns an array of strings
+  where each element is a
+  folder in the path. 
+</code></pre>
+</li>
+<li>
+<p>TODO: stem(PATH)</p>
+<pre><code>- Takes a string that's the path
+  to a file or folder. 
+
+- If the path is a file, then
+  the file stem is returned
+  (e.g. `/some/path/alfa.txt` returns
+  `alfa`)
+
+- If the path is a folder, then
+  the folders basename is returned 
+  (i.e. parts of the names after
+  dots don't get removed so:
+  `/some/path/bravo.inc/` returns
+  `bravo.inc`)
+</code></pre>
+</li>
+</ul>
+<h2>Local Tools</h2>
+<ul>
+<li>
+<p>The generator has a built-in preview server.</p>
+</li>
+<li>
+<p>The preview server has hot-reload which triggers
+a page refresh after a rebuilt of the site.</p>
+</li>
+<li>
+<p>TODO: The preview server includes dynamic tools
+to aid in production of the site:</p>
+<ul>
+<li>
+<p>TODO: link-getter: takes a URL and returns
+a link tag whose text is pulled from the
+title of the remote page.</p>
+</li>
+<li>
+<p>TODO: Built-in File Deployer let's individual
+files and folder be deployed without
+having to screw around with git. (The
+backend is still all git based, it's
+just abstracted away.</p>
+</li>
+</ul>
+</li>
+</ul>
     </main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
