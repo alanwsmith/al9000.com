@@ -1,6 +1,6 @@
 use anyhow::Result;
 use tokio::sync::mpsc;
-use tokio::task::JoinHandle;
+use tokio::task::{JoinHandle, yield_now};
 use tokio::time::{Duration, sleep};
 
 #[tokio::main]
@@ -14,6 +14,7 @@ async fn main() -> Result<()> {
 pub async fn secondary_process(count: usize) {
   println!("{}: START", count);
   tokio::time::sleep(tokio::time::Duration::from_millis(540)).await;
+  yield_now().await;
   println!("{}: DONE", count);
 }
 

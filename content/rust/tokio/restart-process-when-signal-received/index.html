@@ -16,6 +16,23 @@
 process is running it gets killed and
 restarted. 
 
+- Note that the abort happens when an `.await`
+is reached. That happens at the lines:
+
+      tokio::time::sleep(tokio::time::Duration::from_millis(540)).await;
+
+  and
+
+      yield_now().await;
+
+  The `yield_now().await` is that I'm using in my 
+  static site builder since there's not a sleep function 
+  in it. 
+
+## References
+
+https://docs.rs/tokio/latest/tokio/task/index.html#yield_now
+
 
 
 == endfilter

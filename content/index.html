@@ -1,14 +1,21 @@
 == extends "/templates.inc/pages/home-page.html" 
 
+== block toml
+title = "Welcome to al9000"
+
+== endblock
+
 
 == block title 
 <hgroup>
-  <h1>Welcome to al9000</h1>
+  <h1>[@ d.title @]</h1>
 </hgroup>
 == endblock
 
 
+
 == block main 
+
 <p>
   My main site is <a href="https://www.alanwsmith.com/">alanwsmith.com</a>.
   It's been around for ~25 years. It's been great, but

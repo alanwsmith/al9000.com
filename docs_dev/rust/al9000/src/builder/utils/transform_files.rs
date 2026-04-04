@@ -7,6 +7,7 @@ use crate::builder::*;
 use anyhow::Result;
 use minijinja::AutoEscape;
 use minijinja::Environment;
+use minijinja::Value;
 use minijinja::context;
 use minijinja::path_loader;
 use minijinja::syntax::SyntaxConfig;
@@ -22,7 +23,7 @@ pub async fn transform_files(config: &Config) -> Result<()> {
   let json = load_json(config);
 
   for pb in content_files(config).iter() {
-    task::yield_now().await;
+    let page_data = get_page_data(&pb)?;
     let template_name =
       pb.display().to_string().replace("../../../content", "");
     let output_path =
@@ -32,6 +33,7 @@ pub async fn transform_files(config: &Config) -> Result<()> {
       ));
     match env.get_template(&template_name) {
       Ok(template) => match template.render(context!(
+        d => page_data,
         j => json,
         file_path => template_name
       )) {
@@ -48,6 +50,7 @@ pub async fn transform_files(config: &Config) -> Result<()> {
         let _ = write_file_with_mkdir(&output_path, &output);
       }
     }
+    task::yield_now().await;
   }
 
   Ok(())
