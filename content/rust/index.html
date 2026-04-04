@@ -1,23 +1,24 @@
-[!- extends "/templates.inc/pages/default.html" -!]
+== extends "/templates.inc/pages/default.html" 
 
-[! block title !]
+== block title 
 <h1>Rust Grimoire</h1>
-[! endblock !]
+== endblock 
 
-[! block main !]
-[! filter markdown|safe !]
+== block main 
+
+== filter md
 ### al9000.com 
 [static site builder](/rust/al9000/)
 ### wasm
-[! endfilter !]
+== endfilter 
 
 <ul class="d">
-[! for key in json.rust.wasm !]
-[! if json.rust.wasm[key].index !]
-<li><a href="/rust/wasm/[@ key @]/">[@ json.rust.wasm[key].index.link_title @]</a>
-[! endif !]
-[! endfor !]
+  == for key in j.rust.wasm 
+    == if j.rust.wasm[key].index 
+      <li><a href="/rust/wasm/[@ key @]/">[@ j.rust.wasm[key].index.link_title @]</a>
+    == endif 
+  == endfor 
 </ul>
 
-[! endblock !]
+== endblock
 

@@ -29,7 +29,7 @@
   <p>
 </div>
 
-[! filter markdown|safe !]
+[! filter md !]
 ## Introduction
 
 I use static site generators for 
@@ -57,10 +57,10 @@ Enter the password "wasm" here and hit
 the "Decrypt File" button to view the content. 
 
 <script type="module">
-[! include "/" + file.parent + "/script.inc.js" !]
+[! include "/" + parent(file_path) + "/script.inc.js" !]
 </script>
 
-[! include "/" + file.parent + "/html.inc.html" !]
+[! include "/" + parent(file_path) + "/html.inc.html" !]
 
 <p>
 If you got the password right (it's all lowercase), you'll
@@ -85,8 +85,8 @@ message.
   of the file to decrypt. 
 </p>
 
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/html.inc.html" !]
+[! filter highlight_block("html") !]
+[! include "/" + parent(file_path) + "/html.inc.html" !]
 [! endfilter !]
 
 <h3>JavaScript</h3>
@@ -112,10 +112,10 @@ message.
 </ol>
 
 
-[! filter block_highlight("html") !]
+[! filter highlight_block("html") !]
 <script type="module">
 
-[! include "/" + file.parent + "/script.inc.js" !]
+[! include "/" + parent(file_path) + "/script.inc.js" !]
 
 
 </script>
@@ -167,8 +167,9 @@ message.
 </p>
 
 <h4>src/lib.rs</h4>
-[! filter block_highlight("rust") !]
-[! include "/" + file.parent + "/src/lib.rs" !]
+
+[! filter highlight_block("rust") !]
+[! include "/" + parent(file_path) + "/src/lib.rs" !]
 [! endfilter !]
 
 <p>
@@ -178,8 +179,8 @@ message.
 
 
 <h4>Cargo.toml</h4>
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/Cargo.toml" !]
+[! filter highlight_block("toml") !]
+[! include "/" + parent(file_path) + "/Cargo.toml" !]
 [! endfilter !]
 
 <p>
@@ -190,8 +191,8 @@ message.
 </p>
 
 <h4>Build Script</h4>
-[! filter block_highlight("bash") !]
-[! include "/" + file.parent + "/build_release" !]
+[! filter highlight_block("bash") !]
+[! include "/" + parent(file_path) + "/build_release" !]
 [! endfilter !]
 
 <h2>Usage</h2>

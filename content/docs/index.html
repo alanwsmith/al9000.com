@@ -3,7 +3,13 @@
 == block toml
 title = "al9000 Documentation"
 subtitle = "or: how the al9000.com static site generator works"
+status = "wip"
+created = 2026-04-04T14:39:14-04:00
+updated = 2026-04-04T14:39:14-04:00
+id = "al9000-docs"
 == endblock
+
+
 
 
 == block title
@@ -235,6 +241,25 @@ would create the image tag with the path
       version of the input ready to be placed inside
       a `<pre><code>` block. 
 
+    - The `LANGUAGE` defines which language to use
+      for the highlighting. 
+
+    - Highlighting is done by defining classes on
+      the individual span tags
+
+    - A span tag that can be used for placing line
+      numbers is prepended to each line. 
+
+
+- highlight_block("LANGUAGE" [, CLASSES])
+
+    - returns a syntax highlighted
+      version of the input including a surrounding 
+      `<pre><code>` block. 
+
+    - The `LANGUAGE` defines which language to use
+      for the highlighting. 
+
     - Highlighting is done by defining classes on
       the individual span tags
 
@@ -253,22 +278,17 @@ would create the image tag with the path
 
 ## Functions
 
-- TODO: stem(PATH)
+- TODO: date(DATE [, FORMAT])
 
-      - Takes a string that's the path
-        to a file or folder. 
+    - Takes an RFC 9557 date and returns
+      a string with the date. 
 
-      - If the path is a file, then
-        the file stem is returned
-        (e.g. `/some/path/alfa.txt` returns
-        `alfa`)
+    - The default format is `MONTH, YEAR`.
 
-      - If the path is a folder, then
-        the folders basename is returned 
-        (i.e. parts of the names after
-        dots don't get removed so:
-        `/some/path/bravo.inc/` returns
-        `bravo.inc`)
+    - The optional `FORMAT` argument
+      can be passed for other formats
+      (the formatting is done with 
+      standard date formatting tokens).
 
 
 - TODO: files_in_folder(PATH [, EXT])
@@ -312,6 +332,24 @@ would create the image tag with the path
       - Returns an array of strings
         where each element is a
         folder in the path. 
+
+- TODO: stem(PATH)
+
+      - Takes a string that's the path
+        to a file or folder. 
+
+      - If the path is a file, then
+        the file stem is returned
+        (e.g. `/some/path/alfa.txt` returns
+        `alfa`)
+
+      - If the path is a folder, then
+        the folders basename is returned 
+        (i.e. parts of the names after
+        dots don't get removed so:
+        `/some/path/bravo.inc/` returns
+        `bravo.inc`)
+
 
 ## Local Tools
 

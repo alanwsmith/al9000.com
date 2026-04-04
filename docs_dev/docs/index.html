@@ -412,6 +412,32 @@ version of the input ready to be placed inside
 a <code>&lt;pre&gt;&lt;code&gt;</code> block.</p>
 </li>
 <li>
+<p>The <code>LANGUAGE</code> defines which language to use
+for the highlighting.</p>
+</li>
+<li>
+<p>Highlighting is done by defining classes on
+the individual span tags</p>
+</li>
+<li>
+<p>A span tag that can be used for placing line
+numbers is prepended to each line.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>highlight_block(&quot;LANGUAGE&quot; [, CLASSES])</p>
+<ul>
+<li>
+<p>returns a syntax highlighted
+version of the input including a surrounding
+<code>&lt;pre&gt;&lt;code&gt;</code> block.</p>
+</li>
+<li>
+<p>The <code>LANGUAGE</code> defines which language to use
+for the highlighting.</p>
+</li>
+<li>
 <p>Highlighting is done by defining classes on
 the individual span tags</p>
 </li>
@@ -439,22 +465,22 @@ applied.</p>
 <h2>Functions</h2>
 <ul>
 <li>
-<p>TODO: stem(PATH)</p>
-<pre><code>- Takes a string that's the path
-  to a file or folder. 
-
-- If the path is a file, then
-  the file stem is returned
-  (e.g. `/some/path/alfa.txt` returns
-  `alfa`)
-
-- If the path is a folder, then
-  the folders basename is returned 
-  (i.e. parts of the names after
-  dots don't get removed so:
-  `/some/path/bravo.inc/` returns
-  `bravo.inc`)
-</code></pre>
+<p>TODO: date(DATE [, FORMAT])</p>
+<ul>
+<li>
+<p>Takes an RFC 9557 date and returns
+a string with the date.</p>
+</li>
+<li>
+<p>The default format is <code>MONTH, YEAR</code>.</p>
+</li>
+<li>
+<p>The optional <code>FORMAT</code> argument
+can be passed for other formats
+(the formatting is done with
+standard date formatting tokens).</p>
+</li>
+</ul>
 </li>
 <li>
 <p>TODO: files_in_folder(PATH [, EXT])</p>
@@ -499,6 +525,24 @@ applied.</p>
 - Returns an array of strings
   where each element is a
   folder in the path. 
+</code></pre>
+</li>
+<li>
+<p>TODO: stem(PATH)</p>
+<pre><code>- Takes a string that's the path
+  to a file or folder. 
+
+- If the path is a file, then
+  the file stem is returned
+  (e.g. `/some/path/alfa.txt` returns
+  `alfa`)
+
+- If the path is a folder, then
+  the folders basename is returned 
+  (i.e. parts of the names after
+  dots don't get removed so:
+  `/some/path/bravo.inc/` returns
+  `bravo.inc`)
 </code></pre>
 </li>
 </ul>
