@@ -9,13 +9,13 @@
 
 
 [! block title !]
-<h1>static site file encryption [rust: wasm]</h1>
+<h1>encrypting static site content with wasm</h1>
 [! endblock !]
 
 
 [! block main !]
 
-[! filter markdown|safe !]
+[! filter md !]
 ## Overview
 
 This is a counterpart to 
@@ -29,8 +29,8 @@ site generation to encrypt files. For example:
 [! endfilter !]
 
 <h4>Output</h4>
-[! include "/" + file.parent + "/script.inc.html" !]
-[! include "/" + file.parent + "/html.inc.html" !]
+[! include "/" + parent(file_path) + "/script.inc.html" !]
+[! include "/" + parent(file_path) + "/html.inc.html" !]
 
 <p>
   Goal: Provide a way to encrypt and decrypt 
@@ -39,28 +39,28 @@ site generation to encrypt files. For example:
 </p>
 
 <h4>Cargo.toml</h4>
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/Cargo.toml" !]
+[! filter highlight_block("html") !]
+[! include "/" + parent(file_path) + "/Cargo.toml" !]
 [! endfilter !]
 
 <h4>src/lib.rs</h4>
-[! filter block_highlight("rust") !]
-[! include "/" + file.parent + "/src/lib.rs" !]
+[! filter highlight_block("rust") !]
+[! include "/" + parent(file_path) + "/src/lib.rs" !]
 [! endfilter !]
 
 <h4>HTML</h4>
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/html.inc.html" !]
+[! filter highlight_block("html") !]
+[! include "/" + parent(file_path) + "/html.inc.html" !]
 [! endfilter !]
 
 <h4>JavaScript</h4>
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/script.inc.html" !]
+[! filter highlight_block("html") !]
+[! include "/" + parent(file_path) + "/script.inc.html" !]
 [! endfilter !]
 
 <h4>Build Script</h4>
-[! filter block_highlight("bash") !]
-[! include "/" + file.parent + "/build_release" !]
+[! filter highlight_block("bash") !]
+[! include "/" + parent(file_path) + "/build_release" !]
 [! endfilter !]
 
 

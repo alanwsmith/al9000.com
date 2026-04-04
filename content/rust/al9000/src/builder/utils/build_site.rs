@@ -7,15 +7,14 @@ use tokio::time::{Duration, sleep};
 use tower_livereload::Reloader;
 use tracing::info;
 
-pub fn build_site(
+pub async fn build_site(
   config: Config,
   reloader: Reloader,
 ) -> Result<()> {
   info!("Building Site");
-  transform_files(&config)?;
-  copy_assets(&config);
-  info!("Build Complete");
+  transform_files(&config).await?;
+  copy_assets(&config).await?;
+  info!("Build complete. Reloading browser.");
   reloader.reload();
-  info!("Reloading Browser");
   Ok(())
 }

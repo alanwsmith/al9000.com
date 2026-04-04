@@ -12,15 +12,17 @@ use minijinja::path_loader;
 use minijinja::syntax::SyntaxConfig;
 use std::path::Path;
 use std::path::PathBuf;
+use tokio::task;
 use tracing::info;
 
-pub fn transform_files(config: &Config) -> Result<()> {
-  info!("Transforming files");
+pub async fn transform_files(config: &Config) -> Result<()> {
+  // info!("Transforming files");
 
   let env = get_env(config);
   let json = load_json(config);
 
-  content_files(config).iter().for_each(|pb| {
+  for pb in content_files(config).iter() {
+    task::yield_now().await;
     let template_name =
       pb.display().to_string().replace("../../../content", "");
     let output_path =
@@ -46,7 +48,7 @@ pub fn transform_files(config: &Config) -> Result<()> {
         let _ = write_file_with_mkdir(&output_path, &output);
       }
     }
-  });
+  }
 
   Ok(())
 }
