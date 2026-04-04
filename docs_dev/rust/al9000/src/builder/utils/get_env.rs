@@ -39,5 +39,6 @@ pub fn get_env(config: &Config) -> Environment {
   env.add_function("parent", parent);
   env.add_filter("highlight", highlight);
   env.add_filter("code", code);
+  env.add_filter("md", md);
   env
 }

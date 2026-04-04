@@ -1,0 +1,342 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml
+title = "al9000 Documentation"
+subtitle = "or: how the al9000.com static site generator works"
+== endblock
+
+
+== block title
+<h1>al9000 Documentation</h1>
+<div class="subtitle">or: how the al9000.com static site generator works</div>
+== endblock
+
+
+== block main
+== filter md
+
+## Overview
+
+These are my notes on the static site builder that runs
+al9000.com. I wrote it in Rust with [MiniJinja](https://docs.rs/minijinja/latest/minijinja/syntax/index.html) 
+providing the horsepower (MiniJinja being the Rust
+version of Jinja). The implementation is based
+of dozens of prior iterations I've built over
+the past several years. 
+
+The overall goal is 
+to remove as much friction as possible from
+making web pages. And, not just blog posts, 
+but pages with any given structure or content. 
+The three keys that support that are:
+
+1. All content files are templates with the
+full range of MiniJinja features available
+for processing. 
+
+2. A global `j` variable is available in each
+template that contains the metadata from 
+every content file as well as the data
+from every `.json` file on the site. 
+
+3. TODO: Images don't require paths. They can be
+stored anywhere in the content tree
+and accessed with their filename alone. 
+
+
+## Content Processing
+
+- Every file in the content tree can be used
+as a template that can be processed to generate
+its output. This allows the use of all MiniJinja logic, 
+filters, and functions inside each content file. 
+
+- Every file is available to be included in other
+templates. 
+
+- Files with `.html`, `.js`, and `.txt` are
+passed through the transformation engine 
+by default. 
+
+- Files with other extensions are copied
+without transformation by default. 
+(TBD on adding the ability to transform 
+individual files with a config. It's not
+something I need currently.) 
+
+- Files and with `.inc` in their names
+are available to be included but
+are not copied to the output tree. 
+
+- TODO: Use Neopolitan instead of Markdown 
+for non-html content files (Markdown 
+can be used via the filter listed below).
+
+- TODO: Neopolitan files (i.e. `.neo` files) 
+become `.html` files in the output tree. 
+
+- All other files keep their file extensions.
+
+- TODO: Each file can contain an `id` value
+defined in its metadata. Other pages
+can use the id in `link(ID)` functions
+to automatically create a link to the
+page with its title and a URL that
+points to the page regardless of where
+it's moved. 
+
+
+
+## Templates
+
+- The default MiniJinja tags are converted to
+make them easier to read/scan:
+
+    `{% %}` becomes `[! raw !][! !][! endraw !]`
+
+    `{{ }}` becomes `[! raw !][@ @][! endraw !]`
+    
+    `{# #}` becomes `[! raw !][# #][! endraw !]`
+
+- MiniJinja line statements are enabled with
+`==` used as the token. For example, instead of
+creating a block with:
+
+      [@ "" @][! raw !][! block main !]
+      content
+      [! endblock !][! endraw !]
+
+    I can do:
+
+      [@ "" @][! raw !]== block main
+      content
+      == endblock [! endraw !]
+
+    which is much nicer to look at. 
+
+
+## Global Data
+
+- All .json files are available in the global `j` 
+variable inside each template. For example, give 
+a JSON file at:
+
+      /path/to/data.json
+
+  with the content:
+
+      { "alfa": "bravo" }
+
+  Doing this:
+
+      [@ "" @][! raw !][@ j.path.to.data.alfa @][! endraw !][@ "" @]
+
+  Outputs:
+
+      bravo
+
+- The global data can be used inside control flows 
+inside any content file. For example:
+
+      [@""@][!raw!]<ul>
+        == for key in j.path.to.data
+          <li>[@ key @]</li>
+        == endfor
+      </ul>[!endraw!][@""@]
+  
+
+
+## Page Metadata
+
+- TODO: Page metadata is stored in [TMOL](https://toml.io/en/) 
+format.
+
+- TODO: The metadata is stored inside a `toml` block. e.g.
+
+      [@ "" @][! raw !]== block toml
+      title = "page title"
+      == endblock[! endraw !][@ "" @]
+
+    This block can be stored anywhere
+    in the content file. 
+
+- TODO: The metadata for each page is added to the global
+`j` variable. For example, the `title` key from the
+toml metadata in the file:
+
+      /some/content/file.html
+
+    is available in:
+
+      [@""@][!raw!][@ j.some.content.file.title @][!endraw!][@""@]
+
+- TODO: The metadata is available on the page via
+a `d` variable. For example:
+
+      [@""@][!raw!][@ d.title @][!endraw!][@""@]
+
+
+## Images
+
+- TODO: Source images can be stored anywhere
+in the content tree. 
+
+- TODO: A `/site-images` is automatically 
+generated to house optimized versions
+of images.
+
+- TODO: Optimized versions of each image are
+generated in 
+
+        /site-images/CHAR1/CHAR2/BASENAME/FILENAME-WxH.EXT
+
+- TODO: An `img` function takes the basename (i.e. without an
+extension) of an image and auto generates the img tag with
+the full proper paths. For example: 
+
+        [@ ""@][! raw !][@ img("example-image") @][! endraw !][@ "" @]
+
+      Generates images with source sets pointing to:
+
+        /site-images/e/x/example-image/example-image-WxH.jpg
+
+- TODO: The `img` function takes an optional `alt` argument that
+populates the alt text for the output `img` tag. 
+
+- TODO: The `img` function takes an optional `classes` argument that
+populates the `class` attribute of the output `img` tag. 
+
+
+- Create function that lets you call images with 
+just their file basename without the extension
+to output the optimized image set (e.g. 
+calling [! raw !][@ img("some-img") @][! endraw !]
+would create the image tag with the path
+
+
+## Filters
+
+- code("LANGUAGE")
+
+    - returns a syntax highlighted
+      version of the input ready to be placed inside
+      an inline `<code>` tag. 
+
+    - Highlighting is done by defining classes on
+      the individual span tags
+
+    - No additional spans are added to supports line
+      numbers (the highlight function does that).
+
+
+- highlight("LANGUAGE")
+
+    - returns a syntax highlighted
+      version of the input ready to be placed inside
+      a `<pre><code>` block. 
+
+    - Highlighting is done by defining classes on
+      the individual span tags
+
+    - A span tag that can be used for placing line
+      numbers is prepended to each line. 
+
+- md
+
+    - Passes the content through a markdown
+      parser and returns the result. 
+
+    - The result is a MiniJinja `safe` value
+      so no additional autoescaping is
+      applied. 
+
+
+## Functions
+
+- TODO: stem(PATH)
+
+      - Takes a string that's the path
+        to a file or folder. 
+
+      - If the path is a file, then
+        the file stem is returned
+        (e.g. `/some/path/alfa.txt` returns
+        `alfa`)
+
+      - If the path is a folder, then
+        the folders basename is returned 
+        (i.e. parts of the names after
+        dots don't get removed so:
+        `/some/path/bravo.inc/` returns
+        `bravo.inc`)
+
+
+- TODO: files_in_folder(PATH [, EXT])
+
+      - Takes a string that's the path
+        to a folder. 
+
+      - Returns an array with the full
+        paths to all files in the folder. 
+
+      - If the optional `EXT` arguments
+        is passed, then only files with
+        a matching file extension are
+        returned. 
+
+
+- TODO: folders_in_folder(PATH)
+
+      - Takes a string that's the path
+        to a folder. 
+
+      - Returns an array with the full
+        paths to all folders in the folder. 
+
+
+- TODO: link(ID, classes="")
+
+- parent(PATH)
+
+      - Takes a string that's the path to
+        a file or directory.
+
+      - Returns a string with the path
+        to the parent directory. 
+
+- TODO: parts(PATH)
+
+      - Takes a string that's the path to
+        a file or directory.
+
+      - Returns an array of strings
+        where each element is a
+        folder in the path. 
+
+## Local Tools
+
+- The generator has a built-in preview server.
+
+- The preview server has hot-reload which triggers
+a page refresh after a rebuilt of the site. 
+
+- TODO: The preview server includes dynamic tools
+to aid in production of the site:
+
+    - TODO: link-getter: takes a URL and returns
+      a link tag whose text is pulled from the
+      title of the remote page. 
+
+    - TODO: Built-in File Deployer let's individual
+      files and folder be deployed without
+      having to screw around with git. (The
+      backend is still all git based, it's 
+      just abstracted away. 
+
+
+
+
+
+== endfilter
+== endblock
+

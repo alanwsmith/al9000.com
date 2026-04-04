@@ -13,6 +13,7 @@ axum = "0.8.8"
 chrono = "0.4.44"
 futures = "0.3.32"
 itertools = "0.14.0"
+markdown = "1.0.0"
 minijinja = { version = "2.19.0", features = ["debug", "custom_syntax", "json", "loader"] }
 notify = "8.2.0"
 notify-debouncer-full = "0.7.0"

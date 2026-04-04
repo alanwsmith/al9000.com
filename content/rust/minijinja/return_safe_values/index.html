@@ -1,0 +1,14 @@
+== extends "/templates.inc/pages/rust.html"
+
+
+== block main 
+== filter md
+
+- Show how to return a Value with
+`Value::from_safe_strings` so you can use
+filters without having to add `|safe` to 
+them (e.g. `filter md` instead of `filter md|safe`)
+
+== endfilter
+
+== endblock

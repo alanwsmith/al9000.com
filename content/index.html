@@ -37,7 +37,15 @@
   == for key in j 
     == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "done" 
       <li>
-      <a href="/[@ key @]">[@ j[key].index.link_title @]</a>
+      <a href="/[@ key @]">
+      == if j[key].index.link_title 
+        [@ j[key].index.link_title @]
+      == elif j[key].index.title
+        [@ j[key].index.title @]
+      == else
+        [no title]
+      == endif
+      </a>
       </li>
     == endif 
   == endfor 
@@ -48,7 +56,15 @@
   == for key in j 
     == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "wip" 
       <li>
-      <a href="/[@ key @]">[@ j[key].index.link_title @]</a>
+      <a href="/[@ key @]">
+      == if j[key].index.link_title 
+        [@ j[key].index.link_title @]
+      == elif j[key].index.title
+        [@ j[key].index.title @]
+      == else
+        [no title]
+      == endif
+      </a>
       </li>
     == endif 
   == endfor 
@@ -59,7 +75,15 @@
   == for key in j 
     == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "idea" 
       <li>
-      <a href="/[@ key @]">[@ j[key].index.link_title @]</a>
+      <a href="/[@ key @]">
+      == if j[key].index.link_title 
+        [@ j[key].index.link_title @]
+      == elif j[key].index.title
+        [@ j[key].index.title @]
+      == else
+        [no title]
+      == endif
+      </a>
       </li>
     == endif 
   == endfor 
