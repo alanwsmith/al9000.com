@@ -1,7 +1,10 @@
 #![allow(unused)]
 use crate::Config;
+use crate::builder::content_files;
+use crate::builder::get_page_data;
 use crate::builder::json_files;
 use crate::builder::utils::DataNode;
+use anyhow::Result;
 use itertools::Itertools;
 use minijinja::Value;
 use std::fs;
@@ -9,8 +12,10 @@ use std::path::Path;
 use std::path::PathBuf;
 use walkdir::WalkDir;
 
-pub fn load_json(config: &Config) -> Value {
+// Loads both JSON and TOML data.
+pub fn load_json(config: &Config) -> Result<Value> {
   let mut data = DataNode::new();
+
   for json_file in json_files(config) {
     match fs::read_to_string(&json_file) {
       Ok(text) => match serde_json::from_str::<Value>(&text) {
@@ -24,7 +29,18 @@ pub fn load_json(config: &Config) -> Value {
       Err(e) => (),
     }
   }
-  Value::from_serialize(data)
+
+  for content_file in content_files(config).iter() {
+    let page_data = get_page_data(content_file)?;
+    if page_data != Value::from_serialize("") {
+      let shortened_path: &PathBuf =
+        &content_file.components().skip(4).collect();
+      dbg!(&shortened_path);
+      data.insert(shortened_path, page_data);
+    }
+  }
+
+  Ok(Value::from_serialize(data))
 
   // WalkDir::new(config.content_dir())
   //   .into_iter()

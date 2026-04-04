@@ -14,9 +14,9 @@ pub fn get_page_data(pb: &Path) -> Result<Value> {
       let value = extract[0].parse::<Table>()?;
       Ok(Value::from_serialize(value))
     } else {
-      Ok(Value::from_serialize("{asdf}"))
+      Ok(Value::from_serialize(""))
     }
   } else {
-    Ok(Value::from_serialize("{}"))
+    Ok(Value::from_serialize(""))
   }
 }

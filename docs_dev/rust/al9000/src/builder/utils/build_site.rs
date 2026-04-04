@@ -12,7 +12,12 @@ pub async fn build_site(
   reloader: Reloader,
 ) -> Result<()> {
   info!("Building Site");
-  transform_files(&config).await?;
+  match transform_files(&config).await {
+    Ok(_) => (),
+    Err(e) => {
+      dbg!(e);
+    }
+  }
   copy_assets(&config).await?;
   info!("Build complete. Reloading browser.");
   reloader.reload();
