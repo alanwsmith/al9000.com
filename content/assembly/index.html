@@ -1,10 +1,12 @@
 [!- extends "/templates.inc/pages/default.html" -!]
 
-[! block title !]
-<h1>assembly</h1>
-[! endblock !]
+== block toml
+title = "Assembly"
+status = "idea"
+== endblock 
 
-[! block header !]
+
+== block header 
 <style>
 .players {
   display: grid;
@@ -12,17 +14,21 @@
   gap: 0.6rem;
 }
 </style>
-[! endblock !]
+== endblock
 
-[! block main!]
-[! filter md !]
+
+
+== block main
+== filter md
+
 The idea is to make a page with a bunch of 
 instances of this video clipping it
 out at different times similar to 
 the <a href="https://multi-player.alanwsmith.com/">multi-player project</a>.
 
 https://www.youtube.com/watch?v=kILYJ0qFhHM
-[! endfilter !]
+
+== endfilter
 
 <bitty-8 data-connect="/assembly/bit.js"></bitty-8>
 <div class="playerWrapper">
@@ -30,10 +36,10 @@ https://www.youtube.com/watch?v=kILYJ0qFhHM
   <div class="players" data-r="playerEls" data-level="1"></div>
 </div>
 
-[! endblock !]
+== endblock 
 
 
-[! block templates !]
+== block templates 
 <script type="application/json" id="timers">
 {
   "times": [
@@ -195,4 +201,5 @@ https://www.youtube.com/watch?v=kILYJ0qFhHM
 }
 </script>
 
-[! endblock !]
+== endblock 
+

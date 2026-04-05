@@ -1,20 +1,30 @@
-[!- extends "/templates.inc/wrappers/default.html" -!]
+== extends "/templates.inc/wrappers/default.html" 
 
-[!- block body -!]
+== block body
+== include "/templates.inc/includes/header.html"
 
-    [! include "/templates.inc/includes/header.html" !]
+<main class="default-wrapper default-flow">
 
-    <main class="default-wrapper default-flow">
-      <hgroup>
-      [! block title !][! endblock !]
-      </hgroup>
-      [! block main !][! endblock !]
-    </main>
+== block title
+  <hgroup>
+    == if p.title
+      <h1>[@ p.title @]</h1>
+      == if p.subtitle
+        <div class="subtitle">[@ p.subtitle @]</div>
+      == endif
+    == endif
+  </hgroup>
+== endblock
 
-    [! include "/templates.inc/includes/footer.html" !]
+== block main
+== endblock
 
-    [! block templates !]
-    [! endblock !]
+</main>
 
-[!- endblock -!]
+== include "/templates.inc/includes/footer.html"
+
+== block templates
+== endblock
+
+== endblock
 

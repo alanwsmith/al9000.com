@@ -5,6 +5,7 @@ export const b = {
 const names = `
 T Minus Zero
 Code Dreamer
+The Scottish Play
 The New Shoe Ankle Blisters
 Snake River Canyon
 Previous Preface
@@ -246,7 +247,7 @@ Constant Crimes
 Commie Bullshit
 Righteous Hack
 Invisible Goldfish
-Giant Space Hamster
+The Giant Space Hamster
 Danger Piñata 
 Specific North West
 Anime Voice
@@ -454,7 +455,7 @@ The Better Said
 The Optimistic
 Chaos Fans
 Conspiracy Mechanics
-Dark Sometimes
+The Dark Sometimes
 The Dead Jellies
 Detritus
 Diacritic Symbiosis

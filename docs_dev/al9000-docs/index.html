@@ -168,15 +168,17 @@ body {
 </header>
 
 
-    <main class="default-wrapper default-flow">
-      <hgroup>
+<main class="default-wrapper default-flow">
 
-<h1>al9000 Documentation</h1>
-<div class="subtitle">or: how the al9000.com static site generator works</div>
-      </hgroup>
+  <hgroup>
+      <h1>al9000 Documentation</h1>
+        <div class="subtitle">Or, how the al9000.com static site generator works</div>
+  </hgroup>
+
 <h2>Overview</h2>
 <p>These are my notes on the static site builder that runs
-al9000.com. I wrote it in Rust with <a href="https://docs.rs/minijinja/latest/minijinja/syntax/index.html">MiniJinja</a>
+al9000.com. I wrote it in Rust with
+<a href="https://docs.rs/minijinja/latest/minijinja/syntax/index.html">MiniJinja</a>
 providing the horsepower (MiniJinja being the Rust
 version of Jinja). The implementation is based
 of dozens of prior iterations I've built over
@@ -308,15 +310,19 @@ inside any content file. For example:</p>
 &lt;/ul&gt;
 </code></pre>
 </li>
+<li>
+<p>Page metadata from each page is available
+as well (see below);</p>
+</li>
 </ul>
 <h2>Page Metadata</h2>
 <ul>
 <li>
-<p>TODO: Page metadata is stored in <a href="https://toml.io/en/">TMOL</a>
+<p>Page metadata is stored in <a href="https://toml.io/en/">TMOL</a>
 format.</p>
 </li>
 <li>
-<p>TODO: The metadata is stored inside a <code>toml</code> block. e.g.</p>
+<p>The metadata is stored inside a <code>toml</code> block. e.g.</p>
 <pre><code>== block toml
 title = &quot;page title&quot;
 == endblock
@@ -325,7 +331,7 @@ title = &quot;page title&quot;
 in the content file.</p>
 </li>
 <li>
-<p>TODO: The metadata for each page is added to the global
+<p>The metadata for each page is added to the global
 <code>j</code> variable. For example, the <code>title</code> key from the
 toml metadata in the file:</p>
 <pre><code>/some/content/file.html
@@ -335,7 +341,7 @@ toml metadata in the file:</p>
 </code></pre>
 </li>
 <li>
-<p>TODO: The metadata is available on the page via
+<p>The metadata is available on the page via
 a <code>d</code> variable. For example:</p>
 <pre><code>[@ d.title @]
 </code></pre>
@@ -575,7 +581,33 @@ just abstracted away.</p>
 </ul>
 </li>
 </ul>
-    </main>
+<h2>Standard Metadata</h2>
+<p>Standard page metadata tags I'm using:</p>
+<ul>
+<li>
+<p>link_text</p>
+</li>
+<li>
+<p>created</p>
+</li>
+<li>
+<p>subtitle</p>
+</li>
+<li>
+<p>status</p>
+</li>
+<li>
+<p>title</p>
+</li>
+<li>
+<p>updated</p>
+</li>
+<li>
+<p>tags</p>
+</li>
+</ul>
+
+</main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
   <div class="small-font-size text-align-center">
@@ -586,6 +618,7 @@ just abstracted away.</p>
   </div>
 
 </footer>
+
 
     <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
   </body>

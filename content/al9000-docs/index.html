@@ -2,19 +2,11 @@
 
 == block toml
 title = "al9000 Documentation"
-subtitle = "or: how the al9000.com static site generator works"
+subtitle = "Or, how the al9000.com static site generator works"
 status = "wip"
 created = 2026-04-04T14:39:14-04:00
 updated = 2026-04-04T14:39:14-04:00
 id = "al9000-docs"
-== endblock
-
-
-
-== block title
-
-<h1>al9000 Documentation</h1>
-<div class="subtitle">or: how the al9000.com static site generator works</div>
 == endblock
 
 
@@ -23,9 +15,9 @@ id = "al9000-docs"
 
 ## Overview
 
-
 These are my notes on the static site builder that runs
-al9000.com. I wrote it in Rust with [MiniJinja](https://docs.rs/minijinja/latest/minijinja/syntax/index.html) 
+al9000.com. I wrote it in Rust with 
+[MiniJinja](https://docs.rs/minijinja/latest/minijinja/syntax/index.html) 
 providing the horsepower (MiniJinja being the Rust
 version of Jinja). The implementation is based
 of dozens of prior iterations I've built over
@@ -151,14 +143,15 @@ inside any content file. For example:
         == endfor
       </ul>[!endraw!][@""@]
   
-
+- Page metadata from each page is available
+as well (see below);
 
 ## Page Metadata
 
-- TODO: Page metadata is stored in [TMOL](https://toml.io/en/) 
+- Page metadata is stored in [TMOL](https://toml.io/en/) 
 format.
 
-- TODO: The metadata is stored inside a `toml` block. e.g.
+- The metadata is stored inside a `toml` block. e.g.
 
       [@ "" @][! raw !]== block toml
       title = "page title"
@@ -167,7 +160,7 @@ format.
     This block can be stored anywhere
     in the content file. 
 
-- TODO: The metadata for each page is added to the global
+- The metadata for each page is added to the global
 `j` variable. For example, the `title` key from the
 toml metadata in the file:
 
@@ -177,7 +170,7 @@ toml metadata in the file:
 
       [@""@][!raw!][@ j.some.content.file.title @][!endraw!][@""@]
 
-- TODO: The metadata is available on the page via
+- The metadata is available on the page via
 a `d` variable. For example:
 
       [@""@][!raw!][@ d.title @][!endraw!][@""@]
@@ -371,6 +364,19 @@ to aid in production of the site:
       having to screw around with git. (The
       backend is still all git based, it's 
       just abstracted away. 
+
+
+## Standard Metadata
+
+Standard page metadata tags I'm using:
+
+- link_text
+- created
+- subtitle
+- status
+- title
+- updated
+- tags
 
 
 
