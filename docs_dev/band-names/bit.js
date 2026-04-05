@@ -61,7 +61,7 @@ Titans Of The Past
 Ludicrous Speed
 Armed with iPads
 Date Time Zulu
-The API Explorers
+API
 The Hermit Tendencies
 Razor Blade Apple
 Panic Sync

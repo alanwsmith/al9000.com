@@ -36,11 +36,12 @@ pub fn get_env(config: &Config) -> Environment {
     }
   });
   env.set_loader(path_loader(config.content_dir()));
-  env.add_function("parent", parent);
-  env.add_function("folders_in_folder", folders_in_folder);
+  env.add_filter("code", code);
   env.add_filter("highlight", highlight);
   env.add_filter("highlight_block", highlight_block);
-  env.add_filter("code", code);
   env.add_filter("md", md);
+  env.add_function("files_in_folder", files_in_folder);
+  env.add_function("folders_in_folder", folders_in_folder);
+  env.add_function("parent", parent);
   env
 }

@@ -472,6 +472,14 @@ applied.</p>
 <h2>Functions</h2>
 <ul>
 <li>
+<p>TODO: data(path)</p>
+<ul>
+<li>Returns the json/toml data for the
+given path by effectively turning
+<code>/some/path/file.html</code> into <code>j.some.path.file</code></li>
+</ul>
+</li>
+<li>
 <p>TODO: date(DATE [, FORMAT])</p>
 <ul>
 <li>
@@ -490,67 +498,89 @@ standard date formatting tokens).</p>
 </ul>
 </li>
 <li>
-<p>TODO: files_in_folder(PATH [, EXT])</p>
-<pre><code>- Takes a string that's the path
-  to a folder. 
-
-- Returns an array with the full
-  paths to all files in the folder. 
-
-- If the optional `EXT` arguments
-  is passed, then only files with
-  a matching file extension are
-  returned. 
-</code></pre>
+<p>files_in_folder(PATH [, EXT])</p>
+<ul>
+<li>
+<p>Takes a string that's the path
+to a folder.</p>
 </li>
 <li>
-<p>TODO: folders_in_folder(PATH)</p>
-<pre><code>- Takes a string that's the path
-  to a folder. 
-
-- Returns an array with the full
-  paths to all folders in the folder. 
-</code></pre>
+<p>Returns an array with the full
+paths to all files in the folder.</p>
+</li>
+<li>
+<p>If the optional <code>EXT</code> arguments
+is passed, then only files with
+a matching file extension are
+returned.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>folders_in_folder(PATH)</p>
+<ul>
+<li>
+<p>Takes a string that's the path
+to a folder.</p>
+</li>
+<li>
+<p>Returns an array with the full
+paths to all folders in the folder.</p>
+</li>
+</ul>
 </li>
 <li>
 <p>TODO: link(ID, classes=&quot;&quot;)</p>
 </li>
 <li>
 <p>parent(PATH)</p>
-<pre><code>- Takes a string that's the path to
-  a file or directory.
-
-- Returns a string with the path
-  to the parent directory. 
-</code></pre>
+<ul>
+<li>
+<p>Takes a string that's the path to
+a file or directory.</p>
+</li>
+<li>
+<p>Returns a string with the path
+to the parent directory.</p>
+</li>
+</ul>
 </li>
 <li>
 <p>TODO: parts(PATH)</p>
-<pre><code>- Takes a string that's the path to
-  a file or directory.
-
-- Returns an array of strings
-  where each element is a
-  folder in the path. 
-</code></pre>
+<ul>
+<li>
+<p>Takes a string that's the path to
+a file or directory.</p>
+</li>
+<li>
+<p>Returns an array of strings
+where each element is a
+folder in the path.</p>
+</li>
+</ul>
 </li>
 <li>
 <p>TODO: stem(PATH)</p>
-<pre><code>- Takes a string that's the path
-  to a file or folder. 
-
-- If the path is a file, then
-  the file stem is returned
-  (e.g. `/some/path/alfa.txt` returns
-  `alfa`)
-
-- If the path is a folder, then
-  the folders basename is returned 
-  (i.e. parts of the names after
-  dots don't get removed so:
-  `/some/path/bravo.inc/` returns
-  `bravo.inc`)
-</code></pre>
+<ul>
+<li>
+<p>Takes a string that's the path
+to a file or folder.</p>
+</li>
+<li>
+<p>If the path is a file, then
+the file stem is returned
+(e.g. <code>/some/path/alfa.txt</code> returns
+<code>alfa</code>)</p>
+</li>
+<li>
+<p>If the path is a folder, then
+the folders basename is returned
+(i.e. parts of the names after
+dots don't get removed so:
+<code>/some/path/bravo.inc/</code> returns
+<code>bravo.inc</code>)</p>
+</li>
+</ul>
 </li>
 </ul>
 <h2>Local Tools</h2>
@@ -585,25 +615,28 @@ just abstracted away.</p>
 <p>Standard page metadata tags I'm using:</p>
 <ul>
 <li>
+<p>created</p>
+</li>
+<li>
+<p>id</p>
+</li>
+<li>
 <p>link_text</p>
 </li>
 <li>
-<p>created</p>
+<p>status</p>
 </li>
 <li>
 <p>subtitle</p>
 </li>
 <li>
-<p>status</p>
+<p>tags</p>
 </li>
 <li>
 <p>title</p>
 </li>
 <li>
 <p>updated</p>
-</li>
-<li>
-<p>tags</p>
 </li>
 </ul>
 

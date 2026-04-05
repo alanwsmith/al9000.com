@@ -19,7 +19,6 @@ pub fn folders_in_folder(path: &str) -> Vec<String> {
         .strip_prefix("../../../../content")
         .expect("could not remove 'content' from path")
         .to_string_lossy()
-        .to_string()
     )
   })
   .collect::<Vec<_>>()

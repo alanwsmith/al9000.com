@@ -13,6 +13,8 @@ id = "al9000-docs"
 == block main
 == filter md
 
+
+
 ## Overview
 
 These are my notes on the static site builder that runs
@@ -272,77 +274,83 @@ would create the image tag with the path
 
 ## Functions
 
+- TODO: data(path) 
+
+  - Returns the json/toml data for the
+    given path by effectively turning 
+    `/some/path/file.html` into `j.some.path.file`
+
 - TODO: date(DATE [, FORMAT])
 
-    - Takes an RFC 9557 date and returns
-      a string with the date. 
+  - Takes an RFC 9557 date and returns
+    a string with the date. 
 
-    - The default format is `MONTH, YEAR`.
+  - The default format is `MONTH, YEAR`.
 
-    - The optional `FORMAT` argument
-      can be passed for other formats
-      (the formatting is done with 
-      standard date formatting tokens).
-
-
-- TODO: files_in_folder(PATH [, EXT])
-
-      - Takes a string that's the path
-        to a folder. 
-
-      - Returns an array with the full
-        paths to all files in the folder. 
-
-      - If the optional `EXT` arguments
-        is passed, then only files with
-        a matching file extension are
-        returned. 
+  - The optional `FORMAT` argument
+    can be passed for other formats
+    (the formatting is done with 
+    standard date formatting tokens).
 
 
-- TODO: folders_in_folder(PATH)
+- files_in_folder(PATH [, EXT])
 
-      - Takes a string that's the path
-        to a folder. 
+  - Takes a string that's the path
+    to a folder. 
 
-      - Returns an array with the full
-        paths to all folders in the folder. 
+  - Returns an array with the full
+    paths to all files in the folder. 
+
+  - If the optional `EXT` arguments
+    is passed, then only files with
+    a matching file extension are
+    returned. 
+
+
+- folders_in_folder(PATH)
+
+  - Takes a string that's the path
+    to a folder. 
+
+  - Returns an array with the full
+    paths to all folders in the folder. 
 
 
 - TODO: link(ID, classes="")
 
 - parent(PATH)
 
-      - Takes a string that's the path to
-        a file or directory.
+  - Takes a string that's the path to
+    a file or directory.
 
-      - Returns a string with the path
-        to the parent directory. 
+  - Returns a string with the path
+    to the parent directory. 
 
 - TODO: parts(PATH)
 
-      - Takes a string that's the path to
-        a file or directory.
+  - Takes a string that's the path to
+    a file or directory.
 
-      - Returns an array of strings
-        where each element is a
-        folder in the path. 
+  - Returns an array of strings
+    where each element is a
+    folder in the path. 
 
 - TODO: stem(PATH)
 
-      - Takes a string that's the path
-        to a file or folder. 
+  - Takes a string that's the path
+    to a file or folder. 
 
-      - If the path is a file, then
-        the file stem is returned
-        (e.g. `/some/path/alfa.txt` returns
-        `alfa`)
+  - If the path is a file, then
+    the file stem is returned
+    (e.g. `/some/path/alfa.txt` returns
+    `alfa`)
 
-      - If the path is a folder, then
-        the folders basename is returned 
-        (i.e. parts of the names after
-        dots don't get removed so:
-        `/some/path/bravo.inc/` returns
-        `bravo.inc`)
+  - If the path is a folder, then
+    the folders basename is returned 
+    (i.e. parts of the names after
+    dots don't get removed so:
+    `/some/path/bravo.inc/` returns
+    `bravo.inc`)
 
 
 ## Local Tools
@@ -370,15 +378,14 @@ to aid in production of the site:
 
 Standard page metadata tags I'm using:
 
-- link_text
 - created
-- subtitle
+- id
+- link_text
 - status
+- subtitle
+- tags
 - title
 - updated
-- tags
-
-
 
 
 
