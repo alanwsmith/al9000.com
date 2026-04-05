@@ -8,6 +8,10 @@ status = "wip"
 
 == block main 
 
+== for folder in folders_in_folder(parent(file_path)) 
+[@ folder @]
+== endfor 
+
 == filter md
 ### al9000.com 
 [static site builder](/rust/al9000/)
