@@ -8,9 +8,15 @@ status = "wip"
 
 == block main 
 
+
+<ul>
 == for folder in folders_in_folder(parent(file_path)) 
-[@ folder @]
-== endfor 
+  <li>
+    [@ stem(folder) @]
+  </li>
+== endfor
+</ul>
+
 
 == filter md
 ### al9000.com 

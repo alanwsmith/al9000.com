@@ -43,5 +43,7 @@ pub fn get_env(config: &Config) -> Environment {
   env.add_function("files_in_folder", files_in_folder);
   env.add_function("folders_in_folder", folders_in_folder);
   env.add_function("parent", parent);
+  env.add_function("parts", parts);
+  env.add_function("stem", stem);
   env
 }
