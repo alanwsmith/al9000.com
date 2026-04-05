@@ -9,14 +9,30 @@ status = "wip"
 == block main 
 
 
+
 <ul>
 == for folder in folders_in_folder(parent(file_path)) 
   <li>
     [@ stem(folder) @]
+    <ul>
+      == for subfolder in folders_in_folder(folder) 
+      <li>[@ subfolder @]</li>
+      [#
+        == if "index" in j.rust[stem(folder)]
+      #]
+      <li><pre>[@ j.rust[stem(folder)]|tojson(true) @]</pre></li>
+      [#
+        == endif
+      #]
+      == endfor
+    </ul>
   </li>
 == endfor
 </ul>
 
+<pre class="code-block">
+[@ j.rust|tojson(true) @]
+</pre>
 
 == filter md
 ### al9000.com 
