@@ -1,10 +1,43 @@
+[!- set og_url -!]
+[!- if file_path == "/index.html" -!]
+https://al9000.com/
+[!- elif stem(file_path) == "index" -!]
+https://al9000.com[@ parent(file_path) @]/
+[!- else -!]
+https://al9000.com[@ file_path @]
+[!- endif -!]
+[!- endset -!]
+
+
+[!- set og_image -!]
+https://al9000.com/images/open-graph/default.jpg
+[!- endset -!]
+
+
+[!- set page_title !]
+  [!- if p.title !]
+  [@- p.title -@]
+  [!- else -!]
+  [@- j.config.site.title -@]
+  [!- endif -!]
+[!- endset -!]
+
+
+[!- set page_description -!]
+[!- if p.description -!]
+[@ p.description @]
+[!- else -!]
+a post from alan w. smith
+[!- endif -!]
+[!- endset -!]
+
 
 <link rel="shortcut icon" href="/favicon.ico" />
-<title>[@ j.config.site.title @]</title>
-<meta property="og:title" content="[@ j.config.site.title @]" />
-<meta name="description" content="[@ j.config.site.description @]" />
-<meta property="og:description" content="[@ j.config.site.description @]" />
-<meta property="og:type" content="website" />
+<title>[@ page_title @]</title>
+<meta property="og:title" content="[@ page_title @]" />
+<meta name="description" content="[@ page_description @]" />
+<meta property="og:description" content="[@ page_description @]" />
+<meta property="og:type" content="article" />
 <meta property="og:url" content="[@ og_url @]" />
 <meta property="og:image" content="[@ og_image @]" />
 <link rel="apple-touch-icon" sizes="180x180" href="[@ j.config.site.favicon_root @]/apple-touch-icon.png" />
