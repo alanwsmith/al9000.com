@@ -13,6 +13,7 @@ pub fn date(
     .to_string()
     .parse::<DateTime<Local>>()
   {
+    // TODO: Add ability to pass format to use.
     Ok(dt) => {
       Some(Value::from_safe_string(dt.format("%B %Y").to_string()))
     }

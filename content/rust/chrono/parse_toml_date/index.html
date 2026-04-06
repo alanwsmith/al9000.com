@@ -1,11 +1,35 @@
 == extends "/templates.inc/pages/default.html"
 
 == block toml
-title = "Parse a toml Date with chrono"
+title = "Parse a toml Date with chrono in Rust"
+created = 2026-04-06T14:42:12-04:00
 == endblock
 
 == block main 
 
+<h2>Overview</h2>
+
+<p>
+This is how I'm parsing dates that come in 
+from TOML with chrono for formatting.
+</p>
+
+
+<h3>Rust</h3>
+
+[! filter highlight_block("toml", "Cargo.toml") !]
+[! include parent(file_path) + "/Cargo.toml" !]
+[! endfilter !]
+
+[! filter highlight_block("rust", "src/main.rs") !]
+[! include parent(file_path) + "/src/main.rs" !]
+[! endfilter !]
+
+<h3>Output</h3>
+
+[! filter output_block() !]
+[! include parent(file_path) + "/output.txt" !]
+[! endfilter !]
 
 
 == endblock 
