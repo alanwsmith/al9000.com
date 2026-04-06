@@ -1,4 +1,8 @@
-[!- extends "/templates.inc/pages/default.html" -!]
+[!- extends "/templates.inc/pages/rust.html" -!]
+
+== block toml
+title = "Encrypt a File with a Password in Rust"
+== endblock
 
 [! block head !]
 <style>
@@ -7,15 +11,9 @@
 </style>
 [! endblock !]
 
-
-[! block title !]
-<h1>rust: encrypt a file with a password </h1>
-[! endblock !]
-
-
 [! block main !]
 
-[! filter markdown|safe !]
+[! filter md !]
 ## Overview
 
 - This encrypts a file with a password. 
@@ -36,18 +34,19 @@ needs.
 ## The Files
 [! endfilter !]
 
-<h3>Cargo.toml</h3>
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/Cargo.toml" !]
-[! endfilter !]
-
 <h3>src/main.rs</h3>
-[! filter block_highlight("rust") !]
-[! include "/" + file.parent + "/src/main.rs" !]
+[! filter highlight_block("rust") !]
+[! include "/" + parent(file_path) + "/src/main.rs" !]
 [! endfilter !]
 
 
-[! filter markdown|safe !]
+<h3>Cargo.toml</h3>
+[! filter highlight_block("html") !]
+[! include "/" + parent(file_path) + "/Cargo.toml" !]
+[! endfilter !]
+
+
+[! filter md !]
 ## References 
 
 - https://docs.rs/orion/latest/orion/

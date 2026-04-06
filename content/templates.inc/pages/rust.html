@@ -1,23 +1,31 @@
-[!- extends "/templates.inc/wrappers/default.html" -!]
+== extends "/templates.inc/wrappers/default.html" 
 
-[!- block body -!]
+== block body
+== include "/templates.inc/includes/header.html"
 
-    [! block header !]
-    [! include "/wrappers.inc/includes/header.html" !]
-    [! endblock !]
+<main class="default-wrapper default-flow">
 
-    <main class="[! block main_classes !]default-wrapper default-flow[! endblock !]">
-      [! block main !][! endblock !]
-    </main>
+== block title
+  <hgroup>
+    == if p.title
+      <h1>[@ p.title @]</h1>
+      == if p.subtitle
+        <div class="subtitle">[@ p.subtitle @]</div>
+      == endif
+    == endif
+  </hgroup>
+== endblock
 
-    [! block footer !]
-    [! include "/wrappers.inc/includes/footer.html" !]
-    [! endblock !]
+== block main
+== endblock
 
-    [! block templates !]
-    [! endblock !]
+</main>
+
+== include "/templates.inc/includes/footer.html"
+
+== block templates
+== endblock
+
+== endblock
 
 
-This is a rust project. 
-
-[!- endblock -!]

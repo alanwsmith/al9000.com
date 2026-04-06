@@ -7,7 +7,29 @@ status = "draft"
 
 == block main
 
-- This is how I'm loading TOML data
-into MiniJinja templates. 
+<p>This is how I'm loading TOML data
+  into MiniJinja templates.</p>
+
+<h2>Rust</h2>
+
+[! filter highlight_block("rust", "Cargo.toml") !]
+[! include parent(file_path) + "/Cargo.toml"  !]
+[! endfilter !]
+
+[! filter highlight_block("rust", "src/main.rs") !]
+[! include parent(file_path) + "/src/main.rs"  !]
+[! endfilter !]
+
+<h1>Input</h1>
+[! filter highlight_block("txt", "samples/data.toml") !]
+[! include parent(file_path) + "/samples/data.toml"  !]
+[! endfilter !]
+
+<h2>Output</h2>
+
+[! filter output_block() !]
+[! include parent(file_path) + "/samples/output.txt"  !]
+[! endfilter !]
+
 
 == endblock

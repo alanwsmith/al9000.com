@@ -222,7 +222,7 @@ would create the image tag with the path
 
     - returns a syntax highlighted
       version of the input ready to be placed inside
-      an inline `<code>` tag. 
+      an inline `<code class="code-span">` tag. 
 
     - Highlighting is done by defining classes on
       the individual span tags
@@ -251,7 +251,7 @@ would create the image tag with the path
 
     - returns a syntax highlighted
       version of the input including a surrounding 
-      `<pre><code>` block. 
+      `<pre class="code-block"><code>` block. 
 
     - The `LANGUAGE` defines which language to use
       for the highlighting. 
@@ -270,6 +270,13 @@ would create the image tag with the path
     - The result is a MiniJinja `safe` value
       so no additional autoescaping is
       applied. 
+
+- output_block([TITLE [, CLASSES]])
+
+  - Outputs a block of text in 
+    `<div class="output-block CLASSES"><div class="title">TITLE</div> <pre><code>CONTENT`
+    tags. 
+
 
 
 ## Functions
@@ -335,7 +342,7 @@ would create the image tag with the path
     where each element is a
     folder in the path. 
 
-- TODO: stem(PATH)
+- stem(PATH)
 
   - Takes a string that's the path
     to a file or folder. 

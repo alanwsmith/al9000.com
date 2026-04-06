@@ -6,7 +6,7 @@ use std::fs;
 use toml::Table;
 
 fn main() -> Result<()> {
-  let input = fs::read_to_string("data.toml")?;
+  let input = fs::read_to_string("samples/data.toml")?;
   let mut env = Environment::new();
   env.add_template_owned("template", "{{ toml.alfa }}")?;
   let template = env.get_template("template")?;

@@ -398,7 +398,7 @@ calling [@ img(&quot;some-img&quot;) @]would create the image tag with the path<
 <li>
 <p>returns a syntax highlighted
 version of the input ready to be placed inside
-an inline <code>&lt;code&gt;</code> tag.</p>
+an inline <code>&lt;code class=&quot;code-span&quot;&gt;</code> tag.</p>
 </li>
 <li>
 <p>Highlighting is done by defining classes on
@@ -438,7 +438,7 @@ numbers is prepended to each line.</p>
 <li>
 <p>returns a syntax highlighted
 version of the input including a surrounding
-<code>&lt;pre&gt;&lt;code&gt;</code> block.</p>
+<code>&lt;pre class=&quot;code-block&quot;&gt;&lt;code&gt;</code> block.</p>
 </li>
 <li>
 <p>The <code>LANGUAGE</code> defines which language to use
@@ -465,6 +465,16 @@ parser and returns the result.</p>
 <p>The result is a MiniJinja <code>safe</code> value
 so no additional autoescaping is
 applied.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>output_block([TITLE [, CLASSES]])</p>
+<ul>
+<li>
+<p>Outputs a block of text in
+<code>&lt;div class=&quot;output-block CLASSES&quot;&gt;&lt;div class=&quot;title&quot;&gt;TITLE&lt;/div&gt; &lt;pre&gt;&lt;code&gt;CONTENT</code>
+tags.</p>
 </li>
 </ul>
 </li>
@@ -560,7 +570,7 @@ folder in the path.</p>
 </ul>
 </li>
 <li>
-<p>TODO: stem(PATH)</p>
+<p>stem(PATH)</p>
 <ul>
 <li>
 <p>Takes a string that's the path

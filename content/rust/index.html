@@ -5,49 +5,29 @@ title = "Rust Grimoire"
 status = "wip"
 == endblock 
 
-
 == block main 
-
-
 
 <ul>
 == for folder in folders_in_folder(parent(file_path)) 
   <li>
-    [@ stem(folder) @]
+    [@ j.rust[stem(folder)].index.short_title @]
     <ul>
       == for subfolder in folders_in_folder(folder) 
-      <li>[@ subfolder @]</li>
-      [#
-        == if "index" in j.rust[stem(folder)]
-      #]
-      <li><pre>[@ j.rust[stem(folder)]|tojson(true) @]</pre></li>
-      [#
+        == if "index" in j.rust[stem(folder)][stem(subfolder)]
+        <li>
+          <a href="[@ subfolder @]">
+          [@ j.rust[stem(folder)][stem(subfolder)].index.title @]
+          </a>
+        </li>
+        == else 
+        <li>TKTKTK</li>
         == endif
-      #]
       == endfor
     </ul>
   </li>
 == endfor
 </ul>
 
-<pre class="code-block">
-[@ j.rust|tojson(true) @]
-</pre>
-
-== filter md
-### al9000.com 
-[static site builder](/rust/al9000/)
-
-### wasm
-== endfilter 
-
-<ul class="d">
-  == for key in j.rust.wasm 
-    == if j.rust.wasm[key].index 
-      <li><a href="/rust/wasm/[@ key @]/">[@ j.rust.wasm[key].index.link_title @]</a>
-    == endif 
-  == endfor 
-</ul>
 
 == endblock
 

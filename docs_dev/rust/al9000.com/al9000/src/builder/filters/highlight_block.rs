@@ -8,6 +8,7 @@ use syntect::util::LinesWithEndings;
 pub fn highlight_block(
   code: &str,
   language: &str,
+  title: Option<&str>,
   classes: Option<&str>,
 ) -> Value {
   let syntax_set = SyntaxSet::load_defaults_newlines();
@@ -33,14 +34,18 @@ pub fn highlight_block(
       format!(r#"<span class="line-marker"></span>{}"#, line)
     })
     .collect();
-
   let extra_classes = match classes {
     Some(c) => format!(" {}", c),
     None => "".to_string(),
   };
+  let title_string = match title {
+    Some(t) => format!(r#"<div class="title">{}</div>"#, t),
+    None => "".to_string(),
+  };
   Value::from_safe_string(format!(
-    r#"<pre class="code-block{}"><code>{}</code></pre>"#,
+    r#"<div class="code-block{}">{}<pre><code>{}</code></pre></div>"#,
     extra_classes,
+    title_string,
     output_html.join("\n")
   ))
 }

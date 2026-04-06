@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-undefined value (in /rust/wasm/hello-world/index.html:19)
+template not found: template "/rust/minijinja/load_toml_data/.ignore/samples/output.txt" does not exist
 </body>
 </html>
   
