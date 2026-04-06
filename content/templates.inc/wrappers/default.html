@@ -1,6 +1,22 @@
 [!- extends "/templates.inc/root.html" -!]
 
-[!- block wrapper -!]
+[!- set og_url -!]
+[!- if file_path == "/index.html" -!]
+https://al9000.com/
+[!- elif stem(file_path) == "index" -!]
+https://al9000.com[@ parent(file_path) @]/
+[!- else -!]
+https://al9000.com[@ file_path @]
+[!- endif -!]
+[!- endset -!]
+
+[!- set og_image -!]
+https://al9000.com/images/open-graph/default.jpg
+[!- endset -!]
+
+
+
+== block wrapper
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +49,6 @@
   </body>
 </html>
 
-[!- endblock -!]
+== endblock
 
 

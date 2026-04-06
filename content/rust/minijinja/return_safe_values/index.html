@@ -1,4 +1,4 @@
-== extends "/templates.inc/pages/rust.html"
+== extends "/templates.inc/pages/default.html"
 
 == block toml
 title = "Return Safe String to MiniJinja from Filters and Functions"
@@ -6,13 +6,31 @@ title = "Return Safe String to MiniJinja from Filters and Functions"
 
 
 == block main 
-== filter md
 
-- TODO: Show how to return a Value with
-`Value::from_safe_strings` so you can use
-filters without having to add `|safe` to 
-them (e.g. `filter md` instead of `filter md|safe`)
+<h2>Overview</h2>
 
-== endfilter
+<p>
+  MiniJinja escapes strings for use in HTML. 
+  I don't want that for most of the functions I write. 
+  I use `Value::from_safe_string()` in those cases. 
+  MiniJinja outputs those strings without escaping
+  them.
+</p>
+
+<h3>TODO: Create code Example</h3>
+
+[#
+<h3>Rust</h3>
+
+[! filter highlight_block("rust", "Cargo.toml") !]
+[! include parent(file_path) + "/Cargo.toml"  !]
+[! endfilter !]
+
+[! filter highlight_block("rust", "src/main.rs") !]
+[! include parent(file_path) + "/src/main.rs"  !]
+[! endfilter !]
+  
+#]
+
 
 == endblock
