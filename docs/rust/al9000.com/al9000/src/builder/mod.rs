@@ -1,0 +1,62 @@
+#![allow(unused)]
+pub mod files;
+pub mod filters;
+pub mod functions;
+pub mod utils;
+
+use crate::Config;
+use anyhow::Result;
+use chrono::{DateTime, Local};
+use files::*;
+use tokio::sync::mpsc;
+use tokio::task::JoinHandle;
+use tower_livereload::Reloader;
+use tracing::info;
+use utils::*;
+
+pub struct Builder {
+  config: Config,
+  reloader: Reloader,
+  rx: mpsc::Receiver<DateTime<Local>>,
+}
+
+impl Builder {
+  pub fn new(
+    config: Config,
+    rx: mpsc::Receiver<DateTime<Local>>,
+    reloader: Reloader,
+  ) -> Builder {
+    Builder {
+      config,
+      reloader,
+      rx,
+    }
+  }
+
+  pub async fn init(&mut self) -> Result<()> {
+    info!("Initializing Builder");
+    let _ =
+      build_site(self.config.clone(), self.reloader.clone()).await;
+    let mut build_process_handle: Option<JoinHandle<()>> = None;
+    while let Some(count) = self.rx.recv().await {
+      let build_config = self.config.clone();
+      let build_reloader = self.reloader.clone();
+      if let Some(ref handle) = build_process_handle
+        && handle.is_finished()
+      {
+        build_process_handle = None;
+      }
+      if build_process_handle.is_none() {
+        build_process_handle = Some(tokio::spawn(async move {
+          let _ = build_site(build_config, build_reloader).await;
+        }));
+      } else {
+        build_process_handle.unwrap().abort();
+        build_process_handle = Some(tokio::spawn(async move {
+          let _ = build_site(build_config, build_reloader).await;
+        }));
+      }
+    }
+    Ok(())
+  }
+}

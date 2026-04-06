@@ -1,0 +1,32 @@
+[package]
+name = "al9000"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+test = false
+doctest = false
+
+[dependencies]
+anyhow = "1.0.102"
+axum = "0.8.8"
+chrono = "0.4.44"
+futures = "0.3.32"
+itertools = "0.14.0"
+markdown = "1.0.0"
+minijinja = { version = "2.19.0", features = ["debug", "custom_syntax", "json", "loader"] }
+notify = "8.2.0"
+notify-debouncer-full = "0.7.0"
+port_check = "0.3.0"
+regex = "1.12.3"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+syntect = "5.3.0"
+tokio = { version = "1.50.0", features = ["rt-multi-thread", "macros"] }
+toml = "1.1.2"
+tower-http = { version = "0.6.8", features = ["fs"] }
+tower-livereload = "0.10.3"
+tracing = "0.1.44"
+tracing-appender = "0.2.4"
+tracing-subscriber = { version = "0.3.23", features = ["fmt", "json", "registry", "std"] }
+walkdir = "2.5.0"
