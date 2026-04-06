@@ -4,45 +4,40 @@
 title = "Hello, World in Rust WASM"
 == endblock
 
-[! block title !]
-<h1>rust wasm: hello, world</h1>
-[! endblock !]
-
 [! block main !]
 <p>
   This is a basic `Hello, World` WASM 
   app written in rust.
 </p>
 
-<h4>Cargo.toml</h4>
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/Cargo.toml" !]
+<h3>Rust</h3>
+[! filter highlight_block("html", "Cargo.toml") !]
+[! include "/" + parent(file_path) + "/Cargo.toml" !]
 [! endfilter !]
 
-<h4>src/lib.rs</h4>
-[! filter block_highlight("rust") !]
-[! include "/" + file.parent + "/src/lib.rs" !]
+[! filter highlight_block("rust", "src/lib.rs") !]
+[! include "/" + parent(file_path) + "/src/lib.rs" !]
 [! endfilter !]
 
-<h4>HTML</h4>
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/html.html" !]
+[! filter highlight_block("bash", "build script") !]
+[! include "/" + parent(file_path) + "/build_release" !]
+[! endfilter !]
+
+<h3>HTML</h3>
+[! filter highlight_block("html", "page.html") !]
+[! include "/" + parent(file_path) + "/page.html" !]
 [! endfilter !]
 
 <h4>JavaScript</h4>
-[! filter block_highlight("html") !]
-[! include "/" + file.parent + "/script.html" !]
-[! endfilter !]
-
-
-<h4>Build Script</h4>
-[! filter block_highlight("bash") !]
-[! include "/" + file.parent + "/build_release" !]
+[! filter highlight_block("js", "hello-world.js") !]
+[! include "/" + parent(file_path) + "/hello-world.js" !]
 [! endfilter !]
 
 
 <h4>Output</h4>
-[! include "/" + file.parent + "/script.html" !]
-[! include "/" + file.parent + "/html.html" !]
+<div class="output-block"><pre><code>
+[! include "/" + parent(file_path) + "/page.html" !]
+</code></pre></div>
+
 
 [! endblock !]

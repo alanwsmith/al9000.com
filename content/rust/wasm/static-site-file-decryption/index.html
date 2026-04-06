@@ -1,27 +1,22 @@
 [!- extends "/templates.inc/pages/default.html" -!]
 
 == block toml
-title = "Decrypt Static Site Content with WASM"
-subtitle = "Or, How to Password Protect Files on a Static Site"
-created = 2026-04-01T13:40:00
+title = "Password Protecting Static Site Content with WASM"
+created = 2026-04-01T13:40:00-04:00
 == endblock
 
-[! block head !]
+
+== block head
 <style>
 #results {
   border-top: var(--faded-default-border);
   padding-top: var(--default-padding);
 }
 </style>
-[! endblock !]
+== endblock
 
-[! block title !]
-<h1>decrypting static site content with wasm</h1>
-<div class="subtitle">Or, How to Password Protect Files on a Static Site</div>
-<div class="subtitle">April 2026</div>
-[! endblock !]
 
-[! block main !]
+== block main
 
 <div class="warning-box">
   <p><strong>Heads Up</strong></p>
@@ -54,7 +49,7 @@ on the front end.
 
 ## An Example
 
-I've encrypted a file and put copy on my server. It's
+I've [encrypted a file]([@parent(parent(file_path))@]/static-site-file-encryption/) and put copy on my server. It's
 [encrypt-decrypt-example.txt.bin](/rust/wasm/static-site-file-decryption/samples/encrypt-decrypt-example.txt.bin).
 The file is static. You can download it directly. 
 It won't do you much good, though. Being encrypted and all. 
@@ -213,14 +208,23 @@ message.
 <p>
   That said, this version works if
   you only need to deal with one file
-  at a time. You can download
-  the TKTKTK files to place on your 
-  server and use the JavaScript
-  above as a starting point for using
-  them. (You'll also need a way to encrypt
-  your files. That can be done
-  with <a href="http://localhost:5445/rust/wasm/static-site-file-encryption/">
-    the static-site-file-encryption tool</a>.)
+  at a time. Because it's WASM, you
+  don't need to compile the Rust 
+  code yourself. You can download
+  these two files and line up 
+  the paths with the JavaScript
+  above to set it up yourself. 
+</p>
+<ul>
+  <li><a href="[@parent(file_path)@]/pkg/static_site_file_decryption.js" download="static_site_file_decryption.js">static_site_file_decryption.js</a></li>
+  <li><a href="[@parent(file_path)@]/pkg/static_site_file_decryption_bg.wasm" download="static_site_file_decryption_bg.wasm">static_site_file_decryption_bg.wasm</a></li>
+</ul>
+
+<p>
+  You'll also need a way to encrypt files. I've set
+  up a tool to do that at here:
+  <a href="[@parent(parent(file_path))@]/static-site-file-encryption/">
+    Static Site File Encryption Tool</a>.
 </p>
 
 <h2>Wrap-up</h2>
@@ -275,14 +279,9 @@ message.
     for a single or multi-page app. 
   </li>
   <li>
-    TODO: Confirm  can download wasm .js and .wasm
-    files and use them directly with the same
-    javascript on another site. 
-  </li>
-  <li>
     The file for this example was encrypted with
     <a href="/rust/wasm/static-site-file-encryption/">the 
-      tool on the static-site-file-encryption pages</a>.
+      tool on the static-site-file-encryption page</a>.
     It's also designed to work with one file at a time. 
     Part of the new project is building a tool 
     to encrypt an entire directory of content
@@ -327,6 +326,6 @@ message.
 <li><a href="https://github.com/orion-rs/orion">https://github.com/orion-rs/orion</a></li>
 </ul>
 
-[! endblock !]
+== endblock
 
 

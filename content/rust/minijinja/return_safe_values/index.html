@@ -1,10 +1,14 @@
 == extends "/templates.inc/pages/rust.html"
 
+== block toml
+title = "Return Safe String to MiniJinja from Filters and Functions"
+== endblock
+
 
 == block main 
 == filter md
 
-- Show how to return a Value with
+- TODO: Show how to return a Value with
 `Value::from_safe_strings` so you can use
 filters without having to add `|safe` to 
 them (e.g. `filter md` instead of `filter md|safe`)

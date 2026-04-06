@@ -10,7 +10,7 @@ status = "wip"
 <ul>
 == for folder in folders_in_folder(parent(file_path)) 
   <li>
-    [@ j.rust[stem(folder)].index.short_title @]
+    <p>[@ j.rust[stem(folder)].index.short_title @]</p>
     <ul>
       == for subfolder in folders_in_folder(folder) 
         == if "index" in j.rust[stem(folder)][stem(subfolder)]

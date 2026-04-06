@@ -178,7 +178,7 @@ body {
 <p>This is how I'm loading TOML data
   into MiniJinja templates.</p>
 
-<h2>Rust</h2>
+<h3>Rust</h3>
 
 <div class="code-block"><div class="title">Cargo.toml</div><pre><code><span class="line-marker"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
 <span class="line-marker"></span>name <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>load_toml_data<span class="punctuation definition string end rust">&quot;</span></span>
@@ -211,11 +211,12 @@ body {
 <span class="line-marker"></span>  <span class="storage type rust">let</span> data <span class="keyword operator rust">=</span> input.<span class="meta path rust">parse<span class="punctuation accessor rust">::</span></span><span class="meta generic rust"><span class="punctuation definition generic begin rust">&lt;</span>Table<span class="punctuation definition generic end rust">&gt;</span></span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta path rust">Value<span class="punctuation accessor rust">::</span></span>from_serialize<span class="meta group rust"><span class="punctuation section group begin rust">(</span>data</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
-<h1>Input</h1>
+<h3>Input</h3>
 <div class="code-block"><div class="title">samples/data.toml</div><pre><code><span class="line-marker"></span><span class="text plain">alfa = &quot;bravo&quot;</span></code></pre></div>
-<h2>Output</h2>
+<h3>Output</h3>
 
-<div class="output-block"><div class="title"></div><pre><code><span class="text plain">bravo</span></code></pre></div>
+<div class="output-block"><pre><code><span class="text plain">bravo</span></code></pre></div>
+
 
 
 </main>

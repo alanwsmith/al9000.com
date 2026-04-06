@@ -20,7 +20,6 @@ pub async fn transform_files(config: &Config) -> Result<()> {
   // info!("Transforming files");
   let env = get_env(config);
   let json = load_json(config)?;
-
   for pb in content_files(config).iter() {
     let page_data = get_page_data(&pb)?;
     let template_name = pb
@@ -36,7 +35,7 @@ pub async fn transform_files(config: &Config) -> Result<()> {
       Ok(template) => match template.render(context!(
         p => page_data,
         j => json,
-        file_path => template_name
+        file_path => Value::from_safe_string(template_name)
       )) {
         Ok(content) => {
           let _ = write_file_with_mkdir(&output_path, &content);

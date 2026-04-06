@@ -184,6 +184,12 @@ code {
       color: var(--accent-color);
       border-right: var(--faded-accent-border);
   }
+
+  > .title {
+    font-size: var(--default-font-size);
+    border-bottom: var(--faded-accent-border);
+    margin-bottom: var(--small-margin);
+  }
 }
 
 .code-block.nowrap {
@@ -200,6 +206,7 @@ code {
     opacity: 0;
   }
 }
+
 
 .contrast-button.active:hover {
   color: var(--reverse-color);
@@ -416,6 +423,28 @@ meter {
 ol > :where(:not(:first-child)) {
   margin-top: var(--flow-space, var(--default-flow));
 }
+
+.output-block {
+  background-color: var(--match-color);
+  border: var(--faded-reverse-border);
+  border-radius: var(--default-border-radius);
+  font-size: var(--small-font-size);
+  margin-block: var(--default-margin);
+  padding-block: var(--xlarge-padding);
+  padding-left: 3.2rem;
+  padding-right: var(--default-padding);
+  white-space: pre-wrap; 
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+  overscroll-behavior-x: auto;
+
+  > .title {
+    font-size: var(--default-font-size);
+    border-bottom: var(--faded-accent-border);
+    margin-bottom: var(--small-margin);
+  }
+}
+
 
 p {
   overflow-wrap: break-word;

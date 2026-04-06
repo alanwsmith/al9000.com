@@ -1,7 +1,8 @@
-[! extends "/templates.inc/pages/rust.html !]
+[! extends "/templates.inc/pages/rust.html" !]
 
-== block title
-<h1>Restart a Secondary Process when Signals Come In</h1> 
+
+== block toml
+title = "Restart a Secondary Process when Signals Come In"
 == endblock
 
 
@@ -32,7 +33,6 @@ is reached. That happens at the lines:
 ## References
 
 https://docs.rs/tokio/latest/tokio/task/index.html#yield_now
-
 
 
 == endfilter

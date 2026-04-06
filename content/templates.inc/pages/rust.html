@@ -12,12 +12,16 @@
       == if p.subtitle
         <div class="subtitle">[@ p.subtitle @]</div>
       == endif
+      == if p.created
+    <div class="date">[@ date(p.created) @]</div>
+      == endif 
     == endif
   </hgroup>
 == endblock
 
 == block main
 == endblock
+
 
 </main>
 

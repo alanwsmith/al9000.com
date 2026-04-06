@@ -10,7 +10,7 @@ status = "draft"
 <p>This is how I'm loading TOML data
   into MiniJinja templates.</p>
 
-<h2>Rust</h2>
+<h3>Rust</h3>
 
 [! filter highlight_block("rust", "Cargo.toml") !]
 [! include parent(file_path) + "/Cargo.toml"  !]
@@ -20,12 +20,12 @@ status = "draft"
 [! include parent(file_path) + "/src/main.rs"  !]
 [! endfilter !]
 
-<h1>Input</h1>
+<h3>Input</h3>
 [! filter highlight_block("txt", "samples/data.toml") !]
 [! include parent(file_path) + "/samples/data.toml"  !]
 [! endfilter !]
 
-<h2>Output</h2>
+<h3>Output</h3>
 
 [! filter output_block() !]
 [! include parent(file_path) + "/samples/output.txt"  !]

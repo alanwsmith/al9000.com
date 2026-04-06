@@ -32,11 +32,13 @@ pub fn output_block(
     None => "".to_string(),
   };
   let title = match title {
-    Some(t) => t.to_string(),
+    Some(t) => {
+      format!(r#"<div class="title">{}</div>"#, t)
+    }
     None => "".to_string(),
   };
   Value::from_safe_string(format!(
-    r#"<div class="output-block{}"><div class="title">{}</div><pre><code>{}</code></pre></div>"#,
+    r#"<div class="output-block{}">{}<pre><code>{}</code></pre></div>"#,
     extra_classes, title, initial_html
   ))
 }
