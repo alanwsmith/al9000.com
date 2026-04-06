@@ -154,12 +154,12 @@ body {
     <script src="/scripts/bitty/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
     <link rel="stylesheet" href="/styles/main.css" />
 <link rel="shortcut icon" href="/favicon.ico" />
-<title>Rust Grimoire</title>
-<meta property="og:title" content="Rust Grimoire" />
+<title>Parse Generic Arguments with clap in Rust</title>
+<meta property="og:title" content="Parse Generic Arguments with clap in Rust" />
 <meta name="description" content="a post from alan w. smith" />
 <meta property="og:description" content="a post from alan w. smith" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rust/" />
+<meta property="og:url" content="https://al9000.com/rust/clap/parse-generic-arguments/" />
 <meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
@@ -184,123 +184,43 @@ body {
 <main class="default-wrapper default-flow">
 
   <hgroup>
-      <h1>Rust Grimoire</h1>
+      <h1>Parse Generic Arguments with clap in Rust</h1>
   </hgroup>
 
 
-<ul>
-  <li>
-    <p>al9000</p>
-    <ul>
-        <li>
-          <a href="&#x2f;rust&#x2f;al9000.com&#x2f;al9000">
-          al9000 Static Site Generator
-          </a>
-        </li>
-    </ul>
-  </li>
-  <li>
-    <p>chrono</p>
-    <ul>
-        <li>
-          <a href="&#x2f;rust&#x2f;chrono&#x2f;parse_toml_date">
-          Parse a TOML Date
-          </a>
-        </li>
-    </ul>
-  </li>
-  <li>
-    <p>clap</p>
-    <ul>
-        <li>
-          <a href="&#x2f;rust&#x2f;clap&#x2f;parse-generic-arguments">
-          Parse Generic Arguments
-          </a>
-        </li>
-    </ul>
-  </li>
-  <li>
-    <p>general</p>
-    <ul>
-        <li>
-          <a href="&#x2f;rust&#x2f;general&#x2f;encrypt-a-file-with-a-password">
-          Encrypt a File with a Password
-          </a>
-        </li>
-        <li>
-          <a href="&#x2f;rust&#x2f;general&#x2f;encrypt-and-split-a-file">
-          Encrypt and Split a File
-          </a>
-        </li>
-        <li>
-          <a href="&#x2f;rust&#x2f;general&#x2f;split-a-files-bytes">
-          Split a File In Multiple Collections of Bytes
-          </a>
-        </li>
-    </ul>
-  </li>
-  <li>
-    <p>minijinja</p>
-    <ul>
-        <li>
-          <a href="&#x2f;rust&#x2f;minijinja&#x2f;load_toml_data">
-          Load TOML Data into MiniJinja
-          </a>
-        </li>
-        <li>
-          <a href="&#x2f;rust&#x2f;minijinja&#x2f;return_safe_values">
-          Return Safe String to MiniJinja from Filters and Functions
-          </a>
-        </li>
-    </ul>
-  </li>
-  <li>
-    <p>tokio</p>
-    <ul>
-        <li>
-          <a href="&#x2f;rust&#x2f;tokio&#x2f;restart-process-when-signal-received">
-          Restart a Secondary Process when Signals Come In
-          </a>
-        </li>
-        <li>
-          <a href="&#x2f;rust&#x2f;tokio&#x2f;trigger-non-running-process-excluding-final-call">
-          Only Trigger a Process if it&#x27;s not Already Running Excluding a Final Call
-          </a>
-        </li>
-    </ul>
-  </li>
-  <li>
-    <p>walkdir</p>
-    <ul>
-        <li>
-          <a href="&#x2f;rust&#x2f;walkdir&#x2f;skip-hidden-files">
-          Skip Hidden Files with Rust&#x27;s Walkdir
-          </a>
-        </li>
-    </ul>
-  </li>
-  <li>
-    <p>wasm</p>
-    <ul>
-        <li>
-          <a href="&#x2f;rust&#x2f;wasm&#x2f;hello-world">
-          Hello, World in Rust WASM
-          </a>
-        </li>
-        <li>
-          <a href="&#x2f;rust&#x2f;wasm&#x2f;static-site-file-decryption">
-          Password Protecting Static Site Content with WASM
-          </a>
-        </li>
-        <li>
-          <a href="&#x2f;rust&#x2f;wasm&#x2f;static-site-file-encryption">
-          Encrypting Static Site Content with WASM
-          </a>
-        </li>
-    </ul>
-  </li>
-</ul>
+<h3>Rust</h3>
 
+<div class="code-block"><div class="title">Cargo.toml</div><pre><code><span class="line-marker"></span><span class="text plain">[package]
+<span class="line-marker"></span>name = &quot;parse-generic-arguments&quot;
+<span class="line-marker"></span>version = &quot;0.1.0&quot;
+<span class="line-marker"></span>edition = &quot;2024&quot;
+<span class="line-marker"></span>
+<span class="line-marker"></span>[dependencies]
+<span class="line-marker"></span>clap = { version = &quot;4.6.0&quot;, features = [&quot;derive&quot;] }</span></code></pre></div>
+<div class="code-block"><div class="title">src/main.rs</div><pre><code><span class="line-marker"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">clap<span class="punctuation accessor rust">::</span></span>Parser<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta annotation rust"><span class="punctuation definition annotation rust">#</span><span class="punctuation section group begin rust">[</span><span class="variable annotation rust">derive</span><span class="meta annotation parameters rust"><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span></span><span class="meta annotation parameters rust"><span class="meta group rust">Parser</span></span><span class="meta annotation parameters rust"><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="punctuation section group end rust">]</span></span>
+<span class="line-marker"></span><span class="meta struct rust"><span class="storage type struct rust">struct</span> </span><span class="meta struct rust"><span class="entity name struct rust">Input</span> </span><span class="meta struct rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>  <span class="variable other member rust">arg1</span><span class="punctuation separator rust">:</span> String,
+<span class="line-marker"></span>  <span class="variable other member rust">arg2</span><span class="punctuation separator rust">:</span> String,
+<span class="line-marker"></span>  <span class="variable other member rust">arg3</span><span class="punctuation separator rust">:</span> String,
+<span class="line-marker"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> input <span class="keyword operator rust">=</span> <span class="meta path rust">Input<span class="punctuation accessor rust">::</span></span>parse<span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Arg 1: <span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> input.arg1<span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Arg 2: <span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> input.arg2<span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Arg 3: <span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> input.arg3<span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+
+<h3>Command</h3>
+
+<div class="output-block"><pre><code><span class="text plain">./parse-generic-arguments alfa bravo charlie</span></code></pre></div>
+<h3>Output</h3>
+
+<div class="output-block"><pre><code><span class="text plain">Arg 1: alfa
+Arg 2: bravo
+Arg 3: charlie</span></code></pre></div>
 
 
 </main>

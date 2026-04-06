@@ -1,0 +1,38 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml
+title = "Parse Generic Arguments with clap in Rust"
+short_title = "Parse Generic Arguments"
+== endblock
+
+
+
+== block main
+
+<h3>Rust</h3>
+
+== filter highlight_block("toml", "Cargo.toml")
+== include parent(file_path) + "/Cargo.toml"
+== endfilter
+
+== filter highlight_block("rs", "src/main.rs")
+== include parent(file_path) + "/src/main.rs"
+== endfilter
+
+
+<h3>Command</h3>
+
+== filter output_block()
+./parse-generic-arguments alfa bravo charlie
+== endfilter
+
+<h3>Output</h3>
+
+== filter output_block()
+== include parent(file_path) + "/output.txt"
+== endfilter
+
+
+== endblock
+
+

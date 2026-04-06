@@ -538,13 +538,25 @@ message.
     I'm also not protecting anything critical. 
   </li>
   <li>
-    It's possible to protect pages this way without
+    <p>It's possible to protect pages this way without
     using WASM using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto">Crypto
       Web API</a>. I looked at it before, but
     got overwhelmed by it. 
+      Not least because of this big ol' warning on the page:</p>
+    <blockquote class="info-border default-flow  default-border-radius">
+
+      <p>Warning: The Web Crypto API provides a number of low-level cryptographic primitives. It's very easy to misuse them, and the pitfalls involved can be very subtle.</p>
+
+      <p>Even assuming you use the basic cryptographic functions correctly, secure key management and overall security system design are extremely hard to get right, and are generally the domain of specialist security experts.</p>
+
+      <p>Errors in security system design and implementation can make the security of the system completely ineffective.</p>
+
+    </blockquote>
+  </li>
+  <li>
     <a href="https://github.com/Greenheart/pagecrypt">PageCrypt</a>
-    uses that API. It's on the list of things to 
-    check out at some point. 
+    uses the Web Crypto API. It's a bit of a different thing though. It's
+    designed to serve up a full single page app. 
   </li>
   <li>
     This JavaScript is all vanilla. The code

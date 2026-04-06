@@ -16,11 +16,15 @@ status = "wip"
         == if "index" in j.rust[stem(folder)][stem(subfolder)]
         <li>
           <a href="[@ subfolder @]">
+          [! if j.rust[stem(folder)][stem(subfolder)].index.short_title !]
+          [@ j.rust[stem(folder)][stem(subfolder)].index.short_title @]
+          [! else !]
           [@ j.rust[stem(folder)][stem(subfolder)].index.title @]
+          [! endif !]
           </a>
         </li>
         == else 
-        <li>TKTKTK</li>
+        <li><a href="[@ subfolder @]">TKTKTK</a></li>
         == endif
       == endfor
     </ul>
