@@ -9,6 +9,7 @@ create = 2026-04-07T12:41:12-04:00
 == block head
 <style>
 == include parent(file_path) + "/styles.css"
+
 </style>
 == endblock
 
@@ -19,16 +20,33 @@ create = 2026-04-07T12:41:12-04:00
 
 <main>
 <p>Fit block on screen.</p>
-<p>Fit block on screen.</p>
-<p>Fit block on screen.</p>
-<div class="block-wrapper" data-r="blocks" data-min-width="200" data-max-width="300" data-ratio="16:9"></div>
+  <details>
+    <summary>View Code</summary>
+    <div>
+      <h3>HTML</h3>
+      == filter highlight_block("html")
+      == include parent(file_path) + "/page.html"
+      == endfilter
+
+      <h3>JavaScript</h3>
+      == filter highlight_block("js")
+      == include parent(file_path) + "/bit.js"
+      == endfilter
+
+    </div>
+
+  </details>
+
+== include parent(file_path) + "/page.html"
+
 </main>
 
 == include "/templates.inc/includes/footer.html"
 
 <bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
 
-
+<script type="text/html" id="cellTemplate">
+  <div class="cell"><div class="content">x</div></div>
+</script>
 
 == endblock
-

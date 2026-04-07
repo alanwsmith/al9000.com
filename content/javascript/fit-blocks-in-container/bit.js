@@ -10,10 +10,16 @@ export function blocks(_, __, el) {
     el.propAsInt("maxWidth"),
     elWidth,
   );
-
-  console.log(elWidth);
-  console.log(elHeight);
-  console.log(itemWidth);
+  const itemHeight = itemWidth / el.propAsInt("ratioWidth") *
+    el.propAsInt("ratioHeight");
+  const columns = parseInt(elWidth / itemWidth, 10);
+  const rows = parseInt(elHeight / itemHeight, 10);
+  const cells = columns * rows;
+  for (let i = 0; i < cells; i = i + 1) {
+    el.append(b.render("cellTemplate"));
+  }
+  b.setCSS("--cell-width", `${itemWidth}px`);
+  b.setCSS("--cell-height", `${itemHeight}px`);
 }
 
 function getItemWidth(minWidth, maxWidth, containerWidth) {
@@ -23,51 +29,4 @@ function getItemWidth(minWidth, maxWidth, containerWidth) {
     return optimalWidth;
   }
   return maxWidth;
-}
-
-function _x3_getItemWidth(minWidth, maxWidth, containerWidth) {
-  let bestWidth = minWidth;
-  let bestCount = 0;
-
-  // Try every possible width from maxWidth down to minWidth
-  for (let width = maxWidth; width >= minWidth; width--) {
-    const itemsPerRow = Math.floor(containerWidth / width);
-
-    // If this width fits more items, or same items but larger width, update
-    if (itemsPerRow > bestCount) {
-      bestCount = itemsPerRow;
-      bestWidth = width;
-    }
-  }
-
-  return bestWidth;
-}
-
-function _x2_getItemWidth(minWidth, maxWidth, containerWidth) {
-  let bestWidth = minWidth;
-  let maxItems = Math.floor(containerWidth / minWidth);
-  for (let numItems = maxItems; numItems >= 1; numItems--) {
-    const width = Math.floor(containerWidth / numItems);
-    if (width >= minWidth && width <= maxWidth) {
-      return width;
-    }
-  }
-  return minWidth;
-}
-
-function _x_getItemWidth(minWidth, maxWidth, containerWidth) {
-  let optimalWidth = minWidth;
-  let low = minWidth;
-  let high = maxWidth;
-  while (low <= high) {
-    const mid = Math.floor((low + high) / 2);
-    const itemsPerRow = Math.floor(containerWidth / mid);
-    if (itemsPerRow >= 1) {
-      optimalWidth = mid;
-      low = mid + 1;
-    } else {
-      high = mid - 1;
-    }
-  }
-  return optimalWidth;
 }

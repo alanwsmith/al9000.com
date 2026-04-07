@@ -23,6 +23,13 @@ main {
 .block-wrapper {
   flex: 1;
   background: #333;
-  min-height: 300px;
+}
+
+.cell {
+  display: inline-block;
+  width: var(--cell-width);
+  height: var(--cell-height);
+  background: #345345;
+  outline: 1px solid red;
 }
 
