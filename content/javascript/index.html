@@ -1,0 +1,17 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml 
+title = "JavaScript Grimoire"
+status = "wip"
+== endblock
+
+== block main
+
+<ul>
+== for folder in folders_in_folder(parent(file_path)) 
+  [! if "index" in j.javascript[stem(folder)] !]
+    <li><a href="[@ folder @]">[@ j.javascript[stem(folder)].index.title @]</a></li>
+  [! endif !]
+== endfor 
+</ul>
+== endblock

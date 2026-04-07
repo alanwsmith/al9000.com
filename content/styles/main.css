@@ -512,6 +512,11 @@ ul > :where(:not(:first-child)) {
   margin-top: var(--flow-space, var(--default-flow));
 }
 
+
+video {
+  max-width: 100%;
+}
+
 .warning-box {
   border: var(--info-border);
   border-radius: var(--default-border-radius);

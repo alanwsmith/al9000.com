@@ -14,8 +14,13 @@ fn include_file(entry: &DirEntry) -> bool {
       return false;
     }
     let parts = item.split(".");
-    for part in parts {
+    for part in parts.clone() {
       if part == "inc" {
+        return false;
+      }
+    }
+    for part in parts {
+      if part == "off" {
         return false;
       }
     }

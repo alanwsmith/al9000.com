@@ -20,6 +20,7 @@ pub async fn transform_files(config: &Config) -> Result<()> {
   // info!("Transforming files");
   let env = get_env(config);
   let json = load_json(config)?;
+
   for pb in content_files(config).iter() {
     let page_data = get_page_data(&pb)?;
     let template_name = pb

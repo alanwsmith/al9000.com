@@ -1,0 +1,39 @@
+== extends "/templates.inc/wrappers/default.html" 
+
+== block body
+== include "/templates.inc/includes/header.html"
+
+== block subnav
+<div class="subnav default-wrapper">
+  <a href="/javascript/">JavaScript Grimoire</a>
+</div>
+== endblock
+
+<main class="default-wrapper default-flow">
+
+== block title
+  <hgroup>
+    == if p.title
+      <h1>[@ p.title @]</h1>
+      == if p.subtitle
+        <div class="subtitle">[@ p.subtitle @]</div>
+      == endif
+      == if p.created
+        <div class="date">[@ date(p.created) @]</div>
+      == endif
+    == endif
+  </hgroup>
+== endblock
+
+== block main
+== endblock
+
+</main>
+
+== include "/templates.inc/includes/footer.html"
+
+== block templates
+== endblock
+
+== endblock
+

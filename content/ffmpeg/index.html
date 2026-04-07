@@ -1,0 +1,19 @@
+== extends "templates.inc/pages/default.html"
+
+== block toml
+title = "ffmpeg"
+status = "wip"
+== endblock
+
+== block main
+
+<ul>
+== for folder in folders_in_folder(parent(file_path)) 
+  [! if "index" in j.ffmpeg[stem(folder)] !]
+    <li><a href="[@ folder @]">[@ j.ffmpeg[stem(folder)].index.title @]</a></li>
+  [! endif !]
+== endfor 
+</ul>
+
+== endblock 
+

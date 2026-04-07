@@ -1,6 +1,7 @@
 pub mod build_site;
 pub mod copy_assets;
 pub mod copy_file_with_mkdir;
+pub mod copy_off_files;
 pub mod data_node;
 pub mod error_page;
 pub mod get_env;
@@ -13,6 +14,7 @@ pub mod write_file_with_mkdir;
 pub use build_site::*;
 pub use copy_assets::*;
 pub use copy_file_with_mkdir::*;
+pub use copy_off_files::*;
 pub use data_node::*;
 pub use error_page::*;
 pub use get_env::*;
