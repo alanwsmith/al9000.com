@@ -159,17 +159,49 @@
 <style>
 * {
   margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-gutter: stable;
 }
 
 body {
   background-color: black;
-  color: #aaa;
+  color: var(--default-color);
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
-.players {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 0rem;
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-wrapper {
+  flex: 1;
+  background: #333;
+  min-height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.player-cell {
+  display: block;
+  width: var(--cell-width);
+  height: var(--cell-height);
+  background: #345345;
+  outline: 1px solid red;
+}
+
+video {
+  display: block;
+  /*
+aspect-ratio: 16 / 9;
+  */
+  width: 100%;
 }
 </style>
   </head>
@@ -179,8 +211,7 @@ body {
     NOTE: This site use JavaScript which appears to be turned off. 
     Most content will be fine, but some things won't work.
   </p>
-</noscript>
-<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+</noscript><header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
     NOTE: This site use JavaScript which appears to be turned off. 
@@ -190,28 +221,40 @@ body {
   <div class="top-nav">
 <a href="/">home</a><a href="/tools">tools</a>  </div>
 
-  <div class="subnav"><a href="/javascript">JavaScript Grimoire</a></div>
 </header>
 
 
 
+<main>
 
-<p>The idea is to make a page with a bunch of
-instances of this video clipping it
-out at different times similar to
-the <a href="https://multi-player.alanwsmith.com/">multi-player project</a>.</p>
-<p>https://www.youtube.com/watch?v=kILYJ0qFhHM</p>
-
-<div class="players">
-<video id="v1" src="/assembly/clips/assembly-_V1-0001.mp4" muted autoplay></video>
-<video id="v2" src="/assembly/clips/assembly-_V1-0002.mp4" muted autoplay></video>
-<video id="v3" src="/assembly/clips/assembly-_V1-0003.mp4" muted autoplay></video>
-<video id="v4" src="/assembly/clips/assembly-_V1-0004.mp4" muted autoplay></video>
-</div>
-
+<div 
+    class="player-wrapper" 
+    data-r="init"
+    data-min-width="200"
+    data-max-width="260"
+    data-ratio-width="16"
+    data-ratio-height="9"
+></div>
 
 <bitty-8 data-connect="/assembly/bit.js"></bitty-8>
-    <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+
+<script type="text/html" id="cellTemplate">
+  <div class="player-cell">
+    <video data-layer="LAYER" data-index="INDEX" muted playsinline></video>
+  </div>
+</script>
+
+</main>
+
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+</footer>    <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
   </body>
 </html>
 

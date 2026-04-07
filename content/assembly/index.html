@@ -8,27 +8,39 @@ status = "idea"
 
 == block head
 <style>
-* {
-  margin: 0;
-}
-
-body {
-  background-color: black;
-  color: #aaa;
-}
-
-.players {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 0rem;
-}
+== include parent(file_path) + "/styles.css"
 </style>
 == endblock
 
 
 == block body
+== include "/templates.inc/includes/empty/header.html"
 
-== include "/templates.inc/includes/empty/javascript-header.html"
+<main>
+
+<div 
+    class="player-wrapper" 
+    data-r="init"
+    data-min-width="200"
+    data-max-width="260"
+    data-ratio-width="16"
+    data-ratio-height="9"
+></div>
+
+<bitty-8 data-connect="[@parent(file_path)@]/bit.js"></bitty-8>
+
+<script type="text/html" id="cellTemplate">
+  <div class="player-cell">
+    <video data-layer="LAYER" data-index="INDEX" muted playsinline></video>
+  </div>
+</script>
+
+</main>
+
+
+== include "/templates.inc/includes/empty/footer.html"
+== endblock 
+
 
 == filter md
 
@@ -41,15 +53,6 @@ https://www.youtube.com/watch?v=kILYJ0qFhHM
 
 == endfilter
 
-<div class="players">
-<video id="v1" src="[@parent(file_path)@]/clips/assembly-_V1-0001.mp4" muted autoplay></video>
-<video id="v2" src="[@parent(file_path)@]/clips/assembly-_V1-0002.mp4" muted autoplay></video>
-<video id="v3" src="[@parent(file_path)@]/clips/assembly-_V1-0003.mp4" muted autoplay></video>
-<video id="v4" src="[@parent(file_path)@]/clips/assembly-_V1-0004.mp4" muted autoplay></video>
-</div>
 
-
-<bitty-8 data-connect="[@parent(file_path)@]/bit.js"></bitty-8>
-== endblock 
 
 
