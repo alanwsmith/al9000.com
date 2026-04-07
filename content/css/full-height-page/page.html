@@ -1,0 +1,63 @@
+== include "/templates.inc/includes/css-header.html"
+
+<main>
+
+  <hgroup>
+    <h1>[@ p.title @]</h1>
+  </hgroup>
+
+  <details class="default-flow">
+
+  <p>Given an HTML structure like</p>
+
+== filter highlight_block("css") 
+<body>
+  <header></header>
+  <main></main>
+  <footer></footer>
+</body>
+== endfilter
+
+    <p>
+      This CSS will space things out so the
+      `header` is at the top of the page and
+      the page and the `footer` is at the
+      bottom with the `main` taking
+      up all the other space. 
+    </p>
+
+
+== filter highlight_block("css") 
+== include parent(file_path) + "/styles.css"
+== endfilter
+
+    <p>
+      This is not a sticky header. It just 
+      makes sure the page takes up
+      at least the full height of
+      the viewport. If the page is longer
+      the footer will be pushed down 
+      below the viewport as normal. 
+    </p>
+
+    <p>
+      The grid does most of the heavy lifting. 
+      The `scrollbar-gutter: stable` keeps short
+      pages and pages that have a scrollbar 
+      working together nicely instead of shifting
+      over when going from a page with a scrollbar
+      to one without one.
+    </p>
+
+    <p>
+      I got this technique from 
+      <a href="https://www.kevinpowell.co/">Kevin Powell's</a> video
+      <a href="https://www.youtube.com/watch?v=qI5rXLJnxco">3 
+        modern CSS features to add to your reset</a>.
+
+
+  </details>
+
+</main>
+
+== include "/templates.inc/includes/footer.html"

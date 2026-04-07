@@ -1,4 +1,4 @@
-[!- extends "/templates.inc/pages/default.html" -!]
+[!- extends "/templates.inc/pages/empty.html" -!]
 
 == block toml
 title = "Assembly"
@@ -6,17 +6,29 @@ status = "idea"
 == endblock 
 
 
-
-== block main
-
+== block head
 <style>
+* {
+  margin: 0;
+}
+
+body {
+  background-color: black;
+  color: #aaa;
+}
+
 .players {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0rem;
 }
 </style>
+== endblock
 
+
+== block body
+
+== include "/templates.inc/includes/empty/javascript-header.html"
 
 == filter md
 

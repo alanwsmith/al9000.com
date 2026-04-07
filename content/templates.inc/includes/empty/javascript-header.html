@@ -1,0 +1,14 @@
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+    == include "templates.inc/includes/noscript.html"
+
+  <div class="top-nav">
+    [! if file_path == "/index.html" !]home[! else !]<a href="/">home</a>[! endif !]
+    [! if parent(file_path) == "/tools" !]tools[! else !]<a href="/tools">tools</a>[! endif !]
+  </div>
+
+  <div class="subnav"><a href="/javascript">JavaScript Grimoire</a></div>
+</header>
+
+
+
+

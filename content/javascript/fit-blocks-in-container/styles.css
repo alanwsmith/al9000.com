@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--default-color);
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.block-wrapper {
+  flex: 1;
+  background: #333;
+  min-height: 300px;
+}
+

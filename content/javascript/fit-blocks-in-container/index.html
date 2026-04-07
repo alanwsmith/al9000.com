@@ -1,0 +1,34 @@
+== extends "/templates.inc/pages/empty.html"
+
+== block toml
+title = "Fit Blocks in Container"
+create = 2026-04-07T12:41:12-04:00
+== endblock
+
+
+== block head
+<style>
+== include parent(file_path) + "/styles.css"
+</style>
+== endblock
+
+
+== block body
+
+== include "/templates.inc/includes/empty/javascript-header.html"
+
+<main>
+<p>Fit block on screen.</p>
+<p>Fit block on screen.</p>
+<p>Fit block on screen.</p>
+<div class="block-wrapper" data-r="blocks" data-min-width="200" data-max-width="300" data-ratio="16:9"></div>
+</main>
+
+== include "/templates.inc/includes/footer.html"
+
+<bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+
+
+
+== endblock
+

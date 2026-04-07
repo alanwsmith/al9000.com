@@ -7,6 +7,11 @@
 .meta.import .keyword, .keyword.control.import, .keyword.control.import.from, .keyword.other.import, .keyword.control.at-rule.include, .keyword.control.at-rule.import, .entity.name.section, .constant.character, .constant.other, .support.type.exception, .keyword.other.special-method, .keyword.other.special-method.ruby, .entity.name.function.preprocessor.c, .meta.preprocessor.c.include, .meta.preprocessor.macro.c, .variable.parameter.function.latex, .support.function.section.latex { color: var(--highlight-7-color); }
 .keyword.operator.comparison, .keyword.operator.assignment, .keyword.operator.arithmetic, .meta.brace.round, .meta.brace.curly, .punctuation.section, .punctuation.section.block, .punctuation.definition.parameters, .punctuation.section.group, .meta.selector.css, .constant.character.escape, .support.function.construct, .keyword.other.new, .punctuation.separator.continuation, .other.package.exclude, .other.remove, .punctuation.section.group.tex, .punctuation.definition.arguments.begin.latex, .punctuation.definition.arguments.end.latex, .punctuation.definition.arguments.latex, .punctuation.definition.constant.math.tex, .punctuation.definition.string.begin.tex, .punctuation.definition.string.end.tex, .variable.parameter.definition.label.latex, .punctuation.definition.logical-expression.shell, .markup.deleted, .sublimelinter.mark.error, .markup.deleted.git_gutter { color: var(--highlight-8-color); }
 
+
+:root {
+  interpolate-size: allow-keywords;
+}
+
 @font-face { 
   font-family: "Hack";
   src: url("/fonts/HackNerdFontMono-Regular.ttf");
@@ -23,6 +28,10 @@
 
 ::marker {
   color: var(--default-color);
+}
+
+html {
+  scrollbar-gutter: stable;
 }
 
 a {
@@ -216,9 +225,31 @@ del {
   text-decoration: line-through;
 }
 
+details::details-content {
+  margin-inline-start: 1rem;
+}
+
 details.d > :where(:not(summary)) {
   margin-top: var(--flow-space, var(--default-flow));
   padding-left: var(--default-padding);
+}
+
+@supports (interpolate-size: allow-keywords) {
+  details {
+    overflow: hidden;
+  }
+
+  details::details-content {
+    block-size: 0;
+      transition: 
+        block-size 170ms,
+        content-visibility 170ms;
+      transition-behavior: allow-discrete;
+  }
+
+  details[open]::details-content {
+    block-size: auto;
+  }
 }
 
 .example-box {
@@ -456,6 +487,15 @@ p > code {
   border-radius: var(--xsmall-border-radius);
   padding-inline: var(--xxsmall-padding);
   outline: var(--faded-reverse-border);
+}
+
+summary {
+  margin-inline-start: 1rem;
+  list-style-position: outside;
+}
+
+summary::marker {
+  color: hsl(0 0% 60%);
 }
 
 svg {

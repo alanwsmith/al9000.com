@@ -8,5 +8,5 @@ export async function init() {
       console.log(event);
     });
   });
-  b.qs("#v1").play();
+  // b.qs("#v1").play();
 }

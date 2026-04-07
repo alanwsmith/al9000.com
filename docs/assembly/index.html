@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/scripts/bitty.off/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
 <style>
 :root {
   --light--background-color: oklch(0.9634 0.02097 105.642);
@@ -136,24 +137,7 @@
     --reverse-color: var(--switch--reverse-color, var(--dark--reverse-color));
     --faded-reverse-color: var(--switch--faded-reverse-color, var(--dark--faded-reverse-color));
   }
-}</style><style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
-
-</style>    <script src="/styles/styles.js"></script>
-    <script src="/scripts/bitty.off/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
-    <link rel="stylesheet" href="/styles/main.css" />
-<link rel="shortcut icon" href="/favicon.ico" />
+}</style><link rel="shortcut icon" href="/favicon.ico" />
 <title>Assembly</title>
 <meta property="og:title" content="Assembly" />
 <meta name="description" content="a post from alan w. smith" />
@@ -166,36 +150,50 @@ body {
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
 <link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
 <link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-  </head>
-  <body>
-    <noscript>
-      <p>
-        This page uses JavaScript
-        which is not currently active. 
-        Some features may not work  properly. 
-      </p>
-    </noscript>
-<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-  <div class="top-nav">
-<a href="/">home</a><a href="/tools">tools</a>  </div>
-
-</header>
-
-
-<main class="default-wrapper default-flow">
-
-  <hgroup>
-      <h1>Assembly</h1>
-  </hgroup>
-
+<style>
+.default-flow > :where(:not(:first-child)) {
+  margin-top: 1rem;
+}
+</style>
 
 <style>
+* {
+  margin: 0;
+}
+
+body {
+  background-color: black;
+  color: #aaa;
+}
+
 .players {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0rem;
 }
 </style>
+  </head>
+  <body>
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+  <div class="subnav"><a href="/javascript">JavaScript Grimoire</a></div>
+</header>
+
+
 
 
 <p>The idea is to make a page with a bunch of
@@ -213,20 +211,6 @@ the <a href="https://multi-player.alanwsmith.com/">multi-player project</a>.</p>
 
 
 <bitty-8 data-connect="/assembly/bit.js"></bitty-8>
-
-</main>
-
-<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from alan w smith
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-
-</footer>
-
-
     <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
   </body>
 </html>

@@ -1,0 +1,72 @@
+== extends "/templates.inc/pages/empty.html"
+
+
+== block toml
+title = "Animate Opening a details Element"
+created = 2026-04-07T10:27:15-04:00
+== endblock
+
+
+== block head
+<style>
+* {
+  margin: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--default-color);
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+== include parent(file_path) + "/styles.css"
+
+</style>
+== endblock
+
+
+== block body
+
+== include "/templates.inc/includes/css-header.html"
+
+<main class="default-flow">
+  <hgroup>
+    <h1>[@ p.title @]</h1>
+  </hgroup>
+
+  <h3>HTML</h3>
+  == filter highlight_block("html")
+  == include parent(file_path) + "/page.html"
+  == endfilter
+
+  <h3>CSS</h3>
+  == filter highlight_block("css")
+  == include parent(file_path) + "/styles.css"
+  == endfilter
+
+
+
+  <h3>Output</h3>
+== include parent(file_path) + "/page.html"
+
+
+
+  <p>Via: https://www.youtube.com/watch?v=Vzj3jSUbMtI</p>
+
+</main>
+
+== include "/templates.inc/includes/footer.html"
+== endblock
+
+
+

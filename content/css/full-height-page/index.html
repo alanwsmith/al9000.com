@@ -1,0 +1,24 @@
+== extends "/templates.inc/pages/empty.html"
+
+== block toml
+title = "Create a Full Height Page"
+created = 2026-04-07T10:27:15-04:00
+== endblock
+
+
+== block head
+<style>
+body {
+  background-color: var(--background-color);
+  color: var(--default-color);
+}
+== include parent(file_path) + "/styles.css"
+</style>
+== endblock
+
+
+== block body 
+
+== include parent(file_path) + "/page.html"
+
+== endblock

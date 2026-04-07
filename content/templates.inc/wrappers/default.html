@@ -7,32 +7,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    [! include "/styles/_includes/initial-colors.html" !]
-    [! include "/styles/_includes/initial-styles.html" !]
+    == include "/styles/_includes/initial-colors.html"
+    == include "/styles/_includes/initial-styles.html" 
     <script src="/styles/styles.js"></script>
     <script src="/scripts/bitty.off/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
     <link rel="stylesheet" href="/styles/main.css" />
-    [! include "/templates.inc/includes/metadata.html" !]
-    [! if stylesheets !]
-    [! for stylesheet in stylesheets !]
+    <style>
+      body {
+        min-height: 100svh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+    </style>
+    == include "/templates.inc/includes/metadata.html" 
+    == for stylesheet in stylesheets 
     <link rel="stylesheet" href="[@ stylesheet @]" />
-    [! endfor !]
-    [! endif !]
-    [! block head !][! endblock !]
+    == endfor 
+    == block head
+    == endblock
   </head>
   <body>
-    <noscript>
-      <p>
-        This page uses JavaScript
-        which is not currently active. 
-        Some features may not work  properly. 
-      </p>
-    </noscript>
-    [! block body !][! endblock !]
+    == block body
+    == endblock
     <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
   </body>
 </html>
 
 == endblock
-
 
