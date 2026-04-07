@@ -154,8 +154,8 @@ body {
     <script src="/scripts/bitty.off/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
     <link rel="stylesheet" href="/styles/main.css" />
 <link rel="shortcut icon" href="/favicon.ico" />
-<title>Create an HLS Encrypted Video</title>
-<meta property="og:title" content="Create an HLS Encrypted Video" />
+<title>Create an HLS Encrypted Video with ffmpeg</title>
+<meta property="og:title" content="Create an HLS Encrypted Video with ffmpeg" />
 <meta name="description" content="a post from alan w. smith" />
 <meta property="og:description" content="a post from alan w. smith" />
 <meta property="og:type" content="article" />
@@ -189,9 +189,76 @@ body {
 <main class="default-wrapper default-flow">
 
   <hgroup>
-      <h1>Create an HLS Encrypted Video</h1>
+      <h1>Create an HLS Encrypted Video with ffmpeg</h1>
+        <div class="date">April 2026</div>
   </hgroup>
 
+
+<p>I'm playing around with videos for some project ideas.
+I'm looking into encrypting the videos to try to
+keep them from being slurped up by bots. One thing
+I looked at is using HLS videos with encryption.</p>
+<p>I don't think it's going to do what I want.
+The process involves setting up a playlist
+that's encrypted and then pointing to a key
+to decrypt them. The problem is that path
+to the key is in the playlist. I expect bots
+will just pick it right up.</p>
+<p>Regardless, I do like the HLS approach (minus
+the encryption). It lets you split a video into
+multiple files and then the browser stitches
+them together. That provides a better experience
+when skipping around a video because
+later chunks can be loaded if they get scrubbed
+to prior to the full video being
+downloaded.</p>
+<p>Here's the ffmpeg process I'm using to make
+prep the videos (including the encryption):</p>
+
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker"></span></span>
+<span class="line-marker"></span><span class="variable other readwrite assignment shell">INPUT_DIR</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>input<span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker"></span><span class="variable other readwrite assignment shell">KEY_NAME</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>hls-sample.key<span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker"></span><span class="variable other readwrite assignment shell">KEY_PATH</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">INPUT_DIR</span></span>/<span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">KEY_NAME</span></span><span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker"></span><span class="variable other readwrite assignment shell">KEY_INFO</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">INPUT_DIR</span></span>/hls-sample.txt<span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker"></span><span class="variable other readwrite assignment shell">OUTPUT_DIR</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>output<span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker"></span><span class="variable other readwrite assignment shell">VIDEO_NAME</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>bird.mp4<span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="support function test begin shell">[</span><span class="meta function-call arguments shell"> <span class="keyword operator logical shell">!</span> <span class="variable parameter option shell"><span class="punctuation definition parameter shell">-</span>e</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">KEY_PATH</span></span><span class="punctuation definition string end shell">&quot;</span></span> <span class="support function test end shell">]</span></span> <span class="keyword operator logical and shell">&amp;&amp;</span> <span class="meta function-call shell"><span class="variable function shell">openssl</span></span><span class="meta function-call arguments shell"> rand<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>out</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">KEY_PATH</span></span><span class="punctuation definition string end shell">&quot;</span></span> 16</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>https://al9000.com/ffmpeg/create-an-hls-encrypted-video/<span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">KEY_NAME</span></span><span class="punctuation definition string end shell">&quot;</span></span> <span class="keyword operator assignment redirection shell">&gt;</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">KEY_INFO</span></span><span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker"></span><span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">KEY_NAME</span></span><span class="punctuation definition string end shell">&quot;</span></span> <span class="keyword operator assignment redirection shell">&gt;&gt;</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">KEY_INFO</span></span><span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker"></span><span class="meta function-call shell"><span class="variable function shell">openssl</span></span><span class="meta function-call arguments shell"> rand<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>hex</span> 16 <span class="keyword operator assignment redirection shell">&gt;&gt;</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">KEY_INFO</span></span><span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function-call shell"><span class="variable function shell">ffmpeg</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>y</span> <span class="punctuation separator continuation line shell">\
+<span class="line-marker"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>i</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">INPUT_DIR</span></span>/<span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">VIDEO_NAME</span></span><span class="punctuation definition string end shell">&quot;</span></span> <span class="punctuation separator continuation line shell">\
+<span class="line-marker"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>c</span>:v libx264 <span class="punctuation separator continuation line shell">\
+<span class="line-marker"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>c</span>:a aac <span class="punctuation separator continuation line shell">\
+<span class="line-marker"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>hls_segment_type</span> mpegts <span class="punctuation separator continuation line shell">\
+<span class="line-marker"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>hls_list_size</span> 0 <span class="punctuation separator continuation line shell">\
+<span class="line-marker"></span></span>  <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">OUTPUT_DIR</span></span>/bird.m3u8<span class="punctuation definition string end shell">&quot;</span></span></span></span></code></pre></div>
+<p>Some browsers support playing HLS files natively. Firefox
+does not. I'm using the <a href="https://github.com/video-dev/hls.js">hls.js library</a>
+to handle that. It uses the HLS files in browsers
+that support it and transmuxes a version for
+browsers that don't.</p>
+<p>The code looks like this:</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/scripts/hlsjs-1.6.15.off/hls.min.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">video</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">birdVideo</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">controls</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">video</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span><span class="source js embedded html"><span class="source js">  <span class="storage type js">var</span> <span class="variable other readwrite js">video</span> <span class="keyword operator assignment js">=</span> <span class="support type object dom js">document</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="support function dom js">getElementById</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted single js"><span class="punctuation definition string begin js">&#39;</span>birdVideo<span class="punctuation definition string end js">&#39;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="storage type js">var</span> <span class="variable other readwrite js">videoSrc</span> <span class="keyword operator assignment js">=</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/ffmpeg/create-an-hls-encrypted-video/output/bird.m3u8<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">video</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">canPlayType</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted single js"><span class="punctuation definition string begin js">&#39;</span>application/vnd.apple.mpegurl<span class="punctuation definition string end js">&#39;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="variable other object js">video</span><span class="punctuation accessor js">.</span><span class="meta property object js">src</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">videoSrc</span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">Hls</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">isSupported</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="storage type js">var</span> <span class="variable other readwrite js">hls</span> <span class="keyword operator assignment js">=</span> <span class="meta instance constructor js"><span class="keyword operator word new js">new</span><span class="meta function-call constructor js"> <span class="variable type js">Hls</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    <span class="variable other object js">hls</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">loadSource</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">videoSrc</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    <span class="variable other object js">hls</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">attachMedia</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">video</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+And, here's the output:
 
 <script src="/scripts/hlsjs-1.6.15.off/hls.min.js"></script>
 
@@ -213,6 +280,33 @@ body {
 
 
 
+
+
+<p>I was investigating <a href="https://videojs.org/">VideoJS</a>.
+It looks awesome. It doesn't quite work
+at the moment, though. They're in the
+middle of a big rewrite and I couldn't
+get HLS working. I expect that'll
+be addresses as the continue working.</p>
+<p>I've done some looking at using <code>addSourceBuffer()</code>
+for the encryption stuff. I can make that
+work, but the method doesn't have full
+browser support. Notably, it's missing
+iPhone support. I think I can work
+without it, it just won't be as smooth.</p>
+<p>-a</p>
+
+<h3>References</h3>
+
+<ul>
+<li><a href="https://developer.apple.com/documentation/http-live-streaming/using-content-protection-systems-with-hls">https://developer.apple.com/documentation/http-live-streaming/using-content-protection-systems-with-hls</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/addSourceBuffer">https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/addSourceBuffer</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats">https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats</a></li>
+<li><a href="https://ffmpeg.org/ffmpeg-formats.html">https://ffmpeg.org/ffmpeg-formats.html</a></li>
+<li><a href="https://github.com/video-dev/hls.js">https://github.com/video-dev/hls.js</a></li>
+<li><a href="https://hlsjs.video-dev.org/demo/">https://hlsjs.video-dev.org/demo/</a></li>
+<li><a href="https://videojs.org/">https://videojs.org/</a></li>
+</ul>
 
 
 </main>

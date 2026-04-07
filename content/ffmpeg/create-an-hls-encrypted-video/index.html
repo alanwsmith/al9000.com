@@ -1,11 +1,95 @@
 == extends "/templates.inc/pages/ffmpeg.html"
 
 == block toml
-title = "Create an HLS Encrypted Video"
+title = "Create an HLS Encrypted Video with ffmpeg"
+created = 2026-04-06T23:27:15-04:00
 == endblock
 
 == block main
 
+== filter md
+
+I'm playing around with videos for some project ideas. 
+I'm looking into encrypting the videos to try to 
+keep them from being slurped up by bots. One thing
+I looked at is using HLS videos with encryption. 
+
+I don't think it's going to do what I want. 
+The process involves setting up a playlist
+that's encrypted and then pointing to a key
+to decrypt them. The problem is that path
+to the key is in the playlist. I expect bots
+will just pick it right up. 
+
+Regardless, I do like the HLS approach (minus
+the encryption). It lets you split a video into 
+multiple files and then the browser stitches 
+them together. That provides a better experience
+when skipping around a video because
+later chunks can be loaded if they get scrubbed
+to prior to the full video being
+downloaded. 
+
+Here's the ffmpeg process I'm using to make 
+prep the videos (including the encryption):
+== endfilter
+
+== filter highlight_block("bash")
+== include parent(file_path) + "/make-video.bash"
+== endfilter
+
+== filter md
+
+Some browsers support playing HLS files natively. Firefox
+does not. I'm using the [hls.js library](https://github.com/video-dev/hls.js) 
+to handle that. It uses the HLS files in browsers
+that support it and transmuxes a version for
+browsers that don't. 
+
+The code looks like this:
+
+== filter highlight_block("html")
 == include parent(file_path) + "/page.html"
+== endfilter
+
+And, here's the output:
+
+== endfilter
+
+== include parent(file_path) + "/page.html"
+
+
+== filter md
+
+I was investigating [VideoJS](https://videojs.org/). 
+It looks awesome. It doesn't quite work
+at the moment, though. They're in the
+middle of a big rewrite and I couldn't
+get HLS working. I expect that'll 
+be addresses as the continue working. 
+
+I've done some looking at using `addSourceBuffer()`
+for the encryption stuff. I can make that
+work, but the method doesn't have full 
+browser support. Notably, it's missing 
+iPhone support. I think I can work
+without it, it just won't be as smooth. 
+
+-a
+
+
+== endfilter
+
+<h3>References</h3>
+
+<ul>
+<li><a href="https://developer.apple.com/documentation/http-live-streaming/using-content-protection-systems-with-hls">https://developer.apple.com/documentation/http-live-streaming/using-content-protection-systems-with-hls</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/addSourceBuffer">https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/addSourceBuffer</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats">https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats</a></li>
+<li><a href="https://ffmpeg.org/ffmpeg-formats.html">https://ffmpeg.org/ffmpeg-formats.html</a></li>
+<li><a href="https://github.com/video-dev/hls.js">https://github.com/video-dev/hls.js</a></li>
+<li><a href="https://hlsjs.video-dev.org/demo/">https://hlsjs.video-dev.org/demo/</a></li>
+<li><a href="https://videojs.org/">https://videojs.org/</a></li>
+</ul>
 
 == endblock
