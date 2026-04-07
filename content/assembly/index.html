@@ -17,6 +17,7 @@ status = "idea"
 == include "/templates.inc/includes/empty/header.html"
 
 <main>
+  <h1>Assembly</h1>
 
 <div 
     class="player-wrapper" 
@@ -27,11 +28,26 @@ status = "idea"
     data-ratio-height="9"
 ></div>
 
+  <div class="about">
+    <details>
+      <summary>about</summary>
+      <div>
+      </div>
+    </details>
+  </div>
+
+
+
 <bitty-8 data-connect="[@parent(file_path)@]/bit.js"></bitty-8>
+
+
+<script type="text/html" id="layerTemplate">
+  <div class="player-layer">__CELLS__</div>
+</script>
 
 <script type="text/html" id="cellTemplate">
   <div class="player-cell">
-    <video data-layer="LAYER" data-index="INDEX" muted playsinline></video>
+    <video data-layer="__LAYER__" data-index="__INDEX__" muted playsinline></video>
   </div>
 </script>
 
