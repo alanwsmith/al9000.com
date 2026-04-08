@@ -24,20 +24,24 @@ main {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
   background: #333;
 }
 
 .cell {
   display: flex;
-  outline: 1px solid red;
   width: var(--cell-width);
   height: var(--cell-height);
 }
 
-.cell video {
+/*
+.cell img {
+  outline: 1px solid blue;
   display: block;
 }
 
+*/
 
 .hidden {
   display: none;
