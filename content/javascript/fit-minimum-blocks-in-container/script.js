@@ -1,18 +1,11 @@
-function getLayout(
-  d,
-  // minWidth,
-  // containerWidth,
-  // containerHeight,
-  // ratioWidth,
-  // ratioHeight,
-  // minColumns,
-  // maxColumns,
-) {
+function getLayout(d) {
   let cellWidth = Math.floor(d.containerWidth / d.minColumns);
   console.log(d);
   for (let columns = d.minColumns + 2; columns <= d.maxColumns; columns += 2) {
     const checkWidth = Math.floor(d.containerWidth / columns);
-    if (checkWidth > d.minWidth) {
+    console.log(checkWidth, d.maxWidth);
+
+    if (checkWidth > d.maxWidth) {
       cellWidth = checkWidth;
     }
   }

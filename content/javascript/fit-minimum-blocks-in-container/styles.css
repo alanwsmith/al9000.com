@@ -22,9 +22,22 @@ main {
 
 .cells {
   flex: 1;
+  display: flex;
+  flex-wrap: wrap;
   background: #333;
-  min-height: 600px;
 }
+
+.cell {
+  display: flex;
+  outline: 1px solid red;
+  width: var(--cell-width);
+  height: var(--cell-height);
+}
+
+.cell video {
+  display: block;
+}
+
 
 .hidden {
   display: none;

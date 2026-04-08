@@ -3,7 +3,7 @@ export const b = { init: "cells" };
 export function cells(_, __, el) {
   const layout = getLayout(
     {
-      minCellWidth: el.propAsInt("minWidth"),
+      maxWidth: el.propAsInt("maxWidth"),
       containerWidth: parseInt(el.getBoundingClientRect().width),
       containerHeight: parseInt(el.getBoundingClientRect().height),
       ratioWidth: el.propAsInt("ratioWidth"),
@@ -13,10 +13,10 @@ export function cells(_, __, el) {
     },
   );
   console.log(layout);
-
-  // for (let i = 0; i < layout.cells; i = i + 1) {
-  //   el.append(b.render("cellTemplate"));
-  // }
-  // b.setCSS("--cell-width", `${layout.cellWidth}px`);
-  // b.setCSS("--cell-height", `${layout.cellHeight}px`);
+  el.replaceChildren();
+  for (let i = 0; i < layout.cells; i = i + 1) {
+    el.append(b.render("cellTemplate"));
+  }
+  b.setCSS("--cell-width", `${layout.cellWidth}px`);
+  b.setCSS("--cell-height", `${layout.cellHeight}px`);
 }

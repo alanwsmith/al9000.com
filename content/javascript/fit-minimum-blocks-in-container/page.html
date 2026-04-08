@@ -1,7 +1,7 @@
 == include "/templates.inc/includes/empty/header.html"
 
 <main>
-  <div class="cells" data-r="cells" data-min-width="100" data-ratio-width="4" data-ratio-height="3">
+  <div class="cells" data-r="cells" data-max-width="140" data-ratio-width="16" data-ratio-height="9">
     Loading Cells
   </div>
 </main>
@@ -11,4 +11,11 @@
 <div class="hidden">
   <script src="[@ parent(file_path) @]/script.js"></script>
   <bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+
+  <script type="text/html" id="cellTemplate">
+    <div class="cell">
+      <video src="[@ parent(file_path) @]/example.mp4" playsinline controls />
+    </div>
+  </script>
+
 </div>
