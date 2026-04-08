@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/scripts/bitty.off/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
 <style>
 :root {
   --light--background-color: oklch(0.9634 0.02097 105.642);
@@ -136,46 +137,34 @@
     --reverse-color: var(--switch--reverse-color, var(--dark--reverse-color));
     --faded-reverse-color: var(--switch--faded-reverse-color, var(--dark--faded-reverse-color));
   }
-}</style><style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
-
-</style>    <script src="/styles/styles.js"></script>
-    <script src="/scripts/bitty.off/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
-    <link rel="stylesheet" href="/styles/main.css" />
-    <style>
-      body {
-        min-height: 100svh;
-        display: grid;
-        grid-template-rows: auto 1fr auto;
-      }
-    </style>
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>Welcome to al9000</title>
-<meta property="og:title" content="Welcome to al9000" />
-<meta name="description" content="The new and improved home of alan w. smith on the web." />
-<meta property="og:description" content="The new and improved home of alan w. smith on the web." />
+}</style><link rel="shortcut icon" href="/favicon.ico" />
+<title>Fit Blocks in Container with a Minimum</title>
+<meta property="og:title" content="Fit Blocks in Container with a Minimum" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/" />
+<meta property="og:url" content="https://al9000.com/javascript/fit-minimum-blocks-in-container/" />
 <meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
 <link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
 <link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<style>
+.default-flow > :where(:not(:first-child)) {
+  margin-top: 1rem;
+}
+</style>
+
+<link rel="stylesheet" href="/javascript/fit-minimum-blocks-in-container/styles.css" />
   </head>
   <body>
-<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript><header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
     NOTE: This site use JavaScript which appears to be turned off. 
@@ -183,152 +172,17 @@ body {
   </p>
 </noscript>
   <div class="top-nav">
-home<a href="/tools">tools</a>  </div>
-
+<a href="/">home</a><a href="/tools">tools</a>  </div>
 
 </header>
 
 
-    <main class="default-wrapper default-flow">
-<hgroup>
-  <h1>Welcome to al9000</h1>
-</hgroup>
 
-<p>
-  My main site is <a href="https://www.alanwsmith.com/">alanwsmith.com</a>.
-  It's been around for ~25 years. It's been great, but
-  I like the idea of a site that's not my name. So, I'm
-  making this one. 
-</p>
-<p>
-  I've made 
-  <a href="https://links.alanwsmith.com">a ton of sites little sites</a> 
-  that are under the alanwsmith.com domain. A big reason for that is because
-  the tools I use to build the main site weren't well set up
-  to make independent pages. I'm writing new software
-  to make that easier to do here. It'll make 
-  maintaining and navigating between different 
-  experiments a lot easier. 
-</p>
-<p>
-  The current list of stuff and statuses is below. 
-  Stop back by every now and then to check for updates. 
-  (Getting an RSS Feed in place is on the list.)
-</p>
-<p>-a<p>
-
-<h2>Done</h2>
-<ul>
-      <li>
-      <a href="/assembly">
-        Assembly
-      </a>
-      </li>
-      <li>
-      <a href="/band-names">
-        The Name(s) of My New Band
-      </a>
-      </li>
-      <li>
-      <a href="/scratchpad">
-        Scratchpad
-      </a>
-      </li>
-      <li>
-      <a href="/unicode">
-        Unicode Characters
-      </a>
-      </li>
-</ul>
-
-<h2>Work-In-Progress</h2>
-<ul>
-      <li>
-      <a href="/al9000-docs">
-        al9000 Documentation
-      </a>
-      </li>
-      <li>
-      <a href="/background-maker">
-        Background Texture Maker
-      </a>
-      </li>
-      <li>
-      <a href="/cctweaked">
-        CC:Tweaked - aka ComputerCraft
-      </a>
-      </li>
-      <li>
-      <a href="/css">
-        CSS Grimoire
-      </a>
-      </li>
-      <li>
-      <a href="/ffmpeg">
-        ffmpeg
-      </a>
-      </li>
-      <li>
-      <a href="/javascript">
-        JavaScript Grimoire
-      </a>
-      </li>
-      <li>
-      <a href="/magic-deck-builder">
-        Magic Deck Builder
-      </a>
-      </li>
-      <li>
-      <a href="/minecraft">
-        Minecraft Notes
-      </a>
-      </li>
-      <li>
-      <a href="/multi-player">
-        Multi-Player
-      </a>
-      </li>
-      <li>
-      <a href="/rust">
-        Rust Grimoire
-      </a>
-      </li>
-      <li>
-      <a href="/tools">
-        Tools
-      </a>
-      </li>
-</ul>
-
-<h2>Ideas</h2>
-<ul>
-      <li>
-      <a href="/radio">
-        Radio
-      </a>
-      </li>
-      <li>
-      <a href="/tv">
-        TV
-      </a>
-      </li>
-      <li>
-      <a href="/voxels">
-        Voxels
-      </a>
-      </li>
-</ul>
-
-<h2>bitty</h2>
-<p>
-  The main project I've been working on is <a href="https://bittyjs.com/">bitty</a>. 
-  It's a front-end framework designed to make it easier to make things
-  for the web. You can check it out at
-  <a href="https://bittyjs.com">bittyjs.com</a>.
-</p>
-
-
-    </main>
+<main>
+  <div class="cells" data-r="cells" data-min-width="100" data-ratio-width="4" data-ratio-height="3">
+    Loading Cells
+  </div>
+</main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
   <div class="small-font-size text-align-center">
@@ -337,9 +191,11 @@ home<a href="/tools">tools</a>  </div>
   <div class="small-font-size text-align-center">
     who also makes <a href="https://bittyjs.com">bitty</a>
   </div>
-
 </footer>
-
+<div class="hidden">
+  <script src="/javascript/fit-minimum-blocks-in-container/script.js"></script>
+  <bitty-8 data-connect="/javascript/fit-minimum-blocks-in-container/bit.js"></bitty-8>
+</div>
     <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
   </body>
 </html>

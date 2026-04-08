@@ -1,11 +1,38 @@
 == extends "templates.inc/pages/default.html"
 
 == block toml
-title = "ffmpeg Grimoire"
+title = "ffmpeg"
 status = "wip"
 == endblock
 
 == block main
+
+<bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+
+<h2>Command Builder</h2>
+<p>
+  This is a super basic command builder for resizing videos and setting their start and stop times.
+  I'll add more to it over time as I run into other features that I want to use. 
+</p>
+<div class="two-columns-left">
+  <label for="input">Input: </label>
+  <input id="input" type="text" name="input_file" data-s="update" data-listen="input" autocomplete="off" value="input.mp4" />
+  <label for="start">Start (sec): </label>
+  <input id="start" type="text" name="input_file" data-s="update" data-listen="input" autocomplete="off"  />
+  <label for="length">Length (sec): </label>
+  <input id="length" type="text" name="input_file" data-s="update" data-listen="input" autocomplete="off" />
+  <label for="scale">Scale (sec): </label>
+  <input id="scale" type="text" name="input_file" data-s="update" data-listen="input" autocomplete="off" placeholder="720:-2" />
+  <label for="output">Output: </label>
+  <input id="output" type="text" name="input_file" data-s="update" data-listen="input" autocomplete="off" value="output.mp4" />
+  <label for="command">Command:</label>
+  <div class="two-columns-right">
+  <input id="command" type="text" name="input_file" data-r="update copy" autocomplete="off" />
+    <button data-s="copy">Copy</button>
+  </div>
+</div>
+
+<h2>Posts</h2>
 
 <ul>
 == for folder in folders_in_folder(parent(file_path)) 

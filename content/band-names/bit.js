@@ -39,7 +39,7 @@ The Great Hypothesis
 The Nontrivials
 Negative Ghost Rider
 The Mythical Monsters
-Jeff Goldblum's Swagger
+The Goldblum Swagger
 Go / No-Go 
 Lack of Noise
 The Tack Sharp
@@ -491,7 +491,6 @@ The Unfortunately Erect
 Useful MacGuffins
 Various Memes
 The Vectors
-Thought Criminals
 God Thunderbolt 
 Delta Time
 Tone Curve

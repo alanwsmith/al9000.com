@@ -27,6 +27,7 @@ main {
 }
 
 .cell {
+  /* TOOD: I think this should be a block */
   display: inline-block;
   width: var(--cell-width);
   height: var(--cell-height);

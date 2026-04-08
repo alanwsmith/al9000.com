@@ -61,7 +61,7 @@ export async function play(_, __, ___) {
       videoEls[vidIndex].muted = true;
     }
     videoEls[vidIndex].play();
-    await b.sleep(70);
+    await b.sleep(30);
   }
 }
 
@@ -73,13 +73,24 @@ function getBlockLayout(
   ratioWidth,
   ratioHeight,
 ) {
+  // let cellWidth = Math.floor(containerWidth / 5);
+  // for (let count = 7; count < 21; count += 1) {
+  //   const checkWidth= Math.floor(contaigerWidth / count);
+  //   if (checkWidth >
+  // }
+
   const maxItems = Math.floor(containerWidth / minWidth);
   let cellWidth = Math.floor(containerWidth / maxItems);
   if (cellWidth > maxWidth) {
     cellWidth = maxWidth;
   }
-  const cellHeight = cellWidth / ratioWidth * ratioHeight;
-  const columns = parseInt(containerWidth / cellWidth, 10);
+  let fiveCount = Math.floor(containerWidth / 5);
+  if (fiveCount < cellWidth) {
+    cellWidth = fiveCount;
+  }
+  const cellHeight = parseInt(cellWidth / ratioWidth * ratioHeight);
+  let columns = parseInt(containerWidth / cellWidth, 10);
+  columns = columns - (columns % 2 === 0 ? 1 : 0);
   const rows = parseInt(containerHeight / cellHeight, 10);
   const cells = columns * rows;
   return {
@@ -90,3 +101,29 @@ function getBlockLayout(
     cells: cells,
   };
 }
+
+// function getBlockLayout(
+//   minWidth,
+//   maxWidth,
+//   containerWidth,
+//   containerHeight,
+//   ratioWidth,
+//   ratioHeight,
+// ) {
+//   const maxItems = Math.floor(containerWidth / minWidth);
+//   let cellWidth = Math.floor(containerWidth / maxItems);
+//   if (cellWidth > maxWidth) {
+//     cellWidth = maxWidth;
+//   }
+//   const cellHeight = cellWidth / ratioWidth * ratioHeight;
+//   const columns = parseInt(containerWidth / cellWidth, 10);
+//   const rows = parseInt(containerHeight / cellHeight, 10);
+//   const cells = columns * rows;
+//   return {
+//     cellWidth: cellWidth,
+//     cellHeight: cellHeight,
+//     columns: columns,
+//     rows: rows,
+//     cells: cells,
+//   };
+// }

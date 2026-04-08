@@ -1,0 +1,17 @@
+== extends "/templates.inc/pages/empty.html"
+
+== block toml
+title = "Fit Blocks in Container with a Minimum"
+create = 2026-04-08T09:55:12-04:00
+== endblock
+
+== block head
+<link rel="stylesheet" href="[@parent(file_path)@]/styles.css" />
+== endblock
+
+== block body
+== include parent(file_path) + "/page.html"
+
+== endblock
+
+

@@ -547,6 +547,18 @@ th {
   gap: var(--large-margin);
 }
 
+.two-columns-left {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--large-margin);
+}
+
+.two-columns-right {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--large-margin);
+}
+
 
 ul > :where(:not(:first-child)) {
   margin-top: var(--flow-space, var(--default-flow));

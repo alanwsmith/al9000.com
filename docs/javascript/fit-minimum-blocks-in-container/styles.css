@@ -12,7 +12,7 @@ body {
   color: var(--default-color);
   min-height: 100svh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr auto auto;
 }
 
 main {
@@ -20,18 +20,13 @@ main {
   flex-direction: column;
 }
 
-.block-wrapper {
+.cells {
   flex: 1;
   background: #333;
   min-height: 600px;
 }
 
-.cell {
-  /* TOOD: I think this should be a block */
-  display: inline-block;
-  width: var(--cell-width);
-  height: var(--cell-height);
-  background: #345345;
-  outline: 1px solid red;
+.hidden {
+  display: none;
 }
 
