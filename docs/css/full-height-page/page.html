@@ -1,18 +1,94 @@
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      background-color: black;
-      color: goldenrod;
-    } 
-  </style>
-</head>
-<body>
-template not found: tried to include non-existing template "/templates.inc/includes/css-header.html" (in /css/full-height-page/page.html:1)
-</body>
-</html>
-  
+  <div class="subnav"><a href="/css">CSS Grimoire</a></div>
+</header>
+
+
+<main>
+
+  <hgroup>
+    <h1></h1>
+    <div>
+      NOTE: This page doesn't have base styles applied yet so things
+      look kinda busted.
+    </div>
+  </hgroup>
+
+
+  <details class="default-flow">
+
+  <p>Given an HTML structure like</p>
+
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source css">&lt;<span class="meta selector css"><span class="entity name tag css">body</span><span class="punctuation separator combinator css">&gt;</span>
+<span class="line-marker"></span>  &lt;<span class="entity name tag css">header</span><span class="punctuation separator combinator css">&gt;</span>&lt;</span>/<span class="meta selector css"><span class="entity name tag css">header</span><span class="punctuation separator combinator css">&gt;</span>
+<span class="line-marker"></span>  &lt;<span class="entity name tag css">main</span><span class="punctuation separator combinator css">&gt;</span>&lt;</span>/<span class="meta selector css"><span class="entity name tag css">main</span><span class="punctuation separator combinator css">&gt;</span>
+<span class="line-marker"></span>  &lt;<span class="entity name tag css">footer</span><span class="punctuation separator combinator css">&gt;</span>&lt;</span>/<span class="meta selector css"><span class="entity name tag css">footer</span><span class="punctuation separator combinator css">&gt;</span>
+<span class="line-marker"></span>&lt;</span>/<span class="meta selector css"><span class="entity name tag css">body</span><span class="punctuation separator combinator css">&gt;</span></span></span></code></pre></div>
+    <p>
+      This CSS will space things out so the
+      `header` is at the top of the page and
+      the page and the `footer` is at the
+      bottom with the `main` taking
+      up all the other space. 
+    </p>
+
+
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source css"><span class="meta selector css"><span class="entity name tag wildcard css">*</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker"></span>  <span class="meta property-name css"><span class="support type property-name css">margin</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">0</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta selector css"><span class="entity name tag css">html</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker"></span>  <span class="meta property-name css">scrollbar-gutter</span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css">stable</span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta selector css"><span class="entity name tag css">body</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker"></span>  <span class="meta property-name css"><span class="support type property-name css">min-height</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">100</span>svh</span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker"></span>  <span class="meta property-name css"><span class="support type property-name css">display</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">grid</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker"></span>  <span class="meta property-name css"><span class="support type property-name css">grid-template-rows</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">auto</span> <span class="constant numeric css">1<span class="keyword other unit css">fr</span></span> <span class="support constant property-value css">auto</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker"></span></span><span class="punctuation section property-list css">}</span></span></code></pre></div>
+    <p>
+      This is not a sticky header. It just 
+      makes sure the page takes up
+      at least the full height of
+      the viewport. If the page is longer
+      the footer will be pushed down 
+      below the viewport as normal. 
+    </p>
+
+    <p>
+      The grid does most of the heavy lifting. 
+      The `scrollbar-gutter: stable` keeps short
+      pages and pages that have a scrollbar 
+      working together nicely instead of shifting
+      over when going from a page with a scrollbar
+      to one without one.
+    </p>
+
+    <p>
+      I got this technique from 
+      <a href="https://www.kevinpowell.co/">Kevin Powell's</a> video
+      <a href="https://www.youtube.com/watch?v=qI5rXLJnxco">3 
+        modern CSS features to add to your reset</a>.
+
+
+  </details>
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+
+</footer>

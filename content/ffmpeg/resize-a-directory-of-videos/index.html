@@ -1,0 +1,21 @@
+== extends "/templates.inc/pages/ffmpeg.html"
+
+== block toml
+title = "Resize a Directory of Videos with ffmpeg"
+link_text = "Resize a Directory of Videos"
+created = 2026-04-07T18:27:15-04:00
+status = "draft"
+== endblock
+
+
+== block main
+<p>
+  This is how I'm resizing a directory of videos
+  with ffmpeg:
+</p>
+
+== filter highlight_block("bash", "resize-directory.bash")
+== include parent(file_path) + "/resize-directory.bash"
+== endfilter
+
+== endblock

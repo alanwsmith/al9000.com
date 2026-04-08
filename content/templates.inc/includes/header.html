@@ -6,7 +6,12 @@
     [! if parent(file_path) == "/tools" !]tools[! else !]<a href="/tools">tools</a>[! endif !]
   </div>
 
-[! block subnav !][! endblock !]
+  == if subnav
+  <div class="subnav default-wrapper">
+    [@ subnav @]
+  </div>
+  == endif
+
 </header>
 
 

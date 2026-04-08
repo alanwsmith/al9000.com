@@ -1,0 +1,91 @@
+[!- extends "/templates.inc/pages/empty.html" -!]
+
+== block body
+
+<style>
+body {
+  background: black;
+  color: var(--default-color);
+  font-family: system-ui, sans-serif;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+main {
+  width: 30rem;
+  margin: auto;
+}
+
+header {
+  width: 30rem;
+  margin: auto;
+}
+
+
+.top-nav {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+</style>
+
+
+== include "/templates.inc/includes/empty/header.html"
+
+<main>
+  <h1>About Assembly</h1>
+
+  <div class="date">April 2026</div>
+
+  <p>
+    I saw <a href="https://www.youtube.com/watch?v=kILYJ0qFhHM">this video</a> 
+    and thought it
+    would be fun to give it a treatment
+    like my <a href="/multi-player/">multi player</a>.
+    Of course, this one uses random clips instead
+    of sequential ones. I don't think it works as well. 
+    The smash cuts happening in random places 
+    makes it hard to follow.
+    One possibility would be to only use clips where
+    the watch is the same size in the frame. 
+  </p>
+
+  <p>
+    On the tech site, everything is done directly with the `video` tag
+    with some JavaScript through in via <a href="https://bittyjs.com/">bitty</a>.
+  </p>
+
+  <p>
+    The function I use to set up the grid of images is
+    here <a href="/javascript/fit-blocks-in-container">Fit Blocks in Container</a>. 
+    It takes min/max sizes for the items to use and
+    then finds the best width to fill a space.
+    The Assembly page doesn't update when it's resized. 
+    That's something that could be added though. 
+  </p>
+
+  <p>
+    This was a fun one to work on. Especially since it's 
+    the first real thing I've done since starting 
+    to migrate my site from <a href="https://www.alanwsmith.com/">alanwsmith.com</a>
+    to here at <a href="https://al9000.com">al9000.com</a>.
+    I'm looking forward to playing around with it
+    even more. Until then, I hope you enjoy the page. 
+  </p>
+
+  <p>-a</p>
+
+  <p><a href="[@ parent(parent(file_path)) @]">back to assembly</a></p>
+
+</main>
+
+== endblock
+

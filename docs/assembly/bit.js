@@ -1,5 +1,7 @@
 export const b = { init: "init" };
 
+const clipCount = 18;
+
 export async function init(_, __, el) {
   // Fix for multiple videos bugging out and
   // not rendering.
@@ -30,9 +32,9 @@ render it even though it works find in Chrome and Firefox. Give one of
     el.propAsInt("ratioWidth"),
     el.propAsInt("ratioHeight"),
   );
+  layout.cellWidth -= layout.cellWidth % 2;
   b.setCSS("--cell-width", `${layout.cellWidth}px`);
   b.setCSS("--cell-height", `${layout.cellHeight}px`);
-  // b.trigger("initVideos");
 
   for (let layerIndex = 0; layerIndex <= 1; layerIndex = layerIndex + 1) {
     const cells = [...new Array(layout.cells)].map((_, index) => {
@@ -47,53 +49,34 @@ render it even though it works find in Chrome and Firefox. Give one of
   }
 
   b.qsa("video").forEach((el) => {
-    el.addEventListener("ended", (event) => {
+    el.addEventListener("ended", async (event) => {
       const otherLayer = event.target.dataset.layer === "0" ? "1" : "0";
       const index = event.target.dataset.index;
       const switchTo = b.qs(
         `video[data-layer='${otherLayer}'][data-index='${index}']`,
       );
-      switchTo.classList.remove("hidden");
       switchTo.play();
+      switchTo.classList.remove("hidden");
+      // delay a little to help prevent chrome from blinking
+      // when switching videos.
+      await b.sleep(90);
       event.target.classList.add("hidden");
-      const vidIndex = b.randomInt(1, 9);
-      event.target.src =
-        `/assembly/clips/assembly-_V1-000${vidIndex}.mp4`;
-      //console.log(otherLayer);
-      // event.target.src = "/assembly/clips/assembly-_V1-0005.mp4";
-      // event.target.play();
-      // console.log(event);
+      const vidIndex = b.randomInt(1, clipCount);
+      event.target.src = `/assembly/clips/assembly-${vidIndex}.mp4`;
     });
   });
 
   b.qsa("video[data-layer='0']").forEach((el) => {
-    const index = b.randomInt(1, 9);
-    el.src = `/assembly/clips/assembly-_V1-000${index}.mp4`;
+    const index = b.randomInt(1, clipCount);
+    el.src = `/assembly/clips/assembly-${index}.mp4`;
   });
 
   b.qsa("video[data-layer='1']").forEach((el) => {
-    const index = b.randomInt(1, 9);
-    el.src = `/assembly/clips/assembly-_V1-000${index}.mp4`;
+    const index = b.randomInt(1, clipCount);
+    el.src = `/assembly/clips/assembly-${index}.mp4`;
     el.play();
   });
-
-  //   el.addEventListener("ended", (event) => {
-  //     // event.target.src = "/assembly/clips/assembly-_V1-0005.mp4";
-  //     // event.target.play();
-  //     console.log(event);
-  //   });
-  // });
-
-  // b.qs("#v1").play();
 }
-
-// export function initVideos() {
-//   [...b.qsa("video")].forEach((el) => {
-//     const index = b.randomInt(1, 9);
-//     el.src = `/assembly/clips/assembly-_V1-000${index}.mp4`;
-//     el.play();
-//   });
-// }
 
 function getBlockLayout(
   minWidth,

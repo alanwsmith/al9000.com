@@ -2,7 +2,7 @@
 
 == block toml
 title = "Assembly"
-status = "idea"
+status = "done"
 == endblock 
 
 
@@ -16,43 +16,33 @@ status = "idea"
 == block body
 == include "/templates.inc/includes/empty/header.html"
 
-<main>
+<div class="prelude">
   <h1>Assembly</h1>
+</div>
 
-<div 
-    class="player-wrapper" 
-    data-r="init"
-    data-min-width="200"
-    data-max-width="260"
-    data-ratio-width="16"
-    data-ratio-height="9"
-></div>
-
-  <div class="about">
-    <details>
-      <summary>about</summary>
-      <div>
-      </div>
-    </details>
-  </div>
-
-
-
-<bitty-8 data-connect="[@parent(file_path)@]/bit.js"></bitty-8>
-
-
-<script type="text/html" id="layerTemplate">
-  <div class="player-layer">__CELLS__</div>
-</script>
-
-<script type="text/html" id="cellTemplate">
-  <div class="player-cell">
-    <video data-layer="__LAYER__" data-index="__INDEX__" muted playsinline></video>
-  </div>
-</script>
-
+<main>
+  <div 
+      class="player-wrapper" 
+      data-r="init"
+      data-min-width="200"
+      data-max-width="260"
+      data-ratio-width="16"
+      data-ratio-height="9"
+  ></div>
 </main>
 
+<div class="followup">
+  <div class="center"><a href="[@ parent(file_path) @]/about/">about assembly</a></div>
+  <bitty-8 data-connect="[@parent(file_path)@]/bit.js"></bitty-8>
+  <script type="text/html" id="layerTemplate">
+    <div class="player-layer">__CELLS__</div>
+  </script>
+  <script type="text/html" id="cellTemplate">
+    <div class="player-cell">
+      <video data-layer="__LAYER__" data-index="__INDEX__" muted playsinline></video>
+    </div>
+  </script>
+</div>
 
 == include "/templates.inc/includes/empty/footer.html"
 == endblock 
@@ -65,7 +55,6 @@ instances of this video clipping it
 out at different times similar to 
 the <a href="https://multi-player.alanwsmith.com/">multi-player project</a>.
 
-https://www.youtube.com/watch?v=kILYJ0qFhHM
 
 == endfilter
 
