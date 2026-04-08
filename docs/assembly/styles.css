@@ -82,8 +82,12 @@ main {
 }
 
 .player-cell {
+  display: block;
+  /*
   display: flex;
   justify-content: center;
+  align-content: flex-start;
+*/
   width: var(--cell-width);
   height: var(--cell-height);
 }

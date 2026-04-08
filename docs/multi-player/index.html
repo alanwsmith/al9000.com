@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/scripts/bitty.off/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
 <style>
 :root {
   --light--background-color: oklch(0.9634 0.02097 105.642);
@@ -136,31 +137,7 @@
     --reverse-color: var(--switch--reverse-color, var(--dark--reverse-color));
     --faded-reverse-color: var(--switch--faded-reverse-color, var(--dark--faded-reverse-color));
   }
-}</style><style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
-
-</style>    <script src="/styles/styles.js"></script>
-    <script src="/scripts/bitty.off/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
-    <link rel="stylesheet" href="/styles/main.css" />
-    <style>
-      body {
-        min-height: 100svh;
-        display: grid;
-        grid-template-rows: auto 1fr auto;
-      }
-    </style>
-<link rel="shortcut icon" href="/favicon.ico" />
+}</style><link rel="shortcut icon" href="/favicon.ico" />
 <title>Multi-Player</title>
 <meta property="og:title" content="Multi-Player" />
 <meta name="description" content="a post from alan w. smith" />
@@ -173,60 +150,97 @@ body {
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
 <link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
 <link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<style>
+.default-flow > :where(:not(:first-child)) {
+  margin-top: 1rem;
+}
+</style>
+
+<style>
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: black;
+  color: var(--default-color);
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-family: sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.block-wrapper {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  min-height: 300px;
+}
+
+.cell {
+  display: block;
+  justify-content: center;
+  align-content: flex-start;
+  width: var(--cell-width);
+  height: var(--cell-height);
+}
+
+video {
+  display: block;
+  max-width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+</style>
   </head>
   <body>
-<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
     NOTE: This site use JavaScript which appears to be turned off. 
     Most content will be fine, but some things won't work.
   </p>
 </noscript>
-  <div class="top-nav">
-<a href="/">home</a><a href="/tools">tools</a>  </div>
+<header>
+  <div class="center"><a href="/">home</a></div>
+  <div class="center"><h4>multi-player</h4></div>
 
+
+<bitty-8 data-connect="/multi-player/bit.js"></bitty-8>
 
 </header>
-
-
-<main class="default-wrapper default-flow">
-
-  <hgroup>
-      <h1>Multi-Player</h1>
-  </hgroup>
-
-
-<p>
-  Multi-player is a project that 
-  creates a grid of the same music
-  video and plays them with a 
-  slight delay between each. 
-  The project is here for now:
-</p>
-
-<p>
-  <a href="https://multi-player.alanwsmith.com/">multi-player.alanwsmith.com</a>
-</p>
-
-<p>
-  I'm in the process of brining all 
-  my projects to this site. It'll
-  make it here before too long.
-</p>
-
-
-
+<main>
+<div class="block-wrapper" data-r="players" data-min-width="200" data-max-width="260" data-ratio-width="4" data-ratio-height="3"></div>
 </main>
 
-<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from alan w smith
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
+<footer>
+
+  <div class="center">
+<button data-s="play">Play</button>
   </div>
 
+<script type="text/html" id="cellTemplate">
+  <div class="cell">
+    <video data-r="vidTest"></video>
+  </div>
+</script>
+
 </footer>
+
 
 
     <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>

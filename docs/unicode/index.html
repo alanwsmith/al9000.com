@@ -260,6 +260,14 @@ body {
 <div data-r="characters"></div>
 <div data-r="status"></div>
 
+<script type="text/html" id="displayTemplate">
+<div>__CHARACTERS__</div>
+</script>
+
+<script type="text/html" id="characterTemplate">
+<button class="unicodeCharacter __HIDDEN__" data-s="copyCharacter" id="id__HEX__">__CHARACTER__</button>
+</script>
+
 </main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
@@ -272,13 +280,6 @@ body {
 
 </footer>
 
-<script type="text/html" id="displayTemplate">
-<div>__CHARACTERS__</div>
-</script>
-
-<script type="text/html" id="characterTemplate">
-<button class="unicodeCharacter __HIDDEN__" data-s="copyCharacter" id="id__HEX__">__CHARACTER__</button>
-</script>
 
     <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
   </body>

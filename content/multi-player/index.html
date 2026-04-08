@@ -1,29 +1,96 @@
-== extends "/templates.inc/pages/default.html" 
+== extends "/templates.inc/pages/empty.html" 
 
 == block toml
 title = "Multi-Player"
 status = "wip"
 == endblock
 
-== block main
+== block head
+<style>
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
 
-<p>
-  Multi-player is a project that 
-  creates a grid of the same music
-  video and plays them with a 
-  slight delay between each. 
-  The project is here for now:
-</p>
+html {
+  scrollbar-gutter: stable;
+}
 
-<p>
-  <a href="https://multi-player.alanwsmith.com/">multi-player.alanwsmith.com</a>
-</p>
+body {
+  background-color: black;
+  color: var(--default-color);
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-family: sans-serif;
+}
 
-<p>
-  I'm in the process of brining all 
-  my projects to this site. It'll
-  make it here before too long.
-</p>
+main {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.block-wrapper {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  min-height: 300px;
+}
+
+.cell {
+  display: block;
+  justify-content: center;
+  align-content: flex-start;
+  width: var(--cell-width);
+  height: var(--cell-height);
+}
+
+video {
+  display: block;
+  max-width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+</style>
+== endblock
+
+== block body 
+
+<header>
+  <div class="center"><a href="/">home</a></div>
+  <div class="center"><h4>multi-player</h4></div>
 
 
+<bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+
+</header>
+<main>
+<div class="block-wrapper" data-r="players" data-min-width="200" data-max-width="260" data-ratio-width="4" data-ratio-height="3"></div>
+</main>
+
+<footer>
+
+  <div class="center">
+<button data-s="play">Play</button>
+  </div>
+
+<script type="text/html" id="cellTemplate">
+  <div class="cell">
+    <video data-r="vidTest"></video>
+  </div>
+</script>
+
+</footer>
+
+
+
+== endblock
+
+
+== block templates
 == endblock

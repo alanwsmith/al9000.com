@@ -12,9 +12,9 @@
       == if p.subtitle
         <div class="subtitle">[@ p.subtitle @]</div>
       == endif
-      == if p.created
+      == if p.created and p.show_date != false
         <div class="date">[@ date(p.created) @]</div>
-      == endif
+      == endif 
     == endif
   </hgroup>
 == endblock
@@ -22,12 +22,13 @@
 == block main
 == endblock
 
+== block templates
+== endblock
+
 </main>
 
 == include "/templates.inc/includes/footer.html"
 
-== block templates
-== endblock
 
 == endblock
 

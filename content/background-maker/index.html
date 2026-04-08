@@ -1,0 +1,111 @@
+[!- extends "/templates.inc/pages/default.html" -!]
+
+== block toml
+title = "Background Texture Maker"
+status = "wip"
+created = 2026-01-03T21:55:34-04:00
+subtitle = "Give your site a little grit"
+show_date = false
+== endblock 
+
+
+== block main
+
+<style>
+
+:root {
+  --svg-bg-lightness: 0.2;
+  --svg-bg-chroma: 0.1;
+  --svg-bg-hue: 130;
+}
+
+body {
+  background-color: oklch(var(--svg-bg-lightness) var(--svg-bg-chroma) var(--svg-bg-hue));
+  background-size: 150px 150px;
+}
+
+</style>
+
+<bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+
+  <p>Move the sliders below to set your background. Copy/paste the CSS when you've got it the way you want.</p>
+
+  <div data-r="example"></div>
+
+  <div class="controls">
+    <div>
+      <label>
+        <div>Lightness</div>
+        <input type="range" data-r="initLightness" data-s="lightness" min="0" max="1" step="0.001" />
+      </label>
+      <label><div>Chroma</div>
+        <input type="range" data-r="initChroma" data-s="chroma" min="0" max="0.3" step="0.0001" />
+      </label>
+    </div>
+    <div>
+      <label>
+        <div>Hue</div>
+        <input type="range" data-r="initHue" data-s="hue" min="0" max="360" step="0.001" />
+      </label>
+      <label>
+        <div>Opacity</div>
+        <input type="range" data-r="initOpacity" data-s="opacity" min="0" max="1" step="0.01" />
+      </label>
+    </div>
+  </div>
+
+  <details><summary>Texture SVG Source</summary>
+    <textarea data-init="initSVG" data-send="updateSVG"></textarea>
+  </details>
+
+  <div class="output xlarge-top-margin">
+    <pre class="code-block no-numbers"><code data-receive="update"></code></pre>
+  </div>
+
+
+<h2>Details</h2>
+[! filter md !]
+- This tool generates CSS for a textured site background. 
+- The Lightness, Chroma, and Hue sliders set the base background variables for an oklch
+color.
+- The Opacity slider controls the opacity of the texture SVG relative to the base color. 
+- The texture in the SVG is generated via SVG filters. 
+- The initial SVG filter values are hard coded. You can open the `Texture SVG Source` 
+below the sliders to adjust it manually. 
+- The `Copy` button below the CSS copies the code to your 
+clipboard for pasting into your stylesheets. 
+- Note that the `background-size` in the CSS is required to keep the browser from 
+resizing the SVG tiles in a way that changes based on the content of the page. If
+you change the source SVG you'll want to manually adjust those values after
+you copy/paste the code. 
+- The page doesn't store your settings. You can refresh the page to reset 
+the SVG if you mess with it and it breaks. 
+- The original version of this used base64 encoding. 
+[Tyler Sticka](https://tylersticka.com/) reminded me that that's not necessary for SVG. 
+I yoinked some code from [this repo](https://github.com/tigt/mini-svg-data-uri/blob/master/index.js) by [Taylor Hunt](https://ti.gt/) to do the necessary escaping. 
+(See [Optimizing SVGs in data URIs](https://codepen.io/tigt/post/optimizing-svgs-in-data-uris) for details.)
+[! endfilter !]
+
+
+== endblock
+
+
+== block templates
+<script type="image/svg" id="mainSVG">
+  <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="3" numOctaves="2" result="noise" />
+      <feColorMatrix type="saturate" values="0" result="grayscale" />
+      <feComponentTransfer>
+        <feFuncA in="grayscale" type="linear" slope="0.4" result="updated" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="noise" />
+        <feMergeNode in="updated" />
+      </feMerge>
+    </filter>
+    <rect width="100%" height="100%" opacity="__OPACITY__" filter="url(#noiseFilter)"/>
+  </svg>
+</script>
+== endblock
+
