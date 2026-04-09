@@ -150,8 +150,21 @@ export async function selectVideo(_, sender, el) {
         maxColumns: 19,
       },
     );
+
+    // STARTING_WIDTH * OUTPUT_HEIGHT / STARTING_HEIGHT
+
+    // let videoWidth = layout.cellWidth * videos[index].dimensions[1] /
+    //   layout.cellHeight;
+    // videoWidth = layout.cellWidth * videos[index].crop[0] /
+    //   videos[index].crop[1];
+    // console.log(layout.cellWidth, videoWidth);
+
+    const videoHeight = layout.cellHeight * videos[index].crop[0] /
+      videos[index].crop[1];
+    console.log(layout.cellHeight, videoHeight);
+    b.setCSS("--video-height", `${videoHeight}px`);
+
     b.setCSS("--cell-width", `${layout.cellWidth}px`);
-    b.setCSS("--video-width", `400px`);
     b.setCSS(
       "--aspect-ratio",
       `${videos[index].crop[0]} / ${videos[index].crop[1]}`,

@@ -38,7 +38,11 @@ main {
 .cell {
   position: relative;
   display: block;
+
+  /*
   background: var(--background-image);
+*/
+  background-color: red;
   width: var(--cell-width);
   aspect-ratio: var(--aspect-ratio);
   overflow: hidden;
@@ -50,7 +54,11 @@ main {
 .cell video {
   position: absolute;
   display: block;
-  width: calc(var(--video-width) + 2px);
+  height: calc(var(--video-height) + 3px);
+  /*
+  width: calc(var(--cell-width) + 2px);
+*/
+  translate: -28px -20px;
   aspect-ratio: var(--aspect-ratio);
 }
 
