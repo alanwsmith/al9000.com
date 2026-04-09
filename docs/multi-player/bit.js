@@ -8,13 +8,68 @@ let layout;
 let sourceEl;
 // let videoData;
 let videos = [
-  { name: "Once in a Lifetime", dimensions: [4, 3] },
-  { name: "WTF", dimensions: [16, 9] },
-  { name: "One Vision", dimensions: [16, 9] },
-  { name: "Somebody I Used to Know", dimensions: [16, 9] },
-  { name: "Tank", dimensions: [16, 9] },
-  { name: "Like Sugar", dimensions: [16, 9] },
-  { name: "Shot Me Down", dimensions: [16, 9] },
+  {
+    key: 0,
+    name: "Once in a Lifetime",
+    dimensions: [4, 3],
+    link: "https://www.youtube.com/watch?v=5IsSpAOD6K8",
+  },
+  {
+    key: 1,
+    name: "WTF",
+    dimensions: [16, 9],
+    link: "https://www.youtube.com/watch?v=12zJw9varYE",
+  },
+  {
+    key: 2,
+    name: "Queen - One Vision",
+    dimensions: [16, 9],
+    link: "https://www.youtube.com/watch?v=8bOtuoNFzB0",
+  },
+  {
+    key: 3,
+    name: "Gotye (CDK) - Somebody I Used to Know",
+    dimensions: [16, 9],
+    link: "https://www.youtube.com/watch?v=REPPgPcw4hk",
+  },
+  {
+    key: 4,
+    name: "Cowboy Bebop - Tank",
+    dimensions: [16, 9],
+    link: "https://www.youtube.com/watch?v=EL-D9LrFJd4",
+  },
+  {
+    key: 5,
+    name: "Chaka Khan - Like Sugar",
+    dimensions: [16, 9],
+    link: "https://www.youtube.com/watch?v=RecY5iZn6B0",
+  },
+  {
+    key: 6,
+    name: "The White Stripes - Seven Nation Army",
+    dimensions: [16, 9],
+    link: "https://www.youtube.com/watch?v=0J2QdDbelmY",
+  },
+  {
+    key: 7,
+    name: "Pogo - Alice",
+    dimensions: [4, 3],
+    link: "https://www.youtube.com/watch?v=pAwR6w2TgxY",
+  },
+  {
+    key: 8,
+    name: "Gotye - Somebody I Used to Know",
+    dimensions: [16, 9],
+    link: "https://www.youtube.com/watch?v=8UVNT4wvIGY",
+  },
+
+  {
+    key: 9,
+    name: "Peger Gabriel - Sledgehammer",
+    dimensions: [16, 9],
+    crop: [4, 3],
+    link: "https://www.youtube.com/watch?v=kgdyBvHdNKY",
+  },
 ];
 // let videoEls = [];
 
@@ -143,7 +198,7 @@ export async function selectVideo(_, sender, el) {
         const videoCopy = sourceEl.cloneNode(true);
         if (i === 0) {
           videoCopy.addEventListener("canplaythrough", async () => {
-            console.log("ready");
+            // console.log("ready");
             await b.sleep(100);
             b.trigger("play");
           });
