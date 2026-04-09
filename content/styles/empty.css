@@ -25,6 +25,10 @@ body {
   line-height: var(--default-line-height);
 }
 
+.default-flow > :where(:not(:first-child)) {
+  margin-top: 0.8rem;
+}
+
 details.d {
   max-width: 36rem;
 }

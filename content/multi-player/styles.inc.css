@@ -53,3 +53,13 @@ main {
   aspect-ratio: var(--aspect-ratio);
 }
 
+.loading {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.welcome {
+  margin-top: 4rem;
+  max-width: 30rem;
+  margin-inline: auto;
+}
