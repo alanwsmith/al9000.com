@@ -1,0 +1,42 @@
+== extends "/templates.inc/pages/javascript.html"
+
+
+== block toml
+title = "MediaSource Video Player"
+created = 2026-04-06T19:30:12-04:00
+status = "draft"
+== endblock
+
+== block main
+
+== filter md
+## Overview 
+
+- This is a very basic approach to using
+MediaSource to stream videos to 
+a &lt;video&gt; tag instead of using a `src` attribute. 
+- This is primarily a prototype I'm
+working on for my [Multi-Player project](/multi-player/). 
+Chrome slows way down when 
+as the number of videos on the page increases. 
+The hope is this approach can keep things snappy.
+- I'm also interested in making a version that works
+with encrypted video files (e.g. via TKTKTK link).
+- You should probably use [VideoJS](https://videojs.org/)
+instead of this in most cases. 
+- This does not currently check to see if the mime
+type is supported. I'm using .webm in the examples
+which seems to be fine without an extra codec. See
+[the doc examples](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples)
+for more on that. 
+== endfilter
+
+
+
+
+== include parent(file_path) + "/page.html"
+
+
+== endblock
+
+

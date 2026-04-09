@@ -67,23 +67,23 @@ body {
   </hgroup>
 
 
+TODO: Rename this to MediaSource Video Player Example
 
-Video:
 
-<script type="module" src="/javascript/video-with-hls-encryption/javascript.js"></script>
-<video id="videoPlayer" controls></video>
+
+<p>Video</p>
+
+
+<script type="module">
+import { player } from "/javascript/video-with-hls-encryption/media-source-player.js"
+</script>
 
 <!--
-<script type="module" src="https://cdn.jsdelivr.net/npm/@videojs/html/cdn/video-minimal.js"></script>
+<video id="videoPlayer" controls></video>
+
 -->
-<video-player>
-  <video-minimal-skin>
-    <!--
-    <video src="input.webm" playsinline></video>
-    <video src="https://stream.mux.com/BV3YZtogl89mg9VcNBhhnHm02Y34zI1nlMuMQfAbl3dM/highest.mp4" playsinline></video>
--->
-  </video-minimal-skin>
-</video-player>
+
+
 
 
 </main>

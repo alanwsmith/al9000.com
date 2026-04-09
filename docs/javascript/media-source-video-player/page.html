@@ -1,0 +1,16 @@
+<video id="videoPlayer" controls></video>
+
+<script type="module">
+import { loadVideo } from "/javascript/media-source-video-player/media-source-player.js"
+const config = {
+  codec: `video/webm`,
+  urls: [
+    "/javascript/media-source-video-player/sample-video/0.part",
+    "/javascript/media-source-video-player/sample-video/1.part",
+    "/javascript/media-source-video-player/sample-video/2.part",
+    "/javascript/media-source-video-player/sample-video/3.part",
+  ],
+  fallback: "/javascript/media-source-video-player/sample-video/fallback.webm",
+}
+loadVideo("#videoPlayer", config);
+</script>

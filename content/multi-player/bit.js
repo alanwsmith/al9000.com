@@ -38,7 +38,7 @@ let videos = [
     key: 4,
     name: "Cowboy Bebop - Tank",
     dimensions: [16, 9],
-    crop: [16, 9],
+    crop: [4, 3],
     link: "https://www.youtube.com/watch?v=EL-D9LrFJd4",
   },
   {
@@ -52,7 +52,7 @@ let videos = [
     key: 6,
     name: "The White Stripes - Seven Nation Army",
     dimensions: [16, 9],
-    crop: [16, 9],
+    crop: [4, 3],
     link: "https://www.youtube.com/watch?v=0J2QdDbelmY",
   },
   {
@@ -64,17 +64,10 @@ let videos = [
   },
   {
     key: 8,
-    name: "Gotye - Somebody I Used to Know",
+    name: "Taylor Swift - Fortnight",
     dimensions: [16, 9],
     crop: [16, 9],
-    link: "https://www.youtube.com/watch?v=8UVNT4wvIGY",
-  },
-  {
-    key: 9,
-    name: "Peger Gabriel - Sledgehammer",
-    dimensions: [16, 9],
-    crop: [4, 3],
-    link: "https://www.youtube.com/watch?v=kgdyBvHdNKY",
+    link: "https://www.youtube.com/watch?v=pAwR6w2TgxY",
   },
 ];
 
@@ -103,11 +96,9 @@ function getLayout(d) {
 
 export async function init() {
   await decryptInit();
-  /*
   if (window.navigator.userAgent.includes("Firefox")) {
     b.addStyles(`video { transform: rotate(0.08deg);}`);
   }
-  */
 }
 
 export function play() {
@@ -205,7 +196,7 @@ export async function selectVideo(_, sender, el) {
       "--aspect-ratio",
       `${videos[index].crop[0]} / ${videos[index].crop[1]}`,
     );
-    const url = `tracks/music-${index}.mp4.bin`;
+    const url = `tracks/payload-${index}.mp4.bin`;
     const response = await fetch(url);
     if (response.ok) {
       const blob = await response.blob();
