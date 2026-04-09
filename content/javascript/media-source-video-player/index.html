@@ -2,7 +2,7 @@
 
 
 == block toml
-title = "MediaSource Video Player"
+title = "A Media Source Extensions (MSE) Video Player"
 created = 2026-04-06T19:30:12-04:00
 status = "draft"
 == endblock
@@ -13,28 +13,76 @@ status = "draft"
 ## Overview 
 
 - This is a very basic approach to using
-MediaSource to stream videos to 
-a &lt;video&gt; tag instead of using a `src` attribute. 
+the Media Source API (aka
+[Media Source Extension](https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API))
+to load videos in a &lt;video&gt; tag instead 
+of using a `src` attribute that points
+to a single file (or [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)
+playlist).
 - This is primarily a prototype I'm
 working on for my [Multi-Player project](/multi-player/). 
-Chrome slows way down when 
+Chrome slows way down 
 as the number of videos on the page increases. 
-The hope is this approach can keep things snappy.
+Hopefully, this approach can keep things snappy.
 - I'm also interested in making a version that works
-with encrypted video files (e.g. via TKTKTK link).
+with encrypted video files (e.g. by 
+[Password Protecting Static Site Content with WASM](/rust/wasm/static-site-file-decryption/)).
 - You should probably use [VideoJS](https://videojs.org/)
 instead of this in most cases. 
 - This does not currently check to see if the mime
-type is supported. I'm using .webm in the examples
-which seems to be fine without an extra codec. See
+type is supported. I'm using [.webm](https://www.webmproject.org/) 
+in the examples.
+Everything seems fine without an explicit codec. See
 [the doc examples](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples)
 for more on that. 
+- I set this up to avoid using global variables. 
+I'm doing that by tacking a couple variables
+on to the `sourceBuffer`. While I wouldn't do that
+if I was building a library, it works
+fine for my purposes. 
+
+## The JavaScript
+
+I put the player code in a module. It 
+looks like this:
+
+== endfilter
+
+== filter highlight_block("js", "media-source-player.js")
+== include parent(file_path) + "/media-source-player.js"
 == endfilter
 
 
 
 
+
+
+
 == include parent(file_path) + "/page.html"
+
+
+== filter md
+### Notes
+
+- The [source video is from pexels](https://www.pexels.com/video/a-drone-shot-of-a-church-in-belalp-3818213/)
+
+### References
+
+- https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API
+- https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer
+- https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples
+- https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+- https://man7.org/linux/man-pages/man1/split.1.html
+- https://ffmpeg.org/ffmpeg-formats.html#hls-1
+- https://en.wikipedia.org/wiki/HTTP_Live_Streaming
+- /rust/wasm/static-site-file-decryption/
+- /rust/wasm/static-site-file-encryption/
+- https://www.webmproject.org/
+
+== endfilter
+
+
+
 
 
 == endblock

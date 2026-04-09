@@ -5,13 +5,21 @@ import { loadVideo } from "[@ parent(file_path) @]/media-source-player.js"
 const config = {
   codec: `video/webm`,
   urls: [
-    "[@ parent(file_path) @]/sample-video/0.part",
-    "[@ parent(file_path) @]/sample-video/1.part",
-    "[@ parent(file_path) @]/sample-video/2.part",
-    "[@ parent(file_path) @]/sample-video/3.part",
+    "[@ parent(file_path) @]/sample-video/part-00.part",
+    "[@ parent(file_path) @]/sample-video/part-01.part",
+    "[@ parent(file_path) @]/sample-video/part-02.part",
+    "[@ parent(file_path) @]/sample-video/part-03.part",
+    "[@ parent(file_path) @]/sample-video/part-04.part",
+    "[@ parent(file_path) @]/sample-video/part-05.part",
+    "[@ parent(file_path) @]/sample-video/part-06.part",
+    "[@ parent(file_path) @]/sample-video/part-07.part",
+    "[@ parent(file_path) @]/sample-video/part-08.part",
+    "[@ parent(file_path) @]/sample-video/part-09.part",
+    "[@ parent(file_path) @]/sample-video/part-10.part",
   ],
-  fallback: "[@ parent(file_path) @]/sample-video/fallback.webm",
+  fallback: "[@ parent(file_path) @]/sample-video/church-3818213.webm",
 }
 loadVideo("#videoPlayer", config);
 </script>
+
 
