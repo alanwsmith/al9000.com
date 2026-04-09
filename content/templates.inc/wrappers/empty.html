@@ -1,34 +1,23 @@
-[!- extends "/templates.inc/root.html" -!]
-
-== block wrapper
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/scripts/bitty.off/bitty-8.0.0-beta7-wip.source.js" type="module"></script>
-    == include "/styles/_includes/initial-colors.html"
     == include "/templates.inc/includes/metadata.html"
-<style>
-.default-flow > :where(:not(:first-child)) {
-  margin-top: 1rem;
-}
-</style>
-
-    == for stylesheet in stylesheets 
-    <link rel="stylesheet" href="[@ stylesheet @]" />
-    == endfor 
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/empty.css" />
     == block head
     == endblock
   </head>
   <body>
-    == include "templates.inc/includes/noscript.html"
-    == block body
+    <div class="noscript">[! include "templates.inc/includes/noscript.html" !]</div>
+    == block content 
     == endblock
-    <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    <div class="hidden support">
+      <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      == block support
+      == endblock
+    </div>
   </body>
 </html>
-
-== endblock
-

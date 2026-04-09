@@ -2,15 +2,130 @@
 
 == block toml
 title = "Fit Blocks in Container with a Minimum"
-create = 2026-04-08T09:55:12-04:00
+created = 2026-04-08T09:55:12-04:00
 == endblock
 
 == block head
 <link rel="stylesheet" href="[@parent(file_path)@]/styles.css" />
 == endblock
 
+
 == block body
+== include "/templates.inc/includes/empty/header.html"
+
+<div class="d">
+  <h1>Fit Blocks in a Container with a Minimum Number of Columns</h1>
+  <div class="date">[@ date(p.created) @]</div>
+  <details class="d"><summary>Expand for Details</summary>
+    <div class="d">
+      <ul class="d">
+        <li>
+          This code makes divs that fill a container element
+          (it's the prototype for <a href="/multi-player/">the multi-player</a>).
+        </li>
+        <li>
+          The number of rows and columns is determined automatically 
+          based on the width and height of the containing element. 
+        </li>
+        <li>
+          A minimum of five columns are output. 
+        </li>
+        <li>
+          A maximum width is defined for the div cells. 
+          More columns are added if two can be added without
+          increasing beyond the max.
+        </li>
+        <li>
+          Columns are added in pairs so there's always an even number. 
+        </li>
+        <li>
+          A width/height ratio is used to determine how tall the
+          individual div cells are. 
+        </li>
+        <li>
+          <p>
+            This is the key function that does the calculations:
+          </p>
+          == filter highlight_block("javascript")
+          == include parent(file_path) + "/script.js"
+          == endfilter
+          <p>
+            I'm using it with <a href="https://bittyjs.com/">bitty</a>
+            but that's not a requirement.
+          </p>
+        </li>
+        <li>
+          <p>The bitty code looks like this:</p>
+          == filter highlight_block("javascript")
+          == include parent(file_path) + "/bit.js"
+          == endfilter
+
+          <p>which works with this div on the page:</p>
+
+          == filter highlight_block("html")
+          == include parent(file_path) + "/page.html"
+          == endfilter
+
+          <p>and this template:</p>
+
+          == filter highlight_block("html")
+          == include parent(file_path) + "/template.html"
+          == endfilter
+        </li>
+
+        <li>
+          <p>
+            The approach I'm using in the bitty script 
+            requires the container element have
+            a pre-existing width and height. I'm doing
+            that using this in the stylesheet:
+          </p>
+
+          == filter highlight_block("css")
+          == include parent(file_path) + "/styles.css"
+          == endfilter
+        </li>
+        <li>
+          <p>The overall structure of the page looks like this:</p>
+          == filter highlight_block("html")
+          == include parent(file_path) + "/structure.html"
+          == endfilter
+          <p>This section of the CSS sets up the `&lt;main&gt;`
+            tag to take up all the space between the two 
+            leading elements (header and the prelude div) 
+            and the final two (footer and the support div):</p>
+          == filter highlight_block("css")
+body {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
+}
+          == endfilter
+          <p>
+            That's a cool technique I just learned from 
+            a <a href="https://www.kevinpowell.co/">Kevin Powell</a>
+            video.
+          The rest of the CSS uses flex box to line everything up.</p>
+        </li>
+      </ul>
+    </div>
+  </details>
+  <br />
+</div>
+
+<main>
 == include parent(file_path) + "/page.html"
+</main>
+
+
+== include "/templates.inc/includes/empty/footer.html"
+
+<div class="hidden">
+  <script src="[@ parent(file_path) @]/script.js"></script>
+  <bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+
+== include parent(file_path) + "/template.html"
+</div>
 
 == endblock
 

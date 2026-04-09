@@ -151,7 +151,6 @@ button:hover {
 }
 
 body {
-  padding: 0;
   background-color: var(--background-color);
   color: var(--default-color);
   font-family: system-ui, sans-serif;

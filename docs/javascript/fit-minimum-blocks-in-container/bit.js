@@ -12,10 +12,9 @@ export function cells(_, __, el) {
       maxColumns: 19,
     },
   );
-  console.log(layout);
   el.replaceChildren();
   for (let i = 0; i < layout.cells; i = i + 1) {
-    el.append(b.render("cellTemplate"));
+    el.append(b.render("cell"));
   }
   b.setCSS("--cell-width", `${layout.cellWidth}px`);
   b.setCSS("--cell-height", `${layout.cellHeight}px`);

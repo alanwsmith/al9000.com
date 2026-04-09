@@ -20,20 +20,3 @@ function getLayout(d) {
     cells: cells,
   };
 }
-
-// const maxItems = Math.floor(containerWidth / minWidth);
-// let cellWidth = Math.floor(containerWidth / maxItems);
-// if (cellWidth > maxWidth) {
-//   cellWidth = maxWidth;
-// }
-// const cellHeight = cellWidth / ratioWidth * ratioHeight;
-// const columns = parseInt(containerWidth / cellWidth, 10);
-// const rows = parseInt(containerHeight / cellHeight, 10);
-// const cells = columns * rows;
-// return {
-//   cellWidth: cellWidth,
-//   cellHeight: cellHeight,
-//   columns: columns,
-//   rows: rows,
-//   cells: cells,
-// };

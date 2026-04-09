@@ -1,0 +1,135 @@
+.code, .text.html.basic .meta.tag.other.html, .text.html.basic .meta.tag.any.html, .text.html.basic .meta.tag.block.any, .text.html.basic .meta.tag.inline.any, .text.html.basic .meta.tag.structure.any.html, .text.html.basic .source.js.embedded.html, .punctuation.separator.key-value.html, .sublimelinter.outline.violation, .sublimelinter.gutter-mark, .variable.other.readwrite.js, .variable.other.object.js, .variable.other.constant.js { color: var(--highlight-1-color); }
+.variable, .entity.other.inherited-class, .entity.name.tag, .storage.type, .meta.brace.square, .punctuation.section.brackets, .entity.other.attribute-name.pseudo-element, .entity.other.attribute-name.tag.pseudo-element, .entity.other.attribute-name.pseudo-class, .entity.other.attribute-name.tag.pseudo-class, .support.function.perl, .meta.diff.range, .variable.language, .constant.numeric, .constant.other.reference.link.markdown { color: var(--highlight-2-color); }
+.string, .string.regexp, .string.quoted.double, .string.quoted.single, .constant.other.symbol.ruby, .meta.preprocessor.c.include .string.quoted.other.lt-gt.include.c, .meta.preprocessor.c.include .punctuation.definition.string.begin.c, .meta.preprocessor.c.include .punctuation.definition.string.end.c, .other.add, .text.tex.latex .constant.other.math.tex, .constant.other.general.math.tex, .constant.other.general.math.tex, .constant.character.math.tex, .keyword.control.label.latex, .text.tex.latex .constant.other.general.math.tex, .support.function.general.tex, .keyword.control.ref.latex, .markup.changed, .markup.underline.link.markdown, .meta.link.reference .constant.other.reference.link.markdown, .entity.name.filename.find-in-files { color: var(--highlight-3-color); }
+.storage.modifier, .meta.scope.for-in-loop.shell, .variable.other.loop.shell, .meta.scope.case-block.shell, .meta.scope.case-body.shell, .comment, .meta.documentation, .punctuation.definition.tag.html, .punctuation.definition.tag.begin, .punctuation.definition.tag.end, .meta.diff, .meta.diff.header, .sublimelinter.outline.illegal, .brackethighlighter.all, .constant.numeric.line-number.find-in-files, .sublimelinter.notes, .punctuation.definition.string, .sublimelinter.outline.warning { color: var(--highlight-4-color); }
+.keyword, .storage, .support, .support.type, .support.class, .punctuation.definition.variable, .support.function, .keyword.other.special-method.ruby, .support.function.be.latex, .storage.type.class.python, .storage.type.function.python, .storage.modifier.global.python, .storage.modifier.c\+\+, .markup.inserted, .markup.quote, .markup.inserted.git_gutter { color: var(--highlight-5-color); }
+.variable.function, .keyword.control.class, .entity.name, .entity.name.class, .entity.name.type.class, .entity.other.attribute-name, .entity.name.function, .constant, .constant.language, .meta.preprocessor, .support.constant.color, .invalid.deprecated.color.w3c-non-standard-color-name.scss, .entity.name.tag.css, .entity.name.tag.scss, .source.less .keyword.control.html.elements, .source.sass .keyword.control.untitled, .entity.other.attribute-name.class, .entity.other.attribute-name.id, .text.html.basic .entity.other.attribute-name.html, .meta.tag.xml .entity.other.attribute-name, .variable.other.constant.ruby, .meta.array .support.function.construct.php, .meta.group.braces.tex, .string.other.math.tex, .string.other.math.tex, .support.type.exception.python, .markup.heading, .punctuation.definition.heading.markdown, .sublimelinter.mark.warning, .markup.changed.git_gutter { color: var(--highlight-6-color); }
+.meta.import .keyword, .keyword.control.import, .keyword.control.import.from, .keyword.other.import, .keyword.control.at-rule.include, .keyword.control.at-rule.import, .entity.name.section, .constant.character, .constant.other, .support.type.exception, .keyword.other.special-method, .keyword.other.special-method.ruby, .entity.name.function.preprocessor.c, .meta.preprocessor.c.include, .meta.preprocessor.macro.c, .variable.parameter.function.latex, .support.function.section.latex { color: var(--highlight-7-color); }
+.keyword.operator.comparison, .keyword.operator.assignment, .keyword.operator.arithmetic, .meta.brace.round, .meta.brace.curly, .punctuation.section, .punctuation.section.block, .punctuation.definition.parameters, .punctuation.section.group, .meta.selector.css, .constant.character.escape, .support.function.construct, .keyword.other.new, .punctuation.separator.continuation, .other.package.exclude, .other.remove, .punctuation.section.group.tex, .punctuation.definition.arguments.begin.latex, .punctuation.definition.arguments.end.latex, .punctuation.definition.arguments.latex, .punctuation.definition.constant.math.tex, .punctuation.definition.string.begin.tex, .punctuation.definition.string.end.tex, .variable.parameter.definition.label.latex, .punctuation.definition.logical-expression.shell, .markup.deleted, .sublimelinter.mark.error, .markup.deleted.git_gutter { color: var(--highlight-8-color); }
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--default-color);
+  font-family: system-ui, sans-serif;
+  font-size-adjust: 0.5;
+  font-size: var(--default-font-size);
+  line-height: var(--default-line-height);
+}
+
+details.d {
+  max-width: 36rem;
+}
+
+details.d > :where(:not(:first-child)) {
+  margin-top: 0.8rem;
+}
+
+div.d {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+div.d > :where(:not(:first-child)) {
+  margin-top: 0.8rem;
+}
+
+footer {
+  margin-top: 0.3rem;
+  margin-bottom: 0.4rem;
+  text-align: center;
+  margin-inline: auto;
+}
+
+header {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+
+.top-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+
+.code-block {
+  background-color: var(--match-color);
+  padding: 0.9rem;
+  border-radius: 0.3rem;
+}
+
+.code-block pre {
+  background-color: var(--match-color);
+  border: var(--faded-reverse-border);
+  border-radius: var(--default-border-radius);
+  font-size: var(--small-font-size);
+  margin-block: var(--default-margin);
+  padding-block: var(--xlarge-padding);
+  padding-left: 2.6rem;
+  padding-right: var(--default-padding);
+  white-space: pre-wrap; 
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+  overscroll-behavior-x: auto;
+  line-height: 1.5;
+
+  & .line-marker {
+    counter-increment: codeBlockLineNumberX;
+  }
+
+  & .line-marker:before {
+      content: counter(codeBlockLineNumberX);
+      display: inline-block;
+      margin-left: -8.3ch;
+      padding-right: 1ch;
+      position: absolute;
+      text-align: end;
+      width: 7ch;
+      color: var(--accent-color);
+      border-right: var(--faded-accent-border);
+  }
+
+  > .title {
+    font-size: var(--default-font-size);
+    border-bottom: var(--faded-accent-border);
+    margin-bottom: var(--small-margin);
+  }
+}
+
+.code-block.nowrap {
+  white-space: pre; 
+  overflow-wrap: normal;
+  overflow-x: scroll; 
+  overscroll-behavior-x: none;
+}
+
+.code-block.nonums {
+  padding-left: var(--default-padding);
+
+  & .line-marker:before {
+    opacity: 0;
+  }
+}
+
+
+ul.d > :where(:not(:first-child)) {
+  margin-top: 0.8rem;
+}
+
+ul.d li > :where(:not(:first-child)) {
+  margin-top: 0.8rem;
+}
+
