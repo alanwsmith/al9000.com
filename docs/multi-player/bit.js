@@ -45,7 +45,7 @@ let videos = [
     key: 5,
     name: "Chaka Khan - Like Sugar",
     dimensions: [16, 9],
-    crop: [16, 9],
+    crop: [2, 1.42],
     link: "https://www.youtube.com/watch?v=RecY5iZn6B0",
   },
   {
@@ -103,9 +103,11 @@ function getLayout(d) {
 
 export async function init() {
   await decryptInit();
+  /*
   if (window.navigator.userAgent.includes("Firefox")) {
     b.addStyles(`video { transform: rotate(0.08deg);}`);
   }
+  */
 }
 
 export function play() {
@@ -153,10 +155,21 @@ export async function selectVideo(_, sender, el) {
 
     // STARTING_WIDTH * OUTPUT_HEIGHT / STARTING_HEIGHT
 
+    // This does the aspect ration bump.
     const videoWidth = layout.cellHeight * videos[index].dimensions[0] /
       videos[index].dimensions[1];
-
+    console.log(layout.cellWidth, videoWidth);
     b.setCSS("--video-width", `${videoWidth}px`);
+
+    const videoLeft = (layout.cellWidth - videoWidth) / 2;
+    b.setCSS("--video-left", `${videoLeft - 1}px`);
+    console.log("left", videoLeft);
+
+    // STARTING_HEIGHT * OUTPUT_WIDTH / STARTING_WIDTH
+    const videoHeight = layout.cellHeight * videoWidth / layout.cellWidth;
+
+    const videoUp = (layout.cellHeight - videoHeight) / 2;
+    b.setCSS("--video-up", `${videoUp - 1}px`);
 
     // const videoHeight = layout.cellHeight * videos[index].crop[0] /
     //   videos[index].crop[1];
