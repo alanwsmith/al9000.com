@@ -60,14 +60,15 @@ main {
   position: relative;
   display: block;
 
-  /*
   background: var(--background-image);
-*/
+  /*
   background-color: red;
+*/
   width: var(--cell-width);
   aspect-ratio: var(--aspect-ratio);
-  overflow: hidden;
   /*
+
+  overflow: hidden;
   height: var(--cell-height);
   */
 }
@@ -75,11 +76,15 @@ main {
 .cell video {
   position: absolute;
   display: block;
-  height: calc(var(--video-height) + 3px);
   /*
-  width: calc(var(--cell-width) + 2px);
+  translate: -20px -19px;
+  height: var(--video-height);
+  translate: -20px 0px;
+  height: var(--video-height);
+  width: calc(var(--video-width) + 2px);
 */
-  translate: -28px -20px;
+  translate: var(--video-left) var(--video-up);
+  width: calc(var(--video-width) + 2px);
   aspect-ratio: var(--aspect-ratio);
 }
 

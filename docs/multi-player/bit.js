@@ -153,16 +153,39 @@ export async function selectVideo(_, sender, el) {
 
     // STARTING_WIDTH * OUTPUT_HEIGHT / STARTING_HEIGHT
 
-    // let videoWidth = layout.cellWidth * videos[index].dimensions[1] /
-    //   layout.cellHeight;
-    // videoWidth = layout.cellWidth * videos[index].crop[0] /
+    const videoWidth = layout.cellHeight * videos[index].dimensions[0] /
+      videos[index].dimensions[1];
+
+    b.setCSS("--video-width", `${videoWidth}px`);
+
+    // const videoHeight = layout.cellHeight * videos[index].crop[0] /
+    //   videos[index].crop[1];
+    // console.log(layout.cellHeight, videoHeight);
+    // b.setCSS("--video-height", `${videoHeight}px`);
+
+    // b.setCSS("--video-width", `${layout.cellWidth}px`);
+
+    // let videoWidth = layout.cellWidth * videos[index].crop[0] /
     //   videos[index].crop[1];
     // console.log(layout.cellWidth, videoWidth);
+    // b.setCSS("--video-width", `${videoWidth}px`);
 
-    const videoHeight = layout.cellHeight * videos[index].crop[0] /
-      videos[index].crop[1];
-    console.log(layout.cellHeight, videoHeight);
-    b.setCSS("--video-height", `${videoHeight}px`);
+    // const videoHeight = layout.cellHeight * videos[index].dimensions[0] /
+    //   videos[index].dimensions[1];
+    // console.log(layout.cellHeight, videoHeight);
+    // b.setCSS("--video-height", `${videoHeight}px`);
+
+    // const videoUp = (layout.cellHeight - videoHeight) / 2;
+    // b.setCSS("--video-up", `${videoUp}px`);
+
+    // let videoWidth = videos[index].crop[0] * layout.cellHeight /
+    //   videos[index].crop[1];
+    // console.log(layout.cellWidth, videoWidth);
+    // b.setCSS("--cell-width", `${layout.cellWidth}px`);
+
+    // const videoLeft = (layout.cellWidth - videoWidth) / 2;
+    // b.setCSS("--video-left", `${videoLeft}px`);
+    // console.log("left", videoLeft);
 
     b.setCSS("--cell-width", `${layout.cellWidth}px`);
     b.setCSS(
