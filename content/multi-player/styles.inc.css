@@ -41,6 +41,7 @@ main {
   background: var(--background-image);
   width: var(--cell-width);
   aspect-ratio: var(--aspect-ratio);
+  overflow: hidden;
   /*
   height: var(--cell-height);
   */
@@ -49,7 +50,7 @@ main {
 .cell video {
   position: absolute;
   display: block;
-  width: calc(var(--cell-width) + 2px);
+  width: calc(var(--video-width) + 2px);
   aspect-ratio: var(--aspect-ratio);
 }
 
