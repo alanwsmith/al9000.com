@@ -69,6 +69,20 @@ let videos = [
     crop: [16, 9],
     link: "https://www.youtube.com/watch?v=pAwR6w2TgxY",
   },
+  {
+    key: 9,
+    name: "Beyoncé - Countdown",
+    dimensions: [16, 9],
+    crop: [16, 9],
+    link: "https://www.youtube.com/watch?v=2XY3AvVgDns",
+  },
+  {
+    key: 10,
+    name: "WOW｜INORI - PRAYER",
+    dimensions: [16, 9],
+    crop: [16, 9],
+    link: "https://www.youtube.com/watch?v=3Aos1Z2htDU",
+  },
 ];
 
 function getLayout(d) {

@@ -99,9 +99,42 @@ chrome and added the feature to track videos
 by UUID in the global <code>videos</code> variable during
 the bug hunt. I'm fine with it being there.</li>
 </ul>
+<h2>The Video</h2>
+<p>Here's the output demo video to get started.
+It's from <a href="https://www.pexels.com/video/a-drone-shot-of-a-church-in-belalp-3818213/">pexels</a>
+which is a nice place to get free videos.</p>
+
+
+<video id="videoPlayer" controls></video>
+
+<script type="module">
+import { loadVideo } from "/javascript/media-source-video-player/media-source-player.js"
+const config = {
+  codec: `video/webm; codecs="vp9, vorbis"`,
+  urls: [
+    "/javascript/media-source-video-player/sample-video/part-00.part",
+    "/javascript/media-source-video-player/sample-video/part-01.part",
+    "/javascript/media-source-video-player/sample-video/part-02.part",
+    "/javascript/media-source-video-player/sample-video/part-03.part",
+    "/javascript/media-source-video-player/sample-video/part-04.part",
+    "/javascript/media-source-video-player/sample-video/part-05.part",
+    "/javascript/media-source-video-player/sample-video/part-06.part",
+    "/javascript/media-source-video-player/sample-video/part-07.part",
+    "/javascript/media-source-video-player/sample-video/part-08.part",
+    "/javascript/media-source-video-player/sample-video/part-09.part",
+    "/javascript/media-source-video-player/sample-video/part-10.part",
+  ],
+  fallback: "/javascript/media-source-video-player/sample-video/church-3818213.webm",
+}
+loadVideo("#videoPlayer", config);
+</script>
+
+
+
 <h2>The JavaScript</h2>
-<p>I put the player code in a module. It
-looks like this:</p>
+<p>The main JavaScript consists of a
+variable and two functions in the module
+shown here:</p>
 
 <div class="code-block"><div class="title">media-source-player.js</div><pre><code><span class="line-marker"></span><span class="source js"><span class="storage type js">const</span> <span class="variable other readwrite js">videos</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span><span class="punctuation section block js">}</span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker"></span>
@@ -188,61 +221,129 @@ data to play the video without having to
 stop for buffering.</p>
 </li>
 <li>
-<p>I left the <code>console.log(</code>processing segment...<code>line in to show how the</code>canplaythrough` event fires while
+<p>I left the <code>console.log('processing segment...'</code> line in
+to show how the <code>canplaythrough</code> event fires while
 the individual segment files are still being
 loaded.</p>
 </li>
 </ul>
+<h2>The HTML</h2>
+<p>Here's the HTML that goes on the page:</p>
+
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="text html basic"><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">video</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">videoPlayer</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">controls</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">video</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span><span class="source js embedded html"><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">loadVideo</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/media-source-player.js<span class="punctuation definition string end js">&quot;</span></span>
+<span class="line-marker"></span></span><span class="storage type js">const</span> <span class="variable other readwrite js">config</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>  <span class="meta object-literal key js">codec</span><span class="punctuation separator key-value js">:</span> <span class="string template js"><span class="punctuation definition string template begin js">`</span>video/webm; codecs=&quot;vp9, vorbis&quot;<span class="punctuation definition string template end js">`</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>  <span class="meta object-literal key js">urls</span><span class="punctuation separator key-value js">:</span> <span class="meta sequence js"><span class="punctuation section brackets js">[</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-00.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-01.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-02.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-03.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-04.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-05.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-06.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-07.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-08.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-09.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-10.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>  <span class="punctuation section brackets js">]</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>  <span class="meta object-literal key js">fallback</span><span class="punctuation separator key-value js">:</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/church-3818213.webm<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span><span class="punctuation section block js">}</span></span>
+<span class="line-marker"></span><span class="meta function-call js"><span class="variable function js">loadVideo</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>#videoPlayer<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">config</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
 
 
-
-<video id="videoPlayer" controls></video>
-
-<script type="module">
-import { loadVideo } from "/javascript/media-source-video-player/media-source-player.js"
-const config = {
-  codec: `video/webm; codecs="vp9, vorbis"`,
-  urls: [
-    "/javascript/media-source-video-player/sample-video/part-00.part",
-    "/javascript/media-source-video-player/sample-video/part-01.part",
-    "/javascript/media-source-video-player/sample-video/part-02.part",
-    "/javascript/media-source-video-player/sample-video/part-03.part",
-    "/javascript/media-source-video-player/sample-video/part-04.part",
-    "/javascript/media-source-video-player/sample-video/part-05.part",
-    "/javascript/media-source-video-player/sample-video/part-06.part",
-    "/javascript/media-source-video-player/sample-video/part-07.part",
-    "/javascript/media-source-video-player/sample-video/part-08.part",
-    "/javascript/media-source-video-player/sample-video/part-09.part",
-    "/javascript/media-source-video-player/sample-video/part-10.part",
-  ],
-  fallback: "/javascript/media-source-video-player/sample-video/church-3818213.webm",
-}
-loadVideo("#videoPlayer", config);
-</script>
-
-
-
-<h3>Notes</h3>
 <ul>
-<li>The <a href="https://www.pexels.com/video/a-drone-shot-of-a-church-in-belalp-3818213/">source video is from pexels</a></li>
+<li>
+<p>The video tag has an <code>id</code> attribute that's
+used in the selector to grab the element.</p>
+</li>
+<li>
+<p>The <code>config</code> includes the <code>codec</code> for
+the video in addition to the various paths.
+Fair warning that there's a deep rabbit hole
+with video codecs.</p>
+</li>
 </ul>
+<h2>The Prep Script</h2>
+<p>The sample video I used didn't have an audio track
+with it. It worked fine in Safari and Firefox.
+It broke in chrome. It took a while to figure
+out that the missing audio was the problem.</p>
+<p>This is the <code>ffmpeg</code> command I used to fix
+the issue. It makes a new <code>.webm</code> file
+with a silent audio track.</p>
+<div class="code-block"><div class="title">audio-fix.bash</div><pre><code><span class="line-marker"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker"></span></span>
+<span class="line-marker"></span><span class="meta function-call shell"><span class="variable function shell">ffmpeg</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>y</span><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>f</span> lavfi<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>i</span> anullsrc<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>i</span> INPUT.webm<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>c</span>:v copy<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>c</span>:a libvorbis<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>shortest</span> OUTPUT.webm</span></span></code></pre></div>
+<p>The resulting file is encoded so that it matches the
+<code>video/webm; codecs=&quot;vp9, vorbis&quot;</code> in
+the JavaScript.</p>
+<h2>The Split Script</h2>
+<p>Spitting the source <code>.webm</code> file into the parts
+is done with this script that runs in bash
+on mac/linux:</p>
+<div class="code-block"><div class="title">split-video.bash</div><pre><code><span class="line-marker"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker"></span></span>
+<span class="line-marker"></span><span class="meta function-call shell"><span class="variable function shell">split</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>b</span> 1M<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>d</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>church-3818213.webm<span class="punctuation definition string end shell">&quot;</span></span> part-</span>
+<span class="line-marker"></span><span class="keyword control for shell">for</span><span class="meta group for shell"> f <span class="keyword control in shell">in</span> part-<span class="keyword operator regexp quantifier shell">*</span></span><span class="keyword operator logical continue shell">;</span> <span class="keyword control do shell">do</span> <span class="meta function-call shell"><span class="variable function shell">mv</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">f</span></span><span class="punctuation definition string end shell">&quot;</span></span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">f</span></span>.part<span class="punctuation definition string end shell">&quot;</span></span></span><span class="keyword operator logical continue shell">;</span> <span class="meta function-call shell"><span class="variable function shell">done</span></span></span></code></pre></div>
+Line 3 does the split. Line for adds the `.part` extension
+to the file names. 
+<h2>Error Messages</h2>
+<p>Here's some of the Chrome console log
+error messages I got before figuring out
+that the audio track was the problem.
+Putting them here in hopes that folks
+searching for them will see these
+instead of being sent down
+dead ends by AI that doesn't
+take into account that the video
+could be the problem.</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="text plain">MediaSource readyState is: closed
+<span class="line-marker"></span>
+<span class="line-marker"></span>MediaSource or SourceBuffer invalid
+<span class="line-marker"></span>
+<span class="line-marker"></span>InvalidStateError: Failed to execute 
+<span class="line-marker"></span>&#39;appendBuffer&#39; on &#39;SourceBuffer&#39;: 
+<span class="line-marker"></span>This SourceBuffer has been removed 
+<span class="line-marker"></span>from the parent media source.
+<span class="line-marker"></span>
+<span class="line-marker"></span>InvalidStateError: Failed to execute 
+<span class="line-marker"></span>&#39;endOfStream&#39; on &#39;MediaSource&#39;: 
+<span class="line-marker"></span>The MediaSource&#39;s readyState is 
+<span class="line-marker"></span>not &#39;open&#39;.
+<span class="line-marker"></span>
+<span class="line-marker"></span>--- From ffmpeg during processing
+<span class="line-marker"></span>
+<span class="line-marker"></span>Error parsing Opus packet header.</span></code></pre></div>
+<h2>Wrap-up</h2>
+<p>This is the first time I've really looked at web video
+in the modern age. As with so much of the web these
+days it's mind-blowing how much you can do with it
+without having to bend over backwards. It took me
+way longer to figure out that the audio track was
+causing issues than to write up the player script.</p>
+<p>Very cool.</p>
+<p>-a</p>
 <h3>References</h3>
 <ul>
-<li>https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API</li>
-<li>https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer</li>
-<li>https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples</li>
-<li>https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement</li>
-<li>https://man7.org/linux/man-pages/man1/split.1.html</li>
-<li>https://ffmpeg.org/ffmpeg-formats.html#hls-1</li>
-<li>https://en.wikipedia.org/wiki/HTTP_Live_Streaming</li>
-<li>/rust/wasm/static-site-file-decryption/</li>
-<li>/rust/wasm/static-site-file-encryption/</li>
-<li>https://www.webmproject.org/</li>
-<li>https://www.rfc-editor.org/rfc/rfc8216</li>
+<li><a href="/multi-player/">/multi-player/</a></li>
+<li><a href="/rust/wasm/static-site-file-decryption/">/rust/wasm/static-site-file-decryption/</a></li>
+<li><a href="/rust/wasm/static-site-file-encryption/">/rust/wasm/static-site-file-encryption/</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API">https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer">https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples">https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples</a></li>
+<li><a href="https://en.wikipedia.org/wiki/HTTP_Live_Streaming">https://en.wikipedia.org/wiki/HTTP_Live_Streaming</a></li>
+<li><a href="https://ffmpeg.org/ffmpeg-filters.html#anullsrc">https://ffmpeg.org/ffmpeg-filters.html#anullsrc</a></li>
+<li><a href="https://ffmpeg.org/ffmpeg-formats.html#hls-1">https://ffmpeg.org/ffmpeg-formats.html#hls-1</a></li>
+<li><a href="https://man7.org/linux/man-pages/man1/split.1.html">https://man7.org/linux/man-pages/man1/split.1.html</a></li>
+<li><a href="https://videojs.org/">https://videojs.org/</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc8216">https://www.rfc-editor.org/rfc/rfc8216</a></li>
+<li><a href="https://www.webmproject.org/">https://www.webmproject.org/</a></li>
 </ul>
-
-
-
 
 
 

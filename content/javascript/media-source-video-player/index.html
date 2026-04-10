@@ -42,10 +42,26 @@ chrome and added the feature to track videos
 by UUID in the global `videos` variable during
 the bug hunt. I'm fine with it being there.  
 
+## The Video
+
+Here's the output demo video to get started. 
+It's from [pexels](https://www.pexels.com/video/a-drone-shot-of-a-church-in-belalp-3818213/)
+which is a nice place to get free videos. 
+
+== endfilter
+
+
+== include parent(file_path) + "/page.html"
+
+
+== filter md
+
 ## The JavaScript
 
-I put the player code in a module. It 
-looks like this:
+The main JavaScript consists of a
+variable and two functions in the module
+shown here:
+
 
 == endfilter
 
@@ -75,41 +91,143 @@ It's fired when the browser estimates it has enough
 data to play the video without having to 
 stop for buffering. 
 
-- I left the `console.log(`processing segment...` line in
+- I left the `console.log('processing segment...'` line in
 to show how the `canplaythrough` event fires while
 the individual segment files are still being
 loaded. 
 
+## The HTML
+
+Here's the HTML that goes on the page:
+
 == endfilter
 
+== filter highlight_block("html")
+== include parent(file_path)  + "/page.html"
+== endfilter
 
-
-== include parent(file_path) + "/page.html"
 
 
 == filter md
-### Notes
 
-- The [source video is from pexels](https://www.pexels.com/video/a-drone-shot-of-a-church-in-belalp-3818213/)
+- The video tag has an `id` attribute that's 
+used in the selector to grab the element. 
 
-### References
+- The `config` includes the `codec` for
+the video in addition to the various paths. 
+Fair warning that there's a deep rabbit hole 
+with video codecs.  
 
-- https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API
-- https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer
-- https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples
-- https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
-- https://man7.org/linux/man-pages/man1/split.1.html
-- https://ffmpeg.org/ffmpeg-formats.html#hls-1
-- https://en.wikipedia.org/wiki/HTTP_Live_Streaming
-- /rust/wasm/static-site-file-decryption/
-- /rust/wasm/static-site-file-encryption/
-- https://www.webmproject.org/
-- https://www.rfc-editor.org/rfc/rfc8216
+## The Prep Script
+
+The sample video I used didn't have an audio track
+with it. It worked fine in Safari and Firefox. 
+It broke in chrome. It took a while to figure
+out that the missing audio was the problem. 
+
+This is the `ffmpeg` command I used to fix 
+the issue. It makes a new `.webm` file
+with a silent audio track. 
+
+
+== filter highlight_block("bash", "audio-fix.bash") 
+== include parent(file_path) + "/sample-video/audio-fix.bash"
+== endfilter
+
+
+The resulting file is encoded so that it matches the
+`video/webm; codecs="vp9, vorbis"` in
+the JavaScript. 
+
+
+## The Split Script
+
+Spitting the source `.webm` file into the parts
+is done with this script that runs in bash
+on mac/linux:
+
+
+== filter highlight_block("bash", "split-video.bash") 
+== include parent(file_path) + "/sample-video/split-video.bash"
+== endfilter
+
+Line 3 does the split. Line for adds the `.part` extension
+to the file names. 
+
+
+## Error Messages
+
+Here's some of the Chrome console log 
+error messages I got before figuring out
+that the audio track was the problem. 
+Putting them here in hopes that folks
+searching for them will see these
+instead of being sent down 
+dead ends by AI that doesn't
+take into account that the video
+could be the problem. 
+
+
+== filter highlight_block("txt") 
+MediaSource readyState is: closed
+
+MediaSource or SourceBuffer invalid
+
+InvalidStateError: Failed to execute 
+'appendBuffer' on 'SourceBuffer': 
+This SourceBuffer has been removed 
+from the parent media source.
+
+InvalidStateError: Failed to execute 
+'endOfStream' on 'MediaSource': 
+The MediaSource's readyState is 
+not 'open'.
+
+--- From ffmpeg during processing
+
+Error parsing Opus packet header.
 
 == endfilter
 
 
+## Wrap-up
 
+This is the first time I've really looked at web video
+in the modern age. As with so much of the web these
+days it's mind-blowing how much you can do with it
+without having to bend over backwards. It took me 
+way longer to figure out that the audio track was 
+causing issues than to write up the player script. 
+
+Very cool.
+
+-a
+
+
+
+
+### References
+
+<ul>
+<li><a href="/multi-player/">/multi-player/</a></li>
+<li><a href="/rust/wasm/static-site-file-decryption/">/rust/wasm/static-site-file-decryption/</a></li>
+<li><a href="/rust/wasm/static-site-file-encryption/">/rust/wasm/static-site-file-encryption/</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API">https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer">https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples">https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples</a></li>
+<li><a href="https://en.wikipedia.org/wiki/HTTP_Live_Streaming">https://en.wikipedia.org/wiki/HTTP_Live_Streaming</a></li>
+<li><a href="https://ffmpeg.org/ffmpeg-filters.html#anullsrc">https://ffmpeg.org/ffmpeg-filters.html#anullsrc</a></li>
+<li><a href="https://ffmpeg.org/ffmpeg-formats.html#hls-1">https://ffmpeg.org/ffmpeg-formats.html#hls-1</a></li>
+<li><a href="https://man7.org/linux/man-pages/man1/split.1.html">https://man7.org/linux/man-pages/man1/split.1.html</a></li>
+<li><a href="https://videojs.org/">https://videojs.org/</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc8216">https://www.rfc-editor.org/rfc/rfc8216</a></li>
+<li><a href="https://www.webmproject.org/">https://www.webmproject.org/</a></li>
+</ul>
+
+
+
+== endfilter
 
 
 == endblock
