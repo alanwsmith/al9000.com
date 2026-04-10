@@ -1,0 +1,96 @@
+== extends "/templates.inc/pages/rust.html"
+
+== block toml
+title = "Access Mac Keychain Access Passwords from a Rust App"
+created = 2026-04-10T13:57:22-04:00
+status = "done"
+== endblock 
+
+
+== block main
+== filter md
+
+
+I use the built-in macOS Keychain Access app to store credentials
+for my various scripts and tools. I start off by creating
+a `New Password Item...` from the Keychain Access menu
+and filling in the details:
+
+<img src="images/raw/new-password.png" 
+alt="The new password prompt from the macOS KeyChain Access app" />
+
+
+Then, I use this rust code to pull in passwords
+when I need them:
+
+
+== filter highlight_block("rust", "src/main.rs")  
+== include parent(file_path) + "/src/main.rs"
+== endfilter
+
+with this Cargo.toml:
+
+== filter highlight_block("rust", "Cargo.toml")  
+== include parent(file_path) + "/Cargo.toml"
+== endfilter
+
+When I run the app from the command line I get
+a prompt from Keychain Access to enter the
+keychain's main password to unlock it. 
+
+
+<img src="images/raw/keychain-access-prompt.png" 
+alt="They macOS Keychain Access app prompt for the main password." />
+
+Assuming I click "Always Allow" when I enter
+the proper password Keychain Access provides 
+the requested password back to the app.
+From that point forward the app can get
+the password again without triggering
+the prompt.  
+
+It's hard to beat.
+
+-a
+
+## Notes
+
+- I've been using Keychain Access for ages. There's
+a new Passwords app too. The OS keeps prompting me
+to use it: 
+
+    <img src="images/raw/open-passwords-prompt.png" 
+alt="They macOS prompt to open Passwords instead of Keychain Access." />
+
+    I assume I'll be able to set up a similar system
+with it. I just haven't dug into it yet. 
+
+
+- I'm using the [security_framework crate](https://docs.rs/security-framework/latest/security_framework/index.html)
+to handle communication between my app and 
+Keychain Access. It's got north of
+[200 million downloads on crates.io](https://crates.io/crates/security-framework).
+I'm using that as social proof that it's
+a good library to go with. 
+
+- The security_framework crate works with Windows and Linux password
+managers too.
+
+- The `correct-horse-battery-staple` password is from 
+[this XKCD comic](https://xkcd.com/936/) which shows
+you why passwords with words are better than ones
+with a bunch of random characters. 
+
+
+
+### References 
+
+<ul class="d">
+<li><a href="https://crates.io/crates/security-framework">https://crates.io/crates/security-framework</a></li>
+<li><a href="https://docs.rs/security-framework/latest/security_framework/">https://docs.rs/security-framework/latest/security_framework/</a></li>
+<li><a href="https://docs.rs/security-framework/latest/security_framework/passwords/index.html">https://docs.rs/security-framework/latest/security_framework/passwords/index.html</a></li>
+</ul>
+
+== endfilter
+
+== endblock 
