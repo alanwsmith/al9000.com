@@ -24,22 +24,23 @@ working on for my [Multi-Player project](/multi-player/).
 Chrome slows way down 
 as the number of videos on the page increases. 
 Hopefully, this approach can keep things snappy.
-- I'm also interested in making a version that works
+- This is also prep work for making a version that works
 with encrypted video files (e.g. by 
 [Password Protecting Static Site Content with WASM](/rust/wasm/static-site-file-decryption/)).
 - You should probably use [VideoJS](https://videojs.org/)
 instead of this in most cases. 
 - This does not currently check to see if the mime
 type is supported. I'm using [.webm](https://www.webmproject.org/) 
-in the examples.
-Everything seems fine without an explicit codec. See
-[the doc examples](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples)
-for more on that. 
-- I set this up to avoid using global variables. 
-I'm doing that by tacking a couple variables
-on to the `sourceBuffer`. While I wouldn't do that
-if I was building a library, it works
-fine for my purposes. 
+in the examples and have things lined up already
+with the videos (i.e. `video/webm; codecs="vp9, vorbis"`). 
+See [the doc examples](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples)
+for details on how to check in situations where
+you can't control the input files. 
+- My original version of this didn't use global variables. 
+I ran into an issue where missing audio was breaking
+chrome and added the feature to track videos
+by UUID in the global `videos` variable during
+the bug hunt. I'm fine with it being there.  
 
 ## The JavaScript
 
@@ -69,19 +70,15 @@ playlist.
 
 - The module handles adds an event listener
 to the video element for 
-[canplay](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplay_event).
-The description of which is:
+[canplaythrough](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplaythrough_event).
+It's fired when the browser estimates it has enough
+data to play the video without having to 
+stop for buffering. 
 
-  > The canplay event is fired when the user agent can play 
-  > the media, but estimates that not enough data has been 
-  > loaded to play the media up to its end without having 
-  > to stop for further buffering of content.
-
-  The other event is 
-
-
-
-
+- I left the `console.log(`processing segment...` line in
+to show how the `canplaythrough` event fires while
+the individual segment files are still being
+loaded. 
 
 == endfilter
 
