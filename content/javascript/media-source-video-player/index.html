@@ -52,9 +52,38 @@ looks like this:
 == include parent(file_path) + "/media-source-player.js"
 == endfilter
 
+== filter md
+- The `loadVideo` function takes a selector that
+points to an existing `video` element and 
+a config.
+- The format of the config is in the HTML below. 
+- The config includes a fallback URL as well as
+the links to the individual parts that the 
+MediaSource uses. 
+- A check is made to verify the MediaSource
+loaded. If not, the fallback URL is used. 
+- I'm using a direct link to a `.webm` file
+for the fallback. In practice, I'd
+probably use an [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) 
+playlist.
+
+- The module handles adds an event listener
+to the video element for 
+[canplay](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplay_event).
+The description of which is:
+
+  > The canplay event is fired when the user agent can play 
+  > the media, but estimates that not enough data has been 
+  > loaded to play the media up to its end without having 
+  > to stop for further buffering of content.
+
+  The other event is 
 
 
 
+
+
+== endfilter
 
 
 
@@ -78,6 +107,7 @@ looks like this:
 - /rust/wasm/static-site-file-decryption/
 - /rust/wasm/static-site-file-encryption/
 - https://www.webmproject.org/
+- https://www.rfc-editor.org/rfc/rfc8216
 
 == endfilter
 
