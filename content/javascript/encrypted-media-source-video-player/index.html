@@ -1,0 +1,117 @@
+== extends "/templates.inc/pages/javascript.html"
+
+
+== block toml
+title = "An Encrypted Media Source Extensions (MSE) Video Player"
+created = 2026-04-10T01:30:12-04:00
+status = "draft"
+id = "encrypted-mse-player"
+== endblock
+
+== block main
+== filter md
+
+## Overview
+
+- This is a modified version of the
+[Media Source Extensions (MSE) Video Player](/javascript/media-source-video-player/).
+
+- The basics are the same. It just uses encrypted files 
+and passes the
+them through a copy of the WASM decryption 
+module from [Password Protecting Static Site Content with WASM](/rust/wasm/static-site-file-decryption/).
+
+- Encryption is done on the 
+[Encrypting Static Site Content with WASM](/rust/wasm/static-site-file-encryption/) 
+page. 
+
+- The goal is to update the [Multi-Player](/multi-player/) 
+project so videos load as fast in Chrome as they
+do in Firefox and Safari. 
+
+- It's important to note that the password is included
+in the HTML for this prototype. That approach can
+be used for obfuscation. It doesn't work for
+protecting content through since the key
+can be extracted from the source code. 
+
+## The Video
+
+Here's the video which is 
+from [pexels](https://www.pexels.com/video/a-man-and-a-woman-dancing-7669397/).
+
+== include parent(file_path) + "/page.html"
+
+## The JavaScript
+
+This is the module that makes things work:
+
+== endfilter
+
+== filter highlight_block("javascript", "encrypted-media-source-player.js")
+== include parent(file_path) + "/encrypted-media-source-player.js"
+== endfilter
+
+== filter md
+
+It's basically the same thing 
+as [A Media Source Extensions MSE Video Player](/javascript/media-source-video-player/) with 
+with the WASM decryption module 
+from [Password Protecting Static Site Content with WASM](/rust/wasm/static-site-file-decryption/)
+thrown in.
+
+## The HTML
+
+The code for the page looks like this:
+
+== endfilter
+
+== filter highlight_block("html", "page.html")
+== include parent(file_path) + "/page.html"
+== endfilter
+
+== filter md
+
+
+Exactly the same structure as 
+[A Media Source Extensions MSE Video Player](/javascript/media-source-video-player/).
+Only the URLs changed. 
+
+NOTE: Each `part-##.part.bin` file has to be encrypted
+individually after the file spilt occurs. 
+(That is, you can't encrypt the `church-3818213.webm`
+and split it. You have to split first then encrypt.)
+
+Details on the video prep and file split
+are on 
+[A Media Source Extensions MSE Video Player](/javascript/media-source-video-player/).
+
+
+## Wrap Up
+
+Server video used to feel like magic. Something
+that required more tech than I had access to. Of course, that
+wasn't true. We've got access to the same browser APIs
+as YouTube. What's cool here is that with 
+the current APIs there's no need to have a dynamic 
+server in order to deliver encrypted videos
+that are served piece by piece. 
+
+We live in the future.
+
+-a
+
+### References
+
+See these pages for more details and references:
+
+- [A Media Source Extensions MSE Video Player](/javascript/media-source-video-player/), 
+
+- [Encrypting Static Site Content with WASM](/rust/wasm/static-site-file-encryption/) 
+
+- [Password Protecting Static Site Content with WASM](/rust/wasm/static-site-file-decryption/)
+
+
+== endfilter
+== endblock
+

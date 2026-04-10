@@ -8,14 +8,14 @@ let sourceEl;
 let videos = [
   {
     key: 0,
-    name: "Once in a Lifetime",
+    name: "Talking Heads - Once in a Lifetime",
     dimensions: [4, 3],
     crop: [4, 3],
     link: "https://www.youtube.com/watch?v=5IsSpAOD6K8",
   },
   {
     key: 1,
-    name: "WTF",
+    name: "OK Go - WTF",
     dimensions: [16, 9],
     crop: [16, 9],
     link: "https://www.youtube.com/watch?v=12zJw9varYE",
@@ -29,7 +29,7 @@ let videos = [
   },
   {
     key: 3,
-    name: "Gotye (CDK) - Somebody I Used to Know",
+    name: "CDK - Gotye/Somebody I Used to Know",
     dimensions: [16, 9],
     crop: [16, 9],
     link: "https://www.youtube.com/watch?v=REPPgPcw4hk",
@@ -82,6 +82,41 @@ let videos = [
     dimensions: [16, 9],
     crop: [16, 9],
     link: "https://www.youtube.com/watch?v=3Aos1Z2htDU",
+  },
+  {
+    key: 11,
+    name: "OK Go - Love",
+    dimensions: [16, 9],
+    crop: [4, 3],
+    link: "https://www.youtube.com/watch?v=gz9BRl7DVSM",
+  },
+  {
+    key: 12,
+    name: "Daft Punk - Around The World",
+    dimensions: [16, 9],
+    crop: [4, 3],
+    link: "https://www.youtube.com/watch?v=4JkIs37a2JE",
+  },
+  {
+    key: 13,
+    name: "The White Stripes - Fell in Love with a Girl",
+    dimensions: [16, 9],
+    crop: [4, 3],
+    link: "https://www.youtube.com/watch?v=fTH71AAxXmM",
+  },
+  {
+    key: 14,
+    name: "Nine Inch Nails - As Alive As You Need Me To Be",
+    dimensions: [16, 9],
+    crop: [16, 9],
+    link: "https://www.youtube.com/watch?v=Rrd6JniMI3U",
+  },
+  {
+    key: 15,
+    name: "LORN - ANVIL",
+    dimensions: [16, 9],
+    crop: [16, 9],
+    link: "https://www.youtube.com/watch?v=CqaAs_3azSs",
   },
 ];
 

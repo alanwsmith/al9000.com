@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>An Encrypted Media Source Extensions (MSE) Video Player</title>
+<meta property="og:title" content="An Encrypted Media Source Extensions (MSE) Video Player" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/javascript/encrypted-media-source-video-player/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+    <div class="noscript"><noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript></div>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+
+</header>
+
+
+<div class="subnav default-wrapper">
+  <a href="/javascript/">JavaScript </a>
+</div>
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+      <h1>An Encrypted Media Source Extensions (MSE) Video Player</h1>
+        <div class="date">April 2026</div>
+  </hgroup>
+
+<h2>Overview</h2>
+<ul>
+<li>
+<p>This is a modified version of the
+<a href="/javascript/media-source-video-player/">Media Source Extensions (MSE) Video Player</a>.</p>
+</li>
+<li>
+<p>The basics are the same. It just uses encrypted files
+and passes the
+them through a copy of the WASM decryption
+module from <a href="/rust/wasm/static-site-file-decryption/">Password Protecting Static Site Content with WASM</a>.</p>
+</li>
+<li>
+<p>Encryption is done on the
+<a href="/rust/wasm/static-site-file-encryption/">Encrypting Static Site Content with WASM</a>
+page.</p>
+</li>
+<li>
+<p>The goal is to update the <a href="/multi-player/">Multi-Player</a>
+project so videos load as fast in Chrome as they
+do in Firefox and Safari.</p>
+</li>
+<li>
+<p>It's important to note that the password is included
+in the HTML for this prototype. That approach can
+be used for obfuscation. It doesn't work for
+protecting content through since the key
+can be extracted from the source code.</p>
+</li>
+</ul>
+<h2>The Video</h2>
+<p>Here's the video which is
+from <a href="https://www.pexels.com/video/a-man-and-a-woman-dancing-7669397/">pexels</a>.</p>
+<p><video id="videoPlayer" controls></video></p>
+<script type="module">
+import { loadEncryptedVideo } from "/javascript/encrypted-media-source-video-player/encrypted-media-source-player.js"
+const config = {
+  codec: `video/webm; codecs="vp9, vorbis"`,
+  urls: [
+    "/javascript/encrypted-media-source-video-player/sample-video/part-00.part.bin",
+    "/javascript/encrypted-media-source-video-player/sample-video/part-01.part.bin",
+    "/javascript/encrypted-media-source-video-player/sample-video/part-02.part.bin",
+    "/javascript/encrypted-media-source-video-player/sample-video/part-03.part.bin",
+    "/javascript/encrypted-media-source-video-player/sample-video/part-04.part.bin",
+    "/javascript/encrypted-media-source-video-player/sample-video/part-05.part.bin",
+    "/javascript/encrypted-media-source-video-player/sample-video/part-06.part.bin",
+    "/javascript/encrypted-media-source-video-player/sample-video/part-07.part.bin",
+    "/javascript/encrypted-media-source-video-player/sample-video/part-08.part.bin",
+    "/javascript/encrypted-media-source-video-player/sample-video/part-09.part.bin",
+    "/javascript/encrypted-media-source-video-player/sample-video/part-10.part.bin",
+  ],
+  fallback: "/javascript/encrypted-media-source-video-player/sample-video/church-3818213.webm.bin",
+}
+loadEncryptedVideo("#videoPlayer", config);
+</script>
+<h2>The JavaScript</h2>
+<p>This is the module that makes things work:</p>
+
+<div class="code-block"><div class="title">encrypted-media-source-player.js</div><pre><code><span class="line-marker"></span><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="variable other readwrite js">init</span><span class="punctuation separator comma js">,</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">decrypt_file</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>./pkg/static_site_file_decryption.js<span class="punctuation definition string end js">&quot;</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="storage type js">let</span> <span class="variable other readwrite js">initialized</span> <span class="keyword operator assignment js">=</span> <span class="constant language boolean false js">false</span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span><span class="storage type js">const</span> <span class="variable other readwrite js">videos</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span><span class="punctuation section block js">}</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="variable other readwrite js">async</span> </span><span class="meta function declaration js"><span class="storage type function js">function</span> <span class="entity name function js">loadEncryptedVideo</span><span class="punctuation section group begin js">(</span><span class="variable parameter function js">selector</span><span class="punctuation separator parameter function js">,</span> <span class="variable parameter function js">config</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">initialized</span> <span class="keyword operator comparison js">===</span> <span class="constant language boolean false js">false</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="keyword control flow js">await</span> <span class="meta function-call js"><span class="variable function js">init</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    <span class="variable other readwrite js">initialized</span> <span class="keyword operator assignment js">=</span> <span class="constant language boolean true js">true</span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">uuid</span> <span class="keyword operator assignment js">=</span> <span class="variable language self js">self</span><span class="punctuation accessor js">.</span><span class="meta property object js">crypto</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">randomUUID</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">el</span> <span class="keyword operator assignment js">=</span> <span class="support type object dom js">document</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">querySelector</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">selector</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">addEventListener</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>canplaythrough<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="meta function declaration js"><span class="punctuation section group begin js">(</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span><span class="storage type function arrow js">=&gt;</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">log</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>Got canplaythrough.<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">mediaSource</span> <span class="keyword operator assignment js">=</span> <span class="meta instance constructor js"><span class="keyword operator word new js">new</span><span class="meta function-call constructor js"> <span class="variable type js">MediaSource</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="meta object-literal key js">mediaSource</span><span class="punctuation separator key-value js">:</span> <span class="variable other readwrite js">mediaSource</span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="meta object-literal key js">urls</span><span class="punctuation separator key-value js">:</span> <span class="variable other object js">config</span><span class="punctuation accessor js">.</span><span class="meta property object js">urls</span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="meta object-literal key js">currentSegment</span><span class="punctuation separator key-value js">:</span> <span class="constant numeric js">0</span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>  <span class="punctuation section block js">}</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">mediaSource</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta property object js">src</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">URL</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">createObjectURL</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">mediaSource</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    <span class="variable other object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">addEventListener</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>sourceopen<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="meta function declaration js"><span class="storage type js">async</span><span class="meta function declaration js"> </span><span class="punctuation section group begin js">(</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span><span class="storage type function arrow js">=&gt;</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>      <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">sourceBuffer</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">addSourceBuffer</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">config</span><span class="punctuation accessor js">.</span><span class="meta property object js">codec</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">sourceBuffer</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">addEventListener</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>updateend<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="meta function declaration js"><span class="storage type js">async</span><span class="meta function declaration js"> </span><span class="punctuation section group begin js">(</span><span class="variable parameter function js">event</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span><span class="storage type function arrow js">=&gt;</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>        <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta property object js">readyState</span> <span class="keyword operator comparison js">===</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>open<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>          <span class="meta function-call js"><span class="variable function js">loadSegment</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">uuid</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span>      <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="meta function-call js"><span class="variable function js">loadSegment</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">uuid</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="meta try js"><span class="keyword control trycatch js">try</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>      <span class="storage type js">const</span> <span class="variable other readwrite js">response</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="meta function-call js"><span class="variable function js">fetch</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">config</span><span class="punctuation accessor js">.</span><span class="meta property object js">fallback</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">response</span><span class="punctuation accessor js">.</span><span class="meta property object js">ok</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>        <span class="storage type js">const</span> <span class="support module node js">buffer</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="variable other object js">response</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">arrayBuffer</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="storage type js">const</span> <span class="variable other readwrite js">bytes</span> <span class="keyword operator assignment js">=</span> <span class="meta instance constructor js"><span class="keyword operator word new js">new</span><span class="meta function-call constructor js"> <span class="variable type js">Uint8Array</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="support module node js">buffer</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="storage type js">const</span> <span class="variable other readwrite js">responseBytes</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="meta function-call js"><span class="variable function js">decrypt_file</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">bytes</span><span class="punctuation separator comma js">,</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>key<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="storage type js">const</span> <span class="variable other readwrite js">blob</span> <span class="keyword operator assignment js">=</span> <span class="meta instance constructor js"><span class="keyword operator word new js">new</span><span class="meta function-call constructor js"> <span class="variable type js">Blob</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="meta sequence js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">responseBytes</span><span class="punctuation section brackets js">]</span></span><span class="punctuation separator comma js">,</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span> <span class="meta object-literal key js">type</span><span class="punctuation separator key-value js">:</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>video/webm<span class="punctuation definition string end js">&quot;</span></span> <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="storage type js">const</span> <span class="support module node js">url</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">URL</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">createObjectURL</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">blob</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta property object js">src</span> <span class="keyword operator assignment js">=</span> <span class="support module node js">url</span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>        <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">error</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">response</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span>    </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta catch js"><span class="keyword control trycatch js">catch</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">error</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>      <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">error</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">error</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span><span class="punctuation section block js">}</span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function declaration js"><span class="storage type js">async</span> <span class="storage type function js">function</span> <span class="entity name function js">loadSegment</span><span class="punctuation section group begin js">(</span><span class="variable parameter function js">uuid</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">currentSegment</span> <span class="keyword operator relational js">&lt;</span> <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">urls</span><span class="punctuation accessor js">.</span><span class="meta property object js">length</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="meta try js"><span class="keyword control trycatch js">try</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>      <span class="storage type js">const</span> <span class="support module node js">url</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">urls</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">currentSegment</span><span class="punctuation section brackets js">]</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="storage type js">const</span> <span class="variable other readwrite js">response</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="meta function-call js"><span class="variable function js">fetch</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="support module node js">url</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">response</span><span class="punctuation accessor js">.</span><span class="meta property object js">ok</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>        <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">log</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string template js"><span class="punctuation definition string template begin js">`</span>processing segment: </span><span class="meta template expression js"><span class="punctuation definition template-expression begin js">${</span></span><span class="meta template expression js"><span class="source js embedded expression"><span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">currentSegment</span></span><span class="punctuation definition template-expression end js">}</span></span><span class="string template js"><span class="punctuation definition string template end js">`</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">currentSegment</span><span class="keyword operator arithmetic js">++</span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="storage type js">const</span> <span class="support module node js">buffer</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="variable other object js">response</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">arrayBuffer</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="storage type js">const</span> <span class="variable other readwrite js">bytes</span> <span class="keyword operator assignment js">=</span> <span class="meta instance constructor js"><span class="keyword operator word new js">new</span><span class="meta function-call constructor js"> <span class="variable type js">Uint8Array</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="support module node js">buffer</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="storage type js">const</span> <span class="variable other readwrite js">responseBytes</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="meta function-call js"><span class="variable function js">decrypt_file</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">bytes</span><span class="punctuation separator comma js">,</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>key<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">sourceBuffer</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">appendBuffer</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">responseBytes</span><span class="punctuation accessor js">.</span><span class="meta property object js">buffer</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>        <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">error</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">response</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>        <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">endOfStream</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>network<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span>    </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta catch js"><span class="keyword control trycatch js">catch</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">error</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>      <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">error</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">error</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>      <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">endOfStream</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>network<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>    </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>    <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">endOfStream</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker"></span><span class="punctuation section block js">}</span></span></span></code></pre></div>
+<p>It's basically the same thing
+as <a href="/javascript/media-source-video-player/">A Media Source Extensions MSE Video Player</a> with
+with the WASM decryption module
+from <a href="/rust/wasm/static-site-file-decryption/">Password Protecting Static Site Content with WASM</a>
+thrown in.</p>
+<h2>The HTML</h2>
+<p>The code for the page looks like this:</p>
+
+<div class="code-block"><div class="title">page.html</div><pre><code><span class="line-marker"></span><span class="text html basic"><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">video</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">videoPlayer</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">controls</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">video</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span><span class="source js embedded html"><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">loadEncryptedVideo</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/encrypted-media-source-player.js<span class="punctuation definition string end js">&quot;</span></span>
+<span class="line-marker"></span></span><span class="storage type js">const</span> <span class="variable other readwrite js">config</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span>
+<span class="line-marker"></span>  <span class="meta object-literal key js">codec</span><span class="punctuation separator key-value js">:</span> <span class="string template js"><span class="punctuation definition string template begin js">`</span>video/webm; codecs=&quot;vp9, vorbis&quot;<span class="punctuation definition string template end js">`</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>  <span class="meta object-literal key js">urls</span><span class="punctuation separator key-value js">:</span> <span class="meta sequence js"><span class="punctuation section brackets js">[</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-00.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-01.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-02.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-03.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-04.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-05.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-06.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-07.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-08.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-09.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/part-10.part.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>  <span class="punctuation section brackets js">]</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span>  <span class="meta object-literal key js">fallback</span><span class="punctuation separator key-value js">:</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/encrypted-media-source-video-player/sample-video/church-3818213.webm.bin<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker"></span><span class="punctuation section block js">}</span></span>
+<span class="line-marker"></span><span class="meta function-call js"><span class="variable function js">loadEncryptedVideo</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>#videoPlayer<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">config</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<p>Exactly the same structure as
+<a href="/javascript/media-source-video-player/">A Media Source Extensions MSE Video Player</a>.
+Only the URLs changed.</p>
+<p>NOTE: Each <code>part-##.part.bin</code> file has to be encrypted
+individually after the file spilt occurs.
+(That is, you can't encrypt the <code>church-3818213.webm</code>
+and split it. You have to split first then encrypt.)</p>
+<p>Details on the video prep and file split
+are on
+<a href="/javascript/media-source-video-player/">A Media Source Extensions MSE Video Player</a>.</p>
+<h2>Wrap Up</h2>
+<p>Server video used to feel like magic. Something
+that required more tech than I had access to. Of course, that
+wasn't true. We've got access to the same browser APIs
+as YouTube. What's cool here is that with
+the current APIs there's no need to have a dynamic
+server in order to deliver encrypted videos
+that are served piece by piece.</p>
+<p>We live in the future.</p>
+<p>-a</p>
+<h3>References</h3>
+<p>See these pages for more details and references:</p>
+<ul>
+<li>
+<p><a href="/javascript/media-source-video-player/">A Media Source Extensions MSE Video Player</a>,</p>
+</li>
+<li>
+<p><a href="/rust/wasm/static-site-file-encryption/">Encrypting Static Site Content with WASM</a></p>
+</li>
+<li>
+<p><a href="/rust/wasm/static-site-file-decryption/">Password Protecting Static Site Content with WASM</a></p>
+</li>
+</ul>
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith (<a href="/rss/">RSS</a>)
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+
+</footer>
+
+
+    <div class="hidden support">
+      <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
+</html>

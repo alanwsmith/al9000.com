@@ -4,7 +4,8 @@
 == block toml
 title = "A Media Source Extensions (MSE) Video Player"
 created = 2026-04-06T19:30:12-04:00
-status = "draft"
+status = "done"
+id = "mse-video-player"
 == endblock
 
 == block main
@@ -15,32 +16,42 @@ status = "draft"
 - This is a very basic approach to using
 the Media Source API (aka
 [Media Source Extension](https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API))
-to load videos in a &lt;video&gt; tag instead 
+to load tracks in a &lt;video&gt; tag instead 
 of using a `src` attribute that points
 to a single file (or [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)
 playlist).
+
 - This is primarily a prototype I'm
 working on for my [Multi-Player project](/multi-player/). 
 Chrome slows way down 
 as the number of videos on the page increases. 
 Hopefully, this approach can keep things snappy.
-- This is also prep work for making a version that works
-with encrypted video files (e.g. by 
-[Password Protecting Static Site Content with WASM](/rust/wasm/static-site-file-decryption/)).
+
+
 - You should probably use [VideoJS](https://videojs.org/)
 instead of this in most cases. 
-- This does not currently check to see if the mime
-type is supported. I'm using [.webm](https://www.webmproject.org/) 
-in the examples and have things lined up already
-with the videos (i.e. `video/webm; codecs="vp9, vorbis"`). 
+
+- This does not currently do an explicit check to see if the mime
+type is supported in a given browser. I'm using [.webm](https://www.webmproject.org/) 
+in the examples. Things are lined up already
+with the videos (I'm using `video/webm; codecs="vp9, vorbis"`). 
 See [the doc examples](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples)
 for details on how to check in situations where
 you can't control the input files. 
+
 - My original version of this didn't use global variables. 
 I ran into an issue where missing audio was breaking
 chrome and added the feature to track videos
 by UUID in the global `videos` variable during
-the bug hunt. I'm fine with it being there.  
+the bug hunt. While I like the idea of avoiding 
+global variable I'm fine with them here.  
+
+- This version is also prep work for making a version that works
+with encrypted video files (e.g. by 
+[Password Protecting Static Site Content with WASM](/rust/wasm/static-site-file-decryption/)).
+You can check out the code for that on
+[An Encrypted Media Source Extensions (MSE) Video Player](/javascript/encrypted-media-source-video-player/).
+
 
 ## The Video
 
@@ -59,8 +70,8 @@ which is a nice place to get free videos.
 ## The JavaScript
 
 The main JavaScript consists of a
-variable and two functions in the module
-shown here:
+variable and two functions in 
+this module:
 
 
 == endfilter
@@ -73,32 +84,35 @@ shown here:
 - The `loadVideo` function takes a selector that
 points to an existing `video` element and 
 a config.
+
 - The format of the config is in the HTML below. 
-- The config includes a fallback URL as well as
-the links to the individual parts that the 
-MediaSource uses. 
+
+- The config includes a fallback in addition to 
+the split up files the MediaSource uses. 
+
 - A check is made to verify the MediaSource
-loaded. If not, the fallback URL is used. 
+available/loaded. If not, the fallback URL is used. 
+
 - I'm using a direct link to a `.webm` file
 for the fallback. In practice, I'd
 probably use an [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) 
 playlist.
 
-- The module handles adds an event listener
-to the video element for 
-[canplaythrough](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplaythrough_event).
+- The module hangs a 
+[canplaythrough](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplaythrough_event)
+event listener on the video element. 
 It's fired when the browser estimates it has enough
 data to play the video without having to 
 stop for buffering. 
 
 - I left the `console.log('processing segment...'` line in
-to show how the `canplaythrough` event fires while
+to show how the `canplaythrough` event generally fires while
 the individual segment files are still being
 loaded. 
 
 ## The HTML
 
-Here's the HTML that goes on the page:
+Here's the HTML I'm using on the page:
 
 == endfilter
 
@@ -113,10 +127,17 @@ Here's the HTML that goes on the page:
 - The video tag has an `id` attribute that's 
 used in the selector to grab the element. 
 
-- The `config` includes the `codec` for
-the video in addition to the various paths. 
-Fair warning that there's a deep rabbit hole 
-with video codecs.  
+- In this case, the config is set up 
+for a webm format and supporting codec. 
+
+- The video is split into 11 parts
+in the `urls` array. These get processed
+in order by the module. 
+
+- The last thing in the config is
+the fallback to use if the MediaSource
+doesn't work or isn't available. 
+
 
 ## The Prep Script
 
@@ -134,25 +155,37 @@ with a silent audio track.
 == include parent(file_path) + "/sample-video/audio-fix.bash"
 == endfilter
 
-
 The resulting file is encoded so that it matches the
 `video/webm; codecs="vp9, vorbis"` in
 the JavaScript. 
+
+NOTE: I updated ffmpeg an hour after writing
+this post and `libvorbis` didn't get installed 
+with the new version. I don't want to compile
+ffmpeg myself so I'll see about using
+`libopus` or something else instead
+next time I have to mess with stuff. 
 
 
 ## The Split Script
 
 Spitting the source `.webm` file into the parts
 is done with this script that runs in bash
-on mac/linux:
+on mac/linux (I don't have a Windows machine
+handy to determine the command on that OS). 
 
 
 == filter highlight_block("bash", "split-video.bash") 
 == include parent(file_path) + "/sample-video/split-video.bash"
 == endfilter
 
-Line 3 does the split. Line for adds the `.part` extension
-to the file names. 
+Line 3 does the split. 
+
+Line 4 is optional. It adds file extensions. 
+Some servers require one
+to server the proper mine time. It's
+not necessary on mine. I just like
+having explicit extensions.
 
 
 ## Error Messages
@@ -190,11 +223,11 @@ Error parsing Opus packet header.
 == endfilter
 
 
-## Wrap-up
+## Wrap Up
 
 This is the first time I've really looked at web video
-in the modern age. As with so much of the web these
-days it's mind-blowing how much you can do with it
+in the modern age. As with so much these
+days, it's mind-blowing what you can do with it
 without having to bend over backwards. It took me 
 way longer to figure out that the audio track was 
 causing issues than to write up the player script. 
@@ -223,6 +256,7 @@ Very cool.
 <li><a href="https://videojs.org/">https://videojs.org/</a></li>
 <li><a href="https://www.rfc-editor.org/rfc/rfc8216">https://www.rfc-editor.org/rfc/rfc8216</a></li>
 <li><a href="https://www.webmproject.org/">https://www.webmproject.org/</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video">https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video</a></li>
 </ul>
 
 
