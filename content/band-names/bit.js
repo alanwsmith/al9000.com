@@ -3,7 +3,9 @@ export const b = {
 };
 
 const names = `
+Blocked In Russia
 T Minus Zero
+Fuck Counter
 Code Dreamer
 The Scottish Play
 The New Shoe Ankle Blisters
