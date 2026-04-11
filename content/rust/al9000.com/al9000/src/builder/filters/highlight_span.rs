@@ -5,7 +5,7 @@ use syntect::html::ClassedHTMLGenerator;
 use syntect::parsing::SyntaxSet;
 use syntect::util::LinesWithEndings;
 
-pub fn highlight(
+pub fn highlight_span(
   code: &str,
   language: &str,
 ) -> Value {

@@ -1,0 +1,21 @@
+== extends "/templates.inc/pages/ffmpeg.html"
+
+== block toml
+title = "Get the Codes for a Video with ffmpeg"
+created = 2026-01-11T00:24:41-04:00
+== endblock
+
+== block main
+
+== filter md
+Video:
+
+ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 input.mp4
+
+Audio:
+
+ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 input.mp4
+
+== endfilter
+
+== endblock

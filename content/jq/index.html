@@ -1,0 +1,18 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml 
+title = "jq"
+status = "wip"
+== endblock
+
+== block main
+
+<ul>
+== for folder in folders_in_folder(parent(file_path)) 
+  [! if "index" in j.jq[stem(folder)] !]
+    <li><a href="[@ folder @]">[@ j.jq[stem(folder)].index.title @]</a></li>
+  [! endif !]
+== endfor 
+</ul>
+== endblock
+

@@ -12,14 +12,14 @@ struct Input {
 
 fn main() -> Result<()> {
   let mut input = Input::parse();
-  let password =
-    "tmp_password_during_dev_so_the_prompt_does_not_keep_happening";
-  let salt =
-    "tmp_salt_during_dev_so_the_prompt_does_not_keep_happening";
-  encrypt_file(&mut input.input_path, password, salt)?;
+  // let password =
+  //   "tmp_password_during_dev_so_the_prompt_does_not_keep_happening";
+  // let salt =
+  //   "tmp_salt_during_dev_so_the_prompt_does_not_keep_happening";
   let password =
     get_password("al9000-com--orion--default--password")?;
   let salt = get_password("al9000-com--orion--default--salt")?;
+  encrypt_file(&mut input.input_path, &password, &salt)?;
   Ok(())
 }
 
@@ -31,8 +31,8 @@ fn encrypt_file(
   let bytes = fs::read(&mut *path)?;
   path.add_extension("bin");
   let kdf_password =
-    kdf::Password::from_slice(password.as_bytes())?;
-  let salt = kdf::Salt::from_slice(salt.as_bytes())?;
+    kdf::Password::from_slice(password.trim().as_bytes())?;
+  let salt = kdf::Salt::from_slice(salt.trim().as_bytes())?;
   let kdf_key =
     kdf::derive_key(&kdf_password, &salt, 3, 1 << 16, 32)?;
   let encrypted = aead::seal(&kdf_key, &bytes)?;

@@ -37,8 +37,9 @@ pub fn get_env(config: &Config) -> Environment {
   });
   env.set_loader(path_loader(config.content_dir()));
   env.add_filter("code", code);
-  env.add_filter("highlight", highlight);
   env.add_filter("highlight_block", highlight_block);
+  env.add_filter("highlight_command", highlight_command);
+  env.add_filter("highlight_span", highlight_span);
   env.add_filter("md", md);
   env.add_filter("output_block", output_block);
   env.add_function("date", date);

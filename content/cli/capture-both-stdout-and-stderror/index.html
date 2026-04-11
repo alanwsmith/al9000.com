@@ -1,0 +1,190 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml
+title = "Capture Errors from the Command Line"
+created = 2026-04-11T09:58:51-04:00
+status = "draft"
+== endblock
+
+== block main
+
+== filter md
+
+## TL;DR
+
+Use `2>&1` to combine error messages and
+regular output from command line tools. 
+
+For example:
+
+== filter highlight_command()
+== include parent(file_path) + "/scripts.inc/cat-no-tee.bash"
+== endfilter
+
+
+- The `rm -v example.txt` command attempts to delete a file
+named `example.txt`.
+
+- If the file exists and is deleted, then it's file name is
+output to the `report-1.txt` file. 
+
+- If the file doesn't exist, or can't be removed, then an
+error message is output to `report-1.txt`.
+
+
+
+
+
+
+
+## Overview
+
+Mac and Linux command line tools output 
+information and results through "streams". 
+Terminals pick up the content from the
+streams and print it out for you to see.
+
+What's not always clear is that there
+are two streams in play: 
+
+-  `STDOUT` - The default output when everything
+works as expected. 
+
+- `STDERR` - For when things to wrong and errors occur. 
+
+If you delete an existing file with:
+
+== filter highlight_block("bash")
+rm -v example.txt
+== endfilter
+
+the `-v` flag sets the `rm` command to `verbose`
+mode which prints out file names as they are
+removed. The `STDOUT` stream delivers the
+names. 
+
+If you run the same command with a path
+that doesn't exist you'll get a different 
+message:
+
+== filter highlight_block("bash")
+rm -v path-that-does-not-exist.txt
+== endfilter
+
+Outputs:
+
+== filter highlight_block("txt")
+rm: path-that-does-not-exist.txt: No such file or directory
+== endfilter
+
+The different is that `rm` uses the `STDERR`
+stream for the message. 
+
+## Visibility and Pipes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Use this to redirect STDERR to STDOUT so they
+can both be catpured at the same time:
+
+== filter highlight_block("bash")
+2>&1
+== endfilter
+
+
+## See It And Capture It
+
+This is what I want most of time:
+
+== filter highlight_block("bash")
+== include parent(file_path) + "/scripts.inc/pbcopy-with-tee.bash"
+== endfilter
+
+
+- `rm ...` could be any command I want to run. 
+(I'm using the `-v` flag to set `rm` to
+`verbose` so it would output a note about
+each file that's deleted. Otherwise, you'd
+only get something if there was an error.)
+
+- `2>&1` redirects STDERR to STDOUT so they
+get passed through the `|` together. 
+
+- `tee /dev/tty` receives both STDOUT and
+STDERR from the `|` and prints them 
+to the terminal before passing it on
+with the next `|`. 
+
+- `pbcopy` sits at the end of the
+chain and copies both STDOUT and STDERR
+to the copy/paste clipboard on a mac. 
+
+
+## Just Capture It
+
+If you don't need to see the output
+and just want to pass it on, do this:
+
+
+== filter highlight_block("bash")
+== include parent(file_path) + "/scripts.inc/pbcopy-without-tee.bash"
+== endfilter
+
+
+
+
+== endfilter
+
+
+
+== filter highlight_block("bash")
+== endfilter
+
+
+== filter highlight_block("bash")
+X == include parent(file_path) + "/script.bash"
+== endfilter
+
+
+== endblock
+
+
+
+
+

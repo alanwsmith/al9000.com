@@ -563,7 +563,6 @@ ul > :where(:not(:first-child)) {
   margin-top: var(--flow-space, var(--default-flow));
 }
 
-
 video {
   max-width: 100%;
 }

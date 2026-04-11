@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Send Keyword Arguments to a Filter in MiniJinja</title>
+<meta property="og:title" content="Send Keyword Arguments to a Filter in MiniJinja" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rust/minijinja/send-keyword-args-to-a-filter/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+    <div class="noscript"><noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript></div>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+      <h1>Send Keyword Arguments to a Filter in MiniJinja</h1>
+        <div class="date">April 2026</div>
+  </hgroup>
+
+
+TODO: make an example from this:
+
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="keyword other rust">crate</span><span class="meta path rust"><span class="punctuation accessor rust">::</span></span><span class="meta path rust">builder<span class="punctuation accessor rust">::</span></span>trim_empty_leading_lines<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span>Value<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">syntect<span class="punctuation accessor rust">::</span></span><span class="meta path rust">html<span class="punctuation accessor rust">::</span></span>ClassStyle<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">syntect<span class="punctuation accessor rust">::</span></span><span class="meta path rust">html<span class="punctuation accessor rust">::</span></span>ClassedHTMLGenerator<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">syntect<span class="punctuation accessor rust">::</span></span><span class="meta path rust">parsing<span class="punctuation accessor rust">::</span></span>SyntaxSet<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">syntect<span class="punctuation accessor rust">::</span></span><span class="meta path rust">util<span class="punctuation accessor rust">::</span></span>LinesWithEndings<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function rust"><span class="meta function rust"><span class="storage modifier rust">pub</span> <span class="storage type function rust">fn</span> </span><span class="entity name function rust">highlight_command</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span>
+<span class="line-marker"></span>  <span class="variable parameter rust">code</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span><span class="storage type rust">str</span>,
+<span class="line-marker"></span>  <span class="variable parameter rust">options</span><span class="punctuation separator rust">:</span> <span class="meta generic rust">Option<span class="punctuation definition generic begin rust">&lt;</span><span class="keyword operator rust">&amp;</span>Value<span class="punctuation definition generic end rust">&gt;</span></span>,
+<span class="line-marker"></span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> Value</span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> syntax_set <span class="keyword operator rust">=</span> <span class="meta path rust">SyntaxSet<span class="punctuation accessor rust">::</span></span>load_defaults_newlines<span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> syntax <span class="keyword operator rust">=</span> syntax_set
+<span class="line-marker"></span>    .<span class="support function rust">find_syntax_by_token</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>bash<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>    .<span class="support function rust">unwrap_or_else</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta function closure rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">|</span></span></span><span class="meta function closure rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">|</span></span> </span><span class="meta function closure rust">syntax_set.<span class="support function rust">find_syntax_plain_text</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> <span class="storage modifier rust">mut</span> html_generator <span class="keyword operator rust">=</span>
+<span class="line-marker"></span>    <span class="meta path rust">ClassedHTMLGenerator<span class="punctuation accessor rust">::</span></span>new_with_class_style<span class="meta group rust"><span class="punctuation section group begin rust">(</span>
+<span class="line-marker"></span>      syntax<span class="punctuation separator rust">,</span>
+<span class="line-marker"></span>      <span class="keyword operator rust">&amp;</span>syntax_set<span class="punctuation separator rust">,</span>
+<span class="line-marker"></span>      <span class="meta path rust">ClassStyle<span class="punctuation accessor rust">::</span></span>Spaced<span class="punctuation separator rust">,</span>
+<span class="line-marker"></span>    </span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="keyword control rust">for</span> line <span class="keyword operator rust">in</span>
+<span class="line-marker"></span>    <span class="meta path rust">LinesWithEndings<span class="punctuation accessor rust">::</span></span>from<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span><span class="support function rust">trim_empty_leading_lines</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>code</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>  <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>    <span class="storage type rust">let</span> <span class="keyword operator rust">_</span> <span class="keyword operator rust">=</span> html_generator
+<span class="line-marker"></span>      .<span class="support function rust">parse_html_for_line_which_includes_newline</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>line</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> html <span class="keyword operator rust">=</span> html_generator.<span class="support function rust">finalize</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> <span class="storage modifier rust">mut</span> extra_classes <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span><span class="punctuation definition string end rust">&quot;</span></span>.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> <span class="storage modifier rust">mut</span> title <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span><span class="punctuation definition string end rust">&quot;</span></span>.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span>  <span class="keyword control rust">if</span> <span class="storage type rust">let</span> <span class="support type rust">Some</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>v</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=</span> options <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>    <span class="keyword control rust">if</span> <span class="storage type rust">let</span> <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>classes</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=</span> v.<span class="support function rust">get_attr</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>classes<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>      extra_classes <span class="keyword operator rust">=</span> <span class="support macro rust">format!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span> <span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> classes<span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>    </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
+<span class="line-marker"></span>    <span class="keyword control rust">if</span> <span class="storage type rust">let</span> <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>t</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=</span> v.<span class="support function rust">get_attr</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>title<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>      title <span class="keyword operator rust">=</span> t.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>    </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
+<span class="line-marker"></span>  </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
+<span class="line-marker"></span>  <span class="meta path rust">Value<span class="punctuation accessor rust">::</span></span>from_safe_string<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="support macro rust">format!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust">
+<span class="line-marker"></span>    <span class="string quoted double raw rust"><span class="storage type string rust">r</span><span class="punctuation definition string begin rust">#</span>&quot;&lt;div class=&quot;command-block<span class="constant other placeholder rust">{}</span>&quot;&gt;<span class="constant other placeholder rust">{}</span>&lt;pre&gt;&lt;code&gt;<span class="constant other placeholder rust">{}</span>&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;<span class="punctuation definition string end rust">&quot;#</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span>
+<span class="line-marker"></span>    extra_classes<span class="punctuation separator rust">,</span> title<span class="punctuation separator rust">,</span> html
+<span class="line-marker"></span>  <span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+Which gets used like:
+
+<div class="command-block"><pre><code><span class="source shell bash"><span class="keyword operator assignment shell">=</span><span class="string unquoted shell">=</span> <span class="meta function-call shell"><span class="variable function shell">filter</span></span><span class="meta function-call arguments shell"> highlight_command(classes=<span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>other-class<span class="punctuation definition string end shell">&quot;</span></span></span><span class="meta function-call shell"></span><span class="meta post-cmd shell">)</span>
+<span class="meta function-call shell"><span class="variable function shell">ls</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>la</span></span>
+<span class="keyword operator assignment shell">=</span><span class="string unquoted shell">=</span> <span class="meta function-call shell"><span class="variable function shell">endfilter</span></span></span></code></pre></div>
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith (<a href="/rss/">RSS</a>)
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+
+</footer>
+
+
+
+    <div class="hidden support">
+      <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
+</html>

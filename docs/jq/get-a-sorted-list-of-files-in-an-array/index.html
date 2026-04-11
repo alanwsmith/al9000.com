@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Get a Sorted Array of File Names with jq</title>
+<meta property="og:title" content="Get a Sorted Array of File Names with jq" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/jq/get-a-sorted-list-of-files-in-an-array/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+    <div class="noscript"><noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript></div>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+
+</header>
+
+
+<div class="subnav default-wrapper">
+  <a href="/rust/">jq</a>
+</div>
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+      <h1>Get a Sorted Array of File Names with jq</h1>
+        <div class="date">April 2026</div>
+  </hgroup>
+
+
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker"></span></span>
+<span class="line-marker"></span><span class="meta function-call shell"><span class="variable function shell">find</span></span><span class="meta function-call arguments shell"> ./samples<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>type</span> f<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>maxdepth</span> 1<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>exec</span> basename <span class="meta group expansion brace shell"><span class="punctuation section expansion brace begin shell">{</span><span class="punctuation section expansion brace end shell">}</span></span> <span class="constant character escape shell">\;</span> <span class="punctuation separator continuation line shell">\
+<span class="line-marker"></span></span></span>  <span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">sort</span></span><span class="meta function-call arguments shell"> <span class="punctuation separator continuation line shell">\
+<span class="line-marker"></span></span></span>  <span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">jq</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>Rs</span> <span class="punctuation separator continuation line shell">\
+<span class="line-marker"></span></span>  <span class="string quoted single shell"><span class="punctuation definition string begin shell">&#39;</span>split(&quot;\n&quot;) | map(select(length &gt; 0)) | {files: .}<span class="punctuation definition string end shell">&#39;</span></span> <span class="punctuation separator continuation line shell">\
+<span class="line-marker"></span></span>  <span class="keyword operator assignment redirection shell">&gt;</span> output.json</span></span></code></pre></div>
+<div class="code-block"><div class="title">output.json</div><pre><code><span class="line-marker"></span><span class="source json"><span class="meta structure dictionary json"><span class="punctuation section dictionary begin json">{</span>
+<span class="line-marker"></span>  <span class="meta structure dictionary key json"><span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>files<span class="punctuation definition string end json">&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json">:</span> <span class="meta structure array json"><span class="punctuation section array begin json">[</span>
+<span class="line-marker"></span>    <span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>alfa.txt<span class="punctuation definition string end json">&quot;</span></span><span class="punctuation separator array json">,</span>
+<span class="line-marker"></span>    <span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>bravo.txt<span class="punctuation definition string end json">&quot;</span></span><span class="punctuation separator array json">,</span>
+<span class="line-marker"></span>    <span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>charlie.txt<span class="punctuation definition string end json">&quot;</span></span><span class="punctuation separator array json">,</span>
+<span class="line-marker"></span>    <span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>delta.txt<span class="punctuation definition string end json">&quot;</span></span><span class="punctuation separator array json">,</span>
+<span class="line-marker"></span>    <span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>echo.txt<span class="punctuation definition string end json">&quot;</span></span>
+<span class="line-marker"></span>  <span class="punctuation section array end json">]</span></span>
+<span class="line-marker"></span></span><span class="punctuation section dictionary end json">}</span></span></span></code></pre></div>
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith (<a href="/rss/">RSS</a>)
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+
+</footer>
+
+
+    <div class="hidden support">
+      <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
+</html>

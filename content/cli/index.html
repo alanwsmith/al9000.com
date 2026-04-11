@@ -6,5 +6,13 @@ status = "wip"
 == endblock
 
 == block main
-CLI notes will go here. 
+
+<ul>
+== for folder in folders_in_folder(parent(file_path)) 
+  [! if "index" in j.cli[stem(folder)] !]
+    <li><a href="[@ folder @]">[@ j.cli[stem(folder)].index.title @]</a></li>
+  [! endif !]
+== endfor 
+</ul>
+
 == endblock

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Capture Errors from the Command Line</title>
+<meta property="og:title" content="Capture Errors from the Command Line" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/cli/capture-both-stdout-and-stderror/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+    <div class="noscript"><noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript></div>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+      <h1>Capture Errors from the Command Line</h1>
+        <div class="date">April 2026</div>
+  </hgroup>
+
+
+<h2>TL;DR</h2>
+<p>Use <code>2&gt;&amp;1</code> to combine error messages and
+regular output from command line tools.</p>
+<p>For example:</p>
+<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> example.txt <span class="constant numeric integer decimal file-descriptor shell">2</span><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span> </span><span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">cat</span></span><span class="meta function-call arguments shell"> <span class="keyword operator assignment redirection shell">&gt;</span> report-1.txt</span></span></code></pre></div>
+<ul>
+<li>
+<p>The <code>rm -v example.txt</code> command attempts to delete a file
+named <code>example.txt</code>.</p>
+</li>
+<li>
+<p>If the file exists and is deleted, then it's file name is
+output to the <code>report-1.txt</code> file.</p>
+</li>
+<li>
+<p>If the file doesn't exist, or can't be removed, then an
+error message is output to <code>report-1.txt</code>.</p>
+</li>
+</ul>
+<h2>Overview</h2>
+<p>Mac and Linux command line tools output
+information and results through &quot;streams&quot;.
+Terminals pick up the content from the
+streams and print it out for you to see.</p>
+<p>What's not always clear is that there
+are two streams in play:</p>
+<ul>
+<li>
+<p><code>STDOUT</code> - The default output when everything
+works as expected.</p>
+</li>
+<li>
+<p><code>STDERR</code> - For when things to wrong and errors occur.</p>
+</li>
+</ul>
+<p>If you delete an existing file with:</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> example.txt</span></span></code></pre></div>
+the `-v` flag sets the `rm` command to `verbose`
+mode which prints out file names as they are
+removed. The `STDOUT` stream delivers the
+names. 
+<p>If you run the same command with a path
+that doesn't exist you'll get a different
+message:</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> path-that-does-not-exist.txt</span></span></code></pre></div>
+Outputs:
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="text plain">rm: path-that-does-not-exist.txt: No such file or directory</span></code></pre></div>
+The different is that `rm` uses the `STDERR`
+stream for the message. 
+<h2>Visibility and Pipes</h2>
+<p>Use this to redirect STDERR to STDOUT so they
+can both be catpured at the same time:</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">2</span></span><span class="meta function-call arguments shell"><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span></span></span></code></pre></div>
+<h2>See It And Capture It</h2>
+<p>This is what I want most of time:</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>file-that-does-not-exist<span class="punctuation definition string end shell">&quot;</span></span> <span class="constant numeric integer decimal file-descriptor shell">2</span><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span> </span><span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">tee</span></span><span class="meta function-call arguments shell"> /dev/tty</span> <span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">pbcopy</span></span></span></code></pre></div>
+<ul>
+<li>
+<p><code>rm ...</code> could be any command I want to run.
+(I'm using the <code>-v</code> flag to set <code>rm</code> to
+<code>verbose</code> so it would output a note about
+each file that's deleted. Otherwise, you'd
+only get something if there was an error.)</p>
+</li>
+<li>
+<p><code>2&gt;&amp;1</code> redirects STDERR to STDOUT so they
+get passed through the <code>|</code> together.</p>
+</li>
+<li>
+<p><code>tee /dev/tty</code> receives both STDOUT and
+STDERR from the <code>|</code> and prints them
+to the terminal before passing it on
+with the next <code>|</code>.</p>
+</li>
+<li>
+<p><code>pbcopy</code> sits at the end of the
+chain and copies both STDOUT and STDERR
+to the copy/paste clipboard on a mac.</p>
+</li>
+</ul>
+<h2>Just Capture It</h2>
+<p>If you don't need to see the output
+and just want to pass it on, do this:</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">ls</span></span><span class="meta function-call arguments shell">  <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>file-that-does-not-exist<span class="punctuation definition string end shell">&quot;</span></span> <span class="constant numeric integer decimal file-descriptor shell">2</span><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span> </span><span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">pbcopy</span></span></span></code></pre></div>
+
+
+
+<div class="code-block"><pre><code></code></pre></div>
+
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">X</span></span><span class="meta function-call arguments shell"> == include parent(file_path</span><span class="meta function-call shell"></span><span class="meta post-cmd shell">)</span> <span class="meta function-call shell"><span class="variable function shell">+</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>/script.bash<span class="punctuation definition string end shell">&quot;</span></span></span></span></code></pre></div>
+
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith (<a href="/rss/">RSS</a>)
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+
+</footer>
+
+
+
+    <div class="hidden support">
+      <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
+</html>
