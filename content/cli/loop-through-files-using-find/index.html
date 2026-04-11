@@ -1,0 +1,27 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml
+title = "Loop Through Files Using find"
+created = 2026-04-11T18:40:22-04:00
+status = "scratch"
+== endblock
+
+== block main
+
+== filter highlight_block("bash")
+== include parent(file_path) + "/script.inc.bash"
+== endfilter
+
+[#
+== filter highlight_block("txt")
+== include parent(file_path) + "/output.txt"
+== endfilter
+#]
+
+
+== endblock
+
+
+
+
+

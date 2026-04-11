@@ -1,0 +1,109 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml
+title = "Encoding a webm Video to Serve with Media Source Extension"
+created = 2026-04-11T17:51:31-04:00
+status = "scratch"
+== endblock
+
+== block main
+
+== filter md
+
+Scratch notes for encoding a webm video for
+use in Media Source Extension playback.
+
+Key article: 
+
+https://axel.isouard.fr/blog/2016/05/24/streaming-webm-video-over-html5-with-media-source
+
+
+NOTE: I removed `-dash 1`. I was starting with a .webm which may
+have had something to do with that?
+
+
+
+https://go.dev/doc/tutorial/getting-started
+
+https://groups.google.com/a/webmproject.org/g/webm-discuss/c/YmVMRRjSKjU
+
+https://groups.google.com/a/webmproject.org/g/webm-discuss/c/6ySds58ZhEQ
+
+
+
+
+Remuxer tool: 
+
+https://github.com/acolwell/mse-tools/tree/master
+
+https://github.com/acolwell/mse-tools/tree/master/mse_webm_remuxer
+
+https://github.com/acolwell/mse-tools/blob/master/mse_webm_remuxer/mse_webm_remuxer.go
+
+https://w3c.github.io/mse-byte-stream-format-webm/
+
+https://www.w3.org/TR/media-source-2/
+
+https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API
+
+https://github.com/Vanilagy/mediabunny
+
+https://ffmpeg.org/ffmpeg-formats.html
+
+https://ffmpeg.org/ffmpeg-formats.html#toc-dash-2
+
+https://ffmpeg.org/ffmpeg-utils.html
+
+https://ffmpeg.org/ffmpeg-codecs.html
+
+https://github.com/webmproject/libwebm
+
+https://www.webmproject.org/tools/
+
+https://www.webmproject.org/
+
+https://w3c.github.io/mse-byte-stream-format-webm/#webm-init-segments
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement
+
+https://developer.mozilla.org/en-US/docs/Web/API/MediaSource
+
+
+https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer
+
+
+https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer/appendBuffer
+
+
+Original script that worked:
+
+```
+#!/bin/bash
+
+ffmpeg -y -i input.webm \
+  -vf "scale=300:-2" \
+  -c:v libvpx-vp9 -b:v 8000k -tile-columns 4 \
+  -frame-parallel 1 -keyint_min 90 -g 90 -f webm  \
+  -c:a libopus \
+  -b:a 64K \
+  output/resized.webm
+
+./remux output/resized.webm output/remuxed.webm
+
+cd output
+split -b 1M -d -a 10 remuxed.webm segment-
+```
+
+
+
+
+== endfilter
+
+== endblock
+
+
+
+
+

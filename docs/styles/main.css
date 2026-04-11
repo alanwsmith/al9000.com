@@ -620,7 +620,7 @@ ul > :where(:not(:first-child)) {
 }
 
 video {
-  max-width: 100%;
+  max-width: 100svw;
 }
 
 .warning-box {

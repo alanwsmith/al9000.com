@@ -8,19 +8,7 @@ assetRoot = "tmp-split-test";
 let layout;
 let sourceEl;
 let videos = {
-  "sample": {
-    title: "sample",
-    sourceDimensions: [16, 9],
-    cropDimensions: [16, 9],
-    youtubeID: "5IsSpAOD6K8",
-  },
-  "tmp1": {
-    title: "tmp 1Title",
-    sourceDimensions: [16, 9],
-    cropDimensions: [16, 9],
-    youtubeID: "5IsSpAOD6K8",
-  },
-  "0a0554c8-e6ab-40d8-854e-1cc190a00842": {
+  "a436f3a0-b408-42e1-9af4-6bfa71d92f59": {
     title: "Some Title",
     sourceDimensions: [16, 9],
     cropDimensions: [16, 9],
@@ -213,57 +201,107 @@ export function play() {
     }, distance * 180);
   }
 }
-export async function selectVideo(ev, sender, el) {
-  const uuid = sender.value;
-  const details = await getSegments(sender.value);
-  if (details) {
-    console.log(details);
 
-    const el = document.querySelector("#tmpVideo");
-    el.addEventListener("canplaythrough", () => {
-      console.log("Got canplaythrough.");
-    });
-    let mediaSource = new MediaSource();
-    videos[uuid].mediaSource = mediaSource;
-    videos[uuid].urls = details.segments.map((seg) =>
-      `${assetRoot}/${uuid}/${seg}`
-    );
-    videos[uuid].currentSegment = 0;
-    if (mediaSource) {
-      el.src = URL.createObjectURL(mediaSource);
+// const videos = {};
 
-      // this is a check to see if things are closing in dev
-      // it's not needed in prod
-      // mediaSource.addEventListener("sourceclose", (event) => {
-      //   console.log("MediaSource sourceclose:", event);
-      // });
+export async function selectVideo(_, sender, ___) {
+  const config = {
+    codec: `video/webm; codecs=\"vp9, opus\"`,
+    // codec: `video/webm`,
+    urls: [
+      //`${assetRoot}/a436f3a0-b408-42e1-9af4-6bfa71d92f59/segment-0000000000.bin`,
+      //`${assetRoot}/a436f3a0-b408-42e1-9af4-6bfa71d92f59/full.webm`,
+      // `${assetRoot}/muxed/000.webm`,
+      // `${assetRoot}/muxed/001.webm`,
+      // `${assetRoot}/muxed/002.webm`,
+      // `${assetRoot}/muxed/003.webm`,
+      // `${assetRoot}/muxed/004.webm`,
+      // `${assetRoot}/muxed/005.webm`,
+      // `${assetRoot}/muxed/006.webm`,
+      // `${assetRoot}/muxed/007.webm`,
+      // `${assetRoot}/muxed/008.webm`,
+      // `${assetRoot}/muxed/009.webm`,
+      // `${assetRoot}/muxed/010.webm`,
+      // `${assetRoot}/muxed/011.webm`,
+      // `${assetRoot}/muxed/012.webm`,
+      // `${assetRoot}/muxed/013.webm`,
+      // `${assetRoot}/muxed/014.webm`,
+      // `${assetRoot}/m2/remuxed.webm`,
+      `${assetRoot}/m2/segment-0000000000.bin`,
+      `${assetRoot}/m2/segment-0000000001.bin`,
+      `${assetRoot}/m2/segment-0000000002.bin`,
+      `${assetRoot}/m2/segment-0000000003.bin`,
+      `${assetRoot}/m2/segment-0000000004.bin`,
+      `${assetRoot}/m2/segment-0000000005.bin`,
+      `${assetRoot}/m2/segment-0000000006.bin`,
+      `${assetRoot}/m2/segment-0000000007.bin`,
+      `${assetRoot}/m2/segment-0000000008.bin`,
+      `${assetRoot}/m2/segment-0000000009.bin`,
+    ],
+  };
+  const uuid = self.crypto.randomUUID();
+  const el = document.querySelector(`#tmpVideo`);
+  el.addEventListener("canplaythrough", () => {
+    console.log("Got canplaythrough.");
+  });
+  const mediaSource = new MediaSource();
+  videos[uuid] = {
+    mediaSource: mediaSource,
+    urls: config.urls,
+    currentSegment: 0,
+  };
+  if (mediaSource) {
+    console.log("DOING MEDIA SOURCE");
+    el.src = URL.createObjectURL(mediaSource);
+    mediaSource.addEventListener("sourceopen", async () => {
+      console.log("HERE1");
+      videos[uuid].sourceBuffer = mediaSource.addSourceBuffer(config.codec);
 
-      console.log(MediaSource.isTypeSupported(details.mimeType));
-      mediaSource.addEventListener("sourceopen", async () => {
-        console.log(details);
-        videos[uuid].sourceBuffer = mediaSource.addSourceBuffer(
-          details.mimeType,
-        );
-        console.log(details.mimeType);
-        videos[uuid].sourceBuffer.addEventListener(
-          "updateend",
-          async (event) => {
-            if (videos[uuid].mediaSource.readyState === "open") {
-              loadSegment(uuid);
-            } else {
-              console.error(videos[uuid].mediaSource.readyState);
-            }
-          },
-        );
-        loadSegment(uuid);
+      videos[uuid].sourceBuffer.addEventListener("update", async (event) => {
+        console.log(event);
       });
-    } else {
-      console.error("Could not load video from this browser");
+      videos[uuid].sourceBuffer.addEventListener("error", async (event) => {
+        console.log(event);
+      });
+      videos[uuid].sourceBuffer.addEventListener("updateend", async (event) => {
+        console.log("HERE2");
+        console.log(videos[uuid].sourceBuffer.updating);
+        if (videos[uuid].mediaSource.readyState === "open") {
+          loadSegment(uuid);
+        } else {
+          console.error(el.error);
+          console.log(videos[uuid].mediaSource.readyState);
+          console.log("HERE3");
+        }
+      });
+      loadSegment(uuid);
+    });
+  } else {
+    try {
+      //const response = await fetch(config.fallback);
+
+      const response = await fetch(
+        `${assetRoot}/a436f3a0-b408-42e1-9af4-6bfa71d92f59/full.webm`,
+      );
+      if (response.ok) {
+        const buffer = await response.arrayBuffer();
+        const bytes = new Uint8Array(buffer);
+        const blob = new Blob([bytes], { type: "video/webm" });
+        //const responseBytes = await decrypt_file(bytes, "key");
+        //const blob = new Blob([responseBytes], { type: "video/webm" });
+        const url = URL.createObjectURL(blob);
+        el.src = url;
+      } else {
+        console.error(response);
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 }
 
 async function loadSegment(uuid) {
+  console.log(`loadSegment: ${uuid}`);
   if (videos[uuid].currentSegment < videos[uuid].urls.length) {
     try {
       const url = videos[uuid].urls[videos[uuid].currentSegment];
@@ -274,14 +312,16 @@ async function loadSegment(uuid) {
         videos[uuid].currentSegment++;
         const buffer = await response.arrayBuffer();
         const bytes = new Uint8Array(buffer);
-        const responseBytes = await decrypt_file(
-          bytes,
-          "default",
-        );
+
+        // try {
+        //   videos[uuid].sourceBuffer.appendBuffer(bytes.buffer);
+        // } catch (e2) {
+        //   console.error("HERE", e2);
+        // }
+
+        const responseBytes = await decrypt_file(bytes, "default");
         console.log(responseBytes.length);
         videos[uuid].sourceBuffer.appendBuffer(responseBytes.buffer);
-
-        //videos[uuid].sourceBuffer.appendBuffer(responseBytes.buffer);
       } else {
         console.error(response);
         videos[uuid].mediaSource.endOfStream("network");
@@ -294,6 +334,101 @@ async function loadSegment(uuid) {
     videos[uuid].mediaSource.endOfStream();
   }
 }
+
+//export async function selectVideo(_, sender, ___) {
+//  const uuid = sender.value;
+//  const details = await getSegments(sender.value);
+//  if (details) {
+//    console.log(details);
+//    videos[uuid].el = document.querySelector("#tmpVideo");
+//    console.log(videos[uuid].el);
+//    videos[uuid].el.addEventListener("canplaythrough", () => {
+//      console.log("Got canplaythrough.");
+//    });
+//    let mediaSource = new MediaSource();
+//    videos[uuid].mediaSource = mediaSource;
+//    videos[uuid].urls = details.segments.map((seg) =>
+//      `${assetRoot}/${uuid}/${seg}`
+//    );
+//    console.log(videos[uuid]);
+//    videos[uuid].currentSegment = 0;
+//    if (mediaSource) {
+//      videos[uuid].el.src = URL.createObjectURL(mediaSource);
+//      console.log(videos[uuid].el);
+//      // this is a check to see if things are closing in dev
+//      // it's not needed in prod
+//      // mediaSource.addEventListener("sourceclose", (event) => {
+//      //   console.log("MediaSource sourceclose:", event);
+//      // });
+//      // console.log(MediaSource.isTypeSupported(details.mimeType));
+//      mediaSource.addEventListener("sourceopen", async () => {
+//        console.log(details);
+//        videos[uuid].sourceBuffer = mediaSource.addSourceBuffer(
+//          details.mimeType,
+//        );
+//        console.log(details.mimeType);
+//        videos[uuid].sourceBuffer.addEventListener(
+//          "error",
+//          (event) => console.log(event, videos[uuid].el.error),
+//        );
+//        videos[uuid].sourceBuffer.addEventListener(
+//          "updateend",
+//          async (event) => {
+//            //console.log(videos[uuid].sourceBuffer.error);
+//            // loadSegment(uuid);
+//            if (videos[uuid].mediaSource.readyState === "open") {
+//              loadSegment(uuid);
+//            } else {
+//              console.log("HERE");
+//              console.error(videos[uuid].el.error);
+//              console.error(videos[uuid].mediaSource.readyState);
+//            }
+//          },
+//        );
+//        loadSegment(uuid);
+//      });
+//    } else {
+//      console.error("Could not load video from this browser");
+//    }
+//  }
+//}
+
+//async function loadSegment(uuid) {
+//  console.log(`loadSegment got: ${uuid}`);
+//  if (videos[uuid].currentSegment < videos[uuid].urls.length) {
+//    try {
+//      const url = videos[uuid].urls[videos[uuid].currentSegment];
+//      console.log(url);
+//      const response = await fetch(url);
+//      if (response.ok) {
+//        console.log(videos[uuid].el.error);
+//        console.log(videos[uuid].sourceBuffer.error);
+//        console.log(`processing segment: ${videos[uuid].currentSegment}`);
+//        videos[uuid].currentSegment++;
+//        const buffer = await response.arrayBuffer();
+//        const bytes = new Uint8Array(buffer);
+//        const responseBytes = await decrypt_file(
+//          bytes,
+//          "default",
+//        );
+//        // const blob = new Blob([responseBytes], { type: "video/webm" });
+//        console.log(responseBytes.length);
+//        videos[uuid].sourceBuffer.appendBuffer(responseBytes.buffer);
+//        console.log(videos[uuid].el.error);
+//        //videos[uuid].sourceBuffer.appendBuffer(responseBytes.buffer);
+//      } else {
+//        console.error(response);
+//        videos[uuid].mediaSource.endOfStream("network");
+//      }
+//    } catch (error) {
+//      console.error(error);
+//      videos[uuid].mediaSource.endOfStream("network");
+//    }
+//  } else {
+//    console.log("All segments processed");
+//    videos[uuid].mediaSource.endOfStream();
+//  }
+//}
 
 export async function _selectVideo(_, sender, el) {
   const index = sender.valueAsInt();
