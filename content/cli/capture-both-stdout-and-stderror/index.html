@@ -3,35 +3,91 @@
 == block toml
 title = "Capture Errors from Command Line Tools"
 created = 2026-04-11T09:58:51-04:00
-status = "draft"
+status = "done"
 == endblock
 
 == block main
+
 
 == filter md
 
 ## TL;DR
 
-Use `2>&1` to capture errors along with 
-regular output from command line tools. 
+Use this to capture errors along with 
+regular output from command line tools:
+
+== filter highlight_command()
+2>&1
+== endfilter
+
+
+
+## Basic Capture
+
 
 For example:
 
 == filter highlight_command()
-== include parent(file_path) + "/scripts.inc/cat-no-tee.bash"
+== include parent(file_path) + "/scripts.inc/tldr-no-tee/script.bash"
 == endfilter
 
 
-- The `rm -v example.txt` command attempts to delete a file
-named `example.txt`.
-
-- If the file exists and is deleted, then it's file name is
-output to the `report-1.txt` file. 
-
-- If the file doesn't exist, or can't be removed, then an
-error message is output to `report-1.txt`.
+If the file exists and is deleted, then it's file name is
+output to the `report-1.txt` via `STDOUT`.
 
 
+== filter highlight_text()
+== include parent(file_path) + "/scripts.inc/tldr-no-tee/output-1/report.txt"
+== endfilter
+
+If the file doesn't exist, or can't be removed, then an
+error message is output to `report-1.txt` via `STDERR`.
+
+== filter highlight_text()
+== include parent(file_path) + "/scripts.inc/tldr-no-tee/output-2/report.txt"
+== endfilter
+
+
+
+## Seeing The Output 
+
+
+Running the above command doesn't output anything to
+the terminal. You can add `tee /dev/tty` to see
+the messages there as well. 
+
+== filter highlight_command()
+== include parent(file_path) + "/scripts.inc/tldr-with-tee/script.bash"
+== endfilter
+
+
+## Wrap Up
+
+The `2>&1` looks weird to me. Totally worth it
+to remeber though when trying to capture
+the output of commands that use both `STDOUT`
+and `STDERR`. 
+
+-a
+
+
+
+
+
+== endfilter
+== endblock
+
+
+[# Possilbe stuff to include below #]
+
+[#
+
+---
+
+TODO: Write note about `|&` that works with some
+versions of bash/zsh, but not mine. 
+
+---
 
 
 ## Overview
@@ -52,10 +108,17 @@ works as expected.
 If you delete an existing file with:
 
 == filter highlight_command()
-rm -v example.txt
+rm -v file-that-exists.txt
 == endfilter
 
-the `-v` flag sets the `rm` command to `verbose`
+It outputs: 
+
+== filter highlight_text()
+file-that-exists.txt
+== endfilter
+
+
+The `-v` flag sets the `rm` command to `verbose`
 mode which prints out file names as they are
 removed. The `STDOUT` stream delivers the
 names. 
@@ -70,14 +133,50 @@ rm -v path-that-does-not-exist.txt
 
 Outputs:
 
-== filter highlight_command()
+== filter highlight_text()
 rm: path-that-does-not-exist.txt: No such file or directory
 == endfilter
 
-The different is that `rm` uses the `STDERR`
-stream for the message. 
+There's a behind-the-scenes difference. 
+`rm` uses `STDOUT` for the original message
+and `STDERR` for the message about
+the missing file. 
+
 
 ## Visibility and Pipes
+
+If you're using a terminal to run commands
+you won't see a difference between `STDOUT` and
+`STDERR`. Terminals combine them automatically. 
+
+Things change when you pass the output
+of one command into another via a pipe (i.e. `|`).
+The `STDOUT` streams gets piped through. The `STDERR`
+stream does not. 
+
+So, this:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## DRAFTS BELOW
+
+
+
 
 
 
@@ -153,7 +252,10 @@ X == include parent(file_path) + "/script.bash"
 == endfilter
 
 
-== endblock
+
+#]
+
+
 
 
 

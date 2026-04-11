@@ -63,97 +63,31 @@ body {
   </hgroup>
 
 
+
 <h2>TL;DR</h2>
-<p>Use <code>2&gt;&amp;1</code> to capture errors along with
-regular output from command line tools.</p>
-<p>For example:</p>
-<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> example.txt <span class="constant numeric integer decimal file-descriptor shell">2</span><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span> </span><span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">cat</span></span><span class="meta function-call arguments shell"> <span class="keyword operator assignment redirection shell">&gt;</span> report-1.txt</span></span></code></pre></div>
-<ul>
-<li>
-<p>The <code>rm -v example.txt</code> command attempts to delete a file
-named <code>example.txt</code>.</p>
-</li>
-<li>
-<p>If the file exists and is deleted, then it's file name is
-output to the <code>report-1.txt</code> file.</p>
-</li>
-<li>
-<p>If the file doesn't exist, or can't be removed, then an
-error message is output to <code>report-1.txt</code>.</p>
-</li>
-</ul>
-<h2>Overview</h2>
-<p>Mac and Linux command line tools output
-information and results through &quot;streams&quot;.
-Terminals pick up the content from the
-streams and print it out for you to see.</p>
-<p>What's not always clear is that there
-are two streams in play:</p>
-<ul>
-<li>
-<p><code>STDOUT</code> - The default output when everything
-works as expected.</p>
-</li>
-<li>
-<p><code>STDERR</code> - For when things to wrong and errors occur.</p>
-</li>
-</ul>
-<p>If you delete an existing file with:</p>
-<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> example.txt</span></span></code></pre></div>
-the `-v` flag sets the `rm` command to `verbose`
-mode which prints out file names as they are
-removed. The `STDOUT` stream delivers the
-names. 
-<p>If you run the same command with a path
-that doesn't exist you'll get a different
-message:</p>
-<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> path-that-does-not-exist.txt</span></span></code></pre></div>
-Outputs:
-<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm:</span></span><span class="meta function-call arguments shell"> path-that-does-not-exist.txt: No such file or directory</span></span></code></pre></div>
-The different is that `rm` uses the `STDERR`
-stream for the message. 
-<h2>Visibility and Pipes</h2>
-<p>Use this to redirect STDERR to STDOUT so they
-can both be catpured at the same time:</p>
+<p>Use this to capture errors along with
+regular output from command line tools:</p>
 <div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">2</span></span><span class="meta function-call arguments shell"><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span></span></span></code></pre></div>
-<h2>See It And Capture It</h2>
-<p>This is what I want most of time:</p>
-<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>file-that-does-not-exist<span class="punctuation definition string end shell">&quot;</span></span> <span class="constant numeric integer decimal file-descriptor shell">2</span><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span> </span><span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">tee</span></span><span class="meta function-call arguments shell"> /dev/tty</span> <span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">pbcopy</span></span></span></code></pre></div>
-<ul>
-<li>
-<p><code>rm ...</code> could be any command I want to run.
-(I'm using the <code>-v</code> flag to set <code>rm</code> to
-<code>verbose</code> so it would output a note about
-each file that's deleted. Otherwise, you'd
-only get something if there was an error.)</p>
-</li>
-<li>
-<p><code>2&gt;&amp;1</code> redirects STDERR to STDOUT so they
-get passed through the <code>|</code> together.</p>
-</li>
-<li>
-<p><code>tee /dev/tty</code> receives both STDOUT and
-STDERR from the <code>|</code> and prints them
-to the terminal before passing it on
-with the next <code>|</code>.</p>
-</li>
-<li>
-<p><code>pbcopy</code> sits at the end of the
-chain and copies both STDOUT and STDERR
-to the copy/paste clipboard on a mac.</p>
-</li>
-</ul>
-<h2>Just Capture It</h2>
-<p>If you don't need to see the output
-and just want to pass it on, do this:</p>
-<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">ls</span></span><span class="meta function-call arguments shell">  <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>file-that-does-not-exist<span class="punctuation definition string end shell">&quot;</span></span> <span class="constant numeric integer decimal file-descriptor shell">2</span><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span> </span><span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">pbcopy</span></span></span></code></pre></div>
-
-
-
-<div class="command-block"><pre><code></code></pre></div>
-
-<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">X</span></span><span class="meta function-call arguments shell"> == include parent(file_path</span><span class="meta function-call shell"></span><span class="meta post-cmd shell">)</span> <span class="meta function-call shell"><span class="variable function shell">+</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>/script.bash<span class="punctuation definition string end shell">&quot;</span></span></span></span></code></pre></div>
-
+<h2>Basic Capture</h2>
+<p>For example:</p>
+<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> example.txt <span class="constant numeric integer decimal file-descriptor shell">2</span><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span> </span><span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">cat</span></span><span class="meta function-call arguments shell"> <span class="keyword operator assignment redirection shell">&gt;</span> report.txt</span></span></code></pre></div>
+<p>If the file exists and is deleted, then it's file name is
+output to the <code>report-1.txt</code> via <code>STDOUT</code>.</p>
+<div class="text-block"><pre><code><span class="line-marker"></span><span class="text plain">example.txt</span></code></pre></div>
+If the file doesn't exist, or can't be removed, then an
+error message is output to `report-1.txt` via `STDERR`.
+<div class="text-block"><pre><code><span class="line-marker"></span><span class="text plain">rm: example.txt: No such file or directory</span></code></pre></div>
+<h2>Seeing The Output</h2>
+<p>Running the above command doesn't output anything to
+the terminal. You can add <code>tee /dev/tty</code> to see
+the messages there as well.</p>
+<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> example.txt <span class="constant numeric integer decimal file-descriptor shell">2</span><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span> </span><span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">tee</span></span><span class="meta function-call arguments shell"> /dev/tty</span> <span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">cat</span></span><span class="meta function-call arguments shell"> <span class="keyword operator assignment redirection shell">&gt;</span> report.txt</span></span></code></pre></div>
+<h2>Wrap Up</h2>
+<p>The <code>2&gt;&amp;1</code> looks weird to me. Totally worth it
+to remeber though when trying to capture
+the output of commands that use both <code>STDOUT</code>
+and <code>STDERR</code>.</p>
+<p>-a</p>
 
 
 </main>
