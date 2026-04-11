@@ -5,6 +5,11 @@ use syntect::html::ClassedHTMLGenerator;
 use syntect::parsing::SyntaxSet;
 use syntect::util::LinesWithEndings;
 
+// TODO: Deprecate this and move it to
+// just highlight() which already exists
+// and is ready for stuff to move over to it.
+// NOTE that the API changed. `hightlight()`
+// takes kwarg pairs after the language.
 pub fn highlight_block(
   code: &str,
   language: &str,

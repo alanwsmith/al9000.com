@@ -26,10 +26,8 @@ pub fn highlight_command(
       .parse_html_for_line_which_includes_newline(line);
   }
   let html = html_generator.finalize();
-
   let mut extra_classes = "".to_string();
   let mut title = "".to_string();
-
   if let Some(v) = options {
     if let Ok(classes) = v.get_attr("classes") {
       extra_classes = format!(" {}", classes);
@@ -38,15 +36,6 @@ pub fn highlight_command(
       title = t.to_string();
     }
   }
-
-  // let extra_classes = match classes {
-  //   Some(c) => format!(" {}", c),
-  //   None => "".to_string(),
-  // };
-  // let title_string = match title {
-  //   Some(t) => format!(r#"<div class="title">{}</div>"#, t),
-  //   None => "".to_string(),
-  // };
   Value::from_safe_string(format!(
     r#"<div class="command-block{}">{}<pre><code>{}</code></pre></div>"#,
     extra_classes, title, html
