@@ -5,12 +5,9 @@ use syntect::html::ClassedHTMLGenerator;
 use syntect::parsing::SyntaxSet;
 use syntect::util::LinesWithEndings;
 
-// TODO: Deprecate and remove this in favor of
-// highlight_text()
-pub fn output_block(
+pub fn highlight_text(
   code: &str,
-  title: Option<&str>,
-  classes: Option<&str>,
+  options: Option<&Value>,
 ) -> Value {
   let syntax_set = SyntaxSet::load_defaults_newlines();
   let syntax = syntax_set
@@ -29,18 +26,26 @@ pub fn output_block(
       .parse_html_for_line_which_includes_newline(line);
   }
   let initial_html = html_generator.finalize();
-  let extra_classes = match classes {
-    Some(c) => format!(" {}", c),
-    None => "".to_string(),
-  };
-  let title = match title {
-    Some(t) => {
-      format!(r#"<div class="title">{}</div>"#, t)
+  let output_html: Vec<_> = initial_html
+    .lines()
+    .map(|line| {
+      format!(r#"<span class="line-marker"></span>{}"#, line)
+    })
+    .collect();
+  let mut extra_classes = "".to_string();
+  let mut title = "".to_string();
+  if let Some(v) = options {
+    if let Ok(classes) = v.get_attr("classes") {
+      extra_classes = format!(" {}", classes);
     }
-    None => "".to_string(),
-  };
+    if let Ok(t) = v.get_attr("title") {
+      title = t.to_string();
+    }
+  }
   Value::from_safe_string(format!(
-    r#"<div class="output-block{}">{}<pre><code>{}</code></pre></div>"#,
-    extra_classes, title, initial_html
+    r#"<div class="text-block{}">{}<pre><code>{}</code></pre></div>"#,
+    extra_classes,
+    title,
+    output_html.join("\n")
   ))
 }

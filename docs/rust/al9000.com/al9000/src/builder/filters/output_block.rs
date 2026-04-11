@@ -5,6 +5,8 @@ use syntect::html::ClassedHTMLGenerator;
 use syntect::parsing::SyntaxSet;
 use syntect::util::LinesWithEndings;
 
+// TODO: Deprecate and remove this in favor of
+// highlight_text()
 pub fn output_block(
   code: &str,
   title: Option<&str>,
