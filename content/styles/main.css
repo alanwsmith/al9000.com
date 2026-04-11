@@ -7,9 +7,11 @@
 .meta.import .keyword, .keyword.control.import, .keyword.control.import.from, .keyword.other.import, .keyword.control.at-rule.include, .keyword.control.at-rule.import, .entity.name.section, .constant.character, .constant.other, .support.type.exception, .keyword.other.special-method, .keyword.other.special-method.ruby, .entity.name.function.preprocessor.c, .meta.preprocessor.c.include, .meta.preprocessor.macro.c, .variable.parameter.function.latex, .support.function.section.latex { color: var(--highlight-7-color); }
 .keyword.operator.comparison, .keyword.operator.assignment, .keyword.operator.arithmetic, .meta.brace.round, .meta.brace.curly, .punctuation.section, .punctuation.section.block, .punctuation.definition.parameters, .punctuation.section.group, .meta.selector.css, .constant.character.escape, .support.function.construct, .keyword.other.new, .punctuation.separator.continuation, .other.package.exclude, .other.remove, .punctuation.section.group.tex, .punctuation.definition.arguments.begin.latex, .punctuation.definition.arguments.end.latex, .punctuation.definition.arguments.latex, .punctuation.definition.constant.math.tex, .punctuation.definition.string.begin.tex, .punctuation.definition.string.end.tex, .variable.parameter.definition.label.latex, .punctuation.definition.logical-expression.shell, .markup.deleted, .sublimelinter.mark.error, .markup.deleted.git_gutter { color: var(--highlight-8-color); }
 
-
 :root {
   interpolate-size: allow-keywords;
+  --bitty-switch-off: #778;
+  --bitty-switch-on: #0a0;
+  --bitty-switch-text: white;
 }
 
 @font-face { 
@@ -32,6 +34,15 @@
 
 html {
   scrollbar-gutter: stable;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--default-color);
+  font-family: system-ui, sans-serif;
+  font-size-adjust: 0.5;
+  font-size: var(--default-font-size);
+  line-height: var(--default-line-height);
 }
 
 a {
@@ -58,10 +69,8 @@ b {
   font-weight: var(font-weight-900);
 }
 
-:root {
-  --bitty-switch-off: #778;
-  --bitty-switch-on: #0a0;
-  --bitty-switch-text: white;
+.blue {
+  color: blue;
 }
 
 .bitty-switch {
@@ -150,15 +159,6 @@ button:hover {
   color: var(--accent-color);
 }
 
-body {
-  background-color: var(--background-color);
-  color: var(--default-color);
-  font-family: system-ui, sans-serif;
-  font-size-adjust: 0.5;
-  font-size: var(--default-font-size);
-  line-height: var(--default-line-height);
-}
-
 code {
   font-family: Hack, monospace;
 }
@@ -176,11 +176,9 @@ code {
   overflow-wrap: anywhere;
   overflow-x: auto;
   overscroll-behavior-x: auto;
-
   & .line-marker {
     counter-increment: codeBlockLineNumberX;
   }
-
   & .line-marker:before {
       content: counter(codeBlockLineNumberX);
       display: inline-block;
@@ -192,7 +190,6 @@ code {
       color: var(--accent-color);
       border-right: var(--faded-accent-border);
   }
-
   > .title {
     font-size: var(--default-font-size);
     border-bottom: var(--faded-accent-border);
@@ -214,6 +211,33 @@ code {
     opacity: 0;
   }
 }
+
+.command-block {
+  background-color: var(--match-color);
+  border: var(--faded-reverse-border);
+  border-radius: var(--default-border-radius);
+  font-size: var(--small-font-size);
+  margin-block: var(--default-margin);
+  padding-inline: var(--large-padding);
+  padding-block: var(--large-padding);
+  white-space: pre-wrap; 
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+  overscroll-behavior-x: auto;
+  > .title {
+    font-size: var(--default-font-size);
+    border-bottom: var(--faded-accent-border);
+    margin-bottom: var(--small-margin);
+  }
+}
+
+.command-block.nowrap {
+  white-space: pre; 
+  overflow-wrap: normal;
+  overflow-x: scroll; 
+  overscroll-behavior-x: none;
+}
+
 
 
 .contrast-button.active:hover {
@@ -270,6 +294,10 @@ footer {
   margin-top: var(--xlarge-margin);
   text-align: var(--align-center);
   width: var(--default-width);
+}
+
+.green {
+  color: green;
 }
 
 h1 {
@@ -486,6 +514,10 @@ p > code {
   border-radius: var(--xsmall-border-radius);
   padding-inline: var(--xxsmall-padding);
   outline: var(--faded-reverse-border);
+}
+
+.red {
+  color: red;
 }
 
 summary {

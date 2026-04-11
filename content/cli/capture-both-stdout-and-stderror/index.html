@@ -1,7 +1,7 @@
 == extends "/templates.inc/pages/default.html"
 
 == block toml
-title = "Capture Errors from the Command Line"
+title = "Capture Errors from Command Line Tools"
 created = 2026-04-11T09:58:51-04:00
 status = "draft"
 == endblock
@@ -12,7 +12,7 @@ status = "draft"
 
 ## TL;DR
 
-Use `2>&1` to combine error messages and
+Use `2>&1` to capture errors along with 
 regular output from command line tools. 
 
 For example:
@@ -34,9 +34,6 @@ error message is output to `report-1.txt`.
 
 
 
-
-
-
 ## Overview
 
 Mac and Linux command line tools output 
@@ -54,7 +51,7 @@ works as expected.
 
 If you delete an existing file with:
 
-== filter highlight_block("bash")
+== filter highlight_command()
 rm -v example.txt
 == endfilter
 
@@ -67,13 +64,13 @@ If you run the same command with a path
 that doesn't exist you'll get a different 
 message:
 
-== filter highlight_block("bash")
+== filter highlight_command()
 rm -v path-that-does-not-exist.txt
 == endfilter
 
 Outputs:
 
-== filter highlight_block("txt")
+== filter highlight_command()
 rm: path-that-does-not-exist.txt: No such file or directory
 == endfilter
 
@@ -94,36 +91,10 @@ stream for the message.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Use this to redirect STDERR to STDOUT so they
 can both be catpured at the same time:
 
-== filter highlight_block("bash")
+== filter highlight_command()
 2>&1
 == endfilter
 
@@ -132,7 +103,7 @@ can both be catpured at the same time:
 
 This is what I want most of time:
 
-== filter highlight_block("bash")
+== filter highlight_command()
 == include parent(file_path) + "/scripts.inc/pbcopy-with-tee.bash"
 == endfilter
 
@@ -162,7 +133,7 @@ If you don't need to see the output
 and just want to pass it on, do this:
 
 
-== filter highlight_block("bash")
+== filter highlight_command()
 == include parent(file_path) + "/scripts.inc/pbcopy-without-tee.bash"
 == endfilter
 
@@ -173,11 +144,11 @@ and just want to pass it on, do this:
 
 
 
-== filter highlight_block("bash")
+== filter highlight_command()
 == endfilter
 
 
-== filter highlight_block("bash")
+== filter highlight_command()
 X == include parent(file_path) + "/script.bash"
 == endfilter
 
