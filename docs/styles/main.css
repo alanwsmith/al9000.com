@@ -589,7 +589,6 @@ th {
   flex-wrap: wrap;
   gap: var(--default-padding);
   padding: var(--small-padding);
-
   & button.active {
       background-color: var(--faded-reverse-color);
       color: var(--match-color);
