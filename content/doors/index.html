@@ -1,0 +1,62 @@
+== extends "/templates.inc/pages/empty.html"
+
+== block toml
+title = "Pod Bay Doors"
+created = 2026-04-12T14:33:00-04:00
+== endblock
+
+
+== block head
+<style>
+body {
+  background: black;
+  background-image: url("background.jpg?asdf");
+  background-size: cover;
+  color: #aaa;
+  /* via:
+http://infosecdj.net:8086/map/nxp/mp091a0/infosecdj_mz_nikpa60x_s3/#x=33469&y=24608&z=2
+  */
+}
+
+a {
+  color: rgb(200 200 200 /0.7);
+}
+
+.wrapper {
+  display: flex;
+  margin-top: 4rem;
+  justify-content: center;
+}
+
+video {
+  border-radius: 0.4rem;
+  border: 3px solid black;
+}
+
+.inner-wrapper {
+  max-width: 82svw;
+}
+
+.links {
+  background: rgb(0 0 0 / 0.5);
+  font-size: 0.9rem;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  text-align: right;
+}
+</style>
+
+
+== endblock
+
+== block content
+
+<div class="wrapper">
+  <div class="inner-wrapper">
+    <video muted src="doors.mp4" autoplay loop></video>
+    <div class="links"><a href="/">home</a> - <a href="https://siliconpr0n.org/">source</a></div>
+  </div>
+</div>
+
+== endblock
+
