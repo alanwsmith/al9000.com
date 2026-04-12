@@ -77,3 +77,12 @@ main {
   max-width: 30rem;
   margin-inline: auto;
 }
+
+
+
+/* hard coding for testing */
+video {
+  display: inline-block;
+  max-width: 180px;
+  aspect-ratio: 16 / 9;
+}

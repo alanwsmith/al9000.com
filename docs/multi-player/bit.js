@@ -9,6 +9,8 @@ let data = [];
 let videoObjects;
 
 export async function init() {
+  b.setCSS("--video-width", "100px");
+  b.setCSS("--cell-width", "100px");
   await decryptInit();
   if (window.navigator.userAgent.includes("Firefox")) {
     b.addStyles(`video { transform: rotate(0.08deg);}`);
@@ -32,13 +34,13 @@ export async function loadData(obj) {
   }
   if (obj.sourceBuffer.updating === true) {
     console.log("buffer already updating");
-    await b.sleep(50);
+    await b.sleep(config.retryDelay);
     loadData(obj);
     return;
   }
   if (obj.currentSegment >= data.length) {
     console.log("waiting for data");
-    await b.sleep(50);
+    await b.sleep(config.retryDelay);
     loadData(obj);
     return;
   }
@@ -47,13 +49,41 @@ export async function loadData(obj) {
   obj.currentSegment++;
 }
 
+export async function startVideos() {
+  config.retryDelay = 200 * videoObjects.length;
+  await b.sleep(300);
+  console.log("Starting videos");
+  let tmpNeedsSound = true;
+  for (let i = 0; i < videoObjects.length; i++) {
+    const el = videoObjects[i].el;
+    if (tmpNeedsSound === true) {
+      el.muted = false;
+      tmpNeedsSound = false;
+    } else {
+      el.muted = true;
+    }
+    videoObjects[i].tout = setTimeout(() => {
+      el.play();
+    }, i * 160);
+  }
+  await b.sleep(200 * videoObjects.length);
+}
+
 export async function selectVideo(_, sender, ___) {
   if (sender.value) {
     config.currentVideoId = sender.value;
+    config.started = false;
+    config.retryDelay = 200;
     await getVideoDetails();
     getVideoData();
     try {
-      videoObjects = [...b.qsa("video")].map((el) => {
+      videoObjects = [...b.qsa("video")].map((el, index) => {
+        //if (index === 0) {
+        //  el.addEventListener("canplaythrough", () => {
+        //    startVideos();
+        //    //console.log("Got canplaythrough.");
+        //  });
+        //}
         const mediaSource = new MediaSource();
         el.src = URL.createObjectURL(mediaSource);
         return {
@@ -101,13 +131,17 @@ export async function getVideoData() {
       config.details.segments[i]
     }`;
     console.log(segURL);
+
+    if (i === Math.min(15, config.details.segments.length)) {
+      await startVideos();
+    }
+
     const response = await fetch(segURL);
     if (response.ok) {
       try {
         const buffer = await response.arrayBuffer();
         const bytes = new Uint8Array(buffer);
         const responseBytes = await decrypt_file(bytes, "default");
-        //console.log(responseBytes);
         data.push(responseBytes);
       } catch (error) {
         console.error(error);
