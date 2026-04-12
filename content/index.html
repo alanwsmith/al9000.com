@@ -37,7 +37,15 @@ description = "The new and improved home of alan w. smith on the web."
 </p>
 <p>-a<p>
 
-<h2>Done</h2>
+== filter md
+## Blog
+
+- [I'm Not Ready to Start This Blog](/blog/3c/go/9f/)
+
+== endfilter
+
+
+<h2>Projects</h2>
 <ul>
   == for key in j 
     == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "done" 
@@ -45,6 +53,26 @@ description = "The new and improved home of alan w. smith on the web."
       <a href="/[@ key @]">
       == if j[key].index.link_title 
         [@ j[key].index.link_title @]
+      == elif j[key].index.title
+        [@ j[key].index.title @]
+      == else
+        [no title]
+      == endif
+      </a>
+      </li>
+    == endif 
+  == endfor 
+</ul>
+
+
+<h2>Code</h2>
+<ul>
+  == for key in j 
+    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "code" 
+      <li>
+      <a href="/[@ key @]">
+      == if j[key].index.short_title 
+        [@ j[key].index.short_title @]
       == elif j[key].index.title
         [@ j[key].index.title @]
       == else
@@ -75,10 +103,29 @@ description = "The new and improved home of alan w. smith on the web."
   == endfor 
 </ul>
 
-<h2>Ideas</h2>
+<h2>Broken</h2>
 <ul>
   == for key in j 
-    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "idea" 
+    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "broken" 
+      <li>
+      <a href="/[@ key @]">
+      == if j[key].index.short_title 
+        [@ j[key].index.short_title @]
+      == elif j[key].index.title
+        [@ j[key].index.title @]
+      == else
+        [no title]
+      == endif
+      </a>
+      </li>
+    == endif 
+  == endfor 
+</ul>
+
+<h2>Stubs</h2>
+<ul>
+  == for key in j 
+    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "stub" 
       <li>
       <a href="/[@ key @]">
       == if j[key].index.link_title 
@@ -93,6 +140,7 @@ description = "The new and improved home of alan w. smith on the web."
     == endif 
   == endfor 
 </ul>
+
 
 <h2>bitty</h2>
 <p>

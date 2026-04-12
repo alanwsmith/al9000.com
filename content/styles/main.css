@@ -243,6 +243,10 @@ code {
   color: var(--reverse-color);
 }
 
+[data-template] {
+  display: none;
+}
+
 del {
   text-decoration: line-through;
 }
@@ -532,6 +536,10 @@ svg {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.templates {
+  display: none;
 }
 
 .text-block {

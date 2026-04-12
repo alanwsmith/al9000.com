@@ -39,12 +39,6 @@ body {
 </style>
   </head>
   <body>
-    <div class="noscript"><noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Most content will be fine, but some things won't work.
-  </p>
-</noscript></div>
 <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
@@ -77,7 +71,7 @@ body {
 I'm using to encrypt files for my site
 that I want to protect with a password.
 They are served statically then decrypted
-with <a href="/rust/wasm/static-site-file-decryption">/rust/wasm/static-site-file-decryption/</a>.</p>
+with <a href="/rust/wasm/decrypt-files-for-static-sites/">/rust/wasm/decrypt-files-for-static-sites/</a>.</p>
 </li>
 <li>
 <p>I'm not protecting anything valuable.
@@ -97,9 +91,9 @@ needs.</p>
 <span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">path<span class="punctuation accessor rust">::</span></span>PathBuf<span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>
 <span class="line-marker"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span><span class="punctuation section group begin rust">(</span><span class="punctuation section group end rust">)</span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
-<span class="line-marker"></span>  <span class="storage type rust">let</span> input_path <span class="keyword operator rust">=</span> <span class="meta path rust">PathBuf<span class="punctuation accessor rust">::</span></span>from<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>samples/input.txt<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
-<span class="line-marker"></span>  <span class="storage type rust">let</span> output_path <span class="keyword operator rust">=</span> <span class="meta path rust">PathBuf<span class="punctuation accessor rust">::</span></span>from<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>samples/output.txt.bin<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
-<span class="line-marker"></span>  <span class="storage type rust">let</span> password <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>some_password<span class="punctuation definition string end rust">&quot;</span></span>.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> input_path <span class="keyword operator rust">=</span> <span class="meta path rust">PathBuf<span class="punctuation accessor rust">::</span></span>from<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>samples/cleartext.txt<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> output_path <span class="keyword operator rust">=</span> <span class="meta path rust">PathBuf<span class="punctuation accessor rust">::</span></span>from<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>samples/encrypted.txt.bin<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> password <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Correct Horse Battery Staple<span class="punctuation definition string end rust">&quot;</span></span>.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>  <span class="storage type rust">let</span> salt <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>c72ffc65-3966-481f-ad03-5e7ac42fc3ea<span class="punctuation definition string end rust">&quot;</span></span>.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>  <span class="support function rust">encrypt_file</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>input_path<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>output_path<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>password<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>salt</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
@@ -116,7 +110,7 @@ needs.</p>
 <span class="line-marker"></span>    <span class="meta path rust">kdf<span class="punctuation accessor rust">::</span></span><span class="meta path rust">Password<span class="punctuation accessor rust">::</span></span>from_slice<span class="meta group rust"><span class="punctuation section group begin rust">(</span>password.<span class="support function rust">as_bytes</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>  <span class="storage type rust">let</span> salt <span class="keyword operator rust">=</span> <span class="meta path rust">kdf<span class="punctuation accessor rust">::</span></span><span class="meta path rust">Salt<span class="punctuation accessor rust">::</span></span>from_slice<span class="meta group rust"><span class="punctuation section group begin rust">(</span>salt.<span class="support function rust">as_bytes</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>  <span class="storage type rust">let</span> derived_key <span class="keyword operator rust">=</span>
-<span class="line-marker"></span>    <span class="meta path rust">kdf<span class="punctuation accessor rust">::</span></span>derive_key<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>kdf_password<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>salt<span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">3</span><span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">1</span> <span class="keyword operator rust">&lt;</span><span class="keyword operator rust">&lt;</span> <span class="constant numeric integer decimal rust">16</span><span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">32</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>    <span class="meta path rust">kdf<span class="punctuation accessor rust">::</span></span>derive_key<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>kdf_password<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>salt<span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">3</span><span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">1</span> <span class="keyword operator rust">&lt;</span><span class="keyword operator rust">&lt;</span> <span class="constant numeric integer decimal rust">8</span><span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">32</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>  <span class="storage type rust">let</span> bytes <span class="keyword operator rust">=</span> <span class="meta path rust">aead<span class="punctuation accessor rust">::</span></span>seal<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>derived_key<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>input</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>  <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>write<span class="meta group rust"><span class="punctuation section group begin rust">(</span>output_path<span class="punctuation separator rust">,</span> bytes</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
@@ -157,22 +151,21 @@ needs.</p>
 </li>
 </ul>
 
-
 </main>
 
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
   <div class="small-font-size text-align-center">
-    from alan w smith (<a href="/rss/">RSS</a>)
+    from alan w smith 
   </div>
   <div class="small-font-size text-align-center">
     who also makes <a href="https://bittyjs.com">bitty</a>
   </div>
-
+  <div class="small-font-size text-align-center">
+    (RSS coming soon)
+  </div>
 </footer>
 
-
-
-    <div class="hidden support">
+    <div class="templates">
       <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
     </div>

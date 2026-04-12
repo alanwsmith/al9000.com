@@ -2,7 +2,32 @@
   "storageRoot": "/multi-player/tracks",
   "tracks": {
     "0a0554c8-e6ab-40d8-854e-1cc190a00842": {
-      "title": "Title One",
+      "title": "Queen - One Vision",
+      "dimensions": [16, 9],
+      "crop": [16, 9]
+    },
+    "06e880e9-d204-4715-a89d-c5997fe59a84": {
+      "title": "Alice",
+      "dimensions": [16, 9],
+      "crop": [16, 9]
+    },
+    "a436f3a0-b408-42e1-9af4-6bfa71d92f59": {
+      "title": "Title Two",
+      "dimensions": [16, 9],
+      "crop": [16, 9]
+    },
+    "3029f1ae-c1c5-4e55-a8a7-29524f2bd7e2": {
+      "title": "Title Two",
+      "dimensions": [16, 9],
+      "crop": [16, 9]
+    },
+    "28560a05-6053-4a98-9051-3d0800cf2a51": {
+      "title": "Title Two",
+      "dimensions": [16, 9],
+      "crop": [16, 9]
+    },
+    "4126931d-d2f1-469e-a90a-a45ecaf48cbb": {
+      "title": "Title Two",
       "dimensions": [16, 9],
       "crop": [16, 9]
     },

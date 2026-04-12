@@ -27,6 +27,12 @@ export async function init() {
 }
 
 export async function loadData(obj) {
+  // if (config.starting === true) {
+  //   console.log("video start in progress");
+  //   await b.sleep(b.randomInt(900, 1300));
+  //   loadData(obj);
+  //   return;
+  // }
   if (obj.currentSegment === config.details.segments.length) {
     console.log("data load finished");
     obj.mediaSource.endOfStream();
@@ -34,23 +40,24 @@ export async function loadData(obj) {
   }
   if (obj.sourceBuffer.updating === true) {
     console.log("buffer already updating");
-    await b.sleep(config.retryDelay);
+    await b.sleep(b.randomInt(900, 1300));
     loadData(obj);
     return;
   }
   if (obj.currentSegment >= data.length) {
     console.log("waiting for data");
-    await b.sleep(config.retryDelay);
+    await b.sleep(b.randomInt(900, 1300));
     loadData(obj);
     return;
   }
   console.log(`adding data: ${obj.currentSegment}`);
   obj.sourceBuffer.appendBuffer(data[obj.currentSegment]);
   obj.currentSegment++;
+  await b.sleep(b.randomInt(200, 600));
 }
 
 export async function startVideos() {
-  config.retryDelay = 200 * videoObjects.length;
+  config.starting = true;
   await b.sleep(300);
   console.log("Starting videos");
   let tmpNeedsSound = true;
@@ -66,14 +73,14 @@ export async function startVideos() {
       el.play();
     }, i * 160);
   }
-  await b.sleep(200 * videoObjects.length);
+  await b.sleep(180 * videoObjects.length);
+  config.starting = false;
 }
 
 export async function selectVideo(_, sender, ___) {
   if (sender.value) {
     config.currentVideoId = sender.value;
     config.started = false;
-    config.retryDelay = 200;
     await getVideoDetails();
     getVideoData();
     try {
@@ -132,9 +139,8 @@ export async function getVideoData() {
     }`;
     console.log(segURL);
 
-    if (i === Math.min(15, config.details.segments.length)) {
-      await startVideos();
-    }
+    // a little space for recovery
+    await b.sleep(300);
 
     const response = await fetch(segURL);
     if (response.ok) {
@@ -148,6 +154,10 @@ export async function getVideoData() {
       }
     } else {
       console.error("Could not get segment");
+    }
+
+    if (i === Math.min(15, config.details.segments.length - 1)) {
+      await startVideos();
     }
   }
 }

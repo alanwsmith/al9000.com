@@ -76,12 +76,12 @@
 <div data-r="status"></div>
 [! endblock !]
 
-[! block templates !]
-<script type="text/html" id="displayTemplate">
+== block templates
+<script type="text/html" data-template="displayTemplate">
 <div>__CHARACTERS__</div>
 </script>
 
-<script type="text/html" id="characterTemplate">
+<script type="text/html" data-template="characterTemplate">
 <button class="unicodeCharacter __HIDDEN__" data-s="copyCharacter" id="id__HEX__">__CHARACTER__</button>
 </script>
-[! endblock !]
+== endblock

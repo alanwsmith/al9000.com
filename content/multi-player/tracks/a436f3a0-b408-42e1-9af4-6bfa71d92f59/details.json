@@ -1,15 +1,6 @@
 {
   "mimeType": "video/webm; codecs=\"vp9, opus\"",
   "segments": [
-    "segment-0000000000.bin",
-    "segment-0000000001.bin",
-    "segment-0000000002.bin",
-    "segment-0000000003.bin",
-    "segment-0000000004.bin",
-    "segment-0000000005.bin",
-    "segment-0000000006.bin",
-    "segment-0000000007.bin",
-    "segment-0000000008.bin",
-    "segment-0000000009.bin"
+    "segment-0000000000.bin"
   ]
 }

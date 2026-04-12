@@ -1,0 +1,32 @@
+<script type="module">
+  import init, {encrypt_file} from "./pkg/static_site_file_encryption.js";
+
+  async function handleEncryption(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    if (!data.get("file") || !data.get("password")) {
+      console.error("Handle missing inputs here");
+      return;
+    }
+    const arrayBuffer = await data.get("file").arrayBuffer();
+    const bytes = new Uint8Array(arrayBuffer);
+    const responseBytes = await encrypt_file(bytes, data.get("password"));
+    const blob = new Blob([responseBytes], { type: "application/octet-stream" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${data.get("file").name}.bin`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  async function main() {
+    await init();
+    const fileInput = document.querySelector("#encryptForm");
+    fileInput.addEventListener("submit", (event) => {
+      handleEncryption(event);
+    });
+  }
+
+  main();
+</script>

@@ -1,0 +1,98 @@
+[!- extends "/templates.inc/pages/rust.html" -!]
+
+== block toml
+title = "Encrypting Static Site Content with WASM"
+created = 2026-04-01T10:42:12-04:00
+== endblock 
+
+[! block head !]
+<style>
+  form { display: grid; gap: 0.7rem; }
+  label { display: block; }
+</style>
+[! endblock !]
+
+
+[! block main !]
+
+[! filter md !]
+## Overview
+
+The page encrypts files
+so they can be password protected on static sites 
+without additional server side processes. 
+It's the counterpart to 
+[Password Protecting Static Site Content with WASM](/rust/wasm/decrypt-files-for-static-sites/). 
+Check out that page for details on
+the combination. 
+
+[! endfilter !]
+
+<h2>The Encryptor</h2>
+[! include "/" + parent(file_path) + "/script.inc.html" !]
+[! include "/" + parent(file_path) + "/html.inc.html" !]
+
+<h2>Wrap Up</h2>
+
+<p>
+  I use this page to encrypt single files. 
+I use a command line version 
+    (e.g. from <a href="/rust/general/encrypt-a-file-with-a-password/">Encrypt 
+      a File with a Password in Rust</a>)
+  when I'm working on batches of files.
+</p>
+
+
+<p>
+  The source code is below. I was pleasantly surprised by
+  how little it took to get things running. 
+  Of course, the Rust library that's doing all the
+  heavy lifting is way more complicated. 
+</p>
+
+<p>Very cool.</p>
+
+<p>-a</p>
+
+<h2>The Source Code</h2>
+
+
+<h4>Rust Code</h4>
+[! filter highlight("rust", title="src/lib.rs") !]
+[! include "/" + parent(file_path) + "/src/lib.rs" !]
+[! endfilter !]
+
+[! filter highlight("rust", title="Cargo.toml") !]
+[! include "/" + parent(file_path) + "/Cargo.toml" !]
+[! endfilter !]
+
+<h4>Rust Build Script</h4>
+[! filter highlight("bash", title="built-release.bash") !]
+[! include "/" + parent(file_path) + "/build_release.inc.bash" !]
+[! endfilter !]
+
+<h4>Web Page Code</h4>
+
+[! filter highlight("html", title="HTML") !]
+[! include "/" + parent(file_path) + "/html.inc.html" !]
+[! endfilter !]
+
+[! filter highlight("html", title="JavaScript") !]
+[! include "/" + parent(file_path) + "/script.inc.html" !]
+[! endfilter !]
+
+
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html</a></li>
+<li><a href="https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters">https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/">https://docs.rs/orion/latest/orion/</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/aead/index.html">https://docs.rs/orion/latest/orion/aead/index.html</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/kdf/index.html">https://docs.rs/orion/latest/orion/kdf/index.html</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/kdf/struct.Salt.html">https://docs.rs/orion/latest/orion/kdf/struct.Salt.html</a></li>
+<li><a href="https://docs.rs/wasm-bindgen/latest/wasm_bindgen/">https://docs.rs/wasm-bindgen/latest/wasm_bindgen/</a></li>
+</ul>
+
+[! endblock !]

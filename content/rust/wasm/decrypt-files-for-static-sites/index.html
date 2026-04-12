@@ -1,0 +1,351 @@
+[!- extends "/templates.inc/pages/rust.html" -!]
+
+== block toml
+title = "Password Protecting Static Site Content with WASM"
+created = 2026-04-01T13:40:00-04:00
+== endblock
+
+
+== block head
+<style>
+#results {
+  border-top: var(--faded-default-border);
+  padding-top: var(--default-padding);
+}
+</style>
+== endblock
+
+
+== block main
+
+<div class="warning-box">
+  <p><strong>Heads Up</strong></p>
+  <p>
+    Security and encrypted are super complicated. 
+    I'm comfortable with this process 
+    given my understanding of the topics
+    and the fact that I'm using a library
+    for the encryption. But, I'm not an expert. 
+    This is more about preventing content from being 
+    slurped up automatically by bots than 
+    providing critical security. 
+    Consult with an expert if that's
+    what you're looking for. 
+  <p>
+</div>
+
+[! filter md !]
+## Introduction
+
+I use static site generators for 
+[my sites](https://links.alanwsmith.com). 
+I call out to external APIs to do
+anything dynamic. 
+The exception is password protection. 
+I'd always thought that needed to
+be done dynamically on a site's
+host server. I realized 
+with WASM that's not the case. 
+Files can be encrypted and served
+statically with a WASM process
+providing decryption directly
+on the front end. 
+
+## An Example
+
+I've [encrypted a file]([@parent(parent(file_path))@]/encrypt-files-for-static-sites/) and put copy on my server. It's
+[file-for-demo.txt.bin](/rust/wasm/decrypt-files-for-static-sites/samples/file-for-demo.txt.bin).
+The file is static. You can download it directly. 
+It won't do you much good, though. Being encrypted and all. 
+
+That's where this tool comes in. 
+Enter the password "wasm" and hit
+the "Decrypt File" button: 
+
+<script type="module">
+[! include "/" + parent(file_path) + "/script.inc.js" !]
+</script>
+
+[! include "/" + parent(file_path) + "/html.inc.html" !]
+
+<p>
+If you got the password right (it's all lowercase), you'll
+see the text "The file was decrypted! This is its contents."
+If you got it wrong, you'll get an incorrect password
+message. 
+</p>
+
+## How It Works
+
+[! endfilter !]
+
+
+
+<h3>HTML</h3>
+
+<p>
+  The HTML for the page boils down to a form
+  with an input for the password, a submit
+  button, and a hidden field to hold the URL
+  of the file to decrypt. (In practice, the
+  file to decrypted could be defined
+  by a selection box, a query param, 
+  a data-* attribute, etc...)
+
+</p>
+
+[! filter highlight_block("html") !]
+[! include "/" + parent(file_path) + "/html.inc.html" !]
+[! endfilter !]
+
+<h3>JavaScript</h3>
+
+<p>
+  The JavaScript is a module that does four things:
+</p>
+
+<ol>
+  <li>
+    Imports the WASM module responsible for the decryption.
+  </li>
+  <li>
+    Creates a function to handle form submissions that trigger the decryption.
+  </li>
+  <li>
+    Creates a <code>main()</code> function that initializes the
+    WASM module and adds form event listeners.
+  </li>
+  <li>
+    Calls the <code>main()</code> function to kick things off.
+  </li>
+</ol>
+
+
+[! filter highlight_block("html") !]
+<script type="module">
+
+[! include "/" + parent(file_path) + "/script.inc.js" !]
+
+
+</script>
+[! endfilter !]
+
+<p>
+  When a form submission fires, the script 
+  parses the incoming <code>FormData</code>
+  (lines 7-14), does 
+  a fetch to pull in the encrypted file (starting
+  on line 15), sends it 
+  to the wasm module (lines 21-24), 
+  then outputs the response (lines 25 and 26). 
+</p>
+
+<h4>The JavaScript/WASM Connection</h4>
+
+<p>
+  Communication between the JavaScript's
+  <code>handleDecryptTextFileForm()</code> function
+  and the WASM module is done by passing 
+  an arrays of bytes back and forth. 
+  This is done by loading the fetch response 
+  as a <code>.blob()</code> (line 21), grabbing 
+  it's <code>.arrayBuffer()</code> (line 22), and 
+  turning it into a <code>Uint8Array</code>
+  (line 23)
+  to send to the WASM <code>decrypt_file</code>
+  function (line 24). 
+</p>
+
+<p>
+  The bytes that come back from the WASM module
+  are turned back in to text with <code>TextDecoder()</code>
+  (line 25)
+  and output to the page via an update to the result
+  element's
+  <code>.innerHTML</code> (line 26).
+</p>
+
+<h3>The WASM Code</h3>
+
+<p>
+  I wrote the WASM module in Rust. It's 
+  basically just a wrapper around 
+  a library called <a href="https://docs.rs/orion/latest/orion/index.html">orion</a>
+  that handles all the encryption work. 
+  The code looks like this: 
+</p>
+
+<h4>src/lib.rs</h4>
+
+[! filter highlight_block("rust") !]
+[! include "/" + parent(file_path) + "/src/lib.rs" !]
+[! endfilter !]
+
+<p>
+  The only other file in the Rust project
+  is the <code>Cargo.toml</code> file:
+</p>
+
+
+<h4>Cargo.toml</h4>
+[! filter highlight_block("toml") !]
+[! include "/" + parent(file_path) + "/Cargo.toml" !]
+[! endfilter !]
+
+<p>
+  The project is built with <code>wasm-pack</code>
+  (which I installed with <code>cargo install wasm-pack</code>). 
+  I use this script to clean the <code>pkg</code>
+  directory it outputs to before each run:
+</p>
+
+<h4>Build Script</h4>
+[! filter highlight("bash") !]
+[! include "/" + parent(file_path) + "/build_release.inc.bash" !]
+[! endfilter !]
+
+<h2>Usage</h2>
+
+<p>
+  This version of the tool is a prototype 
+  I built to figure out how everything 
+  works. The longer term goal is to build
+  a version that works with multiple 
+  files instead of one at a time. 
+</p>
+<p>
+  That said, this version works if
+  you only need to deal with one file
+  at a time. Because it's WASM, you
+  don't need to compile the Rust 
+  code yourself. You can download
+  these two files and line up 
+  the paths with the JavaScript
+  above to set it up yourself. 
+</p>
+<ul>
+  <li><a href="[@parent(file_path)@]/pkg/static_site_file_decryption.js" download="static_site_file_decryption.js">static_site_file_decryption.js</a></li>
+  <li><a href="[@parent(file_path)@]/pkg/static_site_file_decryption_bg.wasm" download="static_site_file_decryption_bg.wasm">static_site_file_decryption_bg.wasm</a></li>
+</ul>
+
+<p>
+  You'll also need a way to encrypt files. I've set
+  up a tool to do that at here:
+  <a href="[@parent(parent(file_path))@]/static-site-file-encryption/">
+    Static Site File Encryption Tool</a>.
+</p>
+
+<h2>Wrap-up</h2>
+
+<p>
+  As evident by the fact that I've been running
+  a static site for like decade without
+  a password feature, it's not something
+  I have a lot of need for. There's been a few things
+  over the years that I haven't done because
+  of it. It's not a lot, but now I've got a 
+  solution. 
+</p>
+
+<p>
+  -a
+</p>
+
+<div class="xxlarge-top-margin xxlarge-bottom-margin xsmall-font-size faded-reverse-color text-align-right faded-reverse-block-border">end of line</div>
+
+
+<h2 class="xxxlarge-top-margin xxxlarge-top-padding">Endnotes</h2>
+<ul>
+  <li>
+    To reiterate: I'm not a security professional. 
+    I'm comfortable with this code primarily 
+    because it uses the <a href="https://docs.rs/orion/latest/orion/">orion</a>
+    library which has <a href="https://crates.io/crates/orion">over 9 million downloads</a>.
+    I'm also not protecting anything critical. 
+  </li>
+  <li>
+    <p>It's possible to protect pages this way without
+    using WASM using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto">Crypto
+      Web API</a>. I looked at it before, but
+    got overwhelmed by it. 
+      Not least because of this big ol' warning on the page:</p>
+    <blockquote class="info-border default-flow  default-border-radius">
+
+      <p>Warning: The Web Crypto API provides a number of low-level cryptographic primitives. It's very easy to misuse them, and the pitfalls involved can be very subtle.</p>
+
+      <p>Even assuming you use the basic cryptographic functions correctly, secure key management and overall security system design are extremely hard to get right, and are generally the domain of specialist security experts.</p>
+
+      <p>Errors in security system design and implementation can make the security of the system completely ineffective.</p>
+
+    </blockquote>
+  </li>
+  <li>
+    <a href="https://github.com/Greenheart/pagecrypt">PageCrypt</a>
+    uses the Web Crypto API. It's a bit of a different thing though. It's
+    designed to serve up a full single page app. 
+  </li>
+  <li>
+    This JavaScript is all vanilla. The code
+    you see in the samples is the actual code
+    powering the page. No extra JavaScript 
+    tooling is required. 
+  </li>
+  <li>
+    This example works with form input where the
+    password is entered each time. I'm working
+    on a more full featured version where
+    the password only needs to be entered once
+    and let you encrypt all the content
+    for a single or multi-page app. 
+  </li>
+  <li>
+    The file for this example was encrypted with
+    <a href="/rust/wasm/static-site-file-encryption/">the 
+      tool on the static-site-file-encryption page</a>.
+    It's also designed to work with one file at a time. 
+    Part of the new project is building a tool 
+    to encrypt an entire directory of content
+    in one run. 
+  </li>
+  <li>
+    It should be possible to encrypt images as well. 
+    The biggest difference I can think of is the
+    error handling (i.e. you need some way to 
+    deliver the image if it decrypts and a message
+    if it doesn't). I expect that should be strait
+    forward to do by returning an object with 
+    a status that lets you switch on the output. 
+    That's something I'll address in the 
+    new project. 
+  </li>
+</ul>
+
+<h2>References</h2>
+
+<ul>
+
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">https://developer.mozilla.org/en-US/docs/Web/API/Blob</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">https://developer.mozilla.org/en-US/docs/Web/API/Response</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/blob">https://developer.mozilla.org/en-US/docs/Web/API/Response/blob</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder">https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API">https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API</a></li>
+<li><a href="https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters">https://doc.libsodium.org/password_hashing/default_phf#guidelines-for-choosing-the-parameters</a></li>
+<li><a href="https://docs.rs/getrandom/latest/getrandom/#webassembly-support">https://docs.rs/getrandom/latest/getrandom/#webassembly-support</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/">https://docs.rs/orion/latest/orion/</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/aead/fn.open.html">https://docs.rs/orion/latest/orion/aead/fn.open.html</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/aead/fn.seal.html">https://docs.rs/orion/latest/orion/aead/fn.seal.html</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/aead/index.html">https://docs.rs/orion/latest/orion/aead/index.html</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/aead/struct.SecretKey.html">https://docs.rs/orion/latest/orion/aead/struct.SecretKey.html</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/aead/struct.SecretKey.html#method.from_slice">https://docs.rs/orion/latest/orion/aead/struct.SecretKey.html#method.from_slice</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/kdf/index.html">https://docs.rs/orion/latest/orion/kdf/index.html</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/kdf/struct.Salt.html">https://docs.rs/orion/latest/orion/kdf/struct.Salt.html</a></li>
+<li><a href="https://docs.rs/orion/latest/orion/kdf/struct.SecretKey.html">https://docs.rs/orion/latest/orion/kdf/struct.SecretKey.html</a></li>
+<li><a href="https://docs.rs/wasm-bindgen/latest/wasm_bindgen/">https://docs.rs/wasm-bindgen/latest/wasm_bindgen/</a></li>
+<li><a href="https://github.com/Greenheart/pagecrypt">https://github.com/Greenheart/pagecrypt</a></li>
+<li><a href="https://github.com/orion-rs/orion">https://github.com/orion-rs/orion</a></li>
+</ul>
+
+== endblock
+
+

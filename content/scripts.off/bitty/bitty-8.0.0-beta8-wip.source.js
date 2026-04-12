@@ -220,12 +220,15 @@ class r extends HTMLElement {
           const t = await s.text(), e = document.createElement("div");
           return e.innerHTML = t,
             e.querySelectorAll("script").forEach((t) => {
-              "text/html" === t.type && void 0 !== t.dataset.id &&
-              (this.b.templates[t.dataset.id] = t.innerHTML.trim()),
-                "image/svg" === t.type && void 0 !== t.dataset.id &&
-                (this.b.svgs[t.dataset.id] = t.innerHTML.trim()),
-                "application/json" === t.type && void 0 !== t.dataset.id &&
-                (this.b.data[t.dataset.id] = JSON.parse(t.innerHTML.trim()));
+              "text/html" === t.type && void 0 !== t.dataset.template &&
+              (this.b.templates[t.dataset.template] = t.innerHTML.trim()),
+                "image/svg" === t.type && void 0 !== t.dataset.template &&
+                (this.b.svgs[t.dataset.template] = t.innerHTML.trim()),
+                "application/json" === t.type &&
+                void 0 !== t.dataset.template &&
+                (this.b.data[t.dataset.template] = JSON.parse(
+                  t.innerHTML.trim(),
+                ));
             }),
             !0;
         } catch (t) {
@@ -283,12 +286,12 @@ class r extends HTMLElement {
   }
   loadPageAssets(t) {
     document.querySelectorAll("script").forEach((e) => {
-      "text/html" === e.type && void 0 !== e.dataset.id &&
-      (t.b.templates[e.dataset.id] = e.innerHTML.trim()),
-        "image/svg" === e.type && void 0 !== e.dataset.id &&
-        (t.b.svgs[e.dataset.id] = e.innerHTML.trim()),
-        "application/json" === e.type && void 0 !== e.dataset.id &&
-        (t.b.data[e.dataset.id] = JSON.parse(e.innerHTML.trim()));
+      "text/html" === e.type && void 0 !== e.dataset.template &&
+      (t.b.templates[e.dataset.template] = e.innerHTML.trim()),
+        "image/svg" === e.type && void 0 !== e.dataset.template &&
+        (t.b.svgs[e.dataset.template] = e.innerHTML.trim()),
+        "application/json" === e.type && void 0 !== e.dataset.template &&
+        (t.b.data[e.dataset.template] = JSON.parse(e.innerHTML.trim()));
     });
   }
   _mapKey(t, e, s = [], n = {}) {
