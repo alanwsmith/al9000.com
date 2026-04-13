@@ -12,13 +12,28 @@ struct Input {
 
 fn main() -> Result<()> {
   let mut input = Input::parse();
+  let debug = true;
+
+  let password = if debug {
+    "tmp_password_during_dev_so_the_prompt_does_not_keep_happening"
+  } else {
+    &get_password("al9000-com--orion--default--password")?
+  };
+  let salt = if debug {
+    "tmp_salt_during_dev_so_the_prompt_does_not_keep_happening"
+  } else {
+    &get_password("al9000-com--orion--default--salt")?
+  };
+
+  // // For Dev/Debugging to prevent repeated auth modal
   // let password =
   //   "tmp_password_during_dev_so_the_prompt_does_not_keep_happening";
   // let salt =
   //   "tmp_salt_during_dev_so_the_prompt_does_not_keep_happening";
-  let password =
-    get_password("al9000-com--orion--default--password")?;
-  let salt = get_password("al9000-com--orion--default--salt")?;
+  // let password =
+  //   get_password("al9000-com--orion--default--password")?;
+  // let salt = get_password("al9000-com--orion--default--salt")?;
+
   encrypt_file(&mut input.input_path, &password, &salt)?;
   Ok(())
 }
@@ -34,7 +49,7 @@ fn encrypt_file(
     kdf::Password::from_slice(password.trim().as_bytes())?;
   let salt = kdf::Salt::from_slice(salt.trim().as_bytes())?;
   let kdf_key =
-    kdf::derive_key(&kdf_password, &salt, 3, 1 << 16, 32)?;
+    kdf::derive_key(&kdf_password, &salt, 3, 1 << 8, 32)?;
   let encrypted = aead::seal(&kdf_key, &bytes)?;
   fs::write(path, encrypted)?;
   Ok(())
