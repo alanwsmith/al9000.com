@@ -15,10 +15,10 @@ created = 2026-03-30T14:22:33-04:00
 
   <p>This is where I'll be moving the tools from <a href="https://tools.alanwsmith.com/">tools.alanwsmith.com</a></p>
 
-  == for key in j.tools.tools
-    <bitty-8 data-connect="/tools/tools/[@ key @]/bit.js"></bitty-8>
-    <details class="d"><summary>[@ j.tools.tools[key].index.link_text @]</summary>
-      == include "/tools/tools/" + key + "/index.html"
+  == for key in j.tools
+    <bitty-8 data-connect="/tools/[@ key @]/bit.js"></bitty-8>
+    <details class="d"><summary>[@ j.tools[key].index.link_text @]</summary>
+      == include "/tools/" + key + "/index.html"
     </details>
   == endfor 
 
