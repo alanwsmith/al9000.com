@@ -1,7 +1,6 @@
 use anyhow::Result;
 use clap::Parser;
 use orion::{aead, kdf};
-use security_framework::passwords::get_generic_password;
 use std::{fs, path::PathBuf};
 
 #[derive(Debug, Parser)]
@@ -11,18 +10,12 @@ struct Args {
 }
 
 fn main() -> Result<()> {
-  let debug = false;
   let args = Args::parse();
-  let password = if debug {
-    "tmp_password_during_dev_so_the_prompt_does_not_keep_happening"
-  } else {
-    &get_password("al9000-com--orion--default--password")?
-  };
-  let salt = if debug {
-    "tmp_salt_during_dev_so_the_prompt_does_not_keep_happening"
-  } else {
-    &get_password("al9000-com--orion--default--salt")?
-  };
+  // Reminder: this encryption is only for obfuscation to
+  // prevent bots from easily slurping up content. The
+  // credentials can be pulled from the source code.
+  let password = "default";
+  let salt = "28d408f7-e027-436e-a262-a6bd1950099a";
   let bytes = fs::read(&args.input_path)?;
   let kdf_password =
     kdf::Password::from_slice(password.trim().as_bytes())?;
@@ -32,10 +25,4 @@ fn main() -> Result<()> {
   let encrypted = aead::seal(&kdf_key, &bytes)?;
   fs::write(args.output_path, encrypted)?;
   Ok(())
-}
-
-fn get_password(key: &str) -> Result<String> {
-  let account = "alan";
-  let response = get_generic_password(key, account)?;
-  Ok(String::from_utf8(response)?)
 }
