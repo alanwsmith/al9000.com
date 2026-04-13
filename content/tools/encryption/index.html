@@ -28,7 +28,6 @@ encryptor INPUT_PATH OUTPUT_PATH
 == endfilter
 
 
-
 Decryptor Basics:
 
 == filter highlight("javascript", classes="no-numbers") 
@@ -38,6 +37,18 @@ Decryptor Basics:
 == endfilter
 
 <script src="[@ parent(file_path) @]/encryption/apps/wasm-decryptor/script.js" type="module"></script>
+
+<style>
+#decryptedVideo {
+  width: 18rem;
+}
+</style>
+<p>Decrypted Video</p>
+
+<div class="faded-match-background">
+<video id="decryptedVideo" controls></video>
+</div>
+
 
 == endblock
 
