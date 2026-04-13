@@ -1,0 +1,12 @@
+[package]
+name = "wasm-decryptor"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+getrandom = { version = "0.4.2", features = ["wasm_js"] }
+orion = "0.17.13"
+wasm-bindgen = "0.2.117"

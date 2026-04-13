@@ -1,0 +1,15 @@
+{
+  "name": "wasm-decryptor",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "wasm_decryptor_bg.wasm",
+    "wasm_decryptor.js",
+    "wasm_decryptor.d.ts"
+  ],
+  "main": "wasm_decryptor.js",
+  "types": "wasm_decryptor.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

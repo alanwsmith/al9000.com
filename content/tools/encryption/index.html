@@ -7,14 +7,37 @@ link_text = "Encryption"
 == block main
 == filter md
 
-Reminder: These tools are only for obfuscation 
-to prevent bots from easily slurping up files.
-They're not secure since the password
-can be pulled from the source code. 
+These are the tools I use to obfuscate files on the 
+site to make it harder for bots to slurp up 
+my content. They are not designed for
+authentication/authorization. They 
+are not secure. 
+
+Encryptor path:
+
+== filter highlight_text() 
+~/workshop/al9000.com/content/tools/encryption/apps/cli-encryptor/release/aarch64-apple-darwin/encryptor
+== endfilter
+
+
+Usage: 
+
+
+== filter highlight_text() 
+encryptor INPUT_PATH OUTPUT_PATH
+== endfilter
 
 
 
+Decryptor Basics:
+
+== filter highlight("javascript", classes="no-numbers") 
+== include parent(file_path) + "/encryption/apps/wasm-decryptor/script.js"
+== endfilter
 
 == endfilter
+
+<script src="[@ parent(file_path) @]/encryption/apps/wasm-decryptor/script.js" type="module"></script>
+
 == endblock
 

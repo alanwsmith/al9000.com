@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[ -e pkg ] && rm -rf pkg 
+wasm-pack build --target web
+[ -e "pkg/.gitignore" ] && rm "pkg/.gitignore"
