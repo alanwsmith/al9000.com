@@ -2,9 +2,6 @@
 
 DIR=~/workshop/al9000.com/content/tools
 
-# Reminder: -E is for extended RegEx
-# Reminder: -i is for editing the file in place
-
 find "$DIR" \
   -type f \
   \( \
@@ -17,3 +14,5 @@ find "$DIR" \
 | xargs -0 sed -E -i "" \
 's!tools/tools!tools!g'
 
+# Reminder: -E is for extended RegEx
+# Reminder: -i is for editing the file in place

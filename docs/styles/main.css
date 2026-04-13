@@ -204,9 +204,8 @@ code {
   overscroll-behavior-x: none;
 }
 
-.code-block.nonums {
+.code-block.no-numbers {
   padding-left: var(--default-padding);
-
   & .line-marker:before {
     opacity: 0;
   }

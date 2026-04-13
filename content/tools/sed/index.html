@@ -1,0 +1,16 @@
+== extends "/tools/templates.inc/default.html"
+
+== block toml
+link_text = "sed"
+== endblock 
+
+== block main
+== filter md
+The latest sed command I'm using:
+
+== filter highlight("bash", classes="no-numbers")
+== include parent(file_path) + "/sed/scripts.inc/al9000.bash" 
+== endfilter
+
+== endfilter
+== endblock
