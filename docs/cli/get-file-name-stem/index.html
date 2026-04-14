@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Get the Stem of a File Name in bash</title>
+<meta property="og:title" content="Get the Stem of a File Name in bash" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/cli/get-file-name-stem/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+      <h1>Get the Stem of a File Name in bash</h1>
+        <div class="date">April 2026</div>
+  </hgroup>
+
+
+
+<div class="command-block "><pre><code><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+</span>
+<span class="variable other readwrite assignment shell">EXAMPLE_PATH</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>path/to/example-file.txt<span class="punctuation definition string end shell">&quot;</span></span></span>
+
+<span class="variable other readwrite assignment shell">BASENAME</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="meta group expansion command parens shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section parens begin shell">(</span><span class="meta function-call shell"><span class="variable function shell">basename</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">EXAMPLE_PATH</span></span><span class="punctuation definition string end shell">&quot;</span></span></span><span class="punctuation section parens end shell">)</span></span></span>
+<span class="variable other readwrite assignment shell">STEM</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section expansion parameter begin shell">{</span></span><span class="meta group expansion parameter shell"><span class="variable other readwrite shell">BASENAME<span class="keyword operator expansion shell">%</span></span></span><span class="meta group expansion parameter shell">.<span class="keyword operator regexp quantifier shell">*</span></span><span class="meta group expansion parameter shell"><span class="punctuation section expansion parameter end shell">}</span></span><span class="punctuation definition string end shell">&quot;</span></span></span>
+
+<span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">STEM</span></span></span></span></code></pre></div>
+<div class="command-block "><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">example-file</span></span></span></code></pre></div>
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    (RSS coming soon)
+  </div>
+</footer>
+
+    <div class="templates">
+      <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
+</html>

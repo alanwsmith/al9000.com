@@ -1,21 +1,24 @@
 == extends "/templates.inc/pages/default.html"
 
 == block toml
-title = "Loop Through Files in a Directory (non-recursively)"
-created = 2026-04-10T11:15:51-04:00
+title = "Get the Stem of a File Name in bash"
+short_title = "Get the Stem of a File Name"
+created = 2026-04-13T20:25:00-04:00
 == endblock
 
 == block main
 
-== filter highlight_block("bash", "loop-through-files.bash")
+
+== filter highlight_command("bash")
 == include parent(file_path) + "/script.bash"
 == endfilter
 
-== filter highlight_block("txt")
+== filter highlight_command("txt")
 == include parent(file_path) + "/output.txt"
 == endfilter
 
 == endblock
+
 
 
 
