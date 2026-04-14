@@ -7,13 +7,15 @@ link_text = "Encryption"
 == block main
 == filter md
 
+
 These are the tools I use to obfuscate files on the 
 site to make it harder for bots to slurp up 
 my content. They are not designed for
 authentication/authorization. They 
 are not secure. 
 
-Encryptor path:
+### Encryptor CLI
+
 
 == filter highlight_text() 
 ~/workshop/al9000.com/content/tools/encryption/apps/cli-encryptor/release/aarch64-apple-darwin/encryptor
@@ -28,26 +30,73 @@ encryptor INPUT_PATH OUTPUT_PATH
 == endfilter
 
 
-Decryptor Basics:
+### WASM Decryptor
+== endfilter
+
+<details>
+<summary>Text File</summary>
+== filter highlight("javascript", classes="no-numbers") 
+== include parent(file_path) + "/encryption/apps/wasm-decryptor/decrypt-text-file.js"
+== endfilter
+<script type="module" src="/tools/encryption/apps/wasm-decryptor/decrypt-text-file.js"></script>
+</details>
+
+
+<details>
+<summary>Single Video File</summary>
+<div class="faded-match-background">
+<video id="singleDecryptedVideo" controls></video>
+</div>
+== filter highlight("javascript", classes="no-numbers") 
+== include parent(file_path) + "/encryption/apps/wasm-decryptor/decrypt-single-video-file.js"
+== endfilter
+<style>
+#singleDecryptedVideo {width: 18rem;}
+</style>
+<script type="module" src="/tools/encryption/apps/wasm-decryptor/decrypt-single-video-file.js"></script>
+</details>
+
+
+<details>
+<summary>Split Video File</summary>
+<div class="faded-match-background">
+<video id="splitDecryptedVideo" controls></video>
+</div>
+== filter highlight("javascript", classes="no-numbers") 
+== include parent(file_path) + "/encryption/apps/wasm-decryptor/decrypt-split-video-file.js"
+== endfilter
+<style>
+#splitDecryptedVideo {width: 18rem;}
+</style>
+<script type="module" src="/tools/encryption/apps/wasm-decryptor/decrypt-split-video-file.js"></script>
+</details>
+
+
+
+[#
 
 == filter highlight("javascript", classes="no-numbers") 
 == include parent(file_path) + "/encryption/apps/wasm-decryptor/script.js"
 == endfilter
 
-== endfilter
+
+
 
 <script src="[@ parent(file_path) @]/encryption/apps/wasm-decryptor/script.js" type="module"></script>
 
-<style>
-#decryptedVideo {
-  width: 18rem;
-}
-</style>
 <p>Decrypted Video</p>
 
 <div class="faded-match-background">
 <video id="decryptedVideo" controls></video>
 </div>
+
+<p>Decrypted Split Video</p>
+<div class="faded-match-background">
+<video id="splitDecryptedVideo" controls></video>
+</div>
+
+#]
+
 
 
 == endblock
