@@ -117,108 +117,39 @@ video {
 <main>
   <div class="cells" data-r="selectVideo welcome">
 
-    <div>
-
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-
-
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-
-
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-
-
-
-
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-    <video class="v1"></video>
-
+    <div class="welcome default-flow">
+    <h1>Welcome to Multi-Player</h1>
+      <p><strong>NOTE: this currently only works properly in Firefox on a relative new device</strong></p>
+      <p>
+        This page is a video experiment showing the same
+        video multiple times with a little delay between
+        each. A few things to note before you get
+        started:
+      </p>
+      <ul class="default-flow">
+        <li class="info-color">
+          Flashing Lights Warning: The nature of the
+          delays between videos causes a flashing
+          lights effect.
+        </li>
+        <li>
+          The videos loads fastest in Firefox.
+        </li>
+        <li>
+          Google
+          Chrome can take several seconds depending
+          on the size of your screen.
+        </li>
+        <li>
+          Synchronization in the Safari browser 
+          often gets out of whack. 
+        </li>
+        <li>
+          The videos come from YouTube. A link to
+          each one is provided if you want to 
+          bookmark them there. 
+        </li>
+      </ul>
     </div>
 
   </div>
@@ -243,17 +174,21 @@ video {
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
 <bitty-8 data-connect="/multi-player/bit.js"></bitty-8>
 
-<script type="text/html" data-id="cell">
+<script type="text/html" data-template="cell">
   <div class="cell">
     __VIDEO__
   </div>
 </script>
 
-<script type="text/html" data-id="option">
+<script type="text/html" data-template="option_v2">
   <option value="__UUID__">__TITLE__ (__UUID__)</option>
 </script>
 
-<script type="text/html" data-id="loading">
+<script type="text/html" data-template="option">
+  <option value="__ID__">__TITLE__ (__ID__)</option>
+</script>
+
+<script type="text/html" data-template="loading">
   <div class="loading">Loading</div>
 </script>    </div>
   </body>

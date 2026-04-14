@@ -1,4 +1,4 @@
-import init, {
+import decryptInit, {
   decryptBytes,
 } from "/tools/encryption/apps/wasm-decryptor/pkg/wasm_decryptor.js";
 
@@ -35,7 +35,7 @@ async function decryptWebm(url) {
 }
 
 async function main() {
-  await init();
+  await decryptInit();
   const videoEl = document.querySelector("#singleDecryptedVideo");
   const videoURL = await decryptWebm(
     "/tools/encryption/apps/cli-encryptor/samples/video.webm.bin",
