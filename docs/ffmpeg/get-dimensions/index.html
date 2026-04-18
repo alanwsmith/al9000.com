@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Get the Width and Height Dimensions of a Video with ffprobe</title>
+<meta property="og:title" content="Get the Width and Height Dimensions of a Video with ffprobe" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/ffmpeg/get-dimensions/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+  <div class="subnav default-wrapper">
+    <a href="&#x2f;ffmpeg">ffmpeg</a>
+  </div>
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+      <h1>Get the Width and Height Dimensions of a Video with ffprobe</h1>
+        <div class="date">April 2026</div>
+  </hgroup>
+
+
+<p>
+  This is the command I use to get the size dimensions
+  of a video with ffprobe (which comes with ffmpeg).
+</p>
+
+
+<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">ffprobe</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> error<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>show_entries</span> stream=width,height<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>of</span> csv=p=0 input.mp4 <span class="keyword operator assignment redirection shell">&gt;</span> output.txt</span></span></code></pre></div>
+<p>
+  This is the output from my sample video which
+  is 1920 pixels wide by 1080 high. 
+</p>
+
+<div class="text-block"><pre><code><span class="line-marker"></span><span class="text plain">1920,1080</span></code></pre></div>
+
+<h2>Details</h2>
+<ul>
+<li>
+<p><code>-v error</code> sets the logging verbosity to <code>error</code> level
+which prevents the standard progress output.</p>
+</li>
+<li>
+<p><code>-show_entries stream=width,height</code> filters the output
+to show only the width and height.</p>
+</li>
+<li>
+<p><code>-of csv=p=0</code> sets the output format to CSV without headers.</p>
+</li>
+<li>
+<p><code>input.mp4</code> is the name of the input file.</p>
+</li>
+<li>
+<p><code>&gt;</code> sends the output to a file.</p>
+</li>
+<li>
+<p><code>output.txt</code> is the file that gets the output.</p>
+</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>
+<p>You can select a specific stream by adding
+this if the video has more than one in it:</p>
+<p><code>-select_streams v:0</code></p>
+</li>
+<li>
+<p>You can output to JSON by changing the <code>-of</code> value
+to:</p>
+<p><code>-of json</code></p>
+</li>
+</ul>
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    [rss coming soon]
+  </div>
+</footer>
+
+    <div class="templates">
+      <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+== extends "/templates.inc/pages/default.html"
+== set subnav = "ffmpeg"
+== set subnav_href = "/ffmpeg"
+
+== block toml
+title = "Get the Width and Height Dimensions of a Video with ffprobe"
+short_title = "Get Width and Height Dimensions"
+created = 2026-04-14T10:40:00-04:00
+status = "scratch"
+== endblock
+
+== block main
+
+<p>
+  This is the command I use to get the size dimensions
+  of a video with ffprobe (which comes with ffmpeg).
+</p>
+
+
+== filter highlight_command()
+== include parent(file_path) + "/script.inc.bash"
+== endfilter
+
+<p>
+  This is the output from my sample video which
+  is 1920 pixels wide by 1080 high. 
+</p>
+
+== filter highlight_text()
+== include parent(file_path) + "/output.txt"
+== endfilter
+
+
+== filter md
+## Details
+
+- `-v error` sets the logging verbosity to `error` level 
+which prevents the standard progress output. 
+
+- `-show_entries stream=width,height` filters the output
+to show only the width and height. 
+
+- `-of csv=p=0` sets the output format to CSV without headers. 
+
+- `input.mp4` is the name of the input file. 
+
+- `>` sends the output to a file.
+
+- `output.txt` is the file that gets the output.
+
+### Notes
+
+- You can select a specific stream by adding 
+this if the video has more than one in it:
+
+  `-select_streams v:0`
+
+- You can output to JSON by changing the `-of` value
+to: 
+
+  `-of json`
+
+== endfilter
+
+== endblock
+
+
+
+
+
+

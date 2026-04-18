@@ -1,0 +1,44 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml
+title = "Multi-Player ffmpeg Command Builder"
+_created = 2026-04-14T11:18:00-04:00
+== endblock
+
+== block main
+
+<form data-s="command">
+  <div class="two-columns-left">
+    <label>Input File</label>
+    <input type="text" name="inputFile" value="input.mp4" />
+    <label>Output File</label>
+    <input type="text" name="outputFile" value="output.webm" />
+    <label>Output Width</label>
+    <input type="number" name="outputWidth" value="3840"/>
+    <label>Output Ration Width</label>
+    <input type="number" name="outputRatioWidth" value="16"/>
+    <label>Output Ration Height</label>
+    <input type="number" name="outputRatioHeight" value="9"/>
+    <label>Max Cell Width</label>
+    <input type="number" name="maxCellWidth" value="460"/>
+    <label>Cell Ratio Width</label>
+    <input type="number" name="cellRatioWidth" value="16"/>
+    <label>Cell Ratio Height</label>
+    <input type="number" name="cellRatioHeight" value="9"/>
+    <label>Duration</label>
+    <input type="number" name="duration" value="10"/>
+    <label>Primary Column</label>
+    <input type="number" name="primaryColumn" value="4"/>
+    <label>Primary Row</label>
+    <input type="number" name="primaryRow" value="2"/>
+    <div>Command</div>
+    <textarea data-r="command"></textarea>
+  </div>
+  <input type="submit" value="Generate Command" id="submitButton" />
+</form>
+
+
+<bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+
+== endblock
+

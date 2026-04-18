@@ -1,0 +1,11 @@
+== extends "/tools/templates.inc/default.html"
+
+== block toml
+title = "Post ID"
+== endblock
+
+== block main
+<div data-r="makePostID copyPostID"></div>
+<button data-s="copyPostID">Copy</button>
+<button data-s="makePostID">Get a new one</button>
+== endblock
