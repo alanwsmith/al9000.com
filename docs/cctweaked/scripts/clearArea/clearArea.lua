@@ -1,12 +1,7 @@
 require "/library/_library"
 
 local clearArea = function()
-  print("How Long?")
-  local y_length = getNumber()
-  print("How Wide?")
-  local x_width = getNumber()
-  print("How Tall?")
-  local z_height = getNumber()
+  print("clearArea initiated")
 
   os.sleep(3)
 
@@ -66,4 +61,22 @@ local clearArea = function()
   print("Finished Clearning Area")
 end
 
-clearArea()
+local getCoords = function() 
+  print("How Long?")
+  local y_length = getNumber()
+  print("How Wide?")
+  local x_width = getNumber()
+  print("How Tall?")
+  local z_height = getNumber()
+  if y_length % 2 == 0 then
+    if x_width % 2 == 0 then
+      clearArea(y_length, x_width, z_height)
+    else
+      print("Width must be an even number")
+    end
+  else 
+    print("Height must be an even number")
+  end
+end
+
+getCoords()
