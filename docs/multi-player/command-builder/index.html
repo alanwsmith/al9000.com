@@ -33,6 +33,13 @@ body {
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
 <link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
 <link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<style>
+textarea {
+  min-height: 26rem;
+  font-size: 0.7rem;
+}
+</style>
+
   </head>
   <body>
 <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
@@ -54,6 +61,8 @@ body {
   <hgroup>
       <h1>Multi-Player ffmpeg Command Builder</h1>
   </hgroup>
+
+
 
 
 <form data-s="command">
@@ -81,7 +90,7 @@ body {
     <label>Primary Row</label>
     <input type="number" name="primaryRow" value="2"/>
     <div>Command</div>
-    <textarea data-r="command"></textarea>
+    <textarea data-r="command" autocomplete="off"></textarea>
   </div>
   <input type="submit" value="Generate Command" id="submitButton" />
 </form>

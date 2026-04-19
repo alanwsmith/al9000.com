@@ -92,7 +92,6 @@ body {
       <div data-r="uiStars"></div>
     </div>
 
-
     <div>
       <div class="inputSelect">
         <label for="type_line_search_include">Type:</label>
@@ -160,21 +159,21 @@ body {
     <div class="templates">
       <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
-<script type="text/html" id="colorTemplate">
+<script type="text/html" data-template="colorTemplate">
   <label class="block">
     <input data-s="searchFromStart" data-r="displayColorCheckbox" data-key="__COLOR_KEY__" data-save="true" id="color_checkbox___COLOR_KEY__" type="checkbox" />
     __COLOR_NAME__ 
   </label>
 </script>
 
-<script type="text/html" id="colorlessTemplate">
+<script type="text/html" data-template="colorlessTemplate">
   <label class="block">
     <input data-s="searchFromStart" data-r="displayColorlessCheckbox" data-key="C" data-save="true" id="color_checkbox_C" type="checkbox" />
     colorless
   </label>
 </script>
 
-<script type="text/html" id="cardTemplate">
+<script type="text/html" data-template="cardTemplate">
   <div class="card" data-id="__CARD_ID__">
     <div class="main-card">
       <img src="__IMG_SRC__" alt="__CARD_NAME__ from Magic: The Gathering" />
@@ -195,15 +194,15 @@ body {
   </div>
 </script>
 
-<script type="text/html" id="optionTemplate">
+<script type="text/html" data-template="optionTemplate">
   <option value="__VALUE__">__VALUE__</option>
 </script>
 
-<script type="text/html" id="optionSpacerTemplate">
+<script type="text/html" data-template="optionSpacerTemplate">
   <option value="">---</option>
 </script>
 
-<script type="text/html" id="starsTemplate">
+<script type="text/html" data-template="starsTemplate">
   <label>
     <input class="star-radio-button" data-s="setStars" data-save="true" id="radioStars__VALUE__" type="radio" name="stars" value="__VALUE__" />
     __VALUE__

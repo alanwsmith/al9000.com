@@ -5,7 +5,19 @@ title = "Multi-Player ffmpeg Command Builder"
 _created = 2026-04-14T11:18:00-04:00
 == endblock
 
+== block head
+<style>
+textarea {
+  min-height: 26rem;
+  font-size: 0.7rem;
+}
+</style>
+
+== endblock
+
 == block main
+
+
 
 <form data-s="command">
   <div class="two-columns-left">
@@ -32,7 +44,7 @@ _created = 2026-04-14T11:18:00-04:00
     <label>Primary Row</label>
     <input type="number" name="primaryRow" value="2"/>
     <div>Command</div>
-    <textarea data-r="command"></textarea>
+    <textarea data-r="command" autocomplete="off"></textarea>
   </div>
   <input type="submit" value="Generate Command" id="submitButton" />
 </form>
