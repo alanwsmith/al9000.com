@@ -1,6 +1,6 @@
 require "/library/_library"
 
-local clearArea = function()
+local clearArea = function(y_length, x_width, z_height)
   print("clearArea initiated")
 
   os.sleep(3)
