@@ -1,6 +1,6 @@
 findSlotWithNames = function(names)
   for slot = 1, 16 do
-    local details = turtle.getItemDetail(slot, true)
+    local details = turtle.getItemDetail(slot)
     if details ~= nil then
       if details.name ~= nil then
         for index, name in ipairs(names) do

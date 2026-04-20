@@ -1,8 +1,13 @@
-require "/library/FindSlotWithName"
+require "/library/unloadDown"
 
-if findSlotWithName("minecraft:carrot") ~= nil then
-  turtle.placeDown()
-end
+unloadDown()
+
+
+-- require "/library/FindSlotWithName"
+
+-- if findSlotWithName("minecraft:carrot") ~= nil then
+--   turtle.placeDown()
+-- end
 
 
 -- 

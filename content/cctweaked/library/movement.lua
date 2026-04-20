@@ -1,8 +1,9 @@
 back = function(steps)
+  steps = steps or 1
   turtle.turnRight()
   turtle.turnRight()
   for step = 1, steps do
-    print("-- Move back - Remaining Fuel: " .. turtle.getFuelLevel())
+    -- print("-- Move back - Remaining Fuel: " .. turtle.getFuelLevel())
     while turtle.detect() do
       turtle.dig()
     end
@@ -13,9 +14,10 @@ back = function(steps)
 end
 
 down = function(steps)
+  steps = steps or 1
   -- TODO: Watch out for bedrock with this
   for step = 1, steps do
-    print("-- Move down - Remaining Fuel: " .. turtle.getFuelLevel())
+    -- print("-- Move down - Remaining Fuel: " .. turtle.getFuelLevel())
     while turtle.detectDown() do
       turtle.digDown()
     end
@@ -24,8 +26,9 @@ down = function(steps)
 end
 
 forward = function(steps)
+  steps = steps or 1
   for step = 1, steps do
-    print("-- Move forward - Remaining Fuel: " .. turtle.getFuelLevel())
+    -- print("-- Move forward - Remaining Fuel: " .. turtle.getFuelLevel())
     while turtle.detect() do
       turtle.dig()
     end
@@ -33,19 +36,26 @@ forward = function(steps)
   end
 end
 
-turnLeft = function()
-  print("-- Turning Left - Remaining Fuel: " .. turtle.getFuelLevel())
-  turtle.turnLeft()
+turnLeft = function(turns)
+  turns = turns or 1
+  -- print("-- Turning Left - Remaining Fuel: " .. turtle.getFuelLevel())
+  for i = 1, turns do  
+    turtle.turnLeft()
+  end
 end
 
-turnRight = function()
-  print("-- Turning Right - Remaining Fuel: " .. turtle.getFuelLevel())
-  turtle.turnRight()
+turnRight = function(turns)
+  turns = turns or 1
+  -- print("-- Turning Right - Remaining Fuel: " .. turtle.getFuelLevel())
+  for i = 1, turns do  
+    turtle.turnRight()
+  end
 end
 
 up = function(steps)
+  steps = steps or 1
   for step = 1, steps do
-    print("-- Move up - Remaining Fuel: " .. turtle.getFuelLevel())
+    -- print("-- Move up - Remaining Fuel: " .. turtle.getFuelLevel())
     while turtle.detectUp() do
       turtle.digUp()
     end
@@ -58,12 +68,12 @@ digDown = function()
   -- in case it hits bedrock, not sure
   -- what cases there are where it
   -- would need to regardless
-  print("-- Digging down - Remaining Fuel: " .. turtle.getFuelLevel())
+  -- print("-- Digging down - Remaining Fuel: " .. turtle.getFuelLevel())
   turtle.digDown()
 end
 
 digUp = function()
-  print("-- Digging up - Remaining Fuel: " .. turtle.getFuelLevel())
+  -- print("-- Digging up - Remaining Fuel: " .. turtle.getFuelLevel())
   while turtle.detectUp() do
     turtle.digUp()
   end

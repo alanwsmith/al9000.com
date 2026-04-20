@@ -1,5 +1,7 @@
 require "/library/movement"
 require "/library/findSlotWithName"
+require "/library/unloadDown"
+require "/library/refuel"
 
 local plantRow = function()
   for i=1,15,1 do
@@ -32,7 +34,7 @@ local upAndBack = function()
   plantRow()
   forward(1)
   down(1)
-  -- TODO: Dump inventory here
+  unloadDown()
 end
 
 local doHarvest = function()
@@ -51,8 +53,11 @@ local doHarvest = function()
 end
 
 while true do
+  refuel()
   doHarvest()
-  print("Sleeping for 10 min.")
-  os.sleep(600)
+  for i=20,1,-1 do
+    print("Sleeping for " .. i .. " min.")
+    os.sleep(60)
+  end
 end
 

@@ -4,7 +4,7 @@ getAllSlotDetails = function()
   for slot = 1, 16 do
     out.write("------------------------------\n")
     out.write("Slot: " .. slot .. "\n")
-    local detail = turtle.getItemDetail(slot, true)
+    local detail = turtle.getItemDetail(slot)
     if detail then
       out.write(textutils.serialise(detail))
       out.write("\n")

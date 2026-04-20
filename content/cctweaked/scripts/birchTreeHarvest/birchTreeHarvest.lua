@@ -1,6 +1,7 @@
 require "/library/movement"
 require "/library/doesBlockHaveTag"
 require "/library/findSlotWithTag"
+require "/library/refuel"
 
 
 local chopTree = function()
@@ -50,5 +51,6 @@ local harvestRows = function()
   back(15)
 end
 
+refuel()
 harvestRows()
 

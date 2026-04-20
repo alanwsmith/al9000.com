@@ -1,10 +1,11 @@
 require "/library/movement"
-
-
+require "/library/findSlotWithName"
+require "/library/refuel"
 
 local plantRow = function()
   turnLeft()
   for i=1,6,1 do
+    findSlotWithName("minecraft:birch_sapling")
     turtle.placeDown()
     forward(3)
   end
@@ -30,6 +31,7 @@ local moveToEnd = function()
   down(1)
 end
 
+refuel()
 moveToStart()
 plantRows()
 moveToEnd()
