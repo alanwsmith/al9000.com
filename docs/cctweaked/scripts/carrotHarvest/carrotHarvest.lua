@@ -55,7 +55,7 @@ end
 while true do
   refuel()
   doHarvest()
-  for i=15,1,-1 do
+  for i=10,1,-1 do
     print("Sleeping for " .. i .. " min.")
     os.sleep(60)
   end
