@@ -38,11 +38,11 @@ local clearArea = function(y_length, x_width, z_height)
 
     if x % 2 == 0 then
       turnRight()
-      forward(y_length - 1)
+      forward(x_width - 1)
       turnRight()
     else
       turnLeft()
-      forward(y_length - 1)
+      forward(x_width - 1)
       turnLeft()
     end
 
