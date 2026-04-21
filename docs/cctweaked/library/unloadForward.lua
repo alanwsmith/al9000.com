@@ -7,7 +7,7 @@ unloadForward = function()
     local details = turtle.getItemDetail()
     if details ~= nil then
       if details.name ~= "minecraft:charcoal" then
-        turtle.dropForward()
+        turtle.drop()
       end
     end
   end

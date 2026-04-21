@@ -82,21 +82,23 @@ local moveToEnd = function()
 end
 
 
-
-refuel()
-harvestRows()
-for i = 7, 1, -1 do
-  print("Sleeping for " .. i .. " min.")
-  os.sleep(60)
-end
-moveToStart()
-plantRows()
-moveToEnd()
-
-
--- this is to figure out how long 
--- to wait before the next run
-for i = 1, 20 do
-  print("Have slept for " .. i .. " min.")
-  os.sleep(60)
+while true do 
+  refuel()
+  harvestRows()
+  -- 5min lets basically all the 
+  -- leaves despawn
+  for i = 5, 1, -1 do
+    print("Sleeping for " .. i .. " min.")
+    os.sleep(60)
+  end
+  moveToStart()
+  plantRows()
+  moveToEnd()
+  print("Remember to restock saplings")
+  -- Tested a few times and 25min
+  -- seems pretty solid
+  for i = 1, 25 do
+    print("Have slept for " .. i .. " min.")
+    os.sleep(60)
+  end
 end

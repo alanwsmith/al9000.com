@@ -9,12 +9,12 @@ local plantRow = function()
     if exists then
       if data.state.age == 7 then
         turtle.digDown()
-        if findSlotWithName("minecraft:wheat_seeds") ~= nil then
+        if findSlotWithName("minecraft:carrot") ~= nil then
           turtle.placeDown()
         end
       end  
     else
-      if findSlotWithName("minecraft:wheat_seeds") ~= nil then
+      if findSlotWithName("minecraft:carrot") ~= nil then
         turtle.placeDown()
       end
     end
@@ -55,9 +55,10 @@ end
 while true do
   refuel()
   doHarvest()
-  for i=20,1,-1 do
+  for i=10,1,-1 do
     print("Sleeping for " .. i .. " min.")
     os.sleep(60)
   end
 end
+
 
