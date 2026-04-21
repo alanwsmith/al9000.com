@@ -5,12 +5,13 @@ require "/library/findSlotWithName"
 require "/library/refuel"
 
 local chopTree = function()
-  local maxHeight = 7
-  for height = 1, maxHeight do
+  local upHeight = 6
+  for height = 1, upHeight do
     turtle.dig()
     up(1)
   end
-  down(maxHeight)
+  turtle.dig()
+  down(upHeight)
 end
 
 local plantSapling = function()
@@ -95,9 +96,9 @@ while true do
   plantRows()
   moveToEnd()
   print("Remember to restock saplings")
-  -- Tested a few times and 25min
+  -- Tested a few times and 23min
   -- seems pretty solid
-  for i = 1, 25 do
+  for i = 1, 23 do
     print("Have slept for " .. i .. " min.")
     os.sleep(60)
   end
