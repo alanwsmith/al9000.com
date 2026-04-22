@@ -8,4 +8,5 @@ rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profil
 rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/5/"
 rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/6/"
 rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/7/"
+rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/8/"
 

@@ -54,7 +54,11 @@ end
 
 while true do
   refuel()
-  doHarvest()
+  if turtle.getFuelLevel() < 500 then
+    print("Fuel below required amount. Skipping run.")
+  else
+    doHarvest()
+  end
   for i=10,1,-1 do
     print("Sleeping for " .. i .. " min.")
     os.sleep(60)

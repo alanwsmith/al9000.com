@@ -16,7 +16,7 @@ local cutPair = function()
   cutRow()
 end
 
-local cutKelp = function()
+local cutKelpLayer = function()
   for i = 1, 6 do
     cutPair()
     turnLeft()
@@ -26,70 +26,38 @@ local cutKelp = function()
   cutPair()
   turnRight()
   forward(13)
-  turnRight()
+  turnLeft(1)
+  unloadForward()
+  turnRight(2)
 end
 
+-- local cutKelp = function()
+--   cutKelpLayer()
+--   up(3)
+--   cutKelpLayer()
+--   up(3)
+--   cutKelpLayer()
+--   down(6)
+--   turnRight(2)
+--   unloadForward()
+--   turnLeft(2)
+-- end
 
-local getRow = function() 
-  for i = 1, 11 do
-    forward()
-    -- doing a few times to make sure
-    -- until an inspection is added
-    -- if that's possible
-    turtle.suckDown()
-    turtle.suckDown()
-    turtle.suckDown()
-  end
-end
 
-local getPair = function()
-  getRow()
-  turnRight()
-  forward()
-  turtle.suckDown()
-  turtle.suckDown()
-  turtle.suckDown()
-  turnRight()
-  getRow()
-end
-
-local getKelp = function()
-  for i = 1, 6 do
-    getPair()
-    turnLeft()
-    forward()
-    turtle.suckDown()
-    turtle.suckDown()
-    turtle.suckDown()
-    turnLeft()
-  end
-  getPair()
-  turnRight()
-  forward(13)
-  turnRight()
-end
-
-local runIt = function()
+local main = function()
   while true do
-    local tankHeight = 4
+    print("Staring run")
     refuel()
-    cutKelp()
-    for u = 1, tankHeight do
-      turtle.up()
+    if turtle.getFuelLevel() < 400 then
+      print("Fuel below required amount. Skipping run.")
+    else
+      os.sleep(1)
+      cutKelpLayer()
     end
-    getKelp()
-    for d = 1, tankHeight do
-      turtle.down()
-    end
-    turnRight(2)
-    unloadForward()
-    turnRight(2)
-    for i = 7, 1, -1 do
-      print("Sleeing for " .. i .. " min.")
-      os.sleep(60)
-    end
+    print("Sleeping for " .. 1 .. " min.")
+    os.sleep(60)
   end
 end
 
-runIt()
 
+main()

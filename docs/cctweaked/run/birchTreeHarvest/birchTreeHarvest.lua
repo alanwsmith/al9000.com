@@ -85,17 +85,25 @@ end
 
 while true do 
   refuel()
-  harvestRows()
-  -- 5min lets basically all the 
-  -- leaves despawn
-  for i = 5, 1, -1 do
-    print("Sleeping for " .. i .. " min.")
-    os.sleep(60)
+  if turtle.getFuelLevel() < 500 then
+    print("Fuel below required amount. Skipping run.")
+    -- TODO: Check that there are enough saplings
+    -- for the run too.
+  else
+    harvestRows()
+    print("Remaining fuel: " .. turtle.getFuelLevel())
+    -- 5min lets basically all the 
+    -- leaves despawn
+    for i = 5, 1, -1 do
+      print("Sleeping for " .. i .. " min.")
+      os.sleep(60)
+    end
+    moveToStart()
+    plantRows()
+    moveToEnd()
+    print("Remember to restock saplings")
   end
-  moveToStart()
-  plantRows()
-  moveToEnd()
-  print("Remember to restock saplings")
+
   -- Tested a few times and 23min
   -- seems pretty solid
   for i = 1, 23 do
