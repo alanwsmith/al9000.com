@@ -1,4 +1,3 @@
-require "/library/_library"
-
+require "/library/scripts"
 back(1)
 

@@ -1,3 +1,3 @@
-require "/library/_library"
+require "/library/scripts"
 
 turnLeft(1)

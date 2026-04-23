@@ -6,5 +6,6 @@ require "/library/movement"
 require "/library/placeTorchDown"
 require "/library/sleepMin"
 require "/library/unloadDown"
+require "/library/unloadForward"
 require "/library/unlock"
 

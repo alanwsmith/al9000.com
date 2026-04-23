@@ -1,6 +1,4 @@
-require "/library/movement"
-require "/library/refuel"
-require "/library/unloadForward"
+require "/library/scripts"
 
 local cutRow = function() 
   for i = 1, 11 do
@@ -31,33 +29,19 @@ local cutKelpLayer = function()
   turnRight(2)
 end
 
--- local cutKelp = function()
---   cutKelpLayer()
---   up(3)
---   cutKelpLayer()
---   up(3)
---   cutKelpLayer()
---   down(6)
---   turnRight(2)
---   unloadForward()
---   turnLeft(2)
--- end
-
-
 local main = function()
   while true do
-    print("Staring kelp cutting run")
+    lock()
+    print("Starting kelp cutting run")
     refuel()
     if turtle.getFuelLevel() < 400 then
       print("Fuel below required amount. Skipping run.")
     else
-      os.sleep(1)
       cutKelpLayer()
     end
-    print("Sleeping for " .. 1 .. " min.")
-    os.sleep(60)
+    unlock()
+    sleepMin(2)
   end
 end
-
 
 main()

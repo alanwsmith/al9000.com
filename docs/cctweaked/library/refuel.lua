@@ -1,4 +1,4 @@
-require "/library/_library"
+require "/library/doesSlotHaveName"
 
 refuel = function()
   print("Refueling...")

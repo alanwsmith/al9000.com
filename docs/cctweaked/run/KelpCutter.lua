@@ -40,8 +40,7 @@ local main = function()
       cutKelpLayer()
     end
     unlock()
-    print("Sleeping for " .. 1 .. " min.")
-    os.sleep(60)
+    sleepMin(2)
   end
 end
 

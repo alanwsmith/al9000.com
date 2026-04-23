@@ -1,9 +1,9 @@
-require "/library/_library"
+require "/library/scripts"
 
 local clearArea = function(y_length, x_width, z_height)
   print("clearArea initiated")
 
-  os.sleep(3)
+  os.sleep(2)
 
   -- step into area
   forward(1)

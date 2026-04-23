@@ -14,12 +14,10 @@ local loadFuel = function()
 end
 
 local refuelFurnaces = function() 
-  local furnaceCount = 13
-  turnRight(2)
+  local furnaceCount = 14
   for i = 1, 16 do
-    turtle.suck()
+    turtle.suckDown()
   end
-  turnLeft(2)
   for count = 1, furnaceCount do
     turnLeft()
     loadFuel()

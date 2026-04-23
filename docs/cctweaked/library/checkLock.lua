@@ -1,0 +1,2 @@
+-- checks to see if the lock file exists.
+-- Returns ture
