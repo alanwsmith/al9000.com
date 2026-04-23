@@ -1,6 +1,4 @@
-require "/library/movement"
-require "/library/findSlotWithName"
-require "/library/refuel"
+require "/library/scripts"
 
 local getKelp = function()
   local upCount = 4
@@ -23,9 +21,7 @@ end
 local dropKelp = function()
   local slot = findSlotWithName("minecraft:kelp")
   if slot then
-    -- drop 20 which is the amount one
-    -- block of dried kelp can smelt
-    turtle.dropDown(20)
+    turtle.dropDown()
   end
 end
 
@@ -50,13 +46,7 @@ local main = function()
       getKelp()
       loadKelp()
     end
-    -- 2 min lets thing refill but
-    -- moves fast enough that if there's
-    -- kelp the flames don't go out.
-    for i = 2, 1, -1 do
-      print("Sleeping for " .. i .. " min.")
-      os.sleep(60)
-    end
+    sleepMin(4)
   end
 end
 

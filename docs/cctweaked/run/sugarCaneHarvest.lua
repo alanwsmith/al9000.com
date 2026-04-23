@@ -64,8 +64,8 @@ end
 
 local main = function()
   while true do
+    print("Starting Run: SugarCaseHarvest")
     lock()
-    print("Starting run")
     checkFuelLevel(500, true)
     harvestLayer()
     unloadDown()
@@ -75,3 +75,4 @@ local main = function()
 end
 
 main()
+

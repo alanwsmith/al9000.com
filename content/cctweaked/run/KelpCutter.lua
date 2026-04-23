@@ -40,7 +40,7 @@ local main = function()
       cutKelpLayer()
     end
     unlock()
-    sleepMin(2)
+    sleepMin(3)
   end
 end
 

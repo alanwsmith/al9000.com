@@ -1,5 +1,4 @@
-require "/library/movement"
-require "/library/findSlotWithName"
+require "/library/scripts"
 
 local loadFuel = function()
   -- add randomness so the front ones aren't
@@ -8,7 +7,7 @@ local loadFuel = function()
   local slot = findSlotWithName("minecraft:dried_kelp_block")
   if slot then
     -- if math.random(1,2) == 1 then
-      turtle.drop(2)
+      turtle.drop(6)
     -- end
   end
 end
@@ -42,20 +41,19 @@ local main = function()
   -- you're trying to use to
   -- load the furnaces. 
   while true do
+    lock()
     if turtle.getFuelLevel() < 100 then
       print("Fuel below required amount. Skipping run.")
     else
       refuelFurnaces()
     end
+    unlock()
     -- this sleep time keeps the refilling
     -- ahead of the smelting. It means
     -- you'll need to pull kelp out of
     -- the furnaces to use in other
     -- places until they all fill up.
-    for i=2, 1, -1 do
-      print("Sleeping for " .. i .. " min.")
-      os.sleep(60)
-    end
+    sleepMin(5)
   end
 end
 

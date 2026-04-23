@@ -1,5 +1,6 @@
 require "/library/checkFuelLevel"
 require "/library/doesSlotHaveName"
+require "/library/findSlotWithName"
 require "/library/getNumber"
 require "/library/lock"
 require "/library/movement"
