@@ -1,4 +1,5 @@
 print("Running startup.lua")
+print("Testing this file does not sync")
 
 -- downloadScript = function(fileName)
 --   print("Getting: " .. fileName)

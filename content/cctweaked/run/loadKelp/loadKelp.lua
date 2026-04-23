@@ -2,6 +2,24 @@ require "/library/movement"
 require "/library/findSlotWithName"
 require "/library/refuel"
 
+local getKelp = function()
+  local upCount = 4
+  local downCount = upCount - 1
+  for i = 1, upCount do
+    turnLeft()
+    for i = 1, 16 do
+      turtle.suck()
+    end
+    turnRight()
+    if i < upCount then
+      up(3)
+    end
+  end
+  for i = 1, downCount do
+    down(3)
+  end
+end
+
 local dropKelp = function()
   local slot = findSlotWithName("minecraft:kelp")
   if slot then
@@ -12,19 +30,15 @@ local dropKelp = function()
 end
 
 local loadKelp = function()
-  local furnaceCount = 13
-  turnRight(2)
-  for i = 1, 16 do
-    turtle.suck()
-  end
-  turnLeft(2)
+  local furnaceCount = 14
+  local backCount = furnaceCount - 1
   for f = 1, furnaceCount do
     dropKelp()
     if f ~= furnaceCount then
       turtle.forward()
     end
   end
-  back(furnaceCount - 1)
+  back(backCount)
 end
 
 local main = function()
@@ -33,6 +47,7 @@ local main = function()
     if turtle.getFuelLevel() < 100 then
       print("Fuel below required amount. Skipping run.")
     else
+      getKelp()
       loadKelp()
     end
     -- 2 min lets thing refill but

@@ -46,7 +46,7 @@ end
 
 local main = function()
   while true do
-    print("Staring run")
+    print("Staring kelp cutting run")
     refuel()
     if turtle.getFuelLevel() < 400 then
       print("Fuel below required amount. Skipping run.")

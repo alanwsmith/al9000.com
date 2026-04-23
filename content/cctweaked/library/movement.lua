@@ -28,11 +28,24 @@ end
 forward = function(steps)
   steps = steps or 1
   for step = 1, steps do
-    -- print("-- Move forward - Remaining Fuel: " .. turtle.getFuelLevel())
-    while turtle.detect() do
-      turtle.dig()
+    -- Attempt to move forward 5 times
+    -- to account for things possibly growing
+    -- between the dig and the move. 
+    local didMove = false
+    for try = 1, 5 do
+      while turtle.detect() do
+        turtle.dig()
+      end
+      if turtle.forward() == true then
+        didMove = true
+        break
+      else 
+        print("Could not move forward")
+      end
     end
-    turtle.forward()
+    if didMove == false then
+      os.shutdown()
+    end
   end
 end
 

@@ -1,12 +1,6 @@
 #!/bin/bash
 
-rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/0/"
-rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/1/"
-rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/2/"
-rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/3/"
-rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/4/"
-rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/5/"
-rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/6/"
-rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/7/"
-rsync -av --delete . "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/8/"
+for i in {1..9}; do
+  rsync -av --delete . --exclude local --exclude "startup.lua" "/Users/alan/Library/Application Support/ModrinthApp/profiles/al9000 computercraft testing/saves/Survival Hard/computercraft/computer/$i/"
+done
 

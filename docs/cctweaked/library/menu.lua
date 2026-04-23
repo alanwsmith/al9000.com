@@ -1,1 +1,1 @@
-print("Menu TKTKTK")
+print("Menu - TKTKTK")
