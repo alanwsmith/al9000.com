@@ -4,6 +4,7 @@ export const b = {
 
 const names = `
 Blocked In Russia
+The Non-Deadly Shark Route
 Correct Horse Battery Staple
 T Minus Zero
 Fuck Counter
@@ -17,7 +18,7 @@ Truth in Music
 Greater Nerd Syndrome 
 Strength of Shadows
 Two-Class Boosted Decision Tree
-Iron Gjallarhorn
+Gjallarhorn
 Temporary Cyborgs
 The Abstraction Boundaries
 Stay Tuned

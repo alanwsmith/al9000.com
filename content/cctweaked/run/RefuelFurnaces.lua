@@ -7,7 +7,7 @@ local loadFuel = function()
   local slot = findSlotWithName("minecraft:dried_kelp_block")
   if slot then
     -- if math.random(1,2) == 1 then
-      turtle.drop(6)
+      turtle.drop(3)
     -- end
   end
 end
@@ -53,7 +53,7 @@ local main = function()
     -- you'll need to pull kelp out of
     -- the furnaces to use in other
     -- places until they all fill up.
-    sleepMin(5)
+    sleepMin(4)
   end
 end
 
