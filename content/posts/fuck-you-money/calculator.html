@@ -1,0 +1,57 @@
+<bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+
+<style>
+.amount { min-width: 8ch; }
+</style>
+
+<div class="two-columns-left">
+  <label>Current Age</label>
+  <div class="two-columns-left">
+    <div data-r="age" class="amount">-</div>
+    <input data-s="age" data-r="initAge" type="range" min="1" max="100" autocomplete="off" />
+  </div>
+
+  <label>Annual Income</label>
+  <div class="two-columns-left">
+    <div data-r="income" class="amount">-</div>
+    <input data-s="income" data-r="initIncome" type="range" min="0" max="25" autocomplete="off" />
+  </div>
+
+  <label>Annual Contribution</label>
+  <div class="two-columns-left">
+    <div data-r="contribution" class="amount">-</div>
+    <input data-s="contribution" data-r="initContribution" type="range" min="1" max="100" autocomplete="off" />
+  </div>
+
+  <label>Annual Return</label>
+  <div class="two-columns-left">
+    <div data-r="yearlyReturn" class="amount">-</div>
+    <input data-s="yearlyReturn" data-r="initYearlyReturn" type="range" min="1" max="50" autocomplete="off" />
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Age</th>
+      <th>Initial</th>
+      <th>Contribution</th>
+      <th>Return</th>
+      <th>Contributed</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody data-r="update"></tbody>
+</table>
+
+
+<script type="text/html" data-template="row">
+<tr>
+  <td>__AGE__</td>
+  <td>__INITIAL__</td>
+  <td>__CONTRIBUTION__</td>
+  <td>__RETURN__</td>
+  <td>__CONTRIBUTED__</td>
+  <td>__TOTAL__</td>
+</tr>
+</script>
