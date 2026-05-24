@@ -3,6 +3,8 @@ export const b = {
 };
 
 const names = `
+Miss Chris Quarrier
+Borg Space Zombies
 Blocked In Russia
 The Non-Deadly Shark Route
 Correct Horse Battery Staple
