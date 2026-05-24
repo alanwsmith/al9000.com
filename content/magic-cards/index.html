@@ -1,0 +1,43 @@
+== extends "/templates.inc/pages/default.html" 
+
+[! block main !]
+== filter md 
+- This directory holds custom images for 
+Magic: The Gathering Cards
+- TODO: Generate links to cards for previews
+
+## Making Cards
+
+- I'm getting background from deviant art
+- I'm using [Card Conjurer](https://cardconjurer.app/) to make the card images
+- The frame I'm using is: Regular - Borderless Stations - Colorless Frame. Add it twice to get a darker transparent background.
+- For the power/toughness I'm using: Regular - Regular Frames - Black Power/Toughness
+
+
+
+## Using Cards
+
+To use a card in Tabletop Simulator, do the following:
+
+1. Import a deck from archidekt (or wherever)
+2. Save the deck as an object in TableTop Simulator
+3. Edit the URLs for the images in ~/Library/Saves/Saved Objects/*.json
+
+## URLS
+== endfilter
+<pre>
+# Phantom Ninja
+TODO: Get source for phantom-ninja
+https://al9000.com/magic-cards/images/phantom-ninja/phantom-ninja.png
+
+# Inkrise Infiltrator
+https://cards.scryfall.io/large/front/7/4/74f9c35d-1c6b-4cbe-a7e3-af7f56776496.jpg?1747787697
+https://al9000.com/magic-cards/images/inkrise-infiltrator/inkrise-infiltrator.png
+
+# Mistblade Shinobi
+https://cards.scryfall.io/large/front/6/8/680dd35f-afed-4bae-bd9f-ab8ae33246ff.jpg?1573510153
+https://al9000.com/magic-cards/images/mistblade-shinobi/mistblade-shinobi.png
+
+</pre>
+
+[! endblock !]
