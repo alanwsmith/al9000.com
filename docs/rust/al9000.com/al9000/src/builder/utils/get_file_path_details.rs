@@ -11,6 +11,7 @@ pub struct FilePathDeatils {
   pub extension: Option<Value>,
   pub name: Value,
   pub path: Vec<Value>,
+  pub path_string: Value,
   pub stem: Value,
 }
 
@@ -52,6 +53,15 @@ pub fn get_file_path_details(pb: &Path) -> Result<Value> {
     .map(|part| Value::from(part.to_string_lossy().to_string()))
     .collect();
 
+  let path_string = Value::from(format!(
+    "/{}",
+    pb.iter()
+      .skip(5)
+      .map(|part| part.to_string_lossy().to_string())
+      .collect::<Vec<_>>()
+      .join("/")
+  ));
+
   let stem = Value::from(
     pb.file_stem().unwrap().to_string_lossy().to_string(),
   );
@@ -62,6 +72,7 @@ pub fn get_file_path_details(pb: &Path) -> Result<Value> {
     extension,
     name,
     path,
+    path_string,
     stem,
   };
   Ok(Value::from_serialize(fpd))
