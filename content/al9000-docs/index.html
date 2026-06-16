@@ -133,7 +133,7 @@ a JSON file at:
 
   Doing this:
 
-      [@ "" @][! raw !][@ j.path.to.data.alfa @][! endraw !][@ "" @]
+      [@ "" @][! raw !][@ d.path.to.data.alfa @][! endraw !][@ "" @]
 
   Outputs:
 
@@ -143,7 +143,7 @@ a JSON file at:
 inside any content file. For example:
 
       [@""@][!raw!]<ul>
-        == for key in j.path.to.data
+        == for key in d.path.to.data
           <li>[@ key @]</li>
         == endfor
       </ul>[!endraw!][@""@]
@@ -173,7 +173,7 @@ toml metadata in the file:
 
     is available in:
 
-      [@""@][!raw!][@ j.some.content.file.title @][!endraw!][@""@]
+      [@""@][!raw!][@ d.some.content.file.title @][!endraw!][@""@]
 
 - The metadata is available on the page via
 a `d` variable. For example:

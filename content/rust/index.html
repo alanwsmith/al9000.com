@@ -10,16 +10,16 @@ status = "code"
 <ul>
 == for folder in folders_in_folder(parent(file_path)) 
   <li>
-    <p>[@ j.rust[stem(folder)].index.short_title @]</p>
+    <p>[@ d.rust[stem(folder)].index.short_title @]</p>
     <ul>
       == for subfolder in folders_in_folder(folder) 
-        == if "index" in j.rust[stem(folder)][stem(subfolder)]
+        == if "index" in d.rust[stem(folder)][stem(subfolder)]
         <li>
           <a href="[@ subfolder @]">
-          [! if j.rust[stem(folder)][stem(subfolder)].index.short_title !]
-          [@ j.rust[stem(folder)][stem(subfolder)].index.short_title @]
+          [! if d.rust[stem(folder)][stem(subfolder)].index.short_title !]
+          [@ d.rust[stem(folder)][stem(subfolder)].index.short_title @]
           [! else !]
-          [@ j.rust[stem(folder)][stem(subfolder)].index.title @]
+          [@ d.rust[stem(folder)][stem(subfolder)].index.title @]
           [! endif !]
           </a>
         </li>

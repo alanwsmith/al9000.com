@@ -1,18 +1,114 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      background-color: black;
-      color: goldenrod;
-    } 
-  </style>
-</head>
-<body>
-could not render include: error in "/templates.inc/includes/metadata.html" (in /templates.inc/wrappers/default.html:10)
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>ffmpeg</title>
+<meta property="og:title" content="ffmpeg" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/ffmpeg/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+      <h1>ffmpeg</h1>
+  </hgroup>
+
+
+<bitty-8 data-connect="/ffmpeg/bit.js"></bitty-8>
+
+<h2>Command Builder</h2>
+<p>
+  This is a super basic command builder for resizing videos and setting their start and stop times.
+  I'll add more to it over time as I run into other features that I want to use. 
+</p>
+<div class="two-columns-left">
+  <label for="input">Input: </label>
+  <input id="input" type="text" name="input_file" data-s="update" data-listen="input" autocomplete="off" value="input.mp4" />
+  <label for="start">Start (sec): </label>
+  <input id="start" type="text" name="input_file" data-s="update" data-listen="input" autocomplete="off"  />
+  <label for="length">Length (sec): </label>
+  <input id="length" type="text" name="input_file" data-s="update" data-listen="input" autocomplete="off" />
+  <label for="scale">Scale (sec): </label>
+  <input id="scale" type="text" name="input_file" data-s="update" data-listen="input" autocomplete="off" placeholder="720:-2" />
+  <label for="output">Output: </label>
+  <input id="output" type="text" name="input_file" data-s="update" data-listen="input" autocomplete="off" value="output.mp4" />
+  <label for="command">Command:</label>
+  <div class="two-columns-right">
+  <input id="command" type="text" name="input_file" data-r="update copy" autocomplete="off" />
+    <button data-s="copy">Copy</button>
+  </div>
+</div>
+
+<h2>Posts</h2>
+
+<ul>
+    <li><a href="&#x2f;ffmpeg&#x2f;create-an-hls-encrypted-video">Create an HLS Encrypted Video with ffmpeg</a></li>
+    <li><a href="&#x2f;ffmpeg&#x2f;encoding-a-webm-video-for-mse">Encoding a webm Video to Serve with Media Source Extension</a></li>
+    <li><a href="&#x2f;ffmpeg&#x2f;get-dimensions">Get the Width and Height Dimensions of a Video with ffprobe</a></li>
+    <li><a href="&#x2f;ffmpeg&#x2f;get-the-codes-for-a-video">Get the Codes for a Video with ffmpeg</a></li>
+    <li><a href="&#x2f;ffmpeg&#x2f;resize-a-directory-of-videos">Resize a Directory of Videos with ffmpeg</a></li>
+</ul>
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    [rss coming soon]
+  </div>
+</footer>
+
+    <div class="templates">
+      <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
 </html>
-  
