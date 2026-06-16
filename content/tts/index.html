@@ -9,8 +9,12 @@ created = 2026-06-16T12:22:00-04:00
 == block head
 
 <style>
-.playmat-image {
-  width: 300px;
+input { 
+  display: block;
+  width: 100%;
+}
+.playmat-image { 
+  width: 300px; 
 }
 </style>
 
@@ -23,19 +27,27 @@ created = 2026-06-16T12:22:00-04:00
 
 
 == block main
+
+<bitty-8 data-connect="/tts/bit.js"></bitty-8>
+
 == filter md 
 
-Notes and art for Table Top Simulator (which is  
-where I play Magic: The Gathering).
-
-== for folder in folders_in_folder("/tts/playmats")
-
-- <img class="playmat-image" src="/tts/playmats/[@ folder @]/image.jpg" alt="An image for a magic the gathering playmat." />
-
-  playmat https://al9000.com/tts/playmats/[@ folder @]/image.jpg
+### Playmats
 
 
+== set dir = "/tts/playmats"
+
+== for folder in folders_in_folder(dir)
+  <div class="playmat-image">
+    <img src="[@ dir @]/[@ folder @]/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="text" 
+      id="[@ folder @]" 
+      value="playmat https://al9000.com[@ dir @]/[@ folder @]/image.jpg" />
+    <button data-s="copy" data-key="[@ folder @]">Copy</button>
+  </div>
 == endfor
+
 
 <aside>
   NOTE: The alt text for the images isn't descriptive.

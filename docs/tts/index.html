@@ -35,8 +35,12 @@ body {
 <link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
 
 <style>
-.playmat-image {
-  width: 300px;
+input { 
+  display: block;
+  width: 100%;
+}
+.playmat-image { 
+  width: 300px; 
 }
 </style>
 
@@ -60,22 +64,74 @@ body {
 
 <h1>Table Top Simulator Stuff</h1>
 
-<p>Notes and art for Table Top Simulator (which is<br />
-where I play Magic: The Gathering).</p>
-<ul>
-<li>
-<img class="playmat-image" src="/tts/playmats/arrow-1/image.jpg" alt="An image for a magic the gathering playmat." />
-<p>playmat https://al9000.com/tts/playmats/arrow-1/image.jpg</p>
-</li>
-<li>
-<img class="playmat-image" src="/tts/playmats/crying-1/image.jpg" alt="An image for a magic the gathering playmat." />
-<p>playmat https://al9000.com/tts/playmats/crying-1/image.jpg</p>
-</li>
-<li>
-<img class="playmat-image" src="/tts/playmats/ninja-1/image.jpg" alt="An image for a magic the gathering playmat." />
-<p>playmat https://al9000.com/tts/playmats/ninja-1/image.jpg</p>
-</li>
-</ul>
+
+<bitty-8 data-connect="/tts/bit.js"></bitty-8>
+
+<h3>Playmats</h3>
+  <div class="playmat-image">
+    <img src="&#x2f;tts&#x2f;playmats/arrow/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="text" 
+      id="arrow" 
+      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/arrow/image.jpg" />
+    <button data-s="copy" data-key="arrow">Copy</button>
+  </div>
+  <div class="playmat-image">
+    <img src="&#x2f;tts&#x2f;playmats/crying/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="text" 
+      id="crying" 
+      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/crying/image.jpg" />
+    <button data-s="copy" data-key="crying">Copy</button>
+  </div>
+  <div class="playmat-image">
+    <img src="&#x2f;tts&#x2f;playmats/mask/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="text" 
+      id="mask" 
+      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/mask/image.jpg" />
+    <button data-s="copy" data-key="mask">Copy</button>
+  </div>
+  <div class="playmat-image">
+    <img src="&#x2f;tts&#x2f;playmats/ninja/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="text" 
+      id="ninja" 
+      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja/image.jpg" />
+    <button data-s="copy" data-key="ninja">Copy</button>
+  </div>
+  <div class="playmat-image">
+    <img src="&#x2f;tts&#x2f;playmats/ninja-bike/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="text" 
+      id="ninja-bike" 
+      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-bike/image.jpg" />
+    <button data-s="copy" data-key="ninja-bike">Copy</button>
+  </div>
+  <div class="playmat-image">
+    <img src="&#x2f;tts&#x2f;playmats/ninja-blender/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="text" 
+      id="ninja-blender" 
+      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-blender/image.jpg" />
+    <button data-s="copy" data-key="ninja-blender">Copy</button>
+  </div>
+  <div class="playmat-image">
+    <img src="&#x2f;tts&#x2f;playmats/ninja-in-chair/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="text" 
+      id="ninja-in-chair" 
+      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-in-chair/image.jpg" />
+    <button data-s="copy" data-key="ninja-in-chair">Copy</button>
+  </div>
+  <div class="playmat-image">
+    <img src="&#x2f;tts&#x2f;playmats/ninja-with-sword/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="text" 
+      id="ninja-with-sword" 
+      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-with-sword/image.jpg" />
+    <button data-s="copy" data-key="ninja-with-sword">Copy</button>
+  </div>
 <aside>
   NOTE: The alt text for the images isn't descriptive.
   The process that builds the page isn't set up to allow that. 
