@@ -50,14 +50,14 @@ description = "The new and improved home of alan w. smith on the web."
 
 <h2>Projects</h2>
 <ul>
-  == for key in j 
-    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "done" 
+  == for key in d
+    == if "index" in d[key] and "status" in d[key].index and d[key].index.status == "done" 
       <li>
       <a href="/[@ key @]">
-      == if j[key].index.link_title 
-        [@ j[key].index.link_title @]
-      == elif j[key].index.title
-        [@ j[key].index.title @]
+      == if d[key].index.link_title 
+        [@ d[key].index.link_title @]
+      == elif d[key].index.title
+        [@ d[key].index.title @]
       == else
         [no title]
       == endif
@@ -70,14 +70,14 @@ description = "The new and improved home of alan w. smith on the web."
 
 <h2>Code</h2>
 <ul>
-  == for key in j 
-    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "code" 
+  == for key in d 
+    == if "index" in d[key] and "status" in d[key].index and d[key].index.status == "code" 
       <li>
       <a href="/[@ key @]">
-      == if j[key].index.short_title 
-        [@ j[key].index.short_title @]
-      == elif j[key].index.title
-        [@ j[key].index.title @]
+      == if d[key].index.short_title 
+        [@ d[key].index.short_title @]
+      == elif d[key].index.title
+        [@ d[key].index.title @]
       == else
         [no title]
       == endif
@@ -89,14 +89,14 @@ description = "The new and improved home of alan w. smith on the web."
 
 <h2>Work-In-Progress</h2>
 <ul>
-  == for key in j 
-    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "wip" 
+  == for key in d 
+    == if "index" in d[key] and "status" in d[key].index and d[key].index.status == "wip" 
       <li>
       <a href="/[@ key @]">
-      == if j[key].index.link_title 
-        [@ j[key].index.link_title @]
-      == elif j[key].index.title
-        [@ j[key].index.title @]
+      == if d[key].index.link_title 
+        [@ d[key].index.link_title @]
+      == elif d[key].index.title
+        [@ d[key].index.title @]
       == else
         [no title]
       == endif
@@ -108,14 +108,14 @@ description = "The new and improved home of alan w. smith on the web."
 
 <h2>Broken</h2>
 <ul>
-  == for key in j 
-    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "broken" 
+  == for key in d 
+    == if "index" in d[key] and "status" in d[key].index and d[key].index.status == "broken" 
       <li>
       <a href="/[@ key @]">
-      == if j[key].index.short_title 
-        [@ j[key].index.short_title @]
-      == elif j[key].index.title
-        [@ j[key].index.title @]
+      == if d[key].index.short_title 
+        [@ d[key].index.short_title @]
+      == elif d[key].index.title
+        [@ d[key].index.title @]
       == else
         [no title]
       == endif
@@ -127,14 +127,14 @@ description = "The new and improved home of alan w. smith on the web."
 
 <h2>Stubs</h2>
 <ul>
-  == for key in j 
-    == if "index" in j[key] and "status" in j[key].index and j[key].index.status == "stub" 
+  == for key in d 
+    == if "index" in d[key] and "status" in d[key].index and d[key].index.status == "stub" 
       <li>
       <a href="/[@ key @]">
-      == if j[key].index.link_title 
-        [@ j[key].index.link_title @]
-      == elif j[key].index.title
-        [@ j[key].index.title @]
+      == if d[key].index.link_title 
+        [@ d[key].index.link_title @]
+      == elif d[key].index.title
+        [@ d[key].index.title @]
       == else
         [no title]
       == endif
