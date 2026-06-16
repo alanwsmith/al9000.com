@@ -6,6 +6,16 @@ status = "done"
 created = 2026-06-16T12:22:00-04:00
 == endblock
 
+== block head
+
+<style>
+.playmat-image {
+  width: 300px;
+}
+</style>
+
+== endblock
+
 
 == block title 
 <h1>Table Top Simulator Stuff</h1>
@@ -17,6 +27,22 @@ created = 2026-06-16T12:22:00-04:00
 
 Notes and art for Table Top Simulator (which is  
 where I play Magic: The Gathering).
+
+== for folder in folders_in_folder("/tts/playmats")
+
+- <img class="playmat-image" src="/tts/playmats/[@ folder @]/image.jpg" alt="An image for a magic the gathering playmat." />
+
+  playmat https://al9000.com/tts/playmats/[@ folder @]/image.jpg
+
+
+== endfor
+
+<aside>
+  NOTE: The alt text for the images isn't descriptive.
+  The process that builds the page isn't set up to allow that. 
+</aside>
+
+
 
 == endfilter 
 

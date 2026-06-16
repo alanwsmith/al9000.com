@@ -1,6 +1,14 @@
 use std::path::PathBuf;
 use walkdir::WalkDir;
 
+// Returns an array of folders in a folder.
+// Only the folder names themselves are
+// returned (i.e. they're not full paths).
+
+// REMINDER: This is hard coded to the
+// current content directory based
+// of the position of the source code.
+
 pub fn folders_in_folder(path: &str) -> Vec<String> {
   WalkDir::new(PathBuf::from(format!(
     "../../../../content{}",
@@ -13,13 +21,7 @@ pub fn folders_in_folder(path: &str) -> Vec<String> {
   .filter_map(|e| e.ok())
   .filter(|e| e.path().is_dir())
   .map(|e| {
-    format!(
-      "/{}",
-      e.path()
-        .strip_prefix("../../../../content")
-        .expect("could not remove 'content' from path")
-        .to_string_lossy()
-    )
+    e.path().file_name().unwrap().to_string_lossy().to_string()
   })
   .collect::<Vec<_>>()
 }
