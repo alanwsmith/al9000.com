@@ -5,7 +5,7 @@ title = "al9000 Documentation"
 subtitle = "Or, how the al9000.com static site generator works"
 status = "wip"
 created = 2026-04-04T14:39:14-04:00
-updated = 2026-04-04T14:39:14-04:00
+updated = 2026-06-16T16:01:14-04:00
 id = "al9000-docs"
 == endblock
 
@@ -13,16 +13,14 @@ id = "al9000-docs"
 == block main
 == filter md
 
-
-
 ## Overview
 
 These are my notes on the static site builder that runs
 al9000.com. I wrote it in Rust with 
 [MiniJinja](https://docs.rs/minijinja/latest/minijinja/syntax/index.html) 
 providing the horsepower (MiniJinja being the Rust
-version of Jinja). The implementation is based
-of dozens of prior iterations I've built over
+version of [Jinja](https://jinja.palletsprojects.com/en/stable/)). The implementation is based
+of dozens of prior iterations built over
 the past several years. 
 
 The overall goal is 
@@ -33,15 +31,13 @@ The three keys that support that are:
 
 1. All content files are templates with the
 full range of MiniJinja features available
-for processing. 
+for processing. Each one can output directly
+or be used as an include in another file. 
 
-2. A global `j` variable is available in each
+2. A global `d` variable is available in each
 template that contains the metadata from 
 every content file as well as the data
 from every `.json` file on the site. 
-
-TODO: Switch this to `d` since it's overall data
-instead of just JSON data. 
 
 3. TODO: Images don't require paths. They can be
 stored anywhere in the content tree
@@ -62,24 +58,22 @@ templates.
 passed through the transformation engine 
 by default. 
 
+- TODO: If an `.html`, `.js`, or `.txt` file
+has `.off` in its file name then it's copied
+directly without going through the transformation
+engine. 
+
 - Files with other extensions are copied
 without transformation by default. 
-(TBD on adding the ability to transform 
-individual files with a config. It's not
-something I need currently.) 
 
 - Files and with `.inc` in their names
 are available to be included but
 are not copied to the output tree. 
 
-- TODO: Use Neopolitan instead of Markdown 
-for non-html content files (Markdown 
-can be used via the filter listed below).
-
 - TODO: Neopolitan files (i.e. `.neo` files) 
-become `.html` files in the output tree. 
-
-- All other files keep their file extensions.
+pass through the Neopoligen engine
+then the MiniJinja engine before being
+sent to the output tree as `.html` files.
 
 - TODO: Each file can contain an `id` value
 defined in its metadata. Other pages
@@ -88,7 +82,6 @@ to automatically create a link to the
 page with its title and a URL that
 points to the page regardless of where
 it's moved. 
-
 
 
 ## Templates
@@ -121,7 +114,7 @@ creating a block with:
 
 ## Global Data
 
-- All .json files are available in the global `j` 
+- All .json files are available in the global `d` 
 variable inside each template. For example, give 
 a JSON file at:
 
@@ -148,10 +141,10 @@ inside any content file. For example:
         == endfor
       </ul>[!endraw!][@""@]
   
-- Page metadata from each page is available
-as well (see below);
+- The metadata from each page is available
+in the global `d` variable as well (see below):
 
-## Page Metadata
+## Page Metadata Access
 
 - Page metadata is stored in [TMOL](https://toml.io/en/) 
 format.
@@ -166,7 +159,7 @@ format.
     in the content file. 
 
 - The metadata for each page is added to the global
-`j` variable. For example, the `title` key from the
+`d` variable. For example, the `title` key from the
 toml metadata in the file:
 
       /some/content/file.html
@@ -175,10 +168,38 @@ toml metadata in the file:
 
       [@""@][!raw!][@ d.some.content.file.title @][!endraw!][@""@]
 
-- The metadata is available on the page via
-a `d` variable. For example:
+- Page metadata is also available via
+a `p` variable. For example, the page title
+can be output with:
 
-      [@""@][!raw!][@ d.title @][!endraw!][@""@]
+      [@""@][!raw!][@ p.title @][!endraw!][@""@]
+
+## File Path Data
+
+- TODO: The `f` variable holds file path data. 
+
+- TODO: `f.name` - The full file name
+
+- TODO: `f.extension` - The final file extension 
+(i.e. `something.inc.html` returns `html`). `NONE` 
+is returned if there's no extension. 
+
+- TODO: `f.extensions` - All file extensions as
+an array (e.g. `something.inc.html` returns `["inc", "html"]`.
+An empty array is returned if there are no extensions)
+
+- TODO: `f.stem` - The stem of the file name (e.g. 
+`something.inc.html` returns `something`).
+
+- TODO: `f.path` - An array with the directory
+and file name (e.g. `/path/to/something.inc.html`
+returns `["path", "to", "something.inc.html"]
+
+- TODO: `f.dir` - An array with the directories
+that lead to the file
+(e.g. `/path/to/something.inc.html`
+returns `["path", "to"]`. An empty array
+is returned if the file is at the docroot).
 
 
 ## Images

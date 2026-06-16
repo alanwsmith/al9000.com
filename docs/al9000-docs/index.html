@@ -62,8 +62,8 @@ body {
 al9000.com. I wrote it in Rust with
 <a href="https://docs.rs/minijinja/latest/minijinja/syntax/index.html">MiniJinja</a>
 providing the horsepower (MiniJinja being the Rust
-version of Jinja). The implementation is based
-of dozens of prior iterations I've built over
+version of <a href="https://jinja.palletsprojects.com/en/stable/">Jinja</a>). The implementation is based
+of dozens of prior iterations built over
 the past several years.</p>
 <p>The overall goal is
 to remove as much friction as possible from
@@ -74,18 +74,15 @@ The three keys that support that are:</p>
 <li>
 <p>All content files are templates with the
 full range of MiniJinja features available
-for processing.</p>
+for processing. Each one can output directly
+or be used as an include in another file.</p>
 </li>
 <li>
-<p>A global <code>j</code> variable is available in each
+<p>A global <code>d</code> variable is available in each
 template that contains the metadata from
 every content file as well as the data
 from every <code>.json</code> file on the site.</p>
 </li>
-</ol>
-<p>TODO: Switch this to <code>d</code> since it's overall data
-instead of just JSON data.</p>
-<ol start="3">
 <li>
 <p>TODO: Images don't require paths. They can be
 stored anywhere in the content tree
@@ -110,11 +107,14 @@ passed through the transformation engine
 by default.</p>
 </li>
 <li>
+<p>TODO: If an <code>.html</code>, <code>.js</code>, or <code>.txt</code> file
+has <code>.off</code> in its file name then it's copied
+directly without going through the transformation
+engine.</p>
+</li>
+<li>
 <p>Files with other extensions are copied
-without transformation by default.
-(TBD on adding the ability to transform
-individual files with a config. It's not
-something I need currently.)</p>
+without transformation by default.</p>
 </li>
 <li>
 <p>Files and with <code>.inc</code> in their names
@@ -122,16 +122,10 @@ are available to be included but
 are not copied to the output tree.</p>
 </li>
 <li>
-<p>TODO: Use Neopolitan instead of Markdown
-for non-html content files (Markdown
-can be used via the filter listed below).</p>
-</li>
-<li>
 <p>TODO: Neopolitan files (i.e. <code>.neo</code> files)
-become <code>.html</code> files in the output tree.</p>
-</li>
-<li>
-<p>All other files keep their file extensions.</p>
+pass through the Neopoligen engine
+then the MiniJinja engine before being
+sent to the output tree as <code>.html</code> files.</p>
 </li>
 <li>
 <p>TODO: Each file can contain an <code>id</code> value
@@ -171,7 +165,7 @@ content
 <h2>Global Data</h2>
 <ul>
 <li>
-<p>All .json files are available in the global <code>j</code>
+<p>All .json files are available in the global <code>d</code>
 variable inside each template. For example, give
 a JSON file at:</p>
 <pre><code>/path/to/data.json
@@ -197,11 +191,11 @@ inside any content file. For example:</p>
 </code></pre>
 </li>
 <li>
-<p>Page metadata from each page is available
-as well (see below);</p>
+<p>The metadata from each page is available
+in the global <code>d</code> variable as well (see below):</p>
 </li>
 </ul>
-<h2>Page Metadata</h2>
+<h2>Page Metadata Access</h2>
 <ul>
 <li>
 <p>Page metadata is stored in <a href="https://toml.io/en/">TMOL</a>
@@ -218,7 +212,7 @@ in the content file.</p>
 </li>
 <li>
 <p>The metadata for each page is added to the global
-<code>j</code> variable. For example, the <code>title</code> key from the
+<code>d</code> variable. For example, the <code>title</code> key from the
 toml metadata in the file:</p>
 <pre><code>/some/content/file.html
 </code></pre>
@@ -227,10 +221,46 @@ toml metadata in the file:</p>
 </code></pre>
 </li>
 <li>
-<p>The metadata is available on the page via
-a <code>d</code> variable. For example:</p>
-<pre><code>[@ d.title @]
+<p>Page metadata is also available via
+a <code>p</code> variable. For example, the page title
+can be output with:</p>
+<pre><code>[@ p.title @]
 </code></pre>
+</li>
+</ul>
+<h2>File Path Data</h2>
+<ul>
+<li>
+<p>TODO: The <code>f</code> variable holds file path data.</p>
+</li>
+<li>
+<p>TODO: <code>f.name</code> - The full file name</p>
+</li>
+<li>
+<p>TODO: <code>f.extension</code> - The final file extension
+(i.e. <code>something.inc.html</code> returns <code>html</code>). <code>NONE</code>
+is returned if there's no extension.</p>
+</li>
+<li>
+<p>TODO: <code>f.extensions</code> - All file extensions as
+an array (e.g. <code>something.inc.html</code> returns <code>[&quot;inc&quot;, &quot;html&quot;]</code>.
+An empty array is returned if there are no extensions)</p>
+</li>
+<li>
+<p>TODO: <code>f.stem</code> - The stem of the file name (e.g.
+<code>something.inc.html</code> returns <code>something</code>).</p>
+</li>
+<li>
+<p>TODO: <code>f.path</code> - An array with the directory
+and file name (e.g. <code>/path/to/something.inc.html</code>
+returns `[&quot;path&quot;, &quot;to&quot;, &quot;something.inc.html&quot;]</p>
+</li>
+<li>
+<p>TODO: <code>f.dir</code> - An array with the directories
+that lead to the file
+(e.g. <code>/path/to/something.inc.html</code>
+returns <code>[&quot;path&quot;, &quot;to&quot;]</code>. An empty array
+is returned if the file is at the docroot).</p>
 </li>
 </ul>
 <h2>Images</h2>
