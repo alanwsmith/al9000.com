@@ -1,105 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
-
-</style>    <script src="/styles/styles.js"></script>
-    <link rel="stylesheet" href="/styles/colors.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>Capture Errors from Command Line Tools</title>
-<meta property="og:title" content="Capture Errors from Command Line Tools" />
-<meta name="description" content="a post from alan w. smith" />
-<meta property="og:description" content="a post from alan w. smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/cli/capture-both-stdout-and-stderror/" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-  </head>
-  <body>
-<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Most content will be fine, but some things won't work.
-  </p>
-</noscript>
-  <div class="top-nav">
-<a href="/">home</a><a href="/tools">tools</a>  </div>
-
-
-</header>
-
-
-<main class="default-wrapper default-flow">
-
-  <hgroup>
-      <h1>Capture Errors from Command Line Tools</h1>
-        <div class="date">April 2026</div>
-  </hgroup>
-
-
-
-<h2>TL;DR</h2>
-<p>Use this to capture errors along with
-regular output from command line tools:</p>
-<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">2</span></span><span class="meta function-call arguments shell"><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span></span></span></code></pre></div>
-<h2>Basic Capture</h2>
-<p>For example:</p>
-<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> example.txt <span class="constant numeric integer decimal file-descriptor shell">2</span><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span> </span><span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">cat</span></span><span class="meta function-call arguments shell"> <span class="keyword operator assignment redirection shell">&gt;</span> report.txt</span></span></code></pre></div>
-<p>If the file exists and is deleted, then it's file name is
-output to the <code>report-1.txt</code> via <code>STDOUT</code>.</p>
-<div class="text-block"><pre><code><span class="line-marker"></span><span class="text plain">example.txt</span></code></pre></div>
-If the file doesn't exist, or can't be removed, then an
-error message is output to `report-1.txt` via `STDERR`.
-<div class="text-block"><pre><code><span class="line-marker"></span><span class="text plain">rm: example.txt: No such file or directory</span></code></pre></div>
-<h2>Seeing The Output</h2>
-<p>Running the above command doesn't output anything to
-the terminal. You can add <code>tee /dev/tty</code> to see
-the messages there as well.</p>
-<div class="command-block"><pre><code><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">rm</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> example.txt <span class="constant numeric integer decimal file-descriptor shell">2</span><span class="keyword operator assignment redirection shell">&gt;&amp;</span><span class="constant numeric integer decimal file-descriptor shell">1</span> </span><span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">tee</span></span><span class="meta function-call arguments shell"> /dev/tty</span> <span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">cat</span></span><span class="meta function-call arguments shell"> <span class="keyword operator assignment redirection shell">&gt;</span> report.txt</span></span></code></pre></div>
-<h2>Wrap Up</h2>
-<p>The <code>2&gt;&amp;1</code> looks weird to me. Totally worth it
-to remeber though when trying to capture
-the output of commands that use both <code>STDOUT</code>
-and <code>STDERR</code>.</p>
-<p>-a</p>
-
-</main>
-
-<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from alan w smith 
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-  <div class="small-font-size text-align-center">
-    [rss coming soon]
-  </div>
-</footer>
-
-    <div class="templates">
-      <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background-color: black;
+      color: goldenrod;
+    } 
+  </style>
+</head>
+<body>
+could not render include: error in "/templates.inc/includes/metadata.html" (in /templates.inc/wrappers/default.html:10)
+</body>
 </html>
+  

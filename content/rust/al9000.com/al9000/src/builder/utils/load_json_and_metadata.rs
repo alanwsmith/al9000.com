@@ -13,7 +13,7 @@ use std::path::PathBuf;
 use walkdir::WalkDir;
 
 // Loads both JSON and TOML data.
-pub fn load_json(config: &Config) -> Result<Value> {
+pub fn load_json_and_metadata(config: &Config) -> Result<Value> {
   let mut data = DataNode::new();
 
   for json_file in json_files(config) {

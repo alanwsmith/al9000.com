@@ -2,7 +2,8 @@
 
 scripts
 
-Support scripts to here. 
+Support scripts to here. These are not run
+automatically. 
 
 TBD on if pre/post build process scripts
 will live here or in another location. 

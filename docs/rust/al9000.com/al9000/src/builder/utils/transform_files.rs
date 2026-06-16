@@ -19,7 +19,7 @@ use tracing::info;
 pub async fn transform_files(config: &Config) -> Result<()> {
   // info!("Transforming files");
   let env = get_env(config);
-  let json = load_json(config)?;
+  let data = load_json_and_metadata(config)?;
 
   for pb in content_files(config).iter() {
     let page_data = get_page_data(&pb)?;
@@ -35,7 +35,7 @@ pub async fn transform_files(config: &Config) -> Result<()> {
     match env.get_template(&template_name) {
       Ok(template) => match template.render(context!(
         p => page_data,
-        j => json,
+        d => data ,
         file_path => Value::from_safe_string(template_name)
       )) {
         Ok(content) => {

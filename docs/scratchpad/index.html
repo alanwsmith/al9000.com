@@ -1,123 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
-
-</style>    <script src="/styles/styles.js"></script>
-    <link rel="stylesheet" href="/styles/colors.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>al9000.com</title>
-<meta property="og:title" content="al9000.com" />
-<meta name="description" content="a post from alan w. smith" />
-<meta property="og:description" content="a post from alan w. smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/scratchpad/" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-  </head>
-  <body>
-<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Most content will be fine, but some things won't work.
-  </p>
-</noscript>
-  <div class="top-nav">
-<a href="/">home</a><a href="/tools">tools</a>  </div>
-
-
-</header>
-
-
-<main class="default-wrapper default-flow">
-
-<h1>scratchpad</h1>
-<div class="subtitle">a quick place to isolate code. whatever is here is the last thing I needed to poke at.</div>
-
-
-<form class="testForm">
-  <label>
-    <div>Password</div>
-    <input type="password" name="password" />
-  </label>
-  <input type="submit" value="submit" />
-</form>
-
-<script type="module">
-function checkFormValues(event) {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-  console.log(formData);
-}
-
-document.querySelectorAll(".testForm")
-  .forEach((form) => {
-    form.addEventListener("submit", (event) => {
-      checkFormValues(event)
-    });
-  });
-</script>
-
-<pre class="code-block"><code><span class="line-marker"></span><span class="text html basic"><span class="meta tag block form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block form html">form</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">testForm</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>Password<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker"></span>    <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>password<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">name</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>password<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
-<span class="line-marker"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>submit<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">value</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>submit<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
-<span class="line-marker"></span><span class="meta tag block form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block form html">form</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker"></span>
-<span class="line-marker"></span><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker"></span><span class="source js embedded html"><span class="source js"><span class="meta function declaration js"><span class="storage type function js">function</span> <span class="entity name function js">checkFormValues</span><span class="punctuation section group begin js">(</span><span class="variable parameter function js">event</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
-<span class="line-marker"></span>  <span class="variable other object js">event</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">preventDefault</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">formData</span> <span class="keyword operator assignment js">=</span> <span class="meta instance constructor js"><span class="keyword operator word new js">new</span><span class="meta function-call constructor js"> <span class="variable type js">FormData</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">event</span><span class="punctuation accessor js">.</span><span class="meta property object js">target</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker"></span>  <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">log</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">formData</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker"></span><span class="punctuation section block js">}</span></span>
-<span class="line-marker"></span>
-<span class="line-marker"></span><span class="support type object dom js">document</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">querySelectorAll</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>.testForm<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span>
-<span class="line-marker"></span>  <span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">forEach</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="meta function declaration js"><span class="punctuation section group begin js">(</span><span class="variable parameter function js">form</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span><span class="storage type function arrow js">=&gt;</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
-<span class="line-marker"></span>    <span class="variable other object js">form</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">addEventListener</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>submit<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="meta function declaration js"><span class="punctuation section group begin js">(</span><span class="variable parameter function js">event</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span><span class="storage type function arrow js">=&gt;</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
-<span class="line-marker"></span>      <span class="meta function-call js"><span class="variable function js">checkFormValues</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">event</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span>
-<span class="line-marker"></span>    <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker"></span>  <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre>
-
-</main>
-
-<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from alan w smith 
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-  <div class="small-font-size text-align-center">
-    [rss coming soon]
-  </div>
-</footer>
-
-    <div class="templates">
-      <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background-color: black;
+      color: goldenrod;
+    } 
+  </style>
+</head>
+<body>
+could not render include: error in "/templates.inc/includes/metadata.html" (in /templates.inc/wrappers/default.html:10)
+</body>
 </html>
+  

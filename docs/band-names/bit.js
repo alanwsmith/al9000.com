@@ -3,6 +3,8 @@ export const b = {
 };
 
 const names = `
+Head Shave
+Textile Hippies
 Miss Chris Quarrier
 Borg Space Zombies
 Blocked In Russia
