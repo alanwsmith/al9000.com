@@ -234,33 +234,54 @@ can be output with:</p>
 <p>TODO: The <code>f</code> variable holds file path data.</p>
 </li>
 <li>
-<p>TODO: <code>f.name</code> - The full file name</p>
-</li>
-<li>
-<p>TODO: <code>f.extension</code> - The final file extension
-(i.e. <code>something.inc.html</code> returns <code>html</code>). <code>NONE</code>
-is returned if there's no extension.</p>
-</li>
-<li>
-<p>TODO: <code>f.extensions</code> - All file extensions as
-an array (e.g. <code>something.inc.html</code> returns <code>[&quot;inc&quot;, &quot;html&quot;]</code>.
-An empty array is returned if there are no extensions)</p>
-</li>
-<li>
-<p>TODO: <code>f.stem</code> - The stem of the file name (e.g.
-<code>something.inc.html</code> returns <code>something</code>).</p>
-</li>
-<li>
-<p>TODO: <code>f.path</code> - An array with the directory
-and file name (e.g. <code>/path/to/something.inc.html</code>
-returns `[&quot;path&quot;, &quot;to&quot;, &quot;something.inc.html&quot;]</p>
-</li>
-<li>
-<p>TODO: <code>f.dir</code> - An array with the directories
+<p><code>f.dir</code> - An array with the directories
 that lead to the file
 (e.g. <code>/path/to/something.inc.html</code>
 returns <code>[&quot;path&quot;, &quot;to&quot;]</code>. An empty array
 is returned if the file is at the docroot).</p>
+</li>
+<li>
+<p><code>f.dir_string</code> - The string to the parent
+directory (including a leading <code>/</code>).</p>
+</li>
+<li>
+<p><code>f.extension</code> - The final file extension
+(i.e. <code>something.inc.html</code> returns <code>html</code>). <code>NONE</code>
+is returned if there's no extension.</p>
+</li>
+<li>
+<p>TODO: <code>f.input_extension</code> - The input file's
+extension (e.g. <code>.neo</code> which would result in
+an <code>f.extension</code> of <code>.html</code>).</p>
+</li>
+<li>
+<p>TODO: <code>f.input_path</code> - The array with the
+path parts to the input file.</p>
+</li>
+<li>
+<p>TODO: <code>f.input_path_string</code> - The string
+with the path to the input file (includes
+the leading <code>/</code>).</p>
+</li>
+<li>
+<p><code>f.name</code> - The full file name</p>
+</li>
+<li>
+<p><code>f.stem</code> - The stem of the file name. (Note
+that this is everything up to the last <code>.</code> which means
+<code>something.inc.html</code> returns <code>something.inc</code>).</p>
+</li>
+<li>
+<p><code>f.path</code> - An array with the output directory
+and file name (e.g. <code>/path/to/something.inc.html</code>
+returns <code>[&quot;path&quot;, &quot;to&quot;, &quot;something.inc.html&quot;]. (Use </code>f.input_path` to get the input file path
+with the original extension.)</p>
+</li>
+<li>
+<p>TODO: <code>f.path_string</code> - Returns the output path
+to the file as a string. It's the absolute path
+which includes a leading <code>/</code>. (Use <code>f.input_path_string</code>
+to get the source files path.)</p>
 </li>
 <li>
 <p>TESTING:</p>
@@ -270,10 +291,14 @@ is returned if the file is at the docroot).</p>
   "dir": [
     "al9000-docs"
   ],
+  "dir_string": "/al9000-docs",
+  "extension": "html",
+  "name": "index.html",
   "path": [
     "al9000-docs",
     "index.html"
-  ]
+  ],
+  "stem": "index"
 }</pre>
 <h2>Images</h2>
 <ul>

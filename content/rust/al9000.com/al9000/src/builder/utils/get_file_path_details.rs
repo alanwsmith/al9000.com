@@ -7,11 +7,11 @@ use std::path::Path;
 #[derive(Debug, PartialEq, Serialize)]
 pub struct FilePathDeatils {
   pub dir: Vec<Value>,
-  // pub extension: Option<Value>,
-  // pub extensions: Vec<Value>,
-  // pub name: Value,
+  pub dir_string: Value,
+  pub extension: Option<Value>,
+  pub name: Value,
   pub path: Vec<Value>,
-  // pub stem: Value,
+  pub stem: Value,
 }
 
 // REMINDER: This is currently hard coded for
@@ -27,12 +27,42 @@ pub fn get_file_path_details(pb: &Path) -> Result<Value> {
     .map(|part| Value::from(part.to_string_lossy().to_string()))
     .collect();
 
+  let dir_string = Value::from(format!(
+    "/{}",
+    pb.parent()
+      .unwrap()
+      .iter()
+      .skip(5)
+      .map(|part| part.to_string_lossy().to_string())
+      .collect::<Vec<_>>()
+      .join("/"),
+  ));
+
+  let extension = pb
+    .extension()
+    .map(|v| Value::from(v.to_string_lossy().to_string()));
+
+  let name = Value::from(
+    pb.file_name().unwrap().to_string_lossy().to_string(),
+  );
+
   let path: Vec<_> = pb
     .iter()
     .skip(5)
     .map(|part| Value::from(part.to_string_lossy().to_string()))
     .collect();
 
-  let mut fpd = FilePathDeatils { dir, path };
+  let stem = Value::from(
+    pb.file_stem().unwrap().to_string_lossy().to_string(),
+  );
+
+  let mut fpd = FilePathDeatils {
+    dir,
+    dir_string,
+    extension,
+    name,
+    path,
+    stem,
+  };
   Ok(Value::from_serialize(fpd))
 }

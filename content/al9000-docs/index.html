@@ -178,28 +178,46 @@ can be output with:
 
 - TODO: The `f` variable holds file path data. 
 
-- TODO: `f.name` - The full file name
-
-- TODO: `f.extension` - The final file extension 
-(i.e. `something.inc.html` returns `html`). `NONE` 
-is returned if there's no extension. 
-
-- TODO: `f.extensions` - All file extensions as
-an array (e.g. `something.inc.html` returns `["inc", "html"]`.
-An empty array is returned if there are no extensions)
-
-- TODO: `f.stem` - The stem of the file name (e.g. 
-`something.inc.html` returns `something`).
-
-- TODO: `f.path` - An array with the directory
-and file name (e.g. `/path/to/something.inc.html`
-returns `["path", "to", "something.inc.html"]
-
-- TODO: `f.dir` - An array with the directories
+- `f.dir` - An array with the directories
 that lead to the file
 (e.g. `/path/to/something.inc.html`
 returns `["path", "to"]`. An empty array
 is returned if the file is at the docroot).
+
+- `f.dir_string` - The string to the parent
+directory (including a leading `/`).
+
+- `f.extension` - The final file extension 
+(i.e. `something.inc.html` returns `html`). `NONE` 
+is returned if there's no extension. 
+
+- TODO: `f.input_extension` - The input file's
+extension (e.g. `.neo` which would result in
+an `f.extension` of `.html`).
+
+- TODO: `f.input_path` - The array with the
+path parts to the input file. 
+
+- TODO: `f.input_path_string` - The string
+with the path to the input file (includes
+the leading `/`).
+
+- `f.name` - The full file name
+
+- `f.stem` - The stem of the file name. (Note
+that this is everything up to the last `.` which means
+`something.inc.html` returns `something.inc`).
+
+- `f.path` - An array with the output directory
+and file name (e.g. `/path/to/something.inc.html`
+returns `["path", "to", "something.inc.html"].
+(Use `f.input_path` to get the input file path
+with the original extension.)
+
+- TODO: `f.path_string` - Returns the output path
+to the file as a string. It's the absolute path
+which includes a leading `/`. (Use `f.input_path_string`
+to get the source files path.)
 
 - TESTING:
 
