@@ -23,6 +23,7 @@ pub async fn transform_files(config: &Config) -> Result<()> {
 
   for pb in content_files(config).iter() {
     let page_data = get_page_data(&pb)?;
+    let file_path_data = get_file_path_details(&pb)?;
     let template_name = pb
       .display()
       .to_string()
@@ -35,7 +36,8 @@ pub async fn transform_files(config: &Config) -> Result<()> {
     match env.get_template(&template_name) {
       Ok(template) => match template.render(context!(
         p => page_data,
-        d => data ,
+        d => data,
+        f => file_path_data,
         file_path => Value::from_safe_string(template_name)
       )) {
         Ok(content) => {
