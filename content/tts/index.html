@@ -1,7 +1,8 @@
 == extends "/templates.inc/pages/default.html" 
 
 == block toml
-link_title = "Table Top Simulator Stuff"
+title = "Tabletop Simulator Art"
+link_title = "Tabletop Simulator Art"
 status = "done"
 created = 2026-06-16T12:22:00-04:00
 == endblock
@@ -40,7 +41,7 @@ input {
 
 
 == block title 
-<h1>Table Top Simulator Stuff</h1>
+<h1>[@ p.title @]</h1>
 == endblock 
 
 
@@ -51,14 +52,24 @@ input {
 == filter md 
 
 These images are for play mats and card backs to use
-in Magic: The Gathering on Tabletop Simulator. 
+in Magic: The Gathering on [Tabletop Simulator](https://www.tabletopsimulator.com/). 
 The play mats are actually upside down so
 they face folks across the table from me. 
 Clicking the `Copy` button copies
-the command to paste into Tabletop Simulator
+the text to put into Tabletop Simulator
 to use the image. 
 
-### Card Backs
+Here's an example of what the images look like
+in place:
+
+<img src="/tts/images/tabletop-example.png" 
+  alt="A view of Tabletop Simulator showing an angel playmat and a custom card back for the Magic cards" />
+
+(this is for my angels deck. hence the image)
+
+
+## Card Backs
+
 
 == set cards_dir = "/tts/card-backs"
 
@@ -78,8 +89,14 @@ to use the image.
 
 </div>
 
-### Play Mats
+Reminder: You have to set the card back URL before
+importing the deck. Click the gear icon in the importer
+and set the Card Back URL field. Then, add
+the Deck Site URL under the "Deck" tab. 
+Images will squish in so the aspect ratio
+of the source images doesn't matter. 
 
+## Play Mats
 
 
 == set dir = "/tts/play-mats"
