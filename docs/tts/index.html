@@ -39,12 +39,25 @@ input {
   display: block;
   width: 100%;
 }
-.playmat-image { 
-  width: 300px; 
 
+.card-backs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+}
+
+
+.play-mat-image { 
+  width: 200px; 
   img {
     transform: rotate(180deg);
   }
+}
+
+.play-mats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
 }
 
 </style>
@@ -72,586 +85,718 @@ input {
 
 <bitty-8 data-connect="/tts/bit.js"></bitty-8>
 
-<h3>Playmats</h3>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/american-ninja-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+<p>These images are for play mats and card backs to use
+in Magic: The Gathering on Tabletop Simulator.
+The play mats are actually upside down so
+they face folks across the table from me.
+Clicking the <code>Copy</code> button copies
+the command to paste into Tabletop Simulator
+to use the image.</p>
+<h3>Card Backs</h3>
+<div class="card-backs">
+  <div>
+    <img src="/tts/card-backs/001.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
+      id="card1" 
+      value="https://al9000.com/tts/card-backs/001.jpg" />
+    <button data-s="copy" data-key="card1">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/002.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card2" 
+      value="https://al9000.com/tts/card-backs/002.jpg" />
+    <button data-s="copy" data-key="card2">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/003.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card3" 
+      value="https://al9000.com/tts/card-backs/003.jpg" />
+    <button data-s="copy" data-key="card3">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/004.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card4" 
+      value="https://al9000.com/tts/card-backs/004.jpg" />
+    <button data-s="copy" data-key="card4">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/005.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card5" 
+      value="https://al9000.com/tts/card-backs/005.jpg" />
+    <button data-s="copy" data-key="card5">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/006.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card6" 
+      value="https://al9000.com/tts/card-backs/006.jpg" />
+    <button data-s="copy" data-key="card6">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/007.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card7" 
+      value="https://al9000.com/tts/card-backs/007.jpg" />
+    <button data-s="copy" data-key="card7">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/008.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card8" 
+      value="https://al9000.com/tts/card-backs/008.jpg" />
+    <button data-s="copy" data-key="card8">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/009.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card9" 
+      value="https://al9000.com/tts/card-backs/009.jpg" />
+    <button data-s="copy" data-key="card9">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/010.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card10" 
+      value="https://al9000.com/tts/card-backs/010.jpg" />
+    <button data-s="copy" data-key="card10">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/011.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card11" 
+      value="https://al9000.com/tts/card-backs/011.jpg" />
+    <button data-s="copy" data-key="card11">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/012.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card12" 
+      value="https://al9000.com/tts/card-backs/012.jpg" />
+    <button data-s="copy" data-key="card12">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/013.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card13" 
+      value="https://al9000.com/tts/card-backs/013.jpg" />
+    <button data-s="copy" data-key="card13">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/014.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card14" 
+      value="https://al9000.com/tts/card-backs/014.jpg" />
+    <button data-s="copy" data-key="card14">Copy</button>
+  </div>
+  <div>
+    <img src="/tts/card-backs/015.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card15" 
+      value="https://al9000.com/tts/card-backs/015.jpg" />
+    <button data-s="copy" data-key="card15">Copy</button>
+  </div>
+</div>
+<h3>Play Mats</h3>
+<div class="play-mats">
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/american-ninja-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
       id="american-ninja-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/american-ninja-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/american-ninja-2/image.jpg" />
     <button data-s="copy" data-key="american-ninja-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel/image.jpg" />
     <button data-s="copy" data-key="angel">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-10/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-10/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-10" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-10/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-10/image.jpg" />
     <button data-s="copy" data-key="angel-10">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-11/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-11/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-11" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-11/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-11/image.jpg" />
     <button data-s="copy" data-key="angel-11">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-12/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-12/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-12" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-12/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-12/image.jpg" />
     <button data-s="copy" data-key="angel-12">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-2/image.jpg" />
     <button data-s="copy" data-key="angel-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-3" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-3/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-3/image.jpg" />
     <button data-s="copy" data-key="angel-3">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-4/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-4/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-4" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-4/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-4/image.jpg" />
     <button data-s="copy" data-key="angel-4">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-5/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-5/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-5" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-5/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-5/image.jpg" />
     <button data-s="copy" data-key="angel-5">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-6/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-6/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-6" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-6/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-6/image.jpg" />
     <button data-s="copy" data-key="angel-6">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-7/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-7/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-7" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-7/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-7/image.jpg" />
     <button data-s="copy" data-key="angel-7">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-8/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-8/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-8" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-8/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-8/image.jpg" />
     <button data-s="copy" data-key="angel-8">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angel-9/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angel-9/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angel-9" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angel-9/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angel-9/image.jpg" />
     <button data-s="copy" data-key="angel-9">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angry-bender/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angry-bender/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angry-bender" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angry-bender/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angry-bender/image.jpg" />
     <button data-s="copy" data-key="angry-bender">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/angry-owl/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/angry-owl/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="angry-owl" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/angry-owl/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/angry-owl/image.jpg" />
     <button data-s="copy" data-key="angry-owl">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/animal/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/animal/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="animal" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/animal/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/animal/image.jpg" />
     <button data-s="copy" data-key="animal">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/arrow/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/arrow/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="arrow" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/arrow/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/arrow/image.jpg" />
     <button data-s="copy" data-key="arrow">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/bear-1/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/bear-1/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="bear-1" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/bear-1/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/bear-1/image.jpg" />
     <button data-s="copy" data-key="bear-1">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/bear-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/bear-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="bear-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/bear-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/bear-2/image.jpg" />
     <button data-s="copy" data-key="bear-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/bear-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/bear-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="bear-3" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/bear-3/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/bear-3/image.jpg" />
     <button data-s="copy" data-key="bear-3">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/bear-4/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/bear-4/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="bear-4" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/bear-4/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/bear-4/image.jpg" />
     <button data-s="copy" data-key="bear-4">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/bear-5/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/bear-5/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="bear-5" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/bear-5/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/bear-5/image.jpg" />
     <button data-s="copy" data-key="bear-5">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/bear-6/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/bear-6/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="bear-6" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/bear-6/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/bear-6/image.jpg" />
     <button data-s="copy" data-key="bear-6">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/bear-7/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/bear-7/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="bear-7" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/bear-7/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/bear-7/image.jpg" />
     <button data-s="copy" data-key="bear-7">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/bear-8/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/bear-8/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="bear-8" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/bear-8/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/bear-8/image.jpg" />
     <button data-s="copy" data-key="bear-8">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/bear-9/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/bear-9/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="bear-9" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/bear-9/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/bear-9/image.jpg" />
     <button data-s="copy" data-key="bear-9">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/beeker/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/beeker/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="beeker" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/beeker/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/beeker/image.jpg" />
     <button data-s="copy" data-key="beeker">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/crying/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/crying/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="crying" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/crying/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/crying/image.jpg" />
     <button data-s="copy" data-key="crying">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/disaster-girl/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/disaster-girl/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="disaster-girl" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/disaster-girl/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/disaster-girl/image.jpg" />
     <button data-s="copy" data-key="disaster-girl">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/elmo-on-fire/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/elmo-on-fire/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="elmo-on-fire" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/elmo-on-fire/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/elmo-on-fire/image.jpg" />
     <button data-s="copy" data-key="elmo-on-fire">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/firebending/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/firebending/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="firebending" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/firebending/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/firebending/image.jpg" />
     <button data-s="copy" data-key="firebending">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/fishing-pole/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/fishing-pole/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="fishing-pole" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/fishing-pole/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/fishing-pole/image.jpg" />
     <button data-s="copy" data-key="fishing-pole">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/fozzy/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/fozzy/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="fozzy" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/fozzy/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/fozzy/image.jpg" />
     <button data-s="copy" data-key="fozzy">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/fozzy-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/fozzy-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="fozzy-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/fozzy-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/fozzy-2/image.jpg" />
     <button data-s="copy" data-key="fozzy-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/fry/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/fry/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="fry" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/fry/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/fry/image.jpg" />
     <button data-s="copy" data-key="fry">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/hamburglar/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/hamburglar/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="hamburglar" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/hamburglar/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/hamburglar/image.jpg" />
     <button data-s="copy" data-key="hamburglar">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/horn/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/horn/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="horn" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/horn/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/horn/image.jpg" />
     <button data-s="copy" data-key="horn">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/jeff-goldblum/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/jeff-goldblum/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="jeff-goldblum" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/jeff-goldblum/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/jeff-goldblum/image.jpg" />
     <button data-s="copy" data-key="jeff-goldblum">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/jeff-goldblum-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/jeff-goldblum-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="jeff-goldblum-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/jeff-goldblum-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/jeff-goldblum-2/image.jpg" />
     <button data-s="copy" data-key="jeff-goldblum-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/jurassic-park/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/jurassic-park/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="jurassic-park" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/jurassic-park/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/jurassic-park/image.jpg" />
     <button data-s="copy" data-key="jurassic-park">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/jurassic-park-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/jurassic-park-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="jurassic-park-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/jurassic-park-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/jurassic-park-2/image.jpg" />
     <button data-s="copy" data-key="jurassic-park-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/jurassic-park-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/jurassic-park-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="jurassic-park-3" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/jurassic-park-3/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/jurassic-park-3/image.jpg" />
     <button data-s="copy" data-key="jurassic-park-3">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/jurassic-park-4/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/jurassic-park-4/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="jurassic-park-4" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/jurassic-park-4/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/jurassic-park-4/image.jpg" />
     <button data-s="copy" data-key="jurassic-park-4">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/kermit/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/kermit/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="kermit" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/kermit/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/kermit/image.jpg" />
     <button data-s="copy" data-key="kermit">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/kotis/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/kotis/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="kotis" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/kotis/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/kotis/image.jpg" />
     <button data-s="copy" data-key="kotis">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/kotis-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/kotis-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="kotis-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/kotis-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/kotis-2/image.jpg" />
     <button data-s="copy" data-key="kotis-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/kotis-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/kotis-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="kotis-3" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/kotis-3/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/kotis-3/image.jpg" />
     <button data-s="copy" data-key="kotis-3">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/mask/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/mask/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="mask" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/mask/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/mask/image.jpg" />
     <button data-s="copy" data-key="mask">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/muppet-bomb/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/muppet-bomb/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="muppet-bomb" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/muppet-bomb/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/muppet-bomb/image.jpg" />
     <button data-s="copy" data-key="muppet-bomb">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/muppet-doc/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/muppet-doc/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="muppet-doc" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/muppet-doc/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/muppet-doc/image.jpg" />
     <button data-s="copy" data-key="muppet-doc">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/muppets/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/muppets/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="muppets" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/muppets/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/muppets/image.jpg" />
     <button data-s="copy" data-key="muppets">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/ninja/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/ninja/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="ninja" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/ninja/image.jpg" />
     <button data-s="copy" data-key="ninja">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/ninja-bike/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/ninja-bike/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="ninja-bike" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-bike/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/ninja-bike/image.jpg" />
     <button data-s="copy" data-key="ninja-bike">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/ninja-blender/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/ninja-blender/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="ninja-blender" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-blender/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/ninja-blender/image.jpg" />
     <button data-s="copy" data-key="ninja-blender">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/ninja-scroll/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/ninja-scroll/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="ninja-scroll" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-scroll/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/ninja-scroll/image.jpg" />
     <button data-s="copy" data-key="ninja-scroll">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/ninja-scroll-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/ninja-scroll-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="ninja-scroll-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-scroll-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/ninja-scroll-2/image.jpg" />
     <button data-s="copy" data-key="ninja-scroll-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/ninja-scroll-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/ninja-scroll-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="ninja-scroll-3" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-scroll-3/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/ninja-scroll-3/image.jpg" />
     <button data-s="copy" data-key="ninja-scroll-3">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/ninja-scroll-fire/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/ninja-scroll-fire/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="ninja-scroll-fire" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-scroll-fire/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/ninja-scroll-fire/image.jpg" />
     <button data-s="copy" data-key="ninja-scroll-fire">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/ninja-with-sword/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/ninja-with-sword/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="ninja-with-sword" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/ninja-with-sword/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/ninja-with-sword/image.jpg" />
     <button data-s="copy" data-key="ninja-with-sword">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/sam-the-eagle/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/sam-the-eagle/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="sam-the-eagle" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/sam-the-eagle/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/sam-the-eagle/image.jpg" />
     <button data-s="copy" data-key="sam-the-eagle">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/smokey/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/smokey/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="smokey" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/smokey/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/smokey/image.jpg" />
     <button data-s="copy" data-key="smokey">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/thief/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/thief/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="thief" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/thief/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/thief/image.jpg" />
     <button data-s="copy" data-key="thief">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/thief-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/thief-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="thief-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/thief-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/thief-2/image.jpg" />
     <button data-s="copy" data-key="thief-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/this-is-fine/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/this-is-fine/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="this-is-fine" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/this-is-fine/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/this-is-fine/image.jpg" />
     <button data-s="copy" data-key="this-is-fine">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/tifa-1/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/tifa-1/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="tifa-1" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/tifa-1/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/tifa-1/image.jpg" />
     <button data-s="copy" data-key="tifa-1">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/tifa-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/tifa-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="tifa-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/tifa-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/tifa-2/image.jpg" />
     <button data-s="copy" data-key="tifa-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/tifa-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/tifa-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="tifa-3" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/tifa-3/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/tifa-3/image.jpg" />
     <button data-s="copy" data-key="tifa-3">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/vampire-hunter/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/vampire-hunter/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="vampire-hunter" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/vampire-hunter/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/vampire-hunter/image.jpg" />
     <button data-s="copy" data-key="vampire-hunter">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/winona/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/winona/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="winona" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/winona/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/winona/image.jpg" />
     <button data-s="copy" data-key="winona">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/winona-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/winona-2/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="winona-2" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/winona-2/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/winona-2/image.jpg" />
     <button data-s="copy" data-key="winona-2">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/winona-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/winona-3/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="winona-3" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/winona-3/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/winona-3/image.jpg" />
     <button data-s="copy" data-key="winona-3">Copy</button>
   </div>
-  <div class="playmat-image">
-    <img src="&#x2f;tts&#x2f;playmats/yoink/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
+  <div class="play-mat-image">
+    <img src="&#x2f;tts&#x2f;play-mats/yoink/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="yoink" 
-      value="playmat https://al9000.com&#x2f;tts&#x2f;playmats/yoink/image.jpg" />
+      value="playmat https://al9000.com&#x2f;tts&#x2f;play-mats/yoink/image.jpg" />
     <button data-s="copy" data-key="yoink">Copy</button>
   </div>
+</div>
 <aside>
   NOTE: The alt text for the images isn't descriptive.
-  The process that builds the page isn't set up to allow that. 
+  The process that builds the page isn't set up for that. 
 </aside>
 
 

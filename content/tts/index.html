@@ -13,12 +13,25 @@ input {
   display: block;
   width: 100%;
 }
-.playmat-image { 
-  width: 300px; 
 
+.card-backs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+}
+
+
+.play-mat-image { 
+  width: 200px; 
   img {
     transform: rotate(180deg);
   }
+}
+
+.play-mats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
 }
 
 </style>
@@ -37,26 +50,59 @@ input {
 
 == filter md 
 
-### Playmats
+These images are for play mats and card backs to use
+in Magic: The Gathering on Tabletop Simulator. 
+The play mats are actually upside down so
+they face folks across the table from me. 
+Clicking the `Copy` button copies
+the command to paste into Tabletop Simulator
+to use the image. 
+
+### Card Backs
+
+== set cards_dir = "/tts/card-backs"
 
 
-== set dir = "/tts/playmats"
+<div class="card-backs">
+
+== for card in files_in_folder(cards_dir)
+  <div>
+    <img src="[@ card @]" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <input 
+      type="hidden" 
+      id="card[@ loop.index @]" 
+      value="https://al9000.com[@ card @]" />
+    <button data-s="copy" data-key="card[@ loop.index @]">Copy</button>
+  </div>
+== endfor
+
+</div>
+
+### Play Mats
+
+
+
+== set dir = "/tts/play-mats"
+
+<div class="play-mats">
 
 == for folder in folders_in_folder(dir)
-  <div class="playmat-image">
+  <div class="play-mat-image">
     <img src="[@ dir @]/[@ folder @]/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 
-      type="text" 
+      type="hidden" 
       id="[@ folder @]" 
       value="playmat https://al9000.com[@ dir @]/[@ folder @]/image.jpg" />
     <button data-s="copy" data-key="[@ folder @]">Copy</button>
   </div>
 == endfor
 
+</div>
+
 
 <aside>
   NOTE: The alt text for the images isn't descriptive.
-  The process that builds the page isn't set up to allow that. 
+  The process that builds the page isn't set up for that. 
 </aside>
 
 
