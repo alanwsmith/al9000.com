@@ -1,0 +1,37 @@
+== extends "/templates.inc/pages/empty.html" 
+
+== block toml
+title = "QR Clock"
+status = "wip"
+created = 2026-06-18T18:22:00-04:00
+== endblock
+
+== block content 
+
+<style>
+body {
+  background-color: black;
+  color: #999;
+}
+
+.clock-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+</style>
+
+<bitty-8 data-connect="/qr-clock/bit.js"></bitty-8>
+
+<div class="clock-wrapper">
+  <div>
+    <h1 class="center">The Current Time Is</h1>
+    <div class="center" id="qrcode"></div>
+  </div>
+</div>
+
+== endblock
