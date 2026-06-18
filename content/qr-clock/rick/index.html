@@ -1,0 +1,29 @@
+== extends "/templates.inc/pages/empty.html" 
+
+== block content
+
+<style>
+body {
+  background: black;
+  color: #999;
+}
+img {
+  max-width: 80%;
+  border-radius: 0.8rem;
+}
+
+.center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+</style>
+
+<bitty-8 data-connect="/qr-clock/rick/bit.js"></bitty-8>
+
+<h1 class="center">You Scanned The Time At:</h1>
+<h2 data-r="showTime"></h2>
+<div class="center">
+  <img src="/qr-clock/rick/rick.avif" />
+</div>
+== endblock

@@ -1082,7 +1082,7 @@ var QRCode;
 
 function makeString() {
   const ts = Date.now();
-  return `https://al9000.com/qr-clock/rick.html?time=${ts}`;
+  return `https://al9000.com/qr-clock/rick/?time=${ts}`;
 }
 
 const base = Math.min(
@@ -1107,11 +1107,4 @@ export async function updateClock(_, __, ___) {
   qrcode.clear();
   qrcode.makeCode(makeString());
   b.trigger("updateClock");
-  // const target = b.qs("#qrcode");
-  // new QRCode(
-  //   target,
-  //   "http://jindo.dev.naver.com/collie",
-  // );
-  // await b.sleep(3000);
-  // target.replaceChildren();
 }
