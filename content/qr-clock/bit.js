@@ -1082,7 +1082,7 @@ var QRCode;
 
 function makeString() {
   const ts = Date.now();
-  return `https://al9000.com/qr-clock/rick/?time=${ts}`;
+  return `https://al9000.com/qr-clock/rick/index.html?time=${ts}`;
 }
 
 const base = Math.min(
