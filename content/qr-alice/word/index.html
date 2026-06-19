@@ -1,0 +1,53 @@
+== extends "/templates.inc/pages/empty.html" 
+
+== block content
+
+<style>
+body {
+  background: black;
+  color: #999;
+}
+
+a {
+  color: #9d1fc1;
+}
+
+img {
+  max-width: 80%;
+  border-radius: 0.8rem;
+}
+
+.center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.contentWrapper {
+  min-height: 96vh;
+  min-height: 96dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+</style>
+
+<bitty-8 data-connect="/qr-alice/word/bit.js"></bitty-8>
+
+<div class="contentWrapper">
+  <div>
+    <h1 class="center">The Current Word Is:</h1>
+    <h2 class="center" data-r="showWord"></h2>
+    <div class="center">
+      <a href="/qr-alice/">back down the rabbit hole</a>
+    </div>
+    <div class="center">
+      <img src="/qr-alice/word/rick.avif" />
+    </div>
+  </div>
+== include "/templates.inc/includes/empty/footer.html"
+</div>
+
+== endblock
+
+
+
