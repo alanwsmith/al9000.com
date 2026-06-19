@@ -14,6 +14,10 @@ body {
   color: #999;
 }
 
+a {
+  color: #9d1fc1;
+}
+
 .clock-wrapper {
   align-items: center;
   display: flex;
@@ -23,15 +27,26 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.contentWrapper {
+  min-height: 96vh;
+  min-height: 96dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
 </style>
 
 <bitty-8 data-connect="/qr-clock/bit.js"></bitty-8>
 
+<div class="contentWrapper">
 <div class="clock-wrapper">
   <div>
     <h1 class="center">The Current Time Is</h1>
     <div class="center" id="qrcode"></div>
   </div>
 </div>
+== include "/templates.inc/includes/empty/footer.html"
+</div>
+
 
 == endblock

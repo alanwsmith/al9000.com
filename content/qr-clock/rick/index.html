@@ -7,6 +7,11 @@ body {
   background: black;
   color: #999;
 }
+
+a {
+  color: #9d1fc1;
+}
+
 img {
   max-width: 80%;
   border-radius: 0.8rem;
@@ -17,13 +22,31 @@ img {
   display: flex;
   justify-content: center;
 }
+
+.contentWrapper {
+  min-height: 96vh;
+  min-height: 96dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
 </style>
 
 <bitty-8 data-connect="/qr-clock/rick/bit.js"></bitty-8>
 
-<h1 class="center">You Scanned The Time At:</h1>
-<h2 data-r="showTime"></h2>
-<div class="center">
-  <img src="/qr-clock/rick/rick.avif" />
+<div class="contentWrapper">
+  <div>
+    <h1 class="center">You Scanned The Time At:</h1>
+    <h2 data-r="showTime"></h2>
+    <div class="center">
+      <img src="/qr-clock/rick/rick.avif" />
+    </div>
+    <div class="center">
+      <a href="/qr-clock/">scan again</a>
+    </div>
+  </div>
+== include "/templates.inc/includes/empty/footer.html"
 </div>
+
 == endblock
+
+

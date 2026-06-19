@@ -33,6 +33,10 @@ body {
   color: #999;
 }
 
+a {
+  color: #9d1fc1;
+}
+
 .clock-wrapper {
   align-items: center;
   display: flex;
@@ -42,16 +46,33 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.contentWrapper {
+  min-height: 96vh;
+  min-height: 96dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
 </style>
 
 <bitty-8 data-connect="/qr-clock/bit.js"></bitty-8>
 
+<div class="contentWrapper">
 <div class="clock-wrapper">
   <div>
     <h1 class="center">The Current Time Is</h1>
     <div class="center" id="qrcode"></div>
   </div>
 </div>
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from <a href="/">alan w smith</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+</footer></div>
+
 
     <div class="hidden support">
       <script src="/scripts.off/bitty/bitty-8.0.0-beta8-wip.source.js" type="module"></script>
