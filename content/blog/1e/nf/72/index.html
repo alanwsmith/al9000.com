@@ -1,0 +1,35 @@
+== extends "/templates.inc/pages/blog.html"
+
+== block toml
+title = "Weeknotes - June 26, 2026"
+created = 2026-06-20T11:55:00-04:00
+status = "draft"
+== endblock
+
+== block main
+
+== filter md
+
+## Saturday - June 20, 2026
+
+- Added an `exists()` function to the
+al9000.com site builder. The initial use
+case is so I can check if there's an `og-image.jpg`
+file next to a page and use it if there is. 
+
+  This is part of the general way I'm doing
+  things where I rely on naming and location 
+  conventions instead of configuring things
+  explicitly. 
+
+- Added the feature to al9000.com that 
+uses the new `exists()` function to check
+for an open graph image next to a page
+and uses it if it exists. 
+
+
+
+== endfilter
+
+
+== endblock

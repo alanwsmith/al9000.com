@@ -2,6 +2,12 @@ use minijinja::{Value, value};
 use std::path::PathBuf;
 use walkdir::{DirEntry, WalkDir};
 
+// REMINDER:
+//
+// The path to the content directory is hard coded
+// based of the location of where the build
+// process source code is stored and run.
+
 fn include_file(entry: &DirEntry) -> bool {
   if entry.file_name().to_string_lossy().starts_with(".") {
     return false;

@@ -48,6 +48,7 @@ pub fn get_env(config: &Config) -> Environment {
   // of `highlight_text()`
   env.add_filter("output_block", output_block);
   env.add_function("date", date);
+  env.add_function("exists", exists);
   env.add_function("files_in_folder", files_in_folder);
   env.add_function("folders_in_folder", folders_in_folder);
   env.add_function("parent", parent);

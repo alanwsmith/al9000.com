@@ -1,5 +1,6 @@
 pub mod date;
 // pub mod dev_test_function;
+pub mod exists;
 pub mod files_in_folder;
 pub mod folders_in_folder;
 pub mod link;
@@ -9,6 +10,7 @@ pub mod stem;
 
 pub use date::*;
 // pub use dev_test_function::*;
+pub use exists::*;
 pub use files_in_folder::*;
 pub use folders_in_folder::*;
 pub use link::*;

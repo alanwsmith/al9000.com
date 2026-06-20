@@ -262,6 +262,26 @@ calling [! raw !][@ img("some-img") @][! endraw !]
 would create the image tag with the path
 
 
+## Open Graph Images
+
+- These are the image that show up as previews
+on social media sites when you post a link on them. 
+
+- The base metadata include file looks for an 
+`og-image.jpg` file next to the page it's 
+rendering. If it finds one, it uses it. 
+Otherwise, it uses the default OG image. 
+
+- TODO: Auto-generate OG Images with 
+page titles for text for each page. 
+These will be called `og-image-auto.jpg`. 
+The titles will update when the title
+of a page updates. If an `og-image.jpg`
+file exists, it will override the
+`og-image-auto.jpg`. 
+
+
+
 ## Filters
 
 - code("LANGUAGE")
@@ -345,6 +365,14 @@ would create the image tag with the path
     (the formatting is done with 
     standard date formatting tokens).
 
+- exists(PATH)
+
+  - Returns true if the given path exists.
+
+  - Otherwise, returns false. 
+
+  - Expected paths are absolute based
+    on the site docroot. 
 
 - files_in_folder(PATH [, EXT])
 
