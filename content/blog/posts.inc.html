@@ -1,0 +1,24 @@
+== filter md
+
+[! set the_date = "" !]
+
+[! for f1 in folders_in_folder("/blog")|reverse !]
+  [! for f2 in folders_in_folder("/blog/" + f1)|reverse !]
+    [! for f3 in folders_in_folder("/blog/" + f1 + "/" + f2)|reverse !]
+      [! set f_dir = ["/blog", f1, f2, f3]|join("/")|safe !]
+      [! set f_path = [f_dir, "index.html"]|join("/")|safe !]
+      [! if exists(f_path) !]
+        [! if d.blog[f1][f2][f3].index.status == "done" !]
+[! if the_date != date(d.blog[f1][f2][f3].index.created) !]
+[! set the_date = date(d.blog[f1][f2][f3].index.created) !]
+### [@ the_date @]
+[! endif !]
+
+- <a href="[@ f_dir @]">[@ d.blog[f1][f2][f3].index.title|safe @]</a>
+        [! endif !]
+      [! endif !]
+    [! endfor !]
+  [! endfor !]
+[! endfor !]
+
+== endfilter

@@ -1120,7 +1120,7 @@ export async function loadChunk() {
       );
       currentWord += 1;
     }
-    await b.sleep(10);
+    await b.sleep(150);
     loadChunk();
   }
 }
