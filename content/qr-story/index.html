@@ -1,0 +1,90 @@
+== extends "/templates.inc/pages/empty.html" 
+
+== block toml
+title = "QR Story"
+status = "wip"
+created = 2026-06-19T15:37:00-04:00
+== endblock
+
+== block content 
+<!--
+<style>
+body {
+  background-color: black;
+  color: #999;
+}
+
+a {
+  color: #9d1fc1;
+}
+
+.clock-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+</style>
+-->
+
+<style>
+body {
+  background-color: black;
+}
+
+.contentWrapper {
+  width: min(900px, 90vw);
+  min-height: 96vh;
+  min-height: 96dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  margin: auto;
+}
+.wordGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.word {
+  width: 45px;
+  height: 45px;
+  font-size: 0.45rem;
+}
+p {
+  width: min(580px, 80vw);
+}
+</style>
+
+<bitty-8 data-connect="/qr-story/bit.js"></bitty-8>
+
+<div class="contentWrapper">
+  <div>
+    <h1>Alice in QR Land</h1>
+    <div>
+      <p>
+        This piece is the text of Alice's Adventures in Wonderland
+        with each word turned into a QR code. The color of
+        each code is random. The codes are generated
+        each time the page is loaded. It can take
+        some time and older devices may struggle. 
+        (There are more efficient ways to do the same thing. 
+        This is about playing with the tech more than
+        optimizing performance.)
+      </p>
+    </div>
+    <div class="wordGrid" data-r="loadWords"></div>
+  </div>
+  == include "/templates.inc/includes/empty/footer.html"
+
+</div>
+
+<script type="text/html" data-template="wordTemplate">
+<div id="__ID__" class="word">loading</div>
+</script>
+
+
+== endblock
+

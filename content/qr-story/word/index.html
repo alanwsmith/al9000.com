@@ -1,0 +1,53 @@
+== extends "/templates.inc/pages/empty.html" 
+
+== block content
+
+<style>
+body {
+  background: black;
+  color: #999;
+}
+
+a {
+  color: #9d1fc1;
+}
+
+img {
+  max-width: 80%;
+  border-radius: 0.8rem;
+}
+
+.center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.contentWrapper {
+  min-height: 96vh;
+  min-height: 96dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+</style>
+
+<bitty-8 data-connect="/qr-story/word/bit.js"></bitty-8>
+
+<div class="contentWrapper">
+  <div>
+    <h2 class="center">That Word Is:</h2>
+    <h1 class="center" data-r="showWord"></h1>
+    <div class="center">
+      <a href="/qr-story/">back to the story</a>
+    </div>
+    <div class="center">
+      <img src="/qr-story/word/rick.avif" />
+    </div>
+  </div>
+== include "/templates.inc/includes/empty/footer.html"
+</div>
+
+== endblock
+
+
+
