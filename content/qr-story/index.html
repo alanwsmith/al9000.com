@@ -41,7 +41,7 @@ body {
   min-height: 96vh;
   min-height: 96dvh;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr auto;
   margin: auto;
 }
 .wordGrid {
@@ -61,6 +61,7 @@ p {
 <bitty-8 data-connect="/qr-story/bit.js"></bitty-8>
 
 <div class="contentWrapper">
+  == include "/templates.inc/includes/empty/header.html"
   <div>
     <h1>Alice in QR Land</h1>
     <div>

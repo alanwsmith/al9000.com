@@ -60,7 +60,7 @@ body {
   min-height: 96vh;
   min-height: 96dvh;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr auto;
   margin: auto;
 }
 .wordGrid {
@@ -80,6 +80,21 @@ p {
 <bitty-8 data-connect="/qr-story/bit.js"></bitty-8>
 
 <div class="contentWrapper">
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a>    <!--
+<a href="/tools">tools</a>-->
+  </div>
+
+</header>
+
+
   <div>
     <h1>Alice in QR Land</h1>
     <div>
@@ -97,6 +112,9 @@ p {
     <div class="wordGrid" data-r="loadWords"></div>
   </div>
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    <a href="/">home</a>
+  </div>
   <div class="small-font-size text-align-center">
     from <a href="/">alan w smith</a>
   </div>
