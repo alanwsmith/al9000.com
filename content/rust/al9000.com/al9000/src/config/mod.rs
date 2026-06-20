@@ -12,8 +12,12 @@ pub struct Config {
 
 impl Config {
   pub fn new() -> Config {
-    let _content_file_extensions =
-      vec!["html".to_string(), "js".to_string(), "txt".to_string()];
+    let _content_file_extensions = vec![
+      "html".to_string(),
+      "js".to_string(),
+      "txt".to_string(),
+      "xml".to_string(),
+    ];
 
     let port = free_local_port_in_range(9000..=9000)
       .ok_or(anyhow!("Could not find port"));

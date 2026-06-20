@@ -464,11 +464,15 @@ given path by effectively turning
 </ul>
 </li>
 <li>
-<p>TODO: date(DATE [, FORMAT])</p>
+<p>date(DATE [, FORMAT])</p>
 <ul>
 <li>
-<p>Takes an RFC 9557 date and returns
+<p>TODO: Takes an RFC 3339 date and returns
 a string with the date.</p>
+</li>
+<li>
+<p>Can also take a TOML date from the
+frontmatter.</p>
 </li>
 <li>
 <p>The default format is <code>MONTH, YEAR</code>.</p>
@@ -580,6 +584,39 @@ the folders basename is returned
 dots don't get removed so:
 <code>/some/path/bravo.inc/</code> returns
 <code>bravo.inc</code>)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>timestamp([DATE])</p>
+<ul>
+<li>
+<p>Returns the current timestamp in
+RFC 3339 format.</p>
+</li>
+<li>
+<p>When an optional DATE argument
+is passed it gets parsed and
+used to generate the RFC 3339
+timestamp. (The incoming DATE
+currently only supports
+the private TOML payload
+from the frontmatter.)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>uuid([STRING])</p>
+<ul>
+<li>
+<p>Returns a UUID by default.</p>
+</li>
+<li>
+<p>If the optional <code>STRING</code> argument
+is passed the returned value is a
+UUID v5 (which will always return
+the same UUID for a given input
+string.)</p>
 </li>
 </ul>
 </li>

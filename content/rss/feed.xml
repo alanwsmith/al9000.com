@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>al9000.com</title>
+  <link href="https://al9000.com/"/>
+  <updated>[@ timestamp() @]</updated>
+  <author>
+    <name>alan w smith</name>
+  </author>
+  <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
+
+[! for f1 in folders_in_folder("/blog")|reverse !]
+  [! for f2 in folders_in_folder("/blog/" + f1)|reverse !]
+    [! for f3 in folders_in_folder("/blog/" + f1 + "/" + f2)|reverse !]
+      [! set f_dir = ["/blog", f1, f2, f3]|join("/")|safe !]
+      [! set f_path = [f_dir, "index.html"]|join("/")|safe !]
+      [! if exists(f_path) !]
+        [! if d.blog[f1][f2][f3].index.status == "done" !]
+          [! if d.blog[f1][f2][f3].index.title !]
+            [! if d.blog[f1][f2][f3].index.created !]
+  <entry>
+    <title>[@ d.blog[f1][f2][f3].index.title @]</title>
+    <link href="https://al9000.com/blog/[@ f1 @]/[@ f2 @]/[@ f3 @]/"/>
+    <id>urn:uuid:[@ uuid("https://al9000.com/blog/" +  f1  + "/" + f2 + "/" + f3 + "/") @]></id>
+    <updated>[@ timestamp(d.blog[f1][f2][f3].index.created) @]</updated>
+    <summary><![CDATA[[! include "/blog/" + f1 + "/" + f2 + "/" + f3 + "/index.html" !]]]></summary>
+  </entry>
+            [! endif !]
+          [! endif !]
+        [! endif !]
+      [! endif !]
+    [! endfor !]
+  [! endfor !]
+[! endfor !]
+</feed>

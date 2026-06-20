@@ -353,10 +353,13 @@ file exists, it will override the
     given path by effectively turning 
     `/some/path/file.html` into `j.some.path.file`
 
-- TODO: date(DATE [, FORMAT])
+- date(DATE [, FORMAT])
 
-  - Takes an RFC 9557 date and returns
+  - TODO: Takes an RFC 3339 date and returns
     a string with the date. 
+
+  - Can also take a TOML date from the
+    frontmatter. 
 
   - The default format is `MONTH, YEAR`.
 
@@ -387,7 +390,6 @@ file exists, it will override the
     is passed, then only files with
     a matching file extension are
     returned. 
-
 
 - folders_in_folder(PATH)
 
@@ -434,6 +436,29 @@ file exists, it will override the
     dots don't get removed so:
     `/some/path/bravo.inc/` returns
     `bravo.inc`)
+
+- timestamp([DATE])
+
+  - Returns the current timestamp in 
+    RFC 3339 format.
+
+  - When an optional DATE argument
+    is passed it gets parsed and
+    used to generate the RFC 3339 
+    timestamp. (The incoming DATE
+    currently only supports
+    the private TOML payload
+    from the frontmatter.)
+    
+- uuid([STRING]) 
+
+  - Returns a UUID by default. 
+
+  - If the optional `STRING` argument
+    is passed the returned value is a
+    UUID v5 (which will always return
+    the same UUID for a given input 
+    string.)
 
 
 ## Local Tools

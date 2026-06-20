@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>al9000.com</title>
+  <link href="https://al9000.com/"/>
+  <updated>2026-06-20T18:49:43-04:00</updated>
+  <author>
+    <name>alan w smith</name>
+  </author>
+  <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
+
+  <entry>
+    <title>DAE - Digital To Analog Enlarger</title>
+    <link href="https://al9000.com/blog/1e/fu/pl/"/>
+    <id>urn:uuid:7791a4e6-edbd-5639-a8c9-73e915b65997></id>
+    <updated>2026-06-20T11:53:00-04:00</updated>
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+  <div class="subnav default-wrapper">
+    <a href=""><div class="large-top-padding">
+<a href="/blog/">blog</a>
+</div>
+</a>
+  </div>
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+  </hgroup>
+
+<p>The sonic foundation of computers is the DAC,
+or Digital-To-Audio Converter. It's the hardware
+that turns digital files into the signal that goes
+down the wires of your speakers to make them make sound.</p>
+<p>What if we made a Digital to Analog Enlarger
+for photographs? I mean, this already exists in some
+ways. Any time you get a digital photo
+printed there's a process that does it that
+can output to various sizes. That's not what I'm
+talking about.</p>
+<p>I'm talking about one that looks like this:</p>
+<img src="enlarger-4856357201.jpg" alt="Two photography film enlargers side by side on a worktop desk. There's a collection of trays for processing beside them" />
+<p>Ones that project light onto a piece of paper covered with
+a light sensitive emulsion. The next step
+being to run the paper through a series of
+chemicals to produce the image.</p>
+<p>It's a bit of a ridiculous way to
+go about it, but it would give you
+the chemical experience from
+your digital images.</p>
+<h3>Endnotes</h3>
+<ul>
+<li>
+<p>The source of the enlarger photo
+<a href="https://www.flickr.com/photos/ccdoh1/4856357201/in/photolist-8p96Nz-2nMeAaJ-2mQwA1E-2pnhQEK-2mYAL47-2n4AieV-2gf6FGd-dwMELp-2oDmvPL-2n2bBmS-2mVuvsY-2kTC6w2-2ocEgtt-ecUrw-f7Dqe-2hhKuw8-2m6CpsK-2nQ94vf-DxToxa-2gwA5Ai-2kTHMfC-2g6NeZz-2oBNNbT-2krKtfC-4ukokA-4RRb62-2hfRYPQ-2fan8hz-2iRxZGR-4ugkBP-2gcydSB-2nrctwb-GRQR7G-2mJULsD-VF4ay7-PAv2Uq-2gZyDLJ-2oBD7F5-2iVhpwb-2hfRYx7-6xrrGU-6xru2C-4c8MHp-2kinsnR-2nRcpPC-2oifdep-oC2vr4-2o7U4Ci-QKGmwB-2qdBpxH">here</a>.</p>
+</li>
+<li>
+<p>Probably someone has already built one of these.</p>
+</li>
+<li>
+<p>It's unlikely I'll ever try, but the idea is fun.</p>
+</li>
+</ul>
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    [rss coming at some point]
+  </div>
+</footer>
+
+
+
+    <div class="hidden templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
+</html>
+
+]]></summary>
+  </entry>
+  <entry>
+    <title>Fingers to Keys</title>
+    <link href="https://al9000.com/blog/1e/da/37/"/>
+    <id>urn:uuid:c9fa64b1-e156-5675-ac68-3e6d5ee3b08c></id>
+    <updated>2026-04-27T17:08:00-04:00</updated>
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+  <div class="subnav default-wrapper">
+    <a href=""><div class="large-top-padding">
+<a href="/blog/">blog</a>
+</div>
+</a>
+  </div>
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+  </hgroup>
+
+<p>I need to write something.</p>
+<p>Notice I did not say, I <em>want</em> to write something.
+I need to.</p>
+<p>My brain has been offline for a couple weeks.
+Not too bad. Not full on depressions. I expect
+it might have been if it weren't for the meds.
+Or, if I had to go to a day job.</p>
+<p>That's maybe the most interesting thing for me.
+How much less do I get impacted by the swings
+of bipolar disorder without having the pressure
+of a gig.</p>
+<p>I don't think there would be a difference on the
+mania side. The depressions side? It feels like I
+would have spiralled down if I'd had to deal
+with a 9 to 5 over the past few weeks.</p>
+<p>Struggling with one during my big depression
+was the major reasons I ended up in the hospital
+A measure that was necessary because I'd
+become a danger to myself.</p>
+<p>I got stuck in this cycle of thinking that I
+couldn't get my brain moving which meant that
+I couldn't do my job which meant that I'd get
+fired which meant I'd lose everything which
+led the rest of the way down the dark
+path.</p>
+<h2>TODO List</h2>
+<p>I've got stuff I want to work on right now.
+That's better than the past few days
+where I didn't want to do anything beyond
+watching youtube.</p>
+<p>I don't have any momentum though. I'm at
+a stand still.</p>
+<p>The purpose of this post is to get a little.
+It's not much more than leaning forward a
+bit. Not much. Just enough to take
+a first step.</p>
+<p>Hopefully, that'll be enough. It always
+has been so far. Even as ever time it
+feels like the fire might not re-ignite.</p>
+<h2>Support Notes</h2>
+<p>Ok.</p>
+<p>Things are better now.</p>
+<p>Looking at the time stamps, it took me 16
+minutes to write down to this point.</p>
+<p>It's fucking magic.</p>
+<p>It gave me enough to clear the fog. Like
+turning on a kitchen fan to clear the
+smoke after you burned something in the
+frying pan.</p>
+<p>It also let me put music back in my ears.
+I haven't really been listening to anything.
+It's tough to hear tunes over
+react videos of folks watching Doctor Who.</p>
+<p>But, I need music as much as I do writing.</p>
+<p>Input from one. Output of the other.
+Balance between.</p>
+<p>It's cranked now.</p>
+<p>Goose's &quot;Give It Time&quot; on repeat.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DF2QKZ823HY?si=-wPDXd_C5lvvCMla" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h2>Outro</h2>
+<p>I don't have the energy to do
+an edit pass on this post. It would
+be nice. It would also be pushing
+it.</p>
+<p>This time is fragile. Nothing more
+than an ember.</p>
+<p>I'm not exactly sure how to land
+this post either. This wasn't
+an exercise in prose. It was
+a stretch. A warm up.</p>
+<p>It's done now.</p>
+<p>I'm not sure what's next.
+But, I know it'll be something.
+A vast improvement over an hour
+ago when the part of my
+brain that does things wasn't
+with me.</p>
+<p>-a</p>
+<h2>Endnotes</h2>
+<ul>
+<li>
+<p>I've written variations of this
+post a few different times. I've
+written it even more in my journal.
+Back when I did that.</p>
+<p>The most concise iteration was
+<a href="/the-clicky-sound">The Clicky Sound</a>.
+The one where I finally dug out of
+two years of major bipolar depression.</p>
+</li>
+</ul>
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    [rss coming at some point]
+  </div>
+</footer>
+
+
+
+    <div class="hidden templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
+</html>
+
+]]></summary>
+  </entry>
+  <entry>
+    <title>The Good Place</title>
+    <link href="https://al9000.com/blog/1e/bk/1s/"/>
+    <id>urn:uuid:4849b6ed-8446-5996-a935-385d2e1e143a></id>
+    <updated>2026-04-18T09:47:00-04:00</updated>
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+  <div class="subnav default-wrapper">
+    <a href=""><div class="large-top-padding">
+<a href="/blog/">blog</a>
+</div>
+</a>
+  </div>
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+  </hgroup>
+
+<p>I binged The Good Place over the past few days.
+All four seasons. It was all I did. I enjoyed it.
+I also think there's been some depression over
+the past week or so. Though, it might have just
+been ennui. It's tough for me to tell. I still
+don't have baselines for what's what.</p>
+<p>It's been nine years since I had my manic episode
+and started taking meds for bipolar disorder. The
+first two or three of those years were going
+though the depression along with my brain healing
+from the episodes. The thing I'm wondering now is
+how much of the way I was feeling was depression
+and how much was healing.</p>
+<p>Like, maybe I don't know what depression actually
+feels like because a bunch of what I was feeling beat
+up by was the physical impact on my brain and the
+recovery from that. It would be nice if most of it
+was the healing. That would mean the depression
+wasn't as bad. I doubt that's the case based on
+the clinical descriptions of depression.</p>
+<p>It would be nice though.</p>
+<p>Whatever, that was what it was and will be what it will be.</p>
+<p>Anyway, The Good Place was a nice way to spend
+the past few days. Kristen Bell is a delight.
+It was a lot of fun to see Ted Danson. Those are the
+two I was familiar with. William Jackson Harper
+and D'Arcy Carden were great. Manny Jacinto was
+good in his own way, though I wasn't a fan of his
+character. He was the most Networky one. Too far on
+the caricature side of a character.</p>
+<p>-- h2</p>
+<p>Kant and Crew</p>
+<p>I give credit to the writers for the amount
+of philosophy they threw in. I'd heard of half
+the philosophers before thanks to J. The recurring
+joke about everyone hating moral philosophers
+landed for me more than most because J has told
+me before that she didn't trust them. I can't
+imagine most folks have either known a moral
+philosopher either first or second hand. The
+riff felt like an inside joke that I knew just
+enough about to appreciate.</p>
+<p>-- h2</p>
+<p>The Exit</p>
+<p>When I saw there were four seasons and the
+last one ended six years ago I wondered how
+they were going to wrap it up. This was in the
+middle of the second season where it was clear
+how much effort the writers put into the
+philosophy. I was really hoping the series
+would have an explicit end instead of just
+ending because the show didn't get renewed.
+I'm glad they got to complete it. They landed
+it wonderfully. The humans walking through walk
+into the universe and ceasing to be was... powerful.</p>
+<p>I don't have the words to describe it. It was
+very affecting. I'm crying right now thinking
+about it. Not because it was bad, or sad. And, not
+because it was beautiful. It was that, and it wasn't.</p>
+<p>I don't know. I really don't know how to
+describe it. Something like catharsis.</p>
+<p>The word sublime comes to mind too. Not in the
+way most folks use it. Not an ecstasy. An impact.
+An intensity.</p>
+<p>The thing that got me the most was the way they
+described knowing it was time to move on. The
+characters each recognized when they'd done
+what they needed to do.</p>
+<p>I get that.</p>
+<p>I'm at a time when I feel like I've done enough.
+What I've needed to do. If there were a door,
+I could see myself walking through it. I expect
+that feeling will pass. Possibly it's some
+depressions. It doesn't feel like it though.
+It really does feel more like I've done what
+I've needed to do. That I've had enough
+experiences that I've covered the enough
+of them that I'm content. There will always
+be more to see, but I've seen enough that
+I'd be happy if it's all I got.</p>
+<p>-a</p>
+<p>-- endnote/</p>
+<p>I'm not suicidal right now. I've been there.
+This isn't that. It's weird to think I might
+be again. Doubly so now that I've got the
+analogy from the end of the show in my head.
+The idea of the wave and the water. The wave
+is a thing, but when it crashes on the shore
+it ceases to be. It's just water again.
+Part of the ocean.</p>
+<p>-- youtube/
+-- l1IchzbtNj0</p>
+<p>-- /endnote</p>
+<p>-- endnote</p>
+<p>With The Good Place and Everything Everywhere
+All at Once I'm super impressed with the stories
+in film and television. They are new high marks
+for putting big thought narratives in play for
+wider audiences. Love the evolution.</p>
+<p>-- endnote</p>
+<p>As always happens after a period of being kinda
+offline, writing this has helped start me up.
+I'll have to link up &quot;The Clicky Sound&quot;.</p>
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    [rss coming at some point]
+  </div>
+</footer>
+
+
+
+    <div class="hidden templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
+</html>
+
+]]></summary>
+  </entry>
+  <entry>
+    <title>I'm Not Ready to Start This Blog</title>
+    <link href="https://al9000.com/blog/1e/bk/0i/"/>
+    <id>urn:uuid:98714b41-9003-5f18-8868-e04af5e027d4></id>
+    <updated>2026-04-12T11:48:00-04:00</updated>
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="a post from alan w. smith" />
+<meta property="og:description" content="a post from alan w. smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Most content will be fine, but some things won't work.
+  </p>
+</noscript>
+  <div class="top-nav">
+<a href="/">home</a><a href="/tools">tools</a>  </div>
+
+  <div class="subnav default-wrapper">
+    <a href=""><div class="large-top-padding">
+<a href="/blog/">blog</a>
+</div>
+</a>
+  </div>
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+  </hgroup>
+
+<p>Fuck it. We'll do it live.</p>
+<p>Welcome to the al9000.com blog!</p>
+<p>Things to know:</p>
+<ul>
+<li>
+<p>I've used <a href="https://www.alanwsmith.com/">alanwsmith.com</a>
+as my website since the 1900's. It's always
+been formal sounding and more syllables than
+I'd like. It finally bugged me enough that
+I bought this one and am moving everything
+here.</p>
+</li>
+<li>
+<p>There's a few thousand pages on alanwsmith.com.
+Migration is gonna take a while.</p>
+</li>
+<li>
+<p>If I keep blogging there, I'll keep putting
+off the work to migrate here. It's similar to
+&quot;broken gets fixed, shoddy is forever&quot;. Not
+that the old site is shoddy or broken.
+It's just that considering it no longer viable
+pushes me to work here.</p>
+</li>
+</ul>
+<p>So, I'm making the leap. I've got to hand code
+a lot. Things are barely styled. Links
+and pages break all the time as I
+figure out where to put things.
+But, the basic framework is in place.
+Enough that I can start putting down words.</p>
+<p>As bumpy as it's going to be, I'm
+looking forward to the ride.
+Even if it doesn't feel like I'm ready
+to start.</p>
+<p>-a</p>
+<p>P.S. I've been posting other content.
+You can get to it from the <a href="/">home page</a>.
+It's just not what I consider blog content.
+Though, the more I'm thinking about what
+I want to do with the site the less that
+distinction is going to matter.</p>
+<p>P.P.S. I haven't built the RSS feed yet. It's
+coming soon.</p>
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    [rss coming at some point]
+  </div>
+</footer>
+
+
+
+    <div class="hidden templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+    </div>
+  </body>
+</html>
+
+]]></summary>
+  </entry>
+</feed>
