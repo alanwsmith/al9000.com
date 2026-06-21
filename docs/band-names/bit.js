@@ -3,6 +3,7 @@ export const b = {
 };
 
 const names = `
+Wonder Twin Powers
 Head Shave
 Textile Hippies
 Miss Chris Quarrier

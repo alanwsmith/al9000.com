@@ -1,0 +1,82 @@
+== extends "/templates.inc/pages/blog.html"
+
+== block toml
+title = "RSS Powers: Activated"
+created = 2026-06-21T07:56:00-04:00
+status = "done"
+== endblock
+
+== block main
+== filter md
+
+I started moving my site from [alanwsmith.com](https://www.alanwsmith.com/)
+over here to [al9000.com](https://al9000.com/) earlier this year.
+I started with basic pages. The first blog post came in April. 
+That post is called <em>I'm Not Ready to Start This Blog</em><sup>1</sup>. 
+One of the reasons I wasn't ready was I hadn't built 
+an RSS feed for the site yet<sup>2</sup>. 
+
+As of yesterday, the RSS feed is operational. There's 
+still work to do. Things like adding
+a little header to posts that feature JavaScript
+based features that won't work in most feed readers. 
+All that stuff will come in time. The important 
+part is the basics are in place and ingestible now. 
+
+You can pick it up [on this page](/rss/).
+
+-a
+
+### Endnotes
+
+- Right now, the feed only contains blog posts. 
+One feature on the TODO list is to provide a way
+to include other pages into it as well. For example,
+I don't want to have to make a separate blog post
+for projects (e.g. my [QR Code Clock](/qr-clock/)).
+I just want them to show up in feed. 
+
+- Careful observers will note: the feed isn't
+actually RSS. It's Atom. I'm using that format 
+because it [has an RFC](https://datatracker.ietf.org/doc/html/rfc4287).
+As far as I can tell, RSS does not. With the vastness
+of technology, I'm sure there are cases where
+the difference matters. I'm not aware of them. 
+Nor am I worried about them. 
+
+  Past me worried about the fact that I called it
+  an RSS feed even though it's Atom. I've grown
+  less pedantic. Folks are more familiar with
+  the term RSS. Atom works in readers. 
+  That's all I need. 
+
+### Footnotes
+
+- <sup>1</sup> [I'm Not Ready To Start This Blog](/blog/1e/bk/0i/) - in 
+which I make the first post on this site just to get started. 
+The only thing I really had set up for it was the folder and
+the naming convention I'm using for the page addresses/urls. 
+
+  I could have waited until I was "more ready". That way
+  lies dragons. The big one of paralysis by perfection, 
+  in particular. 
+
+- <sup>2</sup> this site is built from 
+a custom site builder I'm building specifically 
+for it. The builder is very much an early
+work in progress. The general advice is not
+to make your on site builders. After a decade
+and a half working on the web I disagree
+with that for those with the skill set
+to make their own. 
+
+  It's slower to start, but the time you spend
+  on it is like compounding interest over time. 
+  Especially compared to the never ending treadmill of
+  jumping to new frameworks. 
+
+
+
+== endfilter
+== endblock 
+

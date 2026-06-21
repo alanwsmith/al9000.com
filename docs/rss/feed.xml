@@ -2,14 +2,134 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-06-20T20:19:00-04:00</updated>
+  <updated>2026-06-21T08:39:56-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
   <entry>
-    <title>DAE - Digital To Analog Enlarger</title>
+    <title>RSS Powers: Activated</title>
+    <link href="https://al9000.com/blog/1e/nk/v9/"/>
+    <id>urn:uuid:a31317e4-ef7a-56f9-bb6f-1910af0bae90></id>
+    <updated>2026-06-21T07:56:00-04:00</updated>
+
+    <summary><![CDATA[
+
+
+
+<p>I started moving my site from <a href="https://www.alanwsmith.com/">alanwsmith.com</a>
+over here to <a href="https://al9000.com/">al9000.com</a> earlier this year.
+I started with basic pages. The first blog post came in April.
+That post is called <em>I'm Not Ready to Start This Blog</em><sup>1</sup>.
+One of the reasons I wasn't ready was I hadn't built
+an RSS feed for the site yet<sup>2</sup>.</p>
+<p>As of yesterday, the RSS feed is operational. There's
+still work to do. Things like adding
+a little header to posts that feature JavaScript
+based features that won't work in most feed readers.
+All that stuff will come in time. The important
+part is the basics are in place and ingestible now.</p>
+<p>You can pick it up <a href="/rss/">on this page</a>.</p>
+<p>-a</p>
+<h3>Endnotes</h3>
+<ul>
+<li>
+<p>Right now, the feed only contains blog posts.
+One feature on the TODO list is to provide a way
+to include other pages into it as well. For example,
+I don't want to have to make a separate blog post
+for projects (e.g. my <a href="/qr-clock/">QR Code Clock</a>).
+I just want them to show up in feed.</p>
+</li>
+<li>
+<p>Careful observers will note: the feed isn't
+actually RSS. It's Atom. I'm using that format
+because it <a href="https://datatracker.ietf.org/doc/html/rfc4287">has an RFC</a>.
+As far as I can tell, RSS does not. With the vastness
+of technology, I'm sure there are cases where
+the difference matters. I'm not aware of them.
+Nor am I worried about them.</p>
+<p>Past me worried about the fact that I called it
+an RSS feed even though it's Atom. I've grown
+less pedantic. Folks are more familiar with
+the term RSS. Atom works in readers.
+That's all I need.</p>
+</li>
+</ul>
+<h3>Footnotes</h3>
+<ul>
+<li>
+<p><sup>1</sup> <a href="/blog/1e/bk/0i/">I'm Not Ready To Start This Blog</a> - in
+which I make the first post on this site just to get started.
+The only thing I really had set up for it was the folder and
+the naming convention I'm using for the page addresses/urls.</p>
+<p>I could have waited until I was &quot;more ready&quot;. That way
+lies dragons. The big one of paralysis by perfection,
+in particular.</p>
+</li>
+<li>
+<p><sup>2</sup> this site is built from
+a custom site builder I'm building specifically
+for it. The builder is very much an early
+work in progress. The general advice is not
+to make your on site builders. After a decade
+and a half working on the web I disagree
+with that for those with the skill set
+to make their own.</p>
+<p>It's slower to start, but the time you spend
+on it is like compounding interest over time.
+Especially compared to the never ending treadmill of
+jumping to new frameworks.</p>
+</li>
+</ul>
+
+
+
+
+
+
+]]></summary>
+  </entry>
+  <entry>
+    <title>Unoffice Hours</title>
+    <link href="https://al9000.com/blog/1e/nk/se/"/>
+    <id>urn:uuid:d1320f3c-76e0-591b-a202-085840fae071></id>
+    <updated>2026-06-21T07:39:00-04:00</updated>
+
+    <summary><![CDATA[
+
+
+
+<p>This is a fun concept. Folks who set aside a little time
+each week to take calls with whoever about whatever.</p>
+<p><a href="https://unofficehours.com/">unoficehours.com</a></p>
+<p>I've got a bunch of traveling to do. Setting
+up calls with some folks is on the list
+for when I get back.</p>
+<p>-a</p>
+<h3>Endnotes</h3>
+<ul>
+<li>
+<p>I'll totally be using this to talk with
+techy folks about bitty to get feedback from
+them.</p>
+</li>
+<li>
+<p>For the non-techy folks, we'll play the
+conversations by ear and see where they go.</p>
+</li>
+</ul>
+
+
+
+
+
+
+]]></summary>
+  </entry>
+  <entry>
+    <title>DAE - Digital to Analog Enlarger</title>
     <link href="https://al9000.com/blog/1e/fu/pl/"/>
     <id>urn:uuid:7791a4e6-edbd-5639-a8c9-73e915b65997></id>
     <updated>2026-06-20T11:53:00-04:00</updated>
@@ -20,7 +140,7 @@
 
 
 <p>The sonic foundation of computers is the DAC,
-or Digital-To-Audio Converter. It's the hardware
+or Digital-to-Audio Converter. It's the hardware
 that turns digital files into the signal that goes
 down the wires of your speakers to make them make sound.</p>
 <p>What if we made a Digital to Analog Enlarger
