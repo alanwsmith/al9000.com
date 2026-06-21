@@ -18,7 +18,7 @@ https://al9000.com/images/open-graph/default.jpg
 [!- endset -!]
 
 
-[!- set page_title !]
+[!- set og_title !]
   [!- if p.title !]
   [@- p.title -@]
   [!- else -!]
@@ -27,20 +27,19 @@ https://al9000.com/images/open-graph/default.jpg
 [!- endset -!]
 
 
-[!- set page_description -!]
-[!- if p.description -!]
-[@ p.description @]
+[!- set og_description -!]
+[!- if p.og_description -!]
+[@ p.og_description @]
 [!- else -!]
-a post from alan w. smith
+[@ d.config.og_image.default_description @]
 [!- endif -!]
 [!- endset -!]
 
-
 <link rel="shortcut icon" href="/favicon.ico" />
-<title>[@ page_title @]</title>
-<meta property="og:title" content="[@ page_title @]" />
-<meta name="description" content="[@ page_description @]" />
-<meta property="og:description" content="[@ page_description @]" />
+<title>[@ og_title @]</title>
+<meta property="og:title" content="[@ og_title @]" />
+<meta name="description" content="[@ og_description @]" />
+<meta property="og:description" content="[@ og_description @]" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="[@ og_url @]" />
 <meta property="og:image" content="[@ og_image @]" />

@@ -4,8 +4,11 @@
     "domain_without_trailing_slash": "www.al9000.com",
     "favicon_root": "/favicons",
     "github_url": "https://github.com/alanwsmith/",
-    "og_image_rel_path": "/images/og-image.jpg",
     "title": "al9000.com"
   },
-  "bittyURL": "/scripts.off/bitty/bitty-8.1.0-beta1.source.js"
+  "bittyURL": "/scripts.off/bitty/bitty-8.1.0-beta1.source.js",
+  "og_image": {
+    "default_path": "/images/og-image.jpg",
+    "default_description": "from alan w smith"
+  }
 }
