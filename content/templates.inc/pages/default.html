@@ -12,12 +12,13 @@
       == if p.subtitle
         <div class="subtitle">[@ p.subtitle @]</div>
       == endif
-      == if p.created and p.show_date != false
+      == if p.created and "no-date" not in p.flags
         <div class="date">[@ date(p.created) @]</div>
       == endif 
     == endif
   </hgroup>
 == endblock
+
 
 == block main
 == endblock

@@ -495,6 +495,32 @@ Standard page metadata tags I'm using:
 - title
 - updated
 
+## Flags
+
+Flags for customizing aspects of the pages
+are defined via a `flags` key in the
+TOML block. Individual templates are responsible
+for handling behavior changes from 
+the flags. Currently, the only flag is:
+
+- no-date - prevent the date from displaying
+in the title section of a page. 
+
+Others will be added as necessary. 
+
+Templates can check for flags like:
+
+[! raw !]
+
+<pre>
+== if "no-date" not in p.flags 
+Show date here since no-date is not in the flags.
+== endif 
+</pre>
+
+[! endraw !]
+
+
 
 
 == endfilter

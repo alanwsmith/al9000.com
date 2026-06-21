@@ -1,16 +1,16 @@
 == extends "/templates.inc/wrappers/blog.html" 
 
 == set subnav
-<div class="large-top-padding">
-<a href="/blog/">blog</a>
-</div>
+<div class="large-top-padding"><a href="/blog/">blog</a></div>
 == endset
 
 == block body
+== if not rss
 == include "/templates.inc/includes/header.html"
-
 <main class="default-wrapper default-flow">
+== endif 
 
+== if not rss
 == block title
   <hgroup>
     == if p.title
@@ -24,6 +24,8 @@
     == endif
   </hgroup>
 == endblock
+== endif 
+
 
 == block main
 == endblock
@@ -31,12 +33,12 @@
 == block templates
 == endblock
 
+
+== if not rss
 </main>
-
 == include "/templates.inc/includes/footer.html"
-
+== endif 
 
 
 == endblock
-
 

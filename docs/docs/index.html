@@ -57,6 +57,7 @@ body {
         <div class="date">April 2026</div>
   </hgroup>
 
+
 <h2>Overview</h2>
 <p>These are my notes on the static site builder that runs
 al9000.com. I wrote it in Rust with
@@ -652,31 +653,32 @@ just abstracted away.</p>
 <h2>Standard Metadata</h2>
 <p>Standard page metadata tags I'm using:</p>
 <ul>
-<li>
-<p>created</p>
-</li>
-<li>
-<p>id</p>
-</li>
-<li>
-<p>link_text</p>
-</li>
-<li>
-<p>status</p>
-</li>
-<li>
-<p>subtitle</p>
-</li>
-<li>
-<p>tags</p>
-</li>
-<li>
-<p>title</p>
-</li>
-<li>
-<p>updated</p>
-</li>
+<li>created</li>
+<li>id</li>
+<li>link_text</li>
+<li>status</li>
+<li>subtitle</li>
+<li>tags</li>
+<li>title</li>
+<li>updated</li>
 </ul>
+<h2>Flags</h2>
+<p>Flags for customizing aspects of the pages
+are defined via a <code>flags</code> key in the
+TOML block. Individual templates are responsible
+for handling behavior changes from
+the flags. Currently, the only flag is:</p>
+<ul>
+<li>no-date - prevent the date from displaying
+in the title section of a page.</li>
+</ul>
+<p>Others will be added as necessary.</p>
+<p>Templates can check for flags like:</p>
+<pre>
+== if "no-date" not in p.flags 
+Show date here since no-date is not in the flags.
+== endif 
+</pre>
 
 </main>
 
@@ -688,7 +690,7 @@ just abstracted away.</p>
     who also makes <a href="https://bittyjs.com">bitty</a>
   </div>
   <div class="small-font-size text-align-center">
-    [rss coming at some point]
+    <a href="/rss/">rss feed</a>
   </div>
 </footer>
 

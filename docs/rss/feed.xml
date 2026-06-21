@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-06-20T18:49:43-04:00</updated>
+  <updated>2026-06-20T20:11:11-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -13,67 +13,11 @@
     <link href="https://al9000.com/blog/1e/fu/pl/"/>
     <id>urn:uuid:7791a4e6-edbd-5639-a8c9-73e915b65997></id>
     <updated>2026-06-20T11:53:00-04:00</updated>
-    <summary><![CDATA[<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
 
-</style>    <script src="/styles/styles.js"></script>
-    <link rel="stylesheet" href="/styles/colors.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>al9000.com</title>
-<meta property="og:title" content="al9000.com" />
-<meta name="description" content="a post from alan w. smith" />
-<meta property="og:description" content="a post from alan w. smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-  </head>
-  <body>
-<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Most content will be fine, but some things won't work.
-  </p>
-</noscript>
-  <div class="top-nav">
-<a href="/">home</a><a href="/tools">tools</a>  </div>
-
-  <div class="subnav default-wrapper">
-    <a href=""><div class="large-top-padding">
-<a href="/blog/">blog</a>
-</div>
-</a>
-  </div>
-
-</header>
+    <summary><![CDATA[
 
 
-<main class="default-wrapper default-flow">
 
-  <hgroup>
-  </hgroup>
 
 <p>The sonic foundation of computers is the DAC,
 or Digital-To-Audio Converter. It's the hardware
@@ -110,28 +54,9 @@ your digital images.</p>
 </ul>
 
 
-</main>
-
-<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from alan w smith 
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-  <div class="small-font-size text-align-center">
-    [rss coming at some point]
-  </div>
-</footer>
 
 
 
-    <div class="hidden templates">
-      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
-    </div>
-  </body>
-</html>
 
 ]]></summary>
   </entry>
@@ -140,67 +65,10 @@ your digital images.</p>
     <link href="https://al9000.com/blog/1e/da/37/"/>
     <id>urn:uuid:c9fa64b1-e156-5675-ac68-3e6d5ee3b08c></id>
     <updated>2026-04-27T17:08:00-04:00</updated>
-    <summary><![CDATA[<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
 
-</style>    <script src="/styles/styles.js"></script>
-    <link rel="stylesheet" href="/styles/colors.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>al9000.com</title>
-<meta property="og:title" content="al9000.com" />
-<meta name="description" content="a post from alan w. smith" />
-<meta property="og:description" content="a post from alan w. smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-  </head>
-  <body>
-<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Most content will be fine, but some things won't work.
-  </p>
-</noscript>
-  <div class="top-nav">
-<a href="/">home</a><a href="/tools">tools</a>  </div>
-
-  <div class="subnav default-wrapper">
-    <a href=""><div class="large-top-padding">
-<a href="/blog/">blog</a>
-</div>
-</a>
-  </div>
-
-</header>
+    <summary><![CDATA[
 
 
-<main class="default-wrapper default-flow">
-
-  <hgroup>
-  </hgroup>
 
 <p>I need to write something.</p>
 <p>Notice I did not say, I <em>want</em> to write something.
@@ -295,28 +163,9 @@ two years of major bipolar depression.</p>
 </ul>
 
 
-</main>
-
-<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from alan w smith 
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-  <div class="small-font-size text-align-center">
-    [rss coming at some point]
-  </div>
-</footer>
 
 
 
-    <div class="hidden templates">
-      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
-    </div>
-  </body>
-</html>
 
 ]]></summary>
   </entry>
@@ -325,67 +174,10 @@ two years of major bipolar depression.</p>
     <link href="https://al9000.com/blog/1e/bk/1s/"/>
     <id>urn:uuid:4849b6ed-8446-5996-a935-385d2e1e143a></id>
     <updated>2026-04-18T09:47:00-04:00</updated>
-    <summary><![CDATA[<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
 
-</style>    <script src="/styles/styles.js"></script>
-    <link rel="stylesheet" href="/styles/colors.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>al9000.com</title>
-<meta property="og:title" content="al9000.com" />
-<meta name="description" content="a post from alan w. smith" />
-<meta property="og:description" content="a post from alan w. smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-  </head>
-  <body>
-<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Most content will be fine, but some things won't work.
-  </p>
-</noscript>
-  <div class="top-nav">
-<a href="/">home</a><a href="/tools">tools</a>  </div>
-
-  <div class="subnav default-wrapper">
-    <a href=""><div class="large-top-padding">
-<a href="/blog/">blog</a>
-</div>
-</a>
-  </div>
-
-</header>
+    <summary><![CDATA[
 
 
-<main class="default-wrapper default-flow">
-
-  <hgroup>
-  </hgroup>
 
 <p>I binged The Good Place over the past few days.
 All four seasons. It was all I did. I enjoyed it.
@@ -477,7 +269,7 @@ The idea of the wave and the water. The wave
 is a thing, but when it crashes on the shore
 it ceases to be. It's just water again.
 Part of the ocean.</p>
-<p>-- youtube/
+<p>-- youtube
 -- l1IchzbtNj0</p>
 <p>-- /endnote</p>
 <p>-- endnote</p>
@@ -492,28 +284,9 @@ offline, writing this has helped start me up.
 I'll have to link up &quot;The Clicky Sound&quot;.</p>
 
 
-</main>
-
-<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from alan w smith 
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-  <div class="small-font-size text-align-center">
-    [rss coming at some point]
-  </div>
-</footer>
 
 
 
-    <div class="hidden templates">
-      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
-    </div>
-  </body>
-</html>
 
 ]]></summary>
   </entry>
@@ -522,67 +295,10 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
     <link href="https://al9000.com/blog/1e/bk/0i/"/>
     <id>urn:uuid:98714b41-9003-5f18-8868-e04af5e027d4></id>
     <updated>2026-04-12T11:48:00-04:00</updated>
-    <summary><![CDATA[<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
 
-</style>    <script src="/styles/styles.js"></script>
-    <link rel="stylesheet" href="/styles/colors.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>al9000.com</title>
-<meta property="og:title" content="al9000.com" />
-<meta name="description" content="a post from alan w. smith" />
-<meta property="og:description" content="a post from alan w. smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-  </head>
-  <body>
-<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Most content will be fine, but some things won't work.
-  </p>
-</noscript>
-  <div class="top-nav">
-<a href="/">home</a><a href="/tools">tools</a>  </div>
-
-  <div class="subnav default-wrapper">
-    <a href=""><div class="large-top-padding">
-<a href="/blog/">blog</a>
-</div>
-</a>
-  </div>
-
-</header>
+    <summary><![CDATA[
 
 
-<main class="default-wrapper default-flow">
-
-  <hgroup>
-  </hgroup>
 
 <p>Fuck it. We'll do it live.</p>
 <p>Welcome to the al9000.com blog!</p>
@@ -630,28 +346,9 @@ distinction is going to matter.</p>
 coming soon.</p>
 
 
-</main>
-
-<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from alan w smith 
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-  <div class="small-font-size text-align-center">
-    [rss coming at some point]
-  </div>
-</footer>
 
 
 
-    <div class="hidden templates">
-      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
-    </div>
-  </body>
-</html>
 
 ]]></summary>
   </entry>
