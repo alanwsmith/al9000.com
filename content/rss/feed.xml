@@ -10,28 +10,34 @@
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
-[! for f1 in folders_in_folder("/blog")|reverse !]
-  [! for f2 in folders_in_folder("/blog/" + f1)|reverse !]
-    [! for f3 in folders_in_folder("/blog/" + f1 + "/" + f2)|reverse !]
-      [! set f_dir = ["/blog", f1, f2, f3]|join("/")|safe !]
-      [! set f_path = [f_dir, "index.html"]|join("/")|safe !]
-      [! if exists(f_path) !]
-        [! if d.blog[f1][f2][f3].index.status == "done" !]
-          [! if d.blog[f1][f2][f3].index.title !]
-            [! if d.blog[f1][f2][f3].index.created !]
+== for f1 in folders_in_folder("/blog")|reverse 
+  == for f2 in folders_in_folder("/blog/" + f1)|reverse
+    == for f3 in folders_in_folder("/blog/" + f1 + "/" + f2)|reverse 
+      == set f_dir = ["/blog", f1, f2, f3]|join("/")|safe 
+      == set f_path = [f_dir, "index.html"]|join("/")|safe 
+      == if exists(f_path) 
+        == set entry = d.blog[f1][f2][f3].index
+        == if entry.status == "done" 
+          == if entry.title 
+            == if entry.created 
   <entry>
-    <title>[@ d.blog[f1][f2][f3].index.title @]</title>
+    <title>
+      [@ entry.title @]
+      == if entry.subtitle
+- [@ entry.subtitle @]
+      == endif
+    </title>
     <link href="https://al9000.com/blog/[@ f1 @]/[@ f2 @]/[@ f3 @]/"/>
     <id>urn:uuid:[@ uuid("https://al9000.com/blog/" +  f1  + "/" + f2 + "/" + f3 + "/") @]></id>
     <updated>[@ timestamp(d.blog[f1][f2][f3].index.created) @]</updated>
 
     <summary><![CDATA[[! include "/blog/" + f1 + "/" + f2 + "/" + f3 + "/index.html" !]]]></summary>
   </entry>
-            [! endif !]
-          [! endif !]
-        [! endif !]
-      [! endif !]
-    [! endfor !]
-  [! endfor !]
-[! endfor !]
+            == endif 
+          == endif 
+        == endif 
+      == endif 
+    == endfor 
+  == endfor 
+== endfor 
 </feed>

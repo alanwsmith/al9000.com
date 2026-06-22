@@ -236,14 +236,16 @@ code {
   overscroll-behavior-x: none;
 }
 
-
-
 .contrast-button.active:hover {
   color: var(--reverse-color);
 }
 
 [data-template] {
   display: none;
+}
+
+.date {
+  color: var(--faded-default-color);
 }
 
 del {
@@ -277,6 +279,16 @@ details.d > :where(:not(summary)) {
   }
 }
 
+
+.end-of-line {
+  color: var(--faded-default-color);
+  text-align: right;
+  font-size: var(--small-font-size);
+  border-top: var(--faded-default-border);
+  border-bottom: var(--faded-default-border);
+  --flow-space: var(--xxxlarge-margin);
+}
+
 .example-box {
   background-color: var(--match-color);
   border: var(--default-border);
@@ -304,7 +316,6 @@ footer {
 
 h1 {
   color: var(--heading-color);
-  border-bottom: var(--accent-border);
   font-size: var(--xxlarge-font-size);
   font-weight: var(--font-weight-900);
   line-height: var(--xxsmall-line-height);
@@ -365,8 +376,7 @@ h6 {
 }
 
 hgroup {
-  margin-top: var(--large-margin);
-  padding-bottom: var(--large-padding);
+  border-bottom: var(--accent-border);
 }
 
 hr {
@@ -520,6 +530,15 @@ p > code {
 
 .red {
   color: red;
+}
+
+.subtitle {
+  color: var(--heading-color);
+  font-size: var(--xxlarge-font-size);
+  font-weight: var(--font-weight-900);
+  line-height: var(--xxsmall-line-height);
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 summary {

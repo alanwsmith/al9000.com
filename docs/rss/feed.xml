@@ -2,14 +2,16 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-06-21T12:29:55-04:00</updated>
+  <updated>2026-06-22T15:33:13-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
   <entry>
-    <title>Type Different: Changing the Keys on Your Keyboard</title>
+    <title>
+      Type Different: Changing the Keys on Your Keyboard
+    </title>
     <link href="https://al9000.com/blog/1e/nl/6b/"/>
     <id>urn:uuid:ac9d0c09-aad6-581a-bc14-47bc399cae65></id>
     <updated>2026-06-21T12:22:00-04:00</updated>
@@ -172,7 +174,9 @@ that's a different thing entirely.</p>
 ]]></summary>
   </entry>
   <entry>
-    <title>RSS Powers: Activated</title>
+    <title>
+      RSS Powers: Activated
+    </title>
     <link href="https://al9000.com/blog/1e/nk/v9/"/>
     <id>urn:uuid:a31317e4-ef7a-56f9-bb6f-1910af0bae90></id>
     <updated>2026-06-21T07:56:00-04:00</updated>
@@ -255,7 +259,9 @@ jumping to new frameworks.</p>
 ]]></summary>
   </entry>
   <entry>
-    <title>Unoffice Hours</title>
+    <title>
+      Unoffice Hours
+    </title>
     <link href="https://al9000.com/blog/1e/nk/se/"/>
     <id>urn:uuid:d1320f3c-76e0-591b-a202-085840fae071></id>
     <updated>2026-06-21T07:39:00-04:00</updated>
@@ -292,7 +298,9 @@ conversations by ear and see where they go.</p>
 ]]></summary>
   </entry>
   <entry>
-    <title>DAE - Digital to Analog Enlarger</title>
+    <title>
+      DAE - Digital to Analog Enlarger
+    </title>
     <link href="https://al9000.com/blog/1e/fu/pl/"/>
     <id>urn:uuid:7791a4e6-edbd-5639-a8c9-73e915b65997></id>
     <updated>2026-06-20T11:53:00-04:00</updated>
@@ -344,7 +352,9 @@ your digital images.</p>
 ]]></summary>
   </entry>
   <entry>
-    <title>Fingers to Keys</title>
+    <title>
+      Fingers to Keys
+    </title>
     <link href="https://al9000.com/blog/1e/da/37/"/>
     <id>urn:uuid:c9fa64b1-e156-5675-ac68-3e6d5ee3b08c></id>
     <updated>2026-04-27T17:08:00-04:00</updated>
@@ -453,7 +463,9 @@ two years of major bipolar depression.</p>
 ]]></summary>
   </entry>
   <entry>
-    <title>The Good Place</title>
+    <title>
+      The Good Place
+    </title>
     <link href="https://al9000.com/blog/1e/bk/1s/"/>
     <id>urn:uuid:4849b6ed-8446-5996-a935-385d2e1e143a></id>
     <updated>2026-04-18T09:47:00-04:00</updated>
@@ -574,7 +586,9 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
 ]]></summary>
   </entry>
   <entry>
-    <title>I'm Not Ready to Start This Blog</title>
+    <title>
+      I'm Not Ready to Start This Blog
+    </title>
     <link href="https://al9000.com/blog/1e/bk/0i/"/>
     <id>urn:uuid:98714b41-9003-5f18-8868-e04af5e027d4></id>
     <updated>2026-04-12T11:48:00-04:00</updated>
