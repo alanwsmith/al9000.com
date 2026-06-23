@@ -1,17 +1,25 @@
 == extends "/templates.inc/pages/default.html" 
 
-== block title 
-<h1>scratchpad</h1>
-<div class="subtitle">a quick place to isolate code. whatever is here is the last thing I needed to poke at.</div>
+== block toml
+title = "Scratchpad"
+status = "wip"
 == endblock 
-
 
 == block main 
+<script type="module">
+import { Keymap } from "/scripts.off/keymap/keymap.js"
 
-== include parent(file_path) + "/html.inc.html" 
+function doIt() {
+  console.log("asdf");
+}
 
-== filter code("html") 
-== include parent(file_path) + "/html.inc.html" 
-== endfilter 
+const editor = new Keymap({
+  'arrowup arrowup arrowdown arrowdown arrowleft arrowright arrowleft arrowright b a': () => doIt(),
+})
+
+document.addEventListener('keydown', editor.handleKeyboardEvent)
+
+</script>
 
 == endblock 
+

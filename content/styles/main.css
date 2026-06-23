@@ -310,6 +310,10 @@ footer {
   width: var(--default-width);
 }
 
+.footnoteId:after {
+  content: "⤴ ";
+}
+
 .green {
   color: green;
 }

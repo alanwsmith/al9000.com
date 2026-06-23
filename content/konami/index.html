@@ -1,0 +1,45 @@
+== extends "/templates.inc/pages/empty.html"
+
+== block toml
+title = "Konami"
+created = 2026-06-23T19:29:25-04:00
+tags = []
+status = "draft"
+== endblock
+
+== block head
+<script type="module">
+import { Keymap } from "/scripts.off/keymap/keymap.js"
+// Sound via: 
+// https://freesound.org/people/V-ktor/sounds/482993/
+
+const audio = new Audio("explosion-482993_8836484-lq.mp3");
+
+function addLives() {
+  document.querySelector("#screen").innerHTML = "30";
+  audio.play();
+}
+const editor = new Keymap({
+  'arrowup arrowup arrowdown arrowdown arrowleft arrowright arrowleft arrowright b a': () => addLives(),
+})
+document.addEventListener('keydown', editor.handleKeyboardEvent);
+</script>
+<style>
+body {
+  background-color: black;
+  color: goldenrod;
+}
+#screen {
+    align-items: center;
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    font-size: 30vw;
+}
+</style>
+== endblock
+
+== block content 
+<div id="screen">3</div>
+== endblock
+
