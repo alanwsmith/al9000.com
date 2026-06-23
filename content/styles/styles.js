@@ -34,7 +34,6 @@ const baseParams = {
     classString: `.SIZE-KEY { KEY: var(--SIZE-KEY);}`,
     varString: `--SIZE-KEY: VALUE;`,
     values: [
-      "clamp(0.48rem, calc(0.47rem + 0.03vw), 0.6rem)",
       "clamp(0.58rem, calc(0.57rem + 0.03vw), 0.6rem)",
       "clamp(0.68rem, calc(0.67rem + 0.03vw), 0.7rem)",
       "clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem)",
@@ -43,6 +42,7 @@ const baseParams = {
       "clamp(1.32rem, calc(1.5rem + 0.58vw), 1.65rem)",
       "clamp(1.84rem, calc(1.77rem + 0.87vw), 2.14rem)",
       "clamp(2.8rem, calc(2rem + 1.25vw), 3.1rem)",
+      "clamp(2.9rem, calc(2.2rem + 1.3vw), 3.2rem)",
     ],
   },
   "font-weight": {
