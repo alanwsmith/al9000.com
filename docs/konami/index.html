@@ -37,17 +37,33 @@ const editor = new Keymap({
 document.addEventListener('keydown', editor.handleKeyboardEvent);
 </script>
 <style>
+* {
+  margin: 0;
+}
+
 body {
   background-color: black;
   color: goldenrod;
 }
+
+.faded {
+  opacity: 0.5;
+}
+
 #screen {
     align-items: center;
     display: flex;
-    height: 90vh;
     justify-content: center;
     font-size: 30vw;
 }
+
+.wrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
 </style>
   </head>
   <body>
@@ -58,7 +74,24 @@ body {
   </p>
 </noscript></div>
 
+<div class="wrapper">
 <div id="screen">3</div>
+  <div class="faded">
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    <a href="/">home</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    from <a href="/">alan w smith</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>  </div>
+</div>
     <div class="hidden support">
       <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
