@@ -1,6 +1,9 @@
 export const b = { init: "init output" };
 
+// https://freesound.org/people/V-ktor/sounds/482993/
 const passSound = new Audio("explosion-482993_8836484-lq.mp3");
+
+// https://freesound.org/people/8bitmyketison/sounds/699923/
 const failSound = new Audio("error-699923_15173053-lq.mp3");
 
 const letters = {};
