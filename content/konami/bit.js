@@ -97,7 +97,7 @@ export function init() {
     current.push("_");
   }
   window.addEventListener(
-    "keyup",
+    "keydown",
     (event) => {
       b.send(event.key, "update");
     },
