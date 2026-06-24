@@ -34,6 +34,13 @@ body {
   color: goldenrod;
 }
 
+.center {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+
 .faded {
   opacity: 0.5;
 }
@@ -43,13 +50,14 @@ body {
     display: flex;
     justify-content: center;
     font-size: 30vw;
+    padding-bottom: 9rem;
 }
 
 .wrapper {
   min-height: 100vh;
   min-height: 100dvh;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr auto;
 }
 
 </style>
@@ -57,10 +65,12 @@ body {
 
 == block content 
 <div class="wrapper">
-<div id="screen">3</div>
+  <div class="center">konami</div>
+  <div id="screen">3</div>
   <div class="faded">
     == include "/templates.inc/includes/empty/footer.html"
   </div>
 </div>
 == endblock
+
 
