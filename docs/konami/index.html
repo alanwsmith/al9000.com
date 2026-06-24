@@ -43,9 +43,10 @@ body {
 
 .center {
   padding-top: 1rem;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   font-size: 2rem;
+  gap: 1rem;
 }
 
 .faded {
@@ -68,6 +69,11 @@ body {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.small {
+  font-family: monospace;
+  font-size: 1.4rem;
 }
 
 .wrapper {
@@ -99,7 +105,10 @@ body {
 <bitty-8 data-connect="/konami/bit.js"></bitty-8>
 
 <div class="wrapper">
-  <div class="center">konami</div>
+  <div class="center">
+    <div>konami</div>
+    <div class="small">[enter code]</div>
+  </div>
   <div id="screen">
     <div>
       <div class="letters" data-r="output fail"></div>
