@@ -8,23 +8,11 @@ status = "done"
 == endblock
 
 == block head
-<script type="module">
-import { Keymap } from "/scripts.off/keymap/keymap.js"
-// Sound via: 
-// https://freesound.org/people/V-ktor/sounds/482993/
-
-const audio = new Audio("explosion-482993_8836484-lq.mp3");
-
-function addLives() {
-  document.querySelector("#screen").innerHTML = "30";
-  audio.play();
-}
-const editor = new Keymap({
-  'arrowup arrowup arrowdown arrowdown arrowleft arrowright arrowleft arrowright b a': () => addLives(),
-})
-document.addEventListener('keydown', editor.handleKeyboardEvent);
-</script>
 <style>
+:root {
+  --code-color: goldenrod;
+}
+
 * {
   margin: 0;
 }
@@ -32,6 +20,13 @@ document.addEventListener('keydown', editor.handleKeyboardEvent);
 body {
   background-color: black;
   color: goldenrod;
+}
+
+[data-r=accepted] {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: green;
 }
 
 .center {
@@ -45,12 +40,22 @@ body {
   opacity: 0.5;
 }
 
+.letters {
+  color: var(--code-color);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 9rem;
+  font-size: 3rem;
+  gap: 1rem;
+  letter-spacing: 2rem;
+  font-family: monospace;
+}
+
 #screen {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    font-size: 30vw;
-    padding-bottom: 9rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .wrapper {
@@ -60,17 +65,40 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+[data-r=accepted] a {
+  color: green;
+}
+[data-r=accepted] a:hover, [data-r=accepted] a:active {
+  color: green;
+}
+[data-r=accepted] {
+  height: 4rem;
+}
 </style>
 == endblock
 
 == block content 
+<bitty-8 data-connect="/konami/bit.js"></bitty-8>
+
 <div class="wrapper">
   <div class="center">konami</div>
-  <div id="screen">3</div>
+  <div id="screen">
+    <div>
+      <div class="letters" data-r="output fail"></div>
+      <div data-r="accepted"></div>
+    </div>
+  </div>
   <div class="faded">
     == include "/templates.inc/includes/empty/footer.html"
   </div>
 </div>
+
+
+
+<script type="text/html" data-template="letter">
+  <span class="letter" data-r="key__NUM__">_</span>
+</script>
+
 == endblock
 
 
