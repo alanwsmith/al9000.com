@@ -504,7 +504,16 @@ on the site docroot.</p>
 </ul>
 </li>
 <li>
-<p>files_in_folder(PATH [, EXT])</p>
+<p>TODO: filename(PATH)</p>
+<ul>
+<li>Returns the full filename
+for a given path (e.g.
+<code>/path/to/file.inc.html</code>
+returns <code>file.inc.html</code>).</li>
+</ul>
+</li>
+<li>
+<p>files_in_folder(PATH [, ext = EXT][, full = true])</p>
 <ul>
 <li>
 <p>Takes a string that's the path
@@ -516,15 +525,19 @@ of all the files inside
 the given path.</p>
 </li>
 <li>
-<p>If the optional <code>EXT</code> arguments
+<p>TODO: If the optional <code>EXT</code> arguments
 is passed, then only files with
 a matching file extension are
 returned.</p>
 </li>
+<li>
+<p>TODO: If the optional <code>full</code> argument
+is passed then full paths are returned.</p>
+</li>
 </ul>
 </li>
 <li>
-<p>folders_in_folder(PATH)</p>
+<p>TODO: folders_in_folder(PATH [, full=BOOL])</p>
 <ul>
 <li>
 <p>Takes a string that's the path
@@ -535,10 +548,29 @@ to a folder.</p>
 of all the folders inside
 the given path.</p>
 </li>
+<li>
+<p>TODO: Passing <code>true</code> to the optional
+<code>full</code> argument returns the full
+paths to the folder instead of
+just the name.</p>
+</li>
 </ul>
 </li>
 <li>
-<p>TODO: link(ID, classes=&quot;&quot;)</p>
+<p>TODO: link(ID [, classes=&quot;&quot;])</p>
+<ul>
+<li>
+<p>TODO: Generates an <code>a</code> tag with
+and <code>href</code> that points to the
+URL of the file with the given
+<code>ID</code>.</p>
+</li>
+<li>
+<p>Takes an optional <code>classes</code> argument.
+The string of the argument is
+added to the <code>a</code> tag.</p>
+</li>
+</ul>
 </li>
 <li>
 <p>parent(PATH)</p>
@@ -564,6 +596,16 @@ a file or directory.</p>
 <p>Returns an array of strings
 where each element is a
 folder in the path.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>TODO: raw_include(PATH)</p>
+<ul>
+<li>
+<p>Includes the contents of the
+file at PATH without further
+processing.</p>
 </li>
 </ul>
 </li>

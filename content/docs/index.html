@@ -377,7 +377,14 @@ file exists, it will override the
   - Expected paths are absolute based
     on the site docroot. 
 
-- files_in_folder(PATH [, EXT])
+- TODO: filename(PATH)
+
+  - Returns the full filename 
+    for a given path (e.g. 
+    `/path/to/file.inc.html`
+    returns `file.inc.html`).
+
+- files_in_folder(PATH [, ext = EXT][, full = true])
 
   - Takes a string that's the path
     to a folder. 
@@ -386,12 +393,15 @@ file exists, it will override the
     of all the files inside
     the given path. 
 
-  - If the optional `EXT` arguments
+  - TODO: If the optional `EXT` arguments
     is passed, then only files with
     a matching file extension are
     returned. 
 
-- folders_in_folder(PATH)
+  - TODO: If the optional `full` argument
+    is passed then full paths are returned. 
+
+- TODO: folders_in_folder(PATH [, full=BOOL])
 
   - Takes a string that's the path
     to a folder. 
@@ -400,8 +410,22 @@ file exists, it will override the
     of all the folders inside
     the given path. 
 
+  - TODO: Passing `true` to the optional 
+    `full` argument returns the full
+    paths to the folder instead of 
+    just the name.
 
-- TODO: link(ID, classes="")
+- TODO: link(ID [, classes=""])
+
+  - TODO: Generates an `a` tag with
+    and `href` that points to the 
+    URL of the file with the given 
+    `ID`.
+
+  - Takes an optional `classes` argument.
+    The string of the argument is 
+    added to the `a` tag. 
+
 
 - parent(PATH)
 
@@ -419,6 +443,14 @@ file exists, it will override the
   - Returns an array of strings
     where each element is a
     folder in the path. 
+
+- TODO: raw_include(PATH)
+
+  - Includes the contents of the
+    file at PATH without further
+    processing. 
+
+  
 
 - stem(PATH)
 

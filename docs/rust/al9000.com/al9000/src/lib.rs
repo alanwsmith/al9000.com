@@ -2,6 +2,7 @@
 
 pub mod builder;
 pub mod config;
+pub mod constants;
 pub mod logger;
 pub mod server;
 // TODO: Deprecate utils. it's not used.
@@ -10,6 +11,7 @@ pub mod watcher;
 
 pub use builder::*;
 pub use config::*;
+//pub use constants::*;
 pub use logger::*;
 pub use server::*;
 pub use watcher::*;

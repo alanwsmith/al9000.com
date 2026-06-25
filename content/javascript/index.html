@@ -8,8 +8,11 @@ status = "code"
 == block main
 
 <ul>
-== for folder in folders_in_folder(parent(file_path)) 
-  [! if "index" in d.javascript[stem(folder)] !]
+== for folder in folders_in_folder(f.dir_string) 
+  <li>[@ folder @]</li>
+
+  [! if exists(folder + "/index.html")!]
+
     <li><a href="[@ folder @]">[@ d.javascript[stem(folder)].index.title @]</a></li>
   [! endif !]
 == endfor 
