@@ -21,13 +21,13 @@ body {
     <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/main.css" />
 <link rel="shortcut icon" href="/favicon.ico" />
-<title>Weeknotes - June 26, 2026</title>
-<meta property="og:title" content="Weeknotes - June 26, 2026" />
+<title>AT Proto Stuff</title>
+<meta property="og:title" content="AT Proto Stuff" />
 <meta name="description" content="from alan w smith" />
 <meta property="og:description" content="from alan w smith" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/blog/1e/nf/72/" />
-<meta property="og:image" content="https://al9000.com/&#x2f;blog&#x2f;1e&#x2f;nf&#x2f;72/og-image.jpg" />
+<meta property="og:url" content="https://al9000.com/atproto/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
@@ -41,7 +41,6 @@ body {
 
   </head>
   <body>
-
 <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
@@ -52,52 +51,56 @@ body {
   <div class="top-nav">
 <a href="/">home</a><a href="/tools">tools</a>  </div>
 
-  <div class="subnav default-wrapper">
-    <a href=""><div class="large-top-padding"><a href="/blog/">blog</a></div>
-</a>
-  </div>
 
 </header>
 
-<main class="small-wrapper default-flow">
 
-  <div class="title-block">
-    <hgroup>
-        <h1>Weeknotes - June 26, 2026</h1>
-    </hgroup>
-    <div class="date">June 2026</div>
-  </div>
+<main class="default-wrapper default-flow">
 
+  <hgroup>
+      <h1>AT Proto Stuff</h1>
+        <div class="date">June 2026</div>
+  </hgroup>
 
 
-<h2>Saturday - June 20, 2026</h2>
+<h2>Notes</h2>
 <ul>
 <li>
-<p>Added an <code>exists()</code> function to the
-al9000.com site builder. The initial use
-case is so I can check if there's an <code>og-image.jpg</code>
-file next to a page and use it if there is.</p>
-<p>This is part of the general way I'm doing
-things where I rely on naming and location
-conventions instead of configuring things
-explicitly.</p>
+<p>Used https://pdsls.dev/ to log into my data
+on the Bluesky PDS and add a Standard.site
+<a href="https://standard.site/docs/lexicons/publication/">publication record</a>.</p>
+<p>It's at:</p>
+<p>https://pdsls.dev/at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication/3mp5l453r552a</p>
+</li>
+</ul>
+<h2>Links</h2>
+<ul>
+<li><a href="https://atproto.com/">AT Protocol</a></li>
+<li><a href="https://standard.site/">Standard.site</a></li>
+<li><a href="https://standard.site/docs/quick-start/">Standard.site Quick Start Guide</a></li>
+<li><a href="https://piccalil.li/blog/publishing-on-the-atmosphere-with-standardsite/">Publishing on the Atmosphere with Standard.site - Piccalilli</a></li>
+<li><a href="https://wil.to/posts/standard-site/">Understanding Standard.Site - wil.to</a></li>
+<li><a href="https://wil.to/posts/implementing-standard-site/">Implementing Standard.Site</a></li>
+<li><a href="https://codetv.dev/blog/multiple-standard-site-publications-on-one-website">link3</a></li>
+</ul>
+<h2>Tools</h2>
+<ul>
+<li>
+<p><a href="https://npmx.dev/package/atapult">ATapult - npm</a></p>
 </li>
 <li>
-<p>Added the feature to al9000.com that
-uses the new <code>exists()</code> function to check
-for an open graph image next to a page
-and uses it if it exists.</p>
+<p><a href="https://pdsls.dev/">PDSls - Atmosphere Explorer</a></p>
 </li>
 <li>
-<p>Add an <a href="/rss/">RSS feed</a> to the site.</p>
+<p><a href="https://bsky.app/settings/app-passwords">BlueSky App Password Maker</a></p>
+</li>
+<li>
+<p><a href="https://site-validator.fly.dev/">Standard.site Validator</a></p>
 </li>
 </ul>
 
-
-
-
-
 </main>
+
 <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
   <div class="small-font-size text-align-center">
     from alan w smith 
@@ -110,9 +113,7 @@ and uses it if it exists.</p>
   </div>
 </footer>
 
-
-
-    <div class="hidden templates">
+    <div class="templates">
       <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
     </div>
