@@ -51,8 +51,14 @@ https://al9000.com/images/open-graph/default.jpg
 <link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
 <link
   rel="site.standard.publication"
-  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication/3mp5l453r552a"
+  href="at://[@ d.config.atproto.did @]/[@ d.config.atproto.siteRecord @]"
 />
+== if p.id
+<link
+  rel="site.standard.document"
+  href="at://[@ d.config.atproto.did @]/site.standard.document/[@ p.id @]"
+/>
+== endif
 
 [#
 <meta name="twitter:card" content="summary_large_image">

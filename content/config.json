@@ -10,5 +10,9 @@
   "og_image": {
     "default_path": "/images/og-image.jpg",
     "default_description": "from alan w smith"
+  },
+  "atproto": {
+    "did": "did:plc:hehia4csii5iipebsgolxxal",
+    "siteRecord": "site.standard.publication/3mp5l453r552a"
   }
 }
