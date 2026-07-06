@@ -1,0 +1,11 @@
+[package]
+name = "create_record"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.103"
+atproto-client = "0.14.5"
+atproto-record = "0.14.5"
+reqwest = "0.12.28"
+tokio = { version = "1.52.3", features = ["full"] }
