@@ -3,6 +3,7 @@ export const b = {
 };
 
 const names = `
+Deterministic
 Kick Murder Squad
 Testing and the One Two One Twos
 Wonder Twin Powers

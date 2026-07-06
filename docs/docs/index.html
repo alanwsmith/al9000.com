@@ -58,8 +58,8 @@ body {
 <main class="default-wrapper default-flow">
 
   <hgroup>
-      <h1>al9000 Documentation</h1>
-        <div class="subtitle">Or, how the al9000.com static site generator works</div>
+        <h1>al9000 Documentation</h1>
+          <div class="subtitle">Or, how the al9000.com static site generator works</div>
         <div class="date">April 2026</div>
   </hgroup>
 
@@ -717,8 +717,15 @@ TOML block. Individual templates are responsible
 for handling behavior changes from
 the flags. Currently, the only flag is:</p>
 <ul>
-<li>no-date - prevent the date from displaying
-in the title section of a page.</li>
+<li>
+<p>no-date - prevent the date from displaying
+in the title section of a page.</p>
+</li>
+<li>
+<p>no-title - prevent the title block from
+showing up on the page (i.e. the <code>hgroup</code>
+element in the default page)</p>
+</li>
 </ul>
 <p>Others will be added as necessary.</p>
 <p>Templates can check for flags like:</p>
