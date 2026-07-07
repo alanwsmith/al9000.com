@@ -57,7 +57,7 @@ body {
   gap: 3rem;
 }
 
-#main-ideas {
+.html-wrapper {
   display: none;
 }
 </style>
@@ -79,11 +79,13 @@ body {
 
 <main class="default-wrapper default-flow">
 
+  <hgroup>
+        <h1>Project Ideas</h1>
+  </hgroup>
 
 
 
 <p><bitty-8 data-connect="/ideas/bit.js"></bitty-8></p>
-<h2>Ideas for You</h2>
 <p>Need an idea for a programming project? I got you:</p>
 <div class="idea-wrapper">
   <div data-r="newIdea"></div>
@@ -91,7 +93,8 @@ body {
     <button data-s="newIdea">Get a New Idea</button>
   </div>
 </div>
-  <div id="main-ideas">
+<div class="html-wrapper">
+  <div id="public-ideas">
 <ul>
 <li>Make an extension to pull your notes out of the Amazon Kindle Notebook page</li>
 <li>Make a web page that lets you sort a JavaScript class alphabetically</li>
@@ -182,7 +185,7 @@ body {
 <li>Make a sound board with random bird sounds sounds</li>
 <li>Create a single page site with your favorite gif on it</li>
 <li>Create something like <a href="corndog.io/">corndog.io</a> but with corgis</li>
-<li>Make a random name generator (pulled from list of most popular names from different)</li>
+<li>Make a random name generator (pulled from list of most popular names from different name lists)</li>
 <li>Setup a display page to show the schedule and scores for your favorite team</li>
 <li>Build a Helmet/Hat schedule like <a href="https://fbschedules.com/2021-sec-football-helmet-schedule/">this one</a> that also shows scores and post-season play</li>
 <li>Make page the embeds a youtube video multiple times but offsets their start by a little and only plays the audio from one</li>
@@ -470,18 +473,18 @@ body {
 </div>
 </li>
 </ul>
+</div>
 <p>You can also check out <a href="/ideas/my-ideas/">some of the ideas I'm thinking about</a>.</p>
 <noscript>
   <style>
   .idea-wrapper {
     display: none;
   }
-  #main-ideas {
+  #html-wrapper {
     display: block;
   }
   </style>
 </noscript>
-
 
 
 

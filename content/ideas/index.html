@@ -4,7 +4,7 @@
 title = "Project Ideas"
 status = "done"
 created = 2026-06-20T19:42:00-04:00
-flags = ["no-date", "no-title"]
+flags = ["no-date"]
 == endblock
 
 
@@ -27,7 +27,7 @@ flags = ["no-date", "no-title"]
   gap: 3rem;
 }
 
-#main-ideas {
+.html-wrapper {
   display: none;
 }
 </style>
@@ -39,8 +39,6 @@ flags = ["no-date", "no-title"]
 
 <bitty-8 data-connect="/ideas/bit.js"></bitty-8>
 
-## Ideas for You
-
 <p>Need an idea for a programming project? I got you:</p>
 
 <div class="idea-wrapper">
@@ -51,7 +49,8 @@ flags = ["no-date", "no-title"]
 </div>
 
 
-  <div id="main-ideas">
+<div class="html-wrapper">
+  <div id="public-ideas">
 
 - Make an extension to pull your notes out of the Amazon Kindle Notebook page
 - Make a web page that lets you sort a JavaScript class alphabetically
@@ -142,7 +141,7 @@ flags = ["no-date", "no-title"]
 - Make a sound board with random bird sounds sounds
 - Create a single page site with your favorite gif on it
 - Create something like <a href="corndog.io/">corndog.io</a> but with corgis
-- Make a random name generator (pulled from list of most popular names from different)
+- Make a random name generator (pulled from list of most popular names from different name lists)
 - Setup a display page to show the schedule and scores for your favorite team
 - Build a Helmet/Hat schedule like <a href="https://fbschedules.com/2021-sec-football-helmet-schedule/">this one</a> that also shows scores and post-season play
 - Make page the embeds a youtube video multiple times but offsets their start by a little and only plays the audio from one 
@@ -429,6 +428,9 @@ flags = ["no-date", "no-title"]
 - Figure out a way to use <a href="https://publicdomainreview.org/">Public Domain Review</a>
   </div>
 
+</div>
+
+
 You can also check out [some of the ideas I'm thinking about](/ideas/my-ideas/).
 
 
@@ -438,12 +440,11 @@ You can also check out [some of the ideas I'm thinking about](/ideas/my-ideas/).
   .idea-wrapper {
     display: none;
   }
-  #main-ideas {
+  #html-wrapper {
     display: block;
   }
   </style>
 </noscript>
-
 
 
 
