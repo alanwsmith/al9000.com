@@ -11,25 +11,42 @@ flags = ["no-date"]
 == block head
 <style>
 [data-r=newIdea] {
-  min-height: 5.5rem;
-  text-align: center;
+  align-content: center;
+  font-size: var(--large-font-size);
+  max-width: 32rem;
+  margin-bottom: var(--xxlarge-padding);
 }
 
 .button-wrapper {
   text-align: center;
 }
 
-.idea-wrapper {
-  border: var(--info-border);
-  border-radius: var(--default-border-radius);
+.dynamic-wrapper {
   display: grid;
-  padding: var(--xxxlarge-padding);
-  gap: 3rem;
+  gap: 1rem;
 }
+
 
 .html-wrapper {
   display: none;
 }
+
+.idea-wrapper {
+  border: var(--info-border);
+  border-radius: var(--default-border-radius);
+  display: grid;
+  justify-content: center;
+  padding-inline: var(--xxxlarge-padding);
+  padding-block: var(--xlarge-padding);
+  min-height: 16.5rem;
+}
+
+.selection-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
 </style>
 == endblock
 
@@ -39,10 +56,22 @@ flags = ["no-date"]
 
 <bitty-8 data-connect="/ideas/bit.js"></bitty-8>
 
-<p>Need an idea for a programming project? I got you:</p>
-
-<div class="idea-wrapper">
-  <div data-r="newIdea"></div>
+<div class="dynamic-wrapper">
+  <div class="idea-wrapper">
+    <div data-r="newIdea"></div>
+  </div>
+  <!--
+  <div class="selection-wrapper">
+    <div>
+    <input id="general" type="radio" name="selector" checked autocomplete="off"/>
+    <label for="general">General Ideas</label>
+    </div>
+    <div>
+    <input id="personal" type="radio" name="selector" autocomplete="off" />
+    <label for="personal">My Personal Ideas</label>
+    </div>
+  </div>
+-->
   <div class="button-wrapper">
     <button data-s="newIdea">Get a New Idea</button>
   </div>
@@ -50,14 +79,16 @@ flags = ["no-date"]
 
 
 <div class="html-wrapper">
-  <div id="public-ideas">
 
+  <div class="general-ideas">
+
+- Gather the lyrics from your 25 favorite songs and do a word [frequency analysis](https://en.wikipedia.org/wiki/Frequency_analysis)
 - Make an extension to pull your notes out of the Amazon Kindle Notebook page
 - Make a web page that lets you sort a JavaScript class alphabetically
 - Make Hungry Hungry Hippos, but with cats
 - Make a website that displays the number of tabs you have open
 - Make a <a href="https://bongo.cat/">Bongo Cat</a> clone
-- Make a page of common miscoceptions: https://en.wikipedia.org/wiki/List_of_common_misconceptions
+- Make a page of [common misconceptions](https://en.wikipedia.org/wiki/List_of_common_misconceptions)
 - Make a GitHub Stars web component
 - Make a HypnoToad site
 - Make a site to design winamp skins
@@ -272,7 +303,7 @@ flags = ["no-date"]
 - Write code to create emoji faces in SVG
 - Make an animated &quot;This Is Fine&quot; page where the flames are moving SVGs
 - Build your own comment system for a JamStack site
-- Create automated Open Graph images based on the titles of your posts
+- Automated Open Graph images with the titles of your posts
 - Do word analysis on your posts and automatically pull a related image from <a href="https://unsplash.com/">Unsplash</a> to generate an Open Graph image
 - Make a page of dad jokes that shows you the joke with a link to hit to see the punch line
 - Code a social media bot that randomly posts <a href="https://www.cs.columbia.edu/~hgs/audio/harvard.html">Harvard Sentences</a>
@@ -298,7 +329,7 @@ flags = ["no-date"]
 - Build an WiFi controlled LED candle out of a raspberry pi
 - Make a <a href="https://en.wikipedia.org/wiki/Blinkenlights">Blinkenlights</a> page
 - Make a <a href="https://en.wikipedia.org/wiki/Blinkenlights">Blinkenlights</a> display with a raspberry pi
-- Make a list of the movies you've watched an plot the most watched actors and directors
+- Make a list of the movies you've watched and plot the most watched actors and directors
 - Use facial recognition to determine screen time for each actor in a movie
 - Pipe a movie through different speech recognition engines and do a diff of the output
 - Write a generative art tool to create random header images for 
@@ -311,7 +342,7 @@ flags = ["no-date"]
 - Make a <a href="https://www.powerlanguage.co.uk/wordle/">Wordle</a> clone
 - Build a bot to solve <a href="https://www.powerlanguage.co.uk/wordle/">Wordle</a>
 - Make a movie out of a set of images like screen grabs from <a href="https://configure.zsa.io/moonlander/layouts/APODe/latest/0">keyboard layout changes</a>
-- Make a whole bunch of fake, cool looking dashboards in <a href="https://d3js.org/">D3</a>
+- Make interesting looking dashboards in <a href="https://d3js.org/">D3</a>
 - Build a dedicated Read Later tablet app that uses <a href="https://pinboard.in/">Pinboard</a> as a back end and maintains your position in multi page texts
 - Make your own create-next-app template for making new sites
 - Make a site with samples from <a href="https://supercollider.github.io/">SuperCollider</a>
@@ -328,7 +359,6 @@ flags = ["no-date"]
 - Build your own version of <a href="https://en.wikipedia.org/wiki/Catan">The Settlers of Catan</a>
 - Write your own <a href="https://en.wikipedia.org/wiki/Solitaire">Solitare</a> game
 - Build a calculator and D3 data visualization that shows compound interest working of saving vs debt
-- Gather the lyrics from your 25 favorite songs and do a the word <a href="https://en.wikipedia.org/wiki/Frequency_analysis">frequency analysis</a>
 - Write a program to solve the daily <a href="https://monocrack.alanwsmith.com/">monocrack</a> puzzle
 - Mkae a bsowrer eitnxeosn taht smrcalbes the isinde lteters of wdors lkie tihs
 - Write a browser extension that logs all the sites you visit each day
@@ -402,9 +432,9 @@ flags = ["no-date"]
 - Create a custom WASM function to send to cloudinary that generates random patterns to use for the background of images
 - Create a browser plugin that shows the top voted stack overflow answer above the question
 - Implement a <a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Iterative_implementation">maze generator algorithm</a>
-- Make a version of the Atari Tempest game
+- Make a version of the Atari game Tempest
 - Create designs for all the bands on <a href="https://band-names.alanwsmith.com/">band-names.alanwsmith.com</a>
-- Hampster Dance, but with Corgis
+- Hamster Dance, but with Corgis
 - Build a version of the <a href="https://www.thinkfun.com/products/rush-hour/">Rush Hour</a> game but as a web page
 - Build a bot to solve <a href="https://www.thinkfun.com/products/rush-hour/">Rush Hour</a> game puzzles
 - Build an app that generates playlists by completely ignoring artist, genre, and release date and focuses only on lyrics
@@ -426,21 +456,29 @@ flags = ["no-date"]
 - Make a site that's more like a map (e.g. <a href="https://luckysoap.com/andbyislands/">luckysoap.com/andbyislands/</a>)
 - Make a site full of pages with different iterations of open graph tags and create snapshots of what they look like when used on various social networks
 - Figure out a way to use <a href="https://publicdomainreview.org/">Public Domain Review</a>
+- Create a web based tool for making GIFs
+
   </div>
 
+  <div class="personal-ideas">
+
+- Make a trench run style 3D tunnel from [siliconpr0n.org](https://siliconpr0n.org/) 
+    chip images ([ref1](https://hachyderm.io/@infosecdj@infosec.exchange),
+    [ref2](http://infosecdj.net:8086/map/nxp/mp091a0/infosecdj_mz_nikpa60x_s3/))
+- Do something with
+    [these of old control rooms](https://www.flickr.com/groups/controlpanel/pool/with/55045091085)
+- Hook up the eye track for streaming. 
+
+  </div>
 </div>
-
-
-You can also check out [some of the ideas I'm thinking about](/ideas/my-ideas/).
-
 
 == endfilter
 <noscript>
   <style>
-  .idea-wrapper {
+  .dynamic-wrapper {
     display: none;
   }
-  #html-wrapper {
+  .html-wrapper {
     display: block;
   }
   </style>
