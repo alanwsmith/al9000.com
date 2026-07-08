@@ -9,9 +9,9 @@ status = "code"
 
 <ul>
 == for folder in folders_in_folder(parent(file_path)) 
-  [! if "index" in d.css[stem(folder)] !]
-    <li><a href="[@ folder @]">[@ d.css[stem(folder)].index.title @]</a></li>
-  [! endif !]
+  == if "index" in d.css[folder]
+    <li><a href="[@ folder @]">[@ d.css[folder].index.title @]</a></li>
+  == endif
 == endfor 
 </ul>
 

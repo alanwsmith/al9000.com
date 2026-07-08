@@ -10,6 +10,7 @@ status = "code"
 <ul>
 == for folder in folders_in_folder(parent(file_path)) 
   <li>
+
     <p>[@ d.rust[folder].index.title @]</p>
     <ul>
       == for subfolder in folders_in_folder("/rust/" + folder) 

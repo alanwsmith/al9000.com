@@ -1,0 +1,13 @@
+.example-2 {
+  counter-reset: example-line-number-2 6;
+}
+
+.example-2 .line-number {
+  counter-increment: example-line-number-2;
+}
+
+.example-2 .line-number::before {
+  content: counter(example-line-number-2);
+  padding-right: var(--default-padding);
+  display: inline-block;
+}

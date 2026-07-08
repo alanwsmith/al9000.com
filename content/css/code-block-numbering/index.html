@@ -1,0 +1,114 @@
+== extends "/templates.inc/pages/default.html" 
+
+== block toml
+title = "Adding Line Numbers to HTML Code Blocks Using data- Attributes and CSS"
+created = 2026-07-08T17:38:15-04:00
+status = "draft"
+== endblock
+
+== block head
+<style>
+.page-code-block {
+  border: var(--accent-border);
+  border-radius: var(--default-border-radius);
+  background-color: var(--match-color);
+  padding: var(--large-padding);
+}
+</style>
+== endblock
+
+
+== block main 
+== filter md
+
+## Numbers of Lines
+
+I've been using CSS counter to add line numbers to code
+blocks forever. For example, this HTML and
+CSS:
+
+<style>
+.example-1 {
+  background-color: var(--match-color);
+  border: var(--default-border);
+  border-radius: var(--default-border-radius);
+  padding: var(--large-padding);
+}
+
+== include f.dir + "/example-1/styles.css"
+</style>
+
+== filter highlight_block("html")
+== include f.dir + "/example-1/code.html"
+== endfilter
+
+== filter highlight_block("css")
+== include f.dir + "/example-1/styles.css"
+== endfilter
+
+Produces this output:
+
+== include f.dir + "/example-1/code.html"
+
+It works great for basic code blocks that
+start at "1" and go up from there. 
+
+## Start Position
+
+Starting with another number is possible
+via the `counter-reset` property. For 
+example, you can start the line numbers
+at "7" like this:
+
+<style>
+.example-2 {
+  background-color: var(--match-color);
+  border: var(--default-border);
+  border-radius: var(--default-border-radius);
+  padding: var(--large-padding);
+}
+
+== include f.dir + "/example-2/styles.css"
+</style>
+
+== filter highlight_block("html")
+== include f.dir + "/example-2/code.html"
+== endfilter
+
+== filter highlight_block("css")
+== include f.dir + "/example-2/styles.css"
+== endfilter
+
+Which outputs:
+
+== include f.dir + "/example-2/code.html"
+
+
+
+## The Skipping Problem 
+
+
+
+## The Skipping Solution
+
+
+
+
+
+
+
+
+
+
+<div class="end-of-line">end of line</div>
+
+### References
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/attr
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/counter-reset
+
+
+== endfilter
+== endblock
+
