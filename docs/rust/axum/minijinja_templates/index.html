@@ -21,13 +21,13 @@ body {
     <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/main.css" />
 <link rel="shortcut icon" href="/favicon.ico" />
-<title>Using MiniJinja Templates for Dynamic Web Pages with an Axum Server</title>
-<meta property="og:title" content="Using MiniJinja Templates for Dynamic Web Pages with an Axum Server" />
+<title>Using MiniJinja Templates for Dynamic Web Pages with Rust&#x27;s Axum Server</title>
+<meta property="og:title" content="Using MiniJinja Templates for Dynamic Web Pages with Rust&#x27;s Axum Server" />
 <meta name="description" content="from alan w smith" />
 <meta property="og:description" content="from alan w smith" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://al9000.com/rust/axum/minijinja_templates/" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<meta property="og:image" content="https://al9000.com/&#x2f;rust&#x2f;axum&#x2f;minijinja_templates/og-image.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
@@ -58,7 +58,7 @@ body {
 <main class="default-wrapper default-flow">
 
   <hgroup>
-        <h1>Using MiniJinja Templates for Dynamic Web Pages with an Axum Server</h1>
+        <h1>Using MiniJinja Templates for Dynamic Web Pages with Rust&#x27;s Axum Server</h1>
         <div class="date">July 2026</div>
   </hgroup>
 
@@ -76,14 +76,14 @@ body {
 <p>
   MiniJinja sets up an 
   initial environment before rendering
-  templates. I use Axum's AppState to
+  templates. I use axum's `State` to
   load and store the environment 
   for the admin server when it initializes. 
   Without that, it would have to initialize 
   on every page request. 
 </p>
 
-<p>Here's what the basic setup looks like:</p>
+<p>Here's what the setup looks like:</p>
 
 
 <h2>Files</h2>
@@ -103,13 +103,10 @@ body {
 <div class="code-block"><pre><code><span class="line-marker"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">http<span class="punctuation accessor rust">::</span></span>StatusCode<span class="punctuation terminator rust">;</span>
-<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">response<span class="punctuation accessor rust">::</span></span>Html<span class="punctuation terminator rust">;</span>
-<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>Router<span class="punctuation separator rust">,</span> <span class="meta path rust">routing<span class="punctuation accessor rust">::</span></span>get</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>Router<span class="punctuation separator rust">,</span> <span class="meta path rust">response<span class="punctuation accessor rust">::</span></span>Html<span class="punctuation separator rust">,</span> <span class="meta path rust">routing<span class="punctuation accessor rust">::</span></span>get</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">chrono<span class="punctuation accessor rust">::</span></span><span class="meta path rust">offset<span class="punctuation accessor rust">::</span></span>Utc<span class="punctuation terminator rust">;</span>
-<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span>Value<span class="punctuation terminator rust">;</span>
-<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span>context<span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span><span class="meta path rust">syntax<span class="punctuation accessor rust">::</span></span>SyntaxConfig<span class="punctuation terminator rust">;</span>
-<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>Environment<span class="punctuation separator rust">,</span> path_loader</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>Environment<span class="punctuation separator rust">,</span> Value<span class="punctuation separator rust">,</span> context<span class="punctuation separator rust">,</span> path_loader</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">sync<span class="punctuation accessor rust">::</span></span>Arc<span class="punctuation terminator rust">;</span>
 <span class="line-marker"></span>
 <span class="line-marker"></span><span class="meta struct rust"><span class="storage type struct rust">struct</span> </span><span class="meta struct rust"><span class="entity name struct rust">AppState</span> </span><span class="meta struct rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
@@ -189,47 +186,7 @@ body {
 <span class="line-marker"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">h1</span><span class="punctuation definition tag end html">&gt;</span></span>[@ date() @]<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">h1</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker"></span>  <span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag structure any html">body</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker"></span><span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag structure any html">html</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
-<h4>src/app_state.rs</h4>
-<p>This struct holds an axum <code>State</code>
-that's used to pass the MiniJinja
-environment between functions.</p>
-<h4>src/date.rs</h4>
-<p>A simple function that outputs a date
-string using <a href="https://docs.rs/chrono/latest/chrono/">rust's chrono crate</a>.
-This is the function that's called from
-the template to generate the date
-dynamically.</p>
-<h4>src/get_env.rs</h4>
-<p>The MiniJinja Environment is set up in this file.</p>
-<ul>
-<li>
-<p>The <code>env.set_syntax()</code> call adjust templates to use
-bracket based tokens instead of the default
-curly braces (e.g. <code>[@ @]</code>
-instead of <code>{{ }}</code>). This is a standard change
-I make as I find the square brackets easier to
-read. The change isn't necessary for the
-rendering functionality. It's personal preference.</p>
-</li>
-<li>
-<p>The <code>env.set_loader()</code> call points the environment
-to a directory for template storage. The file
-names become the template names.</p>
-</li>
-<li>
-<p>The <code>env.add_function()</code> call extends access
-to the <code>date()</code> function into the rendering
-environment so it can be used in templates
-(as seen in the template below).</p>
-</li>
-</ul>
-
-<h3>Templates</h3>
-
-
-
 <h2>Notes</h2>
-
 <ul>
 <li>
 <p>I'm using the <a href="https://docs.rs/anyhow/latest/anyhow/">anyhow crate</a> to make
@@ -247,11 +204,6 @@ the like instead of <code>{{ }}</code> for tokens since
 I find they make the page easier to read.</p>
 </li>
 <li>
-<p>The other environment feature I'm using
-in the custom syntax is <code>.line_statement_prefix(&quot;==&quot;)</code>
-which is a nice <a href="https://docs.rs/minijinja/latest/minijinja/syntax/index.html#line-statements-and-comments">shorthand for blocks</a>.</p>
-</li>
-<li>
 <p>I also split rending to its own <code>render</code> function.
 Any number of handlers (e.g. <code>handle_home</code>) can use
 it by setting up a context and passing it along
@@ -259,6 +211,11 @@ with a template name and the state to get
 the rendered content back.</p>
 <p>The <code>render()</code> function throws an 500 Internal Server Error
 if there's a problem.</p>
+</li>
+<li>
+<p>The <code>date()</code> function is defined in the Rust file
+and run every time the template renders
+so the value is updated for every page load.</p>
 </li>
 </ul>
 <h2>Wrap-Up</h2>
@@ -268,6 +225,7 @@ One of those features is creating custom functions.
 The ability to call those functions each time
 the page is requested is to populate the
 template covers every scenario I can think of.</p>
+<p>-a</p>
 
 
 

@@ -1,6 +1,6 @@
 == extends "/templates.inc/pages/default.html"
 == block toml
-title = "Using MiniJinja Templates for Dynamic Web Pages with an Axum Server"
+title = "Using MiniJinja Templates for Dynamic Web Pages with Rust's Axum Server"
 created = 2026-07-08T08:23:00-04:00
 status = "draft"
 == endblock
@@ -20,14 +20,14 @@ status = "draft"
 <p>
   MiniJinja sets up an 
   initial environment before rendering
-  templates. I use Axum's AppState to
+  templates. I use axum's `State` to
   load and store the environment 
   for the admin server when it initializes. 
   Without that, it would have to initialize 
   on every page request. 
 </p>
 
-<p>Here's what the basic setup looks like:</p>
+<p>Here's what the setup looks like:</p>
 
 
 == filter md
@@ -55,28 +55,8 @@ status = "draft"
 == endfilter
 
 
-
-#### src/app_state.rs
-
-This struct holds an axum `State`
-that's used to pass the MiniJinja
-environment between functions. 
-
-
-
-#### src/date.rs
-
-A simple function that outputs a date
-string using [rust's chrono crate](https://docs.rs/chrono/latest/chrono/).
-This is the function that's called from
-the template to generate the date
-dynamically. 
-
-
-
-#### src/get_env.rs
-
-The MiniJinja Environment is set up in this file. 
+[#
+## Details
 
 - The `env.set_syntax()` call adjust templates to use
 bracket based tokens instead of the default 
@@ -95,21 +75,12 @@ to the `date()` function into the rendering
 environment so it can be used in templates
 (as seen in the template below).
 
+#]
 
 
 
+## Notes
 
-
-
-== endfilter
-
-<h3>Templates</h3>
-
-
-
-<h2>Notes</h2>
-
-== filter md
 - I'm using the <a href="https://docs.rs/anyhow/latest/anyhow/">anyhow crate</a> to make
 error handling easier between MiniJinja and file system
 calls. It's not necessary for the Axum/MiniJinja
@@ -124,10 +95,6 @@ uses a target directory for template storage.
   the like instead of `{{ }}` for tokens since
   I find they make the page easier to read.
 
-- The other environment feature I'm using
-in the custom syntax is `.line_statement_prefix("==")`
-which is a nice [shorthand for blocks](https://docs.rs/minijinja/latest/minijinja/syntax/index.html#line-statements-and-comments).
-
 - I also split rending to its own `render` function.
 Any number of handlers (e.g. `handle_home`) can use
 it by setting up a context and passing it along
@@ -137,8 +104,12 @@ the rendered content back.
   The `render()` function throws an 500 Internal Server Error 
   if there's a problem. 
 
+- The `date()` function is defined in the Rust file
+and run every time the template renders 
+so the value is updated for every page load. 
 
-<h2>Wrap-Up</h2>
+
+## Wrap-Up
 
 I'm really happy with this approach. MiniJinja
 offers a ton of functionality out of the box. 
@@ -147,10 +118,7 @@ The ability to call those functions each time
 the page is requested is to populate the
 template covers every scenario I can think of. 
 
-
-
-
-
+-a
 
 
 == endfilter

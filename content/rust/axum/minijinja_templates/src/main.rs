@@ -1,13 +1,10 @@
 use anyhow::Result;
 use axum::extract::State;
 use axum::http::StatusCode;
-use axum::response::Html;
-use axum::{Router, routing::get};
+use axum::{Router, response::Html, routing::get};
 use chrono::offset::Utc;
-use minijinja::Value;
-use minijinja::context;
 use minijinja::syntax::SyntaxConfig;
-use minijinja::{Environment, path_loader};
+use minijinja::{Environment, Value, context, path_loader};
 use std::sync::Arc;
 
 struct AppState {
