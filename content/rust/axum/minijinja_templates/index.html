@@ -1,28 +1,210 @@
 == extends "/templates.inc/pages/default.html"
-
 == block toml
-title = "Use MiniJinja Templates"
+title = "Using MiniJinja Templates for Dynamic Web Pages with an Axum Server"
 created = 2026-07-08T08:23:00-04:00
 status = "draft"
 == endblock
 
 
 == block main
+<p>
+  I use Axum[@ footnote("axum") @] to power a local admin
+  server for this site. It's provides
+  reports on the site's current build
+  state and various CRUD operations 
+  to manage content. These tools
+  are Server Side Rendered[@ footnote("ssr") @]
+  using the MiniJinja[@ footnote("mj") @] template engine. 
+</p>
 
-<h3>Rust</h3>
+<p>
+  MiniJinja sets up an 
+  initial environment before rendering
+  templates. I use Axum's AppState to
+  load and store the environment 
+  for the admin server when it initializes. 
+  Without that, it would have to initialize 
+  on every page request. 
+</p>
 
-[@ f @]
+<p>Here's what the basic setup looks like:</p>
 
-== filter highlight_block("toml", "Cargo.toml")
-== include parent(file_path) + "/Cargo.toml"
+<h3>Files</h3>
+
+== filter md
+
+#### Cargo.toml
+
+The standard dependency loading file. Note
+the extra features turned on for `minijinja`
+and `tokio` that are used in this demo.  
+
+== filter highlight_block("toml")
+== include f.dir + "/Cargo.toml"
 == endfilter
-[#
 
-== filter highlight_block("rs", "src/main.rs")
-== include parent(file_path) + "/src/main.rs"
+#### src/main.rs
+
+The `main.rs` file coordinates set up and
+launching the web server. 
+
+== filter highlight_block("rs")
+[@- raw_file(f.dir + "/src/main.rs") -@]
 == endfilter
-#]
 
+
+#### src/lib.rs
+
+The file that loads all the other files. 
+
+== filter highlight_block("rs")
+[@- raw_file(f.dir + "/src/lib.rs") -@]
+== endfilter
+
+
+#### src/app_state.rs
+
+This struct holds an axum `State`
+that's used to pass the MiniJinja
+environment between functions. 
+
+== filter highlight_block("rs")
+[@- raw_file(f.dir + "/src/app_state.rs") -@]
+== endfilter
+
+
+#### src/date.rs
+
+A simple function that outputs a date
+string using [rust's chrono crate](https://docs.rs/chrono/latest/chrono/).
+This is the function that's called from
+the template to generate the date
+dynamically. 
+
+== filter highlight_block("rs")
+[@- raw_file(f.dir + "/src/date.rs") -@]
+== endfilter
+
+
+#### src/get_env.rs
+
+The MiniJinja Environment is set up in this file. 
+
+- The `env.set_syntax()` call adjust templates to use
+bracket based tokens instead of the default 
+curly braces (e.g. `[! raw !][@ @][! endraw !]`
+instead of `{{ }}`). This is a standard change 
+I make as I find the square brackets easier to 
+read. The change isn't necessary for the 
+rendering functionality. It's personal preference. 
+
+- The `env.set_loader()` call points the environment
+to a directory for template storage. The file
+names become the template names. 
+
+- The `env.add_function()` call extends access
+to the `date()` function into the rendering
+environment so it can be used in templates
+(as seen in the template below).
+
+
+== filter highlight_block("rs")
+[@- raw_file(f.dir + "/src/get_env.rs") -@]
+== endfilter
+
+
+
+
+
+== endfilter
+
+<h3>Templates</h3>
+
+== filter highlight_block("html", "templates/index.html")
+[@- raw_file(f.dir + "/templates/index.html") -@]
+== endfilter
+
+
+<h2>Notes</h2>
+
+== filter md
+- I'm using the <a href="https://docs.rs/anyhow/latest/anyhow/">anyhow crate</a> to make
+error handling easier between MiniJinja and file system
+calls. It's not necessary for the Axum/MiniJinja
+functionality. 
+
+- I split creation of the MiniJinja environment to 
+its own function. The `env.set_loader()` line
+uses a target directory for template storage. 
+
+  The `env.set_syntax()` call configures MiniJinja
+  for my preferred setup (e.g. using `[! raw !][@ @][! endraw !]` and
+  the like instead of `{{ }}` for tokens since
+  I find they make the page easier to read.
+
+- The other environment feature I'm using
+in the custom syntax is `.line_statement_prefix("==")`
+which is a nice [shorthand for blocks](https://docs.rs/minijinja/latest/minijinja/syntax/index.html#line-statements-and-comments).
+
+- I also split rending to its own `render` function.
+Any number of handlers (e.g. `handle_home`) can use
+it by setting up a context and passing it along
+with a template name and the state to get 
+the rendered content back. 
+
+  The `render()` function throws an 500 Internal Server Error 
+  if there's a problem. 
+
+
+<h2>Wrap-Up</h2>
+
+I'm really happy with this approach. MiniJinja
+offers a ton of functionality out of the box. 
+One of those features is creating custom functions. 
+The ability to call those functions each time
+the page is requested is to populate the
+template covers every scenario I can think of. 
+
+
+
+
+
+
+
+== endfilter
+
+
+
+<div class="end-of-line">end of line</div>
+
+<h4>Footnotes</h4>
+
+<div class="footnotes">
+
+== filter md
+- [@ footref("axum") @] Rust's <a href="https://docs.rs/axum/latest/axum/">axum crate</a> 
+  provides the HTTP routing and request handling needed
+  to build a web server that hosts dynamic pages. It 
+  reminds me a lot of Python's <a href="https://flask.palletsprojects.com/en/stable/">Flask project</a>.
+
+- [@ footref("ssr") @] Server Side Rendering is when a server
+  builds the response for each request dynamically when
+  the request arrives. An alternate approach is Static Site
+  Generation which pre-builds all the pages prior to any
+  requests. When one comes in, the server responds with
+  the pre-built payload. It's faster and uses fewer
+  resources and the cost of not being able to customize
+  the responses for each request. (There are, of course, 
+  hybrid approaches as well.)
+
+- [@ footref("mj") @] <a href="https://docs.rs/minijinja/latest/minijinja/">MiniJinja</a> 
+  is the Rust version of Python's 
+  <a href="https://jinja.palletsprojects.com/en/stable/">Jinja2</a> 
+  template engine. It provides looping, conditionals, 
+  and functions to render pages. It's fantastic. 
+== endfilter
+
+</div>
 
 == endblock
 

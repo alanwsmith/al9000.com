@@ -314,6 +314,15 @@ footer {
   content: "⤴ ";
 }
 
+.footnote-ref {
+  display: block;
+}
+
+.footnote-ref a:after {
+  content: "⤴ ";
+}
+
+
 .green {
   color: green;
 }

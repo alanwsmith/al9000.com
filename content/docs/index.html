@@ -168,56 +168,61 @@ toml metadata in the file:
 
       [@""@][!raw!][@ d.some.content.file.title @][!endraw!][@""@]
 
-- Page metadata is also available via
-a `p` variable. For example, the page title
+- TODO: Page metadata is also available via
+a `p.metadata` variable. For example, the page title
 can be output with:
 
-      [@""@][!raw!][@ p.title @][!endraw!][@""@]
+      [@""@][!raw!][@ p.metadata.title @][!endraw!][@""@]
 
-## File Path Data
+## Page Data
 
-The `f` variable holds file path data. 
+The `p` variable holds file path data. 
 
-- `f.dir` - An array with the directories
+- TODO: `p.metadata` - Contains the metadata
+from the `toml` block on the page if there
+is any. 
+
+- `p.dir` - The string to the parent
+directory (including a leading `/`).
+
+- `p.dir_parts` - An array with the directories
 that lead to the file
 (e.g. `/path/to/something.inc.html`
 returns `["path", "to"]`. An empty array
 is returned if the file is at the docroot).
 
-- `f.dir_string` - The string to the parent
-directory (including a leading `/`).
-
-- `f.extension` - The final file extension 
+- `p.extension` - The final file extension 
 (i.e. `something.inc.html` returns `html`). `NONE` 
 is returned if there's no extension. 
 
-- TODO: `f.input_extension` - The input file's
+- TODO: `p.input_extension` - The input file's
 extension (e.g. `.neo` which would result in
 an `f.extension` of `.html`).
 
-- TODO: `f.input_path` - The array with the
-path parts to the input file. 
-
-- TODO: `f.input_path_string` - The string
+- TODO: `p.input_path` - The string
 with the path to the input file (includes
 the leading `/`).
 
-- `f.name` - The full file name
+- TODO: `p.input_path_parts` - The array with the
+path parts to the input file. 
 
-- `f.stem` - The stem of the file name. (Note
+- `p.name` - The full file name
+
+- `p.stem` - The stem of the file name. (Note
 that this is everything up to the last `.` which means
 `something.inc.html` returns `something.inc`).
 
-- `f.path` - An array with the output directory
+- `p.path` - Returns the output path
+to the file as a string. It's the absolute path
+which includes a leading `/`. (Use `f.input_path`
+to get the source files path.)
+
+- `p.path_parts` - An array with the output directory
 and file name (e.g. `/path/to/something.inc.html`
 returns `["path", "to", "something.inc.html"].
 (Use `f.input_path` to get the input file path
 with the original extension.)
 
-- TODO: `f.path_string` - Returns the output path
-to the file as a string. It's the absolute path
-which includes a leading `/`. (Use `f.input_path_string`
-to get the source files path.)
 
 - TESTING:
 
@@ -286,6 +291,9 @@ file exists, it will override the
 
 - code("LANGUAGE")
 
+    - TODO: Add optional `[, class="classes"]` 
+      feature. 
+
     - returns a syntax highlighted
       version of the input ready to be placed inside
       an inline `<code class="code-span">` tag. 
@@ -298,6 +306,9 @@ file exists, it will override the
 
 
 - highlight("LANGUAGE")
+
+    - TODO: Add optional `[, class="classes"]` 
+      feature. 
 
     - returns a syntax highlighted
       version of the input ready to be placed inside
@@ -315,6 +326,9 @@ file exists, it will override the
 
 - highlight_block("LANGUAGE" [, CLASSES])
 
+    - TODO: Deprecate in favor of just
+      `highlight()`
+
     - returns a syntax highlighted
       version of the input including a surrounding 
       `<pre class="code-block"><code>` block. 
@@ -327,6 +341,12 @@ file exists, it will override the
 
     - A span tag that can be used for placing line
       numbers is prepended to each line. 
+
+- TODO: span(LANGUAGE [, class=""])
+
+    - For highlighting spans that 
+      are rendered in `<code>` spans. 
+  
 
 - md
 
@@ -346,12 +366,6 @@ file exists, it will override the
 
 
 ## Functions
-
-- TODO: data(path) 
-
-  - Returns the json/toml data for the
-    given path by effectively turning 
-    `/some/path/file.html` into `j.some.path.file`
 
 - date(DATE [, FORMAT])
 
@@ -376,13 +390,6 @@ file exists, it will override the
 
   - Expected paths are absolute based
     on the site docroot. 
-
-- TODO: filename(PATH)
-
-  - Returns the full filename 
-    for a given path (e.g. 
-    `/path/to/file.inc.html`
-    returns `file.inc.html`).
 
 - files_in_folder(PATH [, ext = EXT][, full = true])
 
@@ -415,6 +422,23 @@ file exists, it will override the
     paths to the folder instead of 
     just the name.
 
+- footnote(ID) 
+
+  - Returns a footnote link for the
+    given ID. 
+
+- footref(ID)
+
+  - The reference link that goes in the
+    footnote section to link back to the
+    body. 
+
+
+- TODO: join_path(["part1", "part2", "partN"])
+
+  - Joins an array of strings into a path 
+    string. 
+
 - TODO: link(ID [, classes=""])
 
   - TODO: Generates an `a` tag with
@@ -444,13 +468,11 @@ file exists, it will override the
     where each element is a
     folder in the path. 
 
-- TODO: raw_include(PATH)
+- raw_file(PATH)
 
   - Includes the contents of the
     file at PATH without further
     processing. 
-
-  
 
 - stem(PATH)
 

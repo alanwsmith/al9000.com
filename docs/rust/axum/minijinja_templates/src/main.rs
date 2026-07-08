@@ -1,14 +1,11 @@
 use anyhow::Result;
-use axum::extract::State;
-use axum::http::StatusCode;
-use axum::{Router, response::Html, routing::get};
-use minijinja::syntax::SyntaxConfig;
-use minijinja::{Environment, context, path_loader};
+use axum::{Router, routing::get};
+use chrono::offset::Utc;
+use minijinja::Value;
+use minijinja_templates::app_state::AppState;
+use minijinja_templates::get_env::get_env;
+use minijinja_templates::handle_home::handle_home;
 use std::sync::Arc;
-
-struct AppState {
-  env: Environment<'static>,
-}
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -25,39 +22,7 @@ async fn main() -> Result<()> {
   Ok(())
 }
 
-fn get_env() -> Result<Environment<'static>> {
-  let mut env = Environment::new();
-  env.set_loader(path_loader("templates"));
-  env.set_syntax(
-    SyntaxConfig::builder()
-      .line_statement_prefix("==")
-      .block_delimiters("[!", "!]")
-      .variable_delimiters("[@", "@]")
-      .comment_delimiters("[#", "#]")
-      .build()
-      .unwrap(),
-  );
-  env.set_lstrip_blocks(true);
-  env.set_trim_blocks(true);
-  Ok(env)
-}
-
-async fn handle_home(
-  State(state): State<Arc<AppState>>
-) -> Result<Html<String>, StatusCode> {
-  let template = match state.env.get_template("index.html") {
-    Ok(t) => t,
-    Err(e) => {
-      println!("ERROR: {}", e);
-      return Err(StatusCode::INTERNAL_SERVER_ERROR);
-    }
-  };
-  let rendered = match template.render(context!()) {
-    Ok(r) => r,
-    Err(e) => {
-      println!("ERROR: {}", e);
-      return Err(StatusCode::INTERNAL_SERVER_ERROR);
-    }
-  };
-  Ok(Html(rendered))
+pub fn date() -> Value {
+  let d = Utc::now();
+  Value::from_safe_string(format!("{}", d))
 }

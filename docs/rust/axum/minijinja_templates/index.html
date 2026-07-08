@@ -21,8 +21,8 @@ body {
     <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/main.css" />
 <link rel="shortcut icon" href="/favicon.ico" />
-<title>Use MiniJinja Templates</title>
-<meta property="og:title" content="Use MiniJinja Templates" />
+<title>Using MiniJinja Templates for Dynamic Web Pages with an Axum Server</title>
+<meta property="og:title" content="Using MiniJinja Templates for Dynamic Web Pages with an Axum Server" />
 <meta name="description" content="from alan w smith" />
 <meta property="og:description" content="from alan w smith" />
 <meta property="og:type" content="article" />
@@ -58,17 +58,40 @@ body {
 <main class="default-wrapper default-flow">
 
   <hgroup>
-        <h1>Use MiniJinja Templates</h1>
+        <h1>Using MiniJinja Templates for Dynamic Web Pages with an Axum Server</h1>
         <div class="date">July 2026</div>
   </hgroup>
 
 
+<p>
+  I use Axum<sup class="footnote-link"><a id="fn-axum-body" href="#fn-axum">axum</a></sup> to power a local admin
+  server for this site. It's provides
+  reports on the site's current build
+  state and various CRUD operations 
+  to manage content. These tools
+  are Server Side Rendered<sup class="footnote-link"><a id="fn-ssr-body" href="#fn-ssr">ssr</a></sup>
+  using the MiniJinja<sup class="footnote-link"><a id="fn-mj-body" href="#fn-mj">mj</a></sup> template engine. 
+</p>
 
-<h3>Rust</h3>
+<p>
+  MiniJinja sets up an 
+  initial environment before rendering
+  templates. I use Axum's AppState to
+  load and store the environment 
+  for the admin server when it initializes. 
+  Without that, it would have to initialize 
+  on every page request. 
+</p>
 
-{&quot;dir&quot;: &quot;&#x2f;rust&#x2f;axum&#x2f;minijinja_templates&quot;, &quot;dir_parts&quot;: [&quot;rust&quot;, &quot;axum&quot;, &quot;minijinja_templates&quot;], &quot;extension&quot;: &quot;html&quot;, &quot;name&quot;: &quot;index.html&quot;, &quot;path&quot;: &quot;&#x2f;rust&#x2f;axum&#x2f;minijinja_templates&#x2f;index.html&quot;, &quot;path_parts&quot;: [&quot;rust&quot;, &quot;axum&quot;, &quot;minijinja_templates&quot;, &quot;index.html&quot;], &quot;stem&quot;: &quot;index&quot;}
+<p>Here's what the basic setup looks like:</p>
 
-<div class="code-block"><div class="title">Cargo.toml</div><pre><code><span class="line-marker"></span><span class="text plain">[package]
+<h3>Files</h3>
+
+<h4>Cargo.toml</h4>
+<p>The standard dependency loading file. Note
+the extra features turned on for <code>minijinja</code>
+and <code>tokio</code> that are used in this demo.</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="text plain">[package]
 <span class="line-marker"></span>name = &quot;minijinja_templates&quot;
 <span class="line-marker"></span>version = &quot;0.1.0&quot;
 <span class="line-marker"></span>edition = &quot;2024&quot;
@@ -76,8 +99,202 @@ body {
 <span class="line-marker"></span>[dependencies]
 <span class="line-marker"></span>anyhow = &quot;1.0.103&quot;
 <span class="line-marker"></span>axum = &quot;0.8.9&quot;
+<span class="line-marker"></span>chrono = &quot;0.4.45&quot;
 <span class="line-marker"></span>minijinja = { version = &quot;2.21.0&quot;, features = [&quot;custom_syntax&quot;, &quot;debug&quot;] }
 <span class="line-marker"></span>tokio = { version = &quot;1.52.3&quot;, features = [&quot;macros&quot;, &quot;rt-multi-thread&quot;] }</span></code></pre></div>
+#### src/main.rs
+<p>The <code>main.rs</code> file coordinates set up and
+launching the web server.</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>Router<span class="punctuation separator rust">,</span> <span class="meta path rust">routing<span class="punctuation accessor rust">::</span></span>get</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">chrono<span class="punctuation accessor rust">::</span></span><span class="meta path rust">offset<span class="punctuation accessor rust">::</span></span>Utc<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span>Value<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja_templates<span class="punctuation accessor rust">::</span></span><span class="meta path rust">app_state<span class="punctuation accessor rust">::</span></span>AppState<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja_templates<span class="punctuation accessor rust">::</span></span><span class="meta path rust">get_env<span class="punctuation accessor rust">::</span></span>get_env<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja_templates<span class="punctuation accessor rust">::</span></span><span class="meta path rust">handle_home<span class="punctuation accessor rust">::</span></span>handle_home<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">sync<span class="punctuation accessor rust">::</span></span>Arc<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta annotation rust"><span class="punctuation definition annotation rust">#</span><span class="punctuation section group begin rust">[</span><span class="variable annotation rust">tokio</span>::<span class="variable annotation rust">main</span><span class="punctuation section group end rust">]</span></span>
+<span class="line-marker"></span>async <span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span><span class="punctuation section group begin rust">(</span><span class="punctuation section group end rust">)</span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> env <span class="keyword operator rust">=</span> <span class="support function rust">get_env</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> app_state <span class="keyword operator rust">=</span> <span class="meta path rust">Arc<span class="punctuation accessor rust">::</span></span>new<span class="meta group rust"><span class="punctuation section group begin rust">(</span>AppState <span class="meta block rust"><span class="punctuation section block begin rust">{</span> env </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> app <span class="keyword operator rust">=</span> <span class="meta path rust">Router<span class="punctuation accessor rust">::</span></span>new<span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>    .<span class="support function rust">route</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>/<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> <span class="support function rust">get</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>handle_home</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>    .<span class="support function rust">with_state</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>app_state</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> listener <span class="keyword operator rust">=</span> <span class="meta path rust">tokio<span class="punctuation accessor rust">::</span></span><span class="meta path rust">net<span class="punctuation accessor rust">::</span></span><span class="meta path rust">TcpListener<span class="punctuation accessor rust">::</span></span>bind<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>127.0.0.1:3737<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>    .await
+<span class="line-marker"></span>    .<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>listening on <span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> listener.<span class="support function rust">local_addr</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span>serve<span class="meta group rust"><span class="punctuation section group begin rust">(</span>listener<span class="punctuation separator rust">,</span> app</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.await<span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function rust"><span class="meta function rust"><span class="storage modifier rust">pub</span> <span class="storage type function rust">fn</span> </span><span class="entity name function rust">date</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> Value</span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> d <span class="keyword operator rust">=</span> <span class="meta path rust">Utc<span class="punctuation accessor rust">::</span></span>now<span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="meta path rust">Value<span class="punctuation accessor rust">::</span></span>from_safe_string<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="support macro rust">format!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span><span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> d<span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+<h4>src/lib.rs</h4>
+<p>The file that loads all the other files.</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source rust"><span class="meta module rust"><span class="storage modifier rust">pub</span> <span class="storage type module rust">mod</span> <span class="entity name module rust">app_state</span><span class="punctuation terminator rust">;</span></span>
+<span class="line-marker"></span><span class="meta module rust"><span class="storage modifier rust">pub</span> <span class="storage type module rust">mod</span> <span class="entity name module rust">get_env</span><span class="punctuation terminator rust">;</span></span>
+<span class="line-marker"></span><span class="meta module rust"><span class="storage modifier rust">pub</span> <span class="storage type module rust">mod</span> <span class="entity name module rust">handle_home</span><span class="punctuation terminator rust">;</span></span>
+<span class="line-marker"></span><span class="meta module rust"><span class="storage modifier rust">pub</span> <span class="storage type module rust">mod</span> <span class="entity name module rust">render</span><span class="punctuation terminator rust">;</span></span></span></code></pre></div>
+<h4>src/app_state.rs</h4>
+<p>This struct holds an axum <code>State</code>
+that's used to pass the MiniJinja
+environment between functions.</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span>Environment<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta struct rust"><span class="storage modifier rust">pub</span> <span class="storage type struct rust">struct</span> </span><span class="meta struct rust"><span class="entity name struct rust">AppState</span> </span><span class="meta struct rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>  <span class="storage modifier rust">pub</span> <span class="variable other member rust">env</span><span class="punctuation separator rust">:</span> <span class="meta generic rust">Environment<span class="punctuation definition generic begin rust">&lt;</span><span class="storage modifier lifetime rust">&#39;static</span><span class="punctuation definition generic end rust">&gt;</span></span>,
+<span class="line-marker"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+<h4>src/date.rs</h4>
+<p>A simple function that outputs a date
+string using <a href="https://docs.rs/chrono/latest/chrono/">rust's chrono crate</a>.
+This is the function that's called from
+the template to generate the date
+dynamically.</p>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">chrono<span class="punctuation accessor rust">::</span></span><span class="meta path rust">offset<span class="punctuation accessor rust">::</span></span>Utc<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span>Value<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function rust"><span class="meta function rust"><span class="storage modifier rust">pub</span> <span class="storage type function rust">fn</span> </span><span class="entity name function rust">date</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> Value</span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> d <span class="keyword operator rust">=</span> <span class="meta path rust">Utc<span class="punctuation accessor rust">::</span></span>now<span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="meta path rust">Value<span class="punctuation accessor rust">::</span></span>from_safe_string<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="support macro rust">format!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span><span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> d<span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+<h4>src/get_env.rs</h4>
+<p>The MiniJinja Environment is set up in this file.</p>
+<ul>
+<li>
+<p>The <code>env.set_syntax()</code> call adjust templates to use
+bracket based tokens instead of the default
+curly braces (e.g. <code>[@ @]</code>
+instead of <code>{{ }}</code>). This is a standard change
+I make as I find the square brackets easier to
+read. The change isn't necessary for the
+rendering functionality. It's personal preference.</p>
+</li>
+<li>
+<p>The <code>env.set_loader()</code> call points the environment
+to a directory for template storage. The file
+names become the template names.</p>
+</li>
+<li>
+<p>The <code>env.add_function()</code> call extends access
+to the <code>date()</code> function into the rendering
+environment so it can be used in templates
+(as seen in the template below).</p>
+</li>
+</ul>
+<div class="code-block"><pre><code><span class="line-marker"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="keyword other rust">crate</span><span class="meta path rust"><span class="punctuation accessor rust">::</span></span><span class="meta path rust">date<span class="punctuation accessor rust">::</span></span>date<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span><span class="meta path rust">syntax<span class="punctuation accessor rust">::</span></span>SyntaxConfig<span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>Environment<span class="punctuation separator rust">,</span> path_loader</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>
+<span class="line-marker"></span><span class="meta function rust"><span class="meta function rust"><span class="storage modifier rust">pub</span> <span class="storage type function rust">fn</span> </span><span class="entity name function rust">get_env</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span><span class="meta generic rust">Environment<span class="punctuation definition generic begin rust">&lt;</span><span class="storage modifier lifetime rust">&#39;static</span><span class="punctuation definition generic end rust">&gt;</span></span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker"></span>  <span class="storage type rust">let</span> <span class="storage modifier rust">mut</span> env <span class="keyword operator rust">=</span> <span class="meta path rust">Environment<span class="punctuation accessor rust">::</span></span>new<span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  env.<span class="support function rust">set_syntax</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>
+<span class="line-marker"></span>    <span class="meta path rust">SyntaxConfig<span class="punctuation accessor rust">::</span></span>builder<span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>      .<span class="support function rust">block_delimiters</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>[!<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>!]<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>      .<span class="support function rust">variable_delimiters</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>[@<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>@]<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>      .<span class="support function rust">comment_delimiters</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>[#<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>#]<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>      .<span class="support function rust">build</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span>      .<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation separator rust">,</span>
+<span class="line-marker"></span>  </span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  env.<span class="support function rust">set_loader</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="support function rust">path_loader</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>templates<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  env.<span class="support function rust">add_function</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>date<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> date</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>env</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+
+<h3>Templates</h3>
+
+<div class="code-block"><div class="title">templates/index.html</div><pre><code><span class="line-marker"></span><span class="text html basic"><span class="meta tag sgml html"><span class="punctuation definition tag html">&lt;!</span><span class="meta tag sgml doctype html"><span class="entity name tag doctype html">DOCTYPE</span> html</span><span class="punctuation definition tag html">&gt;</span></span>
+<span class="line-marker"></span><span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag structure any html">html</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">lang</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>en<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>  <span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag structure any html">head</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>    <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">meta</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">charset</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>UTF-8<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
+<span class="line-marker"></span>    <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">meta</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">name</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>viewport<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">content</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>width=device-width, initial-scale=1.0<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
+<span class="line-marker"></span>  <span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag structure any html">head</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>  <span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag structure any html">body</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">h1</span><span class="punctuation definition tag end html">&gt;</span></span>[@ date() @]<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">h1</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span>  <span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag structure any html">body</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker"></span><span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag structure any html">html</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+
+<h2>Notes</h2>
+
+<ul>
+<li>
+<p>I'm using the <a href="https://docs.rs/anyhow/latest/anyhow/">anyhow crate</a> to make
+error handling easier between MiniJinja and file system
+calls. It's not necessary for the Axum/MiniJinja
+functionality.</p>
+</li>
+<li>
+<p>I split creation of the MiniJinja environment to
+its own function. The <code>env.set_loader()</code> line
+uses a target directory for template storage.</p>
+<p>The <code>env.set_syntax()</code> call configures MiniJinja
+for my preferred setup (e.g. using <code>[@ @]</code> and
+the like instead of <code>{{ }}</code> for tokens since
+I find they make the page easier to read.</p>
+</li>
+<li>
+<p>The other environment feature I'm using
+in the custom syntax is <code>.line_statement_prefix(&quot;==&quot;)</code>
+which is a nice <a href="https://docs.rs/minijinja/latest/minijinja/syntax/index.html#line-statements-and-comments">shorthand for blocks</a>.</p>
+</li>
+<li>
+<p>I also split rending to its own <code>render</code> function.
+Any number of handlers (e.g. <code>handle_home</code>) can use
+it by setting up a context and passing it along
+with a template name and the state to get
+the rendered content back.</p>
+<p>The <code>render()</code> function throws an 500 Internal Server Error
+if there's a problem.</p>
+</li>
+</ul>
+<h2>Wrap-Up</h2>
+<p>I'm really happy with this approach. MiniJinja
+offers a ton of functionality out of the box.
+One of those features is creating custom functions.
+The ability to call those functions each time
+the page is requested is to populate the
+template covers every scenario I can think of.</p>
+
+
+
+<div class="end-of-line">end of line</div>
+
+<h4>Footnotes</h4>
+
+<div class="footnotes">
+
+<ul>
+<li>
+<p><span class="footnote-ref"><a id="fn-axum" href="#fn-axum-body">axum</a></span> Rust's <a href="https://docs.rs/axum/latest/axum/">axum crate</a>
+provides the HTTP routing and request handling needed
+to build a web server that hosts dynamic pages. It
+reminds me a lot of Python's <a href="https://flask.palletsprojects.com/en/stable/">Flask project</a>.</p>
+</li>
+<li>
+<p><span class="footnote-ref"><a id="fn-ssr" href="#fn-ssr-body">ssr</a></span> Server Side Rendering is when a server
+builds the response for each request dynamically when
+the request arrives. An alternate approach is Static Site
+Generation which pre-builds all the pages prior to any
+requests. When one comes in, the server responds with
+the pre-built payload. It's faster and uses fewer
+resources and the cost of not being able to customize
+the responses for each request. (There are, of course,
+hybrid approaches as well.)</p>
+</li>
+<li>
+<p><span class="footnote-ref"><a id="fn-mj" href="#fn-mj-body">mj</a></span> <a href="https://docs.rs/minijinja/latest/minijinja/">MiniJinja</a>
+is the Rust version of Python's
+<a href="https://jinja.palletsprojects.com/en/stable/">Jinja2</a>
+template engine. It provides looping, conditionals,
+and functions to render pages. It's fantastic.</p>
+</li>
+</ul>
+
+</div>
 
 
 </main>

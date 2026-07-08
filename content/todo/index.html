@@ -1,17 +1,13 @@
 == extends "/templates.inc/pages/default.html"
-
 == block toml
 title = "TODO"
 created = 2026-07-07T14:16:14-04:00
 tags = []
-status = "draft"
 == endblock
 
 
 == block main
 == filter md
-
-## Active
 
 ## al9000.com 
 
@@ -19,21 +15,41 @@ status = "draft"
 
 - Create a CRUD tool for quotes. 
 
+- Add functions for `footnote_link` and
+    `footnote_ref` for linking back
+    and forth between footnotes. 
+
+
 ### Someday/Maybe
 
+- Switch to using `categories = []` instead of 
+    things like `status = "code"` to separate
+    content on the home page, etc...
+
+- Show all pages in the RSS feed if they have a 
+    `status="done"` unless they have a `tags = ["no-rss"]`
+
 - Add local tool to view current blog posts and statuses
+
 - Add local tool to make new blog post files. 
+
 - Add local tool to capture quotes.
+
 - Split out the `/admin` section to its
     own server.
+
 - Add a `localhost` check to add extra data
     data a page via javascript if you're
     on localhost. 
+
 - Create a page to display errors for the
     site. 
+
 - Add a `join_path()` function that joins
     strings with `/` characters. 
+
 - Build CSS as stylesheet instead of JS file. 
+
 
 ### Done
 
@@ -50,7 +66,6 @@ status = "draft"
 ## Portrait Project
 
 - Build QR Code Maker for portrait project. 
-
 
 ## Misc 
 
