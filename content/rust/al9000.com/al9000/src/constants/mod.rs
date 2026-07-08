@@ -1,1 +1,1 @@
-pub const CONTENT_DIR: &str = "../../../content";
+pub const CONTENT_DIR: &str = "../../../../content";
