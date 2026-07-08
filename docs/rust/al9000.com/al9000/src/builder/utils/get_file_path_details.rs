@@ -6,12 +6,12 @@ use std::path::Path;
 
 #[derive(Debug, PartialEq, Serialize)]
 pub struct FilePathDeatils {
-  pub dir: Vec<Value>,
-  pub dir_string: Value,
+  pub dir: Value,
+  pub dir_parts: Vec<Value>,
   pub extension: Option<Value>,
   pub name: Value,
-  pub path: Vec<Value>,
-  pub path_string: Value,
+  pub path: Value,
+  pub path_parts: Vec<Value>,
   pub stem: Value,
 }
 
@@ -20,15 +20,7 @@ pub struct FilePathDeatils {
 // `content` dir.
 
 pub fn get_file_path_details(pb: &Path) -> Result<Value> {
-  let dir: Vec<_> = pb
-    .parent()
-    .unwrap()
-    .iter()
-    .skip(5)
-    .map(|part| Value::from(part.to_string_lossy().to_string()))
-    .collect();
-
-  let dir_string = Value::from(format!(
+  let dir = Value::from(format!(
     "/{}",
     pb.parent()
       .unwrap()
@@ -39,6 +31,14 @@ pub fn get_file_path_details(pb: &Path) -> Result<Value> {
       .join("/"),
   ));
 
+  let dir_parts: Vec<_> = pb
+    .parent()
+    .unwrap()
+    .iter()
+    .skip(5)
+    .map(|part| Value::from(part.to_string_lossy().to_string()))
+    .collect();
+
   let extension = pb
     .extension()
     .map(|v| Value::from(v.to_string_lossy().to_string()));
@@ -47,13 +47,7 @@ pub fn get_file_path_details(pb: &Path) -> Result<Value> {
     pb.file_name().unwrap().to_string_lossy().to_string(),
   );
 
-  let path: Vec<_> = pb
-    .iter()
-    .skip(5)
-    .map(|part| Value::from(part.to_string_lossy().to_string()))
-    .collect();
-
-  let path_string = Value::from(format!(
+  let path = Value::from(format!(
     "/{}",
     pb.iter()
       .skip(5)
@@ -62,17 +56,23 @@ pub fn get_file_path_details(pb: &Path) -> Result<Value> {
       .join("/")
   ));
 
+  let path_parts: Vec<_> = pb
+    .iter()
+    .skip(5)
+    .map(|part| Value::from(part.to_string_lossy().to_string()))
+    .collect();
+
   let stem = Value::from(
     pb.file_stem().unwrap().to_string_lossy().to_string(),
   );
 
   let mut fpd = FilePathDeatils {
     dir,
-    dir_string,
+    dir_parts,
     extension,
     name,
     path,
-    path_string,
+    path_parts,
     stem,
   };
   Ok(Value::from_serialize(fpd))

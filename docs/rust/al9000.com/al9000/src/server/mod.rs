@@ -3,6 +3,7 @@ pub mod admin_page;
 pub mod missing_page;
 
 use crate::Config;
+use crate::admin::*;
 use add_quote::*;
 use admin_page::*;
 use anyhow::Result;
@@ -41,6 +42,7 @@ impl Server {
       .not_found_service(get(missing_page));
     let app = Router::new()
       .route("/admin", get(admin_page))
+      .route("/admin/quotes/", get(quotes))
       .route("/admin/quotes/add", post(add_quote))
       .fallback_service(service)
       .layer(session_layer)

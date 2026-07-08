@@ -14,7 +14,7 @@ chrono = "0.4.44"
 futures = "0.3.32"
 itertools = "0.14.0"
 markdown = "1.0.0"
-minijinja = { version = "2.19.0", features = ["debug", "custom_syntax", "json", "loader"] }
+minijinja = { version = "2.21.0", features = ["debug", "custom_syntax"] }
 notify = "8.2.0"
 notify-debouncer-full = "0.7.0"
 port_check = "0.3.0"
