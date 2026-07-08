@@ -29,37 +29,31 @@ status = "draft"
 
 <p>Here's what the basic setup looks like:</p>
 
-<h3>Files</h3>
 
 == filter md
 
-#### Cargo.toml
+## Files
 
-The standard dependency loading file. Note
-the extra features turned on for `minijinja`
-and `tokio` that are used in this demo.  
+### Cargo.toml
 
 == filter highlight_block("toml")
 == include f.dir + "/Cargo.toml"
 == endfilter
 
-#### src/main.rs
 
-The `main.rs` file coordinates set up and
-launching the web server. 
+### src/main.rs
 
 == filter highlight_block("rs")
 [@- raw_file(f.dir + "/src/main.rs") -@]
 == endfilter
 
 
-#### src/lib.rs
+### templates/index.html
 
-The file that loads all the other files. 
-
-== filter highlight_block("rs")
-[@- raw_file(f.dir + "/src/lib.rs") -@]
+== filter highlight_block("html", "templates/index.html")
+[@- raw_file(f.dir + "/templates/index.html") -@]
 == endfilter
+
 
 
 #### src/app_state.rs
@@ -68,9 +62,6 @@ This struct holds an axum `State`
 that's used to pass the MiniJinja
 environment between functions. 
 
-== filter highlight_block("rs")
-[@- raw_file(f.dir + "/src/app_state.rs") -@]
-== endfilter
 
 
 #### src/date.rs
@@ -81,9 +72,6 @@ This is the function that's called from
 the template to generate the date
 dynamically. 
 
-== filter highlight_block("rs")
-[@- raw_file(f.dir + "/src/date.rs") -@]
-== endfilter
 
 
 #### src/get_env.rs
@@ -108,9 +96,6 @@ environment so it can be used in templates
 (as seen in the template below).
 
 
-== filter highlight_block("rs")
-[@- raw_file(f.dir + "/src/get_env.rs") -@]
-== endfilter
 
 
 
@@ -120,9 +105,6 @@ environment so it can be used in templates
 
 <h3>Templates</h3>
 
-== filter highlight_block("html", "templates/index.html")
-[@- raw_file(f.dir + "/templates/index.html") -@]
-== endfilter
 
 
 <h2>Notes</h2>
