@@ -9,5 +9,4 @@
 .example-2 .line-number::before {
   content: counter(example-line-number-2);
   padding-right: var(--default-padding);
-  display: inline-block;
 }

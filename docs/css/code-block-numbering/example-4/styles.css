@@ -1,0 +1,5 @@
+.example-4 .line-number::before {
+  content: attr(data-num);
+  padding-right: var(--default-padding);
+}
+

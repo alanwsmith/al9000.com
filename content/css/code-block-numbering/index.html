@@ -8,12 +8,23 @@ status = "draft"
 
 == block head
 <style>
-.page-code-block {
-  border: var(--accent-border);
-  border-radius: var(--default-border-radius);
+.example-1, .example-2, .example-3, .example-3b, .example-4, .example-5 {
   background-color: var(--match-color);
+  border: var(--default-border);
+  border-radius: var(--default-border-radius);
   padding: var(--large-padding);
 }
+
+== include f.dir + "/example-1/styles.css"
+
+== include f.dir + "/example-2/styles.css"
+
+== include f.dir + "/example-3/styles-b.css"
+
+== include f.dir + "/example-4/styles.css"
+
+== include f.dir + "/example-5/styles.css"
+
 </style>
 == endblock
 
@@ -26,17 +37,6 @@ status = "draft"
 I've been using CSS counter to add line numbers to code
 blocks forever. For example, this HTML and
 CSS:
-
-<style>
-.example-1 {
-  background-color: var(--match-color);
-  border: var(--default-border);
-  border-radius: var(--default-border-radius);
-  padding: var(--large-padding);
-}
-
-== include f.dir + "/example-1/styles.css"
-</style>
 
 == filter highlight_block("html")
 == include f.dir + "/example-1/code.html"
@@ -60,17 +60,6 @@ via the `counter-reset` property. For
 example, you can start the line numbers
 at "7" like this:
 
-<style>
-.example-2 {
-  background-color: var(--match-color);
-  border: var(--default-border);
-  border-radius: var(--default-border-radius);
-  padding: var(--large-padding);
-}
-
-== include f.dir + "/example-2/styles.css"
-</style>
-
 == filter highlight_block("html")
 == include f.dir + "/example-2/code.html"
 == endfilter
@@ -83,24 +72,94 @@ Which outputs:
 
 == include f.dir + "/example-2/code.html"
 
-
-
 ## The Skipping Problem 
 
+The problem I've been running into is how to
+show some parts of the code while skipping
+others. For example, say I've got this code
+block:
+
+== include f.dir + "/example-3/code.html"
+
+But, instead of display the entire thing I
+only want to show the opening and closing
+of the `main` function and the `alfa` lines. 
+It's easy enough for me to remove the 
+`bravo` lines in my output, but the
+lines number for the closing `}` would
+be different when I show the full code. 
+
+Something like this:
+
+== include f.dir + "/example-3/code-b.html"
 
 
-## The Skipping Solution
+I could use the `counter-reset` approach to
+set the line number. That would get
+complicated fast and require customization
+for each block that involves removing 
+lines. That also wouldn't handle adding
+the `.` for the empty line position. 
+
+## Solution Attributes
+
+Enter the CSS `attr()` function. It's been 
+around since 2015 and provides a better
+way to control line numbering. Specifically, 
+it lets you grab the value from a `data-*`
+attribute in an HTML element for display. 
+
+Here's the code that makes it work:
+
+== filter highlight_block("html")
+== include f.dir + "/example-4/code.html"
+== endfilter
+
+== filter highlight_block("css")
+== include f.dir + "/example-4/styles.css"
+== endfilter
+
+And here's what it looks like:
+
+== include f.dir + "/example-4/code.html"
 
 
+Exactly what I'm looking for.
 
-
-
-
-
-
-
+-a
 
 <div class="end-of-line">end of line</div>
+
+
+### Endnotes
+
+
+<ul>
+<li>This approach presupposes you have the ability
+to control that HTML for your code blocks. 
+That is, you need a way to determine which lines
+show up and what the associated `data-num`
+    attributes for each one are. </li>
+
+<li>I removed syntax highlighting from the HTML 
+of the examples to make them easier to read. 
+The approach works when highlighting is
+    applied as well. </li>
+
+<li><p>Another idea I'm toying with is adding
+a specific class to the lines where
+splits occur to collapse the separation
+    into a single border line. </p>
+
+[! include f.dir + "/example-5/code.html" !]
+
+  <p>That needs some help, but I like the direction.</p>
+</li>
+
+</ul>
+
+
+
 
 ### References
 
