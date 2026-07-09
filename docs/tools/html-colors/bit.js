@@ -3,5 +3,14 @@ export const b = {
 };
 
 export async function htmlColors(_, __, el) {
-  el.innerHTML = "asdf";
+  let response = await b.getData("/tools/html-colors/colors.json");
+  if (response) {
+    for (let key of Object.keys(response)) {
+      const subs = {
+        __NAME__: key,
+      };
+      el.appendChild(b.render("htmlColor", subs));
+      console.log(key);
+    }
+  }
 }
