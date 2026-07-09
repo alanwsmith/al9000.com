@@ -1,0 +1,11 @@
+[package]
+name = "crud_example"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.103"
+axum = "0.8.9"
+minijinja = "2.21.0"
+tokio = { version = "1.52.3", features = ["rt-multi-thread"] }
+uuid = { version = "1.23.4", features = ["v7"] }
