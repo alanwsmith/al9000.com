@@ -8,22 +8,29 @@ status = "draft"
 
 == block head
 <style>
-.example-1, .example-2, .example-3, .example-3b, .example-4, .example-5 {
+.example-1, .example-2, .example-3, .example-3b, .example-3c, .example-4, .example-4b  {
   background-color: var(--match-color);
   border: var(--default-border);
   border-radius: var(--default-border-radius);
   padding: var(--large-padding);
 }
 
+== include f.dir + "/padding.css"
+
 == include f.dir + "/example-1/styles.css"
 
 == include f.dir + "/example-2/styles.css"
 
-== include f.dir + "/example-3/styles-b.css"
+== include f.dir + "/example-3/styles.css"
+
+== include f.dir + "/example-3b/styles.css"
+
+== include f.dir + "/example-3c/styles.css"
 
 == include f.dir + "/example-4/styles.css"
 
-== include f.dir + "/example-5/styles.css"
+== include f.dir + "/example-4b/styles.css"
+
 
 </style>
 == endblock
@@ -34,16 +41,17 @@ status = "draft"
 
 ## Numbers of Lines
 
-I've been using CSS counter to add line numbers to code
-blocks forever. For example, this HTML and
-CSS:
-
-== filter highlight_block("html")
-== include f.dir + "/example-1/code.html"
-== endfilter
+I've been using the CSS `counter` [@ footnote("counter") @] function to add line numbers to code
+blocks forever. For example, this CSS:
 
 == filter highlight_block("css")
 == include f.dir + "/example-1/styles.css"
+== endfilter
+
+and this HTML:
+
+== filter highlight_block("html")
+== include f.dir + "/example-1/code.html"
 == endfilter
 
 Produces this output:
@@ -51,59 +59,75 @@ Produces this output:
 == include f.dir + "/example-1/code.html"
 
 It works great for basic code blocks that
-start at "1" and go up from there. 
+start at 1 and go up uninterrupted from there. 
 
 ## Start Position
 
-Starting with another number is possible
-via the `counter-reset` property. For 
+Starting with another number is done 
+with the `counter-reset`[@ footnote("reset") @] property. For 
 example, you can start the line numbers
-at "7" like this:
-
-== filter highlight_block("html")
-== include f.dir + "/example-2/code.html"
-== endfilter
+at 7 like this:
 
 == filter highlight_block("css")
 == include f.dir + "/example-2/styles.css"
+== endfilter
+
+== filter highlight_block("html")
+== include f.dir + "/example-2/code.html"
 == endfilter
 
 Which outputs:
 
 == include f.dir + "/example-2/code.html"
 
+Just remember to reset the counter
+value to one before the value you want
+to start with (e.g. 6 gets you 7). 
+
+
 ## The Skipping Problem 
 
 The problem I've been running into is how to
 show some parts of the code while skipping
 others. For example, say I've got this code
-block:
+block coming in from an included file:
 
 == include f.dir + "/example-3/code.html"
 
-But, instead of display the entire thing I
+But, instead of displaying the entire thing, I
 only want to show the opening and closing
 of the `main` function and the `alfa` lines. 
-It's easy enough for me to remove the 
-`bravo` lines in my output, but the
-lines number for the closing `}` would
-be different when I show the full code. 
+I could make another copy of the file
+with the lines removed. That causes two issues:
 
-Something like this:
+1. I'd have to duplicate the code. That, in turn
+requires updating it multiple times for
+any changes. A pain and entirely too
+each to mess up and publish incorrect code. 
+2. Lines that are removed don't increment
+the counter. Any lines after a removal
+end up with different numbers than
+the original. 
 
-== include f.dir + "/example-3/code-b.html"
+For example, the closing `}` in this
+display is marked as line 4 instead
+of 7:
 
+== include f.dir + "/example-3b/code.html"
+
+I want to keep the numbers the same for
+each line:
+
+== include f.dir + "/example-3c/code.html"
 
 I could use the `counter-reset` approach to
-set the line number. That would get
-complicated fast and require customization
-for each block that involves removing 
-lines. That also wouldn't handle adding
-the `.` for the empty line position. 
+set the line number after each removal. It would get
+complicated fast. Each block would have
+to be adjusted individually. 
 
 ## Solution Attributes
 
-Enter the CSS `attr()` function. It's been 
+Enter the CSS `attr()`[@ footnote("attr") @] function. It's been 
 around since 2015 and provides a better
 way to control line numbering. Specifically, 
 it lets you grab the value from a `data-*`
@@ -111,17 +135,41 @@ attribute in an HTML element for display.
 
 Here's the code that makes it work:
 
-== filter highlight_block("html")
-== include f.dir + "/example-4/code.html"
-== endfilter
-
 == filter highlight_block("css")
 == include f.dir + "/example-4/styles.css"
+== endfilter
+
+== filter highlight_block("html")
+== include f.dir + "/example-4/code.html"
 == endfilter
 
 And here's what it looks like:
 
 == include f.dir + "/example-4/code.html"
+
+The technique requires hard coding the values. 
+The complexity of doing that will vary 
+between systems. It's straight forward with
+my setup[@ footnote("setup") @]. 
+
+The hard coding opens up other opportunities
+as well. Placing an empty line with a dot
+instead of a number to replace the
+skipped lines, for example. So, this:
+
+
+== filter highlight_block("html")
+== include f.dir + "/example-4b/code.html"
+== endfilter
+
+Becomes this:
+
+== include f.dir + "/example-4b/code.html"
+
+
+
+
+
 
 
 Exactly what I'm looking for.
@@ -135,7 +183,21 @@ Exactly what I'm looking for.
 
 
 <ul>
-<li>This approach presupposes you have the ability
+    <li>
+        <p>This page has an addition snippet of CSS 
+        to add a little padding
+            between the line number and the content:</p>
+
+== filter highlight_block("css") 
+[! include f.dir + "/padding.css" !]
+== endfilter
+
+        <p>It's not shown to help focus on 
+            the counter lines themselves.</p>
+    </li>
+
+
+<li>The approach presupposes you have the ability
 to control that HTML for your code blocks. 
 That is, you need a way to determine which lines
 show up and what the associated `data-num`
@@ -143,29 +205,35 @@ show up and what the associated `data-num`
 
 <li>I removed syntax highlighting from the HTML 
 of the examples to make them easier to read. 
-The approach works when highlighting is
-    applied as well. </li>
-
-<li><p>Another idea I'm toying with is adding
-a specific class to the lines where
-splits occur to collapse the separation
-    into a single border line. </p>
-
-[! include f.dir + "/example-5/code.html" !]
-
-  <p>That needs some help, but I like the direction.</p>
-</li>
+The technique works just as well when highlighting is
+    applied.</li>
 
 </ul>
 
+### Footnotes
 
+- [@ footref("counter") @] [CSS Counters](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Counter_styles/Using_counters)
+let you add numbers to content without having to use 
+JavaScript or hard coding the values. 
 
+- [@ footref("reset") @] The [CSS counter-reset property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/counter-reset)
+starts or reset counters to a specific value. 
 
-### References
+- [@ footref("attr") @] The [CSS attr() function](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/attr)
+retrieves the value of an attribute. The retrieved value can be 
+displayed on the page with the [content property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/content)
+in [pseudo-elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Pseudo-elements).
 
-https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/attr
-
-https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/counter-reset
+- [@ footref("setup") @] I store my code snippets in external 
+files. Doing so allows me to run them to make sure
+they do what I'm expecting. The snippets are 
+passed through a syntax highlighter while
+including them on a page. 
+The style classes for each set of tokens are included
+directly. The approach lets me add 
+the hard coded lines numbers and filter
+the output to only show the lines I want 
+for a given block. 
 
 
 == endfilter

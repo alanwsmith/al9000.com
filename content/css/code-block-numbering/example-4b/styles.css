@@ -1,4 +1,4 @@
-.example-4 .num::before {
+.example-4b .num::before {
   content: attr(data-num);
 }
 

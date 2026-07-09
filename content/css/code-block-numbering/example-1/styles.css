@@ -1,8 +1,7 @@
-.example-1 .line-number {
-  counter-increment: example-line-number-1;
+.example-1 .num {
+  counter-increment: example-1;
 }
 
-.example-1 .line-number::before {
-  content: counter(example-line-number-1);
-  padding-right: var(--default-padding);
+.example-1 .num::before {
+  content: counter(example-1);
 }
