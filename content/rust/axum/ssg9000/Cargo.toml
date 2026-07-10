@@ -1,5 +1,5 @@
 [package]
-name = "static_site_generator"
+name = "ssg9000"
 version = "0.1.0"
 edition = "2024"
 

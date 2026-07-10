@@ -1,11 +1,11 @@
 use anyhow::Result;
 use chrono::{DateTime, Local};
-use static_site_generator::admin::Admin;
-use static_site_generator::builder::Builder;
-use static_site_generator::config::Config;
-use static_site_generator::logger::Logger;
-use static_site_generator::server::Server;
-use static_site_generator::watcher::Watcher;
+use ssg9000::admin::Admin;
+use ssg9000::builder::Builder;
+use ssg9000::config::Config;
+use ssg9000::logger::Logger;
+use ssg9000::server::Server;
+use ssg9000::watcher::Watcher;
 use tokio::sync::mpsc;
 use tower_livereload::LiveReloadLayer;
 use tracing::info;

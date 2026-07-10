@@ -1,30 +1,36 @@
-// pub mod filters;
-// pub mod functions;
-
+use crate::utils::*;
 use anyhow::Result;
 use chrono::{DateTime, Local};
 use tokio::sync::mpsc;
 // use tokio::task::JoinHandle;
+use crate::config::Config;
 use tower_livereload::Reloader;
-// use tracing::info;
+use tracing::info;
 
 pub struct Builder {
+  config: Config,
   reloader: Reloader,
   rx: mpsc::Receiver<DateTime<Local>>,
 }
 
 impl Builder {
   pub fn new(
+    config: Config,
     rx: mpsc::Receiver<DateTime<Local>>,
     reloader: Reloader,
   ) -> Result<Builder> {
-    Ok(Builder { reloader, rx })
+    Ok(Builder {
+      config,
+      reloader,
+      rx,
+    })
   }
 
   pub async fn init(&mut self) -> Result<()> {
-    // info!("Initializing Builder");
-    // let _ =
-    //   build_site(self.config.clone(), self.reloader.clone()).await;
+    info!("Initializing Builder");
+    let _ =
+      build_site(self.config.clone(), self.reloader.clone()).await;
+
     // let mut build_process_handle: Option<JoinHandle<()>> = None;
     // while let Some(count) = self.rx.recv().await {
     //   let build_config = self.config.clone();

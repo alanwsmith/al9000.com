@@ -6,4 +6,5 @@ pub mod filters;
 pub mod functions;
 pub mod logger;
 pub mod server;
+pub mod utils;
 pub mod watcher;
