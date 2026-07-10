@@ -21,6 +21,7 @@ struct AppState {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Item {
+  id: Option<String>,
   text: String,
 }
 
@@ -51,10 +52,11 @@ fn data_dir() -> PathBuf {
 async fn handle_add(
   session: Session,
   State(state): State<Arc<AppState>>,
-  Form(request): Form<Item>,
+  Form(mut request): Form<Item>,
 ) -> impl IntoResponse {
+  let id = Uuid::now_v7();
+  request.id = Some(id.to_string());
   if let Ok(contents) = serde_json::to_string(&request) {
-    let id = Uuid::now_v7();
     let file_name = format!("{}.json", id);
     let path = data_dir().join(file_name);
     match fs::write(path, contents) {
@@ -81,9 +83,27 @@ async fn handle_index(
   session: Session,
   State(state): State<Arc<AppState>>,
 ) -> Result<Html<String>, StatusCode> {
-  let context = context!();
   // TODO: Add flash messages.
-  render("index.html", context, State(state))
+
+  match get_files_in_dir(&data_dir()) {
+    Ok(paths) => {
+      let items: Vec<Item> = paths
+        .iter()
+        .map(|path| {
+          serde_json::from_str::<Item>(
+            &fs::read_to_string(path).unwrap(),
+          )
+          .unwrap()
+        })
+        .collect();
+      let context = context!(items => items);
+      render("index.html", context, State(state))
+    }
+    Err(_) => {
+      let context = context!();
+      render("index.html", context, State(state))
+    }
+  }
 }
 
 fn get_env() -> Result<Environment<'static>> {
@@ -99,6 +119,17 @@ fn get_env() -> Result<Environment<'static>> {
   );
   env.set_loader(path_loader("templates"));
   Ok(env)
+}
+
+pub fn get_files_in_dir(dir: &PathBuf) -> Result<Vec<PathBuf>> {
+  let files = fs::read_dir(dir)?
+    .filter(|p| p.as_ref().unwrap().path().is_file())
+    .map(|p| p.as_ref().unwrap().path())
+    .filter(|p| {
+      !p.file_name().unwrap().to_str().unwrap().starts_with(".")
+    })
+    .collect();
+  Ok(files)
 }
 
 fn render(
