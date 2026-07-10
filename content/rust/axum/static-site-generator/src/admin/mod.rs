@@ -1,19 +1,24 @@
 use crate::config::Config;
+use crate::constants::FLASH_MESSAGE_KEY;
 use crate::functions::date;
 use anyhow::Result;
 use axum::extract::State;
 use axum::http::StatusCode;
+use axum::response::IntoResponse;
+use axum::response::Redirect;
 use axum::{Router, response::Html, routing::get};
+use chrono::DateTime;
+use chrono::Utc;
 use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, Value, context, path_loader};
-use std::path::PathBuf;
+use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 use tokio::time::{Duration, sleep};
-use tower_http::services::ServeDir;
 use tower_livereload::LiveReloadLayer;
-use tower_sessions::Session;
-use tower_sessions::{MemoryStore, SessionManagerLayer};
+use tower_sessions::{MemoryStore, Session, SessionManagerLayer};
 use tracing::info;
+// use std::path::PathBuf;
+// use tower_http::services::ServeDir;
 
 pub struct Admin {
   config: Config,
@@ -21,6 +26,20 @@ pub struct Admin {
 
 struct AppState {
   env: Environment<'static>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct FlashMessage {
+  text: String,
+  kind: FlashMessageKind,
+  datetime: DateTime<Utc>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+enum FlashMessageKind {
+  WARN,
+  ERROR,
+  INFO,
 }
 
 impl Admin {
@@ -42,6 +61,7 @@ impl Admin {
     let app_state = Arc::new(AppState { env });
     let app = Router::new()
       .route("/", get(admin_home_page))
+      .route("/add-test-flash-message", get(add_test_flash_message))
       .with_state(app_state)
       .layer(live_reload)
       .layer(session_layer);
@@ -52,10 +72,9 @@ impl Admin {
     .await
     .unwrap();
     tokio::spawn(async move {
-      sleep(Duration::from_secs(2)).await;
+      sleep(Duration::from_secs(1)).await;
       reloader.reload();
     });
-
     axum::serve(listener, app).await.unwrap();
     Ok(())
   }
@@ -63,7 +82,7 @@ impl Admin {
 
 fn get_env() -> Result<Environment<'static>> {
   let mut env = Environment::new();
-  env.set_loader(path_loader("admin"));
+  env.set_loader(path_loader("admin-templates"));
   env.set_syntax(
     SyntaxConfig::builder()
       .line_statement_prefix("==")
@@ -73,16 +92,49 @@ fn get_env() -> Result<Environment<'static>> {
       .build()
       .unwrap(),
   );
+  // TODO: Add example filter for markdown
   env.add_function("date", date);
   Ok(env)
+}
+
+async fn add_test_flash_message(
+  session: Session
+) -> impl IntoResponse {
+  session
+    .insert(
+      FLASH_MESSAGE_KEY,
+      FlashMessage {
+        text: "This is an info flash message".to_string(),
+        kind: FlashMessageKind::INFO,
+        datetime: Utc::now(),
+      },
+    )
+    .await
+    .unwrap();
+  Redirect::to("/")
 }
 
 async fn admin_home_page(
   session: Session,
   State(state): State<Arc<AppState>>,
 ) -> Result<Html<String>, StatusCode> {
-  let context = context!();
+  let context = context!( flash => get_flash(session).await);
   render("index.html", context, State(state))
+}
+
+async fn get_flash(session: Session) -> Option<FlashMessage> {
+  let message = session
+    .get::<FlashMessage>(FLASH_MESSAGE_KEY)
+    .await
+    .ok()
+    .unwrap();
+  if message.is_some() {
+    session
+      .remove::<FlashMessage>(FLASH_MESSAGE_KEY)
+      .await
+      .unwrap();
+  }
+  message
 }
 
 fn render(

@@ -7,5 +7,17 @@
 <div>[@ date(None, format="%Y-%m-%d") @]</div>
 <div>[@ date("2026-01-21T12:23:12-04:00") @]</div>
 <div>[@ date("2026-01-21T12:23:12-04:00", format="%Y-%m-%d") @]</div>
+
+<h2>Test Flash Message</h2>
+
+<div>
+[! if flash != None !]
+[@ flash @]
+[! else !]
+No current flash message.
+[! endif !]
+</div>
+
+<a href="/add-test-flash-message">Add test flash message</a>
 == endblock
 
