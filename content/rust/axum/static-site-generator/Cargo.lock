@@ -920,7 +920,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "static_site_builder"
+name = "static_site_generator"
 version = "0.1.0"
 dependencies = [
  "anyhow",
