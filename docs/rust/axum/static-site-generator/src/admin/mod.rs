@@ -2,7 +2,6 @@ use crate::config::Config;
 use crate::constants::FLASH_MESSAGE_KEY;
 use crate::filters::*;
 use crate::functions::*;
-use crate::utils::*;
 use anyhow::Result;
 use axum::extract::State;
 use axum::http::StatusCode;
@@ -61,7 +60,7 @@ impl Admin {
       SessionManagerLayer::new(session_store).with_secure(false);
     let service = ServeDir::new(PathBuf::from("admin-docroot"))
       .append_index_html_on_directories(true);
-    let env = get_env::get_env()?;
+    let env = get_env()?;
     let app_state = Arc::new(AppState { env });
     let app = Router::new()
       .route("/", get(admin_home_page))
@@ -83,6 +82,24 @@ impl Admin {
     axum::serve(listener, app).await.unwrap();
     Ok(())
   }
+}
+
+fn get_env() -> Result<Environment<'static>> {
+  let mut env = Environment::new();
+  env.set_loader(path_loader("admin-templates"));
+  env.set_syntax(
+    SyntaxConfig::builder()
+      .line_statement_prefix("==")
+      .block_delimiters("[!", "!]")
+      .variable_delimiters("[@", "@]")
+      .comment_delimiters("[#", "#]")
+      .build()
+      .unwrap(),
+  );
+  // TODO: Add example filter for markdown
+  env.add_function("date", date);
+  env.add_filter("md", md);
+  Ok(env)
 }
 
 async fn add_test_flash_message(

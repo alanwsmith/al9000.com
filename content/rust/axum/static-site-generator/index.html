@@ -28,6 +28,17 @@ status = "draft"
 - The admin server has the ability to do 
 one off flash messages. 
 
+- Logging is provided. I'm using a custom formatter
+for it that allows messages to go to
+the console as well as a file. 
+
+- Files with `.raw` in their name don't
+go through the template engine. 
+
+- Files with `.inc` in their name don't
+get pushed to the site (they can still
+be used as includes, though).
+
 
 
 == endfilter

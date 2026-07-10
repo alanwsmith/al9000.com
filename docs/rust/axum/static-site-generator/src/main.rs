@@ -21,8 +21,7 @@ async fn main() -> Result<()> {
   let live_reload = LiveReloadLayer::new();
   let reloader = live_reload.reloader();
   let watcher = Watcher::new(tx.clone());
-  let mut builder =
-    Builder::new(config.clone(), rx, reloader.clone())?;
+  let mut builder = Builder::new(rx, reloader.clone())?;
   let server = Server::new(config.clone(), live_reload);
   let admin = Admin::new(config.clone());
   tokio::spawn(async move {
@@ -38,5 +37,6 @@ async fn main() -> Result<()> {
     let _ = server.init().await;
   });
   server_handle.await.unwrap();
+
   Ok(())
 }
