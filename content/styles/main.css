@@ -176,11 +176,16 @@ code {
   overflow-wrap: anywhere;
   overflow-x: auto;
   overscroll-behavior-x: auto;
+  /*
   & .line-marker {
     counter-increment: codeBlockLineNumberX;
   }
+  */
   & .line-marker:before {
+    /*
       content: counter(codeBlockLineNumberX);
+*/
+    content: attr(data-line);
       display: inline-block;
       margin-left: -7.8ch;
       padding-right: 1ch;

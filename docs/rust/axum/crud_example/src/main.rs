@@ -54,6 +54,32 @@ fn data_dir() -> PathBuf {
   PathBuf::from("data-storage")
 }
 
+fn get_env() -> Result<Environment<'static>> {
+  let mut env = Environment::new();
+  env.set_loader(path_loader("templates"));
+  env.set_syntax(
+    SyntaxConfig::builder()
+      .line_statement_prefix("==")
+      .block_delimiters("[!", "!]")
+      .variable_delimiters("[@", "@]")
+      .comment_delimiters("[#", "#]")
+      .build()
+      .unwrap(),
+  );
+  Ok(env)
+}
+
+pub fn get_files_in_dir(dir: &PathBuf) -> Result<Vec<PathBuf>> {
+  let files = fs::read_dir(dir)?
+    .filter(|p| p.as_ref().unwrap().path().is_file())
+    .map(|p| p.as_ref().unwrap().path())
+    .filter(|p| {
+      !p.file_name().unwrap().to_str().unwrap().starts_with(".")
+    })
+    .collect();
+  Ok(files)
+}
+
 async fn handle_add(
   session: Session,
   State(state): State<Arc<AppState>>,
@@ -159,32 +185,6 @@ async fn handle_update(
   let content = serde_json::to_string(&request).unwrap();
   fs::write(path, content).unwrap();
   Redirect::to("/")
-}
-
-fn get_env() -> Result<Environment<'static>> {
-  let mut env = Environment::new();
-  env.set_syntax(
-    SyntaxConfig::builder()
-      .line_statement_prefix("==")
-      .block_delimiters("[!", "!]")
-      .variable_delimiters("[@", "@]")
-      .comment_delimiters("[#", "#]")
-      .build()
-      .unwrap(),
-  );
-  env.set_loader(path_loader("templates"));
-  Ok(env)
-}
-
-pub fn get_files_in_dir(dir: &PathBuf) -> Result<Vec<PathBuf>> {
-  let files = fs::read_dir(dir)?
-    .filter(|p| p.as_ref().unwrap().path().is_file())
-    .map(|p| p.as_ref().unwrap().path())
-    .filter(|p| {
-      !p.file_name().unwrap().to_str().unwrap().starts_with(".")
-    })
-    .collect();
-  Ok(files)
 }
 
 fn render(

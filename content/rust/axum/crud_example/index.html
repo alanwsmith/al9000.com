@@ -11,9 +11,305 @@ status = "draft"
 == block main
 == filter md
 
-== filter highlight_block("rust")  
+## Local Tools
+
+I'm writing little web tools that
+run on my local machine. They do 
+things like make it easier for me to 
+collect quotes, make blog posts, 
+and the like. I'm using 
+Rust's axum[@ footnote("axum") @] 
+crate for the web server. It's
+bare-bones. Making the tools
+involves setting up routes
+and associated functions for
+every action. This page is my basic template
+for Creating, Reading, Updating, 
+and Deleting (CRUD) content. 
+
+NOTE: This is a work in progress. While
+the initial functionality is in place,
+there are still user experience 
+improvements to make and security issues
+to be addressed.
+
+
+## The Files
+
+I put all the Rust code in a single
+file for ease of editing. It's
+a couple hundred lines that 
+run the server and provide the
+interactions. 
+
+Four HTML template files round
+out the code. One's a wrapper. 
+The other three use the 
+wrapper around their 
+display content. 
+
+### main.rs - Sections
+
+Here's the Rust file split
+out into sections for 
+easier reading and 
+descriptions (the complete 
+file is below as well).
+
+#### Include Calls
+
+The server relies on anyhow, minijinja,
+serde, the std library, tower_sessions, and 
+uuid in addition to axum. The
+complete set of calls is:
+
+== filter highlight("rust", select="1-17")  
 [@ raw_file(f.dir + "/src/main.rs") @]
 == endfilter
+
+
+#### AppState Struct
+
+The MiniJinja template engine requires
+an initial environment to be set up
+before rendering pages. This environment
+gets stored in a persistent `AppState` struct.
+Without that, it would have to
+be initialized for each request. 
+
+== filter highlight("rust", select="19-21")  
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### Item Struct
+
+The example uses a simple Item for
+the demo data. It consists solely of
+an id and a text string. The 
+struct itself is set up for
+serialization so items can 
+be stored directly as JSON objects. 
+
+
+== filter highlight("rust", select="23-27")  
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### main()
+
+The main() function sets up 
+session management, the 
+MiniJinja environment, and
+handlers for each of the
+routes. The routes each 
+call out to a function that
+handles them when a corresponding
+request comes in. 
+
+A listener is the last item
+set up before firing up the
+server with `axum::server()`
+and awaiting it.
+
+== filter highlight("rust", select="29-51")  
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### data_dir()
+
+Each item is stored in an independent
+JSON file that's kept in a data
+storage directory. The path for
+this directory is stored in a function
+to make it easier to change if necessary. 
+
+== filter highlight("rust", select="53-55")  
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### get_env() 
+
+The `get_env()` function initializes the
+MiniJinja environment. It starts 
+by defining the directory that holds
+the templates. The `.set_syntax()`
+method changes some defaults
+based on my preferences (e.g. 
+using `[! raw !][@ @][! endraw !]`
+instead of `{{ }}` tokens as
+I find them easier to read).
+
+
+== filter highlight("rust", select="57-70")  
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### get_files_in_dir()
+
+This is a helper function that grabs
+the paths for the JSON data files. 
+
+== filter highlight("rust", select="72-81")
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### handle_add()
+
+The handler for adding new items. 
+I've started the work to add flash messages.
+There's still more to do, though. 
+
+Each new item is given a UUID v7 (which
+makes them sortable based on timestamp). 
+The id is stored in the data as well
+as being used for the file name. 
+
+== filter highlight("rust", select="83-111")
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### handle_confirm_delete()
+
+Deleting an item is a two step 
+process. The first is clicking 
+the delete link which brings up
+a confirmation page. Clicking
+the confirmation button on that
+page makes a call to the route
+handled by this function which
+does the actual deletion. 
+
+== filter highlight("rust", select="113-122")
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### handle_delete_request()
+
+This function presents the
+page for the first part of
+the delete request the provides
+the confirmation button. 
+
+== filter highlight("rust", select="124-136")
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### handle_edit()
+
+The handler that displays the
+edit page. 
+
+== filter highlight("rust", select="138-150")
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### handle_index()
+
+The main page that displays all the
+items and the links to edit and
+delete them. 
+
+== filter highlight("rust", select="152-176")
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### handle_update()
+
+This is the handler that updates
+items when changes are submitted from
+the edit page. 
+
+== filter highlight("rust", select="178-188")
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+#### render()
+
+A helper function responsible for 
+generating the pages with MiniJinja.
+Any errors in the process result
+in a 500 error being returned to
+the client. 
+
+== filter highlight("rust", select="190-209")
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+
+### main.rs - Full File
+
+Here's the set of Rust code assembled
+into a single block. 
+
+<details><summary>View File</summary>
+== filter highlight("rust")  
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+</details>
+
+
+### Templates
+
+These are the templates used by the
+handlers. 
+
+
+#### delete_request.html
+
+== filter highlight("html")  
+[@ raw_file(f.dir + "/templates/wrapper.html") @]
+== endfilter
+
+
+#### edit.html
+
+== filter highlight("html")  
+[@ raw_file(f.dir + "/templates/edit.html") @]
+== endfilter
+
+
+#### index.html
+
+== filter highlight("html")  
+[@ raw_file(f.dir + "/templates/index.html") @]
+== endfilter
+
+
+#### wrapper.html
+
+== filter highlight("html")  
+[@ raw_file(f.dir + "/templates/wrapper.html") @]
+== endfilter
+
+
+## Notes
+
+- This code does not have any 
+Cross Site Request Forgery (CSRF) in it. 
+I don't need it because this is a personal
+tool that runs on my local machine that
+I'll be the only one using. It should
+not be used in a public environment
+without addressing that. 
+
+- I've started adding flash messages
+(e.g. to signal when updates occur
+or message when they fail). Finishing
+that is a work in progress. 
+
+
 
 == endfilter
 == endblock

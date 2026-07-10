@@ -10,6 +10,26 @@ pub fn highlight(
   language: &str,
   options: Option<&Value>,
 ) -> Value {
+  let mut extra_classes = "".to_string();
+  let mut title = "".to_string();
+  let mut selection: Vec<usize> = vec![];
+  if let Some(v) = options {
+    if let Ok(classes) = v.get_attr("classes") {
+      extra_classes = format!(" {}", classes);
+    }
+    if let Ok(t) = v.get_attr("title") {
+      title = t.to_string();
+    }
+    if let Ok(selection_string) = v.get_attr("select")
+      && selection_string != Value::UNDEFINED
+    {
+      selection = selection_string
+        .to_string()
+        .split("-")
+        .map(|x| x.parse::<usize>().unwrap())
+        .collect();
+    }
+  }
   let syntax_set = SyntaxSet::load_defaults_newlines();
   let syntax = syntax_set
     .find_syntax_by_token(language)
@@ -27,22 +47,22 @@ pub fn highlight(
       .parse_html_for_line_which_includes_newline(line);
   }
   let initial_html = html_generator.finalize();
-  let output_html: Vec<_> = initial_html
+  let mut output_html: Vec<_> = initial_html
     .lines()
-    .map(|line| {
-      format!(r#"<span class="line-marker"></span>{}"#, line)
+    .enumerate()
+    .map(|(index, line)| {
+      format!(
+        r#"<span class="line-marker" data-line="{}"></span>{}"#,
+        index + 1,
+        line
+      )
     })
     .collect();
-  let mut extra_classes = "".to_string();
-  let mut title = "".to_string();
-  if let Some(v) = options {
-    if let Ok(classes) = v.get_attr("classes") {
-      extra_classes = format!(" {}", classes);
-    }
-    if let Ok(t) = v.get_attr("title") {
-      title = t.to_string();
-    }
+  if selection.len() == 2 {
+    output_html =
+      (&output_html[selection[0] - 1..selection[1]]).to_vec();
   }
+
   Value::from_safe_string(format!(
     r#"<div class="code-block{}">{}<pre><code>{}</code></pre></div>"#,
     extra_classes,
