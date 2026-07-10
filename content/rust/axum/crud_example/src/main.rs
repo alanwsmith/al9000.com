@@ -1,5 +1,6 @@
 use anyhow::Result;
 use axum::extract::Form;
+use axum::extract::Path;
 use axum::extract::State;
 use axum::http::StatusCode;
 use axum::response::IntoResponse;
@@ -35,6 +36,8 @@ async fn main() -> Result<()> {
   let app = Router::new()
     .route("/", get(handle_index))
     .route("/add", post(handle_add))
+    .route("/edit/{id}", get(handle_edit))
+    .route("/update", post(handle_update))
     .with_state(app_state)
     .layer(session_layer);
   let listener = tokio::net::TcpListener::bind("127.0.0.1:3939")
@@ -79,12 +82,25 @@ async fn handle_add(
   Redirect::to("/")
 }
 
+async fn handle_edit(
+  session: Session,
+  Path(id): Path<String>,
+  State(state): State<Arc<AppState>>,
+) -> Result<Html<String>, StatusCode> {
+  let path = data_dir().join(format!("{}.json", id));
+  let item = serde_json::from_str::<Item>(
+    &fs::read_to_string(path).unwrap(),
+  )
+  .unwrap();
+  let context = context!(item => item);
+  render("edit.html", context, State(state))
+}
+
 async fn handle_index(
   session: Session,
   State(state): State<Arc<AppState>>,
 ) -> Result<Html<String>, StatusCode> {
   // TODO: Add flash messages.
-
   match get_files_in_dir(&data_dir()) {
     Ok(paths) => {
       let items: Vec<Item> = paths
@@ -104,6 +120,18 @@ async fn handle_index(
       render("index.html", context, State(state))
     }
   }
+}
+
+async fn handle_update(
+  session: Session,
+  State(state): State<Arc<AppState>>,
+  Form(request): Form<Item>,
+) -> impl IntoResponse {
+  let path = data_dir()
+    .join(format!("{}.json", &request.id.clone().unwrap()));
+  let content = serde_json::to_string(&request).unwrap();
+  fs::write(path, content).unwrap();
+  Redirect::to("/")
 }
 
 fn get_env() -> Result<Environment<'static>> {
