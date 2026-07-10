@@ -4,9 +4,9 @@ use anyhow::Result;
 use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, path_loader};
 
-pub fn get_env() -> Result<Environment<'static>> {
+pub fn get_env(dir: &str) -> Result<Environment<'static>> {
   let mut env = Environment::new();
-  env.set_loader(path_loader("admin-templates"));
+  env.set_loader(path_loader(dir));
   env.set_syntax(
     SyntaxConfig::builder()
       .line_statement_prefix("==")

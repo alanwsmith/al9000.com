@@ -61,7 +61,7 @@ impl Admin {
       SessionManagerLayer::new(session_store).with_secure(false);
     let service = ServeDir::new(PathBuf::from("admin-docroot"))
       .append_index_html_on_directories(true);
-    let env = get_env::get_env()?;
+    let env = get_env::get_env("admin-templates")?;
     let app_state = Arc::new(AppState { env });
     let app = Router::new()
       .route("/", get(admin_home_page))

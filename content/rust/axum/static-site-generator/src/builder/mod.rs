@@ -1,8 +1,4 @@
-pub mod build_site;
-pub mod copy_assets;
-pub mod copy_raw_files;
-pub mod transform_files;
-
+use crate::utils::*;
 use anyhow::Result;
 use chrono::{DateTime, Local};
 use tokio::sync::mpsc;
@@ -32,8 +28,8 @@ impl Builder {
 
   pub async fn init(&mut self) -> Result<()> {
     info!("Initializing Builder");
-    // let _ =
-    //   build_site(self.config.clone(), self.reloader.clone()).await;
+    let _ =
+      build_site(self.config.clone(), self.reloader.clone()).await;
     // let mut build_process_handle: Option<JoinHandle<()>> = None;
     // while let Some(count) = self.rx.recv().await {
     //   let build_config = self.config.clone();

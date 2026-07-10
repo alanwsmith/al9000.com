@@ -28,9 +28,9 @@ async fn main() -> Result<()> {
   tokio::spawn(async move {
     let _ = watcher.init().await;
   });
-  // tokio::spawn(async move {
-  //   let _ = builder.init().await;
-  // });
+  tokio::spawn(async move {
+    let _ = builder.init().await;
+  });
   tokio::spawn(async move {
     let _ = admin.init().await;
   });
