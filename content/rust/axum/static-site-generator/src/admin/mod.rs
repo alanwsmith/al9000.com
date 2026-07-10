@@ -1,6 +1,7 @@
 use crate::config::Config;
 use crate::constants::FLASH_MESSAGE_KEY;
-use crate::functions::date;
+use crate::filters::*;
+use crate::functions::*;
 use anyhow::Result;
 use axum::extract::State;
 use axum::http::StatusCode;
@@ -12,13 +13,13 @@ use chrono::Utc;
 use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, Value, context, path_loader};
 use serde::{Deserialize, Serialize};
+use std::path::PathBuf;
 use std::sync::Arc;
 use tokio::time::{Duration, sleep};
+use tower_http::services::ServeDir;
 use tower_livereload::LiveReloadLayer;
 use tower_sessions::{MemoryStore, Session, SessionManagerLayer};
 use tracing::info;
-// use std::path::PathBuf;
-// use tower_http::services::ServeDir;
 
 pub struct Admin {
   config: Config,
@@ -57,12 +58,15 @@ impl Admin {
     let session_store = MemoryStore::default();
     let session_layer =
       SessionManagerLayer::new(session_store).with_secure(false);
+    let service = ServeDir::new(PathBuf::from("admin-docroot"))
+      .append_index_html_on_directories(true);
     let env = get_env()?;
     let app_state = Arc::new(AppState { env });
     let app = Router::new()
       .route("/", get(admin_home_page))
       .route("/add-test-flash-message", get(add_test_flash_message))
       .with_state(app_state)
+      .fallback_service(service)
       .layer(live_reload)
       .layer(session_layer);
     let listener = tokio::net::TcpListener::bind(format!(
@@ -94,6 +98,7 @@ fn get_env() -> Result<Environment<'static>> {
   );
   // TODO: Add example filter for markdown
   env.add_function("date", date);
+  env.add_filter("md", md);
   Ok(env)
 }
 

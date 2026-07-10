@@ -8,6 +8,7 @@ anyhow = "1.0.103"
 axum = "0.8.9"
 chrono = { version = "0.4.45", features = ["serde"] }
 itertools = "0.15.0"
+markdown = "1.0.0"
 minijinja = { version = "2.21.0", features = ["custom_syntax"] }
 notify = "8.2.0"
 notify-debouncer-full = "0.7.0"

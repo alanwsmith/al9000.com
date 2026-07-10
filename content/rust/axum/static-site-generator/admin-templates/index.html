@@ -1,23 +1,29 @@
 == extends "wrapper.html"
-
 == block main 
-<h1>Admin Page</h1>
-<h2>Date Function Examples</h2>
-<div>[@ date() @]</div>
-<div>[@ date(None, format="%Y-%m-%d") @]</div>
-<div>[@ date("2026-01-21T12:23:12-04:00") @]</div>
-<div>[@ date("2026-01-21T12:23:12-04:00", format="%Y-%m-%d") @]</div>
+== filter md
+# Admin Page V2
 
-<h2>Test Flash Message</h2>
+## Data Function Examples
 
-<div>
+- [@ date() @]
+- [@ date(None, format="%Y-%m-%d") @]
+- [@ date("2026-01-21T12:23:12-04:00") @]
+- [@ date("2026-01-21T12:23:12-04:00", format="%Y-%m-%d") @]
+
+## Test Flash Message
+
 [! if flash != None !]
 [@ flash @]
 [! else !]
 No current flash message.
 [! endif !]
-</div>
 
-<a href="/add-test-flash-message">Add test flash message</a>
+[Add test flash message](/add-test-flash-message)
+
+## Static File Example
+
+[/data/test.json](/data/test.json)
+
+== endfilter
 == endblock
 
