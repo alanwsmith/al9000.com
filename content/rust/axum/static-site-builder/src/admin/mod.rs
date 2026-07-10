@@ -1,5 +1,5 @@
 use crate::config::Config;
-use crate::constants::OUTPUT_DIR;
+use crate::functions::date;
 use anyhow::Result;
 use axum::extract::State;
 use axum::http::StatusCode;
@@ -8,6 +8,7 @@ use minijinja::syntax::SyntaxConfig;
 use minijinja::{Environment, Value, context, path_loader};
 use std::path::PathBuf;
 use std::sync::Arc;
+use tokio::time::{Duration, sleep};
 use tower_http::services::ServeDir;
 use tower_livereload::LiveReloadLayer;
 use tower_sessions::Session;
@@ -16,7 +17,6 @@ use tracing::info;
 
 pub struct Admin {
   config: Config,
-  live_reload: LiveReloadLayer,
 }
 
 struct AppState {
@@ -24,17 +24,13 @@ struct AppState {
 }
 
 impl Admin {
-  pub fn new(
-    config: Config,
-    live_reload: LiveReloadLayer,
-  ) -> Admin {
-    Admin {
-      config,
-      live_reload,
-    }
+  pub fn new(config: Config) -> Admin {
+    Admin { config }
   }
 
   pub async fn init(self) -> Result<()> {
+    let live_reload = LiveReloadLayer::new();
+    let reloader = live_reload.reloader();
     info!(
       "Initializing Admin Server at: 127.0.0.1:{}",
       self.config.admin_port()
@@ -47,6 +43,7 @@ impl Admin {
     let app = Router::new()
       .route("/", get(admin_home_page))
       .with_state(app_state)
+      .layer(live_reload)
       .layer(session_layer);
     let listener = tokio::net::TcpListener::bind(format!(
       "127.0.0.1:{}",
@@ -54,6 +51,11 @@ impl Admin {
     ))
     .await
     .unwrap();
+    tokio::spawn(async move {
+      sleep(Duration::from_secs(2)).await;
+      reloader.reload();
+    });
+
     axum::serve(listener, app).await.unwrap();
     Ok(())
   }
@@ -61,7 +63,7 @@ impl Admin {
 
 fn get_env() -> Result<Environment<'static>> {
   let mut env = Environment::new();
-  env.set_loader(path_loader("templates"));
+  env.set_loader(path_loader("admin"));
   env.set_syntax(
     SyntaxConfig::builder()
       .line_statement_prefix("==")
@@ -71,6 +73,7 @@ fn get_env() -> Result<Environment<'static>> {
       .build()
       .unwrap(),
   );
+  env.add_function("date", date);
   Ok(env)
 }
 
@@ -79,7 +82,7 @@ async fn admin_home_page(
   State(state): State<Arc<AppState>>,
 ) -> Result<Html<String>, StatusCode> {
   let context = context!();
-  render("admin-home-page.html", context, State(state))
+  render("index.html", context, State(state))
 }
 
 fn render(

@@ -20,12 +20,10 @@ async fn main() -> Result<()> {
   let (tx, rx) = mpsc::channel::<DateTime<Local>>(32);
   let live_reload = LiveReloadLayer::new();
   let reloader = live_reload.reloader();
-  let admin_live_reload = LiveReloadLayer::new();
-  let admin_reloader = live_reload.reloader();
   let watcher = Watcher::new(tx.clone());
   let mut builder = Builder::new(rx, reloader.clone())?;
   let server = Server::new(config.clone(), live_reload);
-  let admin = Admin::new(config.clone(), admin_live_reload);
+  let admin = Admin::new(config.clone());
   // tokio::spawn(async move {
   //   let _ = watcher.init().await;
   // });

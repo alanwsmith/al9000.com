@@ -1,0 +1,11 @@
+== extends "wrapper.html"
+
+== block main 
+<h1>Admin Page</h1>
+<h2>Date Function Examples</h2>
+<div>[@ date() @]</div>
+<div>[@ date(None, format="%Y-%m-%d") @]</div>
+<div>[@ date("2026-01-21T12:23:12-04:00") @]</div>
+<div>[@ date("2026-01-21T12:23:12-04:00", format="%Y-%m-%d") @]</div>
+== endblock
+

@@ -1,0 +1,30 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml
+title = "A Basic Rust/Axum Static Site Generator"
+created = 2026-07-10T13:03:22-04:00
+tags = []
+status = "draft"
+== endblock
+
+
+== block main
+== filter md
+
+## Notes
+
+- Generates a static site.
+
+- Uses MiniJinja for templating. 
+
+- Every content file is treated as a template. 
+
+- Serves a local copy of the static site.
+
+- Serves an admin site for adding dynamic tools.
+
+- The local sites hot reload. 
+
+
+== endfilter
+== endblock
