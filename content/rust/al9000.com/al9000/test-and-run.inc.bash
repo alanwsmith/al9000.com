@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# cargo watch -c -x 'test solo -- --nocapture && cargo test -- --nocapture && cargo clippy && cargo run'
-cargo watch -q -c -x 'test solo -- nocapture --quiet && cargo test -- --nocapture --quiet && cargo clippy --quiet && cargo run --quiet'
-
