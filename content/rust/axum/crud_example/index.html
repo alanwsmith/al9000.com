@@ -1,0 +1,19 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml
+title = "Basic axum CRUD App"
+created = 2026-07-09T21:33:39-04:00
+tags = []
+status = "draft"
+== endblock
+
+
+== block main
+== filter md
+
+== filter highlight_block("rust")  
+[@ raw_file(f.dir + "/src/main.rs") @]
+== endfilter
+
+== endfilter
+== endblock
