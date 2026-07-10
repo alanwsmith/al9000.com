@@ -1,11 +1,11 @@
 use anyhow::Result;
 use chrono::{DateTime, Local};
-use static_site_builder::admin::Admin;
-use static_site_builder::builder::Builder;
-use static_site_builder::config::Config;
-use static_site_builder::logger::Logger;
-use static_site_builder::server::Server;
-use static_site_builder::watcher::Watcher;
+use static_site_generator::admin::Admin;
+use static_site_generator::builder::Builder;
+use static_site_generator::config::Config;
+use static_site_generator::logger::Logger;
+use static_site_generator::server::Server;
+use static_site_generator::watcher::Watcher;
 use tokio::sync::mpsc;
 use tower_livereload::LiveReloadLayer;
 use tracing::info;
