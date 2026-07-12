@@ -1,0 +1,3 @@
+.example-4b .num::before {
+  content: attr(data-num);
+}

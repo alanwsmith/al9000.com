@@ -76,7 +76,7 @@ this module:
 
 == endfilter
 
-== filter highlight_block("js", "media-source-player.js")
+== filter highlight("js", "media-source-player.js")
 == include parent(file_path) + "/media-source-player.js"
 == endfilter
 
@@ -116,7 +116,7 @@ Here's the HTML I'm using on the page:
 
 == endfilter
 
-== filter highlight_block("html")
+== filter highlight("html")
 == include parent(file_path)  + "/page.html"
 == endfilter
 
@@ -151,7 +151,7 @@ the issue. It makes a new `.webm` file
 with a silent audio track. 
 
 
-== filter highlight_block("bash", "audio-fix.bash") 
+== filter highlight("bash", "audio-fix.bash") 
 == include parent(file_path) + "/sample-video/audio-fix.bash"
 == endfilter
 
@@ -175,7 +175,7 @@ on mac/linux (I don't have a Windows machine
 handy to determine the command on that OS). 
 
 
-== filter highlight_block("bash", "split-video.bash") 
+== filter highlight("bash", "split-video.bash") 
 == include parent(file_path) + "/sample-video/split-video.bash"
 == endfilter
 
@@ -201,7 +201,7 @@ take into account that the video
 could be the problem. 
 
 
-== filter highlight_block("txt") 
+== filter highlight("txt") 
 MediaSource readyState is: closed
 
 MediaSource or SourceBuffer invalid

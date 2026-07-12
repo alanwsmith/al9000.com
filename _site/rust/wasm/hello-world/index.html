@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Hello, World in Rust WASM</title>
+<meta property="og:title" content="Hello, World in Rust WASM" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com&#x2f;rust&#x2f;wasm&#x2f;hello-world/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+  </div>
+
+
+</header>
+
+
+<div class="subnav default-wrapper">
+  <a href="/rust/">Rust</a>
+</div>
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+      <h1>Hello, World in Rust WASM</h1>
+        <div class="date">[invalid date]</div>
+  </hgroup>
+
+
+<p>
+  This is a basic `Hello, World` WASM 
+  app written in rust.
+</p>
+
+<h3>Rust</h3>
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic">[package]
+<span class="line-marker" data-line="2"></span>name = &quot;hello-world&quot;
+<span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
+<span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span>[lib]
+<span class="line-marker" data-line="7"></span>crate-type = [&quot;cdylib&quot;]
+<span class="line-marker" data-line="8"></span>
+<span class="line-marker" data-line="9"></span>[dependencies]
+<span class="line-marker" data-line="10"></span>wasm-bindgen = &quot;0.2.116&quot;</span></code></pre></div>
+
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">wasm_bindgen<span class="punctuation accessor rust">::</span></span><span class="meta path rust">prelude<span class="punctuation accessor rust">::</span></span><span class="keyword operator rust">*</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta annotation rust"><span class="punctuation definition annotation rust">#</span><span class="punctuation section group begin rust">[</span><span class="variable annotation rust">wasm_bindgen</span><span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="4"></span><span class="meta function rust"><span class="meta function rust"><span class="storage modifier rust">pub</span> <span class="storage type function rust">fn</span> </span><span class="entity name function rust">hello_world</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> String</span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="5"></span>  <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Hello, world!<span class="punctuation definition string end rust">&quot;</span></span>.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="6"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker" data-line="2"></span></span>
+<span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">wasm-pack</span></span><span class="meta function-call arguments shell"> build<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> --</span>target</span> web</span></span></code></pre></div>
+
+<h3>HTML</h3>
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span><span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span>rust<span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span>wasm<span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span>hello-world/hello-world.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">output</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+
+<h4>JavaScript</h4>
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="variable other readwrite js">init</span><span class="punctuation separator comma js">,</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">hello_world</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>./pkg/hello_world.js<span class="punctuation definition string end js">&quot;</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta function declaration js"><span class="storage type js">async</span> <span class="storage type function js">function</span> <span class="entity name function js">main</span><span class="punctuation section group begin js">(</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="4"></span>  <span class="keyword control flow js">await</span> <span class="meta function-call js"><span class="variable function js">init</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="5"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">el</span> <span class="keyword operator assignment js">=</span> <span class="support type object dom js">document</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">querySelector</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>#output<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="6"></span>  <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta property object js">innerHTML</span> <span class="keyword operator assignment js">=</span> <span class="meta function-call js"><span class="variable function js">hello_world</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="7"></span><span class="punctuation section block js">}</span></span>
+<span class="line-marker" data-line="8"></span>
+<span class="line-marker" data-line="9"></span><span class="meta function-call js"><span class="variable function js">main</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span></span></code></pre></div>
+
+
+<h4>Output</h4>
+<div class="output-block"><pre><code>
+<script type="module" src="&#x2f;rust&#x2f;wasm&#x2f;hello-world/hello-world.js"></script>
+<div id="output"></div>
+
+</code></pre></div>
+
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+
+
+    <div class="templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>

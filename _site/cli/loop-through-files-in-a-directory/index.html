@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Loop Through Files in a Directory (non-recursively)</title>
+<meta property="og:title" content="Loop Through Files in a Directory (non-recursively)" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com&#x2f;cli&#x2f;loop-through-files-in-a-directory/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+  </div>
+
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+        <h1>Loop Through Files in a Directory (non-recursively)</h1>
+        <div class="date">[invalid date]</div>
+  </hgroup>
+
+
+
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker" data-line="2"></span></span>
+<span class="line-marker" data-line="3"></span><span class="variable other readwrite assignment shell">INPUT_DIR</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell">samples</span>
+<span class="line-marker" data-line="4"></span>
+<span class="line-marker" data-line="5"></span><span class="keyword control for shell">for</span><span class="meta group for shell"> file <span class="keyword control in shell">in</span> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">INPUT_DIR</span></span>/<span class="keyword operator regexp quantifier shell">*</span></span>
+<span class="line-marker" data-line="6"></span><span class="keyword control do shell">do</span> 
+<span class="line-marker" data-line="7"></span>  <span class="keyword control if begin shell">if</span> <span class="support function test begin shell">[</span><span class="meta function-call arguments shell"> <span class="variable parameter option shell"><span class="punctuation definition parameter shell">-</span>f</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">file</span></span><span class="punctuation definition string end shell">&quot;</span></span> <span class="support function test end shell">]</span></span>
+<span class="line-marker" data-line="8"></span>  <span class="keyword control if then shell">then</span> 
+<span class="line-marker" data-line="9"></span>    <span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">file</span></span><span class="punctuation definition string end shell">&quot;</span></span> </span>
+<span class="line-marker" data-line="10"></span>    <span class="variable other readwrite assignment shell">BASENAME</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="meta group expansion command parens shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section parens begin shell">(</span><span class="meta function-call shell"><span class="variable function shell">basename</span></span><span class="meta function-call arguments shell"><span class="keyword operator end-of-options shell"> --</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">file</span></span><span class="punctuation definition string end shell">&quot;</span></span></span><span class="punctuation section parens end shell">)</span></span></span>
+<span class="line-marker" data-line="11"></span>    <span class="variable other readwrite assignment shell">STEM</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section expansion parameter begin shell">{</span></span><span class="meta group expansion parameter shell"><span class="variable other readwrite shell">BASENAME<span class="keyword operator expansion shell">%</span></span></span><span class="meta group expansion parameter shell">.<span class="keyword operator regexp quantifier shell">*</span></span><span class="meta group expansion parameter shell"><span class="punctuation section expansion parameter end shell">}</span></span><span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker" data-line="12"></span>    <span class="variable other readwrite assignment shell">EXTENSION</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section expansion parameter begin shell">{</span></span><span class="meta group expansion parameter shell"><span class="variable other readwrite shell">BASENAME<span class="keyword operator expansion shell">##</span></span></span><span class="meta group expansion parameter shell"><span class="keyword operator regexp quantifier shell">*</span>.</span><span class="meta group expansion parameter shell"><span class="punctuation section expansion parameter end shell">}</span></span><span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker" data-line="13"></span>    <span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">BASENAME</span></span></span>
+<span class="line-marker" data-line="14"></span>    <span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">STEM</span></span></span>
+<span class="line-marker" data-line="15"></span>    <span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">EXTENSION</span></span></span>
+<span class="line-marker" data-line="16"></span>  <span class="keyword control if end shell">fi</span><span class="meta function-call arguments shell"> </span>
+<span class="line-marker" data-line="17"></span><span class="meta function-call shell"><span class="variable function shell">done</span></span></span></code></pre></div>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">samples/alfa.txt
+<span class="line-marker" data-line="2"></span>alfa.txt
+<span class="line-marker" data-line="3"></span>alfa
+<span class="line-marker" data-line="4"></span>txt
+<span class="line-marker" data-line="5"></span>samples/bravo.txt
+<span class="line-marker" data-line="6"></span>bravo.txt
+<span class="line-marker" data-line="7"></span>bravo
+<span class="line-marker" data-line="8"></span>txt
+<span class="line-marker" data-line="9"></span>samples/charlie.txt
+<span class="line-marker" data-line="10"></span>charlie.txt
+<span class="line-marker" data-line="11"></span>charlie
+<span class="line-marker" data-line="12"></span>txt
+<span class="line-marker" data-line="13"></span>samples/delta.txt
+<span class="line-marker" data-line="14"></span>delta.txt
+<span class="line-marker" data-line="15"></span>delta
+<span class="line-marker" data-line="16"></span>txt
+<span class="line-marker" data-line="17"></span>samples/alfa.txt
+<span class="line-marker" data-line="18"></span>alfa.txt
+<span class="line-marker" data-line="19"></span>alfa
+<span class="line-marker" data-line="20"></span>txt
+<span class="line-marker" data-line="21"></span>samples/bravo.txt
+<span class="line-marker" data-line="22"></span>bravo.txt
+<span class="line-marker" data-line="23"></span>bravo
+<span class="line-marker" data-line="24"></span>txt
+<span class="line-marker" data-line="25"></span>samples/charlie.txt
+<span class="line-marker" data-line="26"></span>charlie.txt
+<span class="line-marker" data-line="27"></span>charlie
+<span class="line-marker" data-line="28"></span>txt
+<span class="line-marker" data-line="29"></span>samples/delta.txt
+<span class="line-marker" data-line="30"></span>delta.txt
+<span class="line-marker" data-line="31"></span>delta
+<span class="line-marker" data-line="32"></span>txt</span></code></pre></div>
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+
+    <div class="templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>

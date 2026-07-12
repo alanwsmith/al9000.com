@@ -1,0 +1,28 @@
+use anyhow::Result;
+use clap::Parser;
+use orion::{aead, kdf};
+use std::{fs, path::PathBuf};
+
+#[derive(Debug, Parser)]
+struct Args {
+  input_path: PathBuf,
+  output_path: PathBuf,
+}
+
+fn main() -> Result<()> {
+  let args = Args::parse();
+  // Reminder: this encryption is only for obfuscation to
+  // prevent bots from easily slurping up content. The
+  // credentials can be pulled from the source code.
+  let password = "default";
+  let salt = "28d408f7-e027-436e-a262-a6bd1950099a";
+  let bytes = fs::read(&args.input_path)?;
+  let kdf_password =
+    kdf::Password::from_slice(password.trim().as_bytes())?;
+  let salt = kdf::Salt::from_slice(salt.trim().as_bytes())?;
+  let kdf_key =
+    kdf::derive_key(&kdf_password, &salt, 3, 1 << 8, 32)?;
+  let encrypted = aead::seal(&kdf_key, &bytes)?;
+  fs::write(args.output_path, encrypted)?;
+  Ok(())
+}

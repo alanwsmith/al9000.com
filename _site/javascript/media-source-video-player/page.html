@@ -1,0 +1,24 @@
+<video id="videoPlayer" controls></video>
+
+<script type="module">
+import { loadVideo } from "&#x2f;javascript&#x2f;media-source-video-player/media-source-player.js"
+const config = {
+  codec: `video/webm; codecs="vp9, vorbis"`,
+  urls: [
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-00.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-01.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-02.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-03.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-04.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-05.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-06.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-07.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-08.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-09.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-10.part",
+  ],
+  fallback: "&#x2f;javascript&#x2f;media-source-video-player/sample-video/church-3818213.webm",
+}
+loadVideo("#videoPlayer", config);
+</script>
+

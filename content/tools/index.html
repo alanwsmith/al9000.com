@@ -21,16 +21,26 @@ input {
 
 == block main
 
-  <p>This is where I'll be moving the tools from <a href="https://tools.alanwsmith.com/">tools.alanwsmith.com</a></p>
+== for folder in folders_in_folder("/tools") 
+  == if exists(folder + "/index.html")
+  <bitty-8 data-connect="/tools/[@ folder @]/bit.js"></bitty-8>
+   <details class="d"><summary>[@ d.tools[folder].index.title @]</summary> 
+    == include "/tools/" + folder + "/index.html"
+   </details> 
+  == endif
+== endfor
 
+
+[#
   == for key in d.tools 
     == if key != "index"
-    <bitty-8 data-connect="/tools/[@ key @]/bit.js"></bitty-8>
+
     <details class="d"><summary>[@ d.tools[key].index.title @]</summary>
       == include "/tools/" + key + "/index.html"
     </details>
     == endif
   == endfor 
+#]
 
 == endblock
 

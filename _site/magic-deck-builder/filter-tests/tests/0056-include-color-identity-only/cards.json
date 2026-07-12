@@ -1,0 +1,59 @@
+{
+  "cards": [
+    {
+      "cmc": 3.0,
+      "edhrec_rank": 10996,
+      "faces": [
+        {
+          "color_identity": [
+            "B",
+            "R"
+          ],
+          "colors": [
+            "R"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/a/0af3c6b1-9139-46a3-ad41-91aabbdda55f.jpg?1620236237",
+          "mana_cost": "{2}{R}",
+          "name": "Sedge Sliver",
+          "oracle_text": "All Sliver creatures have \"This creature gets +1/+1 as long as you control a Swamp.\"\nAll Slivers have \"{B}: Regenerate this permanent.\" (The next time it would be destroyed this turn, instead tap it, remove it from combat, and heal all damage on it.)",
+          "power": "2",
+          "toughness": "2",
+          "type_line": "Creature — Sliver"
+        }
+      ],
+      "game_changer": false,
+      "id": "0af3c6b1-9139-46a3-ad41-91aabbdda55f",
+      "layout": "normal",
+      "name": "Sedge Sliver",
+      "oracle_id": "027b0223-173f-4f8b-a38c-59bab391f472",
+      "price": 1.42
+    },
+    {
+      "cmc": 2.0,
+      "edhrec_rank": 4716,
+      "faces": [
+        {
+          "color_identity": [
+            "R"
+          ],
+          "colors": [
+            "R"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/b/0bd41879-fcd4-4211-9b98-47e7cdba5399.jpg?1757377366",
+          "mana_cost": "{1}{R}",
+          "name": "Spider-Punk",
+          "oracle_text": "Riot (This creature enters with your choice of a +1/+1 counter or haste.)\nOther Spiders you control have riot.\nSpells and abilities can't be countered.\nDamage can't be prevented.",
+          "power": "2",
+          "toughness": "1",
+          "type_line": "Legendary Creature — Spider Human Hero"
+        }
+      ],
+      "game_changer": false,
+      "id": "0bd41879-fcd4-4211-9b98-47e7cdba5399",
+      "layout": "normal",
+      "name": "Spider-Punk",
+      "oracle_id": "03bf7a90-78c1-4e83-8553-e22d85e49876",
+      "price": 1.4
+    }
+  ]
+}

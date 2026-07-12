@@ -44,13 +44,13 @@ status = "draft"
 I've been using the CSS `counter` [@ footnote("counter") @] function to add line numbers to code
 blocks forever. For example, this CSS:
 
-== filter highlight_block("css")
+== filter highlight("css")
 == include f.dir + "/example-1/styles.css"
 == endfilter
 
 and this HTML:
 
-== filter highlight_block("html")
+== filter highlight("html")
 == include f.dir + "/example-1/code.html"
 == endfilter
 
@@ -68,11 +68,11 @@ with the `counter-reset`[@ footnote("reset") @] property. For
 example, you can start the line numbers
 at 7 like this:
 
-== filter highlight_block("css")
+== filter highlight("css")
 == include f.dir + "/example-2/styles.css"
 == endfilter
 
-== filter highlight_block("html")
+== filter highlight("html")
 == include f.dir + "/example-2/code.html"
 == endfilter
 
@@ -135,11 +135,11 @@ attribute in an HTML element for display.
 
 Here's the code that makes it work:
 
-== filter highlight_block("css")
+== filter highlight("css")
 == include f.dir + "/example-4/styles.css"
 == endfilter
 
-== filter highlight_block("html")
+== filter highlight("html")
 == include f.dir + "/example-4/code.html"
 == endfilter
 
@@ -158,7 +158,7 @@ instead of a number to replace the
 skipped lines, for example. So, this:
 
 
-== filter highlight_block("html")
+== filter highlight("html")
 == include f.dir + "/example-4b/code.html"
 == endfilter
 
@@ -188,7 +188,7 @@ Exactly what I'm looking for.
         to add a little padding
             between the line number and the content:</p>
 
-== filter highlight_block("css") 
+== filter highlight("css") 
 [! include f.dir + "/padding.css" !]
 == endfilter
 

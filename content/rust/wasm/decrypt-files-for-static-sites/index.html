@@ -94,7 +94,7 @@ message.
 
 </p>
 
-[! filter highlight_block("html") !]
+[! filter highlight("html") !]
 [! include "/" + parent(file_path) + "/html.inc.html" !]
 [! endfilter !]
 
@@ -121,7 +121,7 @@ message.
 </ol>
 
 
-[! filter highlight_block("html") !]
+[! filter highlight("html") !]
 <script type="module">
 
 [! include "/" + parent(file_path) + "/script.inc.js" !]
@@ -177,7 +177,7 @@ message.
 
 <h4>src/lib.rs</h4>
 
-[! filter highlight_block("rust") !]
+[! filter highlight("rust") !]
 [! include "/" + parent(file_path) + "/src/lib.rs" !]
 [! endfilter !]
 
@@ -188,7 +188,7 @@ message.
 
 
 <h4>Cargo.toml</h4>
-[! filter highlight_block("toml") !]
+[! filter highlight("toml") !]
 [! include "/" + parent(file_path) + "/Cargo.toml" !]
 [! endfilter !]
 

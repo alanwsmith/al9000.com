@@ -1,0 +1,30 @@
+-- Checks fuel level to make sure
+-- there is enough. 
+
+-- Defaults to 500
+
+-- Can optionoally adjust 
+-- required level.
+
+-- Can also refuel by passing
+-- true to optional second argument. 
+
+require "/library/refuel"
+require "/library/sleepMin"
+
+checkFuelLevel = function(target, doRefuel)
+  target = target or 500
+  doRefuel = doRefuel or false
+  while true do
+    if doRefuel == true then
+      refuel()
+    end
+    if turtle.getFuelLevel() < target then
+      print("Not enough fuel: " .. turtle.getFuelLevel() .. "/" .. target)
+      sleepMin(2)
+    else
+      print("Found enough fuel: " .. turtle.getFuelLevel() .. "/" .. target)
+      return true
+    end
+  end
+end

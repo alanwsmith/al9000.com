@@ -1,0 +1,8 @@
+{
+  "query": {
+    "colorless": false,
+    "colors": ["U"],
+    "color_identity": []
+  },
+  "resultNames": ["Storm Crow"]
+}

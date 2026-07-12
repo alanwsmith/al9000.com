@@ -36,21 +36,21 @@ status = "draft"
 
 ### Cargo.toml
 
-== filter highlight_block("toml")
+== filter highlight("toml")
 == include f.dir + "/Cargo.toml"
 == endfilter
 
 
 ### src/main.rs
 
-== filter highlight_block("rs")
+== filter highlight("rs")
 [@- raw_file(f.dir + "/src/main.rs") -@]
 == endfilter
 
 
 ### templates/index.html
 
-== filter highlight_block("html")
+== filter highlight("html")
 [@- raw_file(f.dir + "/templates/index.html") -@]
 == endfilter
 

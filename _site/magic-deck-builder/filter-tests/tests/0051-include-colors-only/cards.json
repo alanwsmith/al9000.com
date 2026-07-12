@@ -1,0 +1,60 @@
+{
+  "cards": [
+    {
+      "cmc": 2.0,
+      "edhrec_rank": 19751,
+      "faces": [
+        {
+          "color_identity": [
+            "U"
+          ],
+          "colors": [
+            "U"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/3/036ef8c9-72ac-46ce-af07-83b79d736538.jpg?1562730661",
+          "mana_cost": "{1}{U}",
+          "name": "Storm Crow",
+          "oracle_text": "Flying (This creature can't be blocked except by creatures with flying or reach.)",
+          "power": "1",
+          "toughness": "2",
+          "type_line": "Creature — Bird"
+        }
+      ],
+      "game_changer": false,
+      "id": "036ef8c9-72ac-46ce-af07-83b79d736538",
+      "layout": "normal",
+      "name": "Storm Crow",
+      "oracle_id": "000d5588-5a4c-434e-988d-396632ade42c",
+      "price": 0.09
+    },
+    {
+      "cmc": 2.0,
+      "edhrec_rank": 7055,
+      "faces": [
+        {
+          "color_identity": [
+            "U",
+            "W"
+          ],
+          "colors": [
+            "U",
+            "W"
+          ],
+          "image": "https://cards.scryfall.io/normal/front/0/7/07177a8e-5ded-4084-a22f-2d8fe933de7a.jpg?1673308103",
+          "mana_cost": "{W}{U}",
+          "name": "Stenn, Paranoid Partisan",
+          "oracle_text": "As Stenn enters, choose a card type other than creature or land.\nSpells you cast of the chosen type cost {1} less to cast.\n{1}{W}{U}: Exile Stenn. Return it to the battlefield under its owner's control at the beginning of the next end step.",
+          "power": "2",
+          "toughness": "2",
+          "type_line": "Legendary Creature — Human Wizard"
+        }
+      ],
+      "game_changer": false,
+      "id": "07177a8e-5ded-4084-a22f-2d8fe933de7a",
+      "layout": "normal",
+      "name": "Stenn, Paranoid Partisan",
+      "oracle_id": "03d2d7dd-54b6-469e-8b1c-c48db8cc0925",
+      "price": 0.35
+    }
+  ]
+}

@@ -23,17 +23,17 @@ create = 2026-04-07T12:41:12-04:00
     <summary>View Code</summary>
     <div>
       <h3>HTML</h3>
-      == filter highlight_block("html")
+      == filter highlight("html")
       == include parent(file_path) + "/page.html"
       == endfilter
 
       <h3>JavaScript</h3>
-      == filter highlight_block("js")
+      == filter highlight("js")
       == include parent(file_path) + "/bit.js"
       == endfilter
 
       <h3>CSS</h3>
-      == filter highlight_block("css")
+      == filter highlight("css")
       == include parent(file_path) + "/styles.css"
       == endfilter
 

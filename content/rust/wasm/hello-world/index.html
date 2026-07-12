@@ -12,25 +12,25 @@ created = 2026-04-01T11:40:00-04:00
 </p>
 
 <h3>Rust</h3>
-[! filter highlight_block("html", "Cargo.toml") !]
+[! filter highlight("html", "Cargo.toml") !]
 [! include "/" + parent(file_path) + "/Cargo.toml" !]
 [! endfilter !]
 
-[! filter highlight_block("rust", "src/lib.rs") !]
+[! filter highlight("rust", "src/lib.rs") !]
 [! include "/" + parent(file_path) + "/src/lib.rs" !]
 [! endfilter !]
 
-[! filter highlight_block("bash", "build script") !]
+[! filter highlight("bash", "build script") !]
 [! include "/" + parent(file_path) + "/build_release" !]
 [! endfilter !]
 
 <h3>HTML</h3>
-[! filter highlight_block("html", "page.html") !]
+[! filter highlight("html", "page.html") !]
 [! include "/" + parent(file_path) + "/page.html" !]
 [! endfilter !]
 
 <h4>JavaScript</h4>
-[! filter highlight_block("js", "hello-world.js") !]
+[! filter highlight("js", "hello-world.js") !]
 [! include "/" + parent(file_path) + "/hello-world.js" !]
 [! endfilter !]
 

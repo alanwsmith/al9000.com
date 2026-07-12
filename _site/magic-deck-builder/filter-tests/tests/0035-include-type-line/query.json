@@ -1,0 +1,9 @@
+{
+  "query": {
+    "colorless": false,
+    "colors": [],
+    "color_identity": [],
+    "include_type_line": "land"
+  },
+  "resultNames": ["Sodden Verdure"]
+}

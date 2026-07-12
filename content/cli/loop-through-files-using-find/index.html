@@ -8,12 +8,12 @@ status = "scratch"
 
 == block main
 
-== filter highlight_block("bash")
+== filter highlight("bash")
 == include parent(file_path) + "/script.inc.bash"
 == endfilter
 
 [#
-== filter highlight_block("txt")
+== filter highlight("txt")
 == include parent(file_path) + "/output.txt"
 == endfilter
 #]

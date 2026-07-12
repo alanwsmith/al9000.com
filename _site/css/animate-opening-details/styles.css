@@ -1,0 +1,21 @@
+:root {
+  interpolate-size: allow-keywords;
+}
+
+@supports (interpolate-size: allow-keywords) {
+  details {
+    overflow: hidden;
+  }
+
+  details::details-content {
+    block-size: 0;
+      transition: 
+        block-size 170ms,
+        content-visibility 170ms;
+      transition-behavior: allow-discrete;
+  }
+
+  details[open]::details-content {
+    block-size: auto;
+  }
+}

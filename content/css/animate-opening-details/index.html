@@ -49,12 +49,12 @@ body {
   </hgroup>
 
   <h3>HTML</h3>
-  == filter highlight_block("html")
+  == filter highlight("html")
   == include parent(file_path) + "/page.html"
   == endfilter
 
   <h3>CSS</h3>
-  == filter highlight_block("css")
+  == filter highlight("css")
   == include parent(file_path) + "/styles.css"
   == endfilter
 

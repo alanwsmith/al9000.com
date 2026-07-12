@@ -1,0 +1,7 @@
+{
+  "ports": {
+    "site": 9000,
+    "admin": 9001
+  },
+  "contentFileExtensions": ["html", "js", "txt", "xml", "css"]
+}

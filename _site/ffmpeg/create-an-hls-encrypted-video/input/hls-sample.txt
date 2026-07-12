@@ -1,0 +1,3 @@
+https://al9000.com/ffmpeg/create-an-hls-encrypted-video/hls-sample.key
+hls-sample.key
+a24d52300c56773929b68991fb1e7299

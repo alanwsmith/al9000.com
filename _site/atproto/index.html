@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>AT Proto Stuff</title>
+<meta property="og:title" content="AT Proto Stuff" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com&#x2f;atproto/" />
+<meta property="og:image" content="https://al9000.com/&#x2f;atproto/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+<link
+  rel="site.standard.document"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.document/3mpytqlovtt5m"
+/>
+
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+  </div>
+
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+        <h1>AT Proto Stuff</h1>
+        <div class="date">[invalid date]</div>
+  </hgroup>
+
+
+<p>A place to collect AT Protocol notes, etc...</p>
+<h2>Notes</h2>
+<ul>
+<li>
+<p>Used https://pdsls.dev/ to log into my data
+on the Bluesky PDS and add a Standard.site
+<a href="https://standard.site/docs/lexicons/publication/">publication record</a>.</p>
+<p>It's at:</p>
+<p>https://pdsls.dev/at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication/3mp5l453r552a</p>
+</li>
+<li>
+<p>The TID portion (which is <code>rkey</code> in the standard site docs)
+must be 13 characters. I added a <code>tid = &quot;xxxxxxxxxxxxx&quot;</code> field
+to the TOML frontmatter of my content files.</p>
+</li>
+<li>
+<p>The rust crate I ended up using is:
+<a href="https://docs.rs/atrium-api/latest/atrium_api/index.html">atrium_api</a></p>
+</li>
+</ul>
+<h2>Links</h2>
+<ul>
+<li>
+<p><a href="https://atproto.com/">AT Protocol</a></p>
+</li>
+<li>
+<p><a href="https://standard.site/">Standard.site</a></p>
+</li>
+<li>
+<p><a href="https://standard.site/docs/quick-start/">Standard.site Quick Start Guide</a></p>
+</li>
+<li>
+<p><a href="https://piccalil.li/blog/publishing-on-the-atmosphere-with-standardsite/">Publishing on the Atmosphere with Standard.site - Piccalilli</a></p>
+</li>
+<li>
+<p><a href="https://wil.to/posts/standard-site/">Understanding Standard.Site - wil.to</a></p>
+</li>
+<li>
+<p><a href="https://wil.to/posts/implementing-standard-site/">Implementing Standard.Site</a></p>
+</li>
+<li>
+<p><a href="https://codetv.dev/blog/multiple-standard-site-publications-on-one-website">link3</a></p>
+</li>
+<li>
+<p><a href="https://anisota.net/">Anisota</a> - an interesting take on a client.</p>
+</li>
+<li>
+<p><a href="https://grain.social/">grain.social</a> - photo sharing to investigate.</p>
+</li>
+<li>
+<p><a href="https://atproto.com/specs/tid">TID - Timestamp Identifier</a></p>
+</li>
+</ul>
+<h2>Tools</h2>
+<ul>
+<li>
+<p><a href="https://npmx.dev/package/atapult">ATapult - npm</a></p>
+</li>
+<li>
+<p><a href="https://pdsls.dev/">PDSls - Atmosphere Explorer</a></p>
+</li>
+<li>
+<p><a href="https://bsky.app/settings/app-passwords">BlueSky App Password Maker</a></p>
+</li>
+<li>
+<p><a href="https://site-validator.fly.dev/">Standard.site Validator</a></p>
+</li>
+</ul>
+<h2>Link Storage</h2>
+<pre><code>https://pdsls.dev/at://did:plc:hehia4csii5iipebsgolxxal/site.standard.document/3mpytqlovtt5m
+https://site-validator.fly.dev/
+https://docs.rs/atrium-api/latest/atrium_api/index.html
+https://standard.site/docs/lexicons/document/
+https://piccalil.li/blog/publishing-on-the-atmosphere-with-standardsite/
+https://atproto.com/guides/writing-data#writing-data
+https://atproto.com/guides/sdk-auth
+https://porcini.us-east.host.bsky.network/xrpc/com.atproto.repo.getRecord?repo=did:plc:hehia4csii5iipebsgolxxal&amp;collection=app.bsky.feed.post&amp;rkey=3mpyjq7hqtc23
+https://porcini.us-east.host.bsky.network/xrpc/com.atproto.repo.getRecord?repo=did:plc:hehia4csii5iipebsgolxxal&amp;collection=site.standard.publication&amp;rkey=3mp5l453r552a
+https://docs.rs/atproto-client/0.14.5/atproto_client/index.html#command-line-tools
+https://crates.io/crates/atproto-client
+https://tangled.org/ngerakines.me/atproto-crates
+https://tangled.org/ngerakines.me/atproto-crates/blob/main/crates/atproto-client/src/client.rs
+https://tangled.org/ngerakines.me/atproto-crates/tree/main/crates/atproto-oauth
+https://tangled.org/ngerakines.me/atproto-crates/tree/main/crates/atproto-record
+https://tangled.org/ngerakines.me/atproto-crates/tree/main/crates/atproto-xrpcs-helloworld
+https://tangled.org/ngerakines.me/atproto-crates/blob/main/crates/atproto-client/src/client.rs
+https://tangled.org/ngerakines.me
+https://tangled.org/ngerakines.me/atproto-crates/blob/main/crates/atpxrpc/src/main.rs
+https://leaflet.pub/
+https://sequoia.pub/blog/introducing-sequoia
+https://sequoia.pub/quickstart/
+https://tangled.org/stevedylan.dev/sequoia
+https://atproto.com/
+https://offprint.app/
+https://atproto.at/
+https://pdsls.dev/
+https://atproto.com/guides/writing-data#writing-data
+https://standard.site/docs/lexicons/document/
+https://atproto.com/specs/tid
+https://pdsls.dev/at://did:plc:hehia4csii5iipebsgolxxal
+https://standard-reader.app/a/did:plc:s2rczyxit2v5vzedxqs326ri/3m56tzfj5pc2a
+https://standard-reader.app/a/did:plc:btxrwcaeyodrap5mnjw2fvmz/3moomxyjssk2p
+https://standard-reader.app/
+https://standard-reader.app/about
+https://standard.site/docs/introduction/
+https://pfrazee.leaflet.pub/3mbnbdt4bas2a
+https://www.pfrazee.com/blog/practical-decentralization
+https://standard.site/
+https://jola.dev/posts/automatically-syncing-your-blog-atproto-standard-site
+https://atproto.com/blog/standard-site-bluesky-timeline
+https://crates.io/crates/atrium-api
+https://github.com/atrium-rs/atrium/blob/main/examples/video/src/main.rs
+https://al9000.com/blog/1e/nz/28/
+</code></pre>
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+
+    <div class="templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>

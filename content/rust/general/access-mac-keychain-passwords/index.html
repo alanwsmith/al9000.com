@@ -24,13 +24,13 @@ Then, I use this rust code to pull in passwords
 when I need them:
 
 
-== filter highlight_block("rust", "src/main.rs")  
+== filter highlight("rust", "src/main.rs")  
 == include parent(file_path) + "/src/main.rs"
 == endfilter
 
 with this Cargo.toml:
 
-== filter highlight_block("rust", "Cargo.toml")  
+== filter highlight("rust", "Cargo.toml")  
 == include parent(file_path) + "/Cargo.toml"
 == endfilter
 

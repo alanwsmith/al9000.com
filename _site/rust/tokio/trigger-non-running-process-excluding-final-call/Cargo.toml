@@ -1,0 +1,11 @@
+[package]
+name = "process-signals-async"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.102"
+tokio = { version = "1.51.0", features = ["rt-multi-thread", "macros", "sync", "time"] }
+
+
+
