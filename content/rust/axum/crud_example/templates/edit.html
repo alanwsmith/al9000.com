@@ -1,13 +1,18 @@
-== extends "wrapper.html"
+== extends "/templates.inc/wrappers/default.html"
 == block body
 
 <h2>Edit Item</h2>
 
+
+<p>TODO: Show item details again</p>
+
+[#
 <form method="post" action="/update">
   <input type="text" name="text" value="[@ item.text @]" />
   <input type="hidden" name="id" value="[@ item.id @]" />
   <input type="submit" value="Update Item" />
 </form>
+#]
 
 == endblock
 
