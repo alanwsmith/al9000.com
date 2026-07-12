@@ -1,18 +1,144 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      background-color: black;
-      color: goldenrod;
-    } 
-  </style>
-</head>
-<body>
-unknown filter: filter output_block is unknown (in /rust/chrono/parse_toml_date/index.html:31)
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Parse a toml Date with chrono in Rust</title>
+<meta property="og:title" content="Parse a toml Date with chrono in Rust" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com&#x2f;rust&#x2f;chrono&#x2f;parse_toml_date/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+  </div>
+
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+        <h1>Parse a toml Date with chrono in Rust</h1>
+        <div class="date">[invalid date]</div>
+  </hgroup>
+
+
+
+<h2>Overview</h2>
+
+<p>
+This is how I'm parsing dates that come in 
+from TOML with chrono for formatting.
+</p>
+
+
+<h3>Rust</h3>
+
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">[package]
+<span class="line-marker" data-line="2"></span>name = &quot;parse_toml_date&quot;
+<span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
+<span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span>[dependencies]
+<span class="line-marker" data-line="7"></span>anyhow = &quot;1.0.102&quot;
+<span class="line-marker" data-line="8"></span>chrono = &quot;0.4.44&quot;
+<span class="line-marker" data-line="9"></span>toml = &quot;1.1.2&quot;</span></code></pre></div>
+
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">chrono<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>DateTime<span class="punctuation separator rust">,</span> Local</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">toml<span class="punctuation accessor rust">::</span></span>Table<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="4"></span>
+<span class="line-marker" data-line="5"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span><span class="punctuation section group begin rust">(</span><span class="punctuation section group end rust">)</span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="6"></span>  <span class="storage type rust">let</span> input <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>date = 2026-04-06T14:23:43-04:00<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="7"></span>  <span class="storage type rust">let</span> toml <span class="keyword operator rust">=</span> <span class="keyword operator rust">&amp;</span>input.<span class="meta path rust">parse<span class="punctuation accessor rust">::</span></span><span class="meta generic rust"><span class="punctuation definition generic begin rust">&lt;</span>Table<span class="punctuation definition generic end rust">&gt;</span></span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="8"></span>  <span class="storage type rust">let</span> key <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>date<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="9"></span>  <span class="storage type rust">let</span> format <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>%a. %B %-d - %-I:%M%p<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="10"></span>  <span class="keyword control rust">if</span> <span class="storage type rust">let</span> <span class="support type rust">Some</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>date</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=</span> <span class="support function rust">get_date</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>toml<span class="punctuation separator rust">,</span> key</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="11"></span>    <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span><span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> date.<span class="support function rust">format</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>format</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="12"></span>  </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span> <span class="keyword control rust">else</span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="13"></span>    <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Could not get date<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="14"></span>  </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
+<span class="line-marker" data-line="15"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="16"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
+<span class="line-marker" data-line="17"></span>
+<span class="line-marker" data-line="18"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">get_date</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span>
+<span class="line-marker" data-line="19"></span>  <span class="variable parameter rust">toml</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span>Table,
+<span class="line-marker" data-line="20"></span>  <span class="variable parameter rust">key</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span><span class="storage type rust">str</span>,
+<span class="line-marker" data-line="21"></span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Option<span class="punctuation definition generic begin rust">&lt;</span><span class="meta generic rust">DateTime<span class="punctuation definition generic begin rust">&lt;</span>Local<span class="punctuation definition generic end rust">&gt;</span></span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="22"></span>  <span class="keyword control rust">match</span> toml.<span class="support function rust">get</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>key</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="23"></span>    <span class="support type rust">Some</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>dt</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=&gt;</span> dt.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="meta path rust">parse<span class="punctuation accessor rust">::</span></span><span class="meta generic rust"><span class="punctuation definition generic begin rust">&lt;</span><span class="meta generic rust">DateTime<span class="punctuation definition generic begin rust">&lt;</span>Local<span class="punctuation definition generic end rust">&gt;</span></span><span class="punctuation definition generic end rust">&gt;</span></span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation separator rust">,</span>
+<span class="line-marker" data-line="24"></span>    <span class="support type rust">None</span> <span class="keyword operator rust">=&gt;</span> <span class="support type rust">None</span><span class="punctuation separator rust">,</span>
+<span class="line-marker" data-line="25"></span>  </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
+<span class="line-marker" data-line="26"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+
+<h3>Output</h3>
+
+<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">Mon. April 6 - 2:23PM</span></code></pre></div>
+
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+
+    <div class="templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
 </html>
-  
