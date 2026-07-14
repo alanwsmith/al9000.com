@@ -1,3 +1,0 @@
-.example-3c .line-number::before {
-  content: attr(data-num);
-}

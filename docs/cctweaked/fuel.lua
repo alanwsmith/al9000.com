@@ -1,1 +1,0 @@
-print("Fuel Level: " .. turtle.getFuelLevel())

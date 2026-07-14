@@ -1,9 +1,0 @@
-{
-  "query": {
-    "colorless": false,
-    "colors": [],
-    "color_identity": [],
-    "exclude_type_line": "land"
-  },
-  "resultNames": ["Wei Strike Force"]
-}

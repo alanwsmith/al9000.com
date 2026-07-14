@@ -1,7 +1,0 @@
-{
-  "ports": {
-    "site": 3232,
-    "admin": 3233
-  },
-  "contentFileExtensions": ["html", "js", "txt", "xml"]
-}

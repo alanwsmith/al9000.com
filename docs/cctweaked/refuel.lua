@@ -1,3 +1,0 @@
-require "/library/refuel"
-
-refuel()

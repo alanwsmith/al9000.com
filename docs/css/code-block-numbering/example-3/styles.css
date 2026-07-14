@@ -1,8 +1,0 @@
-.example-3 .num {
-  counter-increment: example-3;
-}
-
-.example-3 .num::before {
-  content: counter(example-3);
-}
-
