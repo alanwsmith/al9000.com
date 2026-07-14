@@ -62,18 +62,18 @@ render it even though it works find in Chrome and Firefox. Give one of
       await b.sleep(90);
       event.target.classList.add("hidden");
       const vidIndex = b.randomInt(1, clipCount);
-      event.target.src = `/assembly/clips/assembly-${vidIndex}.mp4`;
+      event.target.src = `"/assembly"/clips/assembly-${vidIndex}.mp4`;
     });
   });
 
   b.qsa("video[data-layer='0']").forEach((el) => {
     const index = b.randomInt(1, clipCount);
-    el.src = `/assembly/clips/assembly-${index}.mp4`;
+    el.src = `"/assembly"/clips/assembly-${index}.mp4`;
   });
 
   b.qsa("video[data-layer='1']").forEach((el) => {
     const index = b.randomInt(1, clipCount);
-    el.src = `/assembly/clips/assembly-${index}.mp4`;
+    el.src = `"/assembly"/clips/assembly-${index}.mp4`;
     el.play();
   });
 }

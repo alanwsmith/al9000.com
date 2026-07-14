@@ -1,0 +1,24 @@
+.book-review {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 1rem;
+  background-color: var(--faded-info-color);
+  padding: var(--default-padding);
+  border-radius: var(--default-border-radius);
+  border: var(--link-border);
+}
+.book-review .title {
+  font-weight: 900;
+}
+
+.book-review p {
+  margin-top: var(--default-margin);
+}
+
+.book-review img { 
+  max-width: 8rem;
+}
+
+.book-review .by {
+  color: var(--accent-color);
+}

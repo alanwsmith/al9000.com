@@ -18,7 +18,7 @@ use syntect::html::ClassedHTMLGenerator;
 use syntect::parsing::SyntaxSet;
 use syntect::util::LinesWithEndings;
 
-pub fn highlight_command(
+pub fn command(
   code: &str,
   options: Option<&Value>,
 ) -> Value {
@@ -62,9 +62,9 @@ pub fn highlight_command(
 
 Which gets used like:
 
-== filter highlight_command()
+== filter command()
 [! raw !]
-== filter highlight_command(classes="other-class")
+== filter command(classes="other-class")
 ls -la
 == endfilter
 [! endraw !]

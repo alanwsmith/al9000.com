@@ -16,7 +16,7 @@ status = "done"
 Use this to capture errors along with 
 regular output from command line tools:
 
-== filter highlight_command()
+== filter command()
 2>&1
 == endfilter
 
@@ -27,7 +27,7 @@ regular output from command line tools:
 
 For example:
 
-== filter highlight_command()
+== filter command()
 == include parent(file_path) + "/scripts.inc/tldr-no-tee/script.bash"
 == endfilter
 
@@ -36,14 +36,14 @@ If the file exists and is deleted, then it's file name is
 output to the `report-1.txt` via `STDOUT`.
 
 
-== filter highlight_text()
+== filter output()
 == include parent(file_path) + "/scripts.inc/tldr-no-tee/output-1/report.txt"
 == endfilter
 
 If the file doesn't exist, or can't be removed, then an
 error message is output to `report-1.txt` via `STDERR`.
 
-== filter highlight_text()
+== filter output()
 == include parent(file_path) + "/scripts.inc/tldr-no-tee/output-2/report.txt"
 == endfilter
 
@@ -56,7 +56,7 @@ Running the above command doesn't output anything to
 the terminal. You can add `tee /dev/tty` to see
 the messages there as well. 
 
-== filter highlight_command()
+== filter command()
 == include parent(file_path) + "/scripts.inc/tldr-with-tee/script.bash"
 == endfilter
 
@@ -107,13 +107,13 @@ works as expected.
 
 If you delete an existing file with:
 
-== filter highlight_command()
+== filter command()
 rm -v file-that-exists.txt
 == endfilter
 
 It outputs: 
 
-== filter highlight_text()
+== filter output()
 file-that-exists.txt
 == endfilter
 
@@ -127,13 +127,13 @@ If you run the same command with a path
 that doesn't exist you'll get a different 
 message:
 
-== filter highlight_command()
+== filter command()
 rm -v path-that-does-not-exist.txt
 == endfilter
 
 Outputs:
 
-== filter highlight_text()
+== filter output()
 rm: path-that-does-not-exist.txt: No such file or directory
 == endfilter
 
@@ -193,7 +193,7 @@ So, this:
 Use this to redirect STDERR to STDOUT so they
 can both be catpured at the same time:
 
-== filter highlight_command()
+== filter command()
 2>&1
 == endfilter
 
@@ -202,7 +202,7 @@ can both be catpured at the same time:
 
 This is what I want most of time:
 
-== filter highlight_command()
+== filter command()
 == include parent(file_path) + "/scripts.inc/pbcopy-with-tee.bash"
 == endfilter
 
@@ -232,7 +232,7 @@ If you don't need to see the output
 and just want to pass it on, do this:
 
 
-== filter highlight_command()
+== filter command()
 == include parent(file_path) + "/scripts.inc/pbcopy-without-tee.bash"
 == endfilter
 
@@ -243,11 +243,11 @@ and just want to pass it on, do this:
 
 
 
-== filter highlight_command()
+== filter command()
 == endfilter
 
 
-== filter highlight_command()
+== filter command()
 X == include parent(file_path) + "/script.bash"
 == endfilter
 
