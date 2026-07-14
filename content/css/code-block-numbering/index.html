@@ -15,21 +15,21 @@ status = "draft"
   padding: var(--large-padding);
 }
 
-== include f.dir + "/padding.css"
+== include p.dir + "/padding.css"
 
-== include f.dir + "/example-1/styles.css"
+== include p.dir + "/example-1/styles.css"
 
-== include f.dir + "/example-2/styles.css"
+== include p.dir + "/example-2/styles.css"
 
-== include f.dir + "/example-3/styles.css"
+== include p.dir + "/example-3/styles.css"
 
-== include f.dir + "/example-3b/styles.css"
+== include p.dir + "/example-3b/styles.css"
 
-== include f.dir + "/example-3c/styles.css"
+== include p.dir + "/example-3c/styles.css"
 
-== include f.dir + "/example-4/styles.css"
+== include p.dir + "/example-4/styles.css"
 
-== include f.dir + "/example-4b/styles.css"
+== include p.dir + "/example-4b/styles.css"
 
 
 </style>
@@ -45,18 +45,18 @@ I've been using the CSS `counter` [@ footnote("counter") @] function to add line
 blocks forever. For example, this CSS:
 
 == filter highlight("css")
-== include f.dir + "/example-1/styles.css"
+== include p.dir + "/example-1/styles.css"
 == endfilter
 
 and this HTML:
 
 == filter highlight("html")
-== include f.dir + "/example-1/code.html"
+== include p.dir + "/example-1/code.html"
 == endfilter
 
 Produces this output:
 
-== include f.dir + "/example-1/code.html"
+== include p.dir + "/example-1/code.html"
 
 It works great for basic code blocks that
 start at 1 and go up uninterrupted from there. 
@@ -69,16 +69,16 @@ example, you can start the line numbers
 at 7 like this:
 
 == filter highlight("css")
-== include f.dir + "/example-2/styles.css"
+== include p.dir + "/example-2/styles.css"
 == endfilter
 
 == filter highlight("html")
-== include f.dir + "/example-2/code.html"
+== include p.dir + "/example-2/code.html"
 == endfilter
 
 Which outputs:
 
-== include f.dir + "/example-2/code.html"
+== include p.dir + "/example-2/code.html"
 
 Just remember to reset the counter
 value to one before the value you want
@@ -92,7 +92,7 @@ show some parts of the code while skipping
 others. For example, say I've got this code
 block coming in from an included file:
 
-== include f.dir + "/example-3/code.html"
+== include p.dir + "/example-3/code.html"
 
 But, instead of displaying the entire thing, I
 only want to show the opening and closing
@@ -113,12 +113,12 @@ For example, the closing `}` in this
 display is marked as line 4 instead
 of 7:
 
-== include f.dir + "/example-3b/code.html"
+== include p.dir + "/example-3b/code.html"
 
 I want to keep the numbers the same for
 each line:
 
-== include f.dir + "/example-3c/code.html"
+== include p.dir + "/example-3c/code.html"
 
 I could use the `counter-reset` approach to
 set the line number after each removal. It would get
@@ -136,16 +136,16 @@ attribute in an HTML element for display.
 Here's the code that makes it work:
 
 == filter highlight("css")
-== include f.dir + "/example-4/styles.css"
+== include p.dir + "/example-4/styles.css"
 == endfilter
 
 == filter highlight("html")
-== include f.dir + "/example-4/code.html"
+== include p.dir + "/example-4/code.html"
 == endfilter
 
 And here's what it looks like:
 
-== include f.dir + "/example-4/code.html"
+== include p.dir + "/example-4/code.html"
 
 The technique requires hard coding the values. 
 The complexity of doing that will vary 
@@ -159,12 +159,12 @@ skipped lines, for example. So, this:
 
 
 == filter highlight("html")
-== include f.dir + "/example-4b/code.html"
+== include p.dir + "/example-4b/code.html"
 == endfilter
 
 Becomes this:
 
-== include f.dir + "/example-4b/code.html"
+== include p.dir + "/example-4b/code.html"
 
 
 
@@ -189,7 +189,7 @@ Exactly what I'm looking for.
             between the line number and the content:</p>
 
 == filter highlight("css") 
-[! include f.dir + "/padding.css" !]
+[! include p.dir + "/padding.css" !]
 == endfilter
 
         <p>It's not shown to help focus on 

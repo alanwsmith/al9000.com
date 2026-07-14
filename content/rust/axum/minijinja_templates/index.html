@@ -37,21 +37,21 @@ status = "draft"
 ### Cargo.toml
 
 == filter highlight("toml")
-== include f.dir + "/Cargo.toml"
+== include p.dir + "/Cargo.toml"
 == endfilter
 
 
 ### src/main.rs
 
 == filter highlight("rs")
-[@- raw_file(f.dir + "/src/main.rs") -@]
+[@- raw_file(p.dir + "/src/main.rs") -@]
 == endfilter
 
 
 ### templates/index.html
 
 == filter highlight("html")
-[@- raw_file(f.dir + "/templates/index.html") -@]
+[@- raw_file(p.dir + "/templates/index.html") -@]
 == endfilter
 
 
