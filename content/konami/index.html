@@ -1,9 +1,13 @@
+== if rss
+== extends "/templates.inc/rss/empty.html"
+== else
 == extends "/templates.inc/pages/empty.html"
+== endif
 
 == block toml
 title = "Konami"
 created = 2026-06-23T19:29:25-04:00
-tags = ["no-date"]
+flags = ["no-date"]
 status = "done"
 == endblock
 

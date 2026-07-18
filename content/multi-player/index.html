@@ -1,4 +1,8 @@
-== extends "/templates.inc/pages/empty.html" 
+== if rss
+== extends "/templates.inc/rss/empty.html"
+== else
+== extends "/templates.inc/pages/empty.html"
+== endif 
 
 == block toml
 title = "Multi-Player"
