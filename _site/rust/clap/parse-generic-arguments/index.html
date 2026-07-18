@@ -74,14 +74,14 @@ body {
 
 <h3>Rust</h3>
 
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">[package]
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;parse-generic-arguments&quot;
 <span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
 <span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
 <span class="line-marker" data-line="5"></span>
 <span class="line-marker" data-line="6"></span>[dependencies]
 <span class="line-marker" data-line="7"></span>clap = { version = &quot;4.6.0&quot;, features = [&quot;derive&quot;] }</span></code></pre></div>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">clap<span class="punctuation accessor rust">::</span></span>Parser<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">clap<span class="punctuation accessor rust">::</span></span>Parser<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta annotation rust"><span class="punctuation definition annotation rust">#</span><span class="punctuation section group begin rust">[</span><span class="variable annotation rust">derive</span><span class="meta annotation parameters rust"><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span></span><span class="meta annotation parameters rust"><span class="meta group rust">Parser</span></span><span class="meta annotation parameters rust"><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="4"></span><span class="meta struct rust"><span class="storage type struct rust">struct</span> </span><span class="meta struct rust"><span class="entity name struct rust">Input</span> </span><span class="meta struct rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>

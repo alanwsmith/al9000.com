@@ -1,0 +1,25 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml 
+title = "Site Errors"
+id = "ab/vf/vh/zz"
+== endblock
+
+
+== block content 
+
+<ul>
+  == for f in file_list_errors() 
+  <li><a href="[@ f[0] @]">[@ f[1].title @]</a></li>
+  == endfor
+</ul>
+
+== filter md
+
+
+== endfilter
+== endblock
+
+
+
+

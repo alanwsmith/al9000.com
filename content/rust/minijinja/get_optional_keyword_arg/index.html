@@ -1,0 +1,50 @@
+== if rss
+== extends "/templates.inc/rss/default.html"
+== else 
+== extends "/templates.inc/pages/default.html"
+== endif
+
+== block toml
+title = "Get an Optional Keyword Argument in Rust's MiniJinja"
+created = 2026-07-18T08:57:00-04:00
+status = "done"
+id = "ab/vf/w7/pn"
+tags = []
+== endblock
+
+== block main
+
+== filter md
+This is how I'm grabbing optional keyword
+arguments in MiniJinja with a fallback
+to a default if the arg doesn't exist. 
+== endfilter
+
+
+<h3>Rust</h3>
+
+[! filter highlight("rust", file_name="Cargo.toml") !]
+[! include inc_dir() + "/Cargo.toml"  !]
+[! endfilter !]
+
+[! filter highlight("rust", file_name="src/main.rs") !]
+[@ raw_file(inc_dir() + "/src/main.rs")  @]
+[! endfilter !]
+
+<h3>Output</h3>
+[! filter output() !]
+[@ raw_file(inc_dir() + "/output.txt") @]
+[! endfilter !]
+
+[#
+
+<h3>Input</h3>
+[! filter highlight("txt", "samples/data.toml") !]
+[! include inc_dir() + "/samples/data.toml"  !]
+[! endfilter !]
+
+
+#]
+
+== endblock
+

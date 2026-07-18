@@ -113,7 +113,7 @@ file is below as well).</p>
 serde, the std library, tower_sessions, and
 uuid in addition to axum. The
 complete set of calls is:</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -329,7 +329,7 @@ before rendering pages. This environment
 gets stored in a persistent <code>AppState</code> struct.
 Without that, it would have to
 be initialized for each request.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -545,7 +545,7 @@ an id and a text string. The
 struct itself is set up for
 serialization so items can
 be stored directly as JSON objects.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -767,7 +767,7 @@ request comes in.</p>
 set up before firing up the
 server with <code>axum::server()</code>
 and awaiting it.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -982,7 +982,7 @@ JSON file that's kept in a data
 storage directory. The path for
 this directory is stored in a function
 to make it easier to change if necessary.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -1201,7 +1201,7 @@ based on my preferences (e.g.
 using <code>[@ @]</code>
 instead of <code>{{ }}</code> tokens as
 I find them easier to read).</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -1413,7 +1413,7 @@ I find them easier to read).</p>
 <h4>get_files_in_dir()</h4>
 <p>This is a helper function that grabs
 the paths for the JSON data files.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -1630,7 +1630,7 @@ There's still more to do, though.</p>
 makes them sortable based on timestamp).
 The id is stored in the data as well
 as being used for the file name.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -1848,7 +1848,7 @@ the confirmation button on that
 page makes a call to the route
 handled by this function which
 does the actual deletion.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -2062,7 +2062,7 @@ does the actual deletion.</p>
 page for the first part of
 the delete request the provides
 the confirmation button.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -2274,7 +2274,7 @@ the confirmation button.</p>
 <h4>handle_edit()</h4>
 <p>The handler that displays the
 edit page.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -2487,7 +2487,7 @@ edit page.</p>
 <p>The main page that displays all the
 items and the links to edit and
 delete them.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -2700,7 +2700,7 @@ delete them.</p>
 <p>This is the handler that updates
 items when changes are submitted from
 the edit page.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
@@ -2915,7 +2915,7 @@ generating the pages with MiniJinja.
 Any errors in the process result
 in a 500 error being returned to
 the client.</p>
-<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Form<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
