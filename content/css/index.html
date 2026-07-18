@@ -8,7 +8,7 @@ status = "code"
 == block main
 
 <ul>
-== for folder in folders_in_folder(parent(file_path)) 
+== for folder in folders_in_folder(inc_dir()) 
   == if "index" in d.css[folder]
     <li><a href="[@ folder @]">[@ d.css[folder].index.title @]</a></li>
   == endif

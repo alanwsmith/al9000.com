@@ -14,31 +14,31 @@ status = "done"
 
 <h3>Rust</h3>
 [! filter highlight("html", "Cargo.toml") !]
-[! include "/" + parent(file_path) + "/Cargo.toml" !]
+[! include "/" + inc_dir() + "/Cargo.toml" !]
 [! endfilter !]
 
 [! filter highlight("rust", "src/lib.rs") !]
-[! include "/" + parent(file_path) + "/src/lib.rs" !]
+[! include "/" + inc_dir() + "/src/lib.rs" !]
 [! endfilter !]
 
 [! filter highlight("bash", "build script") !]
-[! include "/" + parent(file_path) + "/build_release" !]
+[! include "/" + inc_dir() + "/build_release" !]
 [! endfilter !]
 
 <h3>HTML</h3>
 [! filter highlight("html", "page.html") !]
-[! include "/" + parent(file_path) + "/page.html" !]
+[! include "/" + inc_dir() + "/page.html" !]
 [! endfilter !]
 
 <h4>JavaScript</h4>
 [! filter highlight("js", "hello-world.js") !]
-[! include "/" + parent(file_path) + "/hello-world.js" !]
+[! include "/" + inc_dir() + "/hello-world.js" !]
 [! endfilter !]
 
 
 <h4>Output</h4>
 <div class="output-block"><pre><code>
-[! include "/" + parent(file_path) + "/page.html" !]
+[! include "/" + inc_dir() + "/page.html" !]
 </code></pre></div>
 
 

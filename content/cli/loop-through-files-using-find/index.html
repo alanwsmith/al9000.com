@@ -13,12 +13,12 @@ status = "scratch"
 == block main
 
 == filter highlight("bash")
-== include parent(file_path) + "/script.inc.bash"
+== include inc_dir() + "/script.inc.bash"
 == endfilter
 
 [#
 == filter highlight("txt")
-== include parent(file_path) + "/output.txt"
+== include inc_dir() + "/output.txt"
 == endfilter
 #]
 

@@ -12,7 +12,7 @@ status = "code"
 == block main
 
 <ul>
-== for folder in folders_in_folder(parent(file_path)) 
+== for folder in folders_in_folder(inc_dir()) 
   [! if "index" in d.jq[stem(folder)] !]
     <li><a href="[@ folder @]">[@ d.jq[stem(folder)].index.title @]</a></li>
   [! endif !]

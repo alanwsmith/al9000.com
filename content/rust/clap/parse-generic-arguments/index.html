@@ -16,11 +16,11 @@ short_title = "Parse Generic Arguments"
 <h3>Rust</h3>
 
 == filter highlight("toml", "Cargo.toml")
-== include parent(file_path) + "/Cargo.toml"
+== include inc_dir() + "/Cargo.toml"
 == endfilter
 
 == filter highlight("rs", "src/main.rs")
-== include parent(file_path) + "/src/main.rs"
+== include inc_dir() + "/src/main.rs"
 == endfilter
 
 
@@ -33,7 +33,7 @@ short_title = "Parse Generic Arguments"
 <h3>Output</h3>
 
 == filter output()
-== include parent(file_path) + "/output.txt"
+== include inc_dir() + "/output.txt"
 == endfilter
 
 

@@ -7,7 +7,7 @@ status = "code"
 
 == block main
 
-<bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+<bitty-8 data-connect="[@ inc_dir() @]/bit.js"></bitty-8>
 
 <h2>Command Builder</h2>
 <p>
@@ -35,7 +35,7 @@ status = "code"
 <h2>Posts</h2>
 
 <ul>
-== for folder in folders_in_folder(parent(file_path)) 
+== for folder in folders_in_folder(inc_dir()) 
   [! if "index" in d.ffmpeg[stem(folder)] !]
     <li><a href="[@ folder @]">[@ d.ffmpeg[stem(folder)].index.title @]</a></li>
   [! endif !]

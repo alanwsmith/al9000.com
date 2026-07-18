@@ -7,15 +7,15 @@ status = "broken"
 
 
 == block head 
-== include parent(file_path) + "/head.inc.html"
+== include inc_dir() + "/head.inc.html"
 == endblock
 
 
 == block content 
-== include parent(file_path) + "/content.inc.html"
+== include inc_dir() + "/content.inc.html"
 == endblock
 
 
 == block support 
-== include parent(file_path) + "/support.inc.html"
+== include inc_dir() + "/support.inc.html"
 == endblock

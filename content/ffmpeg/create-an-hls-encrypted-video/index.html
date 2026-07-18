@@ -35,7 +35,7 @@ prep the videos (including the encryption):
 == endfilter
 
 == filter highlight("bash")
-== include parent(file_path) + "/make-video.bash"
+== include inc_dir() + "/make-video.bash"
 == endfilter
 
 == filter md
@@ -49,14 +49,14 @@ browsers that don't.
 The code looks like this:
 
 == filter highlight("html")
-== include parent(file_path) + "/page.html"
+== include inc_dir() + "/page.html"
 == endfilter
 
 And, here's the output:
 
 == endfilter
 
-== include parent(file_path) + "/page.html"
+== include inc_dir() + "/page.html"
 
 
 == filter md

@@ -1,23 +1,23 @@
 <video id="videoPlayer" controls></video>
 
 <script type="module">
-import { loadVideo } from "[@ parent(file_path) @]/media-source-player.js"
+import { loadVideo } from "[@ inc_dir() @]/media-source-player.js"
 const config = {
   codec: `video/webm; codecs="vp9, vorbis"`,
   urls: [
-    "[@ parent(file_path) @]/sample-video/part-00.part",
-    "[@ parent(file_path) @]/sample-video/part-01.part",
-    "[@ parent(file_path) @]/sample-video/part-02.part",
-    "[@ parent(file_path) @]/sample-video/part-03.part",
-    "[@ parent(file_path) @]/sample-video/part-04.part",
-    "[@ parent(file_path) @]/sample-video/part-05.part",
-    "[@ parent(file_path) @]/sample-video/part-06.part",
-    "[@ parent(file_path) @]/sample-video/part-07.part",
-    "[@ parent(file_path) @]/sample-video/part-08.part",
-    "[@ parent(file_path) @]/sample-video/part-09.part",
-    "[@ parent(file_path) @]/sample-video/part-10.part",
+    "[@ inc_dir() @]/sample-video/part-00.part",
+    "[@ inc_dir() @]/sample-video/part-01.part",
+    "[@ inc_dir() @]/sample-video/part-02.part",
+    "[@ inc_dir() @]/sample-video/part-03.part",
+    "[@ inc_dir() @]/sample-video/part-04.part",
+    "[@ inc_dir() @]/sample-video/part-05.part",
+    "[@ inc_dir() @]/sample-video/part-06.part",
+    "[@ inc_dir() @]/sample-video/part-07.part",
+    "[@ inc_dir() @]/sample-video/part-08.part",
+    "[@ inc_dir() @]/sample-video/part-09.part",
+    "[@ inc_dir() @]/sample-video/part-10.part",
   ],
-  fallback: "[@ parent(file_path) @]/sample-video/church-3818213.webm",
+  fallback: "[@ inc_dir() @]/sample-video/church-3818213.webm",
 }
 loadVideo("#videoPlayer", config);
 </script>

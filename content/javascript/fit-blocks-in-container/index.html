@@ -8,7 +8,7 @@ create = 2026-04-07T12:41:12-04:00
 
 == block head
 <style>
-== include parent(file_path) + "/styles.css"
+== include inc_dir() + "/styles.css"
 </style>
 == endblock
 
@@ -24,29 +24,29 @@ create = 2026-04-07T12:41:12-04:00
     <div>
       <h3>HTML</h3>
       == filter highlight("html")
-      == include parent(file_path) + "/page.html"
+      == include inc_dir() + "/page.html"
       == endfilter
 
       <h3>JavaScript</h3>
       == filter highlight("js")
-      == include parent(file_path) + "/bit.js"
+      == include inc_dir() + "/bit.js"
       == endfilter
 
       <h3>CSS</h3>
       == filter highlight("css")
-      == include parent(file_path) + "/styles.css"
+      == include inc_dir() + "/styles.css"
       == endfilter
 
     </div>
   </details>
 
-== include parent(file_path) + "/page.html"
+== include inc_dir() + "/page.html"
 
 </main>
 
 == include "/templates.inc/includes/footer.html"
 
-<bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+<bitty-8 data-connect="[@ inc_dir() @]/bit.js"></bitty-8>
 
 <script type="text/html" id="cellTemplate">
   <div class="cell"><div class="content">x</div></div>

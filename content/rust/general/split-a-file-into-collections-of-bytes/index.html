@@ -40,11 +40,11 @@ code that does the split.
 
 
 == filter highlight("rust", "src/main.rs") 
-== include parent(file_path) + "/src/main.rs"
+== include inc_dir() + "/src/main.rs"
 == endfilter
 
 == filter highlight("rust", "Cargo.toml") 
-== include parent(file_path) + "/Cargo.toml"
+== include inc_dir() + "/Cargo.toml"
 == endfilter
 
 == filter md

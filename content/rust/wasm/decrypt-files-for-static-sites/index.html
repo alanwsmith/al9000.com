@@ -53,7 +53,7 @@ on the front end.
 
 ## An Example
 
-I've [encrypted a file]([@parent(parent(file_path))@]/encrypt-files-for-static-sites/) and put copy on my server. It's
+I've [encrypted a file]([@parent(inc_dir())@]/encrypt-files-for-static-sites/) and put copy on my server. It's
 [file-for-demo.txt.bin](/rust/wasm/decrypt-files-for-static-sites/samples/file-for-demo.txt.bin).
 The file is static. You can download it directly. 
 It won't do you much good, though. Being encrypted and all. 
@@ -63,10 +63,10 @@ Enter the password "wasm" and hit
 the "Decrypt File" button: 
 
 <script type="module">
-[! include "/" + parent(file_path) + "/script.inc.js" !]
+[! include "/" + inc_dir() + "/script.inc.js" !]
 </script>
 
-[! include "/" + parent(file_path) + "/html.inc.html" !]
+[! include "/" + inc_dir() + "/html.inc.html" !]
 
 <p>
 If you got the password right (it's all lowercase), you'll
@@ -95,7 +95,7 @@ message.
 </p>
 
 [! filter highlight("html") !]
-[! include "/" + parent(file_path) + "/html.inc.html" !]
+[! include "/" + inc_dir() + "/html.inc.html" !]
 [! endfilter !]
 
 <h3>JavaScript</h3>
@@ -124,7 +124,7 @@ message.
 [! filter highlight("html") !]
 <script type="module">
 
-[! include "/" + parent(file_path) + "/script.inc.js" !]
+[! include "/" + inc_dir() + "/script.inc.js" !]
 
 
 </script>
@@ -178,7 +178,7 @@ message.
 <h4>src/lib.rs</h4>
 
 [! filter highlight("rust") !]
-[! include "/" + parent(file_path) + "/src/lib.rs" !]
+[! include "/" + inc_dir() + "/src/lib.rs" !]
 [! endfilter !]
 
 <p>
@@ -189,7 +189,7 @@ message.
 
 <h4>Cargo.toml</h4>
 [! filter highlight("toml") !]
-[! include "/" + parent(file_path) + "/Cargo.toml" !]
+[! include "/" + inc_dir() + "/Cargo.toml" !]
 [! endfilter !]
 
 <p>
@@ -201,7 +201,7 @@ message.
 
 <h4>Build Script</h4>
 [! filter highlight("bash") !]
-[! include "/" + parent(file_path) + "/build_release.inc.bash" !]
+[! include "/" + inc_dir() + "/build_release.inc.bash" !]
 [! endfilter !]
 
 <h2>Usage</h2>
@@ -224,14 +224,14 @@ message.
   above to set it up yourself. 
 </p>
 <ul>
-  <li><a href="[@parent(file_path)@]/pkg/static_site_file_decryption.js" download="static_site_file_decryption.js">static_site_file_decryption.js</a></li>
-  <li><a href="[@parent(file_path)@]/pkg/static_site_file_decryption_bg.wasm" download="static_site_file_decryption_bg.wasm">static_site_file_decryption_bg.wasm</a></li>
+  <li><a href="[@inc_dir()@]/pkg/static_site_file_decryption.js" download="static_site_file_decryption.js">static_site_file_decryption.js</a></li>
+  <li><a href="[@inc_dir()@]/pkg/static_site_file_decryption_bg.wasm" download="static_site_file_decryption_bg.wasm">static_site_file_decryption_bg.wasm</a></li>
 </ul>
 
 <p>
   You'll also need a way to encrypt files. I've set
   up a tool to do that at here:
-  <a href="[@parent(parent(file_path))@]/static-site-file-encryption/">
+  <a href="[@parent(inc_dir())@]/static-site-file-encryption/">
     Static Site File Encryption Tool</a>.
 </p>
 

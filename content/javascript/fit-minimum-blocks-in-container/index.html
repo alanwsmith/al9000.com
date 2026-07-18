@@ -6,7 +6,7 @@ created = 2026-04-08T09:55:12-04:00
 == endblock
 
 == block head
-<link rel="stylesheet" href="[@parent(file_path)@]/styles.css" />
+<link rel="stylesheet" href="[@inc_dir()@]/styles.css" />
 == endblock
 
 
@@ -47,7 +47,7 @@ created = 2026-04-08T09:55:12-04:00
             This is the key function that does the calculations:
           </p>
           == filter highlight("javascript")
-          == include parent(file_path) + "/script.js"
+          == include inc_dir() + "/script.js"
           == endfilter
           <p>
             I'm using it with <a href="https://bittyjs.com/">bitty</a>
@@ -57,19 +57,19 @@ created = 2026-04-08T09:55:12-04:00
         <li>
           <p>The bitty code looks like this:</p>
           == filter highlight("javascript")
-          == include parent(file_path) + "/bit.js"
+          == include inc_dir() + "/bit.js"
           == endfilter
 
           <p>which works with this div on the page:</p>
 
           == filter highlight("html")
-          == include parent(file_path) + "/page.html"
+          == include inc_dir() + "/page.html"
           == endfilter
 
           <p>and this template:</p>
 
           == filter highlight("html")
-          == include parent(file_path) + "/template.html"
+          == include inc_dir() + "/template.html"
           == endfilter
         </li>
 
@@ -82,13 +82,13 @@ created = 2026-04-08T09:55:12-04:00
           </p>
 
           == filter highlight("css")
-          == include parent(file_path) + "/styles.css"
+          == include inc_dir() + "/styles.css"
           == endfilter
         </li>
         <li>
           <p>The overall structure of the page looks like this:</p>
           == filter highlight("html")
-          == include parent(file_path) + "/structure.html"
+          == include inc_dir() + "/structure.html"
           == endfilter
           <p>This section of the CSS sets up the `&lt;main&gt;`
             tag to take up all the space between the two 
@@ -114,17 +114,17 @@ body {
 </div>
 
 <main>
-== include parent(file_path) + "/page.html"
+== include inc_dir() + "/page.html"
 </main>
 
 
 == include "/templates.inc/includes/empty/footer.html"
 
 <div class="hidden">
-  <script src="[@ parent(file_path) @]/script.js"></script>
-  <bitty-8 data-connect="[@ parent(file_path) @]/bit.js"></bitty-8>
+  <script src="[@ inc_dir() @]/script.js"></script>
+  <bitty-8 data-connect="[@ inc_dir() @]/bit.js"></bitty-8>
 
-== include parent(file_path) + "/template.html"
+== include inc_dir() + "/template.html"
 </div>
 
 == endblock

@@ -29,7 +29,7 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
-== include parent(file_path) + "/styles.css"
+== include inc_dir() + "/styles.css"
 
 </style>
 == endblock
@@ -50,18 +50,18 @@ body {
 
   <h3>HTML</h3>
   == filter highlight("html")
-  == include parent(file_path) + "/page.html"
+  == include inc_dir() + "/page.html"
   == endfilter
 
   <h3>CSS</h3>
   == filter highlight("css")
-  == include parent(file_path) + "/styles.css"
+  == include inc_dir() + "/styles.css"
   == endfilter
 
 
 
   <h3>Output</h3>
-== include parent(file_path) + "/page.html"
+== include inc_dir() + "/page.html"
 
 
 

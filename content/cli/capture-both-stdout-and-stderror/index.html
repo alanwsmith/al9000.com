@@ -36,7 +36,7 @@ regular output from command line tools:
 For example:
 
 == filter command()
-== include parent(file_path) + "/scripts.inc/tldr-no-tee/script.bash"
+== include inc_dir() + "/scripts.inc/tldr-no-tee/script.bash"
 == endfilter
 
 
@@ -45,14 +45,14 @@ output to the `report-1.txt` via `STDOUT`.
 
 
 == filter output()
-== include parent(file_path) + "/scripts.inc/tldr-no-tee/output-1/report.txt"
+== include inc_dir() + "/scripts.inc/tldr-no-tee/output-1/report.txt"
 == endfilter
 
 If the file doesn't exist, or can't be removed, then an
 error message is output to `report-1.txt` via `STDERR`.
 
 == filter output()
-== include parent(file_path) + "/scripts.inc/tldr-no-tee/output-2/report.txt"
+== include inc_dir() + "/scripts.inc/tldr-no-tee/output-2/report.txt"
 == endfilter
 
 
@@ -65,7 +65,7 @@ the terminal. You can add `tee /dev/tty` to see
 the messages there as well. 
 
 == filter command()
-== include parent(file_path) + "/scripts.inc/tldr-with-tee/script.bash"
+== include inc_dir() + "/scripts.inc/tldr-with-tee/script.bash"
 == endfilter
 
 
@@ -211,7 +211,7 @@ can both be catpured at the same time:
 This is what I want most of time:
 
 == filter command()
-== include parent(file_path) + "/scripts.inc/pbcopy-with-tee.bash"
+== include inc_dir() + "/scripts.inc/pbcopy-with-tee.bash"
 == endfilter
 
 
@@ -241,7 +241,7 @@ and just want to pass it on, do this:
 
 
 == filter command()
-== include parent(file_path) + "/scripts.inc/pbcopy-without-tee.bash"
+== include inc_dir() + "/scripts.inc/pbcopy-without-tee.bash"
 == endfilter
 
 
@@ -256,7 +256,7 @@ and just want to pass it on, do this:
 
 
 == filter command()
-X == include parent(file_path) + "/script.bash"
+X == include inc_dir() + "/script.bash"
 == endfilter
 
 

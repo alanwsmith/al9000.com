@@ -12,7 +12,7 @@ status = "code"
 == block main
 
 <ul>
-== for folder in folders_in_folder(parent(file_path)) 
+== for folder in folders_in_folder(inc_dir()) 
   [! if "index" in d.cli[stem(folder)] !]
     <li><a href="[@ folder @]">[@ d.cli[stem(folder)].index.title @]</a></li>
   [! endif !]

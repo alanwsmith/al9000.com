@@ -2,7 +2,7 @@
 [!- if file_path == "/index.html" -!]
 https://al9000.com/
 [!- elif stem(file_path) == "index" -!]
-https://al9000.com[@ parent(file_path) @]/
+https://al9000.com[@ inc_dir() @]/
 [!- else -!]
 https://al9000.com[@ file_path @]
 [!- endif -!]

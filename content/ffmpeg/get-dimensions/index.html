@@ -22,7 +22,7 @@ status = "scratch"
 
 
 == filter highlight("bash")
-== include parent(file_path) + "/script.inc.bash"
+== include inc_dir() + "/script.inc.bash"
 == endfilter
 
 <p>
@@ -31,7 +31,7 @@ status = "scratch"
 </p>
 
 == filter highlight("txt")
-== include parent(file_path) + "/output.txt"
+== include inc_dir() + "/output.txt"
 == endfilter
 
 == filter md

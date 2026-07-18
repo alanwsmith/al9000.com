@@ -9,11 +9,11 @@ created = 2026-04-10T22:21:12-04:00
 == block main
 
 == filter highlight("bash")
-== include parent(file_path) + "/script.inc.bash"
+== include inc_dir() + "/script.inc.bash"
 == endfilter
 
 == filter highlight("json", "output.json")
-== include parent(file_path) + "/output.json"
+== include inc_dir() + "/output.json"
 == endfilter
 
 == endblock

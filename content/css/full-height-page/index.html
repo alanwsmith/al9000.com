@@ -12,13 +12,13 @@ body {
   background-color: var(--background-color);
   color: var(--default-color);
 }
-== include parent(file_path) + "/styles.css"
+== include inc_dir() + "/styles.css"
 </style>
 == endblock
 
 
 == block body 
 
-== include parent(file_path) + "/page.html"
+== include inc_dir() + "/page.html"
 
 == endblock

@@ -17,22 +17,22 @@ status = "draft"
 <h3>Rust</h3>
 
 [! filter highlight("rust", "Cargo.toml") !]
-[! include parent(file_path) + "/Cargo.toml"  !]
+[! include inc_dir() + "/Cargo.toml"  !]
 [! endfilter !]
 
 [! filter highlight("rust", "src/main.rs") !]
-[! include parent(file_path) + "/src/main.rs"  !]
+[! include inc_dir() + "/src/main.rs"  !]
 [! endfilter !]
 
 <h3>Input</h3>
 [! filter highlight("txt", "samples/data.toml") !]
-[! include parent(file_path) + "/samples/data.toml"  !]
+[! include inc_dir() + "/samples/data.toml"  !]
 [! endfilter !]
 
 <h3>Output</h3>
 
 [! filter output() !]
-[! include parent(file_path) + "/samples/output.txt"  !]
+[! include inc_dir() + "/samples/output.txt"  !]
 [! endfilter !]
 
 

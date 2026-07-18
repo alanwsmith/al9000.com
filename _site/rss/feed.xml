@@ -1,18 +1,2027 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>al9000.com</title>
+  <link href="https://al9000.com/"/>
+  <updated>2026-07-18T00:50:17-04:00</updated>
+  <author>
+    <name>alan w smith</name>
+  </author>
+  <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
-<!DOCTYPE html>
+  <entry>
+    <title>Full Site Links</title><link href="https://al9000.com&#x2f;blog&#x2f;ab&#x2f;vf&#x2f;vh&#x2f;qq/"/><id>urn:uuid:29b98ba1-417f-5768-9540-864574844a8d</id>
+    <updated>2026-07-17T17:26:40-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Neopolitan - Notes with Superpowers</title><link href="https://al9000.com&#x2f;neopolitan/"/><id>urn:uuid:5960ba1c-4dcd-5692-844f-7a98ec050306</id>
+    <updated>2026-07-13T08:41:29-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Stream Tools</title><link href="https://al9000.com&#x2f;stream/"/><id>urn:uuid:dc7f9b0f-74d9-5f48-aafc-0c74aaf856f6</id>
+    <updated>2026-06-27T09:35:33-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Pondering Standard.site and the Social Web</title><link href="https://al9000.com&#x2f;blog&#x2f;1e&#x2f;nz&#x2f;28/"/><id>urn:uuid:f1cae408-5a15-5106-a44d-c2bcc7edae66</id>
+    <updated>2026-06-25T09:01:49-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Konami</title><link href="https://al9000.com&#x2f;konami/"/><id>urn:uuid:0a1bbe0f-c170-523c-83a5-f17055a6dea6</id>
+    <updated>2026-06-23T19:29:25-04:00</updated>
+
+    <summary><![CDATA[<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      background-color: black;
-      color: goldenrod;
-    } 
-  </style>
-</head>
-<body>
-could not render include: error in "/rust/general/split-a-file-into-collections-of-bytes/index.html" (in /rss/feed.xml:30)
-</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;rss/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/empty.css" />
+<style>
+:root {
+  --code-color: goldenrod;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  background-color: black;
+  color: goldenrod;
+}
+
+[data-r=accepted] {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: green;
+}
+
+.center {
+  padding-top: 1rem;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  gap: 1rem;
+}
+
+.faded {
+  opacity: 0.5;
+}
+
+.letters {
+  color: var(--code-color);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 9rem;
+  font-size: 3rem;
+  gap: 1rem;
+  letter-spacing: 2rem;
+  font-family: monospace;
+}
+
+#screen {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.small {
+  font-family: monospace;
+  font-size: 1.4rem;
+}
+
+.wrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+[data-r=accepted] a {
+  color: green;
+}
+[data-r=accepted] a:hover, [data-r=accepted] a:active {
+  color: green;
+}
+[data-r=accepted] {
+  height: 4rem;
+}
+</style>
+  </head>
+  <body>
+    <div class="noscript"><noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript></div>
+
+
+    
+
+<bitty-8 data-connect="/konami/bit.js"></bitty-8>
+
+<div class="wrapper">
+  <div class="center">
+    <div>konami</div>
+    <div class="small">[enter code]</div>
+  </div>
+  <div id="screen">
+    <div>
+      <div class="letters" data-r="output fail"></div>
+      <div data-r="accepted"></div>
+    </div>
+  </div>
+  <div class="faded">
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    <a href="/">home</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    from <a href="/">alan w smith</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>  </div>
+</div>
+
+
+
+<script type="text/html" data-template="letter">
+  <span class="letter" data-r="key__NUM__">_</span>
+</script>
+
+    <div class="hidden support">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Type Different: Changing the Keys on Your Keyboard</title><link href="https://al9000.com&#x2f;blog&#x2f;1e&#x2f;nl&#x2f;6b/"/><id>urn:uuid:b4c76fb5-d81c-55c5-92bb-5d23e0655b54</id>
+    <updated>2026-06-21T12:22:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>RSS Powers: Activated</title><link href="https://al9000.com&#x2f;blog&#x2f;1e&#x2f;nk&#x2f;v9/"/><id>urn:uuid:7039cd04-6be4-5975-8ee9-1235d504bf8b</id>
+    <updated>2026-06-21T07:56:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Unoffice Hours</title><link href="https://al9000.com&#x2f;blog&#x2f;1e&#x2f;nk&#x2f;se/"/><id>urn:uuid:04bfd57b-16c1-5f4d-b41e-2f35019f40be</id>
+    <updated>2026-06-21T07:39:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>RSS Feed</title><link href="https://al9000.com&#x2f;rss/"/><id>urn:uuid:49052718-ad31-5eec-beec-efbe50477d36</id>
+    <updated>2026-06-20T19:42:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Project Ideas</title><link href="https://al9000.com&#x2f;ideas/"/><id>urn:uuid:4e0342ef-1f09-5d77-a346-d2314750e31a</id>
+    <updated>2026-06-20T19:42:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>The Name(s) of My New Band</title><link href="https://al9000.com&#x2f;band-names/"/><id>urn:uuid:4a6eb3d2-040d-5245-ba1f-28d310471349</id>
+    <updated>2026-06-20T19:42:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>DAE - Digital to Analog Enlarger</title><link href="https://al9000.com&#x2f;blog&#x2f;1e&#x2f;fu&#x2f;pl/"/><id>urn:uuid:3a0db608-8d54-55ba-9ca3-f9c77e871a8a</id>
+    <updated>2026-06-20T11:53:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Manic Scroll</title><link href="https://al9000.com&#x2f;manic-scroll/"/><id>urn:uuid:5ca74181-a524-5145-aa83-fa3340469a32</id>
+    <updated>2026-06-19T22:16:00-04:00</updated>
+
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;rss/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/empty.css" />
+  </head>
+  <body>
+    <div class="noscript"><noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript></div>
+
+
+    
+
+
+<style>
+* {
+  margin: 0;
+}
+
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+
+img {
+  width: min(48rem, 92vw);
+  display: block;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+
+.wrapper {
+  width: min(48rem, 92vw);
+  margin: auto;
+  padding-bottom: 3rem;
+}
+
+.first {
+  border-top: 1px solid #333;
+}
+
+.last{
+  border-bottom: 1px solid #333;
+}
+
+.flow > :where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1em);
+}
+
+p {
+  width: min(32rem, 80vw);
+}
+
+.imageWrapper {
+  padding-top: 2rem;
+}
+
+</style>
+
+
+<div class="wrapper flow">
+
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <!--
+    <a href="/tools">tools</a>
+-->
+  </div>
+
+
+
+
+
+  <h1>Manic Scroll</h1>
+
+<div class="flow">
+  <p>
+    In Nov. 2017, I had a full-blown manic bipolar episode. For two weeks,
+    I ran around my house naked recording audio and video and taking notes
+    about my plans to fix the world. These notes are part of that. They
+    were also an attempt to stop talking and fight back against the
+    &quot;pressure to talk&quot; that comes with mania.
+  </p>
+  <p>
+    This is not a cohesive, edited piece. It&apos;s not something crafted
+    for a movie sequence with dramatic music and a profound epiphany at
+    the end. It the raw scribbling of someone in the throws of mania. If
+    you&apos;re interested in seeing what that actually looks like, this
+    is it.
+  </p>
+</div>
+
+  <div class="imageWrapper">
+
+<div 
+   class="first" 
   
+  >
+  <img src="scroll-1-01.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-02.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-03.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-04.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-05.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-06.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-07.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-08.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-09.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-10.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-11.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-12.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-13.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-1-14.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-01.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-02.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-03.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-04.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-05.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-06.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-07.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-08.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-09.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-10.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-11.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-12.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-13.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-14.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-15.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-16.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-17.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-2-18.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-3-01.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-4-01.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-4-02.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-4-03.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-5-01.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-6-01.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-6-02.png" />
+</div>
+
+<div 
+  
+  
+  >
+  <img src="scroll-7-01.png" />
+</div>
+
+<div 
+  
+   class="last" 
+  >
+  <img src="scroll-8-01.png" />
+</div>
+  </div>
+
+</div>
+
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    <a href="/">home</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    from <a href="/">alan w smith</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+    <div class="hidden support">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>QR Story</title><link href="https://al9000.com&#x2f;qr-story/"/><id>urn:uuid:98a081e9-d5dc-5948-a381-0f573187af60</id>
+    <updated>2026-06-19T15:37:00-04:00</updated>
+
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;rss/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/empty.css" />
+  </head>
+  <body>
+    <div class="noscript"><noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript></div>
+
+
+    
+
+<!--
+<style>
+body {
+  background-color: black;
+  color: #999;
+}
+
+a {
+  color: #9d1fc1;
+}
+
+.clock-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+</style>
+-->
+
+<style>
+body {
+  background-color: black;
+}
+
+.contentWrapper {
+  width: min(900px, 90vw);
+  min-height: 96vh;
+  min-height: 96dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  margin: auto;
+}
+.wordGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.word {
+  width: 45px;
+  height: 45px;
+  font-size: 0.45rem;
+}
+p {
+  width: min(580px, 80vw);
+}
+</style>
+
+<bitty-8 data-connect="/qr-story/bit.js"></bitty-8>
+
+<div class="contentWrapper">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <!--
+    <a href="/tools">tools</a>
+-->
+  </div>
+
+
+
+
+  <div>
+    <h1>Alice in QR Land</h1>
+    <div>
+      <p>
+        This piece is the text of Alice's Adventures in Wonderland
+        with each word turned into a QR code. The color of
+        each code is random. The codes are generated
+        each time the page is loaded. It can take
+        some time. Some devices may struggle.
+        (There are more efficient ways to do the same thing. 
+        This is about playing with the tech more than
+        optimizing performance.)
+      </p>
+    </div>
+    <div class="wordGrid" data-r="loadWords"></div>
+  </div>
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    <a href="/">home</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    from <a href="/">alan w smith</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+</div>
+
+<script type="text/html" data-template="wordTemplate">
+<div id="__ID__" class="word">loading</div>
+</script>
+
+
+    <div class="hidden support">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>QR Alice</title><link href="https://al9000.com&#x2f;qr-alice/"/><id>urn:uuid:846d81d0-adb5-5682-b02d-db83541797f2</id>
+    <updated>2026-06-19T10:22:00-04:00</updated>
+
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;rss/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/empty.css" />
+  </head>
+  <body>
+    <div class="noscript"><noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript></div>
+
+
+    
+
+<style>
+body {
+  background-color: black;
+  color: #999;
+}
+
+a {
+  color: #9d1fc1;
+}
+
+h1 {
+  border-bottom: 1px solid #666;
+}
+
+.clock-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.contentWrapper {
+  min-height: 96vh;
+  min-height: 96dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  width: min(500px, 96%);
+  margin: auto;
+}
+
+</style>
+
+<bitty-8 data-connect="/qr-alice/bit.js"></bitty-8>
+
+<div class="contentWrapper">
+<div class="text-wrapper">
+  <div>
+    <h1>Alice's Adventures in Wonderland</h1>
+    <div data-r="init start">
+        <noscript>
+          This page requires JavaScript to run. 
+          It's not currently available in your
+          browser.
+        </noscript>
+      </div>
+  </div>
+</div>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    <a href="/">home</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    from <a href="/">alan w smith</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer></div>
+
+<script type="text/html" data-template="runningState">
+  <div class="center" id="qrcode"></div>
+  <div class="center">
+    <button data-s="pause" data-r="pause">pause</button>
+  </div>
+</script>
+
+<script type="text/html" data-template="initState">
+  <p>
+    This piece presents the text
+    of <a href="https://www.gutenberg.org/cache/epub/19033/pg19033.txt">Alice's Adventures in Wonderland</a>
+    as a series of QR codes for each word. 
+    They flash rapidly. 
+    Be careful if you're sensitive to that kind of thing.
+  </p>
+  <button data-s="start">start</button>
+</script>
+
+    <div class="hidden support">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>QR Clock</title><link href="https://al9000.com&#x2f;qr-clock/"/><id>urn:uuid:5d7c9261-a3dc-5090-9610-fdd1d5d2c2c8</id>
+    <updated>2026-06-18T18:22:00-04:00</updated>
+
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;rss/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/empty.css" />
+  </head>
+  <body>
+    <div class="noscript"><noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript></div>
+
+
+    
+
+<style>
+body {
+  background-color: black;
+  color: #999;
+}
+
+a {
+  color: #9d1fc1;
+}
+
+.clock-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.contentWrapper {
+  min-height: 96vh;
+  min-height: 96dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+</style>
+
+<bitty-8 data-connect="/qr-clock/bit.js"></bitty-8>
+
+<div class="contentWrapper">
+<div class="clock-wrapper">
+  <div>
+    <h1 class="center">The Current Time Is</h1>
+    <div class="center" id="qrcode"></div>
+  </div>
+</div>
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    <a href="/">home</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    from <a href="/">alan w smith</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer></div>
+
+
+    <div class="hidden support">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Tabletop Simulator Art</title><link href="https://al9000.com&#x2f;tts/"/><id>urn:uuid:6e835f9a-cdc1-5f00-b38d-0d99f68cdd4c</id>
+    <updated>2026-06-16T12:22:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Fingers to Keys</title><link href="https://al9000.com&#x2f;blog&#x2f;1e&#x2f;da&#x2f;37/"/><id>urn:uuid:5a4a2a7d-f450-51d4-866b-ad91eefd6c67</id>
+    <updated>2026-04-27T17:08:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>The Good Place</title><link href="https://al9000.com&#x2f;blog&#x2f;1e&#x2f;bk&#x2f;1s/"/><id>urn:uuid:fe5403b6-af4d-53e4-acb6-6d5aa760a9dd</id>
+    <updated>2026-04-18T09:47:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Doors</title><link href="https://al9000.com&#x2f;doors/"/><id>urn:uuid:a90d2ef7-7fd4-538d-a72e-c0adc7ae7056</id>
+    <updated>2026-04-12T14:33:00-04:00</updated>
+
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;rss/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/empty.css" />
+<style>
+body {
+  background: black;
+  background-image: url("background.jpg?asdf");
+  background-size: cover;
+  color: #aaa;
+  /* via:
+http://infosecdj.net:8086/map/nxp/mp091a0/infosecdj_mz_nikpa60x_s3/#x=33469&y=24608&z=2
+  */
+}
+
+a {
+  color: rgb(200 200 200 /0.7);
+}
+
+.wrapper {
+  display: flex;
+  margin-top: 4rem;
+  justify-content: center;
+}
+
+video {
+  border-radius: 0.4rem;
+  border: 3px solid black;
+}
+
+.inner-wrapper {
+  max-width: 82svw;
+}
+
+.links {
+  background: rgb(0 0 0 / 0.5);
+  font-size: 0.9rem;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  text-align: right;
+}
+</style>
+
+
+  </head>
+  <body>
+    <div class="noscript"><noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript></div>
+
+
+    
+
+
+<div class="wrapper">
+  <div class="inner-wrapper">
+    <video muted src="doors.mp4" autoplay loop playsinline></video>
+    <div class="links"><a href="/">home</a> - <a href="https://siliconpr0n.org/archive/doku.php?id=infosecdj:start">source</a></div>
+  </div>
+</div>
+
+    <div class="hidden support">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>I&#x27;m Not Ready to Start This Blog</title><link href="https://al9000.com&#x2f;blog&#x2f;1e&#x2f;bk&#x2f;0i/"/><id>urn:uuid:1db25bda-5d40-57a8-8c37-dcfb29adc9b1</id>
+    <updated>2026-04-12T11:48:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Capture Errors from Command Line Tools</title><link href="https://al9000.com&#x2f;cli&#x2f;capture-both-stdout-and-stderror/"/><id>urn:uuid:6d121163-1b63-5455-973b-428a13905056</id>
+    <updated>2026-04-11T09:58:51-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Access Mac Keychain Access Passwords from a Rust App</title><link href="https://al9000.com&#x2f;rust&#x2f;general&#x2f;access-mac-keychain-passwords/"/><id>urn:uuid:ef651fb1-46ce-524b-8f54-99e79bebb120</id>
+    <updated>2026-04-10T13:57:22-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>A Media Source Extensions (MSE) Video Player</title><link href="https://al9000.com&#x2f;javascript&#x2f;media-source-video-player/"/><id>urn:uuid:81647956-49d4-5bc4-ae9e-5c7ba88e5cd4</id>
+    <updated>2026-04-06T19:30:12-04:00</updated>
+
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;rss/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    
+    
+    
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+  </div>
+
+
+</header>
+
+
+<div class="subnav default-wrapper">
+  <a href="/javascript/">JavaScript </a>
+</div>
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+  </hgroup>
+
+
+<h2>Overview</h2>
+<ul>
+<li>
+<p>This is a very basic approach to using
+the Media Source API (aka
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API">Media Source Extension</a>)
+to load tracks in a &lt;video&gt; tag instead
+of using a <code>src</code> attribute that points
+to a single file (or <a href="https://en.wikipedia.org/wiki/HTTP_Live_Streaming">HLS</a>
+playlist).</p>
+</li>
+<li>
+<p>This is primarily a prototype I'm
+working on for my <a href="/multi-player/">Multi-Player project</a>.
+Chrome slows way down
+as the number of videos on the page increases.
+Hopefully, this approach can keep things snappy.</p>
+</li>
+<li>
+<p>You should probably use <a href="https://videojs.org/">VideoJS</a>
+instead of this in most cases.</p>
+</li>
+<li>
+<p>This does not currently do an explicit check to see if the mime
+type is supported in a given browser. I'm using <a href="https://www.webmproject.org/">.webm</a>
+in the examples. Things are lined up already
+with the videos (I'm using <code>video/webm; codecs=&quot;vp9, vorbis&quot;</code>).
+See <a href="https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples">the doc examples</a>
+for details on how to check in situations where
+you can't control the input files.</p>
+</li>
+<li>
+<p>My original version of this didn't use global variables.
+I ran into an issue where missing audio was breaking
+chrome and added the feature to track videos
+by UUID in the global <code>videos</code> variable during
+the bug hunt. While I like the idea of avoiding
+global variable I'm fine with them here.</p>
+</li>
+<li>
+<p>This version is also prep work for making a version that works
+with encrypted video files (e.g. by
+<a href="/rust/wasm/static-site-file-decryption/">Password Protecting Static Site Content with WASM</a>).
+You can check out the code for that on
+<a href="/javascript/encrypted-media-source-video-player/">An Encrypted Media Source Extensions (MSE) Video Player</a>.</p>
+</li>
+</ul>
+<h2>The Video</h2>
+<p>Here's the output demo video to get started.
+It's from <a href="https://www.pexels.com/video/a-drone-shot-of-a-church-in-belalp-3818213/">pexels</a>
+which is a nice place to get free videos.</p>
+
+
+<video id="videoPlayer" controls></video>
+
+<script type="module">
+import { loadVideo } from "&#x2f;javascript&#x2f;media-source-video-player/media-source-player.js"
+const config = {
+  codec: `video/webm; codecs="vp9, vorbis"`,
+  urls: [
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-00.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-01.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-02.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-03.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-04.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-05.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-06.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-07.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-08.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-09.part",
+    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-10.part",
+  ],
+  fallback: "&#x2f;javascript&#x2f;media-source-video-player/sample-video/church-3818213.webm",
+}
+loadVideo("#videoPlayer", config);
+</script>
+
+
+
+<h2>The JavaScript</h2>
+<p>The main JavaScript consists of a
+variable and two functions in
+this module:</p>
+
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source js"><span class="storage type js">const</span> <span class="variable other readwrite js">videos</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span><span class="punctuation section block js">}</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="variable other readwrite js">async</span> </span><span class="meta function declaration js"><span class="storage type function js">function</span> <span class="entity name function js">loadVideo</span><span class="punctuation section group begin js">(</span><span class="variable parameter function js">selector</span><span class="punctuation separator parameter function js">,</span> <span class="variable parameter function js">config</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="4"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">uuid</span> <span class="keyword operator assignment js">=</span> <span class="variable language self js">self</span><span class="punctuation accessor js">.</span><span class="meta property object js">crypto</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">randomUUID</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="5"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">el</span> <span class="keyword operator assignment js">=</span> <span class="support type object dom js">document</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">querySelector</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">selector</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="6"></span>  <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">addEventListener</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>canplaythrough<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="meta function declaration js"><span class="punctuation section group begin js">(</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span><span class="storage type function arrow js">=&gt;</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="7"></span>    <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">log</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>Got canplaythrough.<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="8"></span>  <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="9"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">mediaSource</span> <span class="keyword operator assignment js">=</span> <span class="meta instance constructor js"><span class="keyword operator word new js">new</span><span class="meta function-call constructor js"> <span class="variable type js">MediaSource</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="10"></span>  <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="11"></span>    <span class="meta object-literal key js">mediaSource</span><span class="punctuation separator key-value js">:</span> <span class="variable other readwrite js">mediaSource</span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="12"></span>    <span class="meta object-literal key js">urls</span><span class="punctuation separator key-value js">:</span> <span class="variable other object js">config</span><span class="punctuation accessor js">.</span><span class="meta property object js">urls</span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="13"></span>    <span class="meta object-literal key js">currentSegment</span><span class="punctuation separator key-value js">:</span> <span class="constant numeric js">0</span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="14"></span>  <span class="punctuation section block js">}</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="15"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">mediaSource</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="16"></span>    <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta property object js">src</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">URL</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">createObjectURL</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">mediaSource</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="17"></span>    <span class="variable other object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">addEventListener</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>sourceopen<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="meta function declaration js"><span class="storage type js">async</span><span class="meta function declaration js"> </span><span class="punctuation section group begin js">(</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span><span class="storage type function arrow js">=&gt;</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="18"></span>      <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">sourceBuffer</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">addSourceBuffer</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">config</span><span class="punctuation accessor js">.</span><span class="meta property object js">codec</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="19"></span>      <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">sourceBuffer</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">addEventListener</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>updateend<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="meta function declaration js"><span class="storage type js">async</span><span class="meta function declaration js"> </span><span class="punctuation section group begin js">(</span><span class="variable parameter function js">event</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span><span class="storage type function arrow js">=&gt;</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="20"></span>        <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta property object js">readyState</span> <span class="keyword operator comparison js">===</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>open<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="21"></span>          <span class="meta function-call js"><span class="variable function js">loadSegment</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">uuid</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="22"></span>        </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker" data-line="23"></span>      <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="24"></span>      <span class="meta function-call js"><span class="variable function js">loadSegment</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">uuid</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="25"></span>    <span class="punctuation section block js">}</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="26"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="27"></span>    <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta property object js">src</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">config</span><span class="punctuation accessor js">.</span><span class="meta property object js">fallback</span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="28"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker" data-line="29"></span><span class="punctuation section block js">}</span></span>
+<span class="line-marker" data-line="30"></span>
+<span class="line-marker" data-line="31"></span><span class="meta function declaration js"><span class="storage type js">async</span> <span class="storage type function js">function</span> <span class="entity name function js">loadSegment</span><span class="punctuation section group begin js">(</span><span class="variable parameter function js">uuid</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="32"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">currentSegment</span> <span class="keyword operator relational js">&lt;</span> <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">urls</span><span class="punctuation accessor js">.</span><span class="meta property object js">length</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="33"></span>    <span class="meta try js"><span class="keyword control trycatch js">try</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="34"></span>      <span class="storage type js">const</span> <span class="support module node js">url</span> <span class="keyword operator assignment js">=</span> <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">urls</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">currentSegment</span><span class="punctuation section brackets js">]</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="35"></span>      <span class="storage type js">const</span> <span class="variable other readwrite js">response</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="meta function-call js"><span class="variable function js">fetch</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="support module node js">url</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="36"></span>      <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">response</span><span class="punctuation accessor js">.</span><span class="meta property object js">ok</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="37"></span>        <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">log</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string template js"><span class="punctuation definition string template begin js">`</span>processing segment: </span><span class="meta template expression js"><span class="punctuation definition template-expression begin js">${</span></span><span class="meta template expression js"><span class="source js embedded expression"><span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">currentSegment</span></span><span class="punctuation definition template-expression end js">}</span></span><span class="string template js"><span class="punctuation definition string template end js">`</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="38"></span>        <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">currentSegment</span><span class="keyword operator arithmetic js">++</span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="39"></span>        <span class="storage type js">const</span> <span class="support module node js">buffer</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">await</span> <span class="variable other object js">response</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">arrayBuffer</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="40"></span>        <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">sourceBuffer</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">appendBuffer</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="support module node js">buffer</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="41"></span>      </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="42"></span>        <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">error</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">response</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="43"></span>        <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">endOfStream</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>network<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="44"></span>      </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker" data-line="45"></span>    </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta catch js"><span class="keyword control trycatch js">catch</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">error</span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="46"></span>      <span class="meta function-call method js"><span class="support type object console js">console</span><span class="punctuation accessor js">.</span><span class="support function console js">error</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">error</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="47"></span>      <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">endOfStream</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>network<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="48"></span>    </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker" data-line="49"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else</span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="50"></span>    <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">endOfStream</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="51"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker" data-line="52"></span><span class="punctuation section block js">}</span></span></span></code></pre></div>
+<ul>
+<li>
+<p>The <code>loadVideo</code> function takes a selector that
+points to an existing <code>video</code> element and
+a config.</p>
+</li>
+<li>
+<p>The format of the config is in the HTML below.</p>
+</li>
+<li>
+<p>The config includes a fallback in addition to
+the split up files the MediaSource uses.</p>
+</li>
+<li>
+<p>A check is made to verify the MediaSource
+available/loaded. If not, the fallback URL is used.</p>
+</li>
+<li>
+<p>I'm using a direct link to a <code>.webm</code> file
+for the fallback. In practice, I'd
+probably use an <a href="https://en.wikipedia.org/wiki/HTTP_Live_Streaming">HLS</a>
+playlist.</p>
+</li>
+<li>
+<p>The module hangs a
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplaythrough_event">canplaythrough</a>
+event listener on the video element.
+It's fired when the browser estimates it has enough
+data to play the video without having to
+stop for buffering.</p>
+</li>
+<li>
+<p>I left the <code>console.log('processing segment...'</code> line in
+to show how the <code>canplaythrough</code> event generally fires while
+the individual segment files are still being
+loaded.</p>
+</li>
+</ul>
+<h2>The HTML</h2>
+<p>Here's the HTML I'm using on the page:</p>
+
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">video</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">videoPlayer</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">controls</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">video</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="4"></span><span class="source js embedded html"><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">loadVideo</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/media-source-player.js<span class="punctuation definition string end js">&quot;</span></span>
+<span class="line-marker" data-line="5"></span></span><span class="storage type js">const</span> <span class="variable other readwrite js">config</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="6"></span>  <span class="meta object-literal key js">codec</span><span class="punctuation separator key-value js">:</span> <span class="string template js"><span class="punctuation definition string template begin js">`</span>video/webm; codecs=&quot;vp9, vorbis&quot;<span class="punctuation definition string template end js">`</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="7"></span>  <span class="meta object-literal key js">urls</span><span class="punctuation separator key-value js">:</span> <span class="meta sequence js"><span class="punctuation section brackets js">[</span>
+<span class="line-marker" data-line="8"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-00.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="9"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-01.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="10"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-02.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="11"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-03.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="12"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-04.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="13"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-05.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="14"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-06.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="15"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-07.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="16"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-08.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="17"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-09.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="18"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-10.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="19"></span>  <span class="punctuation section brackets js">]</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="20"></span>  <span class="meta object-literal key js">fallback</span><span class="punctuation separator key-value js">:</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/church-3818213.webm<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="21"></span><span class="punctuation section block js">}</span></span>
+<span class="line-marker" data-line="22"></span><span class="meta function-call js"><span class="variable function js">loadVideo</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>#videoPlayer<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">config</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="23"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+
+
+<ul>
+<li>
+<p>The video tag has an <code>id</code> attribute that's
+used in the selector to grab the element.</p>
+</li>
+<li>
+<p>In this case, the config is set up
+for a webm format and supporting codec.</p>
+</li>
+<li>
+<p>The video is split into 11 parts
+in the <code>urls</code> array. These get processed
+in order by the module.</p>
+</li>
+<li>
+<p>The last thing in the config is
+the fallback to use if the MediaSource
+doesn't work or isn't available.</p>
+</li>
+</ul>
+<h2>The Prep Script</h2>
+<p>The sample video I used didn't have an audio track
+with it. It worked fine in Safari and Firefox.
+It broke in chrome. It took a while to figure
+out that the missing audio was the problem.</p>
+<p>This is the <code>ffmpeg</code> command I used to fix
+the issue. It makes a new <code>.webm</code> file
+with a silent audio track.</p>
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker" data-line="2"></span></span>
+<span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">ffmpeg</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>y</span><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>f</span> lavfi<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>i</span> anullsrc<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>i</span> INPUT.webm<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>c</span>:v copy<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>c</span>:a libvorbis<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>shortest</span> OUTPUT.webm</span></span></code></pre></div>
+The resulting file is encoded so that it matches the
+`video/webm; codecs="vp9, vorbis"` in
+the JavaScript. 
+<p>NOTE: I updated ffmpeg an hour after writing
+this post and <code>libvorbis</code> didn't get installed
+with the new version. I don't want to compile
+ffmpeg myself so I'll see about using
+<code>libopus</code> or something else instead
+next time I have to mess with stuff.</p>
+<h2>The Split Script</h2>
+<p>Spitting the source <code>.webm</code> file into the parts
+is done with this script that runs in bash
+on mac/linux (I don't have a Windows machine
+handy to determine the command on that OS).</p>
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker" data-line="2"></span></span>
+<span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">split</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>b</span> 1M<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>d</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>church-3818213.webm<span class="punctuation definition string end shell">&quot;</span></span> part-</span>
+<span class="line-marker" data-line="4"></span><span class="keyword control for shell">for</span><span class="meta group for shell"> f <span class="keyword control in shell">in</span> part-<span class="keyword operator regexp quantifier shell">*</span></span><span class="keyword operator logical continue shell">;</span> <span class="keyword control do shell">do</span> <span class="meta function-call shell"><span class="variable function shell">mv</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">f</span></span><span class="punctuation definition string end shell">&quot;</span></span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">f</span></span>.part<span class="punctuation definition string end shell">&quot;</span></span></span><span class="keyword operator logical continue shell">;</span> <span class="meta function-call shell"><span class="variable function shell">done</span></span></span></code></pre></div>
+Line 3 does the split. 
+<p>Line 4 is optional. It adds file extensions.
+Some servers require one
+to server the proper mine time. It's
+not necessary on mine. I just like
+having explicit extensions.</p>
+<h2>Error Messages</h2>
+<p>Here's some of the Chrome console log
+error messages I got before figuring out
+that the audio track was the problem.
+Putting them here in hopes that folks
+searching for them will see these
+instead of being sent down
+dead ends by AI that doesn't
+take into account that the video
+could be the problem.</p>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">MediaSource readyState is: closed
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span>MediaSource or SourceBuffer invalid
+<span class="line-marker" data-line="4"></span>
+<span class="line-marker" data-line="5"></span>InvalidStateError: Failed to execute 
+<span class="line-marker" data-line="6"></span>&#39;appendBuffer&#39; on &#39;SourceBuffer&#39;: 
+<span class="line-marker" data-line="7"></span>This SourceBuffer has been removed 
+<span class="line-marker" data-line="8"></span>from the parent media source.
+<span class="line-marker" data-line="9"></span>
+<span class="line-marker" data-line="10"></span>InvalidStateError: Failed to execute 
+<span class="line-marker" data-line="11"></span>&#39;endOfStream&#39; on &#39;MediaSource&#39;: 
+<span class="line-marker" data-line="12"></span>The MediaSource&#39;s readyState is 
+<span class="line-marker" data-line="13"></span>not &#39;open&#39;.
+<span class="line-marker" data-line="14"></span>
+<span class="line-marker" data-line="15"></span>--- From ffmpeg during processing
+<span class="line-marker" data-line="16"></span>
+<span class="line-marker" data-line="17"></span>Error parsing Opus packet header.</span></code></pre></div>
+<h2>Wrap Up</h2>
+<p>This is the first time I've really looked at web video
+in the modern age. As with so much these
+days, it's mind-blowing what you can do with it
+without having to bend over backwards. It took me
+way longer to figure out that the audio track was
+causing issues than to write up the player script.</p>
+<p>Very cool.</p>
+<p>-a</p>
+<h3>References</h3>
+<ul>
+<li><a href="/multi-player/">/multi-player/</a></li>
+<li><a href="/rust/wasm/static-site-file-decryption/">/rust/wasm/static-site-file-decryption/</a></li>
+<li><a href="/rust/wasm/static-site-file-encryption/">/rust/wasm/static-site-file-encryption/</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API">https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer">https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples">https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer#examples</a></li>
+<li><a href="https://en.wikipedia.org/wiki/HTTP_Live_Streaming">https://en.wikipedia.org/wiki/HTTP_Live_Streaming</a></li>
+<li><a href="https://ffmpeg.org/ffmpeg-filters.html#anullsrc">https://ffmpeg.org/ffmpeg-filters.html#anullsrc</a></li>
+<li><a href="https://ffmpeg.org/ffmpeg-formats.html#hls-1">https://ffmpeg.org/ffmpeg-formats.html#hls-1</a></li>
+<li><a href="https://man7.org/linux/man-pages/man1/split.1.html">https://man7.org/linux/man-pages/man1/split.1.html</a></li>
+<li><a href="https://videojs.org/">https://videojs.org/</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc8216">https://www.rfc-editor.org/rfc/rfc8216</a></li>
+<li><a href="https://www.webmproject.org/">https://www.webmproject.org/</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video">https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video</a></li>
+</ul>
+
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+
+
+    <div class="templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>
+]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Split a File into Multiple Collections of Bytes</title><link href="https://al9000.com&#x2f;rust&#x2f;general&#x2f;split-a-file-into-collections-of-bytes/"/><id>urn:uuid:5cb4b65c-5aaf-5228-9114-ab7ac2a10e1b</id>
+    <updated>2026-04-01T14:01:23-04:00</updated>
+
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;rss/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    
+    
+    
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+  </div>
+
+
+</header>
+
+
+<div class="subnav default-wrapper">
+  <a href="/rust/">Rust</a>
+</div>
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+  </hgroup>
+
+<p>This started as an idea for how to
+split up files so they don't get ingested
+by scrapper bots. It turns one
+file into two with every other
+byte going to the alternate file
+from the one before it. These
+can then be reassembled in
+WASM on the front-end.</p>
+<p>Then, I realized I could just encrypt
+the files. They could be decoded
+automatically by simply including
+the password in the javascript
+on the page. Or, you could set up
+a form so that only folks with
+the password could get them.</p>
+<p>I really like that idea in general.
+Basically, a way to serve encrypted
+content on a static site.
+I built a prototype of that
+here: <a href="/rust/wasm/static-site-file-decryption/">Password Protecting Static Site Content with WASM</a>.</p>
+<p>In the mean time, here's the
+code that does the split.</p>
+
+
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span>fs<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">path<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">path<span class="punctuation accessor rust">::</span></span>PathBuf<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span><span class="punctuation section group begin rust">(</span><span class="punctuation section group end rust">)</span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="7"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Unzipping file bytes<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="8"></span>  <span class="storage type rust">let</span> input_file <span class="keyword operator rust">=</span> <span class="meta path rust">PathBuf<span class="punctuation accessor rust">::</span></span>from<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>samples/church-3818213.webm<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="9"></span>  <span class="storage type rust">let</span> output_dir <span class="keyword operator rust">=</span> <span class="meta path rust">PathBuf<span class="punctuation accessor rust">::</span></span>from<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>samples/output<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="10"></span>  <span class="support function rust">unzip_file_bytes</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>input_file<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>output_dir</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="11"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="12"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
+<span class="line-marker" data-line="13"></span>
+<span class="line-marker" data-line="14"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">unzip_file_bytes</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span>
+<span class="line-marker" data-line="15"></span>  <span class="variable parameter rust">input_file</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span>PathBuf,
+<span class="line-marker" data-line="16"></span>  <span class="variable parameter rust">output_dir</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span>Path,
+<span class="line-marker" data-line="17"></span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span><span class="punctuation section group begin rust">(</span><span class="punctuation section group end rust">)</span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="18"></span>  <span class="storage type rust">let</span> bytes <span class="keyword operator rust">=</span> <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>read<span class="meta group rust"><span class="punctuation section group begin rust">(</span>input_file</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="19"></span>
+<span class="line-marker" data-line="20"></span>  <span class="storage type rust">let</span> <span class="storage modifier rust">mut</span> alfa <span class="keyword operator rust">=</span> <span class="support macro rust">vec!</span><span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="punctuation section group end rust">]</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="21"></span>  <span class="storage type rust">let</span> <span class="storage modifier rust">mut</span> bravo <span class="keyword operator rust">=</span> <span class="support macro rust">vec!</span><span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="punctuation section group end rust">]</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="22"></span>  bytes.<span class="support function rust">iter</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">enumerate</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">for_each</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta function closure rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">|</span></span></span><span class="meta function closure rust"><span class="meta function parameters rust"><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="variable parameter rust">index</span><span class="punctuation separator rust">,</span> <span class="variable parameter rust">value</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation section parameters end rust">|</span></span> </span><span class="meta function closure rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="23"></span>    <span class="keyword control rust">if</span> index <span class="keyword operator rust">%</span> <span class="constant numeric integer decimal rust">2</span> <span class="keyword operator rust">=</span><span class="keyword operator rust">=</span> <span class="constant numeric integer decimal rust">0</span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="24"></span>      alfa.<span class="support function rust">push</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">*</span>value</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="25"></span>    </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span> <span class="keyword control rust">else</span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="26"></span>      bravo.<span class="support function rust">push</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">*</span>value</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="27"></span>    </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
+<span class="line-marker" data-line="28"></span>  </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="29"></span>
+<span class="line-marker" data-line="30"></span>  <span class="storage type rust">let</span> alfa_out <span class="keyword operator rust">=</span> output_dir.<span class="support function rust">join</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>alfa<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="31"></span>  <span class="storage type rust">let</span> bravo_out <span class="keyword operator rust">=</span> output_dir.<span class="support function rust">join</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>bravo<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="32"></span>  <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>write<span class="meta group rust"><span class="punctuation section group begin rust">(</span>alfa_out<span class="punctuation separator rust">,</span> alfa</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="33"></span>  <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>write<span class="meta group rust"><span class="punctuation section group begin rust">(</span>bravo_out<span class="punctuation separator rust">,</span> bravo</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="34"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Done<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="35"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="36"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="2"></span>name <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>unzip_a_file<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="3"></span>version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>0.1.0<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="4"></span>edition <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2024<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span><span class="meta group rust"><span class="punctuation section group begin rust">[</span>dependencies<span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="7"></span>anyhow <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>1.0.102<span class="punctuation definition string end rust">&quot;</span></span></span></code></pre></div>
+<p>I haven't written the re-assembly code yet
+since I'm going with encryption. I don't
+expect it to be difficult if I come back to it.</p>
+<p>-a</p>
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+
+
+    <div class="templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>
+]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>Hello, World in Rust WASM</title><link href="https://al9000.com&#x2f;rust&#x2f;wasm&#x2f;hello-world/"/><id>urn:uuid:81dedf75-44bf-550c-bd72-be9dac79432a</id>
+    <updated>2026-04-01T11:40:00-04:00</updated>
+
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>al9000.com</title>
+<meta property="og:title" content="al9000.com" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;rss/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    
+    
+    
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+  </div>
+
+
+</header>
+
+
+<div class="subnav default-wrapper">
+  <a href="/rust/">Rust</a>
+</div>
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+  </hgroup>
+
+
+<p>
+  This is a basic `Hello, World` WASM 
+  app written in rust.
+</p>
+
+<h3>Rust</h3>
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic">[package]
+<span class="line-marker" data-line="2"></span>name = &quot;hello-world&quot;
+<span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
+<span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span>[lib]
+<span class="line-marker" data-line="7"></span>crate-type = [&quot;cdylib&quot;]
+<span class="line-marker" data-line="8"></span>
+<span class="line-marker" data-line="9"></span>[dependencies]
+<span class="line-marker" data-line="10"></span>wasm-bindgen = &quot;0.2.116&quot;</span></code></pre></div>
+
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">wasm_bindgen<span class="punctuation accessor rust">::</span></span><span class="meta path rust">prelude<span class="punctuation accessor rust">::</span></span><span class="keyword operator rust">*</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta annotation rust"><span class="punctuation definition annotation rust">#</span><span class="punctuation section group begin rust">[</span><span class="variable annotation rust">wasm_bindgen</span><span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="4"></span><span class="meta function rust"><span class="meta function rust"><span class="storage modifier rust">pub</span> <span class="storage type function rust">fn</span> </span><span class="entity name function rust">hello_world</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> String</span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="5"></span>  <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Hello, world!<span class="punctuation definition string end rust">&quot;</span></span>.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="6"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker" data-line="2"></span></span>
+<span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">wasm-pack</span></span><span class="meta function-call arguments shell"> build<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> --</span>target</span> web</span></span></code></pre></div>
+
+<h3>HTML</h3>
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span><span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span><span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span>rust<span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span>wasm<span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span>hello-world/hello-world.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">output</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+
+<h4>JavaScript</h4>
+<div class=""><pre><code><span class="line-marker" data-line="1"></span><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="variable other readwrite js">init</span><span class="punctuation separator comma js">,</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">hello_world</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>./pkg/hello_world.js<span class="punctuation definition string end js">&quot;</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta function declaration js"><span class="storage type js">async</span> <span class="storage type function js">function</span> <span class="entity name function js">main</span><span class="punctuation section group begin js">(</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="4"></span>  <span class="keyword control flow js">await</span> <span class="meta function-call js"><span class="variable function js">init</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="5"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">el</span> <span class="keyword operator assignment js">=</span> <span class="support type object dom js">document</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">querySelector</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>#output<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="6"></span>  <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta property object js">innerHTML</span> <span class="keyword operator assignment js">=</span> <span class="meta function-call js"><span class="variable function js">hello_world</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="7"></span><span class="punctuation section block js">}</span></span>
+<span class="line-marker" data-line="8"></span>
+<span class="line-marker" data-line="9"></span><span class="meta function-call js"><span class="variable function js">main</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span></span></code></pre></div>
+
+
+<h4>Output</h4>
+<div class="output-block"><pre><code>
+<script type="module" src="&#x2f;&#x2f;rust&#x2f;wasm&#x2f;hello-world/hello-world.js"></script>
+<div id="output"></div>
+
+</code></pre></div>
+
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+
+
+    <div class="templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>
+]]></summary>
+
+  </entry>
+
+  <entry>
+    <title>The Clicky Sound</title><link href="https://al9000.com&#x2f;the-clicky-sound/"/><id>urn:uuid:ed4dac13-8476-565c-99e7-2efca3bd4ae7</id>
+    <updated>2020-09-09T00:00:00-04:00</updated>
+
+    <summary><![CDATA[RSS FEED]]></summary>
+
+  </entry>
+
+
+
+
+</feed>
