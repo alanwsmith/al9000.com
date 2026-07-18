@@ -3,22 +3,22 @@
 == else 
 == extends "/templates.inc/pages/default.html"
 == endif
+
 == block toml
 title = "TODO"
 created = 2026-07-07T14:16:14-04:00
 status = "done"
 id = "ab/ve/2q/to" 
 tags = []
-flags = []
+flags = ["skip"]
 == endblock
 
 
 == block main
-
 == filter neo
 -- p
 
-
+My dev to do list.
 
 -- h2
 
@@ -63,9 +63,16 @@ entries on the admin page.
     and forth between footnotes. 
 
 
+-- h2
+
+Site Redirects
+
+-- checklist
+
+[] stream-tools.alanwsmith.com
+
 
 == endfilter
-
 == filter md
 
 ## SSG 9000
