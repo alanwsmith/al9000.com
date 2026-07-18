@@ -10,31 +10,13 @@ flags = ["no-date"]
 
 == block main
 
-== filter md
-
-[! set keys = namespace() !]
-[! set keys.date = "" !]
-
-[! for f1 in folders_in_folder("/blog")|reverse !]
-  [! for f2 in folders_in_folder("/blog/" + f1)|reverse !]
-    [! for f3 in folders_in_folder("/blog/" + f1 + "/" + f2)|reverse !]
-      [! set f_path = [p.dir, "index.html"]|join("/")|safe !]
-      [! if exists(f_path) !]
-        [! if d.blog[f1][f2][f3].index.status == "draft" or d.blog[f1][f2][f3].index.status == "scratch" !]
-[! if keys.date != date(d.blog[f1][f2][f3].index.created) !]
-[! set keys.date = date(d.blog[f1][f2][f3].index.created) !]
-### [@ keys.date @] 
-[! endif !]
-
-- <a href="[@ p.dir @]">[@ d.blog[f1][f2][f3].index.title|safe @]</a>
-        [! endif !]
-      [! endif !]
-    [! endfor !]
-  [! endfor !]
-[! endfor !]
-
-== endfilter
-
+<ul>
+== for f in file_list() 
+  == if f[1].status != "done" 
+    <li><a href="[@ f[0] @]">[@ f[1].title @]</a></li>
+  == endif
+== endfor
+</ul>
 
 
 == endblock

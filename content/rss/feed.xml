@@ -10,6 +10,31 @@
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
+== for f in file_list()
+  == if f[1].status == "done"
+  <entry>
+    <title>
+      [@- f[1].title -@]
+      [!- if f[1].subtitle -!]
+        [@ " " @]- [@ f[1].subtitle -@]
+      [!- endif -!]
+    </title>
+    [!- if f[1].file_name == "index.html" -!]
+      <link href="https://al9000.com[@ f[1].dir @]/"/>
+    [!- else -!]
+      <link href="https://al9000.com[@ f[1].path @]"/>
+    [!- endif -!]
+    <id>urn:uuid:[@ uuid(f[1].path) @]</id>
+    <updated>[@ timestamp(f[1].created) @]</updated>
+
+    <summary><![CDATA[[! include f[1].path !]]]></summary>
+
+  </entry>
+
+  == endif
+== endfor
+
+[#
 == for f1 in folders_in_folder("/blog")|reverse 
   == for f2 in folders_in_folder("/blog/" + f1)|reverse
     == for f3 in folders_in_folder("/blog/" + f1 + "/" + f2)|reverse 
@@ -28,7 +53,7 @@
       == endif
     </title>
     <link href="https://al9000.com/blog/[@ f1 @]/[@ f2 @]/[@ f3 @]/"/>
-    <id>urn:uuid:[@ uuid("https://al9000.com/blog/" +  f1  + "/" + f2 + "/" + f3 + "/") @]></id>
+    <id>urn:uuid:[@ uuid("https://al9000.com/blog/" +  f1  + "/" + f2 + "/" + f3 + "/") @]</id>
     <updated>[@ timestamp(d.blog[f1][f2][f3].index.created) @]</updated>
 
     <summary><![CDATA[[! include "/blog/" + f1 + "/" + f2 + "/" + f3 + "/index.html" !]]]></summary>
@@ -40,4 +65,6 @@
     == endfor 
   == endfor 
 == endfor 
+#]
+
 </feed>

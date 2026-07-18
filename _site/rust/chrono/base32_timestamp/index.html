@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+
+</style>    <script src="/styles/styles.js"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Encode a DateTime into Eight Characters with base32 in Rust</title>
+<meta property="og:title" content="Encode a DateTime into Eight Characters with base32 in Rust" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com&#x2f;rust&#x2f;chrono&#x2f;base32_timestamp/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    
+    
+    
+  </head>
+  <body>
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+  </div>
+
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+        <h1>Encode a DateTime into Eight Characters with base32 in Rust</h1>
+        <div class="date">July 2026</div>
+  </hgroup>
+
+
+
+<h2>Overview</h2>
+
+<p>
+  This is now I'm converting a DateTime from 
+  chrono into an eight character base32 string. 
+  The timestamps have a resolution of one
+  second (i.e. no fractions of a second). 
+  I use these for the IDs for pages on my site. 
+  Each ID is split into four directories 
+  of two characters each. This prevents
+  issues with too many items in a single
+  directory causing issues.
+</p>
+
+
+<h3>Rust</h3>
+
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">[package]
+<span class="line-marker" data-line="2"></span>name = &quot;base32_timestamp&quot;
+<span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
+<span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span>[dependencies]
+<span class="line-marker" data-line="7"></span>chrono = &quot;0.4.45&quot;
+<span class="line-marker" data-line="8"></span>data-encoding = &quot;2.11.0&quot;</span></code></pre></div>
+
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">chrono<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>DateTime<span class="punctuation separator rust">,</span> Utc</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">data_encoding<span class="punctuation accessor rust">::</span></span><span class="constant other rust">BASE32_NOPAD</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="3"></span>
+<span class="line-marker" data-line="4"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="5"></span>  <span class="storage type rust">let</span> dt <span class="keyword operator rust">=</span> <span class="support function rust">encode_datetime</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="6"></span>  <span class="storage type rust">let</span> seconds_from_epoch <span class="keyword operator rust">=</span> <span class="support function rust">decode_datetime</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>dt</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="7"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span><span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> dt<span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="8"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span><span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> seconds_from_epoch<span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="9"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
+<span class="line-marker" data-line="10"></span>
+<span class="line-marker" data-line="11"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">encode_datetime</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> String</span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="12"></span>  <span class="storage type rust">let</span> dt<span class="punctuation separator rust">:</span> <span class="storage type rust">i64</span> <span class="keyword operator rust">=</span> <span class="meta path rust">Utc<span class="punctuation accessor rust">::</span></span>now<span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">timestamp</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="13"></span>  <span class="storage type rust">let</span> bytes <span class="keyword operator rust">=</span> <span class="keyword operator rust">&amp;</span>dt.<span class="support function rust">to_be_bytes</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="constant numeric integer decimal rust">3</span><span class="keyword operator rust">..</span><span class="constant numeric integer decimal rust">8</span><span class="punctuation section group end rust">]</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="14"></span>  <span class="constant other rust">BASE32_NOPAD</span>.<span class="support function rust">encode</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>bytes</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">to_lowercase</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="15"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
+<span class="line-marker" data-line="16"></span>
+<span class="line-marker" data-line="17"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">decode_datetime</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span><span class="variable parameter rust">dt</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span><span class="storage type rust">str</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">DateTime<span class="punctuation definition generic begin rust">&lt;</span>Utc<span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="18"></span>  <span class="storage type rust">let</span> five_bytes <span class="keyword operator rust">=</span>
+<span class="line-marker" data-line="19"></span>    <span class="constant other rust">BASE32_NOPAD</span>.<span class="support function rust">decode</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>dt.<span class="support function rust">to_uppercase</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">as_bytes</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="20"></span>  <span class="storage type rust">let</span> <span class="storage modifier rust">mut</span> buf <span class="keyword operator rust">=</span> <span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="constant numeric integer decimal rust">0</span><span class="storage type numeric rust">u8</span><span class="punctuation separator rust">;</span> <span class="constant numeric integer decimal rust">8</span><span class="punctuation section group end rust">]</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="21"></span>  buf<span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="constant numeric integer decimal rust">3</span><span class="keyword operator rust">..</span><span class="constant numeric integer decimal rust">8</span><span class="punctuation section group end rust">]</span></span>.<span class="support function rust">copy_from_slice</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>five_bytes</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="22"></span>  <span class="storage type rust">let</span> ts <span class="keyword operator rust">=</span> <span class="storage type rust">i64</span><span class="meta path rust"><span class="punctuation accessor rust">::</span></span>from_be_bytes<span class="meta group rust"><span class="punctuation section group begin rust">(</span>buf</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="23"></span>  <span class="meta path rust">DateTime<span class="punctuation accessor rust">::</span></span>from_timestamp<span class="meta group rust"><span class="punctuation section group begin rust">(</span>ts<span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">0</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="24"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+
+<h3>Output</h3>
+
+<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">abvfvacc
+<span class="line-marker" data-line="2"></span>2026-07-17 19:19:30 UTC</span></code></pre></div>
+
+
+<div class="end-of-line"></div>
+
+<h2>Endnotes</h2>
+
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Base32">base32 encoding</a> uses 32 characters where each one
+represents 5 bits.</p>
+</li>
+<li>
+<p>5 bits x 8 characters = 40 bits of data.</p>
+</li>
+<li>
+<p>40 bits (2^40) represents a little over 1 trillion values.</p>
+</li>
+<li>
+<p>At 1 second per value, the 40 bits represents about 34,000 years.
+More than enough to cover the expected time I'll be posting
+on my blog.</p>
+</li>
+<li>
+<p>The <code>&amp;dt.to_be_bytes()[3..8]</code> call keeps the output
+lined up chronologically (by making it Big Endian, which
+I only half way understand), and strips of the first
+few bits from the byte which aren't needed.</p>
+</li>
+</ul>
+
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+
+    <div class="templates">
+      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+    </div>
+  </body>
+</html>

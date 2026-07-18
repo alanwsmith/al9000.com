@@ -6,8 +6,14 @@ status = "done"
 created = 2026-03-30T14:22:33-04:00
 == endblock
 
+
+
 == block head 
 <style>
+body {
+  color-scheme: dark light;
+}
+
 input {
   width: 100%;
 }
@@ -23,11 +29,12 @@ input {
 
 TODO: Bring tools page back up
 
-== for folder in folders_in_folder("/tools") 
+== for folder in folders_in_folder("/tools", full = true) 
   == if exists(folder + "/index.html")
-  <bitty-8 data-connect="/tools/[@ folder @]/bit.js"></bitty-8>
-   <details class="d"><summary>[@ d.tools[folder].index.title @]</summary> 
-    == include "/tools/" + folder + "/index.html"
+    == set key = stem(folder)
+  <bitty-8 data-connect="[@ folder @]/bit.js"></bitty-8>
+   <details class="d"><summary>[@ d.tools[key].index.title @]</summary> 
+    == include folder + "/index.html"
    </details> 
   == endif
 == endfor
@@ -36,7 +43,6 @@ TODO: Bring tools page back up
 [#
   == for key in d.tools 
     == if key != "index"
-
     <details class="d"><summary>[@ d.tools[key].index.title @]</summary>
       == include "/tools/" + key + "/index.html"
     </details>

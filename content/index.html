@@ -38,13 +38,22 @@ tid = "3FfqCqL5Tnlzi"
 </p>
 <p>-a<p>
 
+
+<ul>
+== for f in file_list() 
+  == if f[1].status == "done"
+    <li><a href="[@ f[0] @]">[@ f[1].title @]</a></li>
+  == endif
+== endfor
+</ul>
+
+
+
 == filter md
 ## Blog
 == endfilter
 
 == include "/blog/posts.inc.html"
-
-
 
 
 

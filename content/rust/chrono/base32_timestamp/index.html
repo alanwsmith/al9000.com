@@ -1,0 +1,70 @@
+== extends "/templates.inc/pages/default.html"
+
+== block toml
+title = "Encode a DateTime into Eight Characters with base32 in Rust"
+created = 2026-07-17T12:26:00-04:00
+== endblock
+
+== block main 
+
+<h2>Overview</h2>
+
+<p>
+  This is now I'm converting a DateTime from 
+  chrono into an eight character base32 string. 
+  The timestamps have a resolution of one
+  second (i.e. no fractions of a second). 
+  I use these for the IDs for pages on my site. 
+  Each ID is split into four directories 
+  of two characters each. This prevents
+  issues with too many items in a single
+  directory causing issues.
+</p>
+
+
+<h3>Rust</h3>
+
+[! filter highlight("toml") !]
+[! include parent(file_path) + "/Cargo.toml" !]
+[! endfilter !]
+
+[! filter highlight("rust") !]
+[! include parent(file_path) + "/src/main.rs" !]
+[! endfilter !]
+
+<h3>Output</h3>
+
+[! filter output() !]
+[! include parent(file_path) + "/output.txt" !]
+[! endfilter !]
+
+
+<div class="end-of-line"></div>
+
+<h2>Endnotes</h2>
+
+== filter md
+- [base32 encoding](https://en.wikipedia.org/wiki/Base32) uses 32 characters where each one
+represents 5 bits. 
+- 5 bits x 8 characters = 40 bits of data. 
+- 40 bits (2^40) represents a little over 1 trillion values. 
+- At 1 second per value, the 40 bits represents about 34,000 years. 
+More than enough to cover the expected time I'll be posting
+on my blog.
+- The `&dt.to_be_bytes()[3..8]` call keeps the output
+lined up chronologically (by making it Big Endian, which
+I only half way understand), and strips of the first
+few bits from the byte which aren't needed. 
+
+
+
+
+== endfilter
+
+
+== endblock 
+
+
+
+
+
