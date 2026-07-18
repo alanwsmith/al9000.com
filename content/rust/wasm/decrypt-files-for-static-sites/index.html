@@ -1,4 +1,8 @@
-[!- extends "/templates.inc/pages/rust.html" -!]
+== if rss
+== extends "/templates.inc/rss/default.html"
+== else
+== extends "/templates.inc/pages/default.html"
+== endif
 
 == block toml
 title = "Password Protecting Static Site Content with WASM"
