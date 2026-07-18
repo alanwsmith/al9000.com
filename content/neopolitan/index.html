@@ -1,7 +1,11 @@
 == if rss
 == extends "/templates.inc/rss/default.html"
 == else 
+== if rss
+== extends "/templates.inc/rss/default.html"
+== else 
 == extends "/templates.inc/pages/default.html"
+== endif
 == endif 
 
 == block toml

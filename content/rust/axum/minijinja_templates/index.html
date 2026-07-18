@@ -1,4 +1,8 @@
+== if rss
+== extends "/templates.inc/rss/default.html"
+== else 
 == extends "/templates.inc/pages/default.html"
+== endif
 == block toml
 title = "Using MiniJinja Templates for Dynamic Web Pages with Rust's Axum Server"
 created = 2026-07-08T08:23:00-04:00

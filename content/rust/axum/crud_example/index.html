@@ -1,4 +1,8 @@
+== if rss
+== extends "/templates.inc/rss/default.html"
+== else 
 == extends "/templates.inc/pages/default.html"
+== endif
 
 == block toml
 title = "A Rust/Axum Web App CRUD Boilerplate"

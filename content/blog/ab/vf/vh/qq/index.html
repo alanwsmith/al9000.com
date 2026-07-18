@@ -1,7 +1,11 @@
 == if rss
 == extends "/templates.inc/rss/default.html"
 == else 
+== if rss
+== extends "/templates.inc/rss/default.html"
+== else 
 == extends "/templates.inc/pages/blog.html"
+== endif
 == endif 
 
 == block toml 
@@ -19,7 +23,8 @@ id = "ab/vf/vh/qq"
 I'm doing something new with the structure of my 
 site. Or, something old, really. While
 I've got a `blog` folder to hold general
-posts, the rest of the site is
+posts, the r
+est of the site is
 made up of arbitrary folders and files
 scattered to the four winds. I can 
 throw stuff anywhere. It's liberating. 

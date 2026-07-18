@@ -1,4 +1,8 @@
-== extends "/templates.inc/pages/rust.html"
+== if rss
+== extends "/templates.inc/rss/default.html"
+== else 
+== extends "/templates.inc/pages/default.html"
+== endif
 
 == block toml
 title = "Access Mac Keychain Access Passwords from a Rust App"
@@ -25,13 +29,13 @@ when I need them:
 
 
 == filter highlight("rust", "src/main.rs")  
-== include parent(file_path) + "/src/main.rs"
+== include inc_dir() + "/src/main.rs"
 == endfilter
 
 with this Cargo.toml:
 
 == filter highlight("rust", "Cargo.toml")  
-== include parent(file_path) + "/Cargo.toml"
+== include inc_dir() + "/Cargo.toml"
 == endfilter
 
 When I run the app from the command line I get

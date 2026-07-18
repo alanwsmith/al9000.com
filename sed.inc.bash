@@ -8,5 +8,6 @@
 
 find "/Users/alan/workshop/al9000.com/content/" \
   -type f \( -iname "*.html" -o -iname "*.txt" -o -iname "*.md" -o -iname "*.neo" \) -print0 | xargs -0 sed -E -i "" \
-'s/f.dir/p.dir/g'
+'s|== extends "/templates.inc/pages/rust.html"|== if rss\n== extends "/templates.inc/rss/default.html"\n== else \n== extends "/templates.inc/pages/default.html"\n== endif|g'
+
 
