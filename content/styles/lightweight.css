@@ -1,0 +1,33 @@
+:root {
+  interpolate-size: allow-keywords;
+  --bitty-switch-off: #778;
+  --bitty-switch-on: #0a0;
+  --bitty-switch-text: white;
+  --default-flow: 0.9rem;
+}
+
+@font-face { 
+  font-family: "Hack";
+  src: url("/fonts/HackNerdFontMono-Regular.ttf");
+  font-display: block;
+}
+
+
+body {
+  font-family: system-ui, sans-serif;
+}
+
+.default-flow > :where(:not(:first-child)) {
+  margin-top: var(--flow-space, var(--default-flow));
+}
+
+footer {
+  color: var(--default-color);
+  font-size: var(--small-font);
+  margin-bottom: var(--default-margin);
+  margin-inline: auto;
+  margin-top: var(--xlarge-margin);
+  text-align: var(--align-center);
+  width: var(--default-width);
+}
+

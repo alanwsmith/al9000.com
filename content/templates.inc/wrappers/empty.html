@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     == include "/templates.inc/includes/metadata.html"
     <link rel="stylesheet" href="/styles/colors.css" />
-    <link rel="stylesheet" href="/styles/empty.css" />
+    <script src="[@ d.config.bittyURL @]" type="module"></script>
     == block head
     == endblock
   </head>
   <body>
-    <div class="noscript">[! include "templates.inc/includes/noscript.html" !]</div>
+    [! include "templates.inc/includes/noscript.html" !]
 
     == block main 
     == endblock
@@ -19,9 +19,8 @@
 
     == block content 
     == endblock
-    <div class="hidden support">
-      <script src="[@ d.config.bittyURL @]" type="module"></script>
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+
+    <div class="template" hidden>
       [# TODO: Deprecate 'support' in favor of 'templates' #]
       == block support
       == endblock

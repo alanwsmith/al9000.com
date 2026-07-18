@@ -23,7 +23,42 @@
 />
 
     <link rel="stylesheet" href="/styles/colors.css" />
-    <link rel="stylesheet" href="/styles/empty.css" />
+    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+<style>
+:root {
+  interpolate-size: allow-keywords;
+  --bitty-switch-off: #778;
+  --bitty-switch-on: #0a0;
+  --bitty-switch-text: white;
+  --default-flow: 0.9rem;
+}
+
+@font-face { 
+  font-family: "Hack";
+  src: url("/fonts/HackNerdFontMono-Regular.ttf");
+  font-display: block;
+}
+
+
+body {
+  font-family: system-ui, sans-serif;
+}
+
+.default-flow > :where(:not(:first-child)) {
+  margin-top: var(--flow-space, var(--default-flow));
+}
+
+footer {
+  color: var(--default-color);
+  font-size: var(--small-font);
+  margin-bottom: var(--default-margin);
+  margin-inline: auto;
+  margin-top: var(--xlarge-margin);
+  text-align: var(--align-center);
+  width: var(--default-width);
+}
+</style>
+
 <style>
 * {
   margin: 0;
@@ -40,9 +75,6 @@ html {
 body {
   background-color: var(--background-color);
   color: var(--default-color);
-  min-height: 100svh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
 }
 
 :root {
@@ -69,20 +101,122 @@ body {
 </style>
   </head>
   <body>
-    <div class="noscript"><noscript>
+    <noscript>
   <p>
     NOTE: This site use JavaScript which appears to be turned off. 
     Some content will be fine, but some things won't work.
   </p>
 
-</noscript></div>
+</noscript>
 
 
     
 
-    <div class="hidden support">
-      <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+  </div>
+
+  <div class="subnav"><a href="/css">CSS Grimoire</a></div>
+</header>
+
+
+<main class="default-flow">
+  <hgroup class="default-flow">
+    <h1>Animate Opening a details Element</h1>
+    <div>
+      NOTE: This page doesn't have base styles applied yet so things
+      look kinda busted.
+    </div>
+  </hgroup>
+
+  <p>
+    This CSS animates opening and
+    closing details elements. 
+    NOTE: At press time, this works
+    in Chrome but not Firefox. 
+    Your mileage may vary in 
+    other browsers. 
+  </p>
+
+  <h3>HTML</h3>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">details</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span>  <span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">summary</span><span class="punctuation definition tag end html">&gt;</span></span>Details to expand<span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">summary</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="3"></span>  <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">default-flow</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="4"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">p</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="5"></span>      Lorem ipsum aliquet. Platea velit maximus. 
+<span class="line-marker" data-line="6"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">p</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="7"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">p</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="8"></span>      Cras fusce rhoncus ligula bibendum. Nunc varius urna aliquet. 
+<span class="line-marker" data-line="9"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">p</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="10"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">p</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="11"></span>      Tempor quis maecenas congue dapibus eros.
+<span class="line-marker" data-line="12"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">p</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="13"></span>  <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="14"></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">details</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+  <h3>CSS</h3>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source css"><span class="meta selector css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>root</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="2"></span>  <span class="meta property-name css">interpolate-<span class="support type property-name css">size</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css">allow-keywords</span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="3"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="4"></span>
+<span class="line-marker" data-line="5"></span><span class="meta at-rule supports css"><span class="keyword control at-rule supports css"><span class="punctuation definition keyword css">@</span>supports</span> <span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="meta property-name css">interpolate-<span class="support type property-name css">size</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css">allow-keywords</span><span class="punctuation definition group end css">)</span></span> <span class="meta block css"><span class="punctuation definition block begin css">{</span>
+<span class="line-marker" data-line="6"></span><span class="meta selector css">  <span class="entity name tag css">details</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="7"></span>    <span class="meta property-name css"><span class="support type property-name css">overflow</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">hidden</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="8"></span></span>  <span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="9"></span>
+<span class="line-marker" data-line="10"></span><span class="meta selector css">  <span class="entity name tag css">details</span><span class="entity other pseudo-element css"><span class="punctuation definition entity css">::</span>details-content</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="11"></span>    <span class="meta property-name css">block-<span class="support type property-name css">size</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">0</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="12"></span>      <span class="meta property-name css"><span class="support type property-name css">transition</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css">
+<span class="line-marker" data-line="13"></span>        <span class="support constant property-value css">block</span>-size <span class="constant numeric css">170<span class="keyword other unit css">ms</span></span>,
+<span class="line-marker" data-line="14"></span>        <span class="support constant property-value css">content</span>-<span class="support constant property-value css">visibility</span> <span class="constant numeric css">170<span class="keyword other unit css">ms</span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="15"></span>      <span class="meta property-name css"><span class="support type property-name css">transition</span>-behavior</span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css">allow-discrete</span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="16"></span></span>  <span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="17"></span>
+<span class="line-marker" data-line="18"></span><span class="meta selector css">  <span class="entity name tag css">details</span><span class="meta attribute-selector css"><span class="punctuation definition entity css">[</span><span class="entity other attribute-name css">open</span><span class="punctuation definition entity css">]</span></span><span class="entity other pseudo-element css"><span class="punctuation definition entity css">::</span>details-content</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="19"></span>    <span class="meta property-name css">block-<span class="support type property-name css">size</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">auto</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="20"></span></span>  <span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="21"></span></span><span class="meta block css"><span class="punctuation definition block end css">}</span></span></span></span></code></pre></div>
+
+  <h3>Output</h3>
+<details>
+  <summary>Details to expand</summary>
+  <div class="default-flow">
+    <p>
+      Lorem ipsum aliquet. Platea velit maximus. 
+    </p>
+    <p>
+      Cras fusce rhoncus ligula bibendum. Nunc varius urna aliquet. 
+    </p>
+    <p>
+      Tempor quis maecenas congue dapibus eros.
+    </p>
+  </div>
+</details>  <p>Via: https://www.youtube.com/watch?v=Vzj3jSUbMtI</p>
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+
+
+    <div class="template" hidden>
       
     </div>
   </body>

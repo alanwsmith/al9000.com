@@ -13,6 +13,10 @@ created = 2026-04-07T10:27:15-04:00
 
 == block head
 <style>
+== include "/styles/lightweight.css"
+</style>
+
+<style>
 * {
   margin: 0;
 }
@@ -28,9 +32,6 @@ html {
 body {
   background-color: var(--background-color);
   color: var(--default-color);
-  min-height: 100svh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
 }
 
 == include inc_dir() + "/styles.css"
@@ -39,18 +40,27 @@ body {
 == endblock
 
 
-== block body
+== block content 
 
 == include "/templates.inc/includes/empty/css-header.html"
 
 <main class="default-flow">
-  <hgroup>
+  <hgroup class="default-flow">
     <h1>[@ p.title @]</h1>
     <div>
       NOTE: This page doesn't have base styles applied yet so things
       look kinda busted.
     </div>
   </hgroup>
+
+  <p>
+    This CSS animates opening and
+    closing details elements. 
+    NOTE: At press time, this works
+    in Chrome but not Firefox. 
+    Your mileage may vary in 
+    other browsers. 
+  </p>
 
   <h3>HTML</h3>
   == filter highlight("html")
@@ -63,18 +73,15 @@ body {
   == endfilter
 
 
-
   <h3>Output</h3>
 == include inc_dir() + "/page.html"
-
-
-
   <p>Via: https://www.youtube.com/watch?v=Vzj3jSUbMtI</p>
-
 </main>
 
 == include "/templates.inc/includes/footer.html"
+
 == endblock
+
 
 
 
