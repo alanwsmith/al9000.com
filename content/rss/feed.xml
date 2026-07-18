@@ -12,6 +12,8 @@
 
 == for f in file_list()
   == if f[1].status == "done"
+  [# Load p with f[1] so things like p.dir work #]
+  == set p = f[1]
   <entry>
     <title>
       [@- f[1].title -@]
@@ -26,45 +28,9 @@
     [!- endif -!]
     <id>urn:uuid:[@ uuid(f[1].path) @]</id>
     <updated>[@ timestamp(f[1].created) @]</updated>
-
     <summary><![CDATA[[! include f[1].path !]]]></summary>
-
   </entry>
-
   == endif
 == endfor
-
-[#
-== for f1 in folders_in_folder("/blog")|reverse 
-  == for f2 in folders_in_folder("/blog/" + f1)|reverse
-    == for f3 in folders_in_folder("/blog/" + f1 + "/" + f2)|reverse 
-      == set f_dir = ["/blog", f1, f2, f3]|join("/")|safe 
-      == set f_path = [f_dir, "index.html"]|join("/")|safe 
-      == if exists(f_path) 
-        == set entry = d.blog[f1][f2][f3].index
-        == if entry.status == "done" 
-          == if entry.title 
-            == if entry.created 
-  <entry>
-    <title>
-      [@ entry.title @]
-      == if entry.subtitle
-- [@ entry.subtitle @]
-      == endif
-    </title>
-    <link href="https://al9000.com/blog/[@ f1 @]/[@ f2 @]/[@ f3 @]/"/>
-    <id>urn:uuid:[@ uuid("https://al9000.com/blog/" +  f1  + "/" + f2 + "/" + f3 + "/") @]</id>
-    <updated>[@ timestamp(d.blog[f1][f2][f3].index.created) @]</updated>
-
-    <summary><![CDATA[[! include "/blog/" + f1 + "/" + f2 + "/" + f3 + "/index.html" !]]]></summary>
-  </entry>
-            == endif 
-          == endif 
-        == endif 
-      == endif 
-    == endfor 
-  == endfor 
-== endfor 
-#]
 
 </feed>

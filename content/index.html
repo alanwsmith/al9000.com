@@ -42,7 +42,7 @@ tid = "3FfqCqL5Tnlzi"
 <ul>
 == for f in file_list() 
   == if f[1].status == "done"
-    <li><a href="[@ f[0] @]">[@ f[1].title @]</a></li>
+    <li><a href="[@ f[1].dir @]/">[@ f[1].title @]</a></li>
   == endif
 == endfor
 </ul>

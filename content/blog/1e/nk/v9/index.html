@@ -10,7 +10,7 @@ created = 2026-06-21T07:56:00-04:00
 status = "done"
 == endblock
 
-== block main
+== block content 
 == filter md
 
 I started moving my site from [alanwsmith.com](https://www.alanwsmith.com/)
@@ -31,7 +31,13 @@ You can pick it up [on this page](/rss/).
 
 -a
 
-### Endnotes
+== endfilter
+== endblock
+== block backmatter
+== filter md
+
+
+## Endnotes
 
 - Right now, the feed only contains blog posts. 
 One feature on the TODO list is to provide a way
@@ -54,7 +60,7 @@ Nor am I worried about them.
   the term RSS. Atom works in readers. 
   That's all I need. 
 
-### Footnotes
+## Footnotes
 
 - <sup>1</sup> [I'm Not Ready To Start This Blog](/blog/1e/bk/0i/) - in 
 which I make the first post on this site just to get started. 
@@ -78,7 +84,6 @@ to make their own.
   on it is like compounding interest over time. 
   Especially compared to the never ending treadmill of
   jumping to new frameworks. 
-
 
 
 == endfilter

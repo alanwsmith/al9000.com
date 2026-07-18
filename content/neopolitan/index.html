@@ -1,11 +1,7 @@
 == if rss
 == extends "/templates.inc/rss/default.html"
 == else 
-== if rss
-== extends "/templates.inc/rss/default.html"
-== else 
 == extends "/templates.inc/pages/default.html"
-== endif
 == endif 
 
 == block toml
@@ -19,12 +15,11 @@ flags = ["no-date"]
 
 == block css
 <style>
-== include p.dir + "/styles.css"
+== include inc_dir() + "/styles.css"
 </style>
 == endblock
 
-== block main
-
+== block content 
 <div class="warning">
   <p>
     Head's up
@@ -421,12 +416,12 @@ The HTML for a web page might looks like
 this:
 
 == filter highlight("html")
-== include p.dir + "/examples/1.html"
+== include inc_dir() + "/examples/1.html"
 == endfilter
 
 When, in turn, gets rendered like this:
 
-== include p.dir + "/examples/1.html"
+== include inc_dir() + "/examples/1.html"
 
 
 Achieving that layout in Markdown 
@@ -489,13 +484,12 @@ hope you'll enjoy it too.
 -a
 
 == endfilter
+== endblock
 
 
-<div class="end-of-line"></div>
-
-
+== block backmatter
 == filter md
-### Endnotes
+## Endnotes
 
 - Neopolitan was born out of frustration 
 with Markdown. As great as that format is, 
@@ -523,7 +517,6 @@ for my web sites and personal grimoire of notes.
 The later of which is currently 11,629
 Neopolitan files. I've yet to run into 
 something it can't handle. 
-
 
 
 

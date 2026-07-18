@@ -10,7 +10,7 @@ created = 2026-04-27T17:08:00-04:00
 status = "done"
 == endblock
 
-== block main
+== block content 
 == filter md
 
 I need to write something. 
@@ -125,6 +125,13 @@ with me.
 -a
 
 
+== endfilter
+== endblock
+
+
+== block backmatter
+== filter md
+
 ## Endnotes 
 
 - I've written variations of this
@@ -136,14 +143,6 @@ Back when I did that.
   <a href="/the-clicky-sound">The Clicky Sound</a>.
   The one where I finally dug out of
   two years of major bipolar depression. 
-
-
-  
-
-
-
-
-
 
 
 == endfilter

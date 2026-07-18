@@ -5,22 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     == include "/styles/_includes/initial-styles.html" 
     <script src="/styles/styles.js"></script>
+    <script src="[@ d.config.bittyURL @]" type="module"></script>
     <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/main.css" />
     == include "/templates.inc/includes/metadata.html" 
     [! block head !][! endblock !]
+    [# TODO: Deprecate `block css` in favor of `block styles` #]
     [! block css !][! endblock !]
     [! block javascript !][! endblock !]
   </head>
-  <body>
-    == block body
-    == endblock
+  <body class="[! block body_class !]page[! endblock !]">
+    <div class="body-wrapper default-flow">
+      [! block body !][! endblock !]
+    </div>
     <div class="templates">
-      <script src="[@ d.config.bittyURL @]" type="module"></script>
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
       [# TODO: Deprecate 'support' in favor of 'templates' #]
       == block support
       == endblock
+      [# TODO: Confirm templates pass up here directly from 
+      content files without having to have a link in pages/default.html #]
       == block templates
       == endblock
     </div>

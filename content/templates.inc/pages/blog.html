@@ -1,16 +1,13 @@
-== extends "/templates.inc/wrappers/blog.html" 
+== extends "/templates.inc/wrappers/default.html" 
 
 == set subnav
 <div class="large-top-padding"><a href="/blog/">blog</a></div>
 == endset
 
 == block body
-== if not rss
 == include "/templates.inc/includes/header.html"
 <main class="small-wrapper default-flow">
-== endif 
 
-== if not rss
 == block title
   <div class="title-block">
     <hgroup>
@@ -26,21 +23,18 @@
     == endif 
   </div>
 == endblock
-== endif 
 
 
-== block main
-== endblock
+[# TODO: Deprecate `block main` in favor of `block content` and `block backmatter #]
+[!- block main !][! endblock !]
+[!- block content !][! endblock !]
+<div class="end-of-line"></div>
+<div class="backmatter default-flow">
+[!- block backmatter !][! endblock !]
+</div>
 
-== block templates
-== endblock
-
-
-== if not rss
 </main>
 == include "/templates.inc/includes/footer.html"
-== endif 
-
 
 == endblock
 
