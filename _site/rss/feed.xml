@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-18T01:00:58-04:00</updated>
+  <updated>2026-07-18T01:06:59-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -44,7 +44,7 @@
     <title>Konami</title><link href="https://al9000.com&#x2f;konami/"/><id>urn:uuid:0a1bbe0f-c170-523c-83a5-f17055a6dea6</id>
     <updated>2026-06-23T19:29:25-04:00</updated>
 
-    <summary><![CDATA[RSS FEED (empty)]]></summary>
+    <summary><![CDATA[RSS FEED]]></summary>
 
   </entry>
 
@@ -108,7 +108,7 @@
     <title>Manic Scroll</title><link href="https://al9000.com&#x2f;manic-scroll/"/><id>urn:uuid:5ca74181-a524-5145-aa83-fa3340469a32</id>
     <updated>2026-06-19T22:16:00-04:00</updated>
 
-    <summary><![CDATA[RSS FEED (empty)]]></summary>
+    <summary><![CDATA[RSS FEED]]></summary>
 
   </entry>
 
@@ -116,7 +116,7 @@
     <title>QR Story</title><link href="https://al9000.com&#x2f;qr-story/"/><id>urn:uuid:98a081e9-d5dc-5948-a381-0f573187af60</id>
     <updated>2026-06-19T15:37:00-04:00</updated>
 
-    <summary><![CDATA[RSS FEED (empty)]]></summary>
+    <summary><![CDATA[RSS FEED]]></summary>
 
   </entry>
 
@@ -124,7 +124,7 @@
     <title>QR Alice</title><link href="https://al9000.com&#x2f;qr-alice/"/><id>urn:uuid:846d81d0-adb5-5682-b02d-db83541797f2</id>
     <updated>2026-06-19T10:22:00-04:00</updated>
 
-    <summary><![CDATA[RSS FEED (empty)]]></summary>
+    <summary><![CDATA[RSS FEED]]></summary>
 
   </entry>
 
@@ -132,7 +132,7 @@
     <title>QR Clock</title><link href="https://al9000.com&#x2f;qr-clock/"/><id>urn:uuid:5d7c9261-a3dc-5090-9610-fdd1d5d2c2c8</id>
     <updated>2026-06-18T18:22:00-04:00</updated>
 
-    <summary><![CDATA[RSS FEED (empty)]]></summary>
+    <summary><![CDATA[RSS FEED]]></summary>
 
   </entry>
 
@@ -164,7 +164,7 @@
     <title>Doors</title><link href="https://al9000.com&#x2f;doors/"/><id>urn:uuid:a90d2ef7-7fd4-538d-a72e-c0adc7ae7056</id>
     <updated>2026-04-12T14:33:00-04:00</updated>
 
-    <summary><![CDATA[RSS FEED (empty)]]></summary>
+    <summary><![CDATA[RSS FEED]]></summary>
 
   </entry>
 
