@@ -12,11 +12,22 @@
     [! block head !][! endblock !]
     [# TODO: Deprecate `block css` in favor of `block styles` #]
     [! block css !][! endblock !]
+    [! block styles !][! endblock !]
     [! block javascript !][! endblock !]
   </head>
   <body class="[! block body_class !]page[! endblock !]">
     <div class="body-wrapper default-flow">
       [! block body !][! endblock !]
+    </div>
+    <div>
+      [! if p.created !]
+      <div>
+id = "[@ tmp_id_from_timestamp(p.created["$__toml_private_datetime"]) @]"
+      </div>
+      <div>
+        [@ p.path @]
+      </div>
+      [! endif !]
     </div>
     <div class="templates">
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>

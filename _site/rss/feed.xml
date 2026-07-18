@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-18T11:23:23-04:00</updated>
+  <updated>2026-07-18T16:05:19-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -591,6 +591,170 @@ something it can't handle.</p>
   </entry>
   
   <entry>
+    <title>TODO</title><link href="https://al9000.com&#x2f;todo/"/><id>urn:uuid:c48ea139-7140-5f41-adef-e1ffe71c4688</id>
+    <updated>2026-07-07T14:16:14-04:00</updated>
+    <summary><![CDATA[
+
+<pre class="tmp-neo">-- p
+
+
+
+-- h2
+
+SSG 9000
+
+Thing to do for Static Site Generator 9000
+(which powers this site).
+
+-- checklist
+-- h3: Active
+
+[] TODO: Created CRUD tool for blog 
+entires on the admin page. 
+
+[] TODO: Added VIM motions to the
+blog post editor. 
+
+[] TODO: Added IDs and or skip flags
+to all pages with titles so 
+`file_list()` is up to date. 
+
+[] TODO: Set up to capture alt text
+from images. 
+
+[] TODO: Added `image` function that takes
+the stem of a file name and returns
+an image tag with the path to the
+image regardless of where it is. 
+Option keywords arguments can 
+be passes as well. The first is
+`class` which overrides the default
+class from the image call. 
+
+[] TODO: Created a CRUD tool for quotes
+on the admin page. 
+
+[] TODO: Created a CRUD tool for journal 
+entries on the admin page. 
+
+[] TODO: Added functions for `footnote_link` and
+    `footnote_ref` for linking back
+    and forth between footnotes. 
+
+
+
+</pre>
+<h2>SSG 9000</h2>
+<h3>Active</h3>
+<h3>Someday/Maybe</h3>
+<ul>
+<li>
+<p>Add dark/light mode switcher back in.</p>
+</li>
+<li>
+<p>Deprecate <code>highlight</code> and replace with
+<code>highlight(CODE [OPTIONS])</code> so you can
+pass named keyword args to it for things
+like the title and heading.</p>
+</li>
+<li>
+<p>Switch to using <code>categories = []</code> instead of
+things like <code>status = &quot;code&quot;</code> to separate
+content on the home page, etc...</p>
+</li>
+<li>
+<p>Show all pages in the RSS feed if they have a
+<code>status=&quot;done&quot;</code> unless they have a <code>tags = [&quot;no-rss&quot;]</code></p>
+</li>
+<li>
+<p>Add local tool to view current blog posts and statuses</p>
+</li>
+<li>
+<p>Add local tool to make new blog post files.</p>
+</li>
+<li>
+<p>Add local tool to capture quotes.</p>
+</li>
+<li>
+<p>Split out the <code>/admin</code> section to its
+own server.</p>
+</li>
+<li>
+<p>Add a <code>localhost</code> check to add extra data
+data a page via javascript if you're
+on localhost.</p>
+</li>
+<li>
+<p>Create a page to display errors for the
+site.</p>
+</li>
+<li>
+<p>Add a <code>join_path()</code> function that joins
+strings with <code>/</code> characters.</p>
+</li>
+<li>
+<p>Build CSS as stylesheet instead of JS file.</p>
+</li>
+</ul>
+<h3>Done</h3>
+<ul>
+<li>
+<p>Create an <code>/admin</code> page.</p>
+</li>
+</ul>
+<h2>Neopolitan</h2>
+<ul>
+<li>
+<p>Separate Neopolitan parser from Neopoligen.</p>
+</li>
+<li>
+<p>Add ability to classify sections to Neopolitan parser (e.g. <code>-- some-section list</code>
+would parse the section as a list).</p>
+</li>
+</ul>
+<h2>Portrait Project</h2>
+<ul>
+<li>Build QR Code Maker for portrait project.</li>
+</ul>
+<h2>Misc</h2>
+<h3>Someday/Maybe</h3>
+<ul>
+<li>
+<p>Set up eye tracking for stream.</p>
+</li>
+<li>
+<p>Make a trench run style 3D tunnel from <a href="https://siliconpr0n.org/">siliconpr0n.org</a>
+chip images (<a href="https://hachyderm.io/@infosecdj@infosec.exchange">ref1</a>,
+<a href="http://infosecdj.net:8086/map/nxp/mp091a0/infosecdj_mz_nikpa60x_s3/">ref2</a>)</p>
+</li>
+<li>
+<p>Do something with
+<a href="https://www.flickr.com/groups/controlpanel/pool/with/55045091085">these of old control rooms</a></p>
+</li>
+<li>
+<p>Hook up the eye track for streaming</p>
+</li>
+<li>
+<p>Create a Tech TV page that picks a random video from your Tech TV playlist and plays it so you don't
+have to think about what to watch</p>
+</li>
+<li>
+<p>Create a radio station from a youtube playlist with the playhead set based off<br />
+timestamp so everyone gets the same song</p>
+</li>
+<li>
+<p>Experiment with <a href="https://meodai.github.io/heerich/">Voxels</a></p>
+</li>
+<li>
+<p>Set up infrared camera for stream</p>
+</li>
+</ul>
+
+
+]]></summary>
+  </entry>
+  
+  <entry>
     <title>Stream Tools</title><link href="https://al9000.com&#x2f;stream/"/><id>urn:uuid:dc7f9b0f-74d9-5f48-aafc-0c74aaf856f6</id>
     <updated>2026-06-27T09:35:33-04:00</updated>
     <summary><![CDATA[
@@ -609,6 +773,7 @@ something it can't handle.</p>
     <title>Pondering Standard.site and the Social Web</title><link href="https://al9000.com&#x2f;blog&#x2f;1e&#x2f;nz&#x2f;28/"/><id>urn:uuid:f1cae408-5a15-5106-a44d-c2bcc7edae66</id>
     <updated>2026-06-25T09:01:49-04:00</updated>
     <summary><![CDATA[
+
 <p>I've seen a bunch of references to Standard.site<sup class="footnoteLink" id="body-standard"><a href="#footnote-standard">standard</a></sup>.
 It's an approach to publishing long-form content
 with/in AT Protocol<sup class="footnoteLink" id="body-at"><a href="#footnote-at">at</a></sup>. The same protocol that powers bluesky<sup class="footnoteLink" id="body-bs"><a href="#footnote-bs">bs</a></sup>.
@@ -646,7 +811,7 @@ Doing that would make the
 world a better place<sup class="footnoteLink" id="body-better"><a href="#footnote-better">better</a></sup>.</p>
 <p>-a</p>
 <p>[aka <a href="https://bsky.app/profile/alanwsmith.com">@alanwsmith.com</a> on bluesky]</p>
-<div class="end-of-line">end of line</div>
+
 <h3>Endnotes</h3>
 <ul>
 <li>
@@ -811,8 +976,6 @@ own it.</p>
 </li>
 </ul>
 </div>
-
-
 ]]></summary>
   </entry>
   
@@ -4021,6 +4184,41 @@ wider audiences. Love the evolution.</p>
 <p>As always happens after a period of being kinda
 offline, writing this has helped start me up.
 I'll have to link up &quot;The Clicky Sound&quot;.</p>
+
+
+]]></summary>
+  </entry>
+  
+  <entry>
+    <title>Get the Stem of a File Name in bash</title><link href="https://al9000.com&#x2f;cli&#x2f;get-file-name-stem/"/><id>urn:uuid:1d7d2df4-9df0-59f5-9dcb-64fcae06a832</id>
+    <updated>2026-04-13T20:25:00-04:00</updated>
+    <summary><![CDATA[
+
+<div class="code-block numbers copy-button"><div class="title">bash</div><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker" data-line="2"></span></span>
+<span class="line-marker" data-line="3"></span><span class="variable other readwrite assignment shell">EXAMPLE_PATH</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>path/to/example-file.txt<span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker" data-line="4"></span>
+<span class="line-marker" data-line="5"></span><span class="variable other readwrite assignment shell">BASENAME</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="meta group expansion command parens shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section parens begin shell">(</span><span class="meta function-call shell"><span class="variable function shell">basename</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">EXAMPLE_PATH</span></span><span class="punctuation definition string end shell">&quot;</span></span></span><span class="punctuation section parens end shell">)</span></span></span>
+<span class="line-marker" data-line="6"></span><span class="variable other readwrite assignment shell">STEM</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section expansion parameter begin shell">{</span></span><span class="meta group expansion parameter shell"><span class="variable other readwrite shell">BASENAME<span class="keyword operator expansion shell">%</span></span></span><span class="meta group expansion parameter shell">.<span class="keyword operator regexp quantifier shell">*</span></span><span class="meta group expansion parameter shell"><span class="punctuation section expansion parameter end shell">}</span></span><span class="punctuation definition string end shell">&quot;</span></span></span>
+<span class="line-marker" data-line="7"></span>
+<span class="line-marker" data-line="8"></span><span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">STEM</span></span></span></span></code></pre></div>
+<div class="output-block"><div class="title">output</div><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">example-file</span></code></pre></div>
+
+
+]]></summary>
+  </entry>
+  
+  <entry>
+    <title>Get the Name of the Current Directory in bash</title><link href="https://al9000.com&#x2f;cli&#x2f;get-current-directory-name/"/><id>urn:uuid:7550d3d0-ec1c-5a95-b6dd-0b8470099d7f</id>
+    <updated>2026-04-13T18:47:00-04:00</updated>
+    <summary><![CDATA[
+
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker" data-line="2"></span></span>
+<span class="line-marker" data-line="3"></span><span class="variable other readwrite assignment shell">CURRENT_DIR_NAME</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="meta group expansion command parens shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section parens begin shell">(</span><span class="meta function-call shell"><span class="variable function shell">basename</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">PWD</span></span><span class="punctuation definition string end shell">&quot;</span></span></span><span class="punctuation section parens end shell">)</span></span></span>
+<span class="line-marker" data-line="4"></span>
+<span class="line-marker" data-line="5"></span><span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">CURRENT_DIR_NAME</span></span></span></span></code></pre></div>
+<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">get-current-directory-name</span></code></pre></div>
 
 
 ]]></summary>

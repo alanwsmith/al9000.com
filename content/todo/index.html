@@ -6,23 +6,72 @@
 == block toml
 title = "TODO"
 created = 2026-07-07T14:16:14-04:00
+status = "done"
+id = "ab/ve/2q/to" 
 tags = []
+flags = []
 == endblock
 
 
 == block main
-== filter md
 
-## al9000.com 
+== filter neo
+-- p
 
-### Active
 
-- Create a CRUD tool for quotes. 
 
-- Add functions for `footnote_link` and
+-- h2
+
+SSG 9000
+
+Thing to do for Static Site Generator 9000
+(which powers this site).
+
+-- checklist
+-- h3: Active
+
+[] TODO: Created CRUD tool for blog 
+entires on the admin page. 
+
+[] TODO: Added VIM motions to the
+blog post editor. 
+
+[] TODO: Added IDs and or skip flags
+to all pages with titles so 
+`file_list()` is up to date. 
+
+[] TODO: Set up to capture alt text
+from images. 
+
+[] TODO: Added `image` function that takes
+the stem of a file name and returns
+an image tag with the path to the
+image regardless of where it is. 
+Option keywords arguments can 
+be passes as well. The first is
+`class` which overrides the default
+class from the image call. 
+
+[] TODO: Created a CRUD tool for quotes
+on the admin page. 
+
+[] TODO: Created a CRUD tool for journal 
+entries on the admin page. 
+
+[] TODO: Added functions for `footnote_link` and
     `footnote_ref` for linking back
     and forth between footnotes. 
 
+
+
+== endfilter
+
+== filter md
+
+## SSG 9000
+
+
+### Active
 ### Someday/Maybe
 
 - Add dark/light mode switcher back in. 

@@ -197,6 +197,8 @@ code {
 */
   > .title {
     font-size: var(--default-font-size);
+    color: var(--heading-color);
+    font-weight: 900;
     border-bottom: var(--faded-accent-border);
     margin-bottom: var(--small-margin);
   }
@@ -541,6 +543,8 @@ ol > :where(:not(:first-child)) {
 
   > .title {
     font-size: var(--default-font-size);
+    color: var(--heading-color);
+    font-weight: 900;
     border-bottom: var(--faded-accent-border);
     margin-bottom: var(--small-margin);
   }
