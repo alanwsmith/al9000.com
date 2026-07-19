@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-19T19:27:22-04:00</updated>
+  <updated>2026-07-19T19:35:59-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -222,10 +222,12 @@ want to check it out.
       
       ab/vf/z2/4m
       
+
     </div>
 
     <div class="templates">
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
       
       
     </div>
@@ -4540,10 +4542,12 @@ without it, it just won't be as smooth.</p>
       
       ab/u5/i6/mt
       
+
     </div>
 
     <div class="templates">
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
       
       
     </div>
