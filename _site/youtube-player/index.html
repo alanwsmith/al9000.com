@@ -45,7 +45,8 @@ body {
     
     
     
-    
+    <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
+
   </head>
   <body class="page">
 <noscript>
@@ -85,7 +86,55 @@ body {
   </hgroup>
 
 
-this is new
+
+
+<figure class="default">
+<youtube-player :video="LT3cERVRoQo">
+<noscript>JavaScript is not available to load this vidoe</noscript>
+</youtube-player>
+</figure>
+
+<figure class="default">
+<youtube-player :video="LT3cERVRoQo" :title="Alternate Title">
+<noscript>JavaScript is not available to load this vidoe</noscript>
+</youtube-player>
+</figure>
+
+<figure class="default">
+<youtube-player :video="DvJRdS1CaYQ" :start="26" :end="178">
+<noscript>JavaScript is not available to load this vidoe</noscript>
+</youtube-player>
+</figure>
+
+<figure class="default">
+<youtube-player :video="-91vymvIH0c" :chapters="18, 32, 84, 176, 276, 407, 577, 733, 1038, 1418">
+<noscript>JavaScript is not available to load this vidoe</noscript>
+</youtube-player>
+</figure>
+
+<figure class="default">
+<youtube-player :video="Rm1nCYOZB-s" :thumbnail="/images/rage-against-thumbnail.jpg">
+<noscript>JavaScript is not available to load this vidoe</noscript>
+</youtube-player>
+</figure>
+
+<figure class="default">
+<youtube-player :video="tRwHpyOq4P4" :advisory="Warning: contains flashing lights">
+<noscript>JavaScript is not available to load this vidoe</noscript>
+</youtube-player>
+</figure>
+
+<figure class="default">
+<youtube-player :video="dAwLMS8fgoA" :skip-forward="3" :skip-back="3">
+<noscript>JavaScript is not available to load this vidoe</noscript>
+</youtube-player>
+</figure>
+
+
+
+
+
+
 
   <div class="end-of-line"></div>
 

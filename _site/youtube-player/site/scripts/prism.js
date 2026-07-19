@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-syntax error: unknown `=`, expected statement (in /youtube-player/site/scripts/prism.js:6)
+syntax error: unknown `=`, expected statement (in /youtube-player/site/scripts/prism.js:586)
 </body>
 </html>
   
