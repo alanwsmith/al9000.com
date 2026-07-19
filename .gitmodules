@@ -1,0 +1,3 @@
+[submodule "content/youtube-player.alanwsmith.com"]
+	path = content/youtube-player.alanwsmith.com
+	url = https://github.com/alanwsmith/youtube-player.alanwsmith.com
