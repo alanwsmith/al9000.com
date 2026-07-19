@@ -18,9 +18,14 @@
   <body class="[! block body_class !]page[! endblock !]">
     == include "/templates.inc/noscript/default.html"
 
-
     <div class="page-wrapper default-flow">
       [! block body !][! endblock !]
+    </div>
+
+    <div class="center">
+      [! if p.created !]
+      [@ id_from_timestamp(p.created["$__toml_private_datetime"]) @]
+      [! endif !]
     </div>
 
     <div class="templates">
