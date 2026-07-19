@@ -48,7 +48,19 @@ body {
     
   </head>
   <body class="page">
-    <div class="body-wrapper default-flow">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+
+    <div class="page-wrapper default-flow">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
@@ -86,6 +98,21 @@ Thing to do for Static Site Generator 9000
 
 -- checklist
 -- h3: Active
+
+[] TODO: Automatically generating OG images
+for posts. They're filenames are "og-image-auto.jpg".
+They can be overridden by placing a file
+in the same directory named "og-image.jpg".
+
+[] TODO: Switched all the extends to use the ``/templates.inc/switches/*.html``
+files to switch between web and RSS feed 
+versions of the content.
+
+[] TODO: Split out everything
+in the <<path|/templates.inc/includes>> 
+dir so that each category has it's own
+folder (e.g. header/default.html, footer/default.html
+etc.)
 
 [] TODO: Created CRUD tool for blog 
 entires on the admin page. 
@@ -254,6 +281,7 @@ timestamp so everyone gets the same song</p>
 
 
     </div>
+
     <div class="templates">
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
       

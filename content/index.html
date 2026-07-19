@@ -3,10 +3,11 @@
 == block toml
 title = "Welcome to al9000"
 description = "The new and improved home of alan w. smith on the web."
-created = 2026-03-26T12:30:00-04:00
+created = 2026-01-01T12:12:12-04:00
 status = "done"
 tid = "3FfqCqL5Tnlzi"
 id = "ab/u4/kx/yi"
+flags = ["skip"]
 == endblock
 
 == block title 
@@ -17,26 +18,13 @@ id = "ab/u4/kx/yi"
 
 == block main 
 <p>
-  My main site is <a href="https://www.alanwsmith.com/">alanwsmith.com</a>.
-  It's been around for ~25 years. It's been great, but
-  I like the idea of a site that's not my name. So, I'm
-  making this one. 
+  This is my new home on the web. I've still got my old place
+  (<a href="https://www.alanwsmith.com/">alanwsmith.com</a>).
+  There's a few thousand posts there. I'll get them over 
+  here as time allows. In the mean time, here's
+  what's new or has already been moved. 
 </p>
-<p>
-  I've made 
-  <a href="https://links.alanwsmith.com">a ton of little sites</a> 
-  that are under the alanwsmith.com domain. A big reason for that is because
-  the tools I use to build the main site weren't well set up
-  to make independent pages. I'm writing new software
-  to make that easier to do here. It'll make 
-  maintaining and navigating between different 
-  experiments a lot easier. 
-</p>
-<p>
-  The current list of stuff and statuses is below. 
-  Stop back by every now and then to check for updates. 
-  (Getting an RSS Feed in place is on the list.)
-</p>
+
 <p>-a<p>
 
 
@@ -46,113 +34,6 @@ id = "ab/u4/kx/yi"
     <li><a href="[@ f[1].dir @]/">[@ f[1].title @]</a></li>
   == endif
 == endfor
-</ul>
-
-
-
-== filter md
-## Blog
-== endfilter
-
-== include "/blog/posts.inc.html"
-
-
-
-
-<h2>Projects</h2>
-<ul>
-  == for key in d
-    == if "index" in d[key] and "status" in d[key].index and d[key].index.status == "done" 
-      <li>
-      <a href="/[@ key @]">
-      == if d[key].index.link_title 
-        [@ d[key].index.link_title @]
-      == elif d[key].index.title
-        [@ d[key].index.title @]
-      == else
-        [no title]
-      == endif
-      </a>
-      </li>
-    == endif 
-  == endfor 
-</ul>
-
-
-<h2>Code</h2>
-<ul>
-  == for key in d 
-    == if "index" in d[key] and "status" in d[key].index and d[key].index.status == "code" 
-      <li>
-      <a href="/[@ key @]">
-      == if d[key].index.short_title 
-        [@ d[key].index.short_title @]
-      == elif d[key].index.title
-        [@ d[key].index.title @]
-      == else
-        [no title]
-      == endif
-      </a>
-      </li>
-    == endif 
-  == endfor 
-</ul>
-
-<h2>Work-In-Progress</h2>
-<ul>
-  == for key in d 
-    == if "index" in d[key] and "status" in d[key].index and d[key].index.status == "wip" 
-      <li>
-      <a href="/[@ key @]">
-      == if d[key].index.link_title 
-        [@ d[key].index.link_title @]
-      == elif d[key].index.title
-        [@ d[key].index.title @]
-      == else
-        [no title]
-      == endif
-      </a>
-      </li>
-    == endif 
-  == endfor 
-</ul>
-
-<h2>Broken</h2>
-<ul>
-  == for key in d 
-    == if "index" in d[key] and "status" in d[key].index and d[key].index.status == "broken" 
-      <li>
-      <a href="/[@ key @]">
-      == if d[key].index.short_title 
-        [@ d[key].index.short_title @]
-      == elif d[key].index.title
-        [@ d[key].index.title @]
-      == else
-        [no title]
-      == endif
-      </a>
-      </li>
-    == endif 
-  == endfor 
-</ul>
-
-<h2>Stubs</h2>
-<ul>
-  == for key in d 
-    == if "index" in d[key] and "status" in d[key].index and d[key].index.status == "stub" 
-      <li>
-      <a href="/[@ key @]">
-      == if d[key].index.link_title 
-        [@ d[key].index.link_title @]
-      == elif d[key].index.title
-        [@ d[key].index.title @]
-      == else
-        [no title]
-      == endif
-      </a>
-      </li>
-    == endif 
-  == endfor 
 </ul>
 
 

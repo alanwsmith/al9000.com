@@ -16,9 +16,13 @@
     [! block javascript !][! endblock !]
   </head>
   <body class="[! block body_class !]page[! endblock !]">
-    <div class="body-wrapper default-flow">
+    == include "/templates.inc/noscript/default.html"
+
+
+    <div class="page-wrapper default-flow">
       [! block body !][! endblock !]
     </div>
+
     <div class="templates">
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
       [# TODO: Deprecate 'support' in favor of 'templates' #]

@@ -2,12 +2,232 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-19T01:05:24-04:00</updated>
+  <updated>2026-07-19T12:19:52-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
+  
+  <entry>
+    <title>Three Dates in a Trench Coat</title><link href="https://al9000.com&#x2f;blog&#x2f;ab&#x2f;vf&#x2f;z2&#x2f;4m/"/><id>urn:uuid:483961a4-9428-534c-b185-d7baabf2c0ad</id>
+    <updated>2026-07-19T11:21:48-04:00</updated>
+    <summary><![CDATA[<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --load-hider: 0;
+}
+.load-hider {
+  opacity: var(--load-hider);
+}
+html {
+  background-color: var(--background-color);
+}
+body {
+  background-color: var(--background-color);
+}
+
+
+</style>    <script src="/styles/styles.js"></script>
+    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Three Dates in a Trench Coat</title>
+<meta property="og:title" content="Three Dates in a Trench Coat" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;blog&#x2f;ab&#x2f;vf&#x2f;z2&#x2f;4m/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    
+    
+    
+    
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+
+    <div class="page-wrapper default-flow">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+  </div>
+
+
+</header>
+
+
+<main class="default-wrapper default-flow">
+
+  <hgroup>
+        <h1>Three Dates in a Trench Coat</h1>
+        <div class="date">July 2026</div>
+  </hgroup>
+
+
+<h2>An Initial Pair</h2>
+<p>Two dates isn't enough.</p>
+<p>At least, when it comes to blog posts. For years, I've used <strong>created</strong>
+and <strong>updated</strong> as the only dates for my
+writing. It makes sense for pages that are
+written and deployed in one shot.
+Not so much when a draft sticks around for a few days,
+weeks, or years before seeing the light of day.</p>
+<p>Neither <strong>created</strong> or <strong>updated</strong> feels right
+for a post started last October but didn't
+go out until today. I want to keep the
+<strong>created</strong> date locked in to when I first
+started the piece. But, using <strong>updated</strong>
+doesn't make sense for the first time
+the status of a page goes from
+<strong>draft</strong> to <strong>done</strong>.</p>
+<h2>Introducing: completed</h2>
+<p>The solution: a third date. Our new
+friend <strong>completed</strong>.</p>
+<p>Posts start out with metadata that
+looks like this:</p>
+<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created = 2026-06-02T12:21:48-04:00
+<span class="line-marker" data-line="2"></span>status  = &quot;draft&quot;</span></code></pre></div>
+<p>They get worked on for however
+long then need. When they're
+ready, the metadata gets updated
+with the completed timestamp
+and the status is set to &quot;done&quot;.</p>
+<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
+<span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
+<span class="line-marker" data-line="3"></span>status    = &quot;done&quot;</span></code></pre></div>
+<p>The &quot;done&quot; status is what makes the page
+show up on the home page and the
+RSS feed. It's sorted in based
+on the <strong>completed</strong> date, but
+I don't lose the metadata for
+when the scribbling started.</p>
+<p>If the piece has major changes
+an <strong>updated</strong> datetime is added:</p>
+<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
+<span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
+<span class="line-marker" data-line="3"></span>updated   = 2026-07-19T12:21:48-04:00
+<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></code></pre></div>
+<p>The status stays as <strong>done</strong>. That
+keeps the page in the list of links
+and RSS feed. The <strong>updated</strong> value
+is used to re-slot it into a
+corresponding position on the timeline.</p>
+<h2>Words Mean Things</h2>
+<p>I just put this feature in place
+today. I already love it. It removes
+that little bit of friction that
+came from trying to decided which
+of the two original dates to use
+when an old draft got polished
+enough to be release into the wild.</p>
+<p>-a</p>
+
+  <div class="end-of-line"></div>
+
+<h2>Endnotes</h2>
+
+<ul class="endnotes">
+
+  <li>Adding the <strong>completed</strong> timestamp isn't required. 
+    A page with <strong>status = "done"</strong> and nothing
+    more than a <strong>created</strong> datetime will show up
+    on the site. The <strong>completed</strong> (and <strong>updated</strong>)
+values simply shift the position in the chronology 
+    of the lists. </li>
+
+<li>I'm still updating dates manually. It's not much 
+more work with the third option in play. The 
+date for when the piece goes lives has to be
+added/edited either way. It's a little friction
+though. I've got an item on the todo list
+for a tool that'll let me update the values
+    with a button press.</li>
+
+  <li><p>I briefly debated making the <strong>updated</strong>
+metadata an array that could store the dates
+  for multiple changes. Something like this:</p>
+
+<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
+<span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
+<span class="line-marker" data-line="3"></span>updated   = [2026-04-19T12:21:48-04:00, 2026-07-07T12:21:48-04:00]
+<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></code></pre></div>
+
+<p>
+That's more work than I want to do. Especially
+because I'm unlikely to ever show anything
+other than the latest change. The source
+content for my site is stored in a 
+version control system that lets me
+see when changes occur if I ever really
+want to check it out. 
+</p>
+  </li>
+</ul>
+
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from alan w smith 
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>
+
+
+    </div>
+
+    <div class="templates">
+      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      
+      
+    </div>
+  </body>
+</html>
+]]></summary>
+  </entry>
   
   <entry>
     <title>Full Site Links</title><link href="https://al9000.com&#x2f;blog&#x2f;ab&#x2f;vf&#x2f;vh&#x2f;qq/"/><id>urn:uuid:29b98ba1-417f-5768-9540-864574844a8d</id>
@@ -497,19 +717,6 @@ Neopolitan files. I've yet to run into
 something it can't handle.</p>
 </li>
 </ul>
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>Stream Overlays</title><link href="https://al9000.com&#x2f;stream-tools&#x2f;overlays/"/><id>urn:uuid:7adf38ad-6db6-5476-b692-df1ecb6afcba</id>
-    <updated>2026-06-27T09:38:10-04:00</updated>
-    <summary><![CDATA[
-<ul>
-<li><a href="/stream/overlays/ascii-bear-left/">ASCIIBear Left</a></li>
-<li><a href="/stream/overlays/facecam-right/">FaceCam Right</a></li>
-</ul>
-
-
 ]]></summary>
   </entry>
   
@@ -1019,35 +1226,6 @@ them.</p>
 conversations by ear and see where they go.</p>
 </li>
 </ul>
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>RSS Feed</title><link href="https://al9000.com&#x2f;rss/"/><id>urn:uuid:49052718-ad31-5eec-beec-efbe50477d36</id>
-    <updated>2026-06-20T19:42:02-04:00</updated>
-    <summary><![CDATA[
-<p>
-  You can grab the RSS feed<sup>1</sup> for 
-  blog posts here:
-</p> 
-
-<p>
-  <a href="https://al9000.com/rss/feed.xml">https://al9000.com/rss/feed.xml</a>
-</p>
-
-<p>Enjoy!</p>
-
-<p>-a</p>
-
-<h3>Footnotes</h3>
-
-<p>
-  <sup>1</sup> Technically, it's an atom feed if you care
-  about that type of thing.
-</p>
-
 
 
 ]]></summary>
@@ -4179,7 +4357,19 @@ body {
     
   </head>
   <body class="page">
-    <div class="body-wrapper default-flow">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+
+    <div class="page-wrapper default-flow">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
@@ -4341,6 +4531,7 @@ without it, it just won't be as smooth.</p>
 
 
     </div>
+
     <div class="templates">
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
       
@@ -4816,390 +5007,7 @@ expect it to be difficult if I come back to it.</p>
   </entry>
   
   <entry>
-    <title>Welcome to al9000</title><link href="https://al9000.com&#x2f;/"/><id>urn:uuid:c8e79c57-9b5b-5663-b727-089c759f1551</id>
-    <updated>2026-03-26T12:30:00-04:00</updated>
-    <summary><![CDATA[<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
-
-
-</style>    <script src="/styles/styles.js"></script>
-    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
-    <link rel="stylesheet" href="/styles/colors.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>Welcome to al9000</title>
-<meta property="og:title" content="Welcome to al9000" />
-<meta name="description" content="from alan w smith" />
-<meta property="og:description" content="from alan w smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
-<link
-  rel="site.standard.publication"
-  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
-/>
-<link
-  rel="site.standard.document"
-  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.document/3FfqCqL5Tnlzi"
-/>
-
-    
-    
-    
-    
-    
-  </head>
-  <body class="page">
-    <div class="body-wrapper default-flow">
-      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Some content will be fine, but some things won't work.
-  </p>
-
-</noscript>
-  <div class="top-nav">
-    <a href="/">home</a>
-    <a href="/tools">tools</a>
-  </div>
-
-  <div class="subnav default-wrapper">
-    <a href=""><a href="/ffmpeg/">ffmpeg</a>
-</a>
-  </div>
-
-</header>
-
-
-
-    <main class="default-wrapper default-flow">
-      <hgroup>
-  <h1>Welcome to al9000</h1>
-</hgroup>
-
-      <p>
-  My main site is <a href="https://www.alanwsmith.com/">alanwsmith.com</a>.
-  It's been around for ~25 years. It's been great, but
-  I like the idea of a site that's not my name. So, I'm
-  making this one. 
-</p>
-<p>
-  I've made 
-  <a href="https://links.alanwsmith.com">a ton of little sites</a> 
-  that are under the alanwsmith.com domain. A big reason for that is because
-  the tools I use to build the main site weren't well set up
-  to make independent pages. I'm writing new software
-  to make that easier to do here. It'll make 
-  maintaining and navigating between different 
-  experiments a lot easier. 
-</p>
-<p>
-  The current list of stuff and statuses is below. 
-  Stop back by every now and then to check for updates. 
-  (Getting an RSS Feed in place is on the list.)
-</p>
-<p>-a<p>
-
-
-<ul>
-    <li><a href="&#x2f;blog&#x2f;ab&#x2f;vf&#x2f;vh&#x2f;qq/">Full Site Links</a></li>
-    <li><a href="&#x2f;neopolitan/">Neopolitan</a></li>
-    <li><a href="&#x2f;stream-tools&#x2f;overlays/">Stream Overlays</a></li>
-    <li><a href="&#x2f;blog&#x2f;ab&#x2f;vd&#x2f;2j&#x2f;v5/">Pondering Standard.site and the Social Web</a></li>
-    <li><a href="&#x2f;konami/">Konami</a></li>
-    <li><a href="&#x2f;blog&#x2f;ab&#x2f;vd&#x2f;qd&#x2f;5i/">Type Different: Changing the Keys on Your Keyboard</a></li>
-    <li><a href="&#x2f;blog&#x2f;ab&#x2f;vd&#x2f;pu&#x2f;kq/">RSS Powers: Activated</a></li>
-    <li><a href="&#x2f;blog&#x2f;ab&#x2f;vd&#x2f;pt&#x2f;ku/">Unoffice Hours</a></li>
-    <li><a href="&#x2f;rss/">RSS Feed</a></li>
-    <li><a href="&#x2f;ideas/">Project Ideas</a></li>
-    <li><a href="&#x2f;band-names/">The Name(s) of My New Band</a></li>
-    <li><a href="&#x2f;blog&#x2f;ab&#x2f;vd&#x2f;nn&#x2f;24/">DAE - Digital to Analog Enlarger</a></li>
-    <li><a href="&#x2f;manic-scroll/">Manic Scroll</a></li>
-    <li><a href="&#x2f;qr-alice/">QR Alice</a></li>
-    <li><a href="&#x2f;qr-clock/">QR Clock</a></li>
-    <li><a href="&#x2f;tts/">Tabletop Simulator Art</a></li>
-    <li><a href="&#x2f;blog&#x2f;ab&#x2f;u6&#x2f;7u&#x2f;bq/">Fingers to Keys</a></li>
-    <li><a href="&#x2f;blog&#x2f;ab&#x2f;u6&#x2f;hc&#x2f;2u/">The Good Place</a></li>
-    <li><a href="&#x2f;cli&#x2f;get-file-name-stem/">Get the Stem of a File Name in bash</a></li>
-    <li><a href="&#x2f;cli&#x2f;get-current-directory-name/">Get the Name of the Current Directory in bash</a></li>
-    <li><a href="&#x2f;doors/">Doors</a></li>
-    <li><a href="&#x2f;blog&#x2f;ab&#x2f;u5&#x2f;xp&#x2f;vq/">I&#x27;m Not Ready to Start This Blog</a></li>
-    <li><a href="&#x2f;rust&#x2f;minijinja&#x2f;use_keyword_args/">Use Keyword Args in a Function</a></li>
-    <li><a href="&#x2f;cli&#x2f;capture-both-stdout-and-stderror/">Capture Errors from Command Line Tools</a></li>
-    <li><a href="&#x2f;rust&#x2f;general&#x2f;access-mac-keychain-passwords/">Access Mac Keychain Access Passwords from a Rust App</a></li>
-    <li><a href="&#x2f;ffmpeg&#x2f;create-an-hls-encrypted-video/">Create an HLS Encrypted Video with ffmpeg</a></li>
-    <li><a href="&#x2f;javascript&#x2f;media-source-video-player/">A Media Source Extensions (MSE) Video Player</a></li>
-    <li><a href="&#x2f;rust&#x2f;general&#x2f;split-a-file-into-collections-of-bytes/">Split a File into Multiple Collections of Bytes</a></li>
-    <li><a href="&#x2f;rust&#x2f;wasm&#x2f;hello-world/">Hello, World in Rust WASM</a></li>
-    <li><a href="&#x2f;/">Welcome to al9000</a></li>
-    <li><a href="&#x2f;the-clicky-sound/">The Clicky Sound</a></li>
-</ul>
-
-
-
-<h2>Blog</h2>
-
-
-
-
-
-<h2>Projects</h2>
-<ul>
-      <li>
-      <a href="/band-names">
-        The Name(s) of My New Band
-      </a>
-      </li>
-      <li>
-      <a href="/doors">
-        Doors
-      </a>
-      </li>
-      <li>
-      <a href="/ideas">
-        Project Ideas
-      </a>
-      </li>
-      <li>
-      <a href="/konami">
-        Konami
-      </a>
-      </li>
-      <li>
-      <a href="/manic-scroll">
-        Manic Scroll
-      </a>
-      </li>
-      <li>
-      <a href="/neopolitan">
-        Neopolitan
-      </a>
-      </li>
-      <li>
-      <a href="/qr-alice">
-        QR Alice
-      </a>
-      </li>
-      <li>
-      <a href="/qr-clock">
-        QR Clock
-      </a>
-      </li>
-      <li>
-      <a href="/rss">
-        RSS Feed
-      </a>
-      </li>
-      <li>
-      <a href="/scratchpad">
-        Scratchpad
-      </a>
-      </li>
-      <li>
-      <a href="/stream-tools">
-        Stream Tools
-      </a>
-      </li>
-      <li>
-      <a href="/the-clicky-sound">
-        The Clicky Sound
-      </a>
-      </li>
-      <li>
-      <a href="/todo">
-        TODO
-      </a>
-      </li>
-      <li>
-      <a href="/tools">
-        Tools
-      </a>
-      </li>
-      <li>
-      <a href="/tts">
-        Tabletop Simulator Art
-      </a>
-      </li>
-      <li>
-      <a href="/unicode">
-        Unicode Characters
-      </a>
-      </li>
-</ul>
-
-
-<h2>Code</h2>
-<ul>
-      <li>
-      <a href="/cli">
-        CLI
-      </a>
-      </li>
-      <li>
-      <a href="/css">
-        CSS
-      </a>
-      </li>
-      <li>
-      <a href="/ffmpeg">
-        ffmpeg Notes
-      </a>
-      </li>
-      <li>
-      <a href="/javascript">
-        JavaScript
-      </a>
-      </li>
-      <li>
-      <a href="/jq">
-        jq
-      </a>
-      </li>
-      <li>
-      <a href="/rust">
-        Rust
-      </a>
-      </li>
-</ul>
-
-<h2>Work-In-Progress</h2>
-<ul>
-      <li>
-      <a href="/atproto">
-        AT Proto Stuff
-      </a>
-      </li>
-      <li>
-      <a href="/docs">
-        al9000 Documentation
-      </a>
-      </li>
-      <li>
-      <a href="/drafts">
-        Drafts
-      </a>
-      </li>
-      <li>
-      <a href="/minecraft">
-        Minecraft Notes
-      </a>
-      </li>
-      <li>
-      <a href="/webrings">
-        Webrings
-      </a>
-      </li>
-</ul>
-
-<h2>Broken</h2>
-<ul>
-      <li>
-      <a href="/assembly">
-        Assembly
-      </a>
-      </li>
-      <li>
-      <a href="/magic-deck-builder">
-        Magic Deck Builder
-      </a>
-      </li>
-      <li>
-      <a href="/multi-player">
-        Multi-Player
-      </a>
-      </li>
-      <li>
-      <a href="/texture-maker">
-        Background Texture Maker
-      </a>
-      </li>
-</ul>
-
-<h2>Stubs</h2>
-<ul>
-      <li>
-      <a href="/radio">
-        Radio
-      </a>
-      </li>
-      <li>
-      <a href="/tv">
-        TV
-      </a>
-      </li>
-      <li>
-      <a href="/voxels">
-        Voxels
-      </a>
-      </li>
-</ul>
-
-
-<h2>bitty</h2>
-<p>
-  The main project I've been working on is <a href="https://bittyjs.com/">bitty</a>. 
-  It's a front-end framework designed to make it easier to make things
-  for the web. You can check it out at
-  <a href="https://bittyjs.com">bittyjs.com</a>.
-</p>
-
-
-
-
-    </main>
-
-    <footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from alan w smith 
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-  <div class="small-font-size text-align-center">
-    <a href="/rss/">rss feed</a>
-  </div>
-</footer>
-
-
-    
-    
-    </div>
-    <div class="templates">
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
-      
-      
-
-        </div>
-  </body>
-</html>
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>The Clicky Sound</title><link href="https://al9000.com&#x2f;the-clicky-sound/"/><id>urn:uuid:ed4dac13-8476-565c-99e7-2efca3bd4ae7</id>
+    <title>The Clicky Sound</title><link href="https://al9000.com&#x2f;posts&#x2f;the-clicky-sound/"/><id>urn:uuid:9a00181b-dd35-54eb-a82e-2f7c73a3eddd</id>
     <updated>2020-09-09T00:00:00-04:00</updated>
     <summary><![CDATA[
 <p>Okay.</p>

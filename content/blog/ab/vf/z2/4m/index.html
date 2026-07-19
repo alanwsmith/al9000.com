@@ -1,0 +1,149 @@
+== extends "/templates.inc/pages/default.html"
+== block toml 
+title = "Three Dates in a Trench Coat"
+created = 2026-07-19T11:21:48-04:00
+status = "done"
+id = "ab/vf/z2/4m"
+tags = ["ssg9000"]
+flags = []
+== endblock
+
+
+== block content 
+== filter md
+
+## An Initial Pair
+
+Two dates isn't enough. 
+
+At least, when it comes to blog posts. For years, I've used __created__
+and __updated__ as the only dates for my
+writing. It makes sense for pages that are
+written and deployed in one shot. 
+Not so much when a draft sticks around for a few days,
+weeks, or years before seeing the light of day. 
+
+Neither __created__ or __updated__ feels right 
+for a post started last October but didn't
+go out until today. I want to keep the 
+__created__ date locked in to when I first
+started the piece. But, using __updated__
+doesn't make sense for the first time
+the status of a page goes from
+__draft__ to __done__. 
+
+
+## Introducing: completed
+
+The solution: a third date. Our new
+friend __completed__. 
+
+Posts start out with metadata that
+looks like this:
+
+[! filter highlight("text", class="output-block") !]
+created = 2026-06-02T12:21:48-04:00
+status  = "draft"
+[! endfilter !]
+
+
+They get worked on for however 
+long then need. When they're
+ready, the metadata gets updated
+with the completed timestamp 
+and the status is set to "done".
+
+[! filter highlight("text", class="output-block") !]
+created   = 2025-10-02T12:21:48-04:00
+completed = 2026-03-11T12:21:48-04:00
+status    = "done"
+[! endfilter !]
+
+The "done" status is what makes the page
+show up on the home page and the 
+RSS feed. It's sorted in based
+on the __completed__ date, but
+I don't lose the metadata for
+when the scribbling started. 
+
+If the piece has major changes
+an __updated__ datetime is added:
+
+[! filter highlight("text", class="output-block") !]
+created   = 2025-10-02T12:21:48-04:00
+completed = 2026-03-11T12:21:48-04:00
+updated   = 2026-07-19T12:21:48-04:00
+status    = "done"
+[! endfilter !]
+
+The status stays as __done__. That
+keeps the page in the list of links
+and RSS feed. The __updated__ value 
+is used to re-slot it into a 
+corresponding position on the timeline. 
+
+## Words Mean Things
+
+I just put this feature in place 
+today. I already love it. It removes 
+that little bit of friction that
+came from trying to decided which
+of the two original dates to use
+when an old draft got polished
+enough to be release into the wild. 
+
+-a
+
+
+== endfilter
+== endblock
+
+== block backmatter
+== filter md
+
+## Endnotes
+
+== endfilter
+
+<ul class="endnotes">
+
+  <li>Adding the <strong>completed</strong> timestamp isn't required. 
+    A page with <strong>status = "done"</strong> and nothing
+    more than a <strong>created</strong> datetime will show up
+    on the site. The <strong>completed</strong> (and <strong>updated</strong>)
+values simply shift the position in the chronology 
+    of the lists. </li>
+
+<li>I'm still updating dates manually. It's not much 
+more work with the third option in play. The 
+date for when the piece goes lives has to be
+added/edited either way. It's a little friction
+though. I've got an item on the todo list
+for a tool that'll let me update the values
+    with a button press.</li>
+
+  <li><p>I briefly debated making the <strong>updated</strong>
+metadata an array that could store the dates
+  for multiple changes. Something like this:</p>
+
+[! filter highlight("text", class="output-block") !]
+created   = 2025-10-02T12:21:48-04:00
+completed = 2026-03-11T12:21:48-04:00
+updated   = [2026-04-19T12:21:48-04:00, 2026-07-07T12:21:48-04:00]
+status    = "done"
+[! endfilter !]
+
+<p>
+That's more work than I want to do. Especially
+because I'm unlikely to ever show anything
+other than the latest change. The source
+content for my site is stored in a 
+version control system that lets me
+see when changes occur if I ever really
+want to check it out. 
+</p>
+  </li>
+</ul>
+
+
+== endblock
