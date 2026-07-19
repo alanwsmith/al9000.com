@@ -8,6 +8,7 @@
 title = "Manic Scroll"
 status = "done"
 created = 2026-06-19T22:16:00-04:00
+id = "ab/vd/l5/7a" 
 == endblock
 
 == block content
@@ -25,6 +26,7 @@ created = 2026-06-19T22:16:00-04:00
 
 body {
   background-color: black;
+  color: #999;
 }
 
 img {
@@ -87,7 +89,7 @@ p {
 </div>
 
   <div class="imageWrapper">
-== for f in files_in_folder("/manic-scroll/images")
+== for f in files_in_folder("/manic-scroll/images", full=true)
 
 <div 
   [! if loop.index == 1 !] class="first" [! endif !]

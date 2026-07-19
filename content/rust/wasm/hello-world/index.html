@@ -8,6 +8,7 @@
 title = "Hello, World in Rust WASM"
 created = 2026-04-01T11:40:00-04:00
 status = "done"
+id = "ab/u4/2p/cq" 
 == endblock
 
 [! block main !]
@@ -17,33 +18,31 @@ status = "done"
 </p>
 
 <h3>Rust</h3>
-[! filter highlight("html", "Cargo.toml") !]
+[! filter highlight("html", file_name="Cargo.toml") !]
 [! include "/" + inc_dir() + "/Cargo.toml" !]
 [! endfilter !]
 
-[! filter highlight("rust", "src/lib.rs") !]
+[! filter highlight("rust", file_name="src/lib.rs") !]
 [! include "/" + inc_dir() + "/src/lib.rs" !]
 [! endfilter !]
 
-[! filter highlight("bash", "build script") !]
+[! filter highlight("bash", file_name="build script") !]
 [! include "/" + inc_dir() + "/build_release" !]
 [! endfilter !]
 
 <h3>HTML</h3>
-[! filter highlight("html", "page.html") !]
+[! filter highlight("html", file_name="page.html") !]
 [! include "/" + inc_dir() + "/page.html" !]
 [! endfilter !]
 
 <h4>JavaScript</h4>
-[! filter highlight("js", "hello-world.js") !]
+[! filter highlight("js", file_name="hello-world.js") !]
 [! include "/" + inc_dir() + "/hello-world.js" !]
 [! endfilter !]
 
-
 <h4>Output</h4>
 <div class="output-block"><pre><code>
-[! include "/" + inc_dir() + "/page.html" !]
+[! include inc_dir() + "/page.html" !]
 </code></pre></div>
-
 
 [! endblock !]

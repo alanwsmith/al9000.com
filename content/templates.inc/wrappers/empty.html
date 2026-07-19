@@ -20,17 +20,6 @@
     == block content 
     == endblock
 
-    <div>
-      [! if p.created !]
-      <div>
-id = "[@ tmp_id_from_timestamp(p.created["$__toml_private_datetime"]) @]"
-      </div>
-      <div>
-        [@ p.path @]
-      </div>
-      [! endif !]
-    </div>
-
     <div class="template" hidden>
       [# TODO: Deprecate 'support' in favor of 'templates' #]
       == block support
