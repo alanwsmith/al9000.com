@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+    <meta name="theme-color" content="#000000" />
+
+    <title>Web Component Styling Issue</title>
+    <meta property="og:site_name" content="Web Component Styling Issue" />
+    <meta property="og:title" content="Web Component Styling Issue" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://yt-player.alanwsmith.com/issue/" />
+    <meta property="og:image" content="https://yt-player.alanwsmith.com/images/og-image.jpg" />
+    <meta property="og:description" content="Page to troubeshoot a styling problem with a web component in a section tag" />
+    <meta name="description" content="Page to troubeshoot a styling problem with a web component in a section tag" />
+
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="issue-styles.css" />
+    <script type="module" src="/scripts/yt-player.js"></script>
+  </head>
+ 
+  <body>
+    <header>
+    </header>
+
+    <main class="flow"> 
+      <hgroup>
+        <h1>Web Component Styling Issue</h1>
+      </hgroup>
+      <h2>It's Fixed!</h2>
+      <p>
+        This page was originally made to troubleshoot an 
+        issue I was having with a web component. It's solved now.
+      </p>
+      <p>
+        The original issue was with the styling of the component. 
+        Everything works fine when the component 
+        is directly inside the <code>main</code> element of the page.
+        The problem occurred when moving the custom element for the component 
+        one level down (e.g. into a <code>section</code> or <code>div</code> tag).
+      </p>
+      <p>
+        You can see the issue here:
+      </p>
+
+      <div>
+        <yt-player video="_YUzQa_1RCE">
+          <noscript>No JavaScript available to load YouTube player</noscript>
+        </yt-player>
+      </div>
+
+      <p>The blue background and red border should surround the video.</p>
+
+      <h2>The Solution</h2>
+      <p>The fix turned out to be explicitly setting the custom element to 
+        display as a block with:</p>
+      <blockquote>display: block</blockquote>
+      <p>The main stylesheet for this component has been updated with the fix.
+      (I'm leaving the busted one here as a reference example)</p>
+      <p>
+        I expect the reason it originally worked in my <code>main</code>
+        element was because of some style applied there. I'm not really
+        worried about it. It's working now.
+      </p>
+      <p>
+        Anyway, <a href="/">here's the link back to the main page</a>.
+      </p>
+
+    </main>
+
+    <footer>
+      <div>
+        made by <a href="https://www.alanwsmith.com">alan w smith</a>
+      </div>
+      <div>
+        <a href="https://links.alanwsmith.com">other sites</a>
+      </div>
+    </footer>
+  </body>
+</html>

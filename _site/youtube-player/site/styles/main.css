@@ -1,0 +1,429 @@
+:root {
+  --background-color: #123;
+  --primary-color: #ddd;
+  --secondary-color: #cdf;
+  --accent-color-1: green;
+  --accent-color-2: purple;
+  --accent-color-3: goldenrod;
+  --reverse-color: #eee;
+
+  --xxsmall-margin: 0.1rem;
+  --xsmall-margin: 0.3rem;
+  --small-margin: 0.4rem;
+  --medium-margin: 0.6rem;
+  --large-margin: 1.2rem;
+  --xlarge-margin: 2.1em;
+  --xxlarge-margin: 3.2em;
+  --xxxlarge-margin: 3.2em;
+
+  --xxsmall-padding: 0.1rem;
+  --xsmall-padding: 0.3rem;
+  --small-padding: 0.4rem;
+  --medium-padding: 0.6rem;
+  --large-padding: 1.2rem;
+  --xlarge-padding: 2.1em;
+  --xxlarge-padding: 3.2em;
+  --xxxlarge-padding: 3.2em;
+
+  --xxsmall-border-radius: 0.1rem;
+  --xsmall-border-radius: 0.2rem;
+  --small-border-radius: 0.3rem;
+  --medium-border-radius: 0.4rem;
+  --large-border-radius: 0.5rem;
+  --xlarge-border-radius: 0.6rem;
+  --xxlarge-border-radius: 0.7rem;
+  --xxxlarge-border-radius: 0.9rem;
+
+  --xxsmall-font-size: clamp(0.68rem, calc(0.67rem + 0.03vw), 0.70rem);
+  --xsmall-font-size: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.80rem);
+  --small-font-size: clamp(0.94rem, calc(0.92rem + 0.11vw), 1.00rem);
+  --medium-font-size: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
+  --large-font-size: clamp(1.35rem, calc(1.28rem + 0.37vw), 1.56rem);
+  --xlarge-font-size: clamp(1.62rem, calc(1.50rem + 0.58vw), 1.95rem);
+  --xxlarge-font-size: clamp(1.94rem, calc(1.77rem + 0.87vw), 2.44rem);
+  --xxxlarge-font-size: clamp(2.33rem, calc(2.08rem + 1.25vw), 3.05rem);
+
+  --xxsmall-width: min(8rem, 96%);
+  --xsmall-width: min(12rem, 96%);
+  --small-width: min(24rem, 96%);
+  --medium-width: min(34rem, 96%);
+  --large-width: min(46rem, 96%);
+  --xlarge-width: min(58rem, 96%);
+  --xxlarge-width: min(72rem, 96%);
+  --xxxlarge-width: min(86rem, 96%);
+}
+
+/*
+* TODO: Get color-scheme going
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
+}
+*/
+
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+::marker {
+  color: var(--accent-color-1);
+}
+
+/*
+* TODO: Get color-scheme going
+html {
+  color-scheme: light dark;
+}
+*/
+
+
+body {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  display: grid;
+  font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+  font-weight: normal;
+  font-size: var(--medium-font-size);
+  grid-template-rows: auto 1fr auto;
+  line-height: 1.5; 
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+a {
+  color: var(--accent-color-1);
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: var(--accent-color-2);
+}
+
+.blue {
+  color: blue;
+}
+
+.center {
+  text-align: center;
+}
+
+.flow > :where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1.0em);
+}
+
+footer {
+  margin-inline: auto;
+  margin-top: var(--xlarge-margin);
+  margin-bottom: var(--large-margin);
+  font-size: var(--small-font-size);
+  text-align: center;
+  max-width: min(var(--large-width), 100vw - 2rem);
+}
+
+.green {
+  color: green;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.1;
+  color: var(--secondary-color);
+  text-wrap: balance;
+  font-weight: 900;
+}
+
+h1 {
+  font-size: var(--xxxlarge-font-size);
+  margin-top: 1.0em;
+}
+
+h2 {
+  font-size: var(--xxlarge-font-size);
+  --flow-space: 1.3em;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+h3 {
+  font-size: var(--large-font-size);
+  --flow-space: 2.0em;
+}
+
+
+h4 {
+  font-size: var(--medium-font-size);
+  --flow-space: 1.0em;
+}
+
+header {
+  margin-block: var(--medium-margin);
+  margin-inline: auto;
+  max-width: min(var(--large-width), 100vw - 2rem);
+}
+
+pre.language-html,
+pre.language-css {
+  border: 1px solid rgb(128 128 128 /0.3);
+  border-radius: var(--large-border-radius);
+  padding: 1rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+main {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-inline: auto;
+  padding-bottom: var(--xlarge-padding);
+  max-width: min(var(--large-width), 100vw - 2rem);
+}
+
+/* uncomment to center horizontally
+main 
+  justify-items: center;
+}
+*/
+
+.page-wrapper {
+}
+
+pre {
+  white-space: pre-wrap; 
+  overflow-wrap: break-word;
+  overflow-x: auto;
+  overscroll-behavior-x: auto;
+}
+
+.red {
+  color: red;
+}
+
+.right {
+  text-align: right;
+}
+
+section {
+  --flow-space: 1.3em;
+}
+
+ul > :where(:not(:first-child)) {
+  margin-top: 1em;
+}
+
+.video-example {
+  border: 1px solid rgb(128 128 128 /0.3);
+  border-radius: var(--large-border-radius);
+  padding: 1rem;
+}
+
+.warning {
+  margin: var(--large-margin);
+  padding: var(--large-padding);
+  border: 2px solid red;
+  border-radius: var(--medium-border-radius);
+}
+
+
+/* 
+* NOTE: These are the styles from the html-example
+* component. The goal was to use it here, but the
+* way the script injects itself makes it show up
+* in a confusing way. The HTML samples are hand
+* coded as a result. Lots of stuff here isn't
+* used because of that
+*/
+
+
+body {
+  /* light */
+  --mono-1: var(--html-example--mono-1, #fdf6e3);
+  --mono-2: var(--html-example--mono-2, #eee8d5);
+  --mono-3: var(--html-example--mono-3, #93a1a1);
+  --mono-4: var(--html-example--mono-4, #839496);
+  --mono-5: var(--html-example--mono-5, #657b83);
+  --mono-6: var(--html-example--mono-6, #586e75);
+  --mono-7: var(--html-example--mono-7, #073642);
+  --mono-8: var(--html-example--mono-8, #002b36);
+
+  /* dark */
+  --mono-1: var(--html-example--mono-1, #002b36);
+  --mono-2: var(--html-example--mono-2, #073642);
+  --mono-3: var(--html-example--mono-3, #586e75);
+  --mono-4: var(--html-example--mono-4, #657b83);
+  --mono-5: var(--html-example--mono-5, #839496);
+  --mono-6: var(--html-example--mono-6, #93a1a1);
+  --mono-7: var(--html-example--mono-7, #eee8d5);
+  --mono-8: var(--html-example--mono-8, #fdf6e3);
+
+  --color-1: var(--html-example--color-1, #b58900);
+  --color-2: var(--html-example--color-2, #cb4b16);
+  --color-3: var(--html-example--color-3, #268bd2);
+  --color-4: var(--html-example--color-4, #2aa198);
+  --color-5: var(--html-example--color-5, #859900);
+
+  --output-background: var(--html-example--output-background, var(--mono-1));
+  --output-padding: var(--html-exampe--output-padding, 1rem);
+  --outter-border: var(--html-example--outer-border, 1px solid var(--mono-3));
+  --inner-border: var(--html-example--inner-border, 1px solid var(--mono-3)); 
+
+  --title-color: var(--html-example--title-color, var(--mono-7));
+  --title-font-size: var(--html-example--title-font-size, 1.4rem);
+  --title-font-weight: var(--html-example--title-font-weight, 700);
+}
+
+
+body[data-youtube-player-state="playing"] {
+  /* light */
+  --mono-1: var(--html-example--mono-1, #111);
+  --mono-2: var(--html-example--mono-2, #333);
+  --mono-3: var(--html-example--mono-3, #333);
+  --mono-4: var(--html-example--mono-4, #333);
+  --mono-5: var(--html-example--mono-5, #333);
+  --mono-6: var(--html-example--mono-6, #333);
+  --mono-7: var(--html-example--mono-7, #333);
+  --mono-8: var(--html-example--mono-8, #333);
+
+  --color-1: var(--html-example--color-1, #444);
+  --color-2: var(--html-example--color-2, #444);
+  --color-3: var(--html-example--color-3, #444);
+  --color-4: var(--html-example--color-4, #444);
+  --color-5: var(--html-example--color-5, #444);
+}
+
+code[class*='language-'],
+code[class*='language-'] span,
+pre[class*='language-'] {
+  transition: color 0.3s ease-in, background 0.3s ease-in;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--mono-5);
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  font-size: 0.95rem;
+  text-align: left;
+  white-space: pre-wrap;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+code[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+pre[class*='language-']::-moz-selection {
+  background: var(--mono-7);
+}
+code[class*='language-'] ::selection,
+code[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+pre[class*='language-']::selection {
+  background: var(--mono-7);
+}
+pre[class*='language-'] {
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: var(--mono-1);
+}
+:not(pre) > code[class*='language-'] {
+  border-radius: 0.3em;
+}
+.token.cdata,
+.token.comment,
+.token.doctype,
+.token.prolog {
+  color: var(--mono-3);
+}
+.token.punctuation {
+  color: var(--mono-6);
+}
+.token.namespace {
+  opacity: 0.7;
+}
+.token.boolean,
+.token.constant,
+.token.deleted,
+.token.number,
+.token.property,
+.token.symbol,
+.token.tag {
+  color: var(--color-3);
+}
+.token.attr-name,
+.token.builtin,
+.token.char,
+.token.inserted,
+.token.selector,
+.token.string,
+.token.url {
+  color: var(--color-4);
+}
+.token.entity {
+  color: var(--mono-5);
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: var(--color-5);
+}
+.token.class-name,
+.token.function {
+  color: var(--color-1);
+}
+.token.important,
+.token.regex,
+.token.variable {
+  color: var(--color-2);
+}
+.token.bold,
+.token.important {
+  font-weight: 700;
+}
+.token.italic {
+  font-style: italic;
+}
+.token.entity {
+  cursor: help;
+}
+
+
+/* For the youtube-player fades */
+
+body {
+  transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+body[data-youtube-player-state="playing"] {
+  --background-color: black;
+  --primary-color: #444;
+  --secondary-color: #444;
+}
+
+
+
+/* youtube-player override testing */
+
+/*
+:root {
+  --youtube-player--play-icon: url("data:image/svg+xml;utf8,%3Csvg%0A%20%20viewBox%3D%220%200%20100%20100%22%0A%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20stroke%3D%22red%22%0A%20%20fill%3D%22grey%22%3E%0A%20%20%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2240%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
+}
+*/
