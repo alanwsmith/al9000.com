@@ -1,0 +1,3 @@
+[submodule "yt-payer"]
+	path = content/youtube-player
+	url = git@github.com:alanwsmith/youtube-player.git
