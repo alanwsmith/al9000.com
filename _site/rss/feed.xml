@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-19T19:35:59-04:00</updated>
+  <updated>2026-07-19T23:16:05-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -17,25 +17,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
-
-
-</style>    <script src="/styles/styles.js"></script>
-    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
-    <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/main.css" />
+
+    
+
+    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+
 <link rel="shortcut icon" href="/favicon.ico" />
 <title>Three Dates in a Trench Coat</title>
 <meta property="og:title" content="Three Dates in a Trench Coat" />
@@ -4319,25 +4306,12 @@ with a bunch of random characters.</p>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-:root {
-  --load-hider: 0;
-}
-.load-hider {
-  opacity: var(--load-hider);
-}
-html {
-  background-color: var(--background-color);
-}
-body {
-  background-color: var(--background-color);
-}
-
-
-</style>    <script src="/styles/styles.js"></script>
-    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
-    <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/main.css" />
+
+    
+
+    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+
 <link rel="shortcut icon" href="/favicon.ico" />
 <title>Create an HLS Encrypted Video with ffmpeg</title>
 <meta property="og:title" content="Create an HLS Encrypted Video with ffmpeg" />

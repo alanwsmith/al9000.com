@@ -144,6 +144,7 @@ const baseParams = {
     ],
   },
 };
+
 const borderRadii = [
   `bottom-left`,
   `bottom-right`,
@@ -154,6 +155,7 @@ const borderRadii = [
   `top-left`,
   `top-right`,
 ];
+
 const colors = [
   "background",
   "black",
@@ -166,6 +168,7 @@ const colors = [
   "accent",
   "info",
 ];
+
 const edges = [
   `block`,
   `block-end`,
@@ -178,7 +181,9 @@ const edges = [
   `right`,
   `top`,
 ];
+
 const prefixes = ["", "faded-"];
+
 const sizes = [
   "xxxsmall",
   "xxsmall",
@@ -190,7 +195,9 @@ const sizes = [
   "xxlarge",
   "xxxlarge",
 ];
+
 const fullWidth = "calc(100vw - 1.4rem)";
+
 function cssVarsDev() {
   let lines = [];
   for (const [key, data] of Object.entries(baseParams)) {
@@ -255,6 +262,7 @@ function cssVarsDev() {
   );
   return `:root { ${lines.join("\n")} }`;
 }
+
 function addSheet(content) {
   const sheet = new CSSStyleSheet();
   sheet.replaceSync(content);

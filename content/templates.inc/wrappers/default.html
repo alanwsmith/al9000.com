@@ -3,11 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    [#
     == include "/styles/_includes/initial-styles.html" 
     <script src="/styles/styles.js"></script>
-    <script src="[@ d.config.bittyURL @]" type="module"></script>
     <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/main.css" />
+    #]
+
+    <script src="[@ d.config.bittyURL @]" type="module"></script>
+
     == include "/templates.inc/includes/metadata.html" 
     [! block head !][! endblock !]
     [# TODO: Deprecate `block css` in favor of `block styles` #]
