@@ -217,8 +217,6 @@ the timestamps I use look like this:</li>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css" />
 
-<<<<<<< HEAD
-=======
     
 
     <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
@@ -241,7 +239,6 @@ the timestamps I use look like this:</li>
   rel="site.standard.publication"
   href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
 />
->>>>>>> dev
 
     
     
@@ -2735,8 +2732,9 @@ p {
 </noscript>
   <div class="top-nav">
     <a href="/">home</a>
-
-  
+    <!--
+    <a href="/tools">tools</a>
+-->
   </div>
 
 
@@ -4513,8 +4511,6 @@ with a bunch of random characters.</p>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css" />
 
-<<<<<<< HEAD
-=======
     
 
     <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
@@ -4537,7 +4533,6 @@ with a bunch of random characters.</p>
   rel="site.standard.publication"
   href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
 />
->>>>>>> dev
 
     
     
