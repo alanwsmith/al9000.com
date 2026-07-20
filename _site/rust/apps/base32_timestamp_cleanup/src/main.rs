@@ -13,6 +13,7 @@ fn main() -> Result<()> {
   let date_matcher = Regex::new(
     r"created\s+=\s+(\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d-\d\d:\d\d)",
   )?;
+  let id_matcher = Regex::new(r#"id\s+=\s+"(../../../..)""#)?;
   for f in files {
     let content = fs::read_to_string(f)?;
     for (_, [date]) in
@@ -20,14 +21,21 @@ fn main() -> Result<()> {
     {
       let dt = DateTime::parse_from_rfc3339(date)?;
       let encoded = encode_base32_datetime(&dt);
-      let id = format!(
+      let new_id = format!(
         "{}/{}/{}/{}",
         &encoded[0..=1],
         &encoded[2..=3],
         &encoded[4..=5],
         &encoded[6..=7],
       );
-      dbg!(id);
+
+      dbg!(new_id);
+
+      for (_, [old_id]) in
+        id_matcher.captures_iter(&content).map(|c| c.extract())
+      {
+        dbg!(old_id);
+      }
     }
   }
 
