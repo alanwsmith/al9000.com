@@ -6,18 +6,35 @@ use std::{fs, path::PathBuf};
 use walkdir::WalkDir;
 
 fn main() -> Result<()> {
-  // update_file_ids()?;
+  update_file_ids()?;
   make_blog_folders()?;
   println!("done.");
   Ok(())
 }
 
 fn make_blog_folders() -> Result<()> {
+  let base_dir = "../../../blog";
+  let id_matcher = Regex::new(r#"id\s+=\s+"(..)/(..)/(..)/(..)""#)?;
   let files = get_files_with_extensions(
-    &PathBuf::from("../../../blog"),
+    &PathBuf::from(base_dir),
     &vec!["html"],
   );
-  dbg!(files);
+  for f in files {
+    let content = fs::read_to_string(&f)?;
+    if let Some((_, [f1, f2, f3, f4])) = id_matcher
+      .captures_iter(&content)
+      .next()
+      .map(|c| c.extract())
+    {
+      let new_folder =
+        PathBuf::from(base_dir).join(f1).join(f2).join(f3).join(f4);
+      dbg!(&new_folder);
+      // NOTE: Uncomment this line to make the
+      // dirs. It should be idempotent, but
+      // there's no need to test that.
+      // std::fs::create_dir_all(new_folder)?;
+    }
+  }
   Ok(())
 }
 
