@@ -134,15 +134,15 @@ blockquote {
 
 button {
   background: none;
-  border: var(--accent-border);
+  border: var(--faded-accent-border);
   border-radius: var(--default-border-radius);
   color: var(--default-link-color);
   cursor: pointer;
   font-family: inherit;
   font-size: var(--small-font-size);
   outline: inherit;
-  padding-block: var(--xxsmall-padding);
-  padding-inline: var(--xsmall-padding);
+  padding-block: var(--xsmall-padding);
+  padding-inline: var(--small-padding);
 }
 
 button:hover {

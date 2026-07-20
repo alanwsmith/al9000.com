@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-20T12:48:43-04:00</updated>
+  <updated>2026-07-20T13:32:54-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -2411,7 +2411,7 @@ conversations by ear and see where they go.</p>
     <updated>2026-06-20T19:42:00-04:00</updated>
     <summary><![CDATA[
   <div class="text-align-center xxxlarge-block-margin xxxlarge-block-padding">
-    <div data-r="latest random" class="xxlarge-font-size"></div>
+    <div data-r="latest random" class="xxlarge-font-size xxlarge-font-weight"></div>
     <div data-r="isLatest"></div>
   </div>
   <div class="text-align-center">

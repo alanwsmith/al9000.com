@@ -33,6 +33,7 @@
 
 == for size in styles.sizes
 .[@ size @]-font-size { font-size: var(--[@ size @]-font-size); }
+.[@ size @]-font-weight { font-weight: var(--[@ size @]-font-weight); }
 .[@ size @]-width { max-width: [@ styles.widths[loop.index0] @]; }
 .[@ size @]-wrapper { margin-inline: auto; max-width: [@ styles.widths[loop.index0] @]; }
 .[@ size @]-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--[@ size @]-flow)); }
@@ -48,6 +49,7 @@
 .[@ size @]-[@ edge @]-padding { padding-[@ edge @]: var(--[@ size @]-padding); }
   == endfor 
 == endfor 
+
 
 
 

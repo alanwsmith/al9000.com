@@ -7,7 +7,7 @@ Grippy Sock Hospital
 Deterministic
 Kick Murder Squad
 Testing and the One Two One Twos
-Wonder Twin Powers
+The Wonder Twin Powers
 Head Shave
 Textile Hippies
 Miss Chris Quarrier
@@ -19,12 +19,12 @@ T Minus Zero
 Fuck Counter
 Code Dreamer
 The Scottish Play
-The New Shoe Ankle Blisters
+New Shoe Ankle Blisters
 Snake River Canyon
 Previous Preface
 Separation of Concerns
 Truth in Music
-Greater Nerd Syndrome 
+The Greater Nerd Syndrome 
 Strength of Shadows
 Two-Class Boosted Decision Tree
 Gjallarhorn
@@ -57,14 +57,12 @@ Go / No-Go
 Lack of Noise
 The Tack Sharp
 sudo !! (pronounced Pseudo Bang Bang )
-Arthur and Merlin's
 The Memento Mori 
-Targeting Utopia
 The Buzz Threshold
 The Exhale
 Dragon Launch
 Real People. Not Actors.
-Invasion of Piracy
+Piracy Invasion
 The Known Quantities
 The Risk Profile
 The Bizarrely Magical
@@ -76,7 +74,6 @@ Armed with iPads
 Date Time Zulu
 API
 The Hermit Tendencies
-Razor Blade Apple
 Panic Sync
 The Alchemical Tradition
 Python Time Delta
@@ -360,7 +357,6 @@ High School Selfie
 Discount Danger 
 Atomic Space Gun
 The Alt Defaults
-Razor Apple
 The Epoch Args
 Merlin's Arthur
 Ascot
@@ -416,7 +412,6 @@ Leeroy Jenkins
 Like, Share, Subscribe
 The MacGyver Mullet
 Maximum Chaos
-Memento Mori
 The Mermaid Diagrams
 Meter of Fact
 Mind Physics
@@ -474,7 +469,6 @@ Detritus
 Diacritic Symbiosis
 The Dress Code Violations
 The Edge Case
-Exhale
 The Fast Facades 
 The Flaming Balls 
 The Giant Spoon
@@ -493,7 +487,7 @@ Plucky Comic Relief
 The Polyphasic Nappers
 Poor Proxies
 The Psychovisuals
-Raw Text Blobs
+The Text Blobs
 The Representative State Transfer
 The Risky Mouth
 Slingshot Chickens
@@ -510,7 +504,7 @@ Tone Curve
 The Trademark Symbol
 Transform Fourier 
 Until Impossible
-The Utopia Target
+Target Utopia 
 Vegas Coffee
 War Rocket Ajax
 Hot Hail
@@ -583,7 +577,7 @@ Stacked Divs
 The Subjective Pleasures
 The Infinite Descent
 Fallback Cascade
-Apple Razor Blade
+Apple Razor 
 Arthur And The Merlins
 Async Comm
 The Baseline Syndrome
