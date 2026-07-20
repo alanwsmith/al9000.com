@@ -6,6 +6,22 @@ use std::{fs, path::PathBuf};
 use walkdir::WalkDir;
 
 fn main() -> Result<()> {
+  // update_file_ids()?;
+  make_blog_folders()?;
+  println!("done.");
+  Ok(())
+}
+
+fn make_blog_folders() -> Result<()> {
+  let files = get_files_with_extensions(
+    &PathBuf::from("../../../blog"),
+    &vec!["html"],
+  );
+  dbg!(files);
+  Ok(())
+}
+
+fn update_file_ids() -> Result<()> {
   let files = get_files_with_extensions(
     &PathBuf::from("../../.."),
     &vec!["html"],
@@ -15,9 +31,11 @@ fn main() -> Result<()> {
   )?;
   let id_matcher = Regex::new(r#"id\s+=\s+"(../../../..)""#)?;
   for f in files {
-    let content = fs::read_to_string(f)?;
-    for (_, [date]) in
-      date_matcher.captures_iter(&content).map(|c| c.extract())
+    let content = fs::read_to_string(&f)?;
+    if let Some((_, [date])) = date_matcher
+      .captures_iter(&content)
+      .next()
+      .map(|c| c.extract())
     {
       let dt = DateTime::parse_from_rfc3339(date)?;
       let encoded = encode_base32_datetime(&dt);
@@ -28,17 +46,21 @@ fn main() -> Result<()> {
         &encoded[4..=5],
         &encoded[6..=7],
       );
-
-      dbg!(new_id);
-
-      for (_, [old_id]) in
-        id_matcher.captures_iter(&content).map(|c| c.extract())
+      dbg!(&new_id);
+      if let Some((_, [old_id])) = id_matcher
+        .captures_iter(&content)
+        .next()
+        .map(|c| c.extract())
       {
-        dbg!(old_id);
+        dbg!(&old_id);
+        // NOTE: Uncomment these lines to do the replacement.
+        // It should be safe to do multiple times, but
+        // there's no reason to test that.
+        // let new_content = content.replace(old_id, &new_id);
+        // fs::write(&f, new_content)?;
       }
     }
   }
-
   Ok(())
 }
 
