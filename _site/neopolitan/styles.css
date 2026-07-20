@@ -2,10 +2,10 @@
   display: grid;
   grid-template-columns: 1fr 5fr;
   gap: 1rem;
-  background-color: var(--faded-info-color);
+  background-color: var(--faded-warning-color);
   padding: var(--default-padding);
   border-radius: var(--default-border-radius);
-  border: var(--link-border);
+  border: var(--default-link-border);
 }
 .book-review .title {
   font-weight: 900;

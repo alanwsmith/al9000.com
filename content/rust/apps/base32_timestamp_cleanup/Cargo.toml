@@ -1,0 +1,11 @@
+[package]
+name = "base32_timestamp_cleanup"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.104"
+base32 = "0.5.1"
+chrono = "0.4.45"
+regex = "1.13.1"
+walkdir = "2.5.0"

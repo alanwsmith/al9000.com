@@ -3,11 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    [#
     == include "/styles/_includes/initial-styles.html" 
     <script src="/styles/styles.js"></script>
-    <script src="[@ d.config.bittyURL @]" type="module"></script>
     <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/main.css" />
+    #]
+
+    <script src="[@ d.config.bittyURL @]" type="module"></script>
+
     == include "/templates.inc/includes/metadata.html" 
     [! block head !][! endblock !]
     [# TODO: Deprecate `block css` in favor of `block styles` #]
@@ -18,25 +24,22 @@
   <body class="[! block body_class !]page[! endblock !]">
     == include "/templates.inc/noscript/default.html"
 
-    <div class="page-wrapper default-flow">
+    <div class="height-wrapper">
       [! block body !][! endblock !]
     </div>
 
-    <div class="center">
+    <div class="default-wrapper text-align-right faded-base-color">
       [! if p.created !]
-      [@ id_from_timestamp(p.created["$__toml_private_datetime"]) @]
+id = "[@ id_from_timestamp(p.created["$__toml_private_datetime"]) @]"
       [! endif !]
     </div>
 
-    <div class="templates">
+    <div class="templates" hidden>
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
-      [# TODO: Deprecate 'support' in favor of 'templates' #]
-      == block support
-      == endblock
-      [# TODO: Confirm templates pass up here directly from 
-      content files without having to have a link in pages/default.html #]
-      == block templates
-      == endblock
+      <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
+[# TODO: Deprecate 'support' in favor of 'templates' #]
+[! block support !][! endblock !]
+[! block templates !][! endblock !]
     </div>
   </body>
 </html>

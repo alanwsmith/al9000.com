@@ -1,0 +1,268 @@
+== if rss
+== extends "/templates.inc/rss/default.html"
+== else 
+== extends "/templates.inc/pages/blog.html"
+== endif
+
+== block toml
+title = "Pondering Standard.site and the Social Web"
+created = 2026-06-25T09:01:49-04:00
+tags = ["social web", "atmosphere"]
+status = "done"
+id = "01/n3/t9/nx"
+== endblock
+
+== block head
+<style>
+
+.footnote-wrapper ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.footnote-wrapper li {
+  border-top: var(--faded-default-border);
+  border-left: var(--faded-default-border);
+  padding: var(--default-padding);
+  margin-bottom: var(--xlarge-margin);
+  border-start-start-radius: 0.4rem;
+}
+</style>
+== endblock
+
+== block content 
+== filter md
+I've seen a bunch of references to Standard.site<sup class="footnoteLink" id="body-standard"><a href="#footnote-standard">standard</a></sup>.
+It's an approach to publishing long-form content
+with/in AT Protocol<sup class="footnoteLink" id="body-at"><a href="#footnote-at">at</a></sup>. The same protocol that powers bluesky<sup class="footnoteLink" id="body-bs"><a href="#footnote-bs">bs</a></sup>.
+My first reaction was "why would I do that when I have a website?" 
+I didn't give it much thought<sup class="footnoteLink" id="body-posse"><a href="#footnote-posse">posse</a></sup>. 
+
+A post called "Integrating your Atmosphere account content 
+in your web projects<sup class="footnoteLink" id="body-post"><a href="#footnote-post">post</a></sup>" came across today. 
+Instead of publishing, it's about storing your content in 
+AT Protocol to use it as a CMS for your site. 
+I'm not interested in that<sup class="footnoteLink" id="body-cms"><a href="#footnote-cms">cms</a></sup>. 
+What caught my eye was the comments at the bottom
+of the page. Some of were direct
+responses. Some were attached via reference 
+to the posts. 
+
+My eyebrow went up. Spock style. 
+
+
+## Manifesto Made Real
+
+Thinking about how to make the web a better
+place is my favorite pastime. To the point
+where I've begun my manifesto<sup class="footnoteLink" id="body-manifesto"><a href="#footnote-manifesto">manifesto</a></sup>. 
+A key focus is making it easier
+to share and connect web content. 
+The link I hit for "Integrating your Atmosphere account..."
+is on a site called Standard Reader<sup class="footnoteLink" id="body-sr"><a href="#footnote-sr">sr</a></sup>.
+It aggregates Standard.site long-form 
+content from across the AT Protocol 
+network. If you squint your eyes, it's an
+RSS reader with two way communication<sup class="footnoteLink" id="body-rss"><a href="#footnote-rss">rss</a></sup>. 
+Damn close to what I've been thinking about.
+
+If that's really what it provides, 
+we have a chance to vastly improve the
+web. Using it to break away from 
+corporate controlled social media 
+networks<sup class="footnoteLink" id="body-break"><a href="#footnote-break">break</a></sup>.
+Doing that would make the 
+world a better place<sup class="footnoteLink" id="body-better"><a href="#footnote-better">better</a></sup>. 
+
+-a 
+
+[aka <a href="https://bsky.app/profile/alanwsmith.com">@alanwsmith.com</a> on bluesky]
+
+
+== endfilter
+== endblock
+
+== block backmatter
+== filter md
+
+### Endnotes
+
+- Standard.site includes some 
+basic theming (in site.standard.theme.basic). 
+It's only four colors at the moment: foreground, background,
+accent, and accentForeground. 
+That they have it at all is what's encouraging. 
+It points to the possibility for more advanced 
+CSS. The idea being that folks should be able to 
+send a CSS payload that consumers can choose
+to use fully, partially, or completely ignore 
+at their own discretion. 
+
+- [ActivityPub](https://en.wikipedia.org/wiki/ActivityPub) is a sibling of AT Protocol. 
+It's what behind [Mastodon](https://joinmastodon.org/). 
+I [use it too](https://hachyderm.io/deck/@TheIdOfAlan). 
+Nothing like Standard.site has come across my
+feed from there. Would love to know if there's 
+something like it. (The way I look at it, 
+the more swings we take at breaking down corporate
+social media networks the better.)
+
+- This post does not get into moderation.
+There's an entire category of work to be
+done there. Bluesky has some tools in place.
+Possibly some of those can be repurposed. 
+Either way, there's a lot to tackle. 
+
+
+
+
+
+
+
+
+
+
+### References
+
+- [Social RSS(?)](https://chriscoyier.net/2026/06/01/social-rss-2/) from Chris Coyier. 
+Just one example of other folks who are thinking about and 
+after the same idea. 
+
+- [Leaflet](https://leaflet.pub/), [pckt](https://pckt.blog/), and
+[offprint](https://offprint.app/) - Three services that
+that provide ways to publish that use Standard.site. 
+I'm more interested in integrating this into my site, 
+but not everyone will want to do that. 
+
+  I've only scanned the home pages of each, but the feeling
+is absolutely the idea of a social web. 
+
+  All three are paid services. I like that because
+I it when I'm interacting with a business where
+I'm the customer and not the commodity that's
+being sold. Notes like this on the offprint home page
+are great:
+"Funded by writers, not investors - We’re paid by 
+the writers who use Offprint, not advertisers or 
+investors. The writers remain our priority."
+
+  I'm coming at this from the perspective
+of someone with a website looking to use
+the protocol to enhance what I have. Doing
+everything entirely on AT Protocol (which is
+the approach these services take) is equally
+valid. I wouldn't be surprise to see
+it being the majority use case. 
+
+- [Sequoia](https://sequoia.pub/blog/introducing-sequoia) - 
+An app that's designed to publish static sites to
+ATProto. Details in [the quickstart](https://sequoia.pub/quickstart/).
+
+  This is the thing that I'm most interested in looking
+at since I want to have the source of truth be
+my website instead of one of the other services. 
+I wrote my own site builder. I expect I'll mimic 
+what sequoia does internally. Especially since
+I use a [custom text format](https://neopolitan.alanwsmith.com/) I designed instead
+of markdown for my content. The good news
+is [there's a rust create](https://docs.rs/atproto-client/0.14.5/atproto_client/index.html)
+to get me started. 
+
+
+
+### Footnotes
+
+<div class="footnote-wrapper">
+
+- <a class="footnoteId" id="footnote-standard" href="#body-standard">standard</a>
+
+  [Standard.site](https://standard.site/) - A standardized
+approach to publishing long form content on AT Protocol 
+designed to to make it easier to discover and share. 
+Here's [the introduction page](https://standard.site/docs/introduction/). 
+
+- <a class="footnoteId" id="footnote-at" href="#body-at">at</a>
+
+  [AT Protocol](https://atproto.com/) - The tag line on the home page is literally: Building the Social Internet.
+  I'm into that. 
+
+- <a class="footnoteId" id="footnote-bs" href="#body-bs">bs</a>
+
+  [Bluesky](https://bsky.app/) - The social media platform built
+on the AT Protocol. 
+
+- <a class="footnoteId" id="footnote-posse" href="#body-posse">posse</a>
+
+  I didn't give it enough though to consider it from an
+[IndieWeb](https://indieweb.org/) [POSSE](https://indieweb.org/POSSE) 
+perspective: Publish on your Own Site. Syndicate Everywhere.
+
+- <a class="footnoteId" id="footnote-post" href="#body-post">post</a>
+
+  [Integrating your Atmosphere account content in your web projects](https://standard-reader.app/a/did:plc:s2rczyxit2v5vzedxqs326ri/3m56tzfj5pc2a) - the 
+post that got me thinking about standard.site again. 
+
+- <a class="footnoteId" id="footnote-cms" href="#body-cms">cms</a>
+
+  I'm one of those hacker types who ignores the general advice against 
+writing your web site builders. ([This post](/blog/1e/nr/w0/) is a
+draft at press time, but it'll give you an idea.)
+
+
+
+- <a class="footnoteId" id="footnote-manifesto" href="#body-manifesto">manifesto</a>
+
+  [A Vision for the Web](https://www.alanwsmith.com/en/2v/xa/cn/vj/) (originally 
+  titled "A Website Manifesto". Despite still being a draft made up mainly
+  of scratch notes the ideas are all there. 
+
+- <a class="footnoteId" id="footnote-sr" href="#body-sr">sr</a>
+
+  [standard-reader.app](https://standard-reader.app/) A site
+that aggregates long-form content from the AT Protocol network.
+Very much in line with what I'm thinking about for 
+make the web a better place. 
+
+- <a class="footnoteId" id="footnote-rss" href="#body-rss">rss</a>
+
+  Of course, this isn't RSS. It's AT Protocol. I'm 
+referring only to the user experience of
+an RSS reader. 
+
+- <a class="footnoteId" id="footnote-break" href="#body-break">break</a>
+
+  Engaging with readers and customers is tough on traditional
+websites. Setting up account management (and its customer 
+support), interaction, and moderation are a lot of work.
+Social media sites handle all that. It's easy to
+see why individuals and companies follow that 
+path of least resistance. Something like
+Standard.site offers removing the burden of 
+account management and interaction. Moderation
+won't come out of the box. I expect services
+will pop-up to assist with that as well. 
+
+
+- <a class="footnoteId" id="footnote-better" href="#body-better">better</a>
+
+  Corporate social networks aren't made 
+for us. They're made to make money.
+They turn our time, attention, and 
+content into chum to feed their algorithms
+designed to maximize shareholder value. 
+Standard.site and the services using
+it offer a way to regain control 
+of our content and, by extension, 
+our time and attention. 
+
+  Corporations will still participate
+in social media. They just won't 
+own it. 
+
+
+</div>
+
+
+
+== endfilter
+== endblock

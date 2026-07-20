@@ -1103,7 +1103,7 @@ const qrcode = new QRCode(
 );
 
 export async function updateClock(_, __, ___) {
-  await b.sleep(4000);
+  await b.sleep(3200);
   qrcode.clear();
   qrcode.makeCode(makeString());
   b.trigger("updateClock");

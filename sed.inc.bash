@@ -7,6 +7,10 @@
 
 find "/Users/alan/workshop/al9000.com/content/" \
   -type f \( -iname "*.html" -o -iname "*.txt" -o -iname "*.md" -o -iname "*.neo" \) -print0 | xargs -0 sed -E -i "" \
+<<<<<<< HEAD
   's|raw_file|template_file|g'
+=======
+  's|raw_file|raw_include|g'
+>>>>>>> dev
 
 
