@@ -39,9 +39,17 @@
 == endfor 
 
 == for alignment in styles.textAligns
-  .text-align-[@ alignment @] { text-align: [@ alignment @]; }
+.text-align-[@ alignment @] { text-align: [@ alignment @]; }
 == endfor 
 
-[@ raw_file("/styles/main.inc.css") @]
+== for size in styles.sizes 
+  == for edge in styles.edges 
+.[@ size @]-[@ edge @]-margin { margin-[@ edge @]: var(--[@ size @]-margin); }
+.[@ size @]-[@ edge @]-padding { padding-[@ edge @]: var(--[@ size @]-padding); }
+  == endfor 
+== endfor 
 
+
+
+[@ raw_file("/styles/main.inc.css") @]
 
