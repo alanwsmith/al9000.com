@@ -29,12 +29,12 @@ fn main() -> Result<()> {
         &encoded[6..=7],
       );
 
-      dbg!(new_id);
-
+      dbg!(&new_id);
       for (_, [old_id]) in
         id_matcher.captures_iter(&content).map(|c| c.extract())
       {
-        dbg!(old_id);
+        dbg!(&old_id);
+        let _ = content.replace(old_id, &new_id);
       }
     }
   }
