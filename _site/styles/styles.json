@@ -21,16 +21,16 @@
     "0.9rem"
   ],
   "colors": [
+    "accent",
     "background",
+    "base",
     "black",
-    "white",
-    "match",
-    "reverse",
-    "default",
     "heading",
     "link",
-    "accent",
-    "info"
+    "match",
+    "reverse",
+    "white",
+    "warning"
   ],
   "edges": [
     "block",

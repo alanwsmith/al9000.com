@@ -15,14 +15,32 @@
   == for alignment in styles.textAligns
     --text-align-[@ alignment @]: [@ alignment @];
   == endfor 
+
+  == for color in styles.colors
+    --default-[@ color @]-border: 1px solid var(--default-[@ color @]-color);
+    --faded-[@ color @]-border: 1px solid var(--faded-[@ color @]-color);
+  == endfor 
 }
+
 
 [@ raw_file("/styles/colors.css") @]
 
-== for size in styles.sizes
-.[@ size @]-font-size { font-size: var(--[@ size @]-font-size); }
+[# TODO: Add .light- when that's ready #]
+== for color in styles.colors
+.default-[@ color @]-color { color: var(--default-[@ color @]-color); }
+.faded-[@ color @]-color { color: var(--faded-[@ color @]-color); }
 == endfor 
 
+== for size in styles.sizes
+.[@ size @]-font-size { font-size: var(--[@ size @]-font-size); }
+.[@ size @]-width { max-width: [@ styles.widths[loop.index0] @]; }
+.[@ size @]-wrapper { margin-inline: auto; max-width: [@ styles.widths[loop.index0] @]; }
+.[@ size @]-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--[@ size @]-flow)); }
+== endfor 
+
+== for alignment in styles.textAligns
+  .text-align-[@ alignment @] { text-align: [@ alignment @]; }
+== endfor 
 
 [@ raw_file("/styles/main.inc.css") @]
 

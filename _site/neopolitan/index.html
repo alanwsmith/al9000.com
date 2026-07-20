@@ -35,10 +35,10 @@
   display: grid;
   grid-template-columns: 1fr 5fr;
   gap: 1rem;
-  background-color: var(--faded-info-color);
+  background-color: var(--faded-warning-color);
   padding: var(--default-padding);
   border-radius: var(--default-border-radius);
-  border: var(--link-border);
+  border: var(--default-link-border);
 }
 .book-review .title {
   font-weight: 900;
@@ -71,7 +71,7 @@
 
 </noscript>
 
-    <div class="page-wrapper default-flow">
+    <div class="height-wrapper">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
@@ -83,17 +83,21 @@
   <div class="top-nav">
     <a href="/">home</a>
     <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> |
+    <a href="https://bittyjs.com/">bitty</a>
   </div>
 
 
 </header>
 
 
-<main class="default-wrapper default-flow">
+<main class="default default-wrapper default-flow">
 
-  <hgroup>
+  <hgroup class="default">
+      <div class="title-wrapper">
         <h1>Neopolitan</h1>
           <div class="subtitle">Notes with Superpowers</div>
+      </div>
   </hgroup>
 
 
@@ -515,9 +519,11 @@ Once the parser is available, I
 hope you'll enjoy it too.</p>
 <p>-a</p>
 
-  <div class="end-of-line"></div>
+<div class="end-of-line"></div>
 
-<h2>Endnotes</h2>
+
+<div class="backmatter">
+    <h2>Endnotes</h2>
 <ul>
 <li>
 <p>Neopolitan was born out of frustration
@@ -551,6 +557,8 @@ something it can't handle.</p>
 </li>
 </ul>
 
+</div>
+
 </main>
 
 <footer class="default-wrapper xxlarge-block-padding xxxlarge-top-margin">
@@ -560,26 +568,23 @@ something it can't handle.</p>
   <div class="small-font-size text-align-center">
     who also makes <a href="https://bittyjs.com">bitty</a>
   </div>
-  <div class="small-font-size text-align-center">
-    <a href="/rss/">rss feed</a>
-  </div>
 </footer>
 
 
     </div>
 
-    <div class="center">
+    <div class="default-wrapper text-align-right faded-base-color">
       
-      ab/vf/jx/hz
+id = "ab/vf/jx/hz"
       
-
     </div>
 
-    <div class="templates">
+    <div class="templates" hidden>
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
       <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
-      
-      
+
+
+
     </div>
   </body>
 </html>

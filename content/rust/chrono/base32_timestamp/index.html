@@ -11,30 +11,29 @@ id = "ab/vf/uv/4y"
 status = "draft"
 == endblock
 
-== block main 
+== block content
 
-<h2>Overview</h2>
+<h2>Character Dates</h2>
 
 <p>
-  This is now I'm converting a DateTime from 
-  chrono into an eight character base32 string. 
-  The timestamps have a resolution of one
-  second (i.e. no fractions of a second). 
-  I use these for the IDs for pages on my site. 
-  Each ID is split into four directories 
-  of two characters each. This prevents
-  issues with too many items in a single
-  directory causing issues.
+  This is how I convert a timestamp into an eight character string.
+  I use the strings to make IDs and 
+  the file/folder tree for my blog posts. 
+  That way I don't have to worry about
+  trying to come up with folder names 
+  (or changing them if I change
+  the title of a post).
 </p>
 
+<h2>The Code</h2>
 
 <h3>Rust</h3>
 
-[! filter highlight("toml") !]
+[! filter highlight("toml", file_name = "Cargo.toml") !]
 [! include inc_dir() + "/Cargo.toml" !]
 [! endfilter !]
 
-[! filter highlight("rust") !]
+[! filter highlight("rust", file_name = "src/main.rs") !]
 [! include inc_dir() + "/src/main.rs" !]
 [! endfilter !]
 
@@ -45,29 +44,83 @@ status = "draft"
 [! endfilter !]
 
 
-<div class="end-of-line"></div>
+<h2>Outro</h2>
+
+<p>
+  Nothing fancy. But, super useful when
+  it comes to not having to think
+  about how to name things. 
+</p>
+
+<p>
+  -a
+</p>
+
+== endblock 
+
+== block backmatter
 
 <h2>Endnotes</h2>
 
 == filter md
-- [base32 encoding](https://en.wikipedia.org/wiki/Base32) uses 32 characters where each one
-represents 5 bits. 
-- 5 bits x 8 characters = 40 bits of data. 
-- 40 bits (2^40) represents a little over 1 trillion values. 
-- At 1 second per value, the 40 bits represents about 34,000 years. 
-More than enough to cover the expected time I'll be posting
-on my blog.
-- The `&dt.to_be_bytes()[3..8]` call keeps the output
-lined up chronologically (by making it Big Endian, which
-I only half way understand), and strips of the first
-few bits from the byte which aren't needed. 
+- This example originally used the 
+[data_encoding Rust crate](https://docs.rs/data-encoding/latest/data_encoding/)
+with [BASE32_NOPAD](https://docs.rs/data-encoding/latest/data_encoding/constant.BASE32_NOPAD.html).
+The timestamps were encoded but the resulting strings did not 
+sort in the same order as the timestamps they represented (letters come before
+numbers which breaks the order). 
+
+  I switched to using the [base32 Rust crate](https://docs.rs/base32/latest/base32/)
+that provides the [Crockford Alphabet](https://www.crockford.com/base32.html). 
+The strings sort the same way as their timestamps with 
+that setup. 
+
+- The dates to in with a timezone but come out as Utc (e.g. 
+__2026-07-17T10:30:00-04:00__ becomes __2026-07-17T14:30:00+00:00__. 
+That's expected since the [Unix epoch timestamp](https://en.wikipedia.org/wiki/Unix_time) 
+that's used for the encoding doesn't contain time zone info. 
+
+- The encoded timestamp has a resolution of one second. That's all I need for
+creating blog post IDs (which is what I'm using this for). 
+I want them to be 8 characters which base32 can handle 
+when it's only dealing with seconds. 
+If you need millisecond or finder granularity more characters
+would be required for the base32 value. 
+
+  The reason I'm limiting the encoded values to 8 characters it
+to make the URLs somewhat approachable (e.g. `/blog/01/n5/mf/38/`).
+Or, at least, not as wild as using something like 
+a [UUID (v7)](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+that give you milliseconds but is way longer and looks like this:
+
+  [! filter output() !]
+  fb2a482b-3694-4d8f-a2ed-402077fe97c4
+  [! endfilter !]
+
+- I had been truncating a [KSUID](https://github.com/segmentio/ksuid)
+to get the characters. I switched to doing it with 
+base32 since I'm not using the randomness that provides. 
 
 
+- Some details on [base32 encoding](https://en.wikipedia.org/wiki/Base32):
+
+  - It uses 32 characters where each one represents 5 bits. 
+
+  - 5 bits x 8 characters = 40 bits of data. 
+
+  - 40 bits (2^40) represents a little over 1 trillion values. 
+
+  - At 1 second per value, the 40 bits represents about 34,000 years. 
+  More than enough to cover the expected time I'll be posting
+  on my blog.
+
+- The `.to_be_bytes()[3..8]` call keeps the output
+  lined up chronologically (by making it Big Endian, which
+  I only half way understand), and strips of the first
+  few bits from the byte which aren't needed. 
 
 
 == endfilter
-
-
 == endblock 
 
 

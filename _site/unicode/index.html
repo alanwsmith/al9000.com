@@ -66,7 +66,7 @@
 
 </noscript>
 
-    <div class="page-wrapper default-flow">
+    <div class="height-wrapper">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
@@ -78,13 +78,15 @@
   <div class="top-nav">
     <a href="/">home</a>
     <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> |
+    <a href="https://bittyjs.com/">bitty</a>
   </div>
 
 
 </header>
 
 
-<main class="default-wrapper default-flow">
+<main class="default default-wrapper default-flow">
 
 
 <h1>Unicode Characters</h1>
@@ -139,7 +141,8 @@
 <div data-r="status"></div>
 
 
-  <div class="end-of-line"></div>
+<div class="end-of-line"></div>
+
 
 
 </main>
@@ -151,24 +154,20 @@
   <div class="small-font-size text-align-center">
     who also makes <a href="https://bittyjs.com">bitty</a>
   </div>
-  <div class="small-font-size text-align-center">
-    <a href="/rss/">rss feed</a>
-  </div>
 </footer>
 
 
     </div>
 
-    <div class="center">
+    <div class="default-wrapper text-align-right faded-base-color">
       
-
     </div>
 
-    <div class="templates">
+    <div class="templates" hidden>
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
       <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
-      
-      
+
+
 <script type="text/html" data-template="displayTemplate">
 <div>__CHARACTERS__</div>
 </script>
@@ -176,6 +175,7 @@
 <script type="text/html" data-template="characterTemplate">
 <button class="unicodeCharacter __HIDDEN__" data-s="copyCharacter" id="id__HEX__">__CHARACTER__</button>
 </script>
+
     </div>
   </body>
 </html>

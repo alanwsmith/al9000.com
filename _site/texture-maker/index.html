@@ -46,7 +46,7 @@
 
 </noscript>
 
-    <div class="page-wrapper default-flow">
+    <div class="height-wrapper">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
@@ -58,17 +58,21 @@
   <div class="top-nav">
     <a href="/">home</a>
     <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> |
+    <a href="https://bittyjs.com/">bitty</a>
   </div>
 
 
 </header>
 
 
-<main class="default-wrapper default-flow">
+<main class="default default-wrapper default-flow">
 
-  <hgroup>
+  <hgroup class="default">
+      <div class="title-wrapper">
         <h1>Background Texture Maker</h1>
           <div class="subtitle">Give your site a little grit</div>
+      </div>
         <div class="date">January 2026</div>
   </hgroup>
 
@@ -152,7 +156,8 @@ I yoinked some code from <a href="https://github.com/tigt/mini-svg-data-uri/blob
 
 
 
-  <div class="end-of-line"></div>
+<div class="end-of-line"></div>
+
 
 
 </main>
@@ -164,26 +169,22 @@ I yoinked some code from <a href="https://github.com/tigt/mini-svg-data-uri/blob
   <div class="small-font-size text-align-center">
     who also makes <a href="https://bittyjs.com">bitty</a>
   </div>
-  <div class="small-font-size text-align-center">
-    <a href="/rss/">rss feed</a>
-  </div>
 </footer>
 
 
     </div>
 
-    <div class="center">
+    <div class="default-wrapper text-align-right faded-base-color">
       
-      ab/uv/ts/ew
+id = "ab/uv/ts/ew"
       
-
     </div>
 
-    <div class="templates">
+    <div class="templates" hidden>
       <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
       <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
-      
-      
+
+
 <script type="image/svg" id="mainSVG">
   <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
     <filter id="noiseFilter">
@@ -200,6 +201,7 @@ I yoinked some code from <a href="https://github.com/tigt/mini-svg-data-uri/blob
     <rect width="100%" height="100%" opacity="__OPACITY__" filter="url(#noiseFilter)"/>
   </svg>
 </script>
+
     </div>
   </body>
 </html>

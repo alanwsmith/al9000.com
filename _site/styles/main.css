@@ -87,85 +87,107 @@
     --text-align-left: left;
     --text-align-right: right;
     --text-align-start: start;
+
+    --default-accent-border: 1px solid var(--default-accent-color);
+    --faded-accent-border: 1px solid var(--faded-accent-color);
+    --default-background-border: 1px solid var(--default-background-color);
+    --faded-background-border: 1px solid var(--faded-background-color);
+    --default-base-border: 1px solid var(--default-base-color);
+    --faded-base-border: 1px solid var(--faded-base-color);
+    --default-black-border: 1px solid var(--default-black-color);
+    --faded-black-border: 1px solid var(--faded-black-color);
+    --default-heading-border: 1px solid var(--default-heading-color);
+    --faded-heading-border: 1px solid var(--faded-heading-color);
+    --default-link-border: 1px solid var(--default-link-color);
+    --faded-link-border: 1px solid var(--faded-link-color);
+    --default-match-border: 1px solid var(--default-match-color);
+    --faded-match-border: 1px solid var(--faded-match-color);
+    --default-reverse-border: 1px solid var(--default-reverse-color);
+    --faded-reverse-border: 1px solid var(--faded-reverse-color);
+    --default-white-border: 1px solid var(--default-white-color);
+    --faded-white-border: 1px solid var(--faded-white-color);
+    --default-warning-border: 1px solid var(--default-warning-color);
+    --faded-warning-border: 1px solid var(--faded-warning-color);
 }
+
 
 :root {
   --light--default-background-color: oklch(0.9634 0.02097 105.642);
-  --light--default-body-color: oklch(0.1951 0.23 105.642);
-  --light--fade1-body-color: oklch(0.1951 0.23 105.642 / 0.653);
+  --light--default-base-color: oklch(0.1951 0.23 105.642);
+  --light--faded-base-color: oklch(0.1951 0.23 105.642 / 0.653);
   --light--default-heading-color: oklch(0.165 0.18556 225.642);
-  --light--fade1-heading-color: oklch(0.165 0.18556 225.642 / 0.18);
+  --light--faded-heading-color: oklch(0.165 0.18556 225.642 / 0.18);
   --light--default-link-color: oklch(0.5537 0.15458 225.642);
-  --light--fade1-link-color: oklch(0.5537 0.15458 225.642 / 0.604);
+  --light--faded-link-color: oklch(0.5537 0.15458 225.642 / 0.604);
   --light--default-accent-color: oklch(0.4986 0.10843 165.642);
-  --light--fade1-accent-color: oklch(0.4986 0.10843 165.642 / 0.28);
-  --light--default-info-color: oklch(0.645 0.09691077318165202 345.642);
-  --light--fade1-info-color: oklch(0.645 0.09691077318165202 345.642 / 0.376);
+  --light--faded-accent-color: oklch(0.4986 0.10843 165.642 / 0.28);
+  --light--default-warning-color: oklch(0.645 0.09691077318165202 345.642);
+  --light--faded-warning-color: oklch(0.645 0.09691077318165202 345.642 / 0.376);
   --light--default-black-color: oklch(0 0 301.9078701095805);
-  --light--fade1-black-color: oklch(0 0 301.9078701095805 / 0.46);
+  --light--faded-black-color: oklch(0 0 301.9078701095805 / 0.46);
   --light--default-white-color: oklch(1 0 301.9078701095805);
-  --light--fade1-white-color: oklch(1 0 301.9078701095805 / 0.46);
+  --light--faded-white-color: oklch(1 0 301.9078701095805 / 0.46);
   --light--default-match-color: oklch(1 0 301.9078701095805);
-  --light--fade1-match-color: oklch(1 0 301.9078701095805 / 0.46);
+  --light--faded-match-color: oklch(1 0 301.9078701095805 / 0.46);
   --light--default-reverse-color: oklch(0 0 301.9078701095805);
-  --light--fade1-reverse-color: oklch(0 0 301.9078701095805 / 0.46);
+  --light--faded-reverse-color: oklch(0 0 301.9078701095805 / 0.46);
   --dark--default-background-color: oklch(0.2124 0.0298 254.092);
-  --dark--default-body-color: oklch(0.8747 0.04454 254.092);
-  --dark--fade1-body-color: oklch(0.8747 0.04454 254.092 / 0.157);
+  --dark--default-base-color: oklch(0.8747 0.04454 254.092);
+  --dark--faded-base-color: oklch(0.8747 0.04454 254.092 / 0.157);
   --dark--default-heading-color: oklch(0.6705 0.12874 254.092);
-  --dark--fade1-heading-color: oklch(0.6705 0.12874 254.092 / 0.308);
+  --dark--faded-heading-color: oklch(0.6705 0.12874 254.092 / 0.308);
   --dark--default-link-color: oklch(0.7299 0.07889 14.091999999999985);
-  --dark--fade1-link-color: oklch(0.7299 0.07889 14.091999999999985 / 0.609);
+  --dark--faded-link-color: oklch(0.7299 0.07889 14.091999999999985 / 0.609);
   --dark--default-accent-color: oklch(0.7338 0.06558 194.09199999999998);
-  --dark--fade1-accent-color: oklch(0.7338 0.06558 194.09199999999998 / 0.567);
-  --dark--default-info-color: oklch(0.4351 0.16022 74.09199999999998);
-  --dark--fade1-info-color: oklch(0.4351 0.16022 74.09199999999998 / 0.359);
+  --dark--faded-accent-color: oklch(0.7338 0.06558 194.09199999999998 / 0.567);
+  --dark--default-warning-color: oklch(0.4351 0.16022 74.09199999999998);
+  --dark--faded-warning-color: oklch(0.4351 0.16022 74.09199999999998 / 0.359);
   --dark--default-black-color: oklch(0 0 232.79402489007663);
-  --dark--fade1-black-color: oklch(0 0 232.79402489007663 / 0.46);
+  --dark--faded-black-color: oklch(0 0 232.79402489007663 / 0.46);
   --dark--default-white-color: oklch(1 0 232.79402489007663);
-  --dark--fade1-white-color: oklch(1 0 232.79402489007663 / 0.46);
+  --dark--faded-white-color: oklch(1 0 232.79402489007663 / 0.46);
   --dark--default-match-color: oklch(0 0 232.79402489007663);
-  --dark--fade1-match-color: oklch(0 0 232.79402489007663 / 0.46);
+  --dark--faded-match-color: oklch(0 0 232.79402489007663 / 0.46);
   --dark--default-reverse-color: oklch(1 0 232.79402489007663);
-  --dark--fade1-reverse-color: oklch(1 0 232.79402489007663 / 0.46);
+  --dark--faded-reverse-color: oklch(1 0 232.79402489007663 / 0.46);
   --hc-light--default-background-color: oklch(1 0.06752 259.652);
-  --hc-light--default-body-color: oklch(0.0995 0.23 259.652);
-  --hc-light--fade1-body-color: oklch(0.0995 0.23 259.652 / 0.242);
+  --hc-light--default-base-color: oklch(0.0995 0.23 259.652);
+  --hc-light--faded-base-color: oklch(0.0995 0.23 259.652 / 0.242);
   --hc-light--default-heading-color: oklch(0.6217704856122922 0.08831300417260277 319.652);
-  --hc-light--fade1-heading-color: oklch(0.6217704856122922 0.08831300417260277 319.652 / 0.572);
+  --hc-light--faded-heading-color: oklch(0.6217704856122922 0.08831300417260277 319.652 / 0.572);
   --hc-light--default-link-color: oklch(0.5245 0.15006780734890438 259.652);
-  --hc-light--fade1-link-color: oklch(0.5245 0.15006780734890438 259.652 / 0.437);
+  --hc-light--faded-link-color: oklch(0.5245 0.15006780734890438 259.652 / 0.437);
   --hc-light--default-accent-color: oklch(0.3227 0.19753 19.651999999999987);
-  --hc-light--fade1-accent-color: oklch(0.3227 0.19753 19.651999999999987 / 0.318);
-  --hc-light--default-info-color: oklch(0.5586547900477358 0.169058911353704 199.65200000000004);
-  --hc-light--fade1-info-color: oklch(0.5586547900477358 0.169058911353704 199.65200000000004 / 0.34);
+  --hc-light--faded-accent-color: oklch(0.3227 0.19753 19.651999999999987 / 0.318);
+  --hc-light--default-warning-color: oklch(0.5586547900477358 0.169058911353704 199.65200000000004);
+  --hc-light--faded-warning-color: oklch(0.5586547900477358 0.169058911353704 199.65200000000004 / 0.34);
   --hc-light--default-black-color: oklch(0 0 53.5090680592232);
-  --hc-light--fade1-black-color: oklch(0 0 53.5090680592232 / 0.46);
+  --hc-light--faded-black-color: oklch(0 0 53.5090680592232 / 0.46);
   --hc-light--default-white-color: oklch(1 0 53.5090680592232);
-  --hc-light--fade1-white-color: oklch(1 0 53.5090680592232 / 0.46);
+  --hc-light--faded-white-color: oklch(1 0 53.5090680592232 / 0.46);
   --hc-light--default-match-color: oklch(1 0 53.5090680592232);
-  --hc-light--fade1-match-color: oklch(1 0 53.5090680592232 / 0.46);
+  --hc-light--faded-match-color: oklch(1 0 53.5090680592232 / 0.46);
   --hc-light--default-reverse-color: oklch(0 0 53.5090680592232);
-  --hc-light--fade1-reverse-color: oklch(0 0 53.5090680592232 / 0.46);
+  --hc-light--faded-reverse-color: oklch(0 0 53.5090680592232 / 0.46);
   --hc-dark--default-background-color: oklch(0 0.20706934229967444 142);
-  --hc-dark--default-body-color: oklch(1 0.20411 82);
-  --hc-dark--fade1-body-color: oklch(1 0.20411 82 / 0.385);
+  --hc-dark--default-base-color: oklch(1 0.20411 82);
+  --hc-dark--faded-base-color: oklch(1 0.20411 82 / 0.385);
   --hc-dark--default-heading-color: oklch(0.9552 0.09830629780740073 142);
-  --hc-dark--fade1-heading-color: oklch(0.9552 0.09830629780740073 142 / 0.697);
+  --hc-dark--faded-heading-color: oklch(0.9552 0.09830629780740073 142 / 0.697);
   --hc-dark--default-link-color: oklch(0.962 0.004698125519856717 262);
-  --hc-dark--fade1-link-color: oklch(0.962 0.004698125519856717 262 / 0.628);
+  --hc-dark--faded-link-color: oklch(0.962 0.004698125519856717 262 / 0.628);
   --hc-dark--default-accent-color: oklch(0.874 0.23 142);
-  --hc-dark--fade1-accent-color: oklch(0.874 0.23 142 / 0.374);
-  --hc-dark--default-info-color: oklch(0.6882 0.21203825105953206 22);
-  --hc-dark--fade1-info-color: oklch(0.6882 0.21203825105953206 22 / 0.418);
+  --hc-dark--faded-accent-color: oklch(0.874 0.23 142 / 0.374);
+  --hc-dark--default-warning-color: oklch(0.6882 0.21203825105953206 22);
+  --hc-dark--faded-warning-color: oklch(0.6882 0.21203825105953206 22 / 0.418);
   --hc-dark--default-black-color: oklch(0 0 78.02412821214362);
-  --hc-dark--fade1-black-color: oklch(0 0 78.02412821214362 / 0.46);
+  --hc-dark--faded-black-color: oklch(0 0 78.02412821214362 / 0.46);
   --hc-dark--default-white-color: oklch(1 0 78.02412821214362);
-  --hc-dark--fade1-white-color: oklch(1 0 78.02412821214362 / 0.46);
+  --hc-dark--faded-white-color: oklch(1 0 78.02412821214362 / 0.46);
   --hc-dark--default-match-color: oklch(0 0 78.02412821214362);
-  --hc-dark--fade1-match-color: oklch(0 0 78.02412821214362 / 0.46);
+  --hc-dark--faded-match-color: oklch(0 0 78.02412821214362 / 0.46);
   --hc-dark--default-reverse-color: oklch(1 0 78.02412821214362);
-  --hc-dark--fade1-reverse-color: oklch(1 0 78.02412821214362 / 0.46);
+  --hc-dark--faded-reverse-color: oklch(1 0 78.02412821214362 / 0.46);
   --highlight-1-color: oklch(from var(--default-accent-color) l c h);
   --highlight-2-color: oklch(from var(--default-accent-color) l c calc(h + 60));
   --highlight-3-color: oklch(from var(--default-accent-color) l c calc(h + 120));
@@ -178,47 +200,47 @@
 
 :root {
   --default-background-color: var(--switch--background-color, var(--light--default-background-color));
-  --default-body-color: var(--switch--body-color, var(--light--default-body-color));
-  --fade1-body-color: var(--switch--fade1-body-color, var(--light--fade1-body-color));
+  --default-base-color: var(--switch--base-color, var(--light--default-base-color));
+  --faded-base-color: var(--switch--faded-base-color, var(--light--faded-base-color));
   --default-heading-color: var(--switch--heading-color, var(--light--default-heading-color));
-  --fade1-heading-color: var(--switch--fade1-heading-color, var(--light--fade1-heading-color));
+  --faded-heading-color: var(--switch--faded-heading-color, var(--light--faded-heading-color));
   --default-link-color: var(--switch--default-link-color, var(--light--default-link-color));
-  --fade1-link-color: var(--switch--fade1-link-color, var(--light--fade1-link-color));
+  --faded-link-color: var(--switch--faded-link-color, var(--light--faded-link-color));
   --default-accent-color: var(--switch--default-accent-color, var(--light--default-accent-color));
-  --fade1-accent-color: var(--switch--fade1-accent-color, var(--light--fade1-accent-color));
-  --default-info-color: var(--switch--info-color, var(--light--default-info-color));
-  --fade1-info-color: var(--switch--fade1-info-color, var(--light--fade1-info-color));
+  --faded-accent-color: var(--switch--faded-accent-color, var(--light--faded-accent-color));
+  --default-warning-color: var(--switch--warning-color, var(--light--default-warning-color));
+  --faded-warning-color: var(--switch--faded-warning-color, var(--light--faded-warning-color));
   --default-black-color: var(--switch--black-color, var(--light--default-black-color));
-  --fade1-black-color: var(--switch--fade1-black-color, var(--light--fade1-black-color));
+  --faded-black-color: var(--switch--faded-black-color, var(--light--faded-black-color));
   --default-white-color: var(--switch--white-color, var(--light--default-white-color));
-  --fade1-white-color: var(--switch--fade1-white-color, var(--light--fade1-white-color));
+  --faded-white-color: var(--switch--faded-white-color, var(--light--faded-white-color));
   --default-match-color: var(--switch--match-color, var(--light--default-match-color));
-  --fade1-match-color: var(--switch--fade1-match-color, var(--light--fade1-match-color));
+  --faded-match-color: var(--switch--faded-match-color, var(--light--faded-match-color));
   --default-reverse-color: var(--switch--reverse-color, var(--light--default-reverse-color));
-  --fade1-reverse-color: var(--switch--fade1-reverse-color, var(--light--fade1-reverse-color));
+  --faded-reverse-color: var(--switch--faded-reverse-color, var(--light--faded-reverse-color));
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --default-background-color: var(--switch--background-color, var(--dark--default-background-color));
-    --default-body-color: var(--switch--body-color, var(--dark--default-body-color));
-    --fade1-body-color: var(--switch--fade1-body-color, var(--dark--fade1-body-color));
+    --default-base-color: var(--switch--base-color, var(--dark--default-base-color));
+    --faded-base-color: var(--switch--faded-base-color, var(--dark--faded-base-color));
     --default-heading-color: var(--switch--heading-color, var(--dark--default-heading-color));
-    --fade1-heading-color: var(--switch--fade1-heading-color, var(--dark--fade1-heading-color));
+    --faded-heading-color: var(--switch--faded-heading-color, var(--dark--faded-heading-color));
     --default-link-color: var(--switch--default-link-color, var(--dark--default-link-color));
-    --fade1-link-color: var(--switch--fade1-link-color, var(--dark--fade1-link-color));
+    --faded-link-color: var(--switch--faded-link-color, var(--dark--faded-link-color));
     --default-accent-color: var(--switch--default-accent-color, var(--dark--default-accent-color));
-    --fade1-accent-color: var(--switch--fade1-accent-color, var(--dark--fade1-accent-color));
-    --default-info-color: var(--switch--info-color, var(--dark--default-info-color));
-    --fade1-info-color: var(--switch--fade1-info-color, var(--dark--fade1-info-color));
+    --faded-accent-color: var(--switch--faded-accent-color, var(--dark--faded-accent-color));
+    --default-warning-color: var(--switch--warning-color, var(--dark--default-warning-color));
+    --faded-warning-color: var(--switch--faded-warning-color, var(--dark--faded-warning-color));
     --default-black-color: var(--switch--black-color, var(--dark--default-black-color));
-    --fade1-black-color: var(--switch--fade1-black-color, var(--dark--fade1-black-color));
+    --faded-black-color: var(--switch--faded-black-color, var(--dark--faded-black-color));
     --default-white-color: var(--switch--white-color, var(--dark--default-white-color));
-    --fade1-white-color: var(--switch--fade1-white-color, var(--dark--fade1-white-color));
+    --faded-white-color: var(--switch--faded-white-color, var(--dark--faded-white-color));
     --default-match-color: var(--switch--match-color, var(--dark--default-match-color));
-    --fade1-match-color: var(--switch--fade1-match-color, var(--dark--fade1-match-color));
+    --faded-match-color: var(--switch--faded-match-color, var(--dark--faded-match-color));
     --default-reverse-color: var(--switch--reverse-color, var(--dark--default-reverse-color));
-    --fade1-reverse-color: var(--switch--fade1-reverse-color, var(--dark--fade1-reverse-color));
+    --faded-reverse-color: var(--switch--faded-reverse-color, var(--dark--faded-reverse-color));
   }
 }
 
@@ -232,16 +254,71 @@
 .keyword.operator.comparison, .keyword.operator.assignment, .keyword.operator.arithmetic, .meta.brace.round, .meta.brace.curly, .punctuation.section, .punctuation.section.block, .punctuation.definition.parameters, .punctuation.section.group, .meta.selector.css, .constant.character.escape, .support.function.construct, .keyword.other.new, .punctuation.separator.continuation, .other.package.exclude, .other.remove, .punctuation.section.group.tex, .punctuation.definition.arguments.begin.latex, .punctuation.definition.arguments.end.latex, .punctuation.definition.arguments.latex, .punctuation.definition.constant.math.tex, .punctuation.definition.string.begin.tex, .punctuation.definition.string.end.tex, .variable.parameter.definition.label.latex, .punctuation.definition.logical-expression.shell, .markup.deleted, .sublimelinter.mark.error, .markup.deleted.git_gutter { color: var(--highlight-8-color); }
 
 
-.xxxsmall-font-size { font-size: var(--xxxsmall-font-size); }
-.xxsmall-font-size { font-size: var(--xxsmall-font-size); }
-.xsmall-font-size { font-size: var(--xsmall-font-size); }
-.small-font-size { font-size: var(--small-font-size); }
-.default-font-size { font-size: var(--default-font-size); }
-.large-font-size { font-size: var(--large-font-size); }
-.xlarge-font-size { font-size: var(--xlarge-font-size); }
-.xxlarge-font-size { font-size: var(--xxlarge-font-size); }
-.xxxlarge-font-size { font-size: var(--xxxlarge-font-size); }
 
+.default-accent-color { color: var(--default-accent-color); }
+.faded-accent-color { color: var(--faded-accent-color); }
+.default-background-color { color: var(--default-background-color); }
+.faded-background-color { color: var(--faded-background-color); }
+.default-base-color { color: var(--default-base-color); }
+.faded-base-color { color: var(--faded-base-color); }
+.default-black-color { color: var(--default-black-color); }
+.faded-black-color { color: var(--faded-black-color); }
+.default-heading-color { color: var(--default-heading-color); }
+.faded-heading-color { color: var(--faded-heading-color); }
+.default-link-color { color: var(--default-link-color); }
+.faded-link-color { color: var(--faded-link-color); }
+.default-match-color { color: var(--default-match-color); }
+.faded-match-color { color: var(--faded-match-color); }
+.default-reverse-color { color: var(--default-reverse-color); }
+.faded-reverse-color { color: var(--faded-reverse-color); }
+.default-white-color { color: var(--default-white-color); }
+.faded-white-color { color: var(--faded-white-color); }
+.default-warning-color { color: var(--default-warning-color); }
+.faded-warning-color { color: var(--faded-warning-color); }
+
+.xxxsmall-font-size { font-size: var(--xxxsmall-font-size); }
+.xxxsmall-width { max-width: min(100vw - 1.4rem, 3rem); }
+.xxxsmall-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 3rem); }
+.xxxsmall-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxxsmall-flow)); }
+.xxsmall-font-size { font-size: var(--xxsmall-font-size); }
+.xxsmall-width { max-width: min(100vw - 1.4rem, 7rem); }
+.xxsmall-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 7rem); }
+.xxsmall-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxsmall-flow)); }
+.xsmall-font-size { font-size: var(--xsmall-font-size); }
+.xsmall-width { max-width: min(100vw - 1.4rem, 16rem); }
+.xsmall-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 16rem); }
+.xsmall-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xsmall-flow)); }
+.small-font-size { font-size: var(--small-font-size); }
+.small-width { max-width: min(100vw - 1.4rem, 33rem); }
+.small-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 33rem); }
+.small-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--small-flow)); }
+.default-font-size { font-size: var(--default-font-size); }
+.default-width { max-width: min(100vw - 1.4rem, 48rem); }
+.default-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 48rem); }
+.default-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--default-flow)); }
+.large-font-size { font-size: var(--large-font-size); }
+.large-width { max-width: min(100vw - 1.4rem, 50rem); }
+.large-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 50rem); }
+.large-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--large-flow)); }
+.xlarge-font-size { font-size: var(--xlarge-font-size); }
+.xlarge-width { max-width: min(100vw - 1.4rem, 54rem); }
+.xlarge-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 54rem); }
+.xlarge-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xlarge-flow)); }
+.xxlarge-font-size { font-size: var(--xxlarge-font-size); }
+.xxlarge-width { max-width: min(100vw - 1.4rem, 58rem); }
+.xxlarge-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 58rem); }
+.xxlarge-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxlarge-flow)); }
+.xxxlarge-font-size { font-size: var(--xxxlarge-font-size); }
+.xxxlarge-width { max-width: min(100vw - 1.4rem, 64rem); }
+.xxxlarge-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 64rem); }
+.xxxlarge-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxxlarge-flow)); }
+
+  .text-align-center { text-align: center; }
+  .text-align-end { text-align: end; }
+  .text-align-justify { text-align: justify; }
+  .text-align-left { text-align: left; }
+  .text-align-right { text-align: right; }
+  .text-align-start { text-align: start; }
 
 :root {
   interpolate-size: allow-keywords;
@@ -259,7 +336,7 @@
 }
 
 ::marker {
-  color: var(--default-body-color);
+  color: var(--default-base-color);
 }
 
 html {
@@ -268,7 +345,7 @@ html {
 
 body {
   background-color: var(--default-background-color);
-  color: var(--default-body-color);
+  color: var(--default-base-color);
   font-family: system-ui, sans-serif;
   font-size-adjust: 0.5;
   font-size: var(--default-font-size);
@@ -297,6 +374,11 @@ aside {
 
 b {
   font-weight: var(--xxlarge-font-weight);
+}
+
+.backmatter {
+  padding-bottom: var(--xxlarge-padding);
+  border-bottom: var(--faded-base-border);
 }
 
 .blue {
@@ -395,7 +477,7 @@ code {
 
 .code-block {
   background-color: var(--default-match-color);
-  border: var(--faded-reverse-color-border);
+  border: var(--faded-reverse-border);
   border-radius: var(--default-border-radius);
   font-size: var(--small-font-size);
   margin-block: var(--default-margin);
@@ -459,7 +541,7 @@ code {
 
 .command-block {
   background-color: var(--default-match-color);
-  border: var(--faded-reverse-color-border);
+  border: var(--faded-reverse-border);
   border-radius: var(--default-border-radius);
   font-size: var(--small-font-size);
   margin-block: var(--default-margin);
@@ -491,7 +573,7 @@ code {
 }
 
 .date {
-  color: var(--faded-text-color);
+  color: var(--faded-base-color);
 }
 
 del {
@@ -526,11 +608,9 @@ details > :where(:not(summary)) {
 
 
 .end-of-line {
-  color: var(--faded-text-color);
-  text-align: right;
+  color: var(--faded-base-color);
   font-size: var(--small-font-size);
-  border-top: var(--faded-default-border);
-  border-bottom: var(--faded-default-border);
+  border-block: var(--faded-base-border);
   --flow-space: var(--xxxlarge-margin);
 }
 
@@ -540,7 +620,7 @@ details > :where(:not(summary)) {
 
 .example-box {
   background-color: var(--default-match-color);
-  border: var(--default-border);
+  border: var(--base-border);
   border-radius: var(--default-border-radius);
   padding: var(--default-padding);
 }
@@ -550,11 +630,11 @@ details > :where(:not(summary)) {
 }
 
 footer {
-  color: var(--default-body-color);
+  color: var(--faded-accent-color);
   font-size: var(--small-font);
   margin-bottom: var(--default-margin);
   margin-inline: auto;
-  margin-top: var(--xlarge-margin);
+  margin-top: var(--xxxlarge-margin);
   text-align: var(--align-center);
   width: var(--default-width);
 }
@@ -637,7 +717,7 @@ h6 {
   text-wrap: balance;
 }
 
-hgroup {
+hgroup.default {
   border-bottom: var(--accent-border);
 }
 
@@ -663,7 +743,6 @@ iframe {
 }
 
 .image-block {
-
   details :where(:not(:first-child)) {
     margin-top: var(--flow-space, 1em);
     padding-inline: 0.4rem;
@@ -758,7 +837,7 @@ ol > :where(:not(:first-child)) {
 
 .output-block {
   background-color: var(--default-match-color);
-  border: var(--faded-reverse-color-border);
+  border: var(--faded-reverse-border);
   border-radius: var(--default-border-radius);
   font-size: var(--small-font-size);
   margin-block: var(--default-margin);
@@ -789,7 +868,12 @@ p > code {
   background-color: var(--default-match-color);
   border-radius: var(--xsmall-border-radius);
   padding-inline: var(--xxsmall-padding);
-  outline: var(--faded-reverse-color-border);
+  outline: var(--faded-reverse-border);
+}
+
+
+.page header {
+  margin-bottom: var(--xxxlarge-margin);
 }
 
 .red {
@@ -826,7 +910,7 @@ svg {
 
 .text-block {
   background-color: var(--default-match-color);
-  border: var(--faded-reverse-color-border);
+  border: var(--faded-reverse-border);
   border-radius: var(--default-border-radius);
   font-size: var(--small-font-size);
   margin-block: var(--default-margin);
@@ -869,6 +953,10 @@ th {
   gap: var(--small-padding);
 }
 
+.title-wrapper {
+  border-bottom: var(--faded-accent-border);
+}
+
 .top-nav {
   border-left: var(--faded-accent-border);
   border-right: var(--faded-accent-border);
@@ -903,27 +991,21 @@ th {
   gap: var(--large-margin);
 }
 
-
 ul > :where(:not(:first-child)) {
   margin-top: var(--flow-space, var(--default-flow));
 }
 
 video {
-  max-width: 100svw;
-}
-
-.warning-box {
-  border: var(--default-warning-border);
-  border-radius: var(--default-border-radius);
-  margin: var(--default-margin);
-  padding: var(--default-padding);
+  max-width: 96svw;
 }
 
 .warning {
   border: var(--default-warning-border);
   border-radius: var(--default-border-radius);
-  margin: var(--default-margin);
+  margin-inline: var(--default-margin);
   padding: var(--default-padding);
+  background-color: var(--faded-warning-color);
+  --flow-space: var(--xxxlarge-margin);
 }
 
 
