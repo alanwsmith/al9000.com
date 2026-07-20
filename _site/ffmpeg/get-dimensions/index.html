@@ -1,166 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css" />
-
-    
-
-    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
-
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>Get the Width and Height Dimensions of a Video with ffprobe</title>
-<meta property="og:title" content="Get the Width and Height Dimensions of a Video with ffprobe" />
-<meta name="description" content="from alan w smith" />
-<meta property="og:description" content="from alan w smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com&#x2f;templates.inc&#x2f;includes/" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
-<link
-  rel="site.standard.publication"
-  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
-/>
-
-    
-    
-    
-    
-    
-  </head>
-  <body class="page">
-<noscript>
-  <p>
-    NOTE: Some pages on this site rely on JavaScript. 
-    It's not currently available in your
-    browser/reader. Depending on the page,
-    some or all of the content may not
-    work correctly without it. 
-  </p>
-
-</noscript>
-
-    <div class="height-wrapper">
-      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Some content will be fine, but some things won't work.
-  </p>
-
-</noscript>
-  <div class="top-nav">
-    <a href="/">home</a>
-    <a href="/tools">tools</a>
-    <a href="/rss/">rss</a> |
-    <a href="https://bittyjs.com/">bitty</a>
-  </div>
-
-  <div class="subnav default-wrapper">
-    <a href="&#x2f;ffmpeg">ffmpeg</a>
-  </div>
-
-</header>
-
-
-<main class="default default-wrapper default-flow">
-
-  <hgroup class="default">
-      <div class="title-wrapper">
-        <h1>Get the Width and Height Dimensions of a Video with ffprobe</h1>
-      </div>
-        <div class="date">April 2026</div>
-  </hgroup>
-
-
-<p>
-  This is the command I use to get the size dimensions
-  of a video with ffprobe (which comes with ffmpeg).
-</p>
-
-
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">ffprobe</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> error<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>show_entries</span> stream=width,height<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>of</span> csv=p=0 input.mp4 <span class="keyword operator assignment redirection shell">&gt;</span> output.txt</span></span></code></pre></div>
-<p>
-  This is the output from my sample video which
-  is 1920 pixels wide by 1080 high. 
-</p>
-
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">1920,1080</span></code></pre></div>
-<h2>Details</h2>
-<ul>
-<li>
-<p><code>-v error</code> sets the logging verbosity to <code>error</code> level
-which prevents the standard progress output.</p>
-</li>
-<li>
-<p><code>-show_entries stream=width,height</code> filters the output
-to show only the width and height.</p>
-</li>
-<li>
-<p><code>-of csv=p=0</code> sets the output format to CSV without headers.</p>
-</li>
-<li>
-<p><code>input.mp4</code> is the name of the input file.</p>
-</li>
-<li>
-<p><code>&gt;</code> sends the output to a file.</p>
-</li>
-<li>
-<p><code>output.txt</code> is the file that gets the output.</p>
-</li>
-</ul>
-<h3>Notes</h3>
-<ul>
-<li>
-<p>You can select a specific stream by adding
-this if the video has more than one in it:</p>
-<p><code>-select_streams v:0</code></p>
-</li>
-<li>
-<p>You can output to JSON by changing the <code>-of</code> value
-to:</p>
-<p><code>-of json</code></p>
-</li>
-</ul>
-
-
-
-<div class="end-of-line"></div>
-
-
-
-</main>
-
-<footer class="default-wrapper xxlarge-block-padding xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from alan w smith 
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-</footer>
-
-
-    </div>
-
-    <div class="default-wrapper text-align-right faded-base-color">
-      
-id = "ab/u5/4u/oa"
-      
-    </div>
-
-    <div class="templates" hidden>
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
-      <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
-
-
-
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background-color: black;
+      color: goldenrod;
+    } 
+  </style>
+</head>
+<body>
+could not render include: error in "/templates.inc/includes/metadata.html" (in /templates.inc/wrappers/default.html:17)
+</body>
 </html>
+  

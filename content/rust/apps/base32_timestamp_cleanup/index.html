@@ -1,4 +1,4 @@
-== extends "/templates.inc/switch/default.html"
+== extends "/templates.inc/swtiches/default.html"
 
 == block toml 
 title = "base32 Timestamp Cleanup"
@@ -27,7 +27,14 @@ I'm moving the files in the
 blog folder manually since
 there aren't that many of them. 
 
-TODO: Display files.
+== filter highlight("toml")
+[@ inc_dir() @]
+[#
+[@ raw_file(inc_dir("Cargo.toml")) @]
+#]
+== endfilter
+
+
 == endfilter
 == endblock
 
