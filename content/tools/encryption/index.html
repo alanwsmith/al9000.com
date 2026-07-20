@@ -77,13 +77,13 @@ encryptor INPUT_PATH OUTPUT_PATH
 [#
 
 == filter highlight("javascript", classes="code-block") 
-== include inc_dir() + "/encryption/apps/wasm-decryptor/script.js"
+== include template_folder() + "/encryption/apps/wasm-decryptor/script.js"
 == endfilter
 
 
 
 
-<script src="[@ inc_dir() @]/encryption/apps/wasm-decryptor/script.js" type="module"></script>
+<script src="[@ template_folder() @]/encryption/apps/wasm-decryptor/script.js" type="module"></script>
 
 <p>Decrypted Video</p>
 

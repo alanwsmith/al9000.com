@@ -9,7 +9,7 @@ flags = ["skip"]
 == block main
 
 <ul>
-== for folder in folders_in_folder(inc_dir()) 
+== for folder in folders_in_folder(template_folder()) 
   == if "index" in d.css[folder]
     <li><a href="[@ folder @]">[@ d.css[folder].index.title @]</a></li>
   == endif

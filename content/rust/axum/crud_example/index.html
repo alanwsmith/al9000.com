@@ -69,7 +69,7 @@ uuid in addition to axum. The
 complete set of calls is:
 
 == filter highlight("rust", select="1-17")  
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -83,7 +83,7 @@ Without that, it would have to
 be initialized for each request. 
 
 == filter highlight("rust", select="19-21")  
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -98,7 +98,7 @@ be stored directly as JSON objects.
 
 
 == filter highlight("rust", select="23-27")  
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -119,7 +119,7 @@ server with `axum::server()`
 and awaiting it.
 
 == filter highlight("rust", select="29-51")  
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -132,7 +132,7 @@ this directory is stored in a function
 to make it easier to change if necessary. 
 
 == filter highlight("rust", select="53-55")  
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -150,7 +150,7 @@ I find them easier to read).
 
 
 == filter highlight("rust", select="57-70")  
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -160,7 +160,7 @@ This is a helper function that grabs
 the paths for the JSON data files. 
 
 == filter highlight("rust", select="72-81")
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -176,7 +176,7 @@ The id is stored in the data as well
 as being used for the file name. 
 
 == filter highlight("rust", select="83-111")
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -192,7 +192,7 @@ handled by this function which
 does the actual deletion. 
 
 == filter highlight("rust", select="113-122")
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -204,7 +204,7 @@ the delete request the provides
 the confirmation button. 
 
 == filter highlight("rust", select="124-136")
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -214,7 +214,7 @@ The handler that displays the
 edit page. 
 
 == filter highlight("rust", select="138-150")
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -225,7 +225,7 @@ items and the links to edit and
 delete them. 
 
 == filter highlight("rust", select="152-176")
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -236,7 +236,7 @@ items when changes are submitted from
 the edit page. 
 
 == filter highlight("rust", select="178-188")
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -249,7 +249,7 @@ in a 500 error being returned to
 the client. 
 
 == filter highlight("rust", select="190-209")
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 
 
@@ -260,7 +260,7 @@ into a single block.
 
 <details><summary>View File</summary>
 == filter highlight("rust")  
-[@ raw_file(p.dir + "/src/main.rs") @]
+[@ raw_include(p.dir + "/src/main.rs") @]
 == endfilter
 </details>
 
@@ -274,28 +274,28 @@ handlers.
 #### delete_request.html
 
 == filter highlight("html")  
-[@ raw_file(p.dir + "/templates/wrapper.html") @]
+[@ raw_include(p.dir + "/templates/wrapper.html") @]
 == endfilter
 
 
 #### edit.html
 
 == filter highlight("html")  
-[@ raw_file(p.dir + "/templates/edit.html") @]
+[@ raw_include(p.dir + "/templates/edit.html") @]
 == endfilter
 
 
 #### index.html
 
 == filter highlight("html")  
-[@ raw_file(p.dir + "/templates/index.html") @]
+[@ raw_include(p.dir + "/templates/index.html") @]
 == endfilter
 
 
 #### wrapper.html
 
 == filter highlight("html")  
-[@ raw_file(p.dir + "/templates/wrapper.html") @]
+[@ raw_include(p.dir + "/templates/wrapper.html") @]
 == endfilter
 
 

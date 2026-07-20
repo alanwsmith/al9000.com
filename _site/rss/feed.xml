@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-19T19:27:22-04:00</updated>
+  <updated>2026-07-20T17:34:56-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -36,24 +36,7 @@ body {
     <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
     <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/main.css" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>Three Dates in a Trench Coat</title>
-<meta property="og:title" content="Three Dates in a Trench Coat" />
-<meta name="description" content="from alan w smith" />
-<meta property="og:description" content="from alan w smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com&#x2f;blog&#x2f;ab&#x2f;vf&#x2f;z2&#x2f;4m/og-image.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
-<link
-  rel="site.standard.publication"
-  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
-/>
+
 
     
     
@@ -2540,9 +2523,8 @@ p {
 </noscript>
   <div class="top-nav">
     <a href="/">home</a>
-    <!--
-    <a href="/tools">tools</a>
--->
+
+  
   </div>
 
 
@@ -4336,24 +4318,7 @@ body {
     <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
     <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="stylesheet" href="/styles/main.css" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>Create an HLS Encrypted Video with ffmpeg</title>
-<meta property="og:title" content="Create an HLS Encrypted Video with ffmpeg" />
-<meta name="description" content="from alan w smith" />
-<meta property="og:description" content="from alan w smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
-<link
-  rel="site.standard.publication"
-  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
-/>
+
 
     
     
@@ -4458,7 +4423,7 @@ browsers that don't.</p>
 <span class="line-marker" data-line="4"></span>
 <span class="line-marker" data-line="5"></span><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="6"></span><span class="source js embedded html"><span class="source js">  <span class="storage type js">var</span> <span class="variable other readwrite js">video</span> <span class="keyword operator assignment js">=</span> <span class="support type object dom js">document</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="support function dom js">getElementById</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted single js"><span class="punctuation definition string begin js">&#39;</span>birdVideo<span class="punctuation definition string end js">&#39;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker" data-line="7"></span>  <span class="storage type js">var</span> <span class="variable other readwrite js">videoSrc</span> <span class="keyword operator assignment js">=</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;ffmpeg&amp;#x2f;create-an-hls-encrypted-video/output/bird.m3u8<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="7"></span>  <span class="storage type js">var</span> <span class="variable other readwrite js">videoSrc</span> <span class="keyword operator assignment js">=</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/ffmpeg/create-an-hls-encrypted-video/output/bird.m3u8<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="8"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">video</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">canPlayType</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted single js"><span class="punctuation definition string begin js">&#39;</span>application/vnd.apple.mpegurl<span class="punctuation definition string end js">&#39;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
 <span class="line-marker" data-line="9"></span>    <span class="variable other object js">video</span><span class="punctuation accessor js">.</span><span class="meta property object js">src</span> <span class="keyword operator assignment js">=</span> <span class="variable other readwrite js">videoSrc</span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="10"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">Hls</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">isSupported</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
@@ -4475,7 +4440,7 @@ And, here's the output:
 
 <script>
   var video = document.getElementById('birdVideo');
-  var videoSrc = "&#x2f;ffmpeg&#x2f;create-an-hls-encrypted-video/output/bird.m3u8";
+  var videoSrc = "/ffmpeg/create-an-hls-encrypted-video/output/bird.m3u8";
   if (video.canPlayType('application/vnd.apple.mpegurl')) {
     video.src = videoSrc;
   } else if (Hls.isSupported()) {
@@ -4613,23 +4578,23 @@ which is a nice place to get free videos.</p>
 <video id="videoPlayer" controls></video>
 
 <script type="module">
-import { loadVideo } from "&#x2f;javascript&#x2f;media-source-video-player/media-source-player.js"
+import { loadVideo } from "/javascript/media-source-video-player/media-source-player.js"
 const config = {
   codec: `video/webm; codecs="vp9, vorbis"`,
   urls: [
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-00.part",
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-01.part",
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-02.part",
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-03.part",
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-04.part",
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-05.part",
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-06.part",
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-07.part",
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-08.part",
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-09.part",
-    "&#x2f;javascript&#x2f;media-source-video-player/sample-video/part-10.part",
+    "/javascript/media-source-video-player/sample-video/part-00.part",
+    "/javascript/media-source-video-player/sample-video/part-01.part",
+    "/javascript/media-source-video-player/sample-video/part-02.part",
+    "/javascript/media-source-video-player/sample-video/part-03.part",
+    "/javascript/media-source-video-player/sample-video/part-04.part",
+    "/javascript/media-source-video-player/sample-video/part-05.part",
+    "/javascript/media-source-video-player/sample-video/part-06.part",
+    "/javascript/media-source-video-player/sample-video/part-07.part",
+    "/javascript/media-source-video-player/sample-video/part-08.part",
+    "/javascript/media-source-video-player/sample-video/part-09.part",
+    "/javascript/media-source-video-player/sample-video/part-10.part",
   ],
-  fallback: "&#x2f;javascript&#x2f;media-source-video-player/sample-video/church-3818213.webm",
+  fallback: "/javascript/media-source-video-player/sample-video/church-3818213.webm",
 }
 loadVideo("#videoPlayer", config);
 </script>
@@ -4737,23 +4702,23 @@ loaded.</p>
 <div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">video</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">videoPlayer</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">controls</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">video</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="4"></span><span class="source js embedded html"><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">loadVideo</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/media-source-player.js<span class="punctuation definition string end js">&quot;</span></span>
+<span class="line-marker" data-line="4"></span><span class="source js embedded html"><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">loadVideo</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/media-source-player.js<span class="punctuation definition string end js">&quot;</span></span>
 <span class="line-marker" data-line="5"></span></span><span class="storage type js">const</span> <span class="variable other readwrite js">config</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span>
 <span class="line-marker" data-line="6"></span>  <span class="meta object-literal key js">codec</span><span class="punctuation separator key-value js">:</span> <span class="string template js"><span class="punctuation definition string template begin js">`</span>video/webm; codecs=&quot;vp9, vorbis&quot;<span class="punctuation definition string template end js">`</span></span><span class="punctuation separator comma js">,</span>
 <span class="line-marker" data-line="7"></span>  <span class="meta object-literal key js">urls</span><span class="punctuation separator key-value js">:</span> <span class="meta sequence js"><span class="punctuation section brackets js">[</span>
-<span class="line-marker" data-line="8"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-00.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="9"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-01.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="10"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-02.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="11"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-03.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="12"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-04.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="13"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-05.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="14"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-06.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="15"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-07.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="16"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-08.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="17"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-09.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="18"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/part-10.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="8"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-00.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="9"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-01.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="10"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-02.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="11"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-03.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="12"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-04.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="13"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-05.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="14"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-06.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="15"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-07.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="16"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-08.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="17"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-09.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="18"></span>    <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/part-10.part<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
 <span class="line-marker" data-line="19"></span>  <span class="punctuation section brackets js">]</span></span><span class="punctuation separator comma js">,</span>
-<span class="line-marker" data-line="20"></span>  <span class="meta object-literal key js">fallback</span><span class="punctuation separator key-value js">:</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>&amp;#x2f;javascript&amp;#x2f;media-source-video-player/sample-video/church-3818213.webm<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
+<span class="line-marker" data-line="20"></span>  <span class="meta object-literal key js">fallback</span><span class="punctuation separator key-value js">:</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/church-3818213.webm<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
 <span class="line-marker" data-line="21"></span><span class="punctuation section block js">}</span></span>
 <span class="line-marker" data-line="22"></span><span class="meta function-call js"><span class="variable function js">loadVideo</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>#videoPlayer<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">config</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="23"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
@@ -4990,7 +4955,7 @@ expect it to be difficult if I come back to it.</p>
 <span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">wasm-pack</span></span><span class="meta function-call arguments shell"> build<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> --</span>target</span> web</span></span></code></pre></div>
 
 <h3>HTML</h3>
-<div class="code-block numbers copy-button"><div class="file-name">page.html</div><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span><span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span><span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span>rust<span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span>wasm<span class="constant character entity html"><span class="punctuation definition entity html">&amp;</span>#x2f<span class="punctuation definition entity html">;</span></span>hello-world/hello-world.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
+<div class="code-block numbers copy-button"><div class="file-name">page.html</div><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>//rust/wasm/hello-world/hello-world.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">output</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
 
 <h4>JavaScript</h4>
@@ -5006,7 +4971,7 @@ expect it to be difficult if I come back to it.</p>
 
 <h4>Output</h4>
 <div class="output-block"><pre><code>
-<script type="module" src="&#x2f;rust&#x2f;wasm&#x2f;hello-world/hello-world.js"></script>
+<script type="module" src="/rust/wasm/hello-world/hello-world.js"></script>
 <div id="output"></div>
 
 </code></pre></div>

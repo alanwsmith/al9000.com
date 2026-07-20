@@ -14,11 +14,11 @@ status = "done"
 == block main
 
 == filter highlight("bash", title="bash")
-== include inc_dir() + "/script.bash"
+== include template_folder() + "/script.bash"
 == endfilter
 
 == filter output(title="output")
-== include inc_dir() + "/output.txt"
+== include template_folder() + "/output.txt"
 == endfilter
 
 == endblock

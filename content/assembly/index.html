@@ -26,7 +26,7 @@ this page is currently broken. when it's back it'll be a bunch of little videos 
 
 == block head
 <style>
-== include inc_dir() + "/styles.css"
+== include template_folder() + "/styles.css"
 </style>
 == endblock
 
@@ -50,8 +50,8 @@ this page is currently broken. when it's back it'll be a bunch of little videos 
 </main>
 
 <div class="followup">
-  <div class="center"><a href="[@ inc_dir() @]/about/">about assembly</a></div>
-  <bitty-8 data-connect="[@inc_dir()@]/bit.js"></bitty-8>
+  <div class="center"><a href="[@ template_folder() @]/about/">about assembly</a></div>
+  <bitty-8 data-connect="[@template_folder()@]/bit.js"></bitty-8>
   <script type="text/html" id="layerTemplate">
     <div class="player-layer">__CELLS__</div>
   </script>
