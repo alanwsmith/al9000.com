@@ -23,7 +23,7 @@
 }
 
 
-[@ raw_file("/styles/colors.css") @]
+[@ raw_include("/styles/colors.css") @]
 
 [# TODO: Add .light- when that's ready #]
 == for color in styles.colors
@@ -51,7 +51,5 @@
 == endfor 
 
 
-
-
-[@ raw_file("/styles/main.inc.css") @]
+[@ raw_include("/styles/main.inc.css") @]
 

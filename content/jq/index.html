@@ -14,7 +14,7 @@ flags = ["skip"]
 == block main
 
 <ul>
-== for folder in folders_in_folder(inc_dir()) 
+== for folder in folders_in_folder(template_folder()) 
   [! if "index" in d.jq[stem(folder)] !]
     <li><a href="[@ folder @]">[@ d.jq[stem(folder)].index.title @]</a></li>
   [! endif !]

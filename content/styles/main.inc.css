@@ -317,18 +317,15 @@ footer {
   width: var(--default-width);
 }
 
-.footnoteId:after {
-  content: "⤴ ";
-}
-
 .footnote-ref {
   display: block;
+  border-bottom: var(--faded-accent-border);
+  margin-bottom: var(--small-margin);
 }
 
-.footnote-ref a:after {
+.footnote-ref:after {
   content: "⤴ ";
 }
-
 
 .green {
   color: green;
@@ -462,7 +459,6 @@ iframe {
       font-family: monospace;
     }
   }
-
 }
 
 img {
@@ -535,7 +531,6 @@ ol > :where(:not(:first-child)) {
     margin-bottom: var(--small-margin);
   }
 }
-
 
 p {
   overflow-wrap: break-word;

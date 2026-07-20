@@ -12,7 +12,7 @@ id = "01/mx/cq/j0"
 == endblock
 
 == block head
-<link rel="stylesheet" href="[@inc_dir()@]/styles.css" />
+<link rel="stylesheet" href="[@template_folder()@]/styles.css" />
 == endblock
 
 
@@ -53,7 +53,7 @@ id = "01/mx/cq/j0"
             This is the key function that does the calculations:
           </p>
           == filter highlight("javascript")
-          == include inc_dir() + "/script.js"
+          == include template_folder() + "/script.js"
           == endfilter
           <p>
             I'm using it with <a href="https://bittyjs.com/">bitty</a>
@@ -63,19 +63,19 @@ id = "01/mx/cq/j0"
         <li>
           <p>The bitty code looks like this:</p>
           == filter highlight("javascript")
-          == include inc_dir() + "/bit.js"
+          == include template_folder() + "/bit.js"
           == endfilter
 
           <p>which works with this div on the page:</p>
 
           == filter highlight("html")
-          == include inc_dir() + "/page.html"
+          == include template_folder() + "/page.html"
           == endfilter
 
           <p>and this template:</p>
 
           == filter highlight("html")
-          == include inc_dir() + "/template.html"
+          == include template_folder() + "/template.html"
           == endfilter
         </li>
 
@@ -88,13 +88,13 @@ id = "01/mx/cq/j0"
           </p>
 
           == filter highlight("css")
-          == include inc_dir() + "/styles.css"
+          == include template_folder() + "/styles.css"
           == endfilter
         </li>
         <li>
           <p>The overall structure of the page looks like this:</p>
           == filter highlight("html")
-          == include inc_dir() + "/structure.html"
+          == include template_folder() + "/structure.html"
           == endfilter
           <p>This section of the CSS sets up the `&lt;main&gt;`
             tag to take up all the space between the two 
@@ -120,17 +120,17 @@ body {
 </div>
 
 <main>
-== include inc_dir() + "/page.html"
+== include template_folder() + "/page.html"
 </main>
 
 
 == include "/templates.inc/includes/empty/footer.html"
 
 <div class="hidden">
-  <script src="[@ inc_dir() @]/script.js"></script>
-  <bitty-8 data-connect="[@ inc_dir() @]/bit.js"></bitty-8>
+  <script src="[@ template_folder() @]/script.js"></script>
+  <bitty-8 data-connect="[@ template_folder() @]/bit.js"></bitty-8>
 
-== include inc_dir() + "/template.html"
+== include template_folder() + "/template.html"
 </div>
 
 == endblock

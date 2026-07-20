@@ -14,7 +14,7 @@ id = "01/mx/ac/x8"
 
 == block head
 <style>
-== include inc_dir() + "/styles.css"
+== include template_folder() + "/styles.css"
 </style>
 == endblock
 
@@ -30,29 +30,29 @@ id = "01/mx/ac/x8"
     <div>
       <h3>HTML</h3>
       == filter highlight("html")
-      == include inc_dir() + "/page.html"
+      == include template_folder() + "/page.html"
       == endfilter
 
       <h3>JavaScript</h3>
       == filter highlight("js")
-      == include inc_dir() + "/bit.js"
+      == include template_folder() + "/bit.js"
       == endfilter
 
       <h3>CSS</h3>
       == filter highlight("css")
-      == include inc_dir() + "/styles.css"
+      == include template_folder() + "/styles.css"
       == endfilter
 
     </div>
   </details>
 
-== include inc_dir() + "/page.html"
+== include template_folder() + "/page.html"
 
 </main>
 
 == include "/templates.inc/includes/footer.html"
 
-<bitty-8 data-connect="[@ inc_dir() @]/bit.js"></bitty-8>
+<bitty-8 data-connect="[@ template_folder() @]/bit.js"></bitty-8>
 
 <script type="text/html" id="cellTemplate">
   <div class="cell"><div class="content">x</div></div>

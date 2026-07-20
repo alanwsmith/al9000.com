@@ -1,18 +1,154 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      background-color: black;
-      color: goldenrod;
-    } 
-  </style>
-</head>
-<body>
-could not render include: error in "/templates.inc/includes/metadata.html" (in /templates.inc/wrappers/empty.html:6)
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Konami</title>
+<meta property="og:title" content="Konami" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/templates.inc/includes/" />
+<meta property="og:image" content="https://al9000.com&#x2f;konami/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+<style>
+:root {
+  --code-color: goldenrod;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  background-color: black;
+  color: goldenrod;
+}
+
+[data-r=accepted] {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: green;
+}
+
+.center {
+  padding-top: 1rem;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  gap: 1rem;
+}
+
+.faded {
+  opacity: 0.5;
+}
+
+.letters {
+  color: var(--code-color);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 9rem;
+  font-size: 3rem;
+  gap: 1rem;
+  letter-spacing: 2rem;
+  font-family: monospace;
+}
+
+#screen {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.small {
+  font-family: monospace;
+  font-size: 1.4rem;
+}
+
+.wrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+[data-r=accepted] a {
+  color: green;
+}
+[data-r=accepted] a:hover, [data-r=accepted] a:active {
+  color: green;
+}
+[data-r=accepted] {
+  height: 4rem;
+}
+</style>
+  </head>
+  <body>
+    <noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+
+
+    
+
+<bitty-8 data-connect="/konami/bit.js"></bitty-8>
+
+<div class="wrapper">
+  <div class="center">
+    <div>konami</div>
+    <div class="small">[enter code]</div>
+  </div>
+  <div id="screen">
+    <div>
+      <div class="letters" data-r="output fail"></div>
+      <div data-r="accepted"></div>
+    </div>
+  </div>
+  <div class="faded">
+<footer class="default-wrapper xxlarge-block-padding accent-top-border xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    <a href="/">home</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    from <a href="/">alan w smith</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    <a href="/rss/">rss feed</a>
+  </div>
+</footer>  </div>
+</div>
+
+
+
+<script type="text/html" data-template="letter">
+  <span class="letter" data-r="key__NUM__">_</span>
+</script>
+
+
+    <div class="template" hidden>
+      
+    </div>
+  </body>
 </html>
-  

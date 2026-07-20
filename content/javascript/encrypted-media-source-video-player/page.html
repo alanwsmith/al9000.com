@@ -1,23 +1,23 @@
 <video id="videoPlayer" controls></video>
 
 <script type="module">
-import { loadEncryptedVideo } from "[@ inc_dir() @]/encrypted-media-source-player.js"
+import { loadEncryptedVideo } from "[@ template_folder() @]/encrypted-media-source-player.js"
 const config = {
   codec: `video/webm; codecs="vp9, vorbis"`,
   urls: [
-    "[@ inc_dir() @]/sample-video/part-00.part.bin",
-    "[@ inc_dir() @]/sample-video/part-01.part.bin",
-    "[@ inc_dir() @]/sample-video/part-02.part.bin",
-    "[@ inc_dir() @]/sample-video/part-03.part.bin",
-    "[@ inc_dir() @]/sample-video/part-04.part.bin",
-    "[@ inc_dir() @]/sample-video/part-05.part.bin",
-    "[@ inc_dir() @]/sample-video/part-06.part.bin",
-    "[@ inc_dir() @]/sample-video/part-07.part.bin",
-    "[@ inc_dir() @]/sample-video/part-08.part.bin",
-    "[@ inc_dir() @]/sample-video/part-09.part.bin",
-    "[@ inc_dir() @]/sample-video/part-10.part.bin",
+    "[@ template_folder() @]/sample-video/part-00.part.bin",
+    "[@ template_folder() @]/sample-video/part-01.part.bin",
+    "[@ template_folder() @]/sample-video/part-02.part.bin",
+    "[@ template_folder() @]/sample-video/part-03.part.bin",
+    "[@ template_folder() @]/sample-video/part-04.part.bin",
+    "[@ template_folder() @]/sample-video/part-05.part.bin",
+    "[@ template_folder() @]/sample-video/part-06.part.bin",
+    "[@ template_folder() @]/sample-video/part-07.part.bin",
+    "[@ template_folder() @]/sample-video/part-08.part.bin",
+    "[@ template_folder() @]/sample-video/part-09.part.bin",
+    "[@ template_folder() @]/sample-video/part-10.part.bin",
   ],
-  fallback: "[@ inc_dir() @]/sample-video/church-3818213.webm.bin",
+  fallback: "[@ template_folder() @]/sample-video/church-3818213.webm.bin",
 }
 loadEncryptedVideo("#videoPlayer", config);
 </script>
