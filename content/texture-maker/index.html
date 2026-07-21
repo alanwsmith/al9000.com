@@ -5,6 +5,7 @@ status = "broken"
 created = 2026-01-03T21:55:34-04:00
 subtitle = "Give your site a little grit"
 id = "01/mn/kj/4p" 
+flags = ["no-date"]
 == endblock 
 
 == block styles
@@ -16,6 +17,7 @@ id = "01/mn/kj/4p"
 }
 body {
   background-color: oklch(var(--svg-bg-l) var(--svg-bg-c) var(--svg-bg-h));
+  background-image: var(--svg-bg-url);
 }
 .controls {
   display: grid;
@@ -32,32 +34,30 @@ body {
   <div>
     <label>
       <div>Lightness</div>
-      <input type="range" data-key="l" data-r="initValue" data-s="update" min="0" max="1" step="0.001" autocomplete="off" />
+      <input type="range" data-key="l" data-r="initValue" data-s="updateValue" min="0" max="1" step="0.001" autocomplete="off" />
     </label>
     <label><div>Chroma</div>
-      <input type="range" data-key="c" data-r="initValue" data-s="update" min="0" max="0.3" step="0.0001" autocomplete="off" />
+      <input type="range" data-key="c" data-r="initValue" data-s="updateValue" min="0" max="0.3" step="0.0001" autocomplete="off" />
     </label>
   </div>
   <div>
     <label>
       <div>Hue</div>
-      <input type="range" data-key="h" data-r="initValue" data-s="update" min="0" max="360" step="0.01" autocomplete="off" />
+      <input type="range" data-key="h" data-r="initValue" data-s="updateValue" min="0" max="360" step="0.01" autocomplete="off" />
     </label>
     <label>
       <div>Opacity</div>
-      <input type="range" data-key="o" data-r="initValue" data-s="update" min="0" max="20" step="0.01" autocomplete="off" />
+      <input type="range" data-key="o" data-r="initValue" data-s="updateValue" min="0" max="30" step="0.01" autocomplete="off" />
     </label>
   </div>
 </div>
 
-<details><summary>Texture SVG Source</summary>
-  <textarea data-r="updateSVG"></textarea>
-</details>
-
 <div class="output xlarge-top-margin">
-  <pre class="code-block no-numbers"><code data-r="update"></code></pre>
+  <pre class="code-block no-numbers"><code data-r="updateCSS"></code></pre>
 </div>
 
+
+[#
 <h2>Details</h2>
 [! filter md !]
 - This tool generates CSS for a textured site background. 
@@ -80,6 +80,9 @@ the SVG if you mess with it and it breaks.
 I yoinked some code from [this repo](https://github.com/tigt/mini-svg-data-uri/blob/master/index.js) by [Taylor Hunt](https://ti.gt/) to do the necessary escaping. 
 (See [Optimizing SVGs in data URIs](https://codepen.io/tigt/post/optimizing-svgs-in-data-uris) for details.)
 [! endfilter !]
+
+#]
+
 == endblock
 
 == block templates
@@ -98,6 +101,21 @@ I yoinked some code from [this repo](https://github.com/tigt/mini-svg-data-uri/b
     </filter>
     <rect width="100%" height="100%" opacity="__OPACITY__" filter="url(#noiseFilter)"/>
   </svg>
+</script>
+
+<script type="text/html" data-template="mainCSS">
+:root {
+  --svg-bg-l: __l__;
+  --svg-bg-c: __c__;
+  --svg-bg-h: __h__;
+  --svg-bg-url: __url__;
+}
+
+body {
+  background-color: oklch(var(--svg-bg-l) var(--svg-bg-c) var(--svg-bg-h));
+  background-image: var(--svg-bg-url);
+}
+
 </script>
 == endblock
 

@@ -13,7 +13,7 @@ export async function init(_, __, ___) {
     o: 4.0,
   };
   s.data = await b.loadPageData("data", defaults);
-  b.trigger("initValue");
+  b.trigger("initValue updateCSS");
 }
 
 export function initValue(_, __, el) {
@@ -23,12 +23,37 @@ export function initValue(_, __, el) {
   el.value = value;
 }
 
-export async function update(_, sender, ___) {
+export async function updateValue(_, sender, ___) {
   const key = sender.prop("key");
   s.data[key] = sender.valueAsFloat();
-  await b.savePageData(s.data, "data");
   b.setCSS(`--svg-bg-${key}`, sender.valueAsFloat());
+  await b.savePageData(s.data, "data");
+  b.debounce("css", "updateCSS", 80);
 }
+
+export function updateCSS(_, __, el) {
+  s.svg = encodeURIComponent(
+    b.render("mainSVG", {
+      __OPACITY__: `${s.data.o}%`,
+    }).outerHTML,
+  )
+    .replace(/'/g, "%27")
+    .replace(/"/g, "%22");
+  const cssURL = `url("data:image/svg+xml,${s.svg}")`;
+  b.setCSS(
+    `--svg-bg-url`,
+    `url("data:image/svg+xml,${s.svg}")`,
+  );
+  const subs = {
+    __l__: s.data.l,
+    __c__: s.data.c,
+    __h__: s.data.h,
+    __url__: cssURL,
+  };
+  el.replaceChildren(b.render("mainCSS", subs));
+}
+
+//    `url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E %3Cfilter id='noiseFilter'%3E %3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='2' result='noise' /%3E %3CfeColorMatrix type='saturate' values='0' result='grayscale' /%3E %3CfeComponentTransfer%3E %3CfeFuncA in='grayscale' type='linear' slope='0.4' result='updated' /%3E %3C/feComponentTransfer%3E %3CfeMerge%3E %3CfeMergeNode in='noise' /%3E %3CfeMergeNode in='updated' /%3E %3C/feMerge%3E %3C/filter%3E %3Crect width='100%25' height='100%25' opacity='0.17' filter='url(%23noiseFilter)'/%3E %3C/svg%3E")`,
 
 // export function chroma(_, sender, ___) {
 //   b.setCSS("--svg-bg-chroma", sender.valueAsFloat());

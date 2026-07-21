@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-20T20:59:40-04:00</updated>
+  <updated>2026-07-20T22:06:28-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -914,6 +914,20 @@ Neopolitan files. I've yet to run into
 something it can't handle.</p>
 </li>
 </ul>
+]]></summary>
+  </entry>
+  
+  <entry>
+    <title>Stream Tools</title><link href="https://al9000.com&#x2f;stream-tools/"/><id>urn:uuid:d2f3e1bf-0d2d-5c6b-aeb1-3cd4b0a30f70</id>
+    <updated>2026-06-27T09:35:33-04:00</updated>
+    <summary><![CDATA[
+<h2>Overlays</h2>
+<ul>
+<li><a href="/stream-tools/overlays/ascii-bear-left/">ASCIIBear Left</a></li>
+<li><a href="/stream-tools/overlays/facecam-right/">FaceCam Right</a></li>
+</ul>
+
+
 ]]></summary>
   </entry>
   
