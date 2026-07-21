@@ -94,7 +94,12 @@ body {
 
 
 <bitty-8 data-connect="/texture-maker/bit.js"></bitty-8>
-<p>Move the sliders below to set your background. Copy/paste the CSS when you've got it the way you want.</p>
+<p>
+  This page generates CSS for textured backgrounds. 
+  Play with the sliders to preview it here.
+  Copy/paste the code into your stylesheet 
+  to apply it to your site.
+</p>
 <div data-r="example"></div>
 <div class="controls">
   <div>
@@ -113,7 +118,7 @@ body {
     </label>
     <label>
       <div>Opacity</div>
-      <input type="range" data-key="o" data-r="initValue" data-s="updateValue" min="0" max="50" step="0.01" autocomplete="off" />
+      <input type="range" data-key="o" data-r="initValue" data-s="updateValue" min="0" max="60" step="0.01" autocomplete="off" />
     </label>
   </div>
 </div>
@@ -124,17 +129,28 @@ body {
 
 <h2>Details</h2>
 <ul>
-<li>This tool generates CSS for a textured site background.</li>
+<li>The texture comes from an SVG that's encoded
+for use as a CSS <strong>background-image</strong>.</li>
+<li>The SVG and the CSS <strong>background-size</strong> are both
+set to 150px x 150px. This prevents the texture
+from changing at different page sizes.</li>
 <li>The Lightness, Chroma, and Hue sliders set the base background variables for an oklch
 color.</li>
-<li>The Opacity slider controls the opacity of the texture SVG relative to the base color.</li>
-<li>The texture in the SVG is generated via SVG filters.
-below the sliders to adjust it manually.</li>
-<li>The <code>Copy</code> button below the CSS copies the code to your
-clipboard for pasting into your stylesheets.</li>
-<li>The original version of this used base64 encoding.
-<a href="https://tylersticka.com/">Tyler Sticka</a> reminded me that that's not necessary for SVG.</li>
+<li>The Opacity slider controls how strong
+the textured effect is.</li>
+<li>The original version of this tool used base64 encoding.
+<a href="https://tylersticka.com/">Tyler Sticka</a> reminded me
+that that's not necessary for SVG.</li>
 </ul>
+<h2>Outro</h2>
+<p>The textured effect can go from barely
+perceptible to completely in your face.
+I'm currently leaning toward the subtler
+site. That's not to dismiss the more
+overt. I expect to be changing things
+up from time to time. I hope you enjoy
+experimenting with it too.</p>
+<p>-a</p>
 
 
 
@@ -151,7 +167,7 @@ clipboard for pasting into your stylesheets.</li>
 
 <footer class="default-wrapper xxlarge-block-padding xxxlarge-top-margin">
   <div class="small-font-size text-align-center">
-    from alan w smith 
+    from <a href="https://bsky.app/profile/alanwsmith.com">alan w smith</a>
   </div>
   <div class="small-font-size text-align-center">
     who also makes <a href="https://bittyjs.com">bitty</a>
@@ -164,7 +180,7 @@ clipboard for pasting into your stylesheets.</li>
       
     <div class="default-wrapper text-align-center faded-base-color"
     style="opacity: 0.1; padding-bottom: 0.3rem;">
-id = "01/n5/xw/nw"
+id = "01/mn/jd/v0"
     </div>
       
 

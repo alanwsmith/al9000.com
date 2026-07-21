@@ -2,7 +2,8 @@
 == block toml
 title = "Background Texture Maker"
 status = "done"
-created = 2026-07-21T00:17:00-04:00
+created   = 2026-01-03T11:36:00-04:00
+updated   = 2026-07-21T11:51:00-04:00
 subtitle = "Give your site a little grit"
 id = "01/mn/kj/4p" 
 flags = ["no-date"]
@@ -30,7 +31,12 @@ body {
 
 == block content 
 <bitty-8 data-connect="[@ template_folder() @]/bit.js"></bitty-8>
-<p>Move the sliders below to set your background. Copy/paste the CSS when you've got it the way you want.</p>
+<p>
+  This page generates CSS for textured backgrounds. 
+  Play with the sliders to preview it here.
+  Copy/paste the code into your stylesheet 
+  to apply it to your site.
+</p>
 <div data-r="example"></div>
 <div class="controls">
   <div>
@@ -49,7 +55,7 @@ body {
     </label>
     <label>
       <div>Opacity</div>
-      <input type="range" data-key="o" data-r="initValue" data-s="updateValue" min="0" max="50" step="0.01" autocomplete="off" />
+      <input type="range" data-key="o" data-r="initValue" data-s="updateValue" min="0" max="60" step="0.01" autocomplete="off" />
     </label>
   </div>
 </div>
@@ -60,16 +66,31 @@ body {
 
 <h2>Details</h2>
 [! filter md !]
-- This tool generates CSS for a textured site background. 
+- The texture comes from an SVG that's encoded
+for use as a CSS __background-image__.
+- The SVG and the CSS __background-size__ are both
+set to 150px x 150px. This prevents the texture
+from changing at different page sizes. 
 - The Lightness, Chroma, and Hue sliders set the base background variables for an oklch
 color.
-- The Opacity slider controls the opacity of the texture SVG relative to the base color. 
-- The texture in the SVG is generated via SVG filters. 
-below the sliders to adjust it manually. 
-- The `Copy` button below the CSS copies the code to your 
-clipboard for pasting into your stylesheets. 
-- The original version of this used base64 encoding. 
-[Tyler Sticka](https://tylersticka.com/) reminded me that that's not necessary for SVG. 
+- The Opacity slider controls how strong
+the textured effect is.
+- The original version of this tool used base64 encoding. 
+[Tyler Sticka](https://tylersticka.com/) reminded me 
+that that's not necessary for SVG. 
+
+## Outro
+
+The textured effect can go from barely 
+perceptible to completely in your face. 
+I'm currently leaning toward the subtler 
+site. That's not to dismiss the more
+overt. I expect to be changing things
+up from time to time. I hope you enjoy
+experimenting with it too. 
+
+-a
+
 
 [! endfilter !]
 
