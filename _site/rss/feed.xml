@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-21T17:55:33-04:00</updated>
+  <updated>2026-07-21T18:12:26-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -4633,7 +4633,7 @@ with a bunch of random characters.</p>
 <meta property="og:description" content="from alan w smith" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<meta property="og:image" content="https://al9000.com&#x2f;ffmpeg&#x2f;create-an-hls-encrypted-video/og-image-auto.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />

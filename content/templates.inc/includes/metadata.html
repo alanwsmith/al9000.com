@@ -12,6 +12,8 @@ https://al9000.com[@ file_path @]
 [!- set og_image -!]
   [!- if exists(p.dir + "/og-image.jpg") -!]
 https://al9000.com[@ p.dir @]/og-image.jpg
+  [!- elif exists(p.dir + "/og-image-auto.jpg") -!]
+https://al9000.com[@ p.dir @]/og-image-auto.jpg
   [!- else -!]
 https://al9000.com/images/open-graph/default.jpg
   [!- endif -!]
