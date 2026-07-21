@@ -23,25 +23,22 @@
 />
 
     <link rel="stylesheet" href="/styles/colors.css" />
-    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
-
- <style>
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        color: white;
-        background-color: #000;
-      }
-
-      svg { 
-        filter: drop-shadow(0px 0px 5px rgb(121 197 240));
-      }
-    </style>
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+<style>
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    color: white;
+    background-color: #000;
+  }
+  svg { 
+    filter: drop-shadow(0px 0px 5px rgb(121 197 240));
+  }
+</style>
   </head>
   <body>
     <noscript>
@@ -52,21 +49,23 @@
 
 </noscript>
 
-<bitty-8 data-connect="/stream/overlays/ascii-bear-left/bit.js"></bitty-8>
-
+<bitty-8 data-connect="/stream-tools/overlays/facecam-right/bit.js"></bitty-8>
 <div data-r="overlay"></div>
-
 <script type="text/html" data-template="svg">
   <svg width="__PAGE_WIDTH__" height="__PAGE_HEIGHT__" xmlns="http://www.w3.org/2000/svg">
     <mask id="mainMask">
       <rect x="0" y="0" width="__PAGE_WIDTH__" height="__PAGE_HEIGHT__" fill="white" />
       __WINDOWS__
     </mask>
-    <image x="0" y="0" width="__PAGE_WIDTH__" height="__PAGE_HEIGHT__" href="/stream/backgrounds/chip-background-black-and-white.jpg" mask="url(#mainMask)" />
+    <image 
+      x="0" 
+      y="0" 
+      width="__PAGE_WIDTH__" 
+      height="__PAGE_HEIGHT__" 
+      href="&#x2f;stream-tools/backgrounds/chip-background-black-and-white.jpg" 
+      mask="url(#mainMask)" />
   </svg>
 </script>
-
-
 
     
 
