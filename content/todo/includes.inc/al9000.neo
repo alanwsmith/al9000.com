@@ -1,0 +1,74 @@
+== filter escape 
+-- todo checklist
+-- h2: al9000.com
+-- prelude: Stuff to do on the site.
+
+[] Restyled Code wrappers.
+
+[] Added wrapping toggle to code blocks. 
+
+[] Added a lorem ipsum maker to tools page. 
+
+[] Added a C to F tool to the tools
+page. 
+
+[] Moved the ones and zeros post over
+to al9000.
+
+[] Added light/dark mode switcher back in
+to site. 
+
+[] Switched all the extends to use the 
+``/templates.inc/switches/*.html``
+files to switch between web and RSS feed 
+versions of the content.
+
+[] Split out everything
+in the <<path|/templates.inc/includes>> 
+dir so that each category has it's own
+folder (e.g. header/default.html, footer/default.html
+etc.)
+
+[] Use >>https://lumis.sh/>> to add
+syntax highlighting to 
+>>Texture Maker|/texture-maker/>>
+
+[] Added default CSS background
+color directly on pages to help prevent
+white flash while rendering.  
+
+[] Switch to using ``categories = ["code"]`` 
+instead of things like ``status = "code"``
+to separate content on the home page, etc.
+
+[] Add a locahost check that adds debugging
+tools and details to the page when on 
+localhost. 
+
+[] All pages from the site with 
+``status = "done"`` are shown in the
+RSS feed list unless they have
+``flags = ["skip"]``
+
+[] All pages from the site with 
+``status = "done"`` are shown on the
+home page list unless they have
+``flags = ["skip"]``
+
+[] Create a Tech TV page that picks a random 
+video from your Tech TV playlist and plays 
+it so you don't have to think about what to watch
+
+[] Create a radio station from a youtube 
+playlist with the playhead set based off  
+timestamp so everyone gets the same song
+
+
+[x] CSS Migrated from JS approach to 
+regular old CSS.
+
+[x] Added IDs and or skip flags
+to all pages with titles so 
+`file_list()` is up to date. 
+== endfilter
+

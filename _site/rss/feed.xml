@@ -2,12 +2,70 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-20T23:56:06-04:00</updated>
+  <updated>2026-07-21T11:03:17-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
+  
+  <entry>
+    <title>Background Texture Maker - Give your site a little grit</title><link href="https://al9000.com&#x2f;texture-maker/"/><id>urn:uuid:b936489f-8c7a-5916-8683-845d3512447b</id>
+    <updated>2026-07-21T00:17:00-04:00</updated>
+    <summary><![CDATA[
+
+<bitty-8 data-connect="/texture-maker/bit.js"></bitty-8>
+<p>Move the sliders below to set your background. Copy/paste the CSS when you've got it the way you want.</p>
+<div data-r="example"></div>
+<div class="controls">
+  <div>
+    <label>
+      <div>Lightness</div>
+      <input type="range" data-key="l" data-r="initValue" data-s="updateValue" min="0" max="1" step="0.001" autocomplete="off" />
+    </label>
+    <label><div>Chroma</div>
+      <input type="range" data-key="c" data-r="initValue" data-s="updateValue" min="0" max="0.3" step="0.0001" autocomplete="off" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <div>Hue</div>
+      <input type="range" data-key="h" data-r="initValue" data-s="updateValue" min="0" max="360" step="0.01" autocomplete="off" />
+    </label>
+    <label>
+      <div>Opacity</div>
+      <input type="range" data-key="o" data-r="initValue" data-s="updateValue" min="0" max="50" step="0.01" autocomplete="off" />
+    </label>
+  </div>
+</div>
+
+<div class="code-block numbers copy-button">
+  <pre data-r="updateCSS"></pre>
+</div>
+
+<h2>Details</h2>
+<ul>
+<li>This tool generates CSS for a textured site background.</li>
+<li>The Lightness, Chroma, and Hue sliders set the base background variables for an oklch
+color.</li>
+<li>The Opacity slider controls the opacity of the texture SVG relative to the base color.</li>
+<li>The texture in the SVG is generated via SVG filters.
+below the sliders to adjust it manually.</li>
+<li>The <code>Copy</code> button below the CSS copies the code to your
+clipboard for pasting into your stylesheets.</li>
+<li>The original version of this used base64 encoding.
+<a href="https://tylersticka.com/">Tyler Sticka</a> reminded me that that's not necessary for SVG.</li>
+</ul>
+
+
+
+
+
+
+
+
+]]></summary>
+  </entry>
   
   <entry>
     <title>Blog Post base32 ID Cleanup</title><link href="https://al9000.com&#x2f;rust&#x2f;apps&#x2f;base32_timestamp_cleanup/"/><id>urn:uuid:877fdc9f-6054-5489-baa4-31c24d2410ca</id>
@@ -408,11 +466,12 @@ want to check it out.
 
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
 id = "01/n5/st/wc"
-      
     </div>
+      
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>
@@ -2650,7 +2709,7 @@ printed there's a process that does it that
 can output to various sizes. That's not what I'm
 talking about.</p>
 <p>I'm talking about one that looks like this:</p>
-<img src="enlarger-4856357201.jpg" alt="Two photography film enlargers side by side on a worktop desk. There's a collection of trays for processing beside them" />
+<figure class="default"><img src="/blog/01/n3/dd/tw/enlarger-4856357201.jpg" alt="Two photography film enlargers side by side on a worktop desk. There&#x27;s a collection of trays for processing beside them" /></figure>
 <p>Ones that project light onto a piece of paper covered with
 a light sensitive emulsion. The next step
 being to run the paper through a series of
@@ -4262,6 +4321,7 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
     <title>I&#x27;m Not Ready to Start This Blog</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;mx&#x2f;qf&#x2f;ng/"/><id>urn:uuid:1d75ebeb-8282-5d79-9d04-609157bd169b</id>
     <updated>2026-04-12T11:48:00-04:00</updated>
     <summary><![CDATA[
+
 <p>Fuck it. We'll do it live.</p>
 <p>Welcome to the al9000.com blog!</p>
 <p>Things to know:</p>
@@ -4298,6 +4358,7 @@ looking forward to the ride.
 Even if it doesn't feel like I'm ready
 to start.</p>
 <p>-a</p>
+
 <p>P.S. I've been posting other content.
 You can get to it from the <a href="/">home page</a>.
 It's just not what I consider blog content.
@@ -4306,8 +4367,6 @@ I want to do with the site the less that
 distinction is going to matter.</p>
 <p>P.P.S. I haven't built the RSS feed yet. It's
 coming soon.</p>
-
-
 ]]></summary>
   </entry>
   
@@ -4728,11 +4787,12 @@ without it, it just won't be as smooth.</p>
 
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
 id = "01/mx/8y/ck"
-      
     </div>
+      
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>

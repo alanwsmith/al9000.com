@@ -1,8 +1,4 @@
-== if rss
-== extends "/templates.inc/rss/default.html"
-== else 
-== extends "/templates.inc/pages/blog.html"
-== endif
+== extends "/templates.inc/switches/default.html"
 
 == block toml
 title = "I'm Not Ready to Start This Blog"
@@ -11,7 +7,8 @@ status = "done"
 id = "01/mx/qf/ng"
 == endblock
 
-== block main
+
+== block content 
 == filter md
 
 Fuck it. We'll do it live. 
@@ -50,6 +47,12 @@ Even if it doesn't feel like I'm ready
 to start. 
 
 -a
+
+== endfilter
+== endblock
+
+== block backmatter
+== filter md
 
 P.S. I've been posting other content. 
 You can get to it from the [home page](/). 

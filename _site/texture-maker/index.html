@@ -16,7 +16,7 @@
 <meta property="og:description" content="from alan w smith" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://al9000.com/templates.inc/includes/" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<meta property="og:image" content="https://al9000.com&#x2f;texture-maker/og-image.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
@@ -122,6 +122,24 @@ body {
   <pre data-r="updateCSS"></pre>
 </div>
 
+<h2>Details</h2>
+<ul>
+<li>This tool generates CSS for a textured site background.</li>
+<li>The Lightness, Chroma, and Hue sliders set the base background variables for an oklch
+color.</li>
+<li>The Opacity slider controls the opacity of the texture SVG relative to the base color.</li>
+<li>The texture in the SVG is generated via SVG filters.
+below the sliders to adjust it manually.</li>
+<li>The <code>Copy</code> button below the CSS copies the code to your
+clipboard for pasting into your stylesheets.</li>
+<li>The original version of this used base64 encoding.
+<a href="https://tylersticka.com/">Tyler Sticka</a> reminded me that that's not necessary for SVG.</li>
+</ul>
+
+
+
+
+
 
 
 
@@ -143,11 +161,12 @@ body {
 
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       
-id = "01/mn/kj/4p"
-      
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
+id = "01/n5/xw/nw"
     </div>
+      
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>

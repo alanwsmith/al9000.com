@@ -1,0 +1,35 @@
+== filter escape 
+-- checklist
+-- h2: pics9000.com 
+-- prelude: Work for the portrait 
+project
+
+[] Got 5 foot white background.
+
+[] Got sheets for lighting setup. 
+
+[] Had sleeves added to the top and
+bottom of the lighting sheets for
+hanging and weighing down. 
+
+[] The pics9000.com domain is setup up
+to point to Netlify. 
+
+[] Redirected pic9000.com to pics9000.com.
+
+[] Created the QR Code maker. Only the 
+names, email addresses and guardain
+permission data are used (i.e.
+no UUIDs at this point. That's
+extra work vs just using the time
+stamps + image ID).
+
+[] Email hosting is set up for the domain
+to distribute links to images. 
+
+[] Built the initail process and templates
+for publishing images. 
+
+[] Loaded images from intial shoot. 
+
+== endfilter

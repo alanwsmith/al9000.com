@@ -28,11 +28,12 @@
       [! block body !][! endblock !]
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       [! if p.created !]
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
 id = "[@ id_from_timestamp(p.created["$__toml_private_datetime"]) @]"
-      [! endif !]
     </div>
+      [! endif !]
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>
