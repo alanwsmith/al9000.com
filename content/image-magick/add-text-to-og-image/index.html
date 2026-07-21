@@ -1,0 +1,30 @@
+== extends "/templates.inc/switches/default.html"
+
+== block toml
+title = "Add Text to an Open Graph Image with ImageMagick"
+created = 2026-07-21T15:39:00-04:00
+status = "draft"
+id = "01/n5/zj/pm" 
+== endblock
+
+== block content
+== filter md
+This is how I'm adding text to background
+images for my open graph images on 
+the site with ImageMagick. 
+
+TODO: Add alt text to images. 
+== endfilter
+
+== filter highlight("bash")
+[@ raw_include(template_folder() + "/example/make-image.inc.bash") @]
+== endfilter
+
+[@ image("og-example-background") @]
+
+[@ image("og-example-output") @]
+
+
+== endblock
+
+

@@ -16,7 +16,7 @@
 <meta property="og:description" content="from alan w smith" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://al9000.com/templates.inc/includes/" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<meta property="og:image" content="https://al9000.com&#x2f;todo/og-image-auto.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
@@ -78,9 +78,13 @@
 
 My dev to do list.
 
+
 -- todo checklist
 -- h2: al9000.com
 -- prelude: Stuff to do on the site.
+
+[] Update youtube-player web component
+to use ``data-*`` attributes. 
 
 [] Restyled Code wrappers.
 
@@ -154,6 +158,15 @@ to all pages with titles so
 -- h2: ssg9000
 -- prelude: Things to set up for my 
 static site generator. 
+
+[] Add an file extension check to 
+the ``image`` call so that it only
+picks ups jpgs, pngs, etc.
+
+[] Keep track of IDs for every URL.
+If a page moves, add a redirect
+from the old location to the new
+one automatically. 
 
 [] Updated the error report so the 
 data is stored in memory instead of in
