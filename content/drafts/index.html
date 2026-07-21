@@ -1,14 +1,10 @@
-== if rss
-== extends "/templates.inc/rss/default.html"
-== else 
-== extends "/templates.inc/pages/default.html"
-== endif
+== extends "/templates.inc/switches/default.html"
 
 == block toml
 title = "Drafts"
 created = 2026-06-22T09:33:08-04:00
-status = "wip"
-flags = ["skip"]
+status = "done"
+flags = ["skip", "no-date"]
 == endblock
 
 

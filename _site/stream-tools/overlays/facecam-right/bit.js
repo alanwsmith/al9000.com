@@ -8,8 +8,8 @@ export function overlay(_, __, el) {
 
 function subs() {
   const window1 = new WindowMaker(0, 0);
-  const window2 = new WindowMaker(0, 1);
-  const window3 = new WindowMaker(1, 3);
+  const window2 = new WindowMaker(1, 1);
+  const window3 = new WindowMaker(1, 2);
   return {
     __PAGE_WIDTH__: 3840,
     __PAGE_HEIGHT__: 2160,
@@ -27,14 +27,15 @@ class WindowMaker {
   #pageWidth = 3840;
   #pageHeight = 2160;
   #colCoords = [
-    [0, 600],
-    [600, this.#pageWidth - this.#padding],
+    [0, this.#pageWidth - this.#padding - 600],
+    [this.#pageWidth - this.#padding - 600, 3840 - this.#padding],
   ];
   #rowCoords = [
+    [50, 1761 + 50 + this.padding()],
     [50, 800],
     [800, 800 + 740],
     [680, 961],
-    [50, 1761 + 50 + this.padding()],
+    [1761 + 50 + this.padding(), 100],
   ];
 
   constructor(colIndex, rowIndex) {

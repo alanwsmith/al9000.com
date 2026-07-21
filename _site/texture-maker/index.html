@@ -7,7 +7,7 @@
 
     
 
-    <script src="&#x2f;scripts.off&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
 
 <link rel="shortcut icon" href="/favicon.ico" />
 <title>Background Texture Maker</title>
@@ -31,7 +31,21 @@
     
     
     
-    
+    <style>
+:root {
+  --svg-bg-l: 0.2;
+  --svg-bg-c: 0.1;
+  --svg-bg-h: 130;
+}
+body {
+  background-color: oklch(var(--svg-bg-l) var(--svg-bg-c) var(--svg-bg-h));
+}
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+</style>
+
     
   </head>
   <body class="page">
@@ -77,57 +91,38 @@
   </hgroup>
 
 
-<style>
-
-:root {
-  --svg-bg-lightness: 0.2;
-  --svg-bg-chroma: 0.1;
-  --svg-bg-hue: 130;
-}
-
-body {
-  background-color: oklch(var(--svg-bg-lightness) var(--svg-bg-chroma) var(--svg-bg-hue));
-  background-size: 150px 150px;
-}
-
-</style>
-
 <bitty-8 data-connect="/texture-maker/bit.js"></bitty-8>
-
-  <p>Move the sliders below to set your background. Copy/paste the CSS when you've got it the way you want.</p>
-
-  <div data-r="example"></div>
-
-  <div class="controls">
-    <div>
-      <label>
-        <div>Lightness</div>
-        <input type="range" data-r="initLightness" data-s="lightness" min="0" max="1" step="0.001" />
-      </label>
-      <label><div>Chroma</div>
-        <input type="range" data-r="initChroma" data-s="chroma" min="0" max="0.3" step="0.0001" />
-      </label>
-    </div>
-    <div>
-      <label>
-        <div>Hue</div>
-        <input type="range" data-r="initHue" data-s="hue" min="0" max="360" step="0.001" />
-      </label>
-      <label>
-        <div>Opacity</div>
-        <input type="range" data-r="initOpacity" data-s="opacity" min="0" max="1" step="0.01" />
-      </label>
-    </div>
+<p>Move the sliders below to set your background. Copy/paste the CSS when you've got it the way you want.</p>
+<div data-r="example"></div>
+<div class="controls">
+  <div>
+    <label>
+      <div>Lightness</div>
+      <input type="range" data-key="l" data-r="initValue" data-s="update" min="0" max="1" step="0.001" autocomplete="off" />
+    </label>
+    <label><div>Chroma</div>
+      <input type="range" data-key="c" data-r="initValue" data-s="update" min="0" max="0.3" step="0.0001" autocomplete="off" />
+    </label>
   </div>
-
-  <details><summary>Texture SVG Source</summary>
-    <textarea data-init="initSVG" data-send="updateSVG"></textarea>
-  </details>
-
-  <div class="output xlarge-top-margin">
-    <pre class="code-block no-numbers"><code data-receive="update"></code></pre>
+  <div>
+    <label>
+      <div>Hue</div>
+      <input type="range" data-key="h" data-r="initValue" data-s="update" min="0" max="360" step="0.01" autocomplete="off" />
+    </label>
+    <label>
+      <div>Opacity</div>
+      <input type="range" data-key="o" data-r="initValue" data-s="update" min="0" max="20" step="0.01" autocomplete="off" />
+    </label>
   </div>
+</div>
 
+<details><summary>Texture SVG Source</summary>
+  <textarea data-r="updateSVG"></textarea>
+</details>
+
+<div class="output xlarge-top-margin">
+  <pre class="code-block no-numbers"><code data-r="update"></code></pre>
+</div>
 
 <h2>Details</h2>
 <ul>
@@ -153,9 +148,6 @@ I yoinked some code from <a href="https://github.com/tigt/mini-svg-data-uri/blob
 </ul>
 
 
-
-
-
 <div class="end-of-line"></div>
 
 
@@ -176,16 +168,16 @@ I yoinked some code from <a href="https://github.com/tigt/mini-svg-data-uri/blob
 
     <div class="default-wrapper text-align-right faded-base-color">
       
-id = "ab/uv/ts/ew"
+id = "01/mn/kj/4p"
       
     </div>
 
     <div class="templates" hidden>
-      <bitty-8 data-connect="/bits/details-opener.js"></bitty-8>
+      <bitty-8 data-connect="/bits/default.js"></bitty-8>
       <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
 
 
-<script type="image/svg" id="mainSVG">
+<script type="image/svg" data-template="mainSVG">
   <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
     <filter id="noiseFilter">
       <feTurbulence type="fractalNoise" baseFrequency="3" numOctaves="2" result="noise" />
