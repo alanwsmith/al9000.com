@@ -85,13 +85,13 @@
 </p>
 
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">ffprobe</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> error<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>show_entries</span> stream=width,height<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>of</span> csv=p=0 input.mp4 <span class="keyword operator assignment redirection shell">&gt;</span> output.txt</span></span></code></pre></div>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="meta function-call shell"><span class="variable function shell">ffprobe</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>v</span> error<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>show_entries</span> stream=width,height<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>of</span> csv=p=0 input.mp4 <span class="keyword operator assignment redirection shell">&gt;</span> output.txt</span></span></pre></div>
 <p>
   This is the output from my sample video which
   is 1920 pixels wide by 1080 high. 
 </p>
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">1920,1080</span></code></pre></div>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">1920,1080</span></pre></div>
 <h2>Details</h2>
 <ul>
 <li>
@@ -149,11 +149,12 @@ to:</p>
 
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
 id = "01/mx/wm/e0"
-      
     </div>
+      
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>

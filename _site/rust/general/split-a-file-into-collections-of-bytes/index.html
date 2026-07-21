@@ -99,7 +99,7 @@ here: <a href="/rust/wasm/static-site-file-decryption/">Password Protecting Stat
 code that does the split.</p>
 
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span>fs<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">path<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">path<span class="punctuation accessor rust">::</span></span>PathBuf<span class="punctuation terminator rust">;</span>
@@ -134,14 +134,14 @@ code that does the split.</p>
 <span class="line-marker" data-line="33"></span>  <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>write<span class="meta group rust"><span class="punctuation section group begin rust">(</span>bravo_out<span class="punctuation separator rust">,</span> bravo</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="34"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Done<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="35"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
-<span class="line-marker" data-line="36"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="36"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="2"></span>name <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>unzip_a_file<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="3"></span>version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>0.1.0<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="4"></span>edition <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2024<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="5"></span>
 <span class="line-marker" data-line="6"></span><span class="meta group rust"><span class="punctuation section group begin rust">[</span>dependencies<span class="punctuation section group end rust">]</span></span>
-<span class="line-marker" data-line="7"></span>anyhow <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>1.0.102<span class="punctuation definition string end rust">&quot;</span></span></span></code></pre></div>
+<span class="line-marker" data-line="7"></span>anyhow <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>1.0.102<span class="punctuation definition string end rust">&quot;</span></span></span></pre></div>
 <p>I haven't written the re-assembly code yet
 since I'm going with encryption. I don't
 expect it to be difficult if I come back to it.</p>
@@ -167,11 +167,12 @@ expect it to be difficult if I come back to it.</p>
 
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
 id = "01/mw/tq/bk"
-      
     </div>
+      
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>

@@ -1,10 +1,7 @@
-export const b = { init: "initDetails" };
+export const b = { init: "initDetails initCodeButtons" };
 
 let s = {
-  details: {
-    data: {},
-    key: `details-opener`,
-  },
+  details: { data: {}, key: `details-opener` },
 };
 
 export async function initDetails() {
@@ -15,9 +12,32 @@ export async function initDetails() {
   });
 }
 
-async function updateData() {
+export async function updateData() {
   b.qsa("details").forEach((el, index) => {
     s.details.data[index] = el.open;
   });
   await b.savePageData(s.details.data, s.details.key);
+}
+
+export function initCodeButtons() {
+  const blocks = b.qsa(".code-block");
+  for (let block of blocks) {
+    if (!block.classList.contains("no-buttons")) {
+      const uuid = self.crypto.randomUUID();
+      const preEl = block.querySelector("pre");
+      preEl.dataset.copyId = uuid;
+      preEl.dataset.r = `${preEl.dataset.r} copyCode`;
+      const button = document.createElement("button");
+      button.innerHTML = "Copy";
+      button.dataset.s = "copyCode";
+      button.dataset.copyId = uuid;
+      block.appendChild(button);
+    }
+  }
+}
+
+export async function copyCode(_, sender, el) {
+  if (sender.prop("copyId") === el.prop("copyId")) {
+    await b.quickCopy(el, sender);
+  }
 }

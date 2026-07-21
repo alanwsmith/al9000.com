@@ -28,6 +28,10 @@ body {
   font-size-adjust: 0.5;
   font-size: var(--default-font-size);
   line-height: var(--default-line-height);
+  background-image: var(--svg-bg-url);
+  background-size: 150px 150px;
+  background-repeat: repeat;
+  text-shadow: 0px 0px 4px rgb(0 0 0 / 0.6);
 }
 
 a {
@@ -333,7 +337,7 @@ footer {
 
 h1 {
   color: var(--default-heading-color);
-  font-size: var(--xxlarge-font-size);
+  font-size: var(--xxxlarge-font-size);
   font-weight: var(--xxlarge-font-weight);
   line-height: var(--xxsmall-line-height);
   overflow-wrap: break-word;
@@ -464,6 +468,11 @@ iframe {
 img {
   display: block;
   max-width: 100%;
+}
+
+.default > img {
+  border: var(--default-match-border2);
+  border-radius: var(--default-border-radius);
 }
 
 .inline-block {
@@ -680,4 +689,5 @@ video {
   background-color: var(--faded-warning-color);
   --flow-space: var(--xxxlarge-margin);
 }
+
 

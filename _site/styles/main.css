@@ -25,7 +25,7 @@
     --xsmall-line-height: 1.2;
     --xsmall-margin: 0.4rem;
     --xsmall-padding: 0.4rem;
-    --xsmall-wdith: min(100vw - 1.4rem, 16rem);
+    --xsmall-wdith: min(100vw - 1.8rem, 16rem);
     --small-border-radius: 0.4rem;
     --small-flow: 0.7rem;
     --small-font-size: clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem);
@@ -34,16 +34,16 @@
     --small-line-height: 1.3;
     --small-margin: 0.6rem;
     --small-padding: 0.6rem;
-    --small-wdith: min(100vw - 1.4rem, 33rem);
+    --small-wdith: min(100vw - 2.0rem, 24rem);
     --default-border-radius: 0.5rem;
     --default-flow: 1.0rem;
-    --default-font-size: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
+    --default-font-size: clamp(1.20rem, calc(1.2rem + 0.30vw), 1.4rem);
     --default-font-weight: 500;
     --default-gap: 0.8rem;
-    --default-line-height: 1.45;
+    --default-line-height: 1.38;
     --default-margin: 0.8rem;
     --default-padding: 0.8rem;
-    --default-wdith: min(100vw - 1.4rem, 48rem);
+    --default-wdith: min(100vw - 2.0rem, 36rem);
     --large-border-radius: 0.6rem;
     --large-flow: 1.2rem;
     --large-font-size: clamp(1.32rem, calc(1.5rem + 0.58vw), 1.65rem);
@@ -52,7 +52,7 @@
     --large-line-height: 1.5;
     --large-margin: 1.0rem;
     --large-padding: 1.0rem;
-    --large-wdith: min(100vw - 1.4rem, 50rem);
+    --large-wdith: min(100vw - 2.0rem, 50rem);
     --xlarge-border-radius: 0.7rem;
     --xlarge-flow: 1.2rem;
     --xlarge-font-size: clamp(1.84rem, calc(1.77rem + 0.87vw), 2.14rem);
@@ -61,7 +61,7 @@
     --xlarge-line-height: 1.6;
     --xlarge-margin: 1.4rem;
     --xlarge-padding: 1.3rem;
-    --xlarge-wdith: min(100vw - 1.4rem, 54rem);
+    --xlarge-wdith: min(100vw - 2.0rem, 54rem);
     --xxlarge-border-radius: 0.8rem;
     --xxlarge-flow: 1.4rem;
     --xxlarge-font-size: clamp(2.8rem, calc(2rem + 1.25vw), 3.1rem);
@@ -70,7 +70,7 @@
     --xxlarge-line-height: 1.7;
     --xxlarge-margin: 1.9rem;
     --xxlarge-padding: 1.9rem;
-    --xxlarge-wdith: min(100vw - 1.4rem, 58rem);
+    --xxlarge-wdith: min(100vw - 2.0rem, 58rem);
     --xxxlarge-border-radius: 0.9rem;
     --xxxlarge-flow: 1.6rem;
     --xxxlarge-font-size: clamp(2.9rem, calc(2.2rem + 1.3vw), 3.2rem);
@@ -79,7 +79,7 @@
     --xxxlarge-line-height: 1.8;
     --xxxlarge-margin: 2.2rem;
     --xxxlarge-padding: 2.5rem;
-    --xxxlarge-wdith: min(100vw - 1.4rem, 64rem);
+    --xxxlarge-wdith: min(100vw - 2.0rem, 64rem);
     --full-wdith: calc(100vw - 1.4rem);
     --text-align-center: center;
     --text-align-end: end;
@@ -90,28 +90,49 @@
 
     --default-accent-border: 1px solid var(--default-accent-color);
     --faded-accent-border: 1px solid var(--faded-accent-color);
+    --default-accent-border2: 2px solid var(--default-accent-color);
+    --faded-accent-border2: 2px solid var(--faded-accent-color);
     --default-background-border: 1px solid var(--default-background-color);
     --faded-background-border: 1px solid var(--faded-background-color);
+    --default-background-border2: 2px solid var(--default-background-color);
+    --faded-background-border2: 2px solid var(--faded-background-color);
     --default-base-border: 1px solid var(--default-base-color);
     --faded-base-border: 1px solid var(--faded-base-color);
+    --default-base-border2: 2px solid var(--default-base-color);
+    --faded-base-border2: 2px solid var(--faded-base-color);
     --default-black-border: 1px solid var(--default-black-color);
     --faded-black-border: 1px solid var(--faded-black-color);
+    --default-black-border2: 2px solid var(--default-black-color);
+    --faded-black-border2: 2px solid var(--faded-black-color);
     --default-heading-border: 1px solid var(--default-heading-color);
     --faded-heading-border: 1px solid var(--faded-heading-color);
+    --default-heading-border2: 2px solid var(--default-heading-color);
+    --faded-heading-border2: 2px solid var(--faded-heading-color);
     --default-link-border: 1px solid var(--default-link-color);
     --faded-link-border: 1px solid var(--faded-link-color);
+    --default-link-border2: 2px solid var(--default-link-color);
+    --faded-link-border2: 2px solid var(--faded-link-color);
     --default-match-border: 1px solid var(--default-match-color);
     --faded-match-border: 1px solid var(--faded-match-color);
+    --default-match-border2: 2px solid var(--default-match-color);
+    --faded-match-border2: 2px solid var(--faded-match-color);
     --default-reverse-border: 1px solid var(--default-reverse-color);
     --faded-reverse-border: 1px solid var(--faded-reverse-color);
+    --default-reverse-border2: 2px solid var(--default-reverse-color);
+    --faded-reverse-border2: 2px solid var(--faded-reverse-color);
     --default-white-border: 1px solid var(--default-white-color);
     --faded-white-border: 1px solid var(--faded-white-color);
+    --default-white-border2: 2px solid var(--default-white-color);
+    --faded-white-border2: 2px solid var(--faded-white-color);
     --default-warning-border: 1px solid var(--default-warning-color);
     --faded-warning-border: 1px solid var(--faded-warning-color);
+    --default-warning-border2: 2px solid var(--default-warning-color);
+    --faded-warning-border2: 2px solid var(--faded-warning-color);
 }
 
 
 :root {
+  --svg-bg-url: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20150%20150%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cfilter%20id%3D%22noiseFilter%22%3E%0A%20%20%20%20%20%20%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%223%22%20numOctaves%3D%222%22%20result%3D%22noise%22%3E%3C%2FfeTurbulence%3E%0A%20%20%20%20%20%20%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%20result%3D%22grayscale%22%3E%3C%2FfeColorMatrix%3E%0A%20%20%20%20%20%20%3CfeComponentTransfer%3E%0A%20%20%20%20%20%20%20%20%3CfeFuncA%20in%3D%22grayscale%22%20type%3D%22linear%22%20slope%3D%220.4%22%20result%3D%22updated%22%3E%3C%2FfeFuncA%3E%0A%20%20%20%20%20%20%3C%2FfeComponentTransfer%3E%0A%20%20%20%20%20%20%3CfeMerge%3E%0A%20%20%20%20%20%20%20%20%3CfeMergeNode%20in%3D%22noise%22%3E%3C%2FfeMergeNode%3E%0A%20%20%20%20%20%20%20%20%3CfeMergeNode%20in%3D%22updated%22%3E%3C%2FfeMergeNode%3E%0A%20%20%20%20%20%20%3C%2FfeMerge%3E%0A%20%20%20%20%3C%2Ffilter%3E%0A%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20opacity%3D%2225.4%25%22%20filter%3D%22url(%23noiseFilter)%22%3E%3C%2Frect%3E%0A%20%20%3C%2Fsvg%3E");
   --light--default-background-color: oklch(0.9634 0.02097 105.642);
   --light--default-base-color: oklch(0.1951 0.23 105.642);
   --light--faded-base-color: oklch(0.1951 0.23 105.642 / 0.653);
@@ -288,38 +309,38 @@
 .xxsmall-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxsmall-flow)); }
 .xsmall-font-size { font-size: var(--xsmall-font-size); }
 .xsmall-font-weight { font-weight: var(--xsmall-font-weight); }
-.xsmall-width { max-width: min(100vw - 1.4rem, 16rem); }
-.xsmall-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 16rem); }
+.xsmall-width { max-width: min(100vw - 1.8rem, 16rem); }
+.xsmall-wrapper { margin-inline: auto; max-width: min(100vw - 1.8rem, 16rem); }
 .xsmall-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xsmall-flow)); }
 .small-font-size { font-size: var(--small-font-size); }
 .small-font-weight { font-weight: var(--small-font-weight); }
-.small-width { max-width: min(100vw - 1.4rem, 33rem); }
-.small-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 33rem); }
+.small-width { max-width: min(100vw - 2.0rem, 24rem); }
+.small-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 24rem); }
 .small-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--small-flow)); }
 .default-font-size { font-size: var(--default-font-size); }
 .default-font-weight { font-weight: var(--default-font-weight); }
-.default-width { max-width: min(100vw - 1.4rem, 48rem); }
-.default-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 48rem); }
+.default-width { max-width: min(100vw - 2.0rem, 36rem); }
+.default-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 36rem); }
 .default-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--default-flow)); }
 .large-font-size { font-size: var(--large-font-size); }
 .large-font-weight { font-weight: var(--large-font-weight); }
-.large-width { max-width: min(100vw - 1.4rem, 50rem); }
-.large-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 50rem); }
+.large-width { max-width: min(100vw - 2.0rem, 50rem); }
+.large-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 50rem); }
 .large-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--large-flow)); }
 .xlarge-font-size { font-size: var(--xlarge-font-size); }
 .xlarge-font-weight { font-weight: var(--xlarge-font-weight); }
-.xlarge-width { max-width: min(100vw - 1.4rem, 54rem); }
-.xlarge-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 54rem); }
+.xlarge-width { max-width: min(100vw - 2.0rem, 54rem); }
+.xlarge-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 54rem); }
 .xlarge-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xlarge-flow)); }
 .xxlarge-font-size { font-size: var(--xxlarge-font-size); }
 .xxlarge-font-weight { font-weight: var(--xxlarge-font-weight); }
-.xxlarge-width { max-width: min(100vw - 1.4rem, 58rem); }
-.xxlarge-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 58rem); }
+.xxlarge-width { max-width: min(100vw - 2.0rem, 58rem); }
+.xxlarge-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 58rem); }
 .xxlarge-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxlarge-flow)); }
 .xxxlarge-font-size { font-size: var(--xxxlarge-font-size); }
 .xxxlarge-font-weight { font-weight: var(--xxxlarge-font-weight); }
-.xxxlarge-width { max-width: min(100vw - 1.4rem, 64rem); }
-.xxxlarge-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 64rem); }
+.xxxlarge-width { max-width: min(100vw - 2.0rem, 64rem); }
+.xxxlarge-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 64rem); }
 .xxxlarge-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxxlarge-flow)); }
 
 .text-align-center { text-align: center; }
@@ -541,6 +562,10 @@ body {
   font-size-adjust: 0.5;
   font-size: var(--default-font-size);
   line-height: var(--default-line-height);
+  background-image: var(--svg-bg-url);
+  background-size: 150px 150px;
+  background-repeat: repeat;
+  text-shadow: 0px 0px 4px rgb(0 0 0 / 0.6);
 }
 
 a {
@@ -846,7 +871,7 @@ footer {
 
 h1 {
   color: var(--default-heading-color);
-  font-size: var(--xxlarge-font-size);
+  font-size: var(--xxxlarge-font-size);
   font-weight: var(--xxlarge-font-weight);
   line-height: var(--xxsmall-line-height);
   overflow-wrap: break-word;
@@ -977,6 +1002,11 @@ iframe {
 img {
   display: block;
   max-width: 100%;
+}
+
+.default > img {
+  border: var(--default-match-border2);
+  border-radius: var(--default-border-radius);
 }
 
 .inline-block {
@@ -1193,5 +1223,6 @@ video {
   background-color: var(--faded-warning-color);
   --flow-space: var(--xxxlarge-margin);
 }
+
 
 

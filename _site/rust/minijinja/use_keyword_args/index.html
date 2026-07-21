@@ -78,16 +78,16 @@
 
 <h3>Rust</h3>
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="2"></span>name <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>optional_function_argument<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="3"></span>version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>0.1.0<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="4"></span>edition <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2024<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="5"></span>
 <span class="line-marker" data-line="6"></span><span class="meta group rust"><span class="punctuation section group begin rust">[</span>dependencies<span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="7"></span>anyhow <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>1.0.102<span class="punctuation definition string end rust">&quot;</span></span>
-<span class="line-marker" data-line="8"></span>minijinja <span class="keyword operator rust">=</span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span> version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2.21.0<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> features <span class="keyword operator rust">=</span> <span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>custom_syntax<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation section group end rust">]</span></span> </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></code></pre></div>
+<span class="line-marker" data-line="8"></span>minijinja <span class="keyword operator rust">=</span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span> version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2.21.0<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> features <span class="keyword operator rust">=</span> <span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>custom_syntax<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation section group end rust">]</span></span> </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></pre></div>
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="comment line double-slash rust"><span class="punctuation definition comment rust">//</span> 
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="comment line double-slash rust"><span class="punctuation definition comment rust">//</span> 
 <span class="line-marker" data-line="2"></span></span><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span><span class="meta path rust">syntax<span class="punctuation accessor rust">::</span></span>SyntaxConfig<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span><span class="meta path rust">value<span class="punctuation accessor rust">::</span></span>Kwargs<span class="punctuation terminator rust">;</span>
@@ -141,7 +141,7 @@
 <span class="line-marker" data-line="52"></span></span>  options.<span class="support function rust">assert_all_used</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="53"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta path rust">Value<span class="punctuation accessor rust">::</span></span>from_safe_string<span class="meta group rust"><span class="punctuation section group begin rust">(</span>output</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker" data-line="54"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
-<span class="line-marker" data-line="55"></span><span class="comment line double-slash rust"><span class="punctuation definition comment rust">//</span></span></span></code></pre></div>
+<span class="line-marker" data-line="55"></span><span class="comment line double-slash rust"><span class="punctuation definition comment rust">//</span></span></span></pre></div>
 
 
 
@@ -165,11 +165,12 @@
 
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
 id = "01/mx/mz/1w"
-      
     </div>
+      
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>

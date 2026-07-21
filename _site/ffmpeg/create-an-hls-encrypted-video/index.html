@@ -99,7 +99,7 @@ downloaded.</p>
 <p>Here's the ffmpeg process I'm using to make
 prep the videos (including the encryption):</p>
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
 <span class="line-marker" data-line="2"></span></span>
 <span class="line-marker" data-line="3"></span><span class="variable other readwrite assignment shell">INPUT_DIR</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>input<span class="punctuation definition string end shell">&quot;</span></span></span>
 <span class="line-marker" data-line="4"></span><span class="variable other readwrite assignment shell">KEY_NAME</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>hls-sample.key<span class="punctuation definition string end shell">&quot;</span></span></span>
@@ -120,14 +120,14 @@ prep the videos (including the encryption):</p>
 <span class="line-marker" data-line="19"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>c</span>:a aac <span class="punctuation separator continuation line shell">\
 <span class="line-marker" data-line="20"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>hls_segment_type</span> mpegts <span class="punctuation separator continuation line shell">\
 <span class="line-marker" data-line="21"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>hls_list_size</span> 0 <span class="punctuation separator continuation line shell">\
-<span class="line-marker" data-line="22"></span></span>  <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">OUTPUT_DIR</span></span>/bird.m3u8<span class="punctuation definition string end shell">&quot;</span></span></span></span></code></pre></div>
+<span class="line-marker" data-line="22"></span></span>  <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">OUTPUT_DIR</span></span>/bird.m3u8<span class="punctuation definition string end shell">&quot;</span></span></span></span></pre></div>
 <p>Some browsers support playing HLS files natively. Firefox
 does not. I'm using the <a href="https://github.com/video-dev/hls.js">hls.js library</a>
 to handle that. It uses the HLS files in browsers
 that support it and transmuxes a version for
 browsers that don't.</p>
 <p>The code looks like this:</p>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/scripts/hlsjs-1.6.15.off/hls.min.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/scripts/hlsjs-1.6.15.off/hls.min.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">video</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">birdVideo</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">controls</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">video</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="4"></span>
@@ -141,7 +141,7 @@ browsers that don't.</p>
 <span class="line-marker" data-line="12"></span>    <span class="variable other object js">hls</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">loadSource</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">videoSrc</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="13"></span>    <span class="variable other object js">hls</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">attachMedia</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">video</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="14"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
-<span class="line-marker" data-line="15"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<span class="line-marker" data-line="15"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
 And, here's the output:
 
 <script src="/scripts/hlsjs-1.6.15.off/hls.min.js"></script>
@@ -208,11 +208,12 @@ without it, it just won't be as smooth.</p>
 
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
 id = "01/mx/8y/ck"
-      
     </div>
+      
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>

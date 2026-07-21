@@ -126,9 +126,9 @@ are defined by lines that start with
 two dashes followed by a name. Content
 for the section comes after an empty
 line.</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- title
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- title
 <span class="line-marker" data-line="2"></span>
-<span class="line-marker" data-line="3"></span>A Neopolitan Overview</span></code></pre></div>
+<span class="line-marker" data-line="3"></span>A Neopolitan Overview</span></pre></div>
 The section names can be pretty much anything
 as long as they don't contain spaces.
 <h3>Section Flags and Attributes</h3>
@@ -140,19 +140,19 @@ section name. For example, this is
 an <strong>image</strong> section with a flag for the
 image's filename. The content portion of the section
 is used for the image's alt text:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- image 
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- image 
 <span class="line-marker" data-line="2"></span>-- example-image.jpg
 <span class="line-marker" data-line="3"></span>
-<span class="line-marker" data-line="4"></span>This is where the alt text for the image goes.</span></code></pre></div>
+<span class="line-marker" data-line="4"></span>This is where the alt text for the image goes.</span></pre></div>
 Attributes work the same way as flags but
 start with a keyword followed by a colon. 
 For example, here's a "aside" section
 with a "class" attribute of "warning":
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- aside 
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- aside 
 <span class="line-marker" data-line="2"></span>-- class: warning
 <span class="line-marker" data-line="3"></span>
 <span class="line-marker" data-line="4"></span>There is where you can put something 
-<span class="line-marker" data-line="5"></span>that needs extra attention.</span></code></pre></div>
+<span class="line-marker" data-line="5"></span>that needs extra attention.</span></pre></div>
 <h2>Section Types</h2>
 <p>Section content is treated as paragraphs by default.
 Adding a section type after a section name
@@ -160,24 +160,24 @@ changes the handling. Two section types
 are &quot;list&quot; and &quot;checklist&quot;. Changing the
 type of a section is done by the name of the type
 after the name of the section:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- notes list
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- notes list
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span>- A note about something. 
 <span class="line-marker" data-line="4"></span>
-<span class="line-marker" data-line="5"></span>- Another note about something.</span></code></pre></div>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- todo checklist 
+<span class="line-marker" data-line="5"></span>- Another note about something.</span></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- todo checklist 
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span>[] Something that needs to be done
 <span class="line-marker" data-line="4"></span>
-<span class="line-marker" data-line="5"></span>[x] Something that has been done.</span></code></pre></div>
+<span class="line-marker" data-line="5"></span>[x] Something that has been done.</span></pre></div>
 The section types can also be used generically 
 as their own section names:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- list
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- list
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span>- Item for a list without a more
 <span class="line-marker" data-line="4"></span>specific section name. 
 <span class="line-marker" data-line="5"></span>
-<span class="line-marker" data-line="6"></span>- And another item for the list.</span></code></pre></div>
+<span class="line-marker" data-line="6"></span>- And another item for the list.</span></pre></div>
 <details><summary>List of Section Types</summary>
 <p>The full list of section types is:</p>
 <ul>
@@ -263,7 +263,7 @@ They're snippets that wrap
 text to alter it in some way.</p>
 <h3>Example Span</h3>
 <p>A basic span looks like this:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()&gt;&gt;</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()&gt;&gt;</span></pre></div>
 The parts are:
 <ul>
 <li>
@@ -288,13 +288,13 @@ that mark the end of the span.</p>
 </ul>
 <p>Here's what a span looks like surrounded
 by more content:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">The JavaScript function &lt;&lt;code|console.log()&gt;&gt;
-<span class="line-marker" data-line="2"></span>prints information to the developer console.</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">The JavaScript function &lt;&lt;code|console.log()&gt;&gt;
+<span class="line-marker" data-line="2"></span>prints information to the developer console.</span></pre></div>
 When that content is turned into a web page
 the span turns into an HTML `&lt;code&gt;` tag
 like this:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic">The JavaScript function <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="2"></span>prints information to the developer console.</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text html basic">The JavaScript function <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span>prints information to the developer console.</span></pre></div>
 <h3>Span Attributes</h3>
 <p>Spans can have attributes that further
 enhance their content. They're added
@@ -302,28 +302,28 @@ by using additional pipes to separate
 them from the content. For example,
 a class attribute can be added to
 the span like this:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured&gt;&gt;</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured&gt;&gt;</span></pre></div>
 which outputs this HTML:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
 Multiple attributes can be added by using
 more pipes. For example, this span (which
 also shows how spans can be split across lines)
 adds a `data-language` attribute that can be
 used to apply syntax highlighting to the
 code:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code
 <span class="line-marker" data-line="2"></span>  |console.log()
 <span class="line-marker" data-line="3"></span>  |class: featured
-<span class="line-marker" data-line="4"></span>  |data-language: javascript&gt;&gt;</span></code></pre></div>
+<span class="line-marker" data-line="4"></span>  |data-language: javascript&gt;&gt;</span></pre></div>
 The output HTML looks like this:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-language</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>javascript<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-language</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>javascript<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
 <h3>Span Shorthands</h3>
 <p>There are shorthands for frequenly used
 spans. For example, backtics denote code
 spans. The orignal example above:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured|language: javascript&gt;&gt;</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured|language: javascript&gt;&gt;</span></pre></div>
 can be written as:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">``console.log()|class: featured|language: javascript``</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">``console.log()|class: featured|language: javascript``</span></pre></div>
 <details><summary>Full List of Span Shorthands</summary>
 <ul>
 <li>
@@ -406,7 +406,7 @@ what Neopolitan is capable of. It's
 a <strong>book-review</strong> section that includes
 attributes for the title, author, and
 cover image along with the review itself.</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- book-review
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- book-review
 <span class="line-marker" data-line="2"></span>-- title: Dungeon Crawler Carl
 <span class="line-marker" data-line="3"></span>-- author: Matt Dinniman
 <span class="line-marker" data-line="4"></span>-- cover: dungeon-crawler-carl-cover.jpg
@@ -417,14 +417,14 @@ cover image along with the review itself.</p>
 <span class="line-marker" data-line="9"></span>but the narrator for the audio book
 <span class="line-marker" data-line="10"></span>is absolute gold. 
 <span class="line-marker" data-line="11"></span>
-<span class="line-marker" data-line="12"></span>etc.</span></code></pre></div>
+<span class="line-marker" data-line="12"></span>etc.</span></pre></div>
 Apps that use Neopolitan can access
 the content and attributes as independent
 pieces of data. They can be placed 
 wherever they need to be in the output. 
 The HTML for a web page might looks like
 this:
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">book-review</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">book-review</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span>  <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="3"></span>    <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">img</span> 
 <span class="line-marker" data-line="4"></span>      <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>dungeon-crawler-carl-cover.jpg<span class="punctuation definition string end html">&quot;</span></span></span>
@@ -445,7 +445,7 @@ this:
 <span class="line-marker" data-line="19"></span>      etc.
 <span class="line-marker" data-line="20"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">p</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="21"></span>  <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="22"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<span class="line-marker" data-line="22"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
 When, in turn, gets rendered like this:
 <div class="book-review">
   <div>
@@ -573,11 +573,12 @@ something it can't handle.</p>
 
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
 id = "01/n5/9q/7s"
-      
     </div>
+      
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>

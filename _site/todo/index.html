@@ -72,76 +72,139 @@
       <div class="title-wrapper">
         <h1>TODO</h1>
       </div>
-        <div class="date">July 2026</div>
   </hgroup>
 
 <pre class="tmp-neo">-- p
 
 My dev to do list.
 
--- h2
+-- todo checklist
+-- h2: al9000.com
+-- prelude: Stuff to do on the site.
 
-SSG 9000
+[] Restyled Code wrappers.
 
-Thing to do for Static Site Generator 9000
-(which powers this site).
+[] Added wrapping toggle to code blocks. 
 
--- checklist
--- h3: Active
+[] Added a lorem ipsum maker to tools page. 
 
-[] TODO: Set up so that errors don't include
+[] Added a C to F tool to the tools
+page. 
+
+[] Moved the ones and zeros post over
+to al9000.
+
+[] Added light&#x2f;dark mode switcher back in
+to site. 
+
+[] Switched all the extends to use the 
+``&#x2f;templates.inc&#x2f;switches&#x2f;*.html``
+files to switch between web and RSS feed 
+versions of the content.
+
+[] Split out everything
+in the &lt;&lt;path|&#x2f;templates.inc&#x2f;includes&gt;&gt; 
+dir so that each category has it&#x27;s own
+folder (e.g. header&#x2f;default.html, footer&#x2f;default.html
+etc.)
+
+[] Use &gt;&gt;https:&#x2f;&#x2f;lumis.sh&#x2f;&gt;&gt; to add
+syntax highlighting to 
+&gt;&gt;Texture Maker|&#x2f;texture-maker&#x2f;&gt;&gt;
+
+[] Added default CSS background
+color directly on pages to help prevent
+white flash while rendering.  
+
+[] Switch to using ``categories = [&quot;code&quot;]`` 
+instead of things like ``status = &quot;code&quot;``
+to separate content on the home page, etc.
+
+[] Add a locahost check that adds debugging
+tools and details to the page when on 
+localhost. 
+
+[] All pages from the site with 
+``status = &quot;done&quot;`` are shown in the
+RSS feed list unless they have
+``flags = [&quot;skip&quot;]``
+
+[] All pages from the site with 
+``status = &quot;done&quot;`` are shown on the
+home page list unless they have
+``flags = [&quot;skip&quot;]``
+
+[] Create a Tech TV page that picks a random 
+video from your Tech TV playlist and plays 
+it so you don&#x27;t have to think about what to watch
+
+[] Create a radio station from a youtube 
+playlist with the playhead set based off  
+timestamp so everyone gets the same song
+
+
+[x] CSS Migrated from JS approach to 
+regular old CSS.
+
+[x] Added IDs and or skip flags
+to all pages with titles so 
+`file_list()` is up to date. 
+
+-- todo checklist
+-- h2: ssg9000
+-- prelude: Things to set up for my 
+static site generator. 
+
+[] Updated the error report so the 
+data is stored in memory instead of in
+a file. 
+
+[] Set up so that errors don&#x27;t include
 the entire sites worth of data and become
 giant and potentially eat up all the space
 on the drive. 
 
-[] TODO: Migrated admin templates out
+[] Migrated admin templates out
 of the binary into an ``admin`` folder
 next to the ``content`` folder.
 
-[] TODO: CSS Migrated from JS approach to 
-regular old CSS.
-
-[] TODO: Added light/dark mode switcher back in. 
-
-[] TODO: Automatically generating OG images
-for posts. They're filenames are "og-image-auto.jpg".
+[] Automatically generating OG images
+for posts. They&#x27;re filenames are &quot;og-image-auto.jpg&quot;.
 They can be overridden by placing a file
-in the same directory named "og-image.jpg".
+in the same directory named &quot;og-image.jpg&quot;.
 
-[] TODO: Switched all the extends to use the ``/templates.inc/switches/*.html``
-files to switch between web and RSS feed 
-versions of the content.
-
-[] TODO: Split out everything
-in the <<path|/templates.inc/includes>> 
-dir so that each category has it's own
-folder (e.g. header/default.html, footer/default.html
-etc.)
-
-[] TODO: Created CRUD tool for blog 
+[] Created CRUD tool for blog 
 entires on the admin page. 
 
-[] TODO: Added VIM motions to the
+[] Added VIM motions to the
 blog post editor. 
 
-[] TODO: Added IDs and or skip flags
-to all pages with titles so 
-`file_list()` is up to date. 
-
-[] TODO: Set up to capture alt text
+[] Set up to capture alt text
 from images automatically. 
 
-[] TODO: Created a CRUD tool for quotes
+[] Created a CRUD tool for quotes
 on the admin page. 
 
-[] TODO: Created a CRUD tool for journal 
+[] Created a CRUD tool for journal 
 entries on the admin page. 
 
-[] TODO: CSS is validated with (https://github.com/w3c/css-validator)
+[] Created an extension and interface
+to collect and edit bookmarks.
 
-[] TODO: CSS is tree-shaken
+[] CSS is validated with (https:&#x2f;&#x2f;github.com&#x2f;w3c&#x2f;css-validator)
 
-[x] TODO: Added `image` function that takes
+[] CSS is tree-shaken
+
+[] MIGHT_BE_DONE: 
+Deprecated ``highlight`` and replaced
+it with with ``highlight(CODE [OPTIONS])`` 
+so keyword args can be passed in
+for title, headings, etc.
+
+[] Split out the admin page&#x2f;interface
+so it&#x27;s on its own server&#x2f;port.
+
+[x] Added `image` function that takes
 the stem of a file name and returns
 an image tag with the path to the
 image regardless of where it is. 
@@ -150,133 +213,104 @@ be passes as well. The first is
 `class` which overrides the default
 class from the image call. 
 
-[x] TODO: Added a ``youtube`` function that 
+[x] Added a ``youtube`` function that 
 inserts youtube player designed to work
 with the web component. 
 
-[x] TODO: Added functions for ``footnote`` and
+[x] Added functions for ``footnote`` and
 ``footref`` for linking back and forth between footnotes. 
 
 
--- h2
-
-Site Redirects
 
 -- checklist
+-- h2: pics9000.com 
+-- prelude: Work for the portrait 
+project
 
-[] stream-tools.alanwsmith.com
+[] Got 5 foot white background.
+
+[] Got sheets for lighting setup. 
+
+[] Had sleeves added to the top and
+bottom of the lighting sheets for
+hanging and weighing down. 
+
+[] The pics9000.com domain is setup up
+to point to Netlify. 
+
+[] Redirected pic9000.com to pics9000.com.
+
+[] Created the QR Code maker. Only the 
+names, email addresses and guardain
+permission data are used (i.e.
+no UUIDs at this point. That&#x27;s
+extra work vs just using the time
+stamps + image ID).
+
+[] Email hosting is set up for the domain
+to distribute links to images. 
+
+[] Built the initail process and templates
+for publishing images. 
+
+[] Loaded images from intial shoot. 
+
+
+-- todo checklist
+-- h2: neopoligan 
+-- prelude: Work for the Neopolitan
+parser and tools. 
+
+[] Split out Neopolitan from Neopoligen.
+
+[] Set default section types which 
+can be overridded like ``-- notes checklist``.
+
+[] Updated Tree Sitter parser to handle
+defaults and override section types.
+
+[] Created a parser for &gt;&gt;https:&#x2f;&#x2f;lumis.sh&#x2f;&gt;&gt;
+
+
+-- checklist
+-- h2: Sites to Migrate
+
+[] Go through links.alanwsmith.com to get sites. 
+
+[] stream-tools.alanwsmith.com (content moved. needs redirect)
 
 [] youtube-player.alanwsmith.com
 
-</pre><h2>SSG 9000</h2>
-<h3>Active</h3>
-<h3>Someday/Maybe</h3>
-<ul>
-<li>
-<p>Add dark/light mode switcher back in.</p>
-</li>
-<li>
-<p>Deprecate <code>highlight</code> and replace with
-<code>highlight(CODE [OPTIONS])</code> so you can
-pass named keyword args to it for things
-like the title and heading.</p>
-</li>
-<li>
-<p>Switch to using <code>categories = []</code> instead of
-things like <code>status = &quot;code&quot;</code> to separate
-content on the home page, etc...</p>
-</li>
-<li>
-<p>Show all pages in the RSS feed if they have a
-<code>status=&quot;done&quot;</code> unless they have a <code>tags = [&quot;no-rss&quot;]</code></p>
-</li>
-<li>
-<p>Add local tool to view current blog posts and statuses</p>
-</li>
-<li>
-<p>Add local tool to make new blog post files.</p>
-</li>
-<li>
-<p>Add local tool to capture quotes.</p>
-</li>
-<li>
-<p>Split out the <code>/admin</code> section to its
-own server.</p>
-</li>
-<li>
-<p>Add a <code>localhost</code> check to add extra data
-data a page via javascript if you're
-on localhost.</p>
-</li>
-<li>
-<p>Create a page to display errors for the
-site.</p>
-</li>
-<li>
-<p>Add a <code>join_path()</code> function that joins
-strings with <code>/</code> characters.</p>
-</li>
-<li>
-<p>Build CSS as stylesheet instead of JS file.</p>
-</li>
-</ul>
-<h3>Done</h3>
-<ul>
-<li>
-<p>Create an <code>/admin</code> page.</p>
-</li>
-</ul>
-<h2>Neopolitan</h2>
-<ul>
-<li>
-<p>Separate Neopolitan parser from Neopoligen.</p>
-</li>
-<li>
-<p>Add ability to classify sections to Neopolitan parser (e.g. <code>-- some-section list</code>
-would parse the section as a list).</p>
-</li>
-</ul>
-<h2>Portrait Project</h2>
-<ul>
-<li>Build QR Code Maker for portrait project.</li>
-</ul>
-<h2>Misc</h2>
-<h3>Someday/Maybe</h3>
-<ul>
-<li>
-<p>Set up eye tracking for stream.</p>
-</li>
-<li>
-<p>Make a trench run style 3D tunnel from <a href="https://siliconpr0n.org/">siliconpr0n.org</a>
-chip images (<a href="https://hachyderm.io/@infosecdj@infosec.exchange">ref1</a>,
-<a href="http://infosecdj.net:8086/map/nxp/mp091a0/infosecdj_mz_nikpa60x_s3/">ref2</a>)</p>
-</li>
-<li>
-<p>Do something with
-<a href="https://www.flickr.com/groups/controlpanel/pool/with/55045091085">these of old control rooms</a></p>
-</li>
-<li>
-<p>Hook up the eye track for streaming</p>
-</li>
-<li>
-<p>Create a Tech TV page that picks a random video from your Tech TV playlist and plays it so you don't
-have to think about what to watch</p>
-</li>
-<li>
-<p>Create a radio station from a youtube playlist with the playhead set based off<br />
-timestamp so everyone gets the same song</p>
-</li>
-<li>
-<p>Experiment with <a href="https://meodai.github.io/heerich/">Voxels</a></p>
-</li>
-<li>
-<p>Set up infrared camera for stream</p>
-</li>
-<li>
-<p>See about adding Neopolitan into: https://lumis.sh/</p>
-</li>
-</ul>
+[] textures.alanwsmith.com (content moved. needs redirect)
 
+
+-- todo checklist
+-- h2: Ideas
+
+[] Create a tool that auto updates the
+Go Live status on bluesky from twitch. 
+
+[] Set up the eye tracker for stream.
+
+[] Make a trench run style 3D tunnel from 
+&gt;&gt;https:&#x2f;&#x2f;siliconpr0n.org&gt;&gt; chip images 
+like &gt;&gt;these
+|https:&#x2f;&#x2f;hachyderm.io&#x2f;@infosecdj@infosec.exchange&gt;&gt;
+and &gt;&gt;these
+|http:&#x2f;&#x2f;infosecdj.net:8086&#x2f;map&#x2f;nxp&#x2f;mp091a0&#x2f;infosecdj_mz_nikpa60x_s3&#x2f;&gt;&gt;.
+
+[] Do something with
+&gt;&gt;these of old control room photos
+|https:&#x2f;&#x2f;www.flickr.com&#x2f;groups&#x2f;controlpanel&#x2f;pool&#x2f;with&#x2f;55045091085&gt;&gt;.
+
+[] Set up an infrared camera for stream.
+
+[] Experiment with &gt;&gt;Voxels
+|https:&#x2f;&#x2f;meodai.github.io&#x2f;heerich&#x2f;&gt;&gt;.
+
+
+
+</pre>
 
 <div class="end-of-line"></div>
 
@@ -296,11 +330,12 @@ timestamp so everyone gets the same song</p>
 
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
 id = "01/n4/tg/ke"
-      
     </div>
+      
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>

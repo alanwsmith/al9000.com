@@ -1,0 +1,17 @@
+== filter escape 
+-- todo checklist
+-- h2: neopoligan 
+-- prelude: Work for the Neopolitan
+parser and tools. 
+
+[] Split out Neopolitan from Neopoligen.
+
+[] Set default section types which 
+can be overridded like ``-- notes checklist``.
+
+[] Updated Tree Sitter parser to handle
+defaults and override section types.
+
+[] Created a parser for >>https://lumis.sh/>>
+
+== endfilter

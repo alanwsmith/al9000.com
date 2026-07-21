@@ -97,16 +97,16 @@ the status of a page goes from
 friend <strong>completed</strong>.</p>
 <p>Posts start out with metadata that
 looks like this:</p>
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created = 2026-06-02T12:21:48-04:00
-<span class="line-marker" data-line="2"></span>status  = &quot;draft&quot;</span></code></pre></div>
+<div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created = 2026-06-02T12:21:48-04:00
+<span class="line-marker" data-line="2"></span>status  = &quot;draft&quot;</span></pre></div>
 <p>They get worked on for however
 long then need. When they're
 ready, the metadata gets updated
 with the completed timestamp
 and the status is set to &quot;done&quot;.</p>
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
+<div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
 <span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
-<span class="line-marker" data-line="3"></span>status    = &quot;done&quot;</span></code></pre></div>
+<span class="line-marker" data-line="3"></span>status    = &quot;done&quot;</span></pre></div>
 <p>The &quot;done&quot; status is what makes the page
 show up on the home page and the
 RSS feed. It's sorted in based
@@ -115,10 +115,10 @@ I don't lose the metadata for
 when the scribbling started.</p>
 <p>If the piece has major changes
 an <strong>updated</strong> datetime is added:</p>
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
+<div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
 <span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
 <span class="line-marker" data-line="3"></span>updated   = 2026-07-19T12:21:48-04:00
-<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></code></pre></div>
+<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></pre></div>
 <p>The status stays as <strong>done</strong>. That
 keeps the page in the list of links
 and RSS feed. The <strong>updated</strong> value
@@ -161,10 +161,10 @@ for a tool that'll let me update the values
 metadata an array that could store the dates
   for multiple changes. Something like this:</p>
 
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
+<div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
 <span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
 <span class="line-marker" data-line="3"></span>updated   = [2026-04-19T12:21:48-04:00, 2026-07-07T12:21:48-04:00]
-<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></code></pre></div>
+<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></pre></div>
 
 <p>
 That's more work than I want to do. Especially
@@ -196,11 +196,12 @@ want to check it out.
 
     </div>
 
-    <div class="default-wrapper text-align-right faded-base-color">
       
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
 id = "01/n5/st/wc"
-      
     </div>
+      
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>

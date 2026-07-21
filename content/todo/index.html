@@ -10,9 +10,8 @@ created = 2026-07-07T14:16:14-04:00
 status = "done"
 id = "01/n4/tg/ke" 
 tags = []
-flags = ["skip"]
+flags = ["skip", "no-date"]
 == endblock
-
 
 == block main
 == filter neo
@@ -20,177 +19,17 @@ flags = ["skip"]
 
 My dev to do list.
 
--- h2
+== include template_folder() + "/includes.inc/al9000.neo"
 
-SSG 9000
+== include template_folder() + "/includes.inc/ssg9000.neo"
 
-Thing to do for Static Site Generator 9000
-(which powers this site).
+== include template_folder() + "/includes.inc/pics9000.neo"
 
--- checklist
--- h3: Active
+== include template_folder() + "/includes.inc/neopolitan.neo"
 
-[] TODO: Set up so that errors don't include
-the entire sites worth of data and become
-giant and potentially eat up all the space
-on the drive. 
+== include template_folder() + "/includes.inc/sites.neo"
 
-[] TODO: Migrated admin templates out
-of the binary into an ``admin`` folder
-next to the ``content`` folder.
-
-[] TODO: CSS Migrated from JS approach to 
-regular old CSS.
-
-[] TODO: Added light/dark mode switcher back in. 
-
-[] TODO: Automatically generating OG images
-for posts. They're filenames are "og-image-auto.jpg".
-They can be overridden by placing a file
-in the same directory named "og-image.jpg".
-
-[] TODO: Switched all the extends to use the ``/templates.inc/switches/*.html``
-files to switch between web and RSS feed 
-versions of the content.
-
-[] TODO: Split out everything
-in the <<path|/templates.inc/includes>> 
-dir so that each category has it's own
-folder (e.g. header/default.html, footer/default.html
-etc.)
-
-[] TODO: Created CRUD tool for blog 
-entires on the admin page. 
-
-[] TODO: Added VIM motions to the
-blog post editor. 
-
-[] TODO: Added IDs and or skip flags
-to all pages with titles so 
-`file_list()` is up to date. 
-
-[] TODO: Set up to capture alt text
-from images automatically. 
-
-[] TODO: Created a CRUD tool for quotes
-on the admin page. 
-
-[] TODO: Created a CRUD tool for journal 
-entries on the admin page. 
-
-[] TODO: CSS is validated with (https://github.com/w3c/css-validator)
-
-[] TODO: CSS is tree-shaken
-
-[x] TODO: Added `image` function that takes
-the stem of a file name and returns
-an image tag with the path to the
-image regardless of where it is. 
-Option keywords arguments can 
-be passes as well. The first is
-`class` which overrides the default
-class from the image call. 
-
-[x] TODO: Added a ``youtube`` function that 
-inserts youtube player designed to work
-with the web component. 
-
-[x] TODO: Added functions for ``footnote`` and
-``footref`` for linking back and forth between footnotes. 
-
-
--- h2
-
-Site Redirects
-
--- checklist
-
-[] stream-tools.alanwsmith.com
-
-[] youtube-player.alanwsmith.com
-
-== endfilter
-== filter md
-
-## SSG 9000
-
-
-### Active
-### Someday/Maybe
-
-- Add dark/light mode switcher back in. 
-
-- Deprecate `highlight` and replace with
-    `highlight(CODE [OPTIONS])` so you can 
-    pass named keyword args to it for things
-    like the title and heading. 
-
-- Switch to using `categories = []` instead of 
-    things like `status = "code"` to separate
-    content on the home page, etc...
-
-- Show all pages in the RSS feed if they have a 
-    `status="done"` unless they have a `tags = ["no-rss"]`
-
-- Add local tool to view current blog posts and statuses
-
-- Add local tool to make new blog post files. 
-
-- Add local tool to capture quotes.
-
-- Split out the `/admin` section to its
-    own server.
-
-- Add a `localhost` check to add extra data
-    data a page via javascript if you're
-    on localhost. 
-
-- Create a page to display errors for the
-    site. 
-
-- Add a `join_path()` function that joins
-    strings with `/` characters. 
-
-- Build CSS as stylesheet instead of JS file. 
-
-
-### Done
-
-- Create an `/admin` page.
-
-
-## Neopolitan
-
-- Separate Neopolitan parser from Neopoligen.
-- Add ability to classify sections to Neopolitan parser (e.g. `-- some-section list`
-  would parse the section as a list).
-
-
-## Portrait Project
-
-- Build QR Code Maker for portrait project. 
-
-## Misc 
-
-
-### Someday/Maybe
-
-- Set up eye tracking for stream.
-- Make a trench run style 3D tunnel from [siliconpr0n.org](https://siliconpr0n.org/) 
-    chip images ([ref1](https://hachyderm.io/@infosecdj@infosec.exchange),
-    [ref2](http://infosecdj.net:8086/map/nxp/mp091a0/infosecdj_mz_nikpa60x_s3/))
-- Do something with
-    [these of old control rooms](https://www.flickr.com/groups/controlpanel/pool/with/55045091085)
-- Hook up the eye track for streaming
-- Create a Tech TV page that picks a random video from your Tech TV playlist and plays it so you don't
-    have to think about what to watch
-- Create a radio station from a youtube playlist with the playhead set based off  
-    timestamp so everyone gets the same song
-- Experiment with [Voxels](https://meodai.github.io/heerich/)
-- Set up infrared camera for stream
-
-- See about adding Neopolitan into: https://lumis.sh/
-
+== include template_folder() + "/includes.inc/misc.neo"
 
 == endfilter
 == endblock

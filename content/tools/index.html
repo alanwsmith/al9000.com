@@ -31,9 +31,14 @@ input {
 == endblock 
 
 == block main
+<h2>Links</h2>
 
-TODO: Bring tools page back up
+== filter md
+- [Background Texture Maker](/texture-maker/)
 
+== endfilter
+
+<h2>Local</h2>
 == for folder in folders_in_folder("/tools", full = true) 
   == if exists(folder + "/index.html")
     == set key = stem(folder)

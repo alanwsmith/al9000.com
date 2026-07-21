@@ -1,8 +1,4 @@
-== if rss
-== extends "/templates.inc/rss/default.html"
-== else 
-== extends "/templates.inc/pages/blog.html"
-== endif
+== extends "/templates.inc/switches/default.html"
 
 == block toml
 title = "DAE - Digital to Analog Enlarger"
@@ -29,7 +25,7 @@ talking about.
 
 I'm talking about one that looks like this:
 
-<img src="enlarger-4856357201.jpg" alt="Two photography film enlargers side by side on a worktop desk. There's a collection of trays for processing beside them" />
+[@ image("enlarger-4856357201", alt="Two photography film enlargers side by side on a worktop desk. There's a collection of trays for processing beside them") @]
 
 Ones that project light onto a piece of paper covered with
 a light sensitive emulsion. The next step
