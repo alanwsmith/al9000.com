@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    
+
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Add Text to an Open Graph Image with ImageMagick</title>
+<meta property="og:title" content="Add Text to an Open Graph Image with ImageMagick" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/templates.inc/includes/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+    
+    
+    
+    
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+    <div class="height-wrapper">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> |
+    <a href="https://bittyjs.com/">bitty</a>
+  </div>
+
+
+</header>
+
+
+<main class="default default-wrapper default-flow">
+
+  <hgroup class="default">
+      <div class="title-wrapper">
+        <h1>Add Text to an Open Graph Image with ImageMagick</h1>
+      </div>
+        <div class="date">July 2026</div>
+  </hgroup>
+
+
+<p>This is how I'm adding text to background
+images for my open graph images on
+the site with ImageMagick.</p>
+<p>TODO: Add alt text to images.</p>
+
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<span class="line-marker" data-line="2"></span></span>
+<span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">magick</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>og-example-background.jpg<span class="punctuation definition string end shell">&quot;</span></span> <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="4"></span></span>    <span class="constant character escape shell">\(</span> <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="5"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">      -</span>font</span> Arial-Bold <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="6"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">      -</span>background</span> none <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="7"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">      -</span>fill</span> white <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="8"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">      -</span>pointsize</span> 98 <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="9"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">      -</span>size</span> 820x <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="10"></span></span>      caption:<span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>This is just a test of the title content<span class="punctuation definition string end shell">&quot;</span></span> <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="11"></span></span>    <span class="constant character escape shell">\)</span> <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="12"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">    -</span>gravity</span> NorthWest <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="13"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">    -</span>geometry</span> +60+50 <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="14"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">    -</span>composite</span> <span class="punctuation separator continuation line shell">\
+<span class="line-marker" data-line="15"></span></span>    <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>og-example-output.jpg<span class="punctuation definition string end shell">&quot;</span></span></span></span></pre></div>
+<figure class="default"><img src="/image-magick/add-text-to-og-image/example/og-example-background.jpg" alt="alt text is not yet available for this image" /></figure>
+            
+
+<figure class="default"><img src="/image-magick/add-text-to-og-image/example/og-example-output.jpg" alt="alt text is not yet available for this image" /></figure>
+            
+
+
+
+<div class="end-of-line"></div>
+
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from <a href="https://bsky.app/profile/alanwsmith.com">alan w smith</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+</footer>
+
+
+    </div>
+
+      
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.1; padding-bottom: 0.3rem;">
+id = "01/n5/zj/pm"
+    </div>
+      
+
+    <div class="templates" hidden>
+      <bitty-8 data-connect="/bits/default.js"></bitty-8>
+      <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
+
+
+
+    </div>
+  </body>
+</html>

@@ -1,7 +1,11 @@
 == filter escape 
+
 -- todo checklist
 -- h2: al9000.com
 -- prelude: Stuff to do on the site.
+
+[] Update youtube-player web component
+to use ``data-*`` attributes. 
 
 [] Restyled Code wrappers.
 
