@@ -876,6 +876,7 @@ h1 {
   line-height: var(--xxsmall-line-height);
   overflow-wrap: break-word;
   text-wrap: balance;
+  text-shadow: 0px 0px 2px rgb(0 0 0 / 0.6);
 }
 
 h2 {
@@ -887,6 +888,7 @@ h2 {
   line-height: var(--xxsmall-line-height);
   overflow-wrap: break-word;
   text-wrap: balance;
+  text-shadow: 0px 0px 2px rgb(0 0 0 / 0.6);
 }
 
 h3 {
@@ -897,6 +899,7 @@ h3 {
   line-height: var(--xxsmall-line-height);
   overflow-wrap: break-word;
   text-wrap: balance;
+  text-shadow: 0px 0px 3px rgb(0 0 0 / 0.6);
 }
 
 h4 {
@@ -1103,6 +1106,7 @@ p > code {
   line-height: var(--xxsmall-line-height);
   overflow-wrap: break-word;
   text-wrap: balance;
+  text-shadow: 0px 0px 3px rgb(0 0 0 / 0.6);
 }
 
 summary {

@@ -77,15 +77,18 @@ color.
 the textured effect is.
 - The original version of this tool used base64 encoding. 
 [Tyler Sticka](https://tylersticka.com/) reminded me 
-that that's not necessary for SVG. 
+that that's not necessary for SVGs. 
+The output is escaped plain-text now
+as a result.
+
 
 ## Outro
 
 The textured effect can go from barely 
-perceptible to completely in your face. 
-I'm currently leaning toward the subtler 
+perceptible to in your face. 
+I'm leaning toward the subtler 
 site. That's not to dismiss the more
-overt. I expect to be changing things
+overt. I expect to change things
 up from time to time. I hope you enjoy
 experimenting with it too. 
 
@@ -109,8 +112,24 @@ resizing the SVG tiles in a way that changes based on the content of the page. I
 you change the source SVG you'll want to manually adjust those values after
 you copy/paste the code. 
 END_TODO #]
+== endblock
 
+== block backmatter
+== filter md
+P.S. At press time, I have a little
+__text-shadow__ on the page to
+add some separation to the prose.
+It's set to compliment a darker
+palette. It's not dynamic. That
+can make it look weird with different
+background colors. Especially as they 
+get lighter. 
 
+The shadow isn't part of the CSS
+payload from the tool. Playing
+with it is left as an exercise
+for the reader. 
+== endfilter
 == endblock
 
 == block templates
