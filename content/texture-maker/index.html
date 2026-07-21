@@ -18,6 +18,8 @@ flags = ["no-date"]
 body {
   background-color: oklch(var(--svg-bg-l) var(--svg-bg-c) var(--svg-bg-h));
   background-image: var(--svg-bg-url);
+  background-size: 150px 150px;
+  background-repeat: repeat;
 }
 .controls {
   display: grid;
@@ -27,6 +29,7 @@ body {
 == endblock
 
 == block content 
+
 <bitty-8 data-connect="[@ template_folder() @]/bit.js"></bitty-8>
 <p>Move the sliders below to set your background. Copy/paste the CSS when you've got it the way you want.</p>
 <div data-r="example"></div>
@@ -47,7 +50,7 @@ body {
     </label>
     <label>
       <div>Opacity</div>
-      <input type="range" data-key="o" data-r="initValue" data-s="updateValue" min="0" max="30" step="0.01" autocomplete="off" />
+      <input type="range" data-key="o" data-r="initValue" data-s="updateValue" min="0" max="50" step="0.01" autocomplete="off" />
     </label>
   </div>
 </div>
@@ -114,8 +117,9 @@ I yoinked some code from [this repo](https://github.com/tigt/mini-svg-data-uri/b
 body {
   background-color: oklch(var(--svg-bg-l) var(--svg-bg-c) var(--svg-bg-h));
   background-image: var(--svg-bg-url);
+  background-size: 150px 150px;
+  background-repeat: repeat;
 }
-
 </script>
 == endblock
 

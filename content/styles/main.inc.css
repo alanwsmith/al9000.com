@@ -28,6 +28,9 @@ body {
   font-size-adjust: 0.5;
   font-size: var(--default-font-size);
   line-height: var(--default-line-height);
+  background-image: var(--svg-bg-url);
+  background-size: 150px 150px;
+  background-repeat: repeat;
 }
 
 a {
