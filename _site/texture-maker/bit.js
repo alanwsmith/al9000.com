@@ -1,9 +1,5 @@
 export const b = { init: "init" };
-
-const s = {
-  data: {},
-  svg: null,
-};
+const s = { data: {}, svg: null };
 
 export async function init(_, __, ___) {
   const defaults = {

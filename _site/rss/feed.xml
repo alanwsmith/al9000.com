@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-20T22:29:17-04:00</updated>
+  <updated>2026-07-20T23:56:06-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -41,7 +41,7 @@ the new IDs.</p>
 </li>
 </ul>
 <h3>Rust</h3>
-<div class="code-block numbers copy-button"><div class="file-name">./Cargo.toml</div><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">[package]
+<div class="code-block numbers copy-button"><div class="file-name">./Cargo.toml</div><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;base32_timestamp_cleanup&quot;
 <span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
 <span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
@@ -51,8 +51,8 @@ the new IDs.</p>
 <span class="line-marker" data-line="8"></span>base32 = &quot;0.5.1&quot;
 <span class="line-marker" data-line="9"></span>chrono = &quot;0.4.45&quot;
 <span class="line-marker" data-line="10"></span>regex = &quot;1.13.1&quot;
-<span class="line-marker" data-line="11"></span>walkdir = &quot;2.5.0&quot;</span></code></pre></div>
-<div class="code-block numbers copy-button"><div class="file-name">./src/main.rs</div><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="11"></span>walkdir = &quot;2.5.0&quot;</span></pre></div>
+<div class="code-block numbers copy-button"><div class="file-name">./src/main.rs</div><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">base32<span class="punctuation accessor rust">::</span></span>Alphabet<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">chrono<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>DateTime<span class="punctuation separator rust">,</span> FixedOffset</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">regex<span class="punctuation accessor rust">::</span></span>Regex<span class="punctuation terminator rust">;</span>
@@ -162,7 +162,7 @@ the new IDs.</p>
 <span class="line-marker" data-line="108"></span>      </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
 <span class="line-marker" data-line="109"></span>    </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker" data-line="110"></span>    .<span class="support function rust">collect</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
-<span class="line-marker" data-line="111"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+<span class="line-marker" data-line="111"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
 <h2>Measure Twice</h2>
 <p>I checked the original method I was using
 to make sure things were sorting properly.
@@ -309,16 +309,16 @@ the status of a page goes from
 friend <strong>completed</strong>.</p>
 <p>Posts start out with metadata that
 looks like this:</p>
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created = 2026-06-02T12:21:48-04:00
-<span class="line-marker" data-line="2"></span>status  = &quot;draft&quot;</span></code></pre></div>
+<div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created = 2026-06-02T12:21:48-04:00
+<span class="line-marker" data-line="2"></span>status  = &quot;draft&quot;</span></pre></div>
 <p>They get worked on for however
 long then need. When they're
 ready, the metadata gets updated
 with the completed timestamp
 and the status is set to &quot;done&quot;.</p>
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
+<div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
 <span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
-<span class="line-marker" data-line="3"></span>status    = &quot;done&quot;</span></code></pre></div>
+<span class="line-marker" data-line="3"></span>status    = &quot;done&quot;</span></pre></div>
 <p>The &quot;done&quot; status is what makes the page
 show up on the home page and the
 RSS feed. It's sorted in based
@@ -327,10 +327,10 @@ I don't lose the metadata for
 when the scribbling started.</p>
 <p>If the piece has major changes
 an <strong>updated</strong> datetime is added:</p>
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
+<div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
 <span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
 <span class="line-marker" data-line="3"></span>updated   = 2026-07-19T12:21:48-04:00
-<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></code></pre></div>
+<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></pre></div>
 <p>The status stays as <strong>done</strong>. That
 keeps the page in the list of links
 and RSS feed. The <strong>updated</strong> value
@@ -373,10 +373,10 @@ for a tool that'll let me update the values
 metadata an array that could store the dates
   for multiple changes. Something like this:</p>
 
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
+<div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
 <span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
 <span class="line-marker" data-line="3"></span>updated   = [2026-04-19T12:21:48-04:00, 2026-07-07T12:21:48-04:00]
-<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></code></pre></div>
+<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></pre></div>
 
 <p>
 That's more work than I want to do. Especially
@@ -488,9 +488,9 @@ are defined by lines that start with
 two dashes followed by a name. Content
 for the section comes after an empty
 line.</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- title
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- title
 <span class="line-marker" data-line="2"></span>
-<span class="line-marker" data-line="3"></span>A Neopolitan Overview</span></code></pre></div>
+<span class="line-marker" data-line="3"></span>A Neopolitan Overview</span></pre></div>
 The section names can be pretty much anything
 as long as they don't contain spaces.
 <h3>Section Flags and Attributes</h3>
@@ -502,19 +502,19 @@ section name. For example, this is
 an <strong>image</strong> section with a flag for the
 image's filename. The content portion of the section
 is used for the image's alt text:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- image 
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- image 
 <span class="line-marker" data-line="2"></span>-- example-image.jpg
 <span class="line-marker" data-line="3"></span>
-<span class="line-marker" data-line="4"></span>This is where the alt text for the image goes.</span></code></pre></div>
+<span class="line-marker" data-line="4"></span>This is where the alt text for the image goes.</span></pre></div>
 Attributes work the same way as flags but
 start with a keyword followed by a colon. 
 For example, here's a "aside" section
 with a "class" attribute of "warning":
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- aside 
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- aside 
 <span class="line-marker" data-line="2"></span>-- class: warning
 <span class="line-marker" data-line="3"></span>
 <span class="line-marker" data-line="4"></span>There is where you can put something 
-<span class="line-marker" data-line="5"></span>that needs extra attention.</span></code></pre></div>
+<span class="line-marker" data-line="5"></span>that needs extra attention.</span></pre></div>
 <h2>Section Types</h2>
 <p>Section content is treated as paragraphs by default.
 Adding a section type after a section name
@@ -522,24 +522,24 @@ changes the handling. Two section types
 are &quot;list&quot; and &quot;checklist&quot;. Changing the
 type of a section is done by the name of the type
 after the name of the section:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- notes list
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- notes list
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span>- A note about something. 
 <span class="line-marker" data-line="4"></span>
-<span class="line-marker" data-line="5"></span>- Another note about something.</span></code></pre></div>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- todo checklist 
+<span class="line-marker" data-line="5"></span>- Another note about something.</span></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- todo checklist 
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span>[] Something that needs to be done
 <span class="line-marker" data-line="4"></span>
-<span class="line-marker" data-line="5"></span>[x] Something that has been done.</span></code></pre></div>
+<span class="line-marker" data-line="5"></span>[x] Something that has been done.</span></pre></div>
 The section types can also be used generically 
 as their own section names:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- list
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- list
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span>- Item for a list without a more
 <span class="line-marker" data-line="4"></span>specific section name. 
 <span class="line-marker" data-line="5"></span>
-<span class="line-marker" data-line="6"></span>- And another item for the list.</span></code></pre></div>
+<span class="line-marker" data-line="6"></span>- And another item for the list.</span></pre></div>
 <details><summary>List of Section Types</summary>
 <p>The full list of section types is:</p>
 <ul>
@@ -625,7 +625,7 @@ They're snippets that wrap
 text to alter it in some way.</p>
 <h3>Example Span</h3>
 <p>A basic span looks like this:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()&gt;&gt;</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()&gt;&gt;</span></pre></div>
 The parts are:
 <ul>
 <li>
@@ -650,13 +650,13 @@ that mark the end of the span.</p>
 </ul>
 <p>Here's what a span looks like surrounded
 by more content:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">The JavaScript function &lt;&lt;code|console.log()&gt;&gt;
-<span class="line-marker" data-line="2"></span>prints information to the developer console.</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">The JavaScript function &lt;&lt;code|console.log()&gt;&gt;
+<span class="line-marker" data-line="2"></span>prints information to the developer console.</span></pre></div>
 When that content is turned into a web page
 the span turns into an HTML `&lt;code&gt;` tag
 like this:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic">The JavaScript function <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="2"></span>prints information to the developer console.</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text html basic">The JavaScript function <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span>prints information to the developer console.</span></pre></div>
 <h3>Span Attributes</h3>
 <p>Spans can have attributes that further
 enhance their content. They're added
@@ -664,28 +664,28 @@ by using additional pipes to separate
 them from the content. For example,
 a class attribute can be added to
 the span like this:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured&gt;&gt;</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured&gt;&gt;</span></pre></div>
 which outputs this HTML:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
 Multiple attributes can be added by using
 more pipes. For example, this span (which
 also shows how spans can be split across lines)
 adds a `data-language` attribute that can be
 used to apply syntax highlighting to the
 code:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code
 <span class="line-marker" data-line="2"></span>  |console.log()
 <span class="line-marker" data-line="3"></span>  |class: featured
-<span class="line-marker" data-line="4"></span>  |data-language: javascript&gt;&gt;</span></code></pre></div>
+<span class="line-marker" data-line="4"></span>  |data-language: javascript&gt;&gt;</span></pre></div>
 The output HTML looks like this:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-language</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>javascript<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-language</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>javascript<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
 <h3>Span Shorthands</h3>
 <p>There are shorthands for frequenly used
 spans. For example, backtics denote code
 spans. The orignal example above:</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured|language: javascript&gt;&gt;</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured|language: javascript&gt;&gt;</span></pre></div>
 can be written as:
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">``console.log()|class: featured|language: javascript``</span></code></pre></div>
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">``console.log()|class: featured|language: javascript``</span></pre></div>
 <details><summary>Full List of Span Shorthands</summary>
 <ul>
 <li>
@@ -768,7 +768,7 @@ what Neopolitan is capable of. It's
 a <strong>book-review</strong> section that includes
 attributes for the title, author, and
 cover image along with the review itself.</p>
-<div class="code-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">-- book-review
+<div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- book-review
 <span class="line-marker" data-line="2"></span>-- title: Dungeon Crawler Carl
 <span class="line-marker" data-line="3"></span>-- author: Matt Dinniman
 <span class="line-marker" data-line="4"></span>-- cover: dungeon-crawler-carl-cover.jpg
@@ -779,14 +779,14 @@ cover image along with the review itself.</p>
 <span class="line-marker" data-line="9"></span>but the narrator for the audio book
 <span class="line-marker" data-line="10"></span>is absolute gold. 
 <span class="line-marker" data-line="11"></span>
-<span class="line-marker" data-line="12"></span>etc.</span></code></pre></div>
+<span class="line-marker" data-line="12"></span>etc.</span></pre></div>
 Apps that use Neopolitan can access
 the content and attributes as independent
 pieces of data. They can be placed 
 wherever they need to be in the output. 
 The HTML for a web page might looks like
 this:
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">book-review</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">book-review</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span>  <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="3"></span>    <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">img</span> 
 <span class="line-marker" data-line="4"></span>      <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>dungeon-crawler-carl-cover.jpg<span class="punctuation definition string end html">&quot;</span></span></span>
@@ -807,7 +807,7 @@ this:
 <span class="line-marker" data-line="19"></span>      etc.
 <span class="line-marker" data-line="20"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">p</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="21"></span>  <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="22"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<span class="line-marker" data-line="22"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
 When, in turn, gets rendered like this:
 <div class="book-review">
   <div>
@@ -4211,14 +4211,14 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
     <updated>2026-04-13T20:25:00-04:00</updated>
     <summary><![CDATA[
 
-<div class="code-block numbers copy-button"><div class="title">bash</div><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<div class="code-block numbers copy-button"><div class="title">bash</div><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
 <span class="line-marker" data-line="2"></span></span>
 <span class="line-marker" data-line="3"></span><span class="variable other readwrite assignment shell">EXAMPLE_PATH</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>path/to/example-file.txt<span class="punctuation definition string end shell">&quot;</span></span></span>
 <span class="line-marker" data-line="4"></span>
 <span class="line-marker" data-line="5"></span><span class="variable other readwrite assignment shell">BASENAME</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="meta group expansion command parens shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section parens begin shell">(</span><span class="meta function-call shell"><span class="variable function shell">basename</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">EXAMPLE_PATH</span></span><span class="punctuation definition string end shell">&quot;</span></span></span><span class="punctuation section parens end shell">)</span></span></span>
 <span class="line-marker" data-line="6"></span><span class="variable other readwrite assignment shell">STEM</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section expansion parameter begin shell">{</span></span><span class="meta group expansion parameter shell"><span class="variable other readwrite shell">BASENAME<span class="keyword operator expansion shell">%</span></span></span><span class="meta group expansion parameter shell">.<span class="keyword operator regexp quantifier shell">*</span></span><span class="meta group expansion parameter shell"><span class="punctuation section expansion parameter end shell">}</span></span><span class="punctuation definition string end shell">&quot;</span></span></span>
 <span class="line-marker" data-line="7"></span>
-<span class="line-marker" data-line="8"></span><span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">STEM</span></span></span></span></code></pre></div>
+<span class="line-marker" data-line="8"></span><span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">STEM</span></span></span></span></pre></div>
 <div class="output-block"><div class="title">output</div><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">example-file</span></code></pre></div>
 
 
@@ -4230,12 +4230,12 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
     <updated>2026-04-13T18:47:00-04:00</updated>
     <summary><![CDATA[
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
 <span class="line-marker" data-line="2"></span></span>
 <span class="line-marker" data-line="3"></span><span class="variable other readwrite assignment shell">CURRENT_DIR_NAME</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="meta group expansion command parens shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section parens begin shell">(</span><span class="meta function-call shell"><span class="variable function shell">basename</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">PWD</span></span><span class="punctuation definition string end shell">&quot;</span></span></span><span class="punctuation section parens end shell">)</span></span></span>
 <span class="line-marker" data-line="4"></span>
-<span class="line-marker" data-line="5"></span><span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">CURRENT_DIR_NAME</span></span></span></span></code></pre></div>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">get-current-directory-name</span></code></pre></div>
+<span class="line-marker" data-line="5"></span><span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">CURRENT_DIR_NAME</span></span></span></span></pre></div>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">get-current-directory-name</span></pre></div>
 
 
 ]]></summary>
@@ -4318,16 +4318,16 @@ coming soon.</p>
 
 <h3>Rust</h3>
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="2"></span>name <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>optional_function_argument<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="3"></span>version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>0.1.0<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="4"></span>edition <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2024<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="5"></span>
 <span class="line-marker" data-line="6"></span><span class="meta group rust"><span class="punctuation section group begin rust">[</span>dependencies<span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="7"></span>anyhow <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>1.0.102<span class="punctuation definition string end rust">&quot;</span></span>
-<span class="line-marker" data-line="8"></span>minijinja <span class="keyword operator rust">=</span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span> version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2.21.0<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> features <span class="keyword operator rust">=</span> <span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>custom_syntax<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation section group end rust">]</span></span> </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></code></pre></div>
+<span class="line-marker" data-line="8"></span>minijinja <span class="keyword operator rust">=</span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span> version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2.21.0<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> features <span class="keyword operator rust">=</span> <span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>custom_syntax<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation section group end rust">]</span></span> </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></pre></div>
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="comment line double-slash rust"><span class="punctuation definition comment rust">//</span> 
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="comment line double-slash rust"><span class="punctuation definition comment rust">//</span> 
 <span class="line-marker" data-line="2"></span></span><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span><span class="meta path rust">syntax<span class="punctuation accessor rust">::</span></span>SyntaxConfig<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span><span class="meta path rust">value<span class="punctuation accessor rust">::</span></span>Kwargs<span class="punctuation terminator rust">;</span>
@@ -4381,7 +4381,7 @@ coming soon.</p>
 <span class="line-marker" data-line="52"></span></span>  options.<span class="support function rust">assert_all_used</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="53"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta path rust">Value<span class="punctuation accessor rust">::</span></span>from_safe_string<span class="meta group rust"><span class="punctuation section group begin rust">(</span>output</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker" data-line="54"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
-<span class="line-marker" data-line="55"></span><span class="comment line double-slash rust"><span class="punctuation definition comment rust">//</span></span></span></code></pre></div>
+<span class="line-marker" data-line="55"></span><span class="comment line double-slash rust"><span class="punctuation definition comment rust">//</span></span></span></pre></div>
 
 
 
@@ -4437,7 +4437,7 @@ and filling in the details:</p>
 alt="The new password prompt from the macOS KeyChain Access app" /></p>
 <p>Then, I use this rust code to pull in passwords
 when I need them:</p>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">security_framework<span class="punctuation accessor rust">::</span></span><span class="meta path rust">passwords<span class="punctuation accessor rust">::</span></span>get_generic_password<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span>
 <span class="line-marker" data-line="4"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span><span class="punctuation section group begin rust">(</span><span class="punctuation section group end rust">)</span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
@@ -4450,16 +4450,16 @@ when I need them:</p>
 <span class="line-marker" data-line="11"></span>  <span class="storage type rust">let</span> account <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>alan<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="12"></span>  <span class="storage type rust">let</span> response <span class="keyword operator rust">=</span> <span class="support function rust">get_generic_password</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>key<span class="punctuation separator rust">,</span> account</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="13"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="support type rust">String</span><span class="meta path rust"><span class="punctuation accessor rust">::</span></span>from_utf8<span class="meta group rust"><span class="punctuation section group begin rust">(</span>response</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
-<span class="line-marker" data-line="14"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+<span class="line-marker" data-line="14"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
 with this Cargo.toml:
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="2"></span>name <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>access-mac-keychain-passwords<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="3"></span>version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>0.1.0<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="4"></span>edition <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2024<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="5"></span>
 <span class="line-marker" data-line="6"></span><span class="meta group rust"><span class="punctuation section group begin rust">[</span>dependencies<span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="7"></span>anyhow <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>1.0.102<span class="punctuation definition string end rust">&quot;</span></span>
-<span class="line-marker" data-line="8"></span>security<span class="keyword operator rust">-</span>framework <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>3.7.0<span class="punctuation definition string end rust">&quot;</span></span></span></code></pre></div>
+<span class="line-marker" data-line="8"></span>security<span class="keyword operator rust">-</span>framework <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>3.7.0<span class="punctuation definition string end rust">&quot;</span></span></span></pre></div>
 When I run the app from the command line I get
 a prompt from Keychain Access to enter the
 keychain's main password to unlock it. 
@@ -4619,7 +4619,7 @@ downloaded.</p>
 <p>Here's the ffmpeg process I'm using to make
 prep the videos (including the encryption):</p>
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
 <span class="line-marker" data-line="2"></span></span>
 <span class="line-marker" data-line="3"></span><span class="variable other readwrite assignment shell">INPUT_DIR</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>input<span class="punctuation definition string end shell">&quot;</span></span></span>
 <span class="line-marker" data-line="4"></span><span class="variable other readwrite assignment shell">KEY_NAME</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>hls-sample.key<span class="punctuation definition string end shell">&quot;</span></span></span>
@@ -4640,14 +4640,14 @@ prep the videos (including the encryption):</p>
 <span class="line-marker" data-line="19"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>c</span>:a aac <span class="punctuation separator continuation line shell">\
 <span class="line-marker" data-line="20"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>hls_segment_type</span> mpegts <span class="punctuation separator continuation line shell">\
 <span class="line-marker" data-line="21"></span></span><span class="variable parameter option shell"><span class="punctuation definition parameter shell">  -</span>hls_list_size</span> 0 <span class="punctuation separator continuation line shell">\
-<span class="line-marker" data-line="22"></span></span>  <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">OUTPUT_DIR</span></span>/bird.m3u8<span class="punctuation definition string end shell">&quot;</span></span></span></span></code></pre></div>
+<span class="line-marker" data-line="22"></span></span>  <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">OUTPUT_DIR</span></span>/bird.m3u8<span class="punctuation definition string end shell">&quot;</span></span></span></span></pre></div>
 <p>Some browsers support playing HLS files natively. Firefox
 does not. I'm using the <a href="https://github.com/video-dev/hls.js">hls.js library</a>
 to handle that. It uses the HLS files in browsers
 that support it and transmuxes a version for
 browsers that don't.</p>
 <p>The code looks like this:</p>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/scripts/hlsjs-1.6.15.off/hls.min.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/scripts/hlsjs-1.6.15.off/hls.min.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">video</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">birdVideo</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">controls</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">video</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="4"></span>
@@ -4661,7 +4661,7 @@ browsers that don't.</p>
 <span class="line-marker" data-line="12"></span>    <span class="variable other object js">hls</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">loadSource</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">videoSrc</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="13"></span>    <span class="variable other object js">hls</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">attachMedia</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">video</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="14"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
-<span class="line-marker" data-line="15"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<span class="line-marker" data-line="15"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
 And, here's the output:
 
 <script src="/scripts/hlsjs-1.6.15.off/hls.min.js"></script>
@@ -4835,7 +4835,7 @@ loadVideo("#videoPlayer", config);
 variable and two functions in
 this module:</p>
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source js"><span class="storage type js">const</span> <span class="variable other readwrite js">videos</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span><span class="punctuation section block js">}</span></span><span class="punctuation terminator statement js">;</span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source js"><span class="storage type js">const</span> <span class="variable other readwrite js">videos</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span><span class="punctuation section block js">}</span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="variable other readwrite js">async</span> </span><span class="meta function declaration js"><span class="storage type function js">function</span> <span class="entity name function js">loadVideo</span><span class="punctuation section group begin js">(</span><span class="variable parameter function js">selector</span><span class="punctuation separator parameter function js">,</span> <span class="variable parameter function js">config</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
 <span class="line-marker" data-line="4"></span>  <span class="storage type js">const</span> <span class="variable other readwrite js">uuid</span> <span class="keyword operator assignment js">=</span> <span class="variable language self js">self</span><span class="punctuation accessor js">.</span><span class="meta property object js">crypto</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">randomUUID</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
@@ -4886,7 +4886,7 @@ this module:</p>
 <span class="line-marker" data-line="49"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span> <span class="meta conditional js"><span class="keyword control conditional js">else</span> <span class="meta block js"><span class="punctuation section block js">{</span>
 <span class="line-marker" data-line="50"></span>    <span class="variable other object js">videos</span><span class="meta brackets js"><span class="punctuation section brackets js">[</span><span class="variable other readwrite js">uuid</span><span class="punctuation section brackets js">]</span></span><span class="punctuation accessor js">.</span><span class="meta property object js">mediaSource</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">endOfStream</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="51"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
-<span class="line-marker" data-line="52"></span><span class="punctuation section block js">}</span></span></span></code></pre></div>
+<span class="line-marker" data-line="52"></span><span class="punctuation section block js">}</span></span></span></pre></div>
 <ul>
 <li>
 <p>The <code>loadVideo</code> function takes a selector that
@@ -4928,7 +4928,7 @@ loaded.</p>
 <h2>The HTML</h2>
 <p>Here's the HTML I'm using on the page:</p>
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">video</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">videoPlayer</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">controls</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">video</span><span class="punctuation definition tag end html">&gt;</span></span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">video</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">videoPlayer</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">controls</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">video</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="4"></span><span class="source js embedded html"><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">loadVideo</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/media-source-player.js<span class="punctuation definition string end js">&quot;</span></span>
@@ -4950,7 +4950,7 @@ loaded.</p>
 <span class="line-marker" data-line="20"></span>  <span class="meta object-literal key js">fallback</span><span class="punctuation separator key-value js">:</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>/javascript/media-source-video-player/sample-video/church-3818213.webm<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span>
 <span class="line-marker" data-line="21"></span><span class="punctuation section block js">}</span></span>
 <span class="line-marker" data-line="22"></span><span class="meta function-call js"><span class="variable function js">loadVideo</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>#videoPlayer<span class="punctuation definition string end js">&quot;</span></span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">config</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker" data-line="23"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<span class="line-marker" data-line="23"></span></span></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
 
 
 <ul>
@@ -4981,9 +4981,9 @@ out that the missing audio was the problem.</p>
 <p>This is the <code>ffmpeg</code> command I used to fix
 the issue. It makes a new <code>.webm</code> file
 with a silent audio track.</p>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
 <span class="line-marker" data-line="2"></span></span>
-<span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">ffmpeg</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>y</span><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>f</span> lavfi<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>i</span> anullsrc<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>i</span> INPUT.webm<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>c</span>:v copy<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>c</span>:a libvorbis<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>shortest</span> OUTPUT.webm</span></span></code></pre></div>
+<span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">ffmpeg</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>y</span><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>f</span> lavfi<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>i</span> anullsrc<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>i</span> INPUT.webm<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>c</span>:v copy<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>c</span>:a libvorbis<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>shortest</span> OUTPUT.webm</span></span></pre></div>
 The resulting file is encoded so that it matches the
 `video/webm; codecs="vp9, vorbis"` in
 the JavaScript. 
@@ -4998,10 +4998,10 @@ next time I have to mess with stuff.</p>
 is done with this script that runs in bash
 on mac/linux (I don't have a Windows machine
 handy to determine the command on that OS).</p>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
 <span class="line-marker" data-line="2"></span></span>
 <span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">split</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>b</span> 1M<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>d</span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span>church-3818213.webm<span class="punctuation definition string end shell">&quot;</span></span> part-</span>
-<span class="line-marker" data-line="4"></span><span class="keyword control for shell">for</span><span class="meta group for shell"> f <span class="keyword control in shell">in</span> part-<span class="keyword operator regexp quantifier shell">*</span></span><span class="keyword operator logical continue shell">;</span> <span class="keyword control do shell">do</span> <span class="meta function-call shell"><span class="variable function shell">mv</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">f</span></span><span class="punctuation definition string end shell">&quot;</span></span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">f</span></span>.part<span class="punctuation definition string end shell">&quot;</span></span></span><span class="keyword operator logical continue shell">;</span> <span class="meta function-call shell"><span class="variable function shell">done</span></span></span></code></pre></div>
+<span class="line-marker" data-line="4"></span><span class="keyword control for shell">for</span><span class="meta group for shell"> f <span class="keyword control in shell">in</span> part-<span class="keyword operator regexp quantifier shell">*</span></span><span class="keyword operator logical continue shell">;</span> <span class="keyword control do shell">do</span> <span class="meta function-call shell"><span class="variable function shell">mv</span></span><span class="meta function-call arguments shell"> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">f</span></span><span class="punctuation definition string end shell">&quot;</span></span> <span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">f</span></span>.part<span class="punctuation definition string end shell">&quot;</span></span></span><span class="keyword operator logical continue shell">;</span> <span class="meta function-call shell"><span class="variable function shell">done</span></span></span></pre></div>
 Line 3 does the split. 
 <p>Line 4 is optional. It adds file extensions.
 Some servers require one
@@ -5018,7 +5018,7 @@ instead of being sent down
 dead ends by AI that doesn't
 take into account that the video
 could be the problem.</p>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">MediaSource readyState is: closed
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">MediaSource readyState is: closed
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span>MediaSource or SourceBuffer invalid
 <span class="line-marker" data-line="4"></span>
@@ -5034,7 +5034,7 @@ could be the problem.</p>
 <span class="line-marker" data-line="14"></span>
 <span class="line-marker" data-line="15"></span>--- From ffmpeg during processing
 <span class="line-marker" data-line="16"></span>
-<span class="line-marker" data-line="17"></span>Error parsing Opus packet header.</span></code></pre></div>
+<span class="line-marker" data-line="17"></span>Error parsing Opus packet header.</span></pre></div>
 <h2>Wrap Up</h2>
 <p>This is the first time I've really looked at web video
 in the modern age. As with so much these
@@ -5097,7 +5097,7 @@ here: <a href="/rust/wasm/static-site-file-decryption/">Password Protecting Stat
 code that does the split.</p>
 
 
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span>fs<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">path<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">path<span class="punctuation accessor rust">::</span></span>PathBuf<span class="punctuation terminator rust">;</span>
@@ -5132,14 +5132,14 @@ code that does the split.</p>
 <span class="line-marker" data-line="33"></span>  <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>write<span class="meta group rust"><span class="punctuation section group begin rust">(</span>bravo_out<span class="punctuation separator rust">,</span> bravo</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="34"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Done<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="35"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
-<span class="line-marker" data-line="36"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="36"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="2"></span>name <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>unzip_a_file<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="3"></span>version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>0.1.0<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="4"></span>edition <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2024<span class="punctuation definition string end rust">&quot;</span></span>
 <span class="line-marker" data-line="5"></span>
 <span class="line-marker" data-line="6"></span><span class="meta group rust"><span class="punctuation section group begin rust">[</span>dependencies<span class="punctuation section group end rust">]</span></span>
-<span class="line-marker" data-line="7"></span>anyhow <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>1.0.102<span class="punctuation definition string end rust">&quot;</span></span></span></code></pre></div>
+<span class="line-marker" data-line="7"></span>anyhow <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>1.0.102<span class="punctuation definition string end rust">&quot;</span></span></span></pre></div>
 <p>I haven't written the re-assembly code yet
 since I'm going with encryption. I don't
 expect it to be difficult if I come back to it.</p>
@@ -5161,7 +5161,7 @@ expect it to be difficult if I come back to it.</p>
 </p>
 
 <h3>Rust</h3>
-<div class="code-block numbers copy-button"><div class="file-name">Cargo.toml</div><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic">[package]
+<div class="code-block numbers copy-button"><div class="file-name">Cargo.toml</div><pre><span class="line-marker" data-line="1"></span><span class="text html basic">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;hello-world&quot;
 <span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
 <span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
@@ -5170,25 +5170,25 @@ expect it to be difficult if I come back to it.</p>
 <span class="line-marker" data-line="7"></span>crate-type = [&quot;cdylib&quot;]
 <span class="line-marker" data-line="8"></span>
 <span class="line-marker" data-line="9"></span>[dependencies]
-<span class="line-marker" data-line="10"></span>wasm-bindgen = &quot;0.2.116&quot;</span></code></pre></div>
+<span class="line-marker" data-line="10"></span>wasm-bindgen = &quot;0.2.116&quot;</span></pre></div>
 
-<div class="code-block numbers copy-button"><div class="file-name">src/lib.rs</div><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">wasm_bindgen<span class="punctuation accessor rust">::</span></span><span class="meta path rust">prelude<span class="punctuation accessor rust">::</span></span><span class="keyword operator rust">*</span><span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><div class="file-name">src/lib.rs</div><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">wasm_bindgen<span class="punctuation accessor rust">::</span></span><span class="meta path rust">prelude<span class="punctuation accessor rust">::</span></span><span class="keyword operator rust">*</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta annotation rust"><span class="punctuation definition annotation rust">#</span><span class="punctuation section group begin rust">[</span><span class="variable annotation rust">wasm_bindgen</span><span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="4"></span><span class="meta function rust"><span class="meta function rust"><span class="storage modifier rust">pub</span> <span class="storage type function rust">fn</span> </span><span class="entity name function rust">hello_world</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> String</span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
 <span class="line-marker" data-line="5"></span>  <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Hello, world!<span class="punctuation definition string end rust">&quot;</span></span>.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
-<span class="line-marker" data-line="6"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+<span class="line-marker" data-line="6"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
 
-<div class="code-block numbers copy-button"><div class="file-name">build script</div><pre><code><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
+<div class="code-block numbers copy-button"><div class="file-name">build script</div><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
 <span class="line-marker" data-line="2"></span></span>
-<span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">wasm-pack</span></span><span class="meta function-call arguments shell"> build<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> --</span>target</span> web</span></span></code></pre></div>
+<span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">wasm-pack</span></span><span class="meta function-call arguments shell"> build<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> --</span>target</span> web</span></span></pre></div>
 
 <h3>HTML</h3>
-<div class="code-block numbers copy-button"><div class="file-name">page.html</div><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>//rust/wasm/hello-world/hello-world.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="2"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">output</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></code></pre></div>
+<div class="code-block numbers copy-button"><div class="file-name">page.html</div><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag script begin html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag script html">script</span></span><span class="meta tag script begin html"> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>module<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">src</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>//rust/wasm/hello-world/hello-world.js<span class="punctuation definition string end html">&quot;</span></span></span></span><span class="meta tag script begin html"><span class="punctuation definition tag end html">&gt;</span></span><span class="source js embedded html"></span><span class="meta tag script end html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag script html">script</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">output</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
 
 <h4>JavaScript</h4>
-<div class="code-block numbers copy-button"><div class="file-name">hello-world.js</div><pre><code><span class="line-marker" data-line="1"></span><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="variable other readwrite js">init</span><span class="punctuation separator comma js">,</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">hello_world</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>./pkg/hello_world.js<span class="punctuation definition string end js">&quot;</span></span></span><span class="punctuation terminator statement js">;</span>
+<div class="code-block numbers copy-button"><div class="file-name">hello-world.js</div><pre><span class="line-marker" data-line="1"></span><span class="source js"><span class="meta import js"><span class="keyword control import-export js">import</span> <span class="variable other readwrite js">init</span><span class="punctuation separator comma js">,</span> <span class="meta block js"><span class="punctuation section block js">{</span> <span class="variable other readwrite js">hello_world</span> <span class="punctuation section block js">}</span></span> <span class="keyword control import-export js">from</span> <span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>./pkg/hello_world.js<span class="punctuation definition string end js">&quot;</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta function declaration js"><span class="storage type js">async</span> <span class="storage type function js">function</span> <span class="entity name function js">main</span><span class="punctuation section group begin js">(</span><span class="punctuation section group end js">)</span><span class="meta function declaration js"> </span></span><span class="meta block js"><span class="punctuation section block js">{</span>
 <span class="line-marker" data-line="4"></span>  <span class="keyword control flow js">await</span> <span class="meta function-call js"><span class="variable function js">init</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
@@ -5196,7 +5196,7 @@ expect it to be difficult if I come back to it.</p>
 <span class="line-marker" data-line="6"></span>  <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta property object js">innerHTML</span> <span class="keyword operator assignment js">=</span> <span class="meta function-call js"><span class="variable function js">hello_world</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="7"></span><span class="punctuation section block js">}</span></span>
 <span class="line-marker" data-line="8"></span>
-<span class="line-marker" data-line="9"></span><span class="meta function-call js"><span class="variable function js">main</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span></span></code></pre></div>
+<span class="line-marker" data-line="9"></span><span class="meta function-call js"><span class="variable function js">main</span><span class="meta group js"><span class="punctuation section group js">(</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span></span></pre></div>
 
 <h4>Output</h4>
 <div class="output-block"><pre><code>

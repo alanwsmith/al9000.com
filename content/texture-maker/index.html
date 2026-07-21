@@ -29,7 +29,6 @@ body {
 == endblock
 
 == block content 
-
 <bitty-8 data-connect="[@ template_folder() @]/bit.js"></bitty-8>
 <p>Move the sliders below to set your background. Copy/paste the CSS when you've got it the way you want.</p>
 <div data-r="example"></div>
@@ -55,10 +54,9 @@ body {
   </div>
 </div>
 
-<div class="output xlarge-top-margin">
-  <pre class="code-block no-numbers"><code data-r="updateCSS"></code></pre>
+<div class="code-block numbers copy-button">
+  <pre data-r="updateCSS"></pre>
 </div>
-
 
 [#
 <h2>Details</h2>
@@ -113,7 +111,6 @@ I yoinked some code from [this repo](https://github.com/tigt/mini-svg-data-uri/b
   --svg-bg-h: __h__;
   --svg-bg-url: __url__;
 }
-
 body {
   background-color: oklch(var(--svg-bg-l) var(--svg-bg-c) var(--svg-bg-h));
   background-image: var(--svg-bg-url);

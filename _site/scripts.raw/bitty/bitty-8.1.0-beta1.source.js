@@ -1106,7 +1106,7 @@ class BittyJs extends HTMLElement {
     if (this.b._debouncers[sender.copyId]) {
       window.clearTimeout(this.b._debouncers[sender.copyId]);
     }
-    const copyPayload = el.value !== undefined ? el.value : el.innerHTML;
+    const copyPayload = el.value !== undefined ? el.value : el.innerText;
     try {
       await navigator.clipboard.writeText(copyPayload);
       if (sender.originalInnerHTML === undefined) {
@@ -1474,7 +1474,7 @@ class BittyJs extends HTMLElement {
         }
       } else {
         try {
-          await navigator.clipboard.writeText(el.innerHTML);
+          await navigator.clipboard.writeText(el.innerText);
         } catch (error) {
           console.error(`Could not copy .innerHTML from el.`);
           return false;

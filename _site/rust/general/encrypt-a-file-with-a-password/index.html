@@ -107,7 +107,7 @@ needs.</p>
 
 
 <h3>src/main.rs</h3>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">orion<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>aead<span class="punctuation separator rust">,</span> kdf</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span>fs<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">path<span class="punctuation accessor rust">::</span></span>PathBuf<span class="punctuation terminator rust">;</span>
@@ -136,18 +136,18 @@ needs.</p>
 <span class="line-marker" data-line="27"></span>  <span class="storage type rust">let</span> bytes <span class="keyword operator rust">=</span> <span class="meta path rust">aead<span class="punctuation accessor rust">::</span></span>seal<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>derived_key<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>input</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="28"></span>  <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>write<span class="meta group rust"><span class="punctuation section group begin rust">(</span>output_path<span class="punctuation separator rust">,</span> bytes</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="29"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
-<span class="line-marker" data-line="30"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></code></pre></div>
+<span class="line-marker" data-line="30"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
 
 
 <h3>Cargo.toml</h3>
-<div class="code-block numbers copy-button"><pre><code><span class="line-marker" data-line="1"></span><span class="text html basic">[package]
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text html basic">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;encrypt-a-file-with-a-password&quot;
 <span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
 <span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
 <span class="line-marker" data-line="5"></span>
 <span class="line-marker" data-line="6"></span>[dependencies]
 <span class="line-marker" data-line="7"></span>anyhow = &quot;1.0.102&quot;
-<span class="line-marker" data-line="8"></span>orion = &quot;0.17.13&quot;</span></code></pre></div>
+<span class="line-marker" data-line="8"></span>orion = &quot;0.17.13&quot;</span></pre></div>
 
 
 <h2>References</h2>
