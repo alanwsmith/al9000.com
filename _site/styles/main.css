@@ -81,6 +81,15 @@
     --xxxlarge-padding: 2.5rem;
     --xxxlarge-wdith: min(100vw - 2.0rem, 64rem);
     --full-wdith: calc(100vw - 1.4rem);
+    --100-font-weight: 100;
+    --200-font-weight: 200;
+    --300-font-weight: 300;
+    --400-font-weight: 400;
+    --500-font-weight: 500;
+    --600-font-weight: 600;
+    --700-font-weight: 700;
+    --800-font-weight: 800;
+    --900-font-weight: 900;
     --text-align-center: center;
     --text-align-end: end;
     --text-align-justify: justify;
@@ -298,50 +307,42 @@
 .faded-warning-color { color: var(--faded-warning-color); }
 
 .xxxsmall-font-size { font-size: var(--xxxsmall-font-size); }
-.xxxsmall-font-weight { font-weight: var(--xxxsmall-font-weight); }
 .xxxsmall-width { max-width: min(100vw - 1.4rem, 3rem); }
 .xxxsmall-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 3rem); }
 .xxxsmall-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxxsmall-flow)); }
 .xxsmall-font-size { font-size: var(--xxsmall-font-size); }
-.xxsmall-font-weight { font-weight: var(--xxsmall-font-weight); }
 .xxsmall-width { max-width: min(100vw - 1.4rem, 7rem); }
 .xxsmall-wrapper { margin-inline: auto; max-width: min(100vw - 1.4rem, 7rem); }
 .xxsmall-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxsmall-flow)); }
 .xsmall-font-size { font-size: var(--xsmall-font-size); }
-.xsmall-font-weight { font-weight: var(--xsmall-font-weight); }
 .xsmall-width { max-width: min(100vw - 1.8rem, 16rem); }
 .xsmall-wrapper { margin-inline: auto; max-width: min(100vw - 1.8rem, 16rem); }
 .xsmall-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xsmall-flow)); }
 .small-font-size { font-size: var(--small-font-size); }
-.small-font-weight { font-weight: var(--small-font-weight); }
 .small-width { max-width: min(100vw - 2.0rem, 24rem); }
 .small-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 24rem); }
 .small-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--small-flow)); }
 .default-font-size { font-size: var(--default-font-size); }
-.default-font-weight { font-weight: var(--default-font-weight); }
 .default-width { max-width: min(100vw - 2.0rem, 36rem); }
 .default-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 36rem); }
 .default-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--default-flow)); }
 .large-font-size { font-size: var(--large-font-size); }
-.large-font-weight { font-weight: var(--large-font-weight); }
 .large-width { max-width: min(100vw - 2.0rem, 50rem); }
 .large-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 50rem); }
 .large-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--large-flow)); }
 .xlarge-font-size { font-size: var(--xlarge-font-size); }
-.xlarge-font-weight { font-weight: var(--xlarge-font-weight); }
 .xlarge-width { max-width: min(100vw - 2.0rem, 54rem); }
 .xlarge-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 54rem); }
 .xlarge-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xlarge-flow)); }
 .xxlarge-font-size { font-size: var(--xxlarge-font-size); }
-.xxlarge-font-weight { font-weight: var(--xxlarge-font-weight); }
 .xxlarge-width { max-width: min(100vw - 2.0rem, 58rem); }
 .xxlarge-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 58rem); }
 .xxlarge-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxlarge-flow)); }
 .xxxlarge-font-size { font-size: var(--xxxlarge-font-size); }
-.xxxlarge-font-weight { font-weight: var(--xxxlarge-font-weight); }
 .xxxlarge-width { max-width: min(100vw - 2.0rem, 64rem); }
 .xxxlarge-wrapper { margin-inline: auto; max-width: min(100vw - 2.0rem, 64rem); }
 .xxxlarge-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--xxxlarge-flow)); }
+
 
 .text-align-center { text-align: center; }
 .text-align-end { text-align: end; }

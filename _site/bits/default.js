@@ -16,7 +16,7 @@ export async function updateData() {
   b.qsa("details").forEach((el, index) => {
     s.details.data[index] = el.open;
   });
-  await b.savePageData(s.details.data, s.details.key);
+  await b.savePageData(s.details.key, s.details.data);
 }
 
 export function initCodeButtons() {

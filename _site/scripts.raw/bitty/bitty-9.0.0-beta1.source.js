@@ -1,4 +1,4 @@
-const version = [8, 1, 0];
+const version = [9, 0, 0];
 const tagName = `bitty-${version[0]}`;
 
 const changeFormTypes = [
@@ -7,7 +7,6 @@ const changeFormTypes = [
   "date",
   "datetime-local",
   "file",
-  "form",
   "option",
   "radio",
   "search",
@@ -110,7 +109,7 @@ class BittyJs extends HTMLElement {
           incoming.b._processChangeEvent(ev);
         });
         document.addEventListener("submit", (ev) => {
-          incoming.b._processEvent(ev);
+          incoming.b._processSubmitEvent(ev);
         });
         document.addEventListener("keydown", (ev) => {
           if (
@@ -127,6 +126,10 @@ class BittyJs extends HTMLElement {
         });
         // TODO: Attach data listeners directly to elements
         // instead of to window.
+        // TODO: Keep track of which elements have custom
+        // listeners on them and make sure they don't
+        // respond to other events that they otherwise would
+        // by default.
         [...document.querySelectorAll("[data-listen]")].forEach(
           (el) => {
             incoming.b._splitSignalString(el.dataset.listen).forEach(
@@ -200,7 +203,7 @@ class BittyJs extends HTMLElement {
       options.failed = "Could not copy";
     }
     if (options.ms === undefined) {
-      options.ms = 1400;
+      options.ms = 1500;
     }
     if (sender.debounceId === undefined) {
       sender.debounceId === this.b.uuid();
@@ -341,6 +344,30 @@ class BittyJs extends HTMLElement {
     dispatchEvent(ev);
   }
 
+  __getBool(value) {
+    if (value === undefined) {
+      return undefined;
+    }
+    if (value === null) {
+      return undefined;
+    }
+    const checkNum = parseInt(value, 10);
+    if (checkNum !== NaN && checkNum > 0) {
+      return true;
+    }
+    if (checkNum !== NaN && checkNum <= 0) {
+      return false;
+    }
+    const lcValue = value.toLowerCase();
+    if (this.b._trueValues.includes(lcValue)) {
+      return true;
+    }
+    if (this.b._falseValues.includes(lcValue)) {
+      return false;
+    }
+    return undefined;
+  }
+
   async _getData(url, fallback = undefined, options = {}) {
     let response = await fetch(url, options);
     try {
@@ -415,26 +442,21 @@ class BittyJs extends HTMLElement {
     }
   }
 
-  __getBool(value) {
-    if (value === undefined) {
-      return undefined;
-    }
-    if (value === null) {
-      return undefined;
-    }
-    const checkNum = parseInt(value, 10);
-    if (checkNum !== NaN && checkNum > 0) {
-      return true;
-    }
-    if (checkNum !== NaN && checkNum <= 0) {
-      return false;
-    }
-    const lcValue = value.toLowerCase();
-    if (this.b._trueValues.includes(lcValue)) {
-      return true;
-    }
-    if (this.b._falseValues.includes(lcValue)) {
-      return false;
+  async _getText(url, fallback = undefined, options = {}) {
+    let response = await fetch(url, options);
+    try {
+      if (response.ok === true) {
+        try {
+          const text = await response.text();
+          return text;
+        } catch (parseError) {
+          console.error(parseError);
+        }
+      } else {
+        console.error(response);
+      }
+    } catch (error) {
+      console.error(error);
     }
     return undefined;
   }
@@ -493,11 +515,19 @@ class BittyJs extends HTMLElement {
       });
   }
 
-  async __initPageDB() {
+  __pageDatabaseID() {
     const url = new URL(window.location.href);
-    const pageID = btoa(url.pathname);
+    return `bitty_page_db_${btoa(url.pathname)}`;
+  }
+
+  async __initPageDB() {
+    // const url = new URL(window.location.href);
+    // const pageID = btoa(url.pathname);
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open(`bitty_page_db_${pageID}`, DB_VERSION);
+      const request = indexedDB.open(
+        this.b._pageDatabaseID(),
+        DB_VERSION,
+      );
       request.onsuccess = () => resolve(request.result);
       request.onerror = () => reject(request.result);
       request.onupgradeneeded = (event) => {
@@ -826,36 +856,16 @@ class BittyJs extends HTMLElement {
           ) {
             return;
           }
-
-          // if (checkArg && checkArg.toLowerCase() === "text") {
-          //   return;
-          // }
-          // if (checkArg && checkArg.toLowerCase() === "month") {
-          //   return;
-          // }
-          // if (checkArg && checkArg.toLowerCase() === "password") {
-          //   return;
-          // }
-
-          // if (
-          //   checkArg &&
-          //   changeFormTypes.includes(checkArg.toLowerCase())
-          // ) {
-          //   return;
-          // }
+          if (
+            sender.tagName && sender.tagName.toLowerCase() === "form" &&
+            ev.type === "click"
+          ) {
+            return;
+          }
         }
         if (sender.isContentEditable === true && ev.type === "click") {
           return;
         }
-
-        // if (
-        //   sender.tagName &&
-        //   changeFormTypes.includes(sender.tagName.toLowerCase()) &&
-        //   ev.type === "click"
-        // ) {
-        //   return;
-        // }
-
         for (const signal of signals) {
           if (typeof this[signal] === "function") {
             const receivers = document.querySelectorAll(
@@ -936,6 +946,11 @@ class BittyJs extends HTMLElement {
         }
         if (
           sender.tagName && sender.tagName.toLowerCase() === "select"
+        ) {
+          return;
+        }
+        if (
+          sender.tagName && sender.tagName.toLowerCase() === "form"
         ) {
           return;
         }
@@ -1055,6 +1070,73 @@ class BittyJs extends HTMLElement {
           }
         } else {
           this[signal](ev, sender, undefined);
+        }
+      }
+    }
+  }
+
+  __processSubmitEvent(ev) {
+    //console.log(ev);
+    // TODO: Combine these back so they event type is checked
+    // as the first step and then the processing happens
+    // once.
+    this.b._updateElement(ev.target);
+    const senders = this.b._findSenders(ev.target);
+    for (const sender of senders) {
+      this.b._updateElement(sender);
+      const signals = this.b._splitSignalString(sender.dataset.s);
+      const listeners = this.b._splitSignalString(
+        sender.dataset.listen,
+      );
+      if (listeners.length === 0) {
+        if (ev.target) {
+          const checkAttr = sender.getAttribute("type");
+          if (
+            sender.tagName && sender.tagName.toLowerCase() === "select"
+          ) {
+            return;
+          }
+          if (
+            sender.tagName && sender.tagName.toLowerCase() === "textarea"
+          ) {
+            return;
+          }
+        }
+        if (sender.isContentEditable === true && ev.type === "click") {
+          return;
+        }
+        for (const signal of signals) {
+          if (typeof this[signal] === "function") {
+            const receivers = document.querySelectorAll(
+              `[data-r~='${signal}']`,
+            );
+            if (receivers.length > 0) {
+              for (const receiver of receivers) {
+                this.b._updateElement(receiver);
+                this[signal](ev, sender, receiver);
+              }
+            } else {
+              this[signal](ev, sender, undefined);
+            }
+          }
+        }
+      } else {
+        if (listeners.includes(ev.type)) {
+          for (const signal of signals) {
+            if (typeof this[signal] === "function") {
+              const receivers = document.querySelectorAll(
+                `[data-r~='${signal}']`,
+              );
+              if (receivers.length > 0) {
+                for (const receiver of receivers) {
+                  this.b._updateElement(receiver);
+                  this[signal](ev, sender, receiver);
+                }
+              } else {
+                this[signal](ev, sender, undefined);
+              }
+            }
+          }
         }
       }
     }
@@ -1268,6 +1350,18 @@ class BittyJs extends HTMLElement {
     // return undefined;
   }
 
+  async _clearPageData() {
+    const db = await this.b._initPageDB();
+    return new Promise((resolve, reject) => {
+      const store = db
+        .transaction(STORE_NAME, "readwrite")
+        .objectStore(STORE_NAME);
+      const request = store.clear();
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.result);
+    });
+  }
+
   async _loadPageData(key, fallback) {
     const db = await this.b._initPageDB();
     const result = await new Promise((resolve, reject) => {
@@ -1279,13 +1373,10 @@ class BittyJs extends HTMLElement {
       request.onerror = () => reject(request.result);
     });
     if (result === undefined && fallback !== undefined) {
-      await this.b.savePageData(fallback, key);
+      await this.b.savePageData(key, fallback);
       return fallback;
     }
     return result;
-
-    // const url = new URL(window.location.href);
-    // return this.b.loadData(`${url.pathname}-${key}`, fallback);
   }
 
   _switch(subs = {}) {
@@ -1312,7 +1403,7 @@ class BittyJs extends HTMLElement {
     return this.b.render("switch", subs);
   }
 
-  async _savePageData(value, key) {
+  async _savePageData(key, value) {
     const db = await this.b._initPageDB();
     const result = await new Promise((resolve, reject) => {
       const store = db
@@ -1323,9 +1414,6 @@ class BittyJs extends HTMLElement {
       request.onerror = () => reject(request.result);
     });
     return result;
-
-    // const url = new URL(window.location.href);
-    // return this.b.saveData(data, `${url.pathname}-${key}`);
   }
 
   async _saveSiteData(value, key) {

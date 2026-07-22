@@ -12,6 +12,9 @@
     --[@ size @]-wdith: [@ styles.widths[loop.index0] @];
   == endfor 
     --full-wdith: [@ styles.fullWidth @];
+  == for weight in styles.fontWeights
+    --[@ weight @]-font-weight: [@ weight @];
+  == endfor 
   == for alignment in styles.textAligns
     --text-align-[@ alignment @]: [@ alignment @];
   == endfor 
@@ -35,10 +38,13 @@
 
 == for size in styles.sizes
 .[@ size @]-font-size { font-size: var(--[@ size @]-font-size); }
-.[@ size @]-font-weight { font-weight: var(--[@ size @]-font-weight); }
 .[@ size @]-width { max-width: [@ styles.widths[loop.index0] @]; }
 .[@ size @]-wrapper { margin-inline: auto; max-width: [@ styles.widths[loop.index0] @]; }
 .[@ size @]-flow > :where(:not(:first-child)) { margin-top: var(--flow-space, var(--[@ size @]-flow)); }
+== endfor 
+
+== for weight in fontWeights 
+.[@ weigth @]-font-weight { font-weight: var(--[@ weight @]-font-weight); }
 == endfor 
 
 == for alignment in styles.textAligns

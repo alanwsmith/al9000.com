@@ -42,7 +42,7 @@ input {
 == for folder in folders_in_folder("/tools", full = true) 
   == if exists(folder + "/index.html")
     == set key = stem(folder)
-  <bitty-8 data-connect="[@ folder @]/bit.js"></bitty-8>
+  <bitty-9 data-connect="[@ folder @]/bit.js"></bitty-9>
    <details class="d"><summary>[@ d.tools[key].index.title @]</summary> 
     == include folder + "/index.html"
    </details> 

@@ -10,41 +10,32 @@ id = "01/n6/06/1c"
 == block styles
 <link rel="stylesheet" href="/styles/main.css" />
 <style>
-:root {
+  :root {
 
-}
+  }
   body { background-image: none; }
-
+  .active {
+    font-weight: var(--900-font-weight);
+  }
 </style>
-== endblock
-
-
-== block scripts
 == endblock
 
 
 == block content
 <div data-r="initModeButtons"></div>
 <div data-r="initBackgroundSliders"></div>
-<div data-r="initColorButtons"></div>
+<div data-r="initColorNameButtons"></div>
 <div data-r="initHueOffsetButtons"></div>
 <div data-r="initColorSliders"></div>
 == endblock 
 
 
 == block templates
-<bitty-8 data-connect="[@ template_folder() + '/bit.js' @]"></bitty-8>
-<script type="text/html" data-template="modeButton">
-  <div>
-    <label>__KEY__
-      <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
-    </label>
-  </div>
-</script>
+<bitty-9 data-connect="[@ template_folder() + '/bit.js' @]"></bitty-9>
 
 <script type="text/html" data-template="backgroundSlider">
   <div>
-    <label>__KEY__
+    <label>__NAME__
       <input 
         type="range" 
         data-s="setParam" 
@@ -59,14 +50,9 @@ id = "01/n6/06/1c"
   </div>
 </script>
 
-<script type="text/html" data-template="colorButton">
-  <button data-s="setColorName" data-index="__INDEX__">__COLOR__</button>
+<script type="text/html" data-template="colorNameButton">
+  <button data-s="setColorName" data-r="setColorNameStyles" data-index="__INDEX__">__COLOR__</button>
 </script>
-
-<script type="text/html" data-template="hueOffsetButton">
-  <button data-s="setHueOffset" data-index="__INDEX__">set</button>
-</script>
-
 
 <script type="text/html" data-template="colorSliders">
 <div><label>L</label>
@@ -119,6 +105,15 @@ id = "01/n6/06/1c"
 </div>
 </script>
 
+<script type="text/html" data-template="hueOffsetButton">
+  <button data-s="setHueOffset" data-r="setHueOffset" data-index="__INDEX__">set</button>
+</script>
 
-
+<script type="text/html" data-template="modeButton">
+  <div>
+    <label>__KEY__
+      <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
+    </label>
+  </div>
+</script>
 == endblock

@@ -23,14 +23,16 @@
 />
 
     <link rel="stylesheet" href="/styles/colors.css" />
-    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 <link rel="stylesheet" href="/styles/main.css" />
 <style>
-:root {
+  :root {
 
-}
+  }
   body { background-image: none; }
-
+  .active {
+    font-weight: var(--900-font-weight);
+  }
 </style>
   </head>
   <body>
@@ -45,7 +47,7 @@
     <div class="payload">
       <div data-r="initModeButtons"></div>
 <div data-r="initBackgroundSliders"></div>
-<div data-r="initColorButtons"></div>
+<div data-r="initColorNameButtons"></div>
 <div data-r="initHueOffsetButtons"></div>
 <div data-r="initColorSliders"></div>
 
@@ -54,21 +56,14 @@
     </div>
 
     <div class="template" hidden>
-      <bitty-8 data-connect="/bits/default.js"></bitty-8>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
       <script type="module" src="/bits/components.js"></script>
       
-<bitty-8 data-connect="&#x2f;color-picker&#x2f;bit.js"></bitty-8>
-<script type="text/html" data-template="modeButton">
-  <div>
-    <label>__KEY__
-      <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
-    </label>
-  </div>
-</script>
+<bitty-9 data-connect="&#x2f;color-picker&#x2f;bit.js"></bitty-9>
 
 <script type="text/html" data-template="backgroundSlider">
   <div>
-    <label>__KEY__
+    <label>__NAME__
       <input 
         type="range" 
         data-s="setParam" 
@@ -83,14 +78,9 @@
   </div>
 </script>
 
-<script type="text/html" data-template="colorButton">
-  <button data-s="setColorName" data-index="__INDEX__">__COLOR__</button>
+<script type="text/html" data-template="colorNameButton">
+  <button data-s="setColorName" data-r="setColorNameStyles" data-index="__INDEX__">__COLOR__</button>
 </script>
-
-<script type="text/html" data-template="hueOffsetButton">
-  <button data-s="setHueOffset" data-index="__INDEX__">set</button>
-</script>
-
 
 <script type="text/html" data-template="colorSliders">
 <div><label>L</label>
@@ -143,8 +133,17 @@
 </div>
 </script>
 
+<script type="text/html" data-template="hueOffsetButton">
+  <button data-s="setHueOffset" data-r="setHueOffset" data-index="__INDEX__">set</button>
+</script>
 
-
+<script type="text/html" data-template="modeButton">
+  <div>
+    <label>__KEY__
+      <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
+    </label>
+  </div>
+</script>
     </div>
   </body>
 </html>

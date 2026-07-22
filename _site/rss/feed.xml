@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-22T08:06:36-04:00</updated>
+  <updated>2026-07-22T10:50:18-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -14,7 +14,7 @@
     <updated>2026-01-03T10:36:00-05:00</updated>
     <summary><![CDATA[
 
-<bitty-8 data-connect="/texture-maker/bit.js"></bitty-8>
+<bitty-9 data-connect="/texture-maker/bit.js"></bitty-9>
 <p>
   This page generates CSS for textured backgrounds. 
   Play with the sliders to preview it here.
@@ -102,6 +102,7 @@ get lighter.</p>
 payload from the tool. Playing
 with it is left as an exercise
 for the reader.</p>
+<p><button data-s="restoreDefaults" style="opacity: 0.05;">Restore Defaults</button></p>
 ]]></summary>
   </entry>
   
@@ -311,11 +312,11 @@ the timestamps I use look like this:</li>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css?welrkj" />
+    <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
 
     
 
-    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
 <link rel="shortcut icon" href="/favicon.ico" />
 <title>Three Dates in a Trench Coat</title>
@@ -506,13 +507,13 @@ want to check it out.
 
       
     <div class="default-wrapper text-align-center faded-base-color"
-    style="opacity: 0.1; padding-bottom: 0.3rem;">
+    style="opacity: 0.05; padding-bottom: 0.3rem;">
 id = "01/n5/st/wc"
     </div>
       
 
     <div class="templates" hidden>
-      <bitty-8 data-connect="/bits/default.js"></bitty-8>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
       <script type="module" src="/bits.components.js"></script>
 
 
@@ -1243,7 +1244,7 @@ own it.</p>
     <updated>2026-06-23T19:29:25-04:00</updated>
     <summary><![CDATA[
 
-<bitty-8 data-connect="/konami/bit.js"></bitty-8>
+<bitty-9 data-connect="/konami/bit.js"></bitty-9>
 
 <div class="wrapper">
   <div class="center">
@@ -1544,7 +1545,7 @@ conversations by ear and see where they go.</p>
     <updated>2026-06-20T19:42:00-04:00</updated>
     <summary><![CDATA[
 
-<p><bitty-8 data-connect="/ideas/bit.js"></bitty-8></p>
+<p><bitty-9 data-connect="/ideas/bit.js"></bitty-9></p>
 <div class="dynamic-wrapper">
   <div class="idea-wrapper">
     <div data-r="newIdea"></div>
@@ -3222,7 +3223,7 @@ h1 {
 
 </style>
 
-<bitty-8 data-connect="/qr-alice/bit.js"></bitty-8>
+<bitty-9 data-connect="/qr-alice/bit.js"></bitty-9>
 
 <div class="contentWrapper">
 <div class="text-wrapper">
@@ -3308,7 +3309,7 @@ a {
 }
 </style>
 
-<bitty-8 data-connect="/qr-clock/bit.js"></bitty-8>
+<bitty-9 data-connect="/qr-clock/bit.js"></bitty-9>
 
 <div class="contentWrapper">
 <div class="clock-wrapper">
@@ -3342,7 +3343,7 @@ a {
     <updated>2026-06-16T12:22:00-04:00</updated>
     <summary><![CDATA[
 
-<bitty-8 data-connect="/tts/bit.js"></bitty-8>
+<bitty-9 data-connect="/tts/bit.js"></bitty-9>
 
 <p>These images are for play mats and card backs to use
 in Magic: The Gathering on <a href="https://www.tabletopsimulator.com/">Tabletop Simulator</a>.
@@ -4620,11 +4621,11 @@ with a bunch of random characters.</p>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css?welrkj" />
+    <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
 
     
 
-    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
 <link rel="shortcut icon" href="/favicon.ico" />
 <title>Create an HLS Encrypted Video with ffmpeg</title>
@@ -4669,13 +4670,13 @@ with a bunch of random characters.</p>
 
       
     <div class="default-wrapper text-align-center faded-base-color"
-    style="opacity: 0.1; padding-bottom: 0.3rem;">
+    style="opacity: 0.05; padding-bottom: 0.3rem;">
 id = "01/mx/8y/ck"
     </div>
       
 
     <div class="templates" hidden>
-      <bitty-8 data-connect="/bits/default.js"></bitty-8>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
       <script type="module" src="/bits.components.js"></script>
 
 
