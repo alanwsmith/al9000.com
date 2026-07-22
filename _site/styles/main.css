@@ -250,29 +250,29 @@
   --faded-reverse-color: var(--switch--faded-reverse-color, var(--light--faded-reverse-color));
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --default-background-color: var(--switch--background-color, var(--dark--default-background-color));
-    --default-base-color: var(--switch--base-color, var(--dark--default-base-color));
-    --faded-base-color: var(--switch--faded-base-color, var(--dark--faded-base-color));
-    --default-heading-color: var(--switch--heading-color, var(--dark--default-heading-color));
-    --faded-heading-color: var(--switch--faded-heading-color, var(--dark--faded-heading-color));
-    --default-link-color: var(--switch--default-link-color, var(--dark--default-link-color));
-    --faded-link-color: var(--switch--faded-link-color, var(--dark--faded-link-color));
-    --default-accent-color: var(--switch--default-accent-color, var(--dark--default-accent-color));
-    --faded-accent-color: var(--switch--faded-accent-color, var(--dark--faded-accent-color));
-    --default-warning-color: var(--switch--warning-color, var(--dark--default-warning-color));
-    --faded-warning-color: var(--switch--faded-warning-color, var(--dark--faded-warning-color));
-    --default-black-color: var(--switch--black-color, var(--dark--default-black-color));
-    --faded-black-color: var(--switch--faded-black-color, var(--dark--faded-black-color));
-    --default-white-color: var(--switch--white-color, var(--dark--default-white-color));
-    --faded-white-color: var(--switch--faded-white-color, var(--dark--faded-white-color));
-    --default-match-color: var(--switch--match-color, var(--dark--default-match-color));
-    --faded-match-color: var(--switch--faded-match-color, var(--dark--faded-match-color));
-    --default-reverse-color: var(--switch--reverse-color, var(--dark--default-reverse-color));
-    --faded-reverse-color: var(--switch--faded-reverse-color, var(--dark--faded-reverse-color));
-  }
-}
+/* @media (prefers-color-scheme: dark) { */
+/*   :root { */
+/*     --default-background-color: var(--switch--background-color, var(--dark--default-background-color)); */
+/*     --default-base-color: var(--switch--base-color, var(--dark--default-base-color)); */
+/*     --faded-base-color: var(--switch--faded-base-color, var(--dark--faded-base-color)); */
+/*     --default-heading-color: var(--switch--heading-color, var(--dark--default-heading-color)); */
+/*     --faded-heading-color: var(--switch--faded-heading-color, var(--dark--faded-heading-color)); */
+/*     --default-link-color: var(--switch--default-link-color, var(--dark--default-link-color)); */
+/*     --faded-link-color: var(--switch--faded-link-color, var(--dark--faded-link-color)); */
+/*     --default-accent-color: var(--switch--default-accent-color, var(--dark--default-accent-color)); */
+/*     --faded-accent-color: var(--switch--faded-accent-color, var(--dark--faded-accent-color)); */
+/*     --default-warning-color: var(--switch--warning-color, var(--dark--default-warning-color)); */
+/*     --faded-warning-color: var(--switch--faded-warning-color, var(--dark--faded-warning-color)); */
+/*     --default-black-color: var(--switch--black-color, var(--dark--default-black-color)); */
+/*     --faded-black-color: var(--switch--faded-black-color, var(--dark--faded-black-color)); */
+/*     --default-white-color: var(--switch--white-color, var(--dark--default-white-color)); */
+/*     --faded-white-color: var(--switch--faded-white-color, var(--dark--faded-white-color)); */
+/*     --default-match-color: var(--switch--match-color, var(--dark--default-match-color)); */
+/*     --faded-match-color: var(--switch--faded-match-color, var(--dark--faded-match-color)); */
+/*     --default-reverse-color: var(--switch--reverse-color, var(--dark--default-reverse-color)); */
+/*     --faded-reverse-color: var(--switch--faded-reverse-color, var(--dark--faded-reverse-color)); */
+/*   } */
+/* } */
 
 .code, .text.html.basic .meta.tag.other.html, .text.html.basic .meta.tag.any.html, .text.html.basic .meta.tag.block.any, .text.html.basic .meta.tag.inline.any, .text.html.basic .meta.tag.structure.any.html, .text.html.basic .source.js.embedded.html, .punctuation.separator.key-value.html, .sublimelinter.outline.violation, .sublimelinter.gutter-mark, .variable.other.readwrite.js, .variable.other.object.js, .variable.other.constant.js { color: var(--highlight-1-color); }
 .variable, .entity.other.inherited-class, .entity.name.tag, .storage.type, .meta.brace.square, .punctuation.section.brackets, .entity.other.attribute-name.pseudo-element, .entity.other.attribute-name.tag.pseudo-element, .entity.other.attribute-name.pseudo-class, .entity.other.attribute-name.tag.pseudo-class, .support.function.perl, .meta.diff.range, .variable.language, .constant.numeric, .constant.other.reference.link.markdown { color: var(--highlight-2-color); }

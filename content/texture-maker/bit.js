@@ -22,6 +22,7 @@ export function initValue(_, __, el) {
 
 export async function restoreDefaults() {
   await b.clearPageData();
+  location.reload();
 }
 
 export async function updateValue(_, sender, ___) {
