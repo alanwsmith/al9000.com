@@ -153,6 +153,7 @@ export const b = {
 };
 
 export async function init() {
+  b.setLogLevel("DEBUG");
   // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
   b.trigger(
@@ -208,6 +209,7 @@ export function initHueOffsetButtons(_, __, el) {
     };
     el.appendChild(b.render("hueOffsetButton", subs));
   }
+  b.trigger("updateHueOffset");
 }
 
 export function initModeButtons(_, __, el) {
@@ -229,13 +231,15 @@ export async function resetDefaults() {
 }
 
 export async function setColorName(_, sender, ___) {
+  b.debug("setColorName");
   const mode = s.getActiveMode();
   mode.activeColorIndex = sender.propAsInt("index");
   await b.savePageData("data", s.data);
-  b.trigger("setColorNameStyles");
+  b.trigger("setColorNameStyles updateHueOffset");
 }
 
 export function setColorNameStyles(_, __, el) {
+  b.debug("setColorNameStyles");
   const mode = s.getActiveMode();
   if (el.propAsInt("index") === mode.activeColorIndex) {
     el.classList.add("active");
@@ -245,6 +249,7 @@ export function setColorNameStyles(_, __, el) {
 }
 
 export async function setColorValue(_, sender, ___) {
+  b.debug("setColorValue");
   await requestAnimationFrame(async () => {
     const mode = s.getActiveMode();
     mode.colors[mode.activeColorIndex][`__${sender.prop("key")}__`] = sender
@@ -254,22 +259,36 @@ export async function setColorValue(_, sender, ___) {
 }
 
 export async function setHueOffset(_, sender, el) {
-  if (el.propAsInt("index") === sender.propAsInt("index")) {
+  b.debug("setHueOffset");
+  const mode = s.getActiveMode();
+  mode.colors[mode.activeColorIndex][`__H_OFFSET__`] = sender.propAsInt(
+    "index",
+  );
+  await b.savePageData("data", s.data);
+  b.trigger("updateHueOffset");
+}
+
+export function updateHueOffset(_, __, el) {
+  b.debug("updateHueOffset");
+  const mode = s.getActiveMode();
+  if (
+    el.propAsInt("index") === mode.colors[mode.activeColorIndex][`__H_OFFSET__`]
+  ) {
     el.classList.add("active");
-    await b.savePageData("data", s.data);
   } else {
     el.classList.remove("active");
   }
-  b.trigger("updateColorValue");
 }
 
 export async function setMode(_, sender, ___) {
+  b.debug("setMode");
   s.data.activeMode = sender.prop("key");
   await b.savePageData("data", s.data);
   b.trigger("updateColorValue updateBackgroundValue setColorNameStyles");
 }
 
 export async function setParam(_, sender, ___) {
+  b.debug("setParam");
   await requestAnimationFrame(async () => {
     s.setActiveValue(sender.prop("key"), sender.valueAsFloat());
     await b.savePageData("data", s.data);
@@ -278,16 +297,19 @@ export async function setParam(_, sender, ___) {
 }
 
 export function updateBackgroundValue(_, __, el) {
+  b.debug("updateBackgroundValue");
   const mode = s.getActiveMode();
   el.value = mode.background[`${el.prop("key")}`];
 }
 
 export function updateColorValue(_, __, el) {
+  b.debug("updateColorValue");
   const mode = s.getActiveMode();
   el.value = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
 }
 
 export function updateCSS(_, __, ___) {
+  b.debug("updateCSS");
   for (let mode of s.data.modes) {
     b.setCSS(
       `--${mode.__KEY__}--default-background-color`,
