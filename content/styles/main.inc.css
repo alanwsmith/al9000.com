@@ -151,9 +151,11 @@ button {
   padding-inline: var(--small-padding);
 }
 
+/*
 button:hover {
   color: var(--default-accent-color);
 }
+*/
 
 code {
   font-family: monospace;

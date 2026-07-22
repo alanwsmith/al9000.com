@@ -157,8 +157,24 @@ export async function init() {
   // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
   b.trigger(
-    "initBackgroundSliders initColorNameButtons initHueOffsetButtons initModeButtons initColorSliders",
+    "initBaseStyles initBackgroundSliders initColorNameButtons initHueOffsetButtons initModeButtons initColorSliders",
   );
+}
+
+export function initBaseStyles() {
+  const sheet = new CSSStyleSheet();
+  const theStyles = `
+.ui-set-0 { color: var(--ui-set-0); }
+.ui-set-1 { color: var(--ui-set-1); }
+.ui-set-2 { color: var(--ui-set-2); }
+.ui-set-3 { color: var(--ui-set-3); }
+.ui-set-4 { color: var(--ui-set-4); }
+.ui-set-5 { color: var(--ui-set-5); }
+.ui-set-6 { color: var(--ui-set-6); }
+.ui-set-7 { color: var(--ui-set-7); }
+`;
+  sheet.replaceSync(theStyles);
+  document.adoptedStyleSheets.push(sheet);
 }
 
 export function initBackgroundSliders(_, __, el) {
@@ -312,6 +328,21 @@ export function updateColorValue(_, __, el) {
 
 export function updateCSS(_, __, ___) {
   b.warn("updateCSS");
+
+  const activeMode = s.getActiveMode();
+  const activeColorIndex = activeMode.activeColorIndex;
+  const activeColor = activeMode.colors[activeColorIndex];
+  b.info(activeColor);
+  for (let i = 0; i < 8; i += 1) {
+    const key = `--ui-set-${i}`;
+    const rotation = ((s.data.hueRotation * i) +
+      activeMode.background.__H__) % 360;
+    const value =
+      `oklch(${activeColor.__L__} ${activeColor.__C__} ${rotation})`;
+    b.setCSS(key, value);
+  }
+  b.info(activeMode);
+
   for (let mode of s.data.modes) {
     b.setCSS(
       `--${mode.__KEY__}--default-background-color`,
