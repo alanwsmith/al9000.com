@@ -1,4 +1,5 @@
 const defaults = {
+  logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
   colorNames: ["base", "heading", "info", "accent", "warning"],
@@ -155,10 +156,10 @@ export const b = {
 };
 
 export async function init() {
-  b.setLogLevel("DEBUG");
-  b.setLogLevel("WARN");
+  // b.setLogLevel("WARN");
   // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
+  b.setLogLevel(s.data.logLevel);
   b.trigger(
     "initBaseStyles initBackgroundSliders initColorNameButtons initHueOffsetButtons initModeButtons initColorSliders",
   );
@@ -247,6 +248,12 @@ export function initModeButtons(_, __, el) {
 export async function resetDefaults() {
   await b.clearPageData();
   location.reload();
+}
+
+export async function setLogLevel(_, sender, ___) {
+  b.setLogLevel(sender.prop("key"));
+  s.data.logLevel = sender.prop("key");
+  await b.savePageData("data", s.data);
 }
 
 export async function setColorName(_, sender, ___) {
