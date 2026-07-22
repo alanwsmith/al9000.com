@@ -46,6 +46,15 @@
 
     <div class="payload">
       <button data-s="resetDefaults">Reset Defaults</button>
+
+<div>
+  <div class="default-base-color">base</div>
+  <div class="default-heading-color">heading</div>
+  <div class="default-info-color">info</div>
+  <div class="default-accent-color">accent</div>
+  <div class="default-warning-color">warning</div>
+</div>
+
 <div data-r="initModeButtons"></div>
 <div data-r="initBackgroundSliders"></div>
 <div data-r="initColorNameButtons"></div>
@@ -61,6 +70,7 @@
       <script type="module" src="/bits/components.js"></script>
       
 <bitty-9 data-connect="&#x2f;color-picker&#x2f;bit.js"></bitty-9>
+
 
 <script type="text/html" data-template="backgroundSlider">
   <div>
@@ -80,7 +90,7 @@
 </script>
 
 <script type="text/html" data-template="colorNameButton">
-  <button data-s="setColorName" data-r="setColorNameStyles" data-index="__INDEX__">__COLOR__</button>
+<button class="default-__COLOR__-color" data-s="setColorName" data-r="setColorNameStyles" data-index="__INDEX__">__COLOR__</button>
 </script>
 
 <script type="text/html" data-template="colorSliders">

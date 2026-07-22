@@ -1,7 +1,7 @@
 const defaults = {
-  hueRotation: 60,
+  hueRotation: 45,
   activeMode: "light",
-  colorNames: ["base", "heading", "link", "accent", "warning"],
+  colorNames: ["base", "heading", "info", "accent", "warning"],
   config: {
     __L__: {
       __NAME__: "Lightness",
@@ -323,9 +323,10 @@ export function updateCSS(_, __, ___) {
       const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
         mode.background.__H__) % 360;
       const value = `oklch(${color.__L__} ${color.__C__} ${rotation})`;
-      b.info(key);
-      b.info(value);
-      b.info(rotation);
+      b.setCSS(key, value);
+      // b.info(key);
+      // b.info(value);
+      // b.info(rotation);
       // b.info(name);
     });
   }
