@@ -3,6 +3,7 @@ export const b = {
 };
 
 export function overlay(_, __, el) {
+  console.log("asdf");
   el.replaceChildren(b.render("svg", subs()));
 }
 

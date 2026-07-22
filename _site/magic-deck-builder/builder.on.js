@@ -263,7 +263,7 @@ export async function loadDataAndState() {
   if (state.debug) dataKeys = ["debug"];
   allCards = [];
   for (let dataKey of dataKeys) {
-    const result = await b.getData(
+    const result = await b.getJSON(
       `/magic-data/scryfall-cards/${dataKey}.json`,
     );
     if (result) {
@@ -396,14 +396,14 @@ export async function setStars(_, sender, ___) {
 
 export async function testResults(_, __, el) {
   if (el) {
-    const testFileJSON = await b.getData(
+    const testFileJSON = await b.getJSON(
       "/magic-deck-builder/filter-tests/tests.on.json",
     );
     if (testFileJSON) {
       let didSoloTest = false;
       for (const testDir of testFileJSON.tests) {
-        const cardsData = await b.getData(`${testDir}/cards.json`);
-        const queryData = await b.getData(`${testDir}/query.json`);
+        const cardsData = await b.getJSON(`${testDir}/cards.json`);
+        const queryData = await b.getJSON(`${testDir}/query.json`);
         if (cardsData && queryData) {
           if (queryData.solo) {
             didSoloTest = true;
@@ -427,8 +427,8 @@ export async function testResults(_, __, el) {
       }
       if (didSoloTest === false) {
         for (const testDir of testFileJSON.tests) {
-          const cardsData = await b.getData(`${testDir}/cards.json`);
-          const queryData = await b.getData(`${testDir}/query.json`);
+          const cardsData = await b.getJSON(`${testDir}/cards.json`);
+          const queryData = await b.getJSON(`${testDir}/query.json`);
           if (cardsData && queryData) {
             if (!queryData.solo) {
               didSoloTest = true;
