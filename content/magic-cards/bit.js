@@ -3,7 +3,7 @@ export const b = { init: "cards" };
 let json;
 
 export async function cards() {
-  json = await b.getData("example.json");
+  json = await b.getJSON("example.json");
   if (json) {
     json.ObjectStates.forEach((objectState, objectStateIndex) => {
       console.log(objectState);
