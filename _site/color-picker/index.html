@@ -26,9 +26,12 @@
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-8.1.0-beta1.source.js" type="module"></script>
 <link rel="stylesheet" href="/styles/main.css" />
 <style>
-  body { background-image: none; }
-</style>
+:root {
 
+}
+  body { background-image: none; }
+
+</style>
   </head>
   <body>
     <noscript>
@@ -41,6 +44,7 @@
 
     <div class="payload">
       <div data-r="initModeButtons"></div>
+<div data-r="initBackgroundSliders"></div>
 
 
 
@@ -52,10 +56,29 @@
       
 <bitty-8 data-connect="&#x2f;color-picker&#x2f;bit.js"></bitty-8>
 <script type="text/html" data-template="modeButton">
-  <label>__KEY__
-    <input data-s="selectMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ />
-  </label>
+  <div>
+    <label>__KEY__
+      <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
+    </label>
+  </div>
 </script>
+
+<script type="text/html" data-template="backgroundSlider">
+  <div>
+    <label>__KEY__
+      <input 
+        type="range" 
+        data-s="setParam" 
+        data-key="__KEY__" 
+        min="__MIN__" 
+        max="__MAX__" 
+        step="__STEP__" 
+        value="__VALUE__" 
+        autocomplete="off" />
+    </label>
+  </div>
+</script>
+
     </div>
   </body>
 </html>

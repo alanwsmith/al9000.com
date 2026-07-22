@@ -1,5 +1,4 @@
 == extends "/templates.inc/switches/empty.html"
-
 == block toml
 title = "Color Picker"
 created = 2026-07-21T21:09:00-04:00
@@ -7,28 +6,53 @@ status = "draft"
 id = "01/n6/06/1c" 
 == endblock 
 
+
 == block styles
 <link rel="stylesheet" href="/styles/main.css" />
 <style>
+:root {
+
+}
   body { background-image: none; }
+
 </style>
 == endblock
 
-== block scripts
 
+== block scripts
 == endblock
 
 
 == block content
 <div data-r="initModeButtons"></div>
+<div data-r="initBackgroundSliders"></div>
 == endblock 
 
 
 == block templates
 <bitty-8 data-connect="[@ template_folder() + '/bit.js' @]"></bitty-8>
 <script type="text/html" data-template="modeButton">
-  <label>__KEY__
-    <input data-s="selectMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ />
-  </label>
+  <div>
+    <label>__KEY__
+      <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
+    </label>
+  </div>
 </script>
+
+<script type="text/html" data-template="backgroundSlider">
+  <div>
+    <label>__KEY__
+      <input 
+        type="range" 
+        data-s="setParam" 
+        data-key="__KEY__" 
+        min="__MIN__" 
+        max="__MAX__" 
+        step="__STEP__" 
+        value="__VALUE__" 
+        autocomplete="off" />
+    </label>
+  </div>
+</script>
+
 == endblock
