@@ -20,11 +20,15 @@ export function initValue(_, __, el) {
   el.value = value;
 }
 
+export async function restoreDefaults() {
+  await b.clearPageData();
+}
+
 export async function updateValue(_, sender, ___) {
   const key = sender.prop("key");
   s.data[key] = sender.valueAsFloat();
   b.setCSS(`--svg-bg-${key}`, sender.valueAsFloat());
-  await b.savePageData(s.data, "data");
+  await b.savePageData("data", s.data);
   b.debounce("css", "updateCSS", 80);
 }
 

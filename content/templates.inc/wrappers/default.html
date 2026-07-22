@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css?welrkj" />
+    <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
 
     [#
     == include "/styles/_includes/initial-styles.html" 
@@ -30,13 +30,13 @@
 
       [! if p.created !]
     <div class="default-wrapper text-align-center faded-base-color"
-    style="opacity: 0.1; padding-bottom: 0.3rem;">
+    style="opacity: 0.05; padding-bottom: 0.3rem;">
 id = "[@ id_from_timestamp(p.created["$__toml_private_datetime"]) @]"
     </div>
       [! endif !]
 
     <div class="templates" hidden>
-      <bitty-8 data-connect="/bits/default.js"></bitty-8>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
       <script type="module" src="/bits.components.js"></script>
 [# TODO: Deprecate 'support' in favor of 'templates' #]
 [! block support !][! endblock !]
