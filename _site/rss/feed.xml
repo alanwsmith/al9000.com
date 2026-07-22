@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-22T07:56:53-04:00</updated>
+  <updated>2026-07-22T08:06:36-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -38,8 +38,8 @@
       <input type="range" data-key="h" data-r="initValue" data-s="updateValue" min="0" max="360" step="0.01" autocomplete="off" />
     </label>
     <label>
-      <div>Opacity</div>
-      <input type="range" data-key="o" data-r="initValue" data-s="updateValue" min="0" max="60" step="0.01" autocomplete="off" />
+      <div>Texture</div>
+      <input type="range" data-key="o" data-r="initValue" data-s="updateValue" min="0" max="100" step="0.01" autocomplete="off" />
     </label>
   </div>
 </div>
@@ -64,7 +64,7 @@ from changing at different page sizes.</p>
 color.</p>
 </li>
 <li>
-<p>The Opacity slider controls how strong
+<p>The Texture slider controls how strong
 the textured effect is.</p>
 </li>
 <li>
@@ -311,7 +311,7 @@ the timestamps I use look like this:</li>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/main.css?welrkj" />
 
     
 
@@ -4620,7 +4620,7 @@ with a bunch of random characters.</p>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/main.css?welrkj" />
 
     
 
