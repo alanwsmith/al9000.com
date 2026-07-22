@@ -153,7 +153,7 @@ export const b = {
 };
 
 export async function init() {
-  await b.savePageData("data", defaults);
+  // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
   b.trigger(
     "initBackgroundSliders initColorNameButtons initHueOffsetButtons initModeButtons initColorSliders",
@@ -221,6 +221,11 @@ export function initModeButtons(_, __, el) {
       b.render("modeButton", mode),
     );
   }
+}
+
+export async function resetDefaults() {
+  await b.clearPageData();
+  location.reload();
 }
 
 export async function setColorName(_, sender, ___) {
