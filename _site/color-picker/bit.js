@@ -1,7 +1,10 @@
 class State {
   constructor() {
     this.data = {
+      hueRotation: 60,
       activeMode: "light",
+      activeColorIndex: 0,
+      colorNames: ["base", "heading", "link", "accent", "warning"],
       config: {
         __L__: {
           __MIN__: 0,
@@ -27,6 +30,15 @@ class State {
             __C__: 0.1,
             __H__: 200,
           },
+          colors: [
+            {
+              __L__: 0.3,
+              __C__: 0.1,
+              __H_OFFSET__: 0,
+              __80__: 0.8,
+              __20__: 0.2,
+            },
+          ],
         },
         {
           __KEY__: "dark",
@@ -35,6 +47,15 @@ class State {
             __C__: 0.1,
             __H__: 30,
           },
+          colors: [
+            {
+              __L__: 0.8,
+              __C__: 0.2,
+              __H_OFFSET__: 0,
+              __80__: 0.8,
+              __20__: 0.2,
+            },
+          ],
         },
       ],
     };
@@ -62,8 +83,11 @@ export const b = {
 };
 
 export async function init() {
+  await b.savePageData(s.data, "data");
   s.data = await b.loadPageData("data", s.data);
-  b.trigger("initModeButtons initBackgroundSliders");
+  b.trigger(
+    "initBackgroundSliders initColorButtons initHueOffsetButtons initModeButtons",
+  );
 }
 
 export function initBackgroundSliders(_, __, el) {
@@ -83,6 +107,32 @@ export function initBackgroundSliders(_, __, el) {
   b.trigger("updateStyles");
 }
 
+export function initColorButtons(_, __, el) {
+  s.data.colorNames.forEach((name, index) => {
+    const subs = {
+      __INDEX__: index,
+      __COLOR__: name,
+    };
+    el.appendChild(b.render("colorButton", subs));
+  });
+}
+
+export function initHueOffsetButtons(_, __, el) {
+  for (let index = 0; index < (360 / s.data.hueRotation); index += 1) {
+    const subs = {
+      __INDEX__: index,
+    };
+    el.appendChild(b.render("hueOffsetButton", subs));
+  }
+  // s.data.colorNames.forEach((name, index) => {
+  //   const subs = {
+  //     __INDEX__: index,
+  //     __COLOR__: name,
+  //   };
+  //   el.appendChild(b.render("colorButton", subs));
+  // });
+}
+
 export function initModeButtons(_, __, el) {
   for (let mode of s.data.modes) {
     if (mode.__KEY__ === s.data.activeMode) {
@@ -94,6 +144,16 @@ export function initModeButtons(_, __, el) {
       b.render("modeButton", mode),
     );
   }
+}
+
+export async function setColor(_, sender, ___) {
+  s.data.activeColorIndex = sender.propAsInt("index");
+  await b.savePageData(s.data, "data");
+}
+
+export async function setHueOffset(_, sender, ___) {
+  // s.data.activeColorIndex = sender.propAsInt("index");
+  // await b.savePageData(s.data, "data");
 }
 
 export async function setMode(_, sender, ___) {

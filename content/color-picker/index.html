@@ -26,6 +26,8 @@ id = "01/n6/06/1c"
 == block content
 <div data-r="initModeButtons"></div>
 <div data-r="initBackgroundSliders"></div>
+<div data-r="initColorButtons"></div>
+<div data-r="initHueOffsetButtons"></div>
 == endblock 
 
 
@@ -54,5 +56,14 @@ id = "01/n6/06/1c"
     </label>
   </div>
 </script>
+
+<script type="text/html" data-template="colorButton">
+  <button data-s="setColor" data-index="__INDEX__">__COLOR__</button>
+</script>
+
+<script type="text/html" data-template="hueOffsetButton">
+  <button data-s="setHueOffset" data-index="__INDEX__">set</button>
+</script>
+
 
 == endblock
