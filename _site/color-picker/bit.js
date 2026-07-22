@@ -21,12 +21,14 @@ const defaults = {
       __MAX__: 360,
       __STEP__: 0.01,
     },
+    /*
     __T__: {
       __NAME__: "Texture",
       __MIN__: 0,
       __MAX__: 100,
       __STEP__: 0.1,
     },
+    */
   },
   modes: [
     {
@@ -154,6 +156,7 @@ export const b = {
 
 export async function init() {
   b.setLogLevel("DEBUG");
+  b.setLogLevel("WARN");
   // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
   b.trigger(
@@ -251,7 +254,7 @@ export async function setColorName(_, sender, ___) {
   const mode = s.getActiveMode();
   mode.activeColorIndex = sender.propAsInt("index");
   await b.savePageData("data", s.data);
-  b.trigger("setColorNameStyles updateHueOffset updateColorValue");
+  b.trigger("setColorNameStyles updateHueOffset updateColorValue updateCSS");
 }
 
 export function setColorNameStyles(_, __, el) {
@@ -328,11 +331,9 @@ export function updateColorValue(_, __, el) {
 
 export function updateCSS(_, __, ___) {
   b.warn("updateCSS");
-
   const activeMode = s.getActiveMode();
   const activeColorIndex = activeMode.activeColorIndex;
   const activeColor = activeMode.colors[activeColorIndex];
-  b.info(activeColor);
   for (let i = 0; i < 8; i += 1) {
     const key = `--ui-set-${i}`;
     const rotation = ((s.data.hueRotation * i) +
@@ -341,8 +342,6 @@ export function updateCSS(_, __, ___) {
       `oklch(${activeColor.__L__} ${activeColor.__C__} ${rotation})`;
     b.setCSS(key, value);
   }
-  b.info(activeMode);
-
   for (let mode of s.data.modes) {
     b.setCSS(
       `--${mode.__KEY__}--default-background-color`,
