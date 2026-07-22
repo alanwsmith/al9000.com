@@ -49,28 +49,15 @@
 
 </noscript>
 
-<bitty-8 data-connect="/stream-tools/overlays/ascii-bear-left/bit.js"></bitty-8>
-<div data-r="overlay"></div>
-<script type="text/html" data-template="svg">
-  <svg width="__PAGE_WIDTH__" height="__PAGE_HEIGHT__" xmlns="http://www.w3.org/2000/svg">
-    <mask id="mainMask">
-      <rect x="0" y="0" width="__PAGE_WIDTH__" height="__PAGE_HEIGHT__" fill="white" />
-      __WINDOWS__
-    </mask>
-    <image 
-      x="0" 
-      y="0" 
-      width="__PAGE_WIDTH__" 
-      height="__PAGE_HEIGHT__" 
-      href="&#x2f;stream-tools/backgrounds/chip-background-black-and-white.jpg" 
-      mask="url(#mainMask)" />
-  </svg>
-</script>
+    <div class="payload">
+      
 
-    
 
+    </div>
 
     <div class="template" hidden>
+      <bitty-8 data-connect="/bits/default.js"></bitty-8>
+      <script type="module" src="/bits/components.js"></script>
       
     </div>
   </body>

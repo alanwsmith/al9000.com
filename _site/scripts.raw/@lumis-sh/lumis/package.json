@@ -1,0 +1,114 @@
+{
+  "name": "@lumis-sh/lumis",
+  "version": "0.5.2",
+  "description": "Syntax Highlighter powered by Tree-sitter and Neovim themes",
+  "author": "Leandro Pereira",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandrocp/lumis.git",
+    "directory": "packages/javascript/lumis"
+  },
+  "bugs": "https://github.com/leandrocp/lumis/issues",
+  "homepage": "https://lumis.sh",
+  "keywords": [
+    "syntax-highlighting",
+    "code-highlighting",
+    "highlighter",
+    "tree-sitter",
+    "neovim",
+    "wasm"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "browser": "./dist/index.browser.js",
+      "node": "./dist/index.js",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.browser.js"
+    },
+    "./client": {
+      "types": "./dist/index.browser.d.ts",
+      "import": "./dist/index.browser.js",
+      "default": "./dist/index.browser.js"
+    },
+    "./node": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./formatters": {
+      "types": "./dist/formatters.d.ts",
+      "import": "./dist/formatters.js",
+      "require": "./dist/formatters.cjs"
+    },
+    "./formatters/html": {
+      "types": "./dist/formatters/html.d.ts",
+      "import": "./dist/formatters/html.js",
+      "require": "./dist/formatters/html.cjs"
+    },
+    "./formatters/ansi": {
+      "types": "./dist/formatters/ansi.d.ts",
+      "import": "./dist/formatters/ansi.js",
+      "require": "./dist/formatters/ansi.cjs"
+    },
+    "./langs/*": {
+      "types": "./dist/langs/*.d.ts",
+      "import": "./dist/langs/*.js",
+      "require": "./dist/langs/*.cjs"
+    },
+    "./bundles/*": {
+      "types": "./dist/bundles/*.d.ts",
+      "import": "./dist/bundles/*.js",
+      "require": "./dist/bundles/*.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "dependencies": {
+    "web-tree-sitter": "0.26.8"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.58.0",
+    "@lumis-sh/wasm-json": "^0.24.8",
+    "@types/node": "^25.5.0",
+    "oxfmt": "^0.43.0",
+    "oxlint": "1.58.0",
+    "oxlint-tsgolint": "0.19.0",
+    "smol-toml": "^1.6.1",
+    "tsup": "^8.3.0",
+    "tsx": "^4.19.0",
+    "typedoc": "^0.28.18",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.3",
+    "vitest": "^4.1.2",
+    "@lumis-sh/wasm-bundle-full": "0.0.7",
+    "@lumis-sh/themes": "0.2.2"
+  },
+  "scripts": {
+    "build:langs": "tsx scripts/build-langs.ts",
+    "precache-wasms": "tsx scripts/precache-wasms.ts",
+    "build:runtime-wasm": "tsx scripts/build-runtime-wasm.ts",
+    "build:generate": "pnpm run build:runtime-wasm && pnpm run build:langs",
+    "build": "pnpm run build:generate && tsup && node scripts/patch-web-tree-sitter-bundle.mjs",
+    "test": "vitest run --exclude test/conformance.test.ts",
+    "test:conformance": "vitest run test/conformance.test.ts",
+    "test:all-languages": "vitest run test/all-languages.test.ts",
+    "dev": "vite",
+    "docs": "typedoc",
+    "lint": "oxlint --type-aware src/",
+    "fmt": "oxfmt src/",
+    "fmt:check": "oxfmt --check src/"
+  }
+}

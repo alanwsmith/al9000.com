@@ -1,0 +1,1 @@
+export { default_alias_124 as default } from '../_tsup-dts-rollup.js';

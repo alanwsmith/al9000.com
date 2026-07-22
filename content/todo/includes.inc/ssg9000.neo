@@ -4,6 +4,21 @@
 -- prelude: Things to set up for my 
 static site generator. 
 
+[] Created an extension and interface
+to collect and edit bookmarks.
+
+[] Set up to capture alt text
+from images automatically. 
+
+[] Added VIM motions to the
+blog post editor. 
+
+[] Add caching to images to speed
+up build. 
+
+[] Add caching to files to speed
+up build. 
+
 [] Add an file extension check to 
 the ``image`` call so that it only
 picks ups jpgs, pngs, etc.
@@ -26,19 +41,8 @@ on the drive.
 of the binary into an ``admin`` folder
 next to the ``content`` folder.
 
-[] Automatically generating OG images
-for posts. They're filenames are "og-image-auto.jpg".
-They can be overridden by placing a file
-in the same directory named "og-image.jpg".
-
 [] Created CRUD tool for blog 
 entires on the admin page. 
-
-[] Added VIM motions to the
-blog post editor. 
-
-[] Set up to capture alt text
-from images automatically. 
 
 [] Created a CRUD tool for quotes
 on the admin page. 
@@ -46,18 +50,9 @@ on the admin page.
 [] Created a CRUD tool for journal 
 entries on the admin page. 
 
-[] Created an extension and interface
-to collect and edit bookmarks.
-
 [] CSS is validated with (https://github.com/w3c/css-validator)
 
 [] CSS is tree-shaken
-
-[] MIGHT_BE_DONE: 
-Deprecated ``highlight`` and replaced
-it with with ``highlight(CODE [OPTIONS])`` 
-so keyword args can be passed in
-for title, headings, etc.
 
 [] Split out the admin page/interface
 so it's on its own server/port.
@@ -78,5 +73,9 @@ with the web component.
 [x] Added functions for ``footnote`` and
 ``footref`` for linking back and forth between footnotes. 
 
+[x] Automatically generating OG images
+for posts. They're filenames are "og-image-auto.jpg".
+They can be overridden by placing a file
+in the same directory named "og-image.jpg".
 
 == endfilter

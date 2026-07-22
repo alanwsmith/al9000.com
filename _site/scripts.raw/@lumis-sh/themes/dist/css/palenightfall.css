@@ -1,0 +1,302 @@
+/* palenightfall
+ * revision: 25a1e7d43256834a671174e5d83edb57f7bec1e0
+ */
+.lumis {
+  color: #a6accd;
+  background-color: #252837;
+}
+.l-attribute {
+  color: #89ddff;
+}
+.l-attribute-builtin {
+  color: #bb80b3;
+}
+.l-boolean {
+  color: #f78c6c;
+}
+.l-character {
+  color: #f78c6c;
+}
+.l-character-special {
+  color: #bb80b3;
+}
+.l-comment {
+  color: #676e95;
+  font-style: italic;
+}
+.l-comment-documentation {
+  color: #676e95;
+  font-style: italic;
+}
+.l-comment-error {
+  color: #ff5370;
+}
+.l-comment-hint {
+  color: #676e95;
+  font-style: italic;
+}
+.l-comment-note {
+  color: #82aaff;
+}
+.l-comment-todo {
+  color: #f78c6c;
+}
+.l-comment-warning {
+  color: #f78c6c;
+}
+.l-constant {
+  color: #f78c6c;
+}
+.l-constant-builtin {
+  color: #f78c6c;
+}
+.l-constant-macro {
+  color: #f78c6c;
+}
+.l-constructor {
+  color: #ffcb6b;
+}
+.l-diff-delta {
+  color: #8cf8f7;
+}
+.l-diff-minus {
+  color: #ffc0b9;
+}
+.l-diff-plus {
+  color: #b3f6c0;
+}
+.l-function {
+  color: #82aaff;
+}
+.l-function-builtin {
+  color: #82aaff;
+}
+.l-function-call {
+  color: #82aaff;
+}
+.l-function-macro {
+  color: #82aaff;
+}
+.l-function-method {
+  color: #82aaff;
+}
+.l-function-method-call {
+  color: #82aaff;
+}
+.l-highlighted {
+  background-color: #232534;
+}
+.l-keyword {
+  color: #d49bfd;
+}
+.l-keyword-conditional {
+  color: #d49bfd;
+}
+.l-keyword-conditional-ternary {
+  color: #d49bfd;
+}
+.l-keyword-coroutine {
+  color: #d49bfd;
+}
+.l-keyword-debug {
+  color: #d49bfd;
+}
+.l-keyword-directive {
+  color: #d49bfd;
+}
+.l-keyword-directive-define {
+  color: #d49bfd;
+}
+.l-keyword-exception {
+  color: #d49bfd;
+}
+.l-keyword-export {
+  color: #d49bfd;
+}
+.l-keyword-function {
+  color: #d49bfd;
+}
+.l-keyword-import {
+  color: #d49bfd;
+}
+.l-keyword-modifier {
+  color: #d49bfd;
+}
+.l-keyword-operator {
+  color: #d49bfd;
+}
+.l-keyword-repeat {
+  color: #d49bfd;
+}
+.l-keyword-return {
+  color: #d49bfd;
+}
+.l-keyword-type {
+  color: #d49bfd;
+}
+.l-label {
+  color: #d49bfd;
+}
+.l-markup {
+  color: #bb80b3;
+}
+.l-markup-environment {
+  color: #bb80b3;
+}
+.l-markup-environment-name {
+  color: #bb80b3;
+}
+.l-markup-heading {
+  color: #ffcb6b;
+}
+.l-markup-heading-1 {
+  color: #ffcb6b;
+}
+.l-markup-heading-2 {
+  color: #ffcb6b;
+}
+.l-markup-heading-3 {
+  color: #ffcb6b;
+}
+.l-markup-heading-4 {
+  color: #ffcb6b;
+}
+.l-markup-heading-5 {
+  color: #ffcb6b;
+}
+.l-markup-heading-6 {
+  color: #ffcb6b;
+}
+.l-markup-italic {
+  font-style: italic;
+}
+.l-markup-link {
+  text-decoration: underline;
+}
+.l-markup-link-label {
+  text-decoration: underline;
+}
+.l-markup-link-url {
+  text-decoration: underline;
+}
+.l-markup-list {
+  color: #bb80b3;
+}
+.l-markup-list-checked {
+  color: #bb80b3;
+}
+.l-markup-list-unchecked {
+  color: #bb80b3;
+}
+.l-markup-math {
+  color: #bb80b3;
+}
+.l-markup-quote {
+  color: #bb80b3;
+}
+.l-markup-raw {
+  color: #bb80b3;
+}
+.l-markup-raw-block {
+  color: #bb80b3;
+}
+.l-markup-strikethrough {
+  text-decoration: line-through;
+}
+.l-markup-strong {
+  font-weight: bold;
+}
+.l-markup-underline {
+  text-decoration: underline;
+}
+.l-module {
+  color: #ffcb6b;
+}
+.l-module-builtin {
+  color: #bb80b3;
+}
+.l-number {
+  color: #f78c6c;
+}
+.l-number-float {
+  color: #f78c6c;
+}
+.l-operator {
+  color: #89ddff;
+}
+.l-property {
+  color: #a6accd;
+}
+.l-punctuation-bracket {
+  color: #89ddff;
+}
+.l-punctuation-delimiter {
+  color: #89ddff;
+}
+.l-punctuation-special {
+  color: #bb80b3;
+}
+.l-string {
+  color: #c3e88d;
+}
+.l-string-documentation {
+  color: #c3e88d;
+}
+.l-string-escape {
+  color: #bb80b3;
+}
+.l-string-regexp {
+  color: #bb80b3;
+}
+.l-string-special {
+  color: #bb80b3;
+}
+.l-string-special-path {
+  color: #bb80b3;
+}
+.l-string-special-symbol {
+  color: #bb80b3;
+}
+.l-string-special-url {
+  text-decoration: underline;
+}
+.l-tag {
+  color: #ffcb6b;
+}
+.l-tag-attribute {
+  color: #a6accd;
+  background-color: #252837;
+}
+.l-tag-builtin {
+  color: #bb80b3;
+}
+.l-tag-delimiter {
+  color: #7982b4;
+}
+.l-type {
+  color: #ffcb6b;
+}
+.l-type-builtin {
+  color: #bb80b3;
+}
+.l-type-definition {
+  color: #ffcb6b;
+}
+.l-variable {
+  color: #a6accd;
+  background-color: #252837;
+}
+.l-variable-builtin {
+  color: #f78c6c;
+}
+.l-variable-member {
+  color: #a6accd;
+  background-color: #252837;
+}
+.l-variable-parameter {
+  color: #a6accd;
+  background-color: #252837;
+}
+.l-variable-parameter-builtin {
+  color: #bb80b3;
+}

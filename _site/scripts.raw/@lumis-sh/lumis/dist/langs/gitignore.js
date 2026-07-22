@@ -1,0 +1,58 @@
+// langs/gitignore.ts
+var language = {
+  id: "gitignore",
+  aliases: [],
+  highlights: `; This file is auto-generated. Do not edit.
+(comment) @comment 
+
+(pattern_char) @string.special.path
+
+[
+  (directory_separator)
+  (directory_separator_escaped)
+] @punctuation.delimiter
+
+[
+  (wildcard_char_single)
+  (wildcard_chars)
+  (wildcard_chars_allow_slash)
+] @character.special
+
+[
+  (pattern_char_escaped)
+  (bracket_char_escaped)
+] @string.escape
+
+(negation) @punctuation.special
+
+(bracket_negation) @operator
+
+; bracket expressions
+[
+  "["
+  "]"
+] @punctuation.bracket
+
+(bracket_char) @constant
+
+(bracket_range
+  "-" @operator)
+
+(bracket_char_class) @constant.builtin`,
+  injections: `; This file is auto-generated. Do not edit.
+((comment) @injection.content
+  (#set! injection.language "comment"))`,
+  brackets: `; This file is auto-generated. Do not edit.
+("(" @open
+  ")" @close)
+
+("[" @open
+  "]" @close)
+
+("{" @open
+  "}" @close)`,
+  wasm: { packageName: "@lumis-sh/wasm-gitignore", name: "tree-sitter-gitignore", version: "0.26" }
+};
+var gitignore_default = language;
+
+export { gitignore_default as default };

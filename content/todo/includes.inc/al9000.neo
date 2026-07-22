@@ -4,6 +4,9 @@
 -- h2: al9000.com
 -- prelude: Stuff to do on the site.
 
+[] Add PageFind to the site. 
+https://pagefind.app/
+
 [] Update youtube-player web component
 to use ``data-*`` attributes. 
 

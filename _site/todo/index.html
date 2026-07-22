@@ -46,7 +46,7 @@
 
 </noscript>
 
-    <div class="height-wrapper">
+    <div class="payload">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
 <noscript>
   <p>
@@ -82,6 +82,9 @@ My dev to do list.
 -- todo checklist
 -- h2: al9000.com
 -- prelude: Stuff to do on the site.
+
+[] Add PageFind to the site. 
+https:&#x2f;&#x2f;pagefind.app&#x2f;
 
 [] Update youtube-player web component
 to use ``data-*`` attributes. 
@@ -159,6 +162,21 @@ to all pages with titles so
 -- prelude: Things to set up for my 
 static site generator. 
 
+[] Created an extension and interface
+to collect and edit bookmarks.
+
+[] Set up to capture alt text
+from images automatically. 
+
+[] Added VIM motions to the
+blog post editor. 
+
+[] Add caching to images to speed
+up build. 
+
+[] Add caching to files to speed
+up build. 
+
 [] Add an file extension check to 
 the ``image`` call so that it only
 picks ups jpgs, pngs, etc.
@@ -181,19 +199,8 @@ on the drive.
 of the binary into an ``admin`` folder
 next to the ``content`` folder.
 
-[] Automatically generating OG images
-for posts. They&#x27;re filenames are &quot;og-image-auto.jpg&quot;.
-They can be overridden by placing a file
-in the same directory named &quot;og-image.jpg&quot;.
-
 [] Created CRUD tool for blog 
 entires on the admin page. 
-
-[] Added VIM motions to the
-blog post editor. 
-
-[] Set up to capture alt text
-from images automatically. 
 
 [] Created a CRUD tool for quotes
 on the admin page. 
@@ -201,18 +208,9 @@ on the admin page.
 [] Created a CRUD tool for journal 
 entries on the admin page. 
 
-[] Created an extension and interface
-to collect and edit bookmarks.
-
 [] CSS is validated with (https:&#x2f;&#x2f;github.com&#x2f;w3c&#x2f;css-validator)
 
 [] CSS is tree-shaken
-
-[] MIGHT_BE_DONE: 
-Deprecated ``highlight`` and replaced
-it with with ``highlight(CODE [OPTIONS])`` 
-so keyword args can be passed in
-for title, headings, etc.
 
 [] Split out the admin page&#x2f;interface
 so it&#x27;s on its own server&#x2f;port.
@@ -233,6 +231,10 @@ with the web component.
 [x] Added functions for ``footnote`` and
 ``footref`` for linking back and forth between footnotes. 
 
+[x] Automatically generating OG images
+for posts. They&#x27;re filenames are &quot;og-image-auto.jpg&quot;.
+They can be overridden by placing a file
+in the same directory named &quot;og-image.jpg&quot;.
 
 
 -- checklist
@@ -352,7 +354,7 @@ id = "01/n4/tg/ke"
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>
-      <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
+      <script type="module" src="/bits.components.js"></script>
 
 
 

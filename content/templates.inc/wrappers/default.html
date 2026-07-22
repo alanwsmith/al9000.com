@@ -24,8 +24,8 @@
   <body class="[! block body_class !]page[! endblock !]">
     == include "/templates.inc/noscript/default.html"
 
-    <div class="height-wrapper">
-      [! block body !][! endblock !]
+    <div class="payload">
+      [! block payload !][! endblock !]
     </div>
 
       [! if p.created !]
@@ -37,7 +37,7 @@ id = "[@ id_from_timestamp(p.created["$__toml_private_datetime"]) @]"
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>
-      <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
+      <script type="module" src="/bits.components.js"></script>
 [# TODO: Deprecate 'support' in favor of 'templates' #]
 [! block support !][! endblock !]
 [! block templates !][! endblock !]
