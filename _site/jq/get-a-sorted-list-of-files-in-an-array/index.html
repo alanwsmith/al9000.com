@@ -46,68 +46,8 @@
 
 </noscript>
 
-    <div class="height-wrapper">
-      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Some content will be fine, but some things won't work.
-  </p>
-
-</noscript>
-  <div class="top-nav">
-    <a href="/">home</a>
-    <a href="/tools">tools</a>
-    <a href="/rss/">rss</a> |
-    <a href="https://bittyjs.com/">bitty</a>
-  </div>
-
-
-</header>
-
-
-<div class="subnav default-wrapper">
-  <a href="/rust/">jq</a>
-</div>
-
-<main class="default-wrapper default-flow">
-
-  <hgroup>
-      <h1>Get a Sorted Array of File Names with jq</h1>
-        <div class="date">April 2026</div>
-  </hgroup>
-
-
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
-<span class="line-marker" data-line="2"></span></span>
-<span class="line-marker" data-line="3"></span><span class="meta function-call shell"><span class="variable function shell">find</span></span><span class="meta function-call arguments shell"> ./samples<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>type</span> f<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>maxdepth</span> 1<span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>exec</span> basename <span class="meta group expansion brace shell"><span class="punctuation section expansion brace begin shell">{</span><span class="punctuation section expansion brace end shell">}</span></span> <span class="constant character escape shell">\;</span> <span class="punctuation separator continuation line shell">\
-<span class="line-marker" data-line="4"></span></span></span>  <span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">sort</span></span><span class="meta function-call arguments shell"> <span class="punctuation separator continuation line shell">\
-<span class="line-marker" data-line="5"></span></span></span>  <span class="keyword operator logical pipe shell">|</span> <span class="meta function-call shell"><span class="variable function shell">jq</span></span><span class="meta function-call arguments shell"><span class="variable parameter option shell"><span class="punctuation definition parameter shell"> -</span>Rs</span> <span class="punctuation separator continuation line shell">\
-<span class="line-marker" data-line="6"></span></span>  <span class="string quoted single shell"><span class="punctuation definition string begin shell">&#39;</span>split(&quot;\n&quot;) | map(select(length &gt; 0)) | {files: .}<span class="punctuation definition string end shell">&#39;</span></span> <span class="punctuation separator continuation line shell">\
-<span class="line-marker" data-line="7"></span></span>  <span class="keyword operator assignment redirection shell">&gt;</span> output.json</span></span></pre></div>
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source json"><span class="meta structure dictionary json"><span class="punctuation section dictionary begin json">{</span>
-<span class="line-marker" data-line="2"></span>  <span class="meta structure dictionary key json"><span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>files<span class="punctuation definition string end json">&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json">:</span> <span class="meta structure array json"><span class="punctuation section array begin json">[</span>
-<span class="line-marker" data-line="3"></span>    <span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>alfa.txt<span class="punctuation definition string end json">&quot;</span></span><span class="punctuation separator array json">,</span>
-<span class="line-marker" data-line="4"></span>    <span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>bravo.txt<span class="punctuation definition string end json">&quot;</span></span><span class="punctuation separator array json">,</span>
-<span class="line-marker" data-line="5"></span>    <span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>charlie.txt<span class="punctuation definition string end json">&quot;</span></span><span class="punctuation separator array json">,</span>
-<span class="line-marker" data-line="6"></span>    <span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>delta.txt<span class="punctuation definition string end json">&quot;</span></span><span class="punctuation separator array json">,</span>
-<span class="line-marker" data-line="7"></span>    <span class="string quoted double json"><span class="punctuation definition string begin json">&quot;</span>echo.txt<span class="punctuation definition string end json">&quot;</span></span>
-<span class="line-marker" data-line="8"></span>  <span class="punctuation section array end json">]</span></span>
-<span class="line-marker" data-line="9"></span></span><span class="punctuation section dictionary end json">}</span></span></span></pre></div>
-
-</main>
-
-<footer class="default-wrapper xxlarge-block-padding xxxlarge-top-margin">
-  <div class="small-font-size text-align-center">
-    from <a href="https://bsky.app/profile/alanwsmith.com">alan w smith</a>
-  </div>
-  <div class="small-font-size text-align-center">
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-</footer>
-
-
-
+    <div class="payload">
+      
     </div>
 
       
@@ -119,7 +59,7 @@ id = "01/mx/kc/0r"
 
     <div class="templates" hidden>
       <bitty-8 data-connect="/bits/default.js"></bitty-8>
-      <script type="module" src="/youtube-player/scripts.raw/youtube-player-v1.js"></script>
+      <script type="module" src="/bits.components.js"></script>
 
 
 

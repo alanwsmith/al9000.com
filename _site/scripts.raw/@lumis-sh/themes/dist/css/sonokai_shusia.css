@@ -1,0 +1,376 @@
+/* sonokai_shusia
+ * revision: b023c5280b16fe2366f5e779d8d2756b3e5ee9c3
+ */
+.lumis {
+  color: #e3e1e4;
+  background-color: #2d2a2e;
+}
+.l-attribute {
+  color: #7accd7;
+}
+.l-attribute-builtin {
+  color: #ab9df2;
+}
+.l-boolean {
+  color: #ab9df2;
+}
+.l-character {
+  color: #e5c463;
+}
+.l-character-special {
+  color: #ab9df2;
+}
+.l-comment {
+  color: #848089;
+  font-style: italic;
+}
+.l-comment-documentation {
+  color: #848089;
+  font-style: italic;
+}
+.l-comment-error {
+  color: #2d2a2e;
+  background-color: #f85e84;
+  font-weight: bold;
+}
+.l-comment-hint {
+  color: #848089;
+  font-style: italic;
+}
+.l-comment-note {
+  color: #2d2a2e;
+  background-color: #9ecd6f;
+  font-weight: bold;
+}
+.l-comment-todo {
+  color: #2d2a2e;
+  background-color: #7accd7;
+  font-weight: bold;
+}
+.l-comment-warning {
+  color: #2d2a2e;
+  background-color: #e5c463;
+  font-weight: bold;
+}
+.l-constant {
+  color: #e3e1e4;
+}
+.l-constant-builtin {
+  color: #ab9df2;
+}
+.l-constant-macro {
+  color: #ab9df2;
+}
+.l-constructor {
+  color: #9ecd6f;
+}
+.l-constructor-lua {
+  color: #e3e1e4;
+}
+.l-constructor-tsx {
+  color: #7accd7;
+}
+.l-diff-delta {
+  color: #7accd7;
+}
+.l-diff-minus {
+  color: #f85e84;
+}
+.l-diff-plus {
+  color: #9ecd6f;
+}
+.l-error {
+  color: #f85e84;
+}
+.l-function {
+  color: #9ecd6f;
+}
+.l-function-builtin {
+  color: #9ecd6f;
+}
+.l-function-call {
+  color: #9ecd6f;
+}
+.l-function-macro {
+  color: #9ecd6f;
+}
+.l-function-method {
+  color: #9ecd6f;
+}
+.l-function-method-call {
+  color: #9ecd6f;
+}
+.l-highlighted {
+  background-color: #37343a;
+}
+.l-keyword {
+  color: #f85e84;
+}
+.l-keyword-conditional {
+  color: #f85e84;
+}
+.l-keyword-conditional-ternary {
+  color: #f85e84;
+}
+.l-keyword-coroutine {
+  color: #f85e84;
+}
+.l-keyword-debug {
+  color: #e5c463;
+}
+.l-keyword-directive {
+  color: #f85e84;
+}
+.l-keyword-directive-define {
+  color: #f85e84;
+}
+.l-keyword-exception {
+  color: #f85e84;
+}
+.l-keyword-export {
+  color: #f85e84;
+}
+.l-keyword-function {
+  color: #f85e84;
+}
+.l-keyword-import {
+  color: #f85e84;
+}
+.l-keyword-modifier {
+  color: #f85e84;
+}
+.l-keyword-operator {
+  color: #f85e84;
+}
+.l-keyword-repeat {
+  color: #f85e84;
+}
+.l-keyword-return {
+  color: #f85e84;
+}
+.l-keyword-type {
+  color: #f85e84;
+}
+.l-label {
+  color: #f85e84;
+}
+.l-markup {
+  color: #ab9df2;
+}
+.l-markup-environment {
+  color: #ab9df2;
+}
+.l-markup-environment-name {
+  color: #7accd7;
+}
+.l-markup-heading {
+  color: #f85e84;
+  font-weight: bold;
+}
+.l-markup-heading-1 {
+  color: #f85e84;
+  font-weight: bold;
+}
+.l-markup-heading-2 {
+  color: #f85e84;
+  font-weight: bold;
+}
+.l-markup-heading-2-markdown {
+  color: #ef9062;
+  font-weight: bold;
+}
+.l-markup-heading-3 {
+  color: #f85e84;
+  font-weight: bold;
+}
+.l-markup-heading-3-markdown {
+  color: #e5c463;
+  font-weight: bold;
+}
+.l-markup-heading-4 {
+  color: #f85e84;
+  font-weight: bold;
+}
+.l-markup-heading-4-markdown {
+  color: #9ecd6f;
+  font-weight: bold;
+}
+.l-markup-heading-5 {
+  color: #f85e84;
+  font-weight: bold;
+}
+.l-markup-heading-5-markdown {
+  color: #7accd7;
+  font-weight: bold;
+}
+.l-markup-heading-6 {
+  color: #f85e84;
+  font-weight: bold;
+}
+.l-markup-heading-6-markdown {
+  color: #ab9df2;
+  font-weight: bold;
+}
+.l-markup-italic {
+  font-style: italic;
+}
+.l-markup-link {
+  color: #ef9062;
+}
+.l-markup-link-label {
+  color: #ab9df2;
+}
+.l-markup-link-url {
+  color: #7accd7;
+  text-decoration: underline;
+}
+.l-markup-list {
+  color: #e5c463;
+}
+.l-markup-list-checked {
+  color: #9ecd6f;
+}
+.l-markup-list-unchecked {
+  color: #848089;
+}
+.l-markup-math {
+  color: #e5c463;
+}
+.l-markup-quote {
+  color: #848089;
+}
+.l-markup-raw {
+  color: #e5c463;
+}
+.l-markup-raw-block {
+  color: #e5c463;
+}
+.l-markup-strikethrough {
+  text-decoration: line-through;
+}
+.l-markup-strong {
+  font-weight: bold;
+}
+.l-markup-underline {
+  text-decoration: underline;
+}
+.l-module {
+  color: #7accd7;
+}
+.l-module-builtin {
+  color: #ab9df2;
+}
+.l-namespace {
+  color: #7accd7;
+}
+.l-number {
+  color: #ab9df2;
+}
+.l-number-float {
+  color: #ab9df2;
+}
+.l-operator {
+  color: #f85e84;
+}
+.l-property {
+  color: #ef9062;
+}
+.l-punctuation-bracket {
+  color: #848089;
+}
+.l-punctuation-bracket-rainbow-1 {
+  color: #f85e84;
+}
+.l-punctuation-bracket-rainbow-2 {
+  color: #e5c463;
+}
+.l-punctuation-bracket-rainbow-3 {
+  color: #7accd7;
+}
+.l-punctuation-bracket-rainbow-4 {
+  color: #ef9062;
+}
+.l-punctuation-bracket-rainbow-5 {
+  color: #9ecd6f;
+}
+.l-punctuation-bracket-rainbow-6 {
+  color: #ab9df2;
+}
+.l-punctuation-delimiter {
+  color: #848089;
+}
+.l-punctuation-special {
+  color: #e5c463;
+}
+.l-string {
+  color: #e5c463;
+}
+.l-string-documentation {
+  color: #e5c463;
+}
+.l-string-escape {
+  color: #9ecd6f;
+}
+.l-string-regex {
+  color: #9ecd6f;
+}
+.l-string-regexp {
+  color: #9ecd6f;
+}
+.l-string-special {
+  color: #ab9df2;
+}
+.l-string-special-path {
+  color: #ab9df2;
+}
+.l-string-special-symbol {
+  color: #e3e1e4;
+}
+.l-string-special-symbol-elixir {
+  color: #ef9062;
+}
+.l-string-special-symbol-ruby {
+  color: #ef9062;
+}
+.l-string-special-url {
+  text-decoration: underline;
+}
+.l-tag {
+  color: #7accd7;
+}
+.l-tag-attribute {
+  color: #9ecd6f;
+}
+.l-tag-builtin {
+  color: #ab9df2;
+}
+.l-tag-delimiter {
+  color: #f85e84;
+}
+.l-tag-tsx {
+  color: #ef9062;
+}
+.l-type {
+  color: #7accd7;
+}
+.l-type-builtin {
+  color: #7accd7;
+}
+.l-type-definition {
+  color: #7accd7;
+}
+.l-variable {
+  color: #e3e1e4;
+}
+.l-variable-builtin {
+  color: #ab9df2;
+}
+.l-variable-member {
+  color: #ef9062;
+}
+.l-variable-parameter {
+  color: #e3e1e4;
+}
+.l-variable-parameter-builtin {
+  color: #ab9df2;
+}

@@ -1,4 +1,10 @@
+// import { highlight } from "https://esm.sh/@lumis-sh/lumis";
+// import { htmlInline } from "https://esm.sh/@lumis-sh/lumis/formatters";
+// import javascript from "https://esm.sh/@lumis-sh/lumis/langs/javascript";
+// import dracula from "https://esm.sh/@lumis-sh/themes/dracula";
+
 export const b = { init: "init" };
+
 const s = { data: {}, svg: null };
 
 export async function init(_, __, ___) {
@@ -27,7 +33,7 @@ export async function updateValue(_, sender, ___) {
   b.debounce("css", "updateCSS", 80);
 }
 
-export function updateCSS(_, __, el) {
+export async function updateCSS(_, __, el) {
   s.svg = encodeURIComponent(
     b.render("mainSVG", {
       __OPACITY__: `${s.data.o}%`,
@@ -46,56 +52,19 @@ export function updateCSS(_, __, el) {
     __h__: s.data.h,
     __url__: cssURL,
   };
-  el.replaceChildren(b.render("mainCSS", subs));
+
+  // const x = await highlight(
+  //   "const x = 1",
+  //   htmlInline({ language: javascript, theme: dracula }),
+  // );
+
+  el.replaceChildren(
+    b.render("mainCSS", subs),
+  );
+  //el.innerHTML = "asdfasdf";
+  // el.innerHTML = await highlight(
+  //   `console.log("here")`,
+  //   // b.render("mainCSS", subs).outerHTML,
+  //   htmlInline({ language: javascript, theme: dracula }),
+  // );
 }
-
-//    `url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E %3Cfilter id='noiseFilter'%3E %3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='2' result='noise' /%3E %3CfeColorMatrix type='saturate' values='0' result='grayscale' /%3E %3CfeComponentTransfer%3E %3CfeFuncA in='grayscale' type='linear' slope='0.4' result='updated' /%3E %3C/feComponentTransfer%3E %3CfeMerge%3E %3CfeMergeNode in='noise' /%3E %3CfeMergeNode in='updated' /%3E %3C/feMerge%3E %3C/filter%3E %3Crect width='100%25' height='100%25' opacity='0.17' filter='url(%23noiseFilter)'/%3E %3C/svg%3E")`,
-
-// export function chroma(_, sender, ___) {
-//   b.setCSS("--svg-bg-chroma", sender.valueAsFloat());
-//   s.data.chroma = sender.valueAsFloat();
-// }
-
-// export function example(_, __, el) {
-//   sampleSVG = b.render("mainSVG", {
-//     __OPACITY__: `${opacity_value}%`,
-//   });
-//   el.replaceChildren(sampleSVG);
-//   b.trigger("updateSVG");
-// }
-
-// export function hue(_, sender, ___) {
-//   b.setCSS("--svg-bg-hue", sender.valueAsFloat());
-//   s.data.hue = sender.valueAsFloat();
-// }
-
-// export function initChroma(_, __, el) {
-//   el.value = s.data.chroma;
-// }
-
-// export function initHue(_, __, el) {
-//   el.value = s.data.hue;
-// }
-
-// export function initLightness(_, __, el) {
-//   el.value = s.data.lightness;
-// }
-
-// export function initOpacity(_, __, el) {
-//   el.value = s.data.opacity;
-// }
-
-// export function lightness(_, sender, ___) {
-//   b.setCSS("--svg-bg-lightness", sender.valueAsFloat());
-//   s.data.lightness = sender.valueAsFloat();
-// }
-
-// export function opacity(_, sender, ___) {
-//   opacity_value = sender.valueAsFloat();
-//   // s.data.opacity = sender.valueAsFloat();
-//   b.trigger("example");
-// }
-
-// export function updateSVG(_, __, el) {
-//   el.value = "asdf";
-// }
