@@ -1,18 +1,13 @@
-// import { highlight } from "https://esm.sh/@lumis-sh/lumis";
-// import { htmlInline } from "https://esm.sh/@lumis-sh/lumis/formatters";
-// import javascript from "https://esm.sh/@lumis-sh/lumis/langs/javascript";
-// import dracula from "https://esm.sh/@lumis-sh/themes/dracula";
-
 export const b = { init: "init" };
 
 const s = { data: {}, svg: null };
 
 export async function init(_, __, ___) {
   const defaults = {
-    l: 0.2,
-    c: 0.2,
-    h: 220.0,
-    o: 4.0,
+    l: 0.85,
+    c: 0.078,
+    h: 280.0,
+    o: 70,
   };
   s.data = await b.loadPageData("data", defaults);
   b.trigger("initValue updateCSS");
@@ -53,18 +48,7 @@ export async function updateCSS(_, __, el) {
     __url__: cssURL,
   };
 
-  // const x = await highlight(
-  //   "const x = 1",
-  //   htmlInline({ language: javascript, theme: dracula }),
-  // );
-
   el.replaceChildren(
     b.render("mainCSS", subs),
   );
-  //el.innerHTML = "asdfasdf";
-  // el.innerHTML = await highlight(
-  //   `console.log("here")`,
-  //   // b.render("mainCSS", subs).outerHTML,
-  //   htmlInline({ language: javascript, theme: dracula }),
-  // );
 }
