@@ -38,6 +38,34 @@ class State {
               __80__: 0.8,
               __20__: 0.2,
             },
+            {
+              __L__: 0.3,
+              __C__: 0.1,
+              __H_OFFSET__: 0,
+              __80__: 0.8,
+              __20__: 0.2,
+            },
+            {
+              __L__: 0.3,
+              __C__: 0.1,
+              __H_OFFSET__: 0,
+              __80__: 0.8,
+              __20__: 0.2,
+            },
+            {
+              __L__: 0.3,
+              __C__: 0.1,
+              __H_OFFSET__: 0,
+              __80__: 0.8,
+              __20__: 0.2,
+            },
+            {
+              __L__: 0.3,
+              __C__: 0.1,
+              __H_OFFSET__: 0,
+              __80__: 0.8,
+              __20__: 0.2,
+            },
           ],
         },
         {
@@ -48,6 +76,34 @@ class State {
             __H__: 30,
           },
           colors: [
+            {
+              __L__: 0.8,
+              __C__: 0.2,
+              __H_OFFSET__: 0,
+              __80__: 0.8,
+              __20__: 0.2,
+            },
+            {
+              __L__: 0.8,
+              __C__: 0.2,
+              __H_OFFSET__: 0,
+              __80__: 0.8,
+              __20__: 0.2,
+            },
+            {
+              __L__: 0.8,
+              __C__: 0.2,
+              __H_OFFSET__: 0,
+              __80__: 0.8,
+              __20__: 0.2,
+            },
+            {
+              __L__: 0.8,
+              __C__: 0.2,
+              __H_OFFSET__: 0,
+              __80__: 0.8,
+              __20__: 0.2,
+            },
             {
               __L__: 0.8,
               __C__: 0.2,
@@ -83,10 +139,10 @@ export const b = {
 };
 
 export async function init() {
-  await b.savePageData(s.data, "data");
+  // await b.savePageData(s.data, "data");
   s.data = await b.loadPageData("data", s.data);
   b.trigger(
-    "initBackgroundSliders initColorButtons initHueOffsetButtons initModeButtons",
+    "initBackgroundSliders initColorButtons initHueOffsetButtons initModeButtons initColorSliders",
   );
 }
 
@@ -117,6 +173,17 @@ export function initColorButtons(_, __, el) {
   });
 }
 
+export function initColorSliders(_, __, el) {
+  const color = s.activeMode().colors[s.data.activeColorIndex];
+  const subs = {
+    __L__: color.__L__,
+    __C__: color.__C__,
+    __80__: color.__80__,
+    __20__: color.__20__,
+  };
+  el.appendChild(b.render("colorSliders", subs));
+}
+
 export function initHueOffsetButtons(_, __, el) {
   for (let index = 0; index < (360 / s.data.hueRotation); index += 1) {
     const subs = {
@@ -124,13 +191,6 @@ export function initHueOffsetButtons(_, __, el) {
     };
     el.appendChild(b.render("hueOffsetButton", subs));
   }
-  // s.data.colorNames.forEach((name, index) => {
-  //   const subs = {
-  //     __INDEX__: index,
-  //     __COLOR__: name,
-  //   };
-  //   el.appendChild(b.render("colorButton", subs));
-  // });
 }
 
 export function initModeButtons(_, __, el) {
@@ -146,9 +206,18 @@ export function initModeButtons(_, __, el) {
   }
 }
 
-export async function setColor(_, sender, ___) {
+export async function setColorName(_, sender, ___) {
   s.data.activeColorIndex = sender.propAsInt("index");
   await b.savePageData(s.data, "data");
+}
+
+export async function setColorValue(_, sender, ___) {
+  await requestAnimationFrame(async () => {
+    const mode = s.activeMode();
+    mode.colors[s.data.activeColorIndex][`__${sender.prop("key")}__`] = sender
+      .valueAsFloat();
+    await b.savePageData(s.data, "data");
+  });
 }
 
 export async function setHueOffset(_, sender, ___) {

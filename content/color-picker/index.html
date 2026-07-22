@@ -28,6 +28,7 @@ id = "01/n6/06/1c"
 <div data-r="initBackgroundSliders"></div>
 <div data-r="initColorButtons"></div>
 <div data-r="initHueOffsetButtons"></div>
+<div data-r="initColorSliders"></div>
 == endblock 
 
 
@@ -58,12 +59,61 @@ id = "01/n6/06/1c"
 </script>
 
 <script type="text/html" data-template="colorButton">
-  <button data-s="setColor" data-index="__INDEX__">__COLOR__</button>
+  <button data-s="setColorName" data-index="__INDEX__">__COLOR__</button>
 </script>
 
 <script type="text/html" data-template="hueOffsetButton">
   <button data-s="setHueOffset" data-index="__INDEX__">set</button>
 </script>
+
+
+<script type="text/html" data-template="colorSliders">
+<div><label>L</label>
+  <input 
+    type="range" 
+    data-s="setColorValue" 
+    data-key="L"
+    min="0"
+    max="1.0"
+    step="0.001"
+    value="__L__"
+  />
+</div>
+<div><label>80</label>
+  <input 
+    type="range" 
+    data-s="setColorValue" 
+    data-key="80"
+    min="0"
+    max="1.0"
+    step="0.001"
+    value="__80__"
+  />
+</div>
+<div><label>20</label>
+  <input 
+    type="range" 
+    data-s="setColorValue" 
+    data-key="20"
+    min="0"
+    max="1.0"
+    step="0.001"
+    value="__20__"
+  />
+</div>
+<div><label>C</label>
+  <input 
+    type="range" 
+    data-s="setColorValue" 
+    data-key="C"
+    min="0"
+    max="0.3"
+    step="0.0001"
+    value="__C__"
+  />
+</div>
+</script>
+
 
 
 == endblock
