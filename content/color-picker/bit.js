@@ -228,18 +228,25 @@ export async function setHueOffset(_, sender, ___) {
 export async function setMode(_, sender, ___) {
   s.data.activeMode = sender.prop("key");
   await b.savePageData(s.data, "data");
+  b.trigger("updateColorValue updateBackgroundValue");
 }
 
-export function setParam(_, sender, ___) {
-  requestAnimationFrame(() => {
-    b.send(sender, "updateParam");
+export async function setParam(_, sender, ___) {
+  await requestAnimationFrame(async () => {
+    s.setActiveValue(sender.prop("key"), sender.valueAsFloat());
+    await b.savePageData(s.data, "data");
+    b.trigger("updateStyles");
   });
 }
 
-export async function updateParam(payload, __, ___) {
-  s.setActiveValue(payload.prop("key"), payload.valueAsFloat());
-  await b.savePageData(s.data, "data");
-  b.trigger("updateStyles");
+export function updateBackgroundValue(_, __, el) {
+  const mode = s.activeMode();
+  el.value = mode.background[`${el.prop("key")}`];
+}
+
+export function updateColorValue(_, __, el) {
+  const mode = s.activeMode();
+  el.value = mode.colors[s.data.activeColorIndex][`__${el.prop("key")}__`];
 }
 
 export function updateStyles(_, __, ___) {
