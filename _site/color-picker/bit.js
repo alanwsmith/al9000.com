@@ -208,6 +208,7 @@ export function initHueOffsetButtons(_, __, el) {
     };
     el.appendChild(b.render("hueOffsetButton", subs));
   }
+  b.trigger("updateHueOffset");
 }
 
 export function initModeButtons(_, __, el) {
@@ -254,13 +255,23 @@ export async function setColorValue(_, sender, ___) {
 }
 
 export async function setHueOffset(_, sender, el) {
-  if (el.propAsInt("index") === sender.propAsInt("index")) {
+  const mode = s.getActiveMode();
+  mode.colors[mode.activeColorIndex][`__H_OFFSET__`] = sender.propAsInt(
+    "index",
+  );
+  await b.savePageData("data", s.data);
+  b.trigger("updateHueOffset");
+}
+
+export function updateHueOffset(_, __, el) {
+  const mode = s.getActiveMode();
+  if (
+    el.propAsInt("index") === mode.colors[mode.activeColorIndex][`__H_OFFSET__`]
+  ) {
     el.classList.add("active");
-    await b.savePageData("data", s.data);
   } else {
     el.classList.remove("active");
   }
-  b.trigger("updateColorValue");
 }
 
 export async function setMode(_, sender, ___) {

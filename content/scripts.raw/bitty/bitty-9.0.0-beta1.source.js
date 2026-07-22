@@ -52,6 +52,7 @@ class BittyJs extends HTMLElement {
         incoming.b._marks = {};
         incoming.b.svgs = {};
         incoming.b.text = {};
+        incoming.b._logLevel = 1;
         if (incoming.b.templates === undefined) {
           incoming.b.templates = {};
         }
@@ -287,6 +288,16 @@ class BittyJs extends HTMLElement {
     }, ms);
   }
 
+  _debug(message, ev, sender, el) {
+    if (this.b._logLevel >= 2) {
+      if (typeof this.b.handleDebug === "function") {
+        this.b.handleDebug(message, ev, sender, el);
+      } else {
+        console.debug(message);
+      }
+    }
+  }
+
   _dedupe(array) {
     return [...new Set(array)];
   }
@@ -326,6 +337,16 @@ class BittyJs extends HTMLElement {
       request.onsuccess = () => resolve(request.result);
       request.onerror = () => reject(request.result);
     });
+  }
+
+  _error(message, ev, sender, el) {
+    if (this.b._logLevel >= 4) {
+      if (typeof this.b.handleError === "function") {
+        this.b.handleError(message, ev, sender, el);
+      } else {
+        console.error(message);
+      }
+    }
   }
 
   __findSenders(el) {
@@ -368,7 +389,7 @@ class BittyJs extends HTMLElement {
     return undefined;
   }
 
-  async _getData(url, fallback = undefined, options = {}) {
+  async _getJSON(url, fallback = undefined, options = {}) {
     let response = await fetch(url, options);
     try {
       if (response.ok === true) {
@@ -513,6 +534,16 @@ class BittyJs extends HTMLElement {
 
         return item;
       });
+  }
+
+  _info(message, ev, sender, el) {
+    if (this.b._logLevel >= 1) {
+      if (typeof this.b.handleInfo === "function") {
+        this.b.handleInfo(message, ev, sender, el);
+      } else {
+        console.info(message);
+      }
+    }
   }
 
   __pageDatabaseID() {
@@ -1427,7 +1458,6 @@ class BittyJs extends HTMLElement {
       request.onerror = () => reject(request.result);
     });
     return result;
-
     // TODO: Pull _pubValueInPageDB code here instead
     // of calling out to it since it's not used
     // anywhere else.
@@ -1444,6 +1474,30 @@ class BittyJs extends HTMLElement {
 
   _setCSS(key, value) {
     document.documentElement.style.setProperty(key, value);
+  }
+
+  _setLogLevel(key) {
+    key = key.toUpperCase();
+    switch (key) {
+      case "NONE":
+        this.b._logLevel = 0;
+        break;
+      case "INFO":
+        this.b._logLevel = 1;
+        break;
+      case "DEBUG":
+        this.b._logLevel = 2;
+        break;
+      case "WARN":
+        this.b._logLevel = 3;
+        break;
+      case "ERROR":
+        this.b._logLevel = 4;
+        break;
+      case "TRACE":
+        this.b._logLevel = 5;
+        break;
+    }
   }
 
   _shuffle(array) {
@@ -1508,6 +1562,16 @@ class BittyJs extends HTMLElement {
 
   _timeMs(datetime) {
     return this.b.time(datetime, true);
+  }
+
+  _trace(message, ev, sender, el) {
+    if (this.b._logLevel >= 5) {
+      if (typeof this.b.handleTrace === "function") {
+        this.b.handleTrace(message, ev, sender, el);
+      } else {
+        console.trace(message);
+      }
+    }
   }
 
   _trigger(signals) {
@@ -1694,6 +1758,16 @@ class BittyJs extends HTMLElement {
       return uuid.replaceAll("-", "");
     } else {
       return self.crypto.randomUUID();
+    }
+  }
+
+  _warn(message, ev, sender, el) {
+    if (this.b._logLevel >= 3) {
+      if (typeof this.b.handleWarn === "function") {
+        this.b.handleWarn(message, ev, sender, el);
+      } else {
+        console.warn(message);
+      }
     }
   }
 }

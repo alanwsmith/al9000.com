@@ -1,0 +1,132 @@
+== extends "/templates.inc/switches/default.html"
+== block toml 
+title = "Week Notes (through Saturday June 25, 2026)"
+created = 2026-07-22T16:44:29-04:00
+status = "draft"
+id = "01/n6/2a/xd"
+tags = ["week notes"]
+flags = []
+== endblock
+
+
+
+== block content 
+== filter md
+
+## Sunday (June 19, 2026)
+
+- Added a feature to my site 
+builder so that [posts and
+page can have three dates](/blog/01/n5/st/wc/):
+created, completed, and updated. 
+Did that because I'll often 
+have posts that take me a long
+time to write. I want to
+keep track of when I start them
+and when I publish them. 
+It felt weird to use "update"
+for the publication date. Hence
+the new "completed" date. 
+
+
+## Monday (June 20, 2026)
+
+- Wrote [a script](/rust/apps/base32_timestamp_cleanup/) 
+to update the IDs for my sites
+pages to make them sort chronologically. 
+I though I has them set up that way.
+There was a bug that means sorting
+got messed up if the IDs had numbers
+in them (which a high portion will have).
+
+## Tuesday (June 21, 2026)
+
+- Set up Static Site Builder
+9000 to automatically 
+generate Open Graph Image
+(i.e. the images that show up
+when you post a link on
+a social media site). The
+text for each is the 
+title of the post/page
+they are associated with. 
+
+  I did the work on stream
+which was a good time. It
+turned out to be more
+straight-forward than I
+had expected. All thanks
+to [ImageMagick](https://imagemagick.org/).
+
+  I still need to get things
+set up to automatically read
+alt text from the image files. 
+That's pretty high on the TODO
+list. 
+
+- Migrated my [Background
+Texture Maker](/texture-maker) 
+to al9000.com. I cleaned it
+up a little in the process
+by moving the SVG that's used
+for the texture into a variable. 
+Don't make any real difference. 
+Just more idiomatic. 
+
+
+## Wednesday (June 22, 2026)
+
+- Spent some time working on my
+new [color picker](/color-picker). 
+I think it's the fourth one I've
+made. Maybe the fifth. I've
+got a good feeling about this one. 
+
+- Realized that this new al9000.com
+site has light and dark mode in the
+style sheet. I though it was just
+dark mode because my system setting
+are set to that so that's all
+I saw. (Since I haven't built a
+manual switch in yet, there's no
+way to change). 
+
+Oops. 
+
+I've temporarily set the dark
+mode styles to point to light
+mode so everything works the same.
+
+
+
+
+## Overall
+
+- I did a bunch of work on 
+Static Site Builder 9000
+(which will eventually 
+[be here](/ssg9000/) if it's 
+not by the time you read this). 
+
+  It's the new builder I'm 
+using for al9000.com. I'm really
+happy with the way it's shaping
+up. 
+
+
+- I've stream a few times this week. 
+It's been fun. Definitely 
+helps me get back into the 
+swing of working on things.
+
+
+
+
+
+
+
+
+
+
+== endfilter
+== endblock
