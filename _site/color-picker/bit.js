@@ -1,3 +1,5 @@
+let sheet = new CSSStyleSheet();
+
 const defaults = {
   logLevel: "DEBUG",
   hueRotation: 45,
@@ -166,7 +168,6 @@ export async function init() {
 }
 
 export function initBaseStyles() {
-  const sheet = new CSSStyleSheet();
   const theStyles = `
 .ui-set-0 { color: var(--ui-set-0); }
 .ui-set-1 { color: var(--ui-set-1); }
@@ -336,23 +337,16 @@ export function updateColorValue(_, __, el) {
   el.value = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
 }
 
-export function updateCSS(_, __, ___) {
+export function updateCSS(_, __, el) {
   b.warn("updateCSS");
-  const activeMode = s.getActiveMode();
-  const activeColorIndex = activeMode.activeColorIndex;
-  const activeColor = activeMode.colors[activeColorIndex];
-  for (let i = 0; i < 8; i += 1) {
-    const key = `--ui-set-${i}`;
-    const rotation = ((s.data.hueRotation * i) +
-      activeMode.background.__H__) % 360;
-    const value =
-      `oklch(${activeColor.__L__} ${activeColor.__C__} ${rotation})`;
-    b.setCSS(key, value);
-  }
+  const variableValues = [];
+
   for (let mode of s.data.modes) {
-    b.setCSS(
-      `--${mode.__KEY__}--default-background-color`,
-      `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
+    variableValues.push(
+      [
+        `--${mode.__KEY__}--default-background-color`,
+        `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
+      ],
     );
     s.data.colorNames.forEach((name, index) => {
       const color = mode.colors[index];
@@ -360,11 +354,106 @@ export function updateCSS(_, __, ___) {
       const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
         mode.background.__H__) % 360;
       const value = `oklch(${color.__L__} ${color.__C__} ${rotation})`;
-      b.setCSS(key, value);
-      // b.info(key);
-      // b.info(value);
-      // b.info(rotation);
-      // b.info(name);
+      variableValues.push([key, value]);
     });
   }
+
+  variableValues.forEach((vv) => {
+    b.setCSS(vv[0], vv[1]);
+  });
+
+  const parts = variableValues.map((vv) => {
+    return `${vv[0]}: ${vv[1]};`;
+  });
+
+  const props = [
+    [
+      ".default-base-color",
+      "var(--light--default-base-color)",
+    ],
+  ];
+
+  const propString = props.map((prop) => {
+    return `${prop[0]} { color: ${prop[1]};}`;
+  }).join("\n");
+
+  const output = `:root { 
+${parts.join("\n")} 
+}
+${propString}
+`;
+
+  const sheetParts = [
+    `:root { ${
+      variableValues.map((vv) => {
+        return vv[0] + " { color: " + vv[1] + "; }";
+      }).join("\n")
+    }}`,
+    `:root { ${makeSwitches("light")} }`,
+    `@media (prefers-color-scheme: dark) { :root { ${makeSwitches("dark")} }}`,
+    makeClasses(),
+  ].join("\n");
+
+  const combinedSheet = `
+${sheetParts}
+${makeUiVars()}
+${makeUiClasses()}`;
+  sheet.replaceSync(b.tee(combinedSheet));
+}
+
+function makeSwitches(mode) {
+  const background = [
+    `--default-background-color: var(--switch--background-color, var(--${mode}--default-background-color));`,
+  ];
+  const colors = s.data.colorNames.map((color) => {
+    return `--default-${color}-color: var(--switch--${color}-color, var(--${mode}--default-${color}-color));`;
+  });
+  const output = [...background, ...colors];
+  return output.join("\n");
+}
+
+function makeClasses() {
+  const background = [
+    `.default-background-color { color: var(--default-background-color); }`,
+  ];
+  const colors = s.data.colorNames.map((color) => {
+    return `.default-${color}-color { color: var(--default-${color}-color); }`;
+  });
+  const output = [...background, ...colors];
+  return output.join("\n");
+}
+
+function makeUiVars() {
+  const activeMode = s.getActiveMode();
+  const activeColorIndex = activeMode.activeColorIndex;
+  const activeColor = activeMode.colors[activeColorIndex];
+  const output = [];
+  for (let i = 0; i < 8; i += 1) {
+    const key = `--ui-set-${i}`;
+    const rotation = ((s.data.hueRotation * i) +
+      activeMode.background.__H__) % 360;
+    const value =
+      `oklch(${activeColor.__L__} ${activeColor.__C__} ${rotation})`;
+    output.push([key, value]);
+  }
+  const out2 = output.map((x) => {
+    return `${x[0]}: ${x[1]};`;
+  });
+  return b.tee(`:root { ${out2.join("\n")}}`);
+}
+
+function makeUiClasses() {
+  const activeMode = s.getActiveMode();
+  const activeColorIndex = activeMode.activeColorIndex;
+  const activeColor = activeMode.colors[activeColorIndex];
+  const output = [];
+  for (let i = 0; i < 8; i += 1) {
+    const key = `.ui-set-${i}`;
+    const value = `var(--ui-set-${i})`;
+    output.push([key, value]);
+  }
+  const out2 = output.map((x) => {
+    return `${x[0]} { color: ${x[1]}; }`;
+  });
+  return b.tee(out2.join("\n"));
 }

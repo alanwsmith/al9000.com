@@ -22,16 +22,19 @@
   href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
 />
 
-    <link rel="stylesheet" href="/styles/colors.css" />
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
-<link rel="stylesheet" href="/styles/main.css" />
 <style>
-  :root {
-
+  body { 
+    background-image: none; 
+    background-color: var(--default-background-color);
   }
-  body { background-image: none; }
   .active {
     font-weight: var(--900-font-weight);
+  }
+  textarea {
+    width: 100vw;
+    height: 5rem;
+    font-size: 0.4rem;
   }
 </style>
   </head>
@@ -62,6 +65,8 @@
 <div data-r="initColorNameButtons"></div>
 <div data-r="initHueOffsetButtons"></div>
 <div data-r="initColorSliders"></div>
+
+<textarea data-r="updateCSS"></textarea>
 
 
 

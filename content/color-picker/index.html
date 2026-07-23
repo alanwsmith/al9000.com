@@ -4,18 +4,23 @@ title = "Color Picker"
 created = 2026-07-21T21:09:00-04:00
 status = "draft"
 id = "01/n6/06/1c" 
+flags = ["no-colors"]
 == endblock 
 
 
 == block styles
-<link rel="stylesheet" href="/styles/main.css" />
 <style>
-  :root {
-
+  body { 
+    background-image: none; 
+    background-color: var(--default-background-color);
   }
-  body { background-image: none; }
   .active {
     font-weight: var(--900-font-weight);
+  }
+  textarea {
+    width: 100vw;
+    height: 5rem;
+    font-size: 0.4rem;
   }
 </style>
 == endblock
@@ -39,6 +44,8 @@ id = "01/n6/06/1c"
 <div data-r="initColorNameButtons"></div>
 <div data-r="initHueOffsetButtons"></div>
 <div data-r="initColorSliders"></div>
+
+<textarea data-r="updateCSS"></textarea>
 == endblock 
 
 
