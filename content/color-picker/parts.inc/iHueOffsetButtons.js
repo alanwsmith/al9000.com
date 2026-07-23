@@ -5,5 +5,6 @@ export function initHueOffsetButtons(_, __, el) {
     };
     el.appendChild(b.render("hueOffsetButton", subs));
   }
-  b.trigger("updateHueOffset");
+  b.trigger("uHueOffset");
 }
+

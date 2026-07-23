@@ -171,6 +171,13 @@ ul > :where(:not(:first-child)) {
     a work in progress. 
   </p>
 </div>
+  <div class="border-1">
+    <button data-s="resetDefaults">Reset to Defaults</button>
+    <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
+    <button data-s="setLogLevel" data-key="WARN">WARN</button>
+    <button data-s="setLogLevel" data-key="TRACE">TRACE</button>
+  </div>
+
   <div class="two-columns-left">
 
 
@@ -698,14 +705,8 @@ theme.</li>
     <button data-s="copyThis">Copy</button>
   </div>
 
-  <div class="border-1 default-flow">
-    <p>Prototype Tools:</p>
-    <button data-s="resetDefaults">Reset to Defaults</button>
-    <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
-    <button data-s="setLogLevel" data-key="WARN">WARN</button>
-    <button data-s="setLogLevel" data-key="TRACE">TRACE</button>
-  </div>
 </main>
+
 
 
 
@@ -744,7 +745,7 @@ theme.</li>
     <input 
       type="range" 
       data-s="setColorValue" 
-      data-r="updateColorValue"
+      data-r="uColorValue"
       data-key="L"
       min="0"
       max="1.0"
@@ -757,7 +758,7 @@ theme.</li>
     <input 
       type="range" 
       data-s="setColorValue" 
-      data-r="updateColorValue"
+      data-r="uColorValue"
       data-key="C"
       min="0"
       max="0.3"
@@ -772,7 +773,7 @@ theme.</li>
     <input 
       type="range" 
       data-s="setColorValue" 
-      data-r="updateColorValue"
+      data-r="uColorValue"
       data-key="FADED"
       min="0"
       max="1.0"
@@ -785,7 +786,7 @@ theme.</li>
     <input 
       type="range" 
       data-s="setColorValue" 
-      data-r="updateColorValue"
+      data-r="uColorValue"
       data-key="FAINT"
       min="0"
       max="1.0"
@@ -801,7 +802,7 @@ theme.</li>
   <button 
     class="ui-set-__INDEX__"
     data-s="setHueOffset" 
-    data-r="updateHueOffset" 
+    data-r="uHueOffset" 
     data-index="__INDEX__"
   >set</button>
 </script>

@@ -298,8 +298,10 @@ function generatePageVariables() {
     };
     el.appendChild(b.render("hueOffsetButton", subs));
   }
-  b.trigger("updateHueOffset");
+  b.trigger("uHueOffset");
 }
+
+
   export function initModeButtons(_, __, el) {
   for (let mode of s.data.modes) {
     if (mode.__KEY__ === s.data.activeMode) {
@@ -487,7 +489,7 @@ function makeUiVars() {
 }
 
   export async function sColor(_, sender, ___) {
-  b.trace("sColorName");
+  b.trace("sColor");
   const mode = s.getActiveMode();
   mode.activeColorIndex = sender.propAsInt("index");
   await b.savePageData("data", s.data);
@@ -495,7 +497,6 @@ function makeUiVars() {
     "updateCSS",
   );
 }
-
 
   export async function setColorValue(_, sender, ___) {
   b.trace("setColorValue");
@@ -518,6 +519,8 @@ function makeUiVars() {
   await b.savePageData("data", s.data);
   b.trigger("updateCSS");
 }
+
+
   export async function setLogLevel(_, sender, ___) {
   b.setLogLevel(sender.prop("key"));
   s.data.logLevel = sender.prop("key");
@@ -634,7 +637,13 @@ ${makeSwitches("dark")}
   ${makeUiVars()}
   ${makeUiClasses()}`;
   sheet.replaceSync(combinedSheet);
-  b.trigger("uBackgroundValue uColorButton uColorName uHueOffset");
+  b.trigger(`
+uBackgroundValue 
+uColorButton 
+uColorName 
+uHueOffset
+uColorValue
+`);
 }
 
   export function uColorName(_, __, el) {
@@ -650,22 +659,27 @@ ${makeSwitches("dark")}
   });
 }
 
-  export function updateColorValue(_, __, el) {
-  b.trace("updateColorValue");
-  const mode = s.getActiveMode();
-  const v = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
-  el.value = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
+  export function uColorValue(_, __, el) {
+  b.trace("uColorValue");
+  if (el) {
+    const mode = s.getActiveMode();
+    const v = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
+    el.value = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
+  }
 }
 
-  export function updateHueOffset(_, __, el) {
-  b.trace("updateHueOffset");
+  export function uHueOffset(_, __, el) {
+  b.trace("uHueOffset");
   const mode = s.getActiveMode();
-  if (
-    el.propAsInt("index") === mode.colors[mode.activeColorIndex][`__H_OFFSET__`]
-  ) {
-    el.classList.add("set-active");
-  } else {
-    el.classList.remove("set-active");
+  if (el) {
+    if (
+      el.propAsInt("index") ===
+        mode.colors[mode.activeColorIndex][`__H_OFFSET__`]
+    ) {
+      el.classList.add("set-active");
+    } else {
+      el.classList.remove("set-active");
+    }
   }
 }
 

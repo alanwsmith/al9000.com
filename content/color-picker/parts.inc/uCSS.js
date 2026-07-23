@@ -30,5 +30,11 @@ ${makeSwitches("dark")}
   ${makeUiVars()}
   ${makeUiClasses()}`;
   sheet.replaceSync(combinedSheet);
-  b.trigger("uBackgroundValue uColorButton uColorName uHueOffset");
+  b.trigger(`
+uBackgroundValue 
+uColorButton 
+uColorName 
+uHueOffset
+uColorValue
+`);
 }

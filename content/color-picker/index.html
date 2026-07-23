@@ -16,6 +16,13 @@ flags = ["no-colors"]
 == block content
 <main class="default-flow">
   == include template_folder() + "/includes.inc/title.html"
+  <div class="border-1">
+    <button data-s="resetDefaults">Reset to Defaults</button>
+    <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
+    <button data-s="setLogLevel" data-key="WARN">WARN</button>
+    <button data-s="setLogLevel" data-key="TRACE">TRACE</button>
+  </div>
+
   <div class="two-columns-left">
     == include template_folder() + "/includes.inc/content.html" 
     == include template_folder() + "/includes.inc/sidebar.html"
@@ -27,16 +34,11 @@ flags = ["no-colors"]
     <button data-s="copyThis">Copy</button>
   </div>
 
-  <div class="border-1 default-flow">
-    <p>Prototype Tools:</p>
-    <button data-s="resetDefaults">Reset to Defaults</button>
-    <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
-    <button data-s="setLogLevel" data-key="WARN">WARN</button>
-    <button data-s="setLogLevel" data-key="TRACE">TRACE</button>
-  </div>
 </main>
 
+
 == endblock 
+
 == block templates
 <bitty-9 data-connect="[@ template_folder() + '/bit.js' @]"></bitty-9>
 
