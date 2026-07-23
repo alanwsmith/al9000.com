@@ -219,16 +219,7 @@ initColorSliders`,
 }
 
 export function initBaseStyles() {
-  const theStyles = `
-.ui-set-0 { color: var(--ui-set-0); }
-.ui-set-1 { color: var(--ui-set-1); }
-.ui-set-2 { color: var(--ui-set-2); }
-.ui-set-3 { color: var(--ui-set-3); }
-.ui-set-4 { color: var(--ui-set-4); }
-.ui-set-5 { color: var(--ui-set-5); }
-.ui-set-6 { color: var(--ui-set-6); }
-.ui-set-7 { color: var(--ui-set-7); }
-`;
+  const theStyles = ``;
   sheet.replaceSync(theStyles);
   document.adoptedStyleSheets.push(sheet);
 }
@@ -260,7 +251,7 @@ export function initColorNameButtons(_, __, el) {
     };
     el.appendChild(b.render("colorNameButton", subs));
   });
-  b.trigger("setColorNameStyles updateActiveColor updateColorName");
+  b.trigger("updateColorName updateActiveColor");
 }
 
 export function initColorSliders(_, __, el) {
@@ -311,28 +302,29 @@ export async function setLogLevel(_, sender, ___) {
   await b.savePageData("data", s.data);
 }
 
-export async function setColorName(_, sender, ___) {
-  b.warn("setColorName");
+export async function sColor(_, sender, ___) {
+  b.trace("sColorName");
   const mode = s.getActiveMode();
   mode.activeColorIndex = sender.propAsInt("index");
   await b.savePageData("data", s.data);
   b.trigger(
-    "setColorNameStyles updateHueOffset updateColorValue updateCSS updateActiveColor updateColorName",
+    "updateCSS",
   );
 }
 
-export function setColorNameStyles(_, __, el) {
-  b.warn("setColorNameStyles");
-  const mode = s.getActiveMode();
-  if (el.propAsInt("index") === mode.activeColorIndex) {
-    el.classList.add("active");
-  } else {
-    el.classList.remove("active");
-  }
+export function uColorButton(_, __, el) {
+  b.trace("setColorNameStyles");
+  b.info(el);
+  // const mode = s.getActiveMode();
+  // if (el.propAsInt("index") === mode.activeColorIndex) {
+  //   el.classList.add("active");
+  // } else {
+  //   el.classList.remove("active");
+  // }
 }
 
 export async function setColorValue(_, sender, ___) {
-  b.warn("setColorValue");
+  b.trace("setColorValue");
   requestAnimationFrame(async () => {
     const mode = s.getActiveMode();
     mode.colors[mode.activeColorIndex][`__${sender.prop("key")}__`] = sender
@@ -343,42 +335,37 @@ export async function setColorValue(_, sender, ___) {
 }
 
 export async function setHueOffset(_, sender, el) {
-  b.warn("setHueOffset");
+  b.trace("setHueOffset");
   const mode = s.getActiveMode();
   mode.colors[mode.activeColorIndex][`__H_OFFSET__`] = sender.propAsInt(
     "index",
   );
   await b.savePageData("data", s.data);
-  b.trigger("updateHueOffset updateColorValue updateCSS");
+  b.trigger("updateCSS");
 }
 
 export function updateHueOffset(_, __, el) {
-  b.warn("updateHueOffset");
+  b.trace("updateHueOffset");
   const mode = s.getActiveMode();
   if (
     el.propAsInt("index") === mode.colors[mode.activeColorIndex][`__H_OFFSET__`]
   ) {
-    el.classList.add("active");
+    el.classList.add("set-active");
   } else {
-    el.classList.remove("active");
+    el.classList.remove("set-active");
   }
 }
 
 export async function setMode(_, sender, ___) {
-  b.warn("setMode");
+  b.trace("setMode");
   s.data.activeMode = sender.prop("key");
   setSwitches(s.data.activeMode);
   await b.savePageData("data", s.data);
-  b.trigger(`
-updateColorValue 
-updateBackgroundValue 
-setColorNameStyles
-updateActiveColor
-`);
+  b.trigger(`updateCSS`);
 }
 
 export async function setParam(_, sender, ___) {
-  b.warn("setParam");
+  b.trace("setParam");
   await requestAnimationFrame(async () => {
     s.setActiveValue(sender.prop("key"), sender.valueAsFloat());
     await b.savePageData("data", s.data);
@@ -405,19 +392,20 @@ export function updateActiveColor(_, __, el) {
 }
 
 export function updateBackgroundValue(_, __, el) {
-  b.warn("updateBackgroundValue");
+  b.trace("updateBackgroundValue");
   const mode = s.getActiveMode();
   el.value = mode.background[`${el.prop("key")}`];
 }
 
 export function updateColorValue(_, __, el) {
-  b.warn("updateColorValue");
+  b.trace("updateColorValue");
   const mode = s.getActiveMode();
   const v = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
   el.value = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
 }
 
-export function updateColorName(_, __, el) {
+export function uColorName(_, __, el) {
+  b.trace("uColorName");
   const mode = s.getActiveMode();
   s.data.colorNames.forEach((name) => {
     if (s.data.colorNames[mode.activeColorIndex] === name) {
@@ -430,10 +418,8 @@ export function updateColorName(_, __, el) {
 }
 
 export function updateCSS(_, __, el) {
-  b.warn("updateCSS");
-
+  b.trace("updateCSS");
   const variables = generatePageVariables();
-
   variables.forEach((vv) => {
     b.setCSS(vv[0], vv[1]);
   });
@@ -462,8 +448,8 @@ ${makeSwitches("dark")}
   const combinedSheet = `${sheetParts}
   ${makeUiVars()}
   ${makeUiClasses()}`;
-
   sheet.replaceSync(combinedSheet);
+  // b.trigger("uColorButton");
 }
 
 function makePageVars(variables) {
@@ -595,6 +581,17 @@ function makeUiClasses() {
   const out2 = output.map((x) => {
     return `${x[0]} { color: ${x[1]}; }`;
   });
+
+  output.forEach((x) => {
+    out2.push(
+      `${
+        x[0]
+      }.set-active { color: var(--default-match-color); background-color: ${
+        x[1]
+      }; }`,
+    );
+  });
+
   return out2.join("\n");
 }
 
@@ -699,6 +696,8 @@ function setSwitches(mode) {
   });
 }
 
+
 export async function copyThis(_, sender, el) {
   await b.quickCopy(el, sender);
 }
+

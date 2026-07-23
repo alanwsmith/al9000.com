@@ -46,12 +46,15 @@ a:hover {
 
 .active {
   font-weight: 900;
-  text-decoration: underline;
 }
 
 .background-sliders {
   display: grid;
   grid-template-columns: 1fr 2fr;
+}
+
+.bold {
+  font-weight: 900;
 }
 
 button{
@@ -102,17 +105,6 @@ h2 {
 h3 {
   font-size: 0.9rem;
 }
-
-.inactiveColor {
-  opacity: 0.3;
-  background-color: var(--default-black-color);
-}
-
-.inactiveMonoColor {
-  opacity: 0.3;
-  background-color: var(--default-warning-color);
-}
-
 
 main {
   margin: 1.2rem;
@@ -694,11 +686,9 @@ theme.</li>
 
     <div class="border-1">
         <div data-r="initColorNameButtons"></div>
-        <div data-r="updateColorName">-</div>
-        <div class="border-1">
-            <div data-r="initHueOffsetButtons"></div>
-            <div data-r="initColorSliders"></div>
-        </div>
+        <div data-r="updateColorName" class="default-match-color bold"></div>
+        <div data-r="initHueOffsetButtons"></div>
+        <div data-r="initColorSliders"></div>
     </div>
 </div>  </div>
 
@@ -745,7 +735,7 @@ theme.</li>
 </script>
 
 <script type="text/html" data-template="colorNameButton">
-<button class="default-__COLOR__-background-color default-match-color" data-s="setColorName" data-r="setColorNameStyles" data-index="__INDEX__">__COLOR_LETTER__</button>
+  <button class="default-__COLOR__-background-color default-match-color" data-s="sColor" data-r="uColorButton" data-index="__INDEX__">__COLOR_LETTER__</button>
 </script>
 
 <script type="text/html" data-template="colorSliders">

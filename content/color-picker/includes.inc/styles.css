@@ -20,12 +20,15 @@ a:hover {
 
 .active {
   font-weight: 900;
-  text-decoration: underline;
 }
 
 .background-sliders {
   display: grid;
   grid-template-columns: 1fr 2fr;
+}
+
+.bold {
+  font-weight: 900;
 }
 
 button{
@@ -76,17 +79,6 @@ h2 {
 h3 {
   font-size: 0.9rem;
 }
-
-.inactiveColor {
-  opacity: 0.3;
-  background-color: var(--default-black-color);
-}
-
-.inactiveMonoColor {
-  opacity: 0.3;
-  background-color: var(--default-warning-color);
-}
-
 
 main {
   margin: 1.2rem;
