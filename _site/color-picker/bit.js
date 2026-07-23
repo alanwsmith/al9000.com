@@ -5,7 +5,7 @@ const defaults = {
   hueRotation: 45,
   activeMode: "light",
   colorNames: ["base", "accent", "heading", "info", "warning"],
-  colorTypes: ["default", "fainter", "faintest"],
+  colorTypes: ["default", "faded", "faintest"],
   monoNames: ["black", "white", "match", "reverse"],
   config: {
     __L__: {
@@ -48,22 +48,22 @@ const defaults = {
       monos: {
         "black": {
           __LIGHTNESS__: 0,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         "white": {
           __LIGHTNESS__: 1,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         "match": {
           __LIGHTNESS__: 1,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         "reverse": {
           __LIGHTNESS__: 0,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
       },
@@ -72,35 +72,35 @@ const defaults = {
           __L__: 0.3,
           __C__: 0.2,
           __H_OFFSET__: 0,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         {
           __L__: 0.4,
           __C__: 0.16,
           __H_OFFSET__: 3,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         {
           __L__: 0.54,
           __C__: 0.26,
           __H_OFFSET__: 5,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         {
           __L__: 0.62,
           __C__: 0.2,
           __H_OFFSET__: 2,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         {
           __L__: 0.6,
           __C__: 0.27,
           __H_OFFSET__: 4,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
       ],
@@ -117,22 +117,22 @@ const defaults = {
       monos: {
         "black": {
           __LIGHTNESS__: 0,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         "white": {
           __LIGHTNESS__: 1,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         "match": {
           __LIGHTNESS__: 0,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         "reverse": {
           __LIGHTNESS__: 1,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
       },
@@ -141,35 +141,35 @@ const defaults = {
           __L__: 0.9,
           __C__: 0.1,
           __H_OFFSET__: 0,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         {
           __L__: 0.8,
           __C__: 0.2,
           __H_OFFSET__: 1,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         {
           __L__: 0.82,
           __C__: 0.08,
           __H_OFFSET__: 2,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         {
           __L__: 0.93,
           __C__: 0.15,
           __H_OFFSET__: 3,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
         {
           __L__: 0.7,
           __C__: 0.22,
           __H_OFFSET__: 4,
-          __FAINTER__: 0.8,
+          __FADED__: 0.8,
           __FAINTEST__: 0.2,
         },
       ],
@@ -263,7 +263,7 @@ export function initColorSliders(_, __, el) {
   const subs = {
     __L__: color.__L__,
     __C__: color.__C__,
-    __FAINTER__: color.__FAINTER__,
+    __FADED__: color.__FADED__,
     __FAINTEST__: color.__FAINTEST__,
   };
   el.appendChild(b.render("colorSliders", subs));
@@ -432,7 +432,7 @@ ${
 function makeSwitches(mode) {
   const background = [
     `--default-background-color: var(--switch--default-background-color, var(--${mode}--default-background-color));`,
-    `--fainter-background-color: var(--switch--fainter-background-color, var(--${mode}--fainter-background-color));`,
+    `--faded-background-color: var(--switch--faded-background-color, var(--${mode}--faded-background-color));`,
     `--faintest-background-color: var(--switch--faintest-background-color, var(--${mode}--faintest-background-color));`,
   ];
 
@@ -440,7 +440,7 @@ function makeSwitches(mode) {
     return `--default-${color}-color: var(--switch--default-${color}-color, var(--${mode}--default-${color}-color));`;
   });
   const colors2 = s.data.colorNames.map((color) => {
-    return `--fainter-${color}-color: var(--switch--fainter-${color}-color, var(--${mode}--fainter-${color}-color));`;
+    return `--faded-${color}-color: var(--switch--faded-${color}-color, var(--${mode}--faded-${color}-color));`;
   });
   const colors3 = s.data.colorNames.map((color) => {
     return `--faintest-${color}-color: var(--switch--faintest-${color}-color, var(--${mode}--faintest-${color}-color));`;
@@ -450,7 +450,7 @@ function makeSwitches(mode) {
     return `--default-${color}-color: var(--switch--default-${color}-color, var(--${mode}--default-${color}-color));`;
   });
   const monos2 = s.data.monoNames.map((color) => {
-    return `--fainter-${color}-color: var(--switch--fainter-${color}-color, var(--${mode}--fainter-${color}-color));`;
+    return `--faded-${color}-color: var(--switch--faded-${color}-color, var(--${mode}--faded-${color}-color));`;
   });
   const monos3 = s.data.monoNames.map((color) => {
     return `--faintest-${color}-color: var(--switch--faintest-${color}-color, var(--${mode}--faintest-${color}-color));`;
@@ -471,14 +471,14 @@ function makeSwitches(mode) {
 function makeClasses() {
   const background = [
     `.default-background-color { color: var(--default-background-color); }`,
-    `.fainter-background-color { color: var(--fainter-background-color); }`,
+    `.faded-background-color { color: var(--faded-background-color); }`,
     `.faintest-background-color { color: var(--faintest-background-color); }`,
   ];
   const colors1 = s.data.colorNames.map((color) => {
     return `.default-${color}-color { color: var(--default-${color}-color); }`;
   });
   const colors2 = s.data.colorNames.map((color) => {
-    return `.fainter-${color}-color { color: var(--fainter-${color}-color); }`;
+    return `.faded-${color}-color { color: var(--faded-${color}-color); }`;
   });
   const colors3 = s.data.colorNames.map((color) => {
     return `.faintest-${color}-color { color: var(--faintest-${color}-color); }`;
@@ -489,7 +489,7 @@ function makeClasses() {
   });
 
   const monos2 = s.data.monoNames.map((color) => {
-    return `.fainter-${color}-color { color: var(--fainter-${color}-color); }`;
+    return `.faded-${color}-color { color: var(--faded-${color}-color); }`;
   });
 
   const monos3 = s.data.monoNames.map((color) => {
@@ -552,7 +552,7 @@ function generatePageVariables() {
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
       ],
       [
-        `--${mode.__KEY__}--fainter-background-color`,
+        `--${mode.__KEY__}--faded-background-color`,
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__} / 0.8)`,
       ],
       [
@@ -572,11 +572,11 @@ function generatePageVariables() {
 
     s.data.colorNames.forEach((name, index) => {
       const color = mode.colors[index];
-      const key = `--${mode.__KEY__}--fainter-${name}-color`;
+      const key = `--${mode.__KEY__}--faded-${name}-color`;
       const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
         mode.background.__H__) % 360;
       const value =
-        `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__FAINTER__})`;
+        `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__FADED__})`;
       variables.push([key, value]);
     });
 
@@ -600,8 +600,8 @@ function generatePageVariables() {
         `oklch(${monos[mono].__LIGHTNESS__} 0 0)`,
       ]);
       variables.push([
-        `--${mode.__KEY__}--fainter-${mono}-color`,
-        `oklch(${monos[mono].__LIGHTNESS__} 0 0 / ${monos[mono].__FAINTER__})`,
+        `--${mode.__KEY__}--faded-${mono}-color`,
+        `oklch(${monos[mono].__LIGHTNESS__} 0 0 / ${monos[mono].__FADED__})`,
       ]);
       variables.push([
         `--${mode.__KEY__}--faintest-${mono}-color`,
