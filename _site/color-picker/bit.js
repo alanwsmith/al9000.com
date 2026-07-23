@@ -568,7 +568,6 @@ function generatePageVariables() {
       ]);
     });
   }
-
   return variables;
 }
 
@@ -584,6 +583,22 @@ function setSwitches(mode) {
         `var(--${mode}--${t}-${name}-color)`,
       );
     });
+    b.setCSS(
+      `--switch--${t}-black-color`,
+      `var(--${mode}--${t}-black-color)`,
+    );
+    b.setCSS(
+      `--switch--${t}-white-color`,
+      `var(--${mode}--${t}-white-color)`,
+    );
+    b.setCSS(
+      `--switch--${t}-match-color`,
+      `var(--${mode}--${t}-match-color)`,
+    );
+    b.setCSS(
+      `--switch--${t}-reverse-color`,
+      `var(--${mode}--${t}-reverse-color)`,
+    );
   });
 }
 
