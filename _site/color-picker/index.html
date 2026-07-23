@@ -112,6 +112,14 @@
     margin-top: var(--flow-space, 1em);
   }
 
+  textarea {
+    display: block;
+    width: 90vw;
+    height: 20rem;
+    font-size: 0.6rem;
+    margin-top: 2rem;
+  }
+
   .two-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -124,12 +132,9 @@
     gap: 1.3rem;
   }
 
-  textarea {
-    display: block;
-    width: 90vw;
-    height: 20rem;
-    font-size: 0.6rem;
-    margin-top: 2rem;
+
+  ul > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
   }
 
   .warning-block {
@@ -241,6 +246,33 @@ from the operating system.</p>
 a switch nor OS provided mode is available.</p>
 </li>
 </ol>
+<h2>TODO</h2>
+<ul>
+<li>Add texture feature like <a href="/texture-maker/">Texture Maker</a>.</li>
+<li>Document black, white, match, reverse colors.</li>
+<li>Document color-scheme auto setting for light/dark mode.</li>
+<li>Add swatch selector that let's you pick
+a background color and a foreground color
+to see how they look together.</li>
+<li>Generate optional utility classes (e.g. for borders).</li>
+<li>Add a note about how this is <a href="https://bittyjs.com/">built with bittyjs</a>.</li>
+<li>Provide a way to update the example HTML.</li>
+<li>Make controls look better.</li>
+<li>Keep controls visible/sticky so the content
+can be scrolled without losing the controls.</li>
+<li>Add ability to show/hide controls.</li>
+<li>Add ability to launch second window with
+preview content so it can be
+viewed independently.</li>
+<li>Review things on mobile.</li>
+<li>Add a Save/Load feature that outputs
+a JSON object.</li>
+<li>Add settings to the URL in a comment
+that gets updated so a link
+can be sent to a given
+theme.</li>
+<li>Add high contrast modes.</li>
+</ul>
 <h2>Swatches</h2>
 
       <div class="border-1" data-r="updateActiveColor" data-key="base">
@@ -612,6 +644,9 @@ a switch nor OS provided mode is available.</p>
           <div>faint reverse</div>
         </div>
     </div>
+
+
+
   </div>
 
   <div>
@@ -663,7 +698,7 @@ a switch nor OS provided mode is available.</p>
 
 
 <div>
-  <h3>CSS</h3>
+  <h2>CSS</h2>
   <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
   <button data-s="copyThis">Copy</button>
 </div>
