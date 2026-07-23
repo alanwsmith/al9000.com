@@ -30,7 +30,7 @@
 
   body { 
     background-image: none; 
-    background-color: var(--default-background-color);
+    background-color: var(--background-color);
     font-family: system-ui;
     color: var(--default-base-color);
   }
@@ -75,6 +75,10 @@
     padding: 0.3rem;
     border-radius: 0.5rem;
     margin-block: 0.9rem;
+  }
+
+  .default-flow > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
   }
 
   h1 {
@@ -148,42 +152,37 @@
   </p>
 </div>
 
-<div class="border-1">
-<button data-s="resetDefaults">Reset to Defaults</button>
-<button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
-<button data-s="setLogLevel" data-key="WARN">WARN</button>
-</div>
-
-<h2>Instructions</h2>
-
-  <ol>
-    <li>Select the Mode you want to work on (either light or dark)</li>
-    <li>
-      Use the Background sliders to set a background color.
-      As you do, the colors in the Colors section
-      update automatically (each hue value
-      rotates 45 degrees).
-    </li>
-    <li>
-      Choose a color from the Colors section and
-      use the &quot;hue&quot; buttons below it to
-      select the hue portion of it's OKLCH value. 
-    </li>
-    <li>
-      Use the Lightness and Chroma sliders to 
-      adjust those values for the color. 
-    </li>
-    <li>
-      Copy the CSS block and paste it into
-      your style sheet to start using
-      the colors.
-    </li>
-  </ol>
-
 
 <div class="two-columns-left">
+  <div class="default-flow">
 
-  <div>
+<h2>Introduction</h2>
+<p>Welcome to Color Picker 9000. The
+tool I use to create the
+stylesheets for <a href="/">this site</a>.</p>
+<p>This page is a live preview of the
+generated styles. Play around
+with the controls to get things
+the way you like. Copy the
+CSS at the bottom of the page
+when you're done and paste
+it into your stylesheet to
+use the settings.</p>
+<p>The picker provides settings
+for five colors. This text
+uses <strong>base</strong> color.
+The heading at the top of
+the page uses the <strong>heading</strong>
+color and the link uses the
+<strong>accent</strong> color. There's
+also a <span class="default-warning-color">warning color</span>
+and an <span class="default-info-color">info color</span>.</p>
+<p>Each of the five colors have three variants:
+default, <span class="faded-base-color">faded</span>,
+and <span class="faint-base-color">faint</span>.
+The swatches further down on this page
+have previews of all of them.</p>
+
       <div class="border-1" data-r="updateActiveColor" data-key="base">
         <div class="default-base-color two-columns">
           <div class="block default-base-block">
@@ -556,6 +555,33 @@
   </div>
 
   <div>
+
+  <details class="border-1"><summary class="h2">Instructions</summary>
+  <ol>
+    <li>Select the Mode you want to work on (either light or dark)</li>
+    <li>
+      Use the Background sliders to set a background color.
+      As you do, the colors in the Colors section
+      update automatically (each hue value
+      rotates 45 degrees).
+    </li>
+    <li>
+      Choose a color from the Colors section and
+      use the &quot;hue&quot; buttons below it to
+      select the hue portion of it's OKLCH value. 
+    </li>
+    <li>
+      Use the Lightness and Chroma sliders to 
+      adjust those values for the color. 
+    </li>
+    <li>
+      Copy the CSS block and paste it into
+      your style sheet to start using
+      the colors.
+    </li>
+  </ol>
+  </details>
+
     <div class="border-1">
       <h3>Mode</h3>
       <div data-r="initModeButtons"></div>
@@ -582,6 +608,12 @@
   <button data-s="copyThis">Copy</button>
 </div>
 </main>
+
+<div class="border-1">
+<button data-s="resetDefaults">Reset to Defaults</button>
+<button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
+<button data-s="setLogLevel" data-key="WARN">WARN</button>
+</div>
 
 
 
@@ -688,6 +720,9 @@
     <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
   </label>
 </script>
+
+
+
     </div>
   </body>
 </html>

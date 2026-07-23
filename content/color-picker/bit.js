@@ -461,9 +461,7 @@ ${
 
 function makeSwitches(mode) {
   const background = [
-    `--default-background-color: var(--switch--default-background-color, var(--${mode}--default-background-color));`,
-    `--faded-background-color: var(--switch--faded-background-color, var(--${mode}--faded-background-color));`,
-    `--faint-background-color: var(--switch--faint-background-color, var(--${mode}--faint-background-color));`,
+    `--background-color: var(--switch--background-color, var(--${mode}--background-color));`,
   ];
   const colorScheme = [
     `--color-scheme: var(--switch--color-scheme, var(--${mode}--color-scheme));`,
@@ -502,9 +500,7 @@ function makeSwitches(mode) {
 
 function makeClasses() {
   const background = [
-    `.default-background-color { color: var(--default-background-color); }`,
-    `.faded-background-color { color: var(--faded-background-color); }`,
-    `.faint-background-color { color: var(--faint-background-color); }`,
+    `.background-color { color: var(--background-color); }`,
   ];
   const colors1 = s.data.colorNames.map((color) => {
     return `.default-${color}-color { color: var(--default-${color}-color); }`;
@@ -582,16 +578,8 @@ function generatePageVariables() {
     );
     variables.push(
       [
-        `--${mode.__KEY__}--default-background-color`,
+        `--${mode.__KEY__}--background-color`,
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
-      ],
-      [
-        `--${mode.__KEY__}--faded-background-color`,
-        `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__} / 0.6)`,
-      ],
-      [
-        `--${mode.__KEY__}--faint-background-color`,
-        `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__} / 0.12)`,
       ],
     );
 
@@ -646,14 +634,14 @@ function generatePageVariables() {
 }
 
 function setSwitches(mode) {
+  b.setCSS(
+    `--switch--background-color`,
+    `var(--${mode}--background-color)`,
+  );
   s.data.colorTypes.forEach((t) => {
     b.setCSS(
       `--switch--color-scheme`,
       `var(--${mode}--color-scheme)`,
-    );
-    b.setCSS(
-      `--switch--${t}-background-color`,
-      `var(--${mode}--${t}-background-color)`,
     );
     s.data.colorNames.forEach((name) => {
       b.setCSS(
