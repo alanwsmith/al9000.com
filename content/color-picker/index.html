@@ -35,16 +35,6 @@ flags = ["no-colors"]
     text-decoration: underline;
   }
 
-  .inactiveColor {
-    opacity: 0.3;
-    background-color: var(--default-black-color);
-  }
-
-  .inactiveMonoColor {
-    opacity: 0.3;
-    background-color: var(--default-warning-color);
-  }
-
   button{
     background: none;
     border: none;
@@ -63,19 +53,42 @@ flags = ["no-colors"]
     margin-block: 0.9rem;
   }
 
+  .default-border-radius {
+    border-radius: 0.4rem;
+  }
+
   .default-flow > :where(:not(:first-child)) {
     margin-top: var(--flow-space, 1em);
   }
 
+  .default-padding {
+    padding: 1rem;
+  }
+
   h1 {
     color: var(--default-heading-color);
-    margin-bottom: 1.3rem;
+    font-weight: 900;
+  }
+
+  h2 {
+    color: var(--default-heading-color);
     font-weight: 900;
   }
 
   h3 {
     font-size: 0.9rem;
   }
+
+  .inactiveColor {
+    opacity: 0.3;
+    background-color: var(--default-black-color);
+  }
+
+  .inactiveMonoColor {
+    opacity: 0.3;
+    background-color: var(--default-warning-color);
+  }
+
 
   main {
     margin: 1.2rem;
@@ -117,7 +130,7 @@ flags = ["no-colors"]
 
 
 == block content
-<main>
+<main class="default-flow">
 <div class="border-1"><a href="/">home</a></div>
 
 <h1>Color Picker 9000</h1>
@@ -139,7 +152,7 @@ flags = ["no-colors"]
 ## Introduction
 Welcome to Color Picker 9000. The
 tool I use to create the 
-stylesheets for [this site](/). 
+stylesheets for [my site](/). 
 
 This page is a live preview of the 
      generated styles. Play around
@@ -163,13 +176,69 @@ The picker provides settings
 Each of the five colors have three variants:
       default, <span class="faded-base-color">faded</span>,
       and <span class="faint-base-color">faint</span>.
-      The swatches further down on this page
+      The swatches further down the page
       have previews of all of them. 
 
+<p class="faded-info-background-color default-padding default-border-radius">
+        The tool outputs
+        CSS variables with OKLCH values. 
+        They can be used anywhere a colors can 
+        (e.g. the background of this paragraph
+        which uses the <strong>--faded-info-color</strong>).
+      </p>
 
-      
+The example swatches provide previews of
+      background using the colors as well. 
 
 
+## Modes
+
+Two color modes are available: light and dark. 
+      The generated CSS starts with variables
+      for each like **--light--default-base-color**.
+
+Variables without the mode prefix are defined
+      as well (e.g. **--default-base-color**).
+      One version is default in the base `:root`
+      like:
+
+**--default-base-color: var(--switch--default-base-color, var(--light--default-base-color));**
+
+
+A second version is defined in a
+      **@media (prefers-color-scheme: dark) {}** section:
+
+**--default-base-color: var(--switch--default-base-color, var(--dark--default-base-color));**
+
+These variables look for a **--switch--default-base-color** 
+      variable that can be updated with JavaScript to 
+      set the mode explicitly. If that variable isn't
+      set, the mode falls back to calling `--light` or
+      `--dark` as appropriate. Browsers that receive
+      mode preferences from the operating system
+      use them to switch modes automatically. 
+
+Combined, that sets up the page to use the following
+      order to set the mode:
+
+1. Use the value from **--switch--default-COLOR-color**
+if it exist. 
+
+2. Otherwise, use either the default value or the
+      value from **@media (prefers-color-scheme: dark)**
+      if the browser receives the mode preference
+      from the operating system. 
+
+3. Finally, fallback to using light mode if neither
+      a switch nor OS provided mode is available. 
+
+
+
+
+
+
+
+## Swatches
 
 
 == endfilter
@@ -248,13 +317,15 @@ Each of the five colors have three variants:
   <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
   <button data-s="copyThis">Copy</button>
 </div>
-</main>
 
-<div class="border-1">
-<button data-s="resetDefaults">Reset to Defaults</button>
+<div class="border-1 default-flow">
+    <p>Prototype Tools:</p>
 <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
 <button data-s="setLogLevel" data-key="WARN">WARN</button>
+<button data-s="resetDefaults">Reset to Defaults</button>
 </div>
+
+</main>
 
 == endblock 
 

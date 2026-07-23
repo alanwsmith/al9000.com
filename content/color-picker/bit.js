@@ -386,16 +386,21 @@ export async function setParam(_, sender, ___) {
 }
 
 export function updateActiveColor(_, __, el) {
-  const mode = s.getActiveMode();
-  const targetColor = s.data.colorNames[mode.activeColorIndex];
-  if (el.prop("key") === targetColor) {
-    el.classList.remove("inactiveColor");
-  } else {
-    el.classList.add("inactiveColor");
-  }
-  if (s.data.monoNames.includes(el.prop("key"))) {
-    el.classList.remove("inactiveColor");
-  }
+  // this was an initial way to help focus
+  // on a specific color. It's been removed for
+  // now so the swatches are always fully
+  // visible now that there's more content
+  // on the page to preview.
+  // const mode = s.getActiveMode();
+  // const targetColor = s.data.colorNames[mode.activeColorIndex];
+  // if (el.prop("key") === targetColor) {
+  //   el.classList.remove("inactiveColor");
+  // } else {
+  //   el.classList.add("inactiveColor");
+  // }
+  // if (s.data.monoNames.includes(el.prop("key"))) {
+  //   el.classList.remove("inactiveColor");
+  // }
 }
 
 export function updateBackgroundValue(_, __, el) {
@@ -502,6 +507,8 @@ function makeClasses() {
   const background = [
     `.background { color: var(--background); }`,
   ];
+  // TODO: Move these individual arrays into
+  // the collections array.
   const colors1 = s.data.colorNames.map((color) => {
     return `.default-${color}-color { color: var(--default-${color}-color); }`;
   });
@@ -520,6 +527,16 @@ function makeClasses() {
   const monos3 = s.data.monoNames.map((color) => {
     return `.faint-${color}-color { color: var(--faint-${color}-color); }`;
   });
+
+  const collection = [];
+  s.data.colorNames.forEach((color) => {
+    collection.push(
+      `.default-${color}-background-color { background-color: var(--default-${color}-color); }`,
+      `.faded-${color}-background-color { background-color: var(--faded-${color}-color); }`,
+      `.faint-${color}-background-color { background-color: var(--faint-${color}-color); }`,
+    );
+  });
+
   const output = [
     ...background,
     ...colors1,
@@ -528,6 +545,7 @@ function makeClasses() {
     ...monos1,
     ...monos2,
     ...monos3,
+    ...collection,
   ];
   return output.join("\n");
 }
