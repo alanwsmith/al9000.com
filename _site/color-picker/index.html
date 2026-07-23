@@ -36,6 +36,9 @@
     height: 5rem;
     font-size: 0.4rem;
   }
+  h1 {
+    color: var(--default-heading-color);
+  }
 </style>
   </head>
   <body>
@@ -52,6 +55,9 @@
 <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
 <button data-s="setLogLevel" data-key="WARN">WARN</button>
 
+
+<h1>This is a heading</h1>
+
 <div>
   <div class="default-base-color">base</div>
   <div class="default-heading-color">heading</div>
@@ -66,7 +72,9 @@
 <div data-r="initHueOffsetButtons"></div>
 <div data-r="initColorSliders"></div>
 
-<textarea data-r="updateCSS"></textarea>
+<textarea data-r="updateCSS copyThis"></textarea>
+<button data-s="copyThis">Copy</button>
+
 
 
 

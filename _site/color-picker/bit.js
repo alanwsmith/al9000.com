@@ -374,7 +374,7 @@ export function updateCSS(_, __, el) {
   ];
 
   const propString = props.map((prop) => {
-    return `${prop[0]} { color: ${prop[1]};}`;
+    return `${prop[0]}: ${prop[1]};`;
   }).join("\n");
 
   const output = `:root { 
@@ -384,21 +384,27 @@ ${propString}
 `;
 
   const sheetParts = [
-    `:root { ${
-      variableValues.map((vv) => {
-        return vv[0] + " { color: " + vv[1] + "; }";
-      }).join("\n")
-    }}`,
+    makePageVars(variableValues),
     `:root { ${makeSwitches("light")} }`,
     `@media (prefers-color-scheme: dark) { :root { ${makeSwitches("dark")} }}`,
     makeClasses(),
   ].join("\n");
 
+  el.innerHTML = sheetParts;
+
   const combinedSheet = `
 ${sheetParts}
 ${makeUiVars()}
 ${makeUiClasses()}`;
-  sheet.replaceSync(b.tee(combinedSheet));
+  sheet.replaceSync(combinedSheet);
+}
+
+function makePageVars(variableValues) {
+  return `:root { ${
+    variableValues.map((vv) => {
+      return vv[0] + ": " + vv[1] + ";";
+    }).join("\n")
+  }}`;
 }
 
 function makeSwitches(mode) {
@@ -439,7 +445,7 @@ function makeUiVars() {
   const out2 = output.map((x) => {
     return `${x[0]}: ${x[1]};`;
   });
-  return b.tee(`:root { ${out2.join("\n")}}`);
+  return `:root { ${out2.join("\n")}}`;
 }
 
 function makeUiClasses() {
@@ -455,5 +461,9 @@ function makeUiClasses() {
   const out2 = output.map((x) => {
     return `${x[0]} { color: ${x[1]}; }`;
   });
-  return b.tee(out2.join("\n"));
+  return out2.join("\n");
+}
+
+export async function copyThis(_, sender, el) {
+  await b.quickCopy(el, sender);
 }
