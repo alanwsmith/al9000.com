@@ -10,87 +10,165 @@ flags = ["no-colors"]
 
 == block styles
 <style>
+  * {
+    margin: 0;
+  }
+
   body { 
     background-image: none; 
     background-color: var(--default-background-color);
     font-family: system-ui;
   }
-  .active {
-    font-weight: var(--900-font-weight);
+
+  a {
+    text-decoration: none;
+    color: var(--default-accent-color);
   }
+
+  a:hover {
+    color: var(--faded-warning-color);
+  }
+
+  .active {
+    font-weight: 900;
+    text-decoration: underline;
+  }
+
+  button{
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    outline: inherit;
+    padding-inline: 0.4rem;
+    padding-block: 0.2rem;
+  }
+
+  .border-1 {
+    border: 1px solid var(--faint-reversed-color);
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    margin-block: 0.9rem;
+  }
+
+  h1 {
+    color: var(--20-heading-color);
+    color: var(--default-heading-color);
+  }
+
+  /*
+  .three-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  */
+
+  main {
+    margin: 1.2rem;
+  }
+
+  .two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.3rem;
+  }
+
+  .two-columns-left {
+    display: grid;
+    grid-template-columns: 2fr 1.6fr;
+    gap: 1.3rem;
+  }
+
   textarea {
     display: block;
     width: 90vw;
     height: 20rem;
     font-size: 0.6rem;
+    margin-top: 2rem;
   }
-  h1 {
-    color: var(--20-heading-color);
-    color: var(--default-heading-color);
-  }
-  .three-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+
+  .warning-block {
+    border: 1px solid var(--faded-reversed-color);
+    background-color: var(--faint-warning-color);
+    padding: 0.5rem;
+    border-radius: 0.4rem;
   }
 </style>
 == endblock
 
 
 == block content
+<main>
+<div class="border-1"><a href="/">al9000.com</a></div>
+
+<h1>Color Picker 9000</h1>
+<div class="warning-block">
+  <p>Head's up</p>
+  <p>
+    This is a prototype. 
+    Most of the basic functionality
+    is in place. The design is still
+    a work in progress. 
+  </p>
+</div>
+
+<div class="border-1">
 <button data-s="resetDefaults">Reset to Defaults</button>
 <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
 <button data-s="setLogLevel" data-key="WARN">WARN</button>
-
-
-<h1>This is a heading</h1>
-
-<div class="three-cols">
-  <div class="default-base-color">default base</div>
-  <div class="faded-base-color">faded base</div>
-  <div class="faint-base-color">faint base</div>
-
-  <div class="default-accent-color">default accent</div>
-  <div class="faded-accent-color">faded accent</div>
-  <div class="faint-accent-color">faint accent</div>
-
-  <div class="default-heading-color">default heading</div>
-  <div class="faded-heading-color">faded heading</div>
-  <div class="faint-heading-color">faint heading</div>
-
-  <div class="default-info-color">default info</div>
-  <div class="faded-info-color">faded info</div>
-  <div class="faint-info-color">faint info</div>
-
-  <div class="default-warning-color">default warning</div>
-  <div class="faded-warning-color">faded warning</div>
-  <div class="faint-warning-color">faint warning</div>
-
-  <div class="default-black-color">default black</div>
-  <div class="faded-black-color">faded black</div>
-  <div class="faint-black-color">faint black</div>
-
-  <div class="default-white-color">default white</div>
-  <div class="faded-white-color">faded white</div>
-  <div class="faint-white-color">faint white</div>
-
-  <div class="default-match-color">default match</div>
-  <div class="faded-match-color">faded match</div>
-  <div class="faint-match-color">faint match</div>
-
-  <div class="default-reverse-color">default reverse</div>
-  <div class="faded-reverse-color">faded reverse</div>
-  <div class="faint-reverse-color">faint reverse</div>
-
 </div>
 
-<div data-r="initModeButtons"></div>
-<div data-r="initBackgroundSliders"></div>
-<div data-r="initColorNameButtons"></div>
-<div data-r="initHueOffsetButtons"></div>
-<div data-r="initColorSliders"></div>
+<div class="two-columns-left">
 
+  <div>
+    == for color in d["color-picker"].data.colors
+      <div class="border-1" data-r="activeColor">
+      == for kind in d["color-picker"].data.kinds
+        <div class="[@ kind @]-[@ color @]-color two-columns">
+          <div class="block [@ kind @]-[@ color @]-block">
+            <style>
+            .[@ kind @]-[@ color @]-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--[@ kind @]-[@ color @]-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>[@ kind @] [@ color @]</div>
+        </div>
+      == endfor
+    </div>
+    == endfor
+  </div>
+
+  <div>
+    <div class="border-1">
+      <h3>Mode</h3>
+      <div data-r="initModeButtons"></div>
+    </div>
+    <div class="border-1">
+      <h3>Background</h3>
+      <div data-r="initBackgroundSliders"></div>
+    </div>
+    <div class="border-1">
+      <h3>Colors</h3>
+      <div data-r="initColorNameButtons"></div>
+      <div class="border-1">
+        <div data-r="initHueOffsetButtons"></div>
+        <div data-r="initColorSliders"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div>
 <textarea data-r="updateCSS copyThis"></textarea>
 <button data-s="copyThis">Copy</button>
+</div>
+</main>
 
 == endblock 
 
@@ -120,57 +198,61 @@ flags = ["no-colors"]
 </script>
 
 <script type="text/html" data-template="colorSliders">
-<div><label>Lightness</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="L"
-    min="0"
-    max="1.0"
-    step="0.001"
-    value="__L__"
-    autocomplete="off"
-  />
+<div class="border-1">
+  <div><label>Lightness</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="L"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__L__"
+      autocomplete="off"
+    />
+  </div>
+  <div><label>Chroma</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="C"
+      min="0"
+      max="0.3"
+      step="0.0001"
+      value="__C__"
+      autocomplete="off"
+    />
+  </div>
 </div>
-<div><label>Chroma</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="C"
-    min="0"
-    max="0.3"
-    step="0.0001"
-    value="__C__"
-    autocomplete="off"
-  />
-</div>
-<div><label>faded</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="FADED"
-    min="0"
-    max="1.0"
-    step="0.001"
-    value="__FADED__"
-    autocomplete="off"
-  />
-</div>
-<div><label>faint</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="FAINT"
-    min="0"
-    max="1.0"
-    step="0.001"
-    value="__FAINT__"
-    autocomplete="off"
-  />
+<div class="border-1">
+  <div><label>Faded</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="FADED"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__FADED__"
+      autocomplete="off"
+    />
+  </div>
+  <div><label>Faint</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="FAINT"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__FAINT__"
+      autocomplete="off"
+    />
+  </div>
 </div>
 </script>
 
@@ -184,10 +266,8 @@ flags = ["no-colors"]
 </script>
 
 <script type="text/html" data-template="modeButton">
-  <div>
-    <label>__KEY__
-      <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
-    </label>
-  </div>
+  <label>__KEY__
+    <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
+  </label>
 </script>
 == endblock

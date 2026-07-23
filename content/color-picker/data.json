@@ -1,0 +1,18 @@
+{
+  "colors": [
+    "base",
+    "accent",
+    "heading",
+    "info",
+    "warning",
+    "black",
+    "white",
+    "match",
+    "reversed"
+  ],
+  "kinds": [
+    "default",
+    "faded",
+    "faint"
+  ]
+}
