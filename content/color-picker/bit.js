@@ -339,49 +339,30 @@ export function updateColorValue(_, __, el) {
 
 export function updateCSS(_, __, el) {
   b.warn("updateCSS");
-  const variableValues = [];
 
-  for (let mode of s.data.modes) {
-    variableValues.push(
-      [
-        `--${mode.__KEY__}--default-background-color`,
-        `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
-      ],
-    );
-    s.data.colorNames.forEach((name, index) => {
-      const color = mode.colors[index];
-      const key = `--${mode.__KEY__}--default-${name}-color`;
-      const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
-        mode.background.__H__) % 360;
-      const value = `oklch(${color.__L__} ${color.__C__} ${rotation})`;
-      variableValues.push([key, value]);
-    });
-  }
+  // let variableValues = [];
+  // for (let mode of s.data.modes) {
+  //   variableValues.push(
+  //     [
+  //       `--${mode.__KEY__}--default-background-color`,
+  //       `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
+  //     ],
+  //   );
+  //   s.data.colorNames.forEach((name, index) => {
+  //     const color = mode.colors[index];
+  //     const key = `--${mode.__KEY__}--default-${name}-color`;
+  //     const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
+  //       mode.background.__H__) % 360;
+  //     const value = `oklch(${color.__L__} ${color.__C__} ${rotation})`;
+  //     variableValues.push([key, value]);
+  //   });
+  // }
+
+  const variableValues = generatePageVariables();
 
   variableValues.forEach((vv) => {
     b.setCSS(vv[0], vv[1]);
   });
-
-  const parts = variableValues.map((vv) => {
-    return `${vv[0]}: ${vv[1]};`;
-  });
-
-  const props = [
-    [
-      ".default-base-color",
-      "var(--light--default-base-color)",
-    ],
-  ];
-
-  const propString = props.map((prop) => {
-    return `${prop[0]}: ${prop[1]};`;
-  }).join("\n");
-
-  const output = `:root { 
-${parts.join("\n")} 
-}
-${propString}
-`;
 
   const sheetParts = [
     makePageVars(variableValues),
@@ -392,10 +373,10 @@ ${propString}
 
   el.innerHTML = sheetParts;
 
-  const combinedSheet = `
-${sheetParts}
-${makeUiVars()}
-${makeUiClasses()}`;
+  const combinedSheet = `${sheetParts}
+  ${makeUiVars()}
+  ${makeUiClasses()}`;
+
   sheet.replaceSync(combinedSheet);
 }
 
@@ -462,6 +443,27 @@ function makeUiClasses() {
     return `${x[0]} { color: ${x[1]}; }`;
   });
   return out2.join("\n");
+}
+
+function generatePageVariables() {
+  let variableValues = [];
+  for (let mode of s.data.modes) {
+    variableValues.push(
+      [
+        `--${mode.__KEY__}--default-background-color`,
+        `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
+      ],
+    );
+    s.data.colorNames.forEach((name, index) => {
+      const color = mode.colors[index];
+      const key = `--${mode.__KEY__}--default-${name}-color`;
+      const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
+        mode.background.__H__) % 360;
+      const value = `oklch(${color.__L__} ${color.__C__} ${rotation})`;
+      variableValues.push([key, value]);
+    });
+  }
+  return variableValues;
 }
 
 export async function copyThis(_, sender, el) {
