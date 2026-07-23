@@ -13,13 +13,14 @@ flags = ["no-colors"]
   body { 
     background-image: none; 
     background-color: var(--default-background-color);
+    font-family: system-ui;
   }
   .active {
     font-weight: var(--900-font-weight);
   }
   textarea {
     width: 100vw;
-    height: 5rem;
+    height: 10rem;
     font-size: 0.4rem;
   }
   h1 {
@@ -27,6 +28,12 @@ flags = ["no-colors"]
     color: var(--default-heading-color);
 
   }
+
+  .three-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
 </style>
 == endblock
 
@@ -39,12 +46,26 @@ flags = ["no-colors"]
 
 <h1>This is a heading</h1>
 
-<div>
-  <div class="default-base-color">base</div>
-  <div class="default-heading-color">heading</div>
-  <div class="default-info-color">info</div>
-  <div class="default-accent-color">accent</div>
-  <div class="default-warning-color">warning</div>
+<div class="three-cols">
+  <div class="default-base-color">default base</div>
+  <div class="lighter-base-color">lighter base</div>
+  <div class="lightest-base-color">lightest base</div>
+
+  <div class="default-heading-color">default heading</div>
+  <div class="lighter-heading-color">lighter heading</div>
+  <div class="lightest-heading-color">lightest heading</div>
+
+  <div class="default-info-color">default info</div>
+  <div class="lighter-info-color">lighter info</div>
+  <div class="lightest-info-color">lightest info</div>
+
+  <div class="default-accent-color">default accent</div>
+  <div class="lighter-accent-color">lighter accent</div>
+  <div class="lightest-accent-color">lightest accent</div>
+
+  <div class="default-warning-color">default warning</div>
+  <div class="lighter-warning-color">lighter warning</div>
+  <div class="lightest-warning-color">lightest warning</div>
 
 </div>
 
@@ -86,7 +107,7 @@ flags = ["no-colors"]
 </script>
 
 <script type="text/html" data-template="colorSliders">
-<div><label>L</label>
+<div><label>Lightness</label>
   <input 
     type="range" 
     data-s="setColorValue" 
@@ -99,7 +120,20 @@ flags = ["no-colors"]
     autocomplete="off"
   />
 </div>
-<div><label>80</label>
+<div><label>Chroma</label>
+  <input 
+    type="range" 
+    data-s="setColorValue" 
+    data-r="updateColorValue"
+    data-key="C"
+    min="0"
+    max="0.3"
+    step="0.0001"
+    value="__C__"
+    autocomplete="off"
+  />
+</div>
+<div><label>Lighter</label>
   <input 
     type="range" 
     data-s="setColorValue" 
@@ -112,7 +146,7 @@ flags = ["no-colors"]
     autocomplete="off"
   />
 </div>
-<div><label>20</label>
+<div><label>Lightest</label>
   <input 
     type="range" 
     data-s="setColorValue" 
@@ -122,19 +156,6 @@ flags = ["no-colors"]
     max="1.0"
     step="0.001"
     value="__20__"
-    autocomplete="off"
-  />
-</div>
-<div><label>C</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="C"
-    min="0"
-    max="0.3"
-    step="0.0001"
-    value="__C__"
     autocomplete="off"
   />
 </div>

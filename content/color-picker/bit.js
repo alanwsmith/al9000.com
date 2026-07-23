@@ -48,36 +48,36 @@ const defaults = {
           __L__: 0.3,
           __C__: 0.2,
           __H_OFFSET__: 0,
-          __80__: 0.8,
-          __20__: 0.2,
+          __LIGHTER__: 0.8,
+          __LIGHTEST__: 0.2,
         },
         {
           __L__: 0.4,
           __C__: 0.16,
           __H_OFFSET__: 3,
-          __80__: 0.8,
-          __20__: 0.2,
+          __LIGHTER__: 0.8,
+          __LIGHTEST__: 0.2,
         },
         {
           __L__: 0.54,
           __C__: 0.26,
           __H_OFFSET__: 5,
-          __80__: 0.8,
-          __20__: 0.2,
+          __LIGHTER__: 0.8,
+          __LIGHTEST__: 0.2,
         },
         {
           __L__: 0.62,
           __C__: 0.2,
           __H_OFFSET__: 2,
-          __80__: 0.8,
-          __20__: 0.2,
+          __LIGHTER__: 0.8,
+          __LIGHTEST__: 0.2,
         },
         {
           __L__: 0.6,
           __C__: 0.27,
           __H_OFFSET__: 4,
-          __80__: 0.8,
-          __20__: 0.2,
+          __LIGHTER__: 0.8,
+          __LIGHTEST__: 0.2,
         },
       ],
     },
@@ -95,36 +95,36 @@ const defaults = {
           __L__: 0.8,
           __C__: 0.2,
           __H_OFFSET__: 0,
-          __80__: 0.8,
-          __20__: 0.2,
+          __LIGHTER__: 0.8,
+          __LIGHTEST__: 0.2,
         },
         {
           __L__: 0.8,
           __C__: 0.2,
           __H_OFFSET__: 0,
-          __80__: 0.8,
-          __20__: 0.2,
+          __LIGHTER__: 0.8,
+          __LIGHTEST__: 0.2,
         },
         {
           __L__: 0.8,
           __C__: 0.2,
           __H_OFFSET__: 0,
-          __80__: 0.8,
-          __20__: 0.2,
+          __LIGHTER__: 0.8,
+          __LIGHTEST__: 0.2,
         },
         {
           __L__: 0.8,
           __C__: 0.2,
           __H_OFFSET__: 0,
-          __80__: 0.8,
-          __20__: 0.2,
+          __LIGHTER__: 0.8,
+          __LIGHTEST__: 0.2,
         },
         {
           __L__: 0.8,
           __C__: 0.2,
           __H_OFFSET__: 0,
-          __80__: 0.8,
-          __20__: 0.2,
+          __LIGHTER__: 0.8,
+          __LIGHTEST__: 0.2,
         },
       ],
     },
@@ -217,8 +217,8 @@ export function initColorSliders(_, __, el) {
   const subs = {
     __L__: color.__L__,
     __C__: color.__C__,
-    __80__: color.__80__,
-    __20__: color.__20__,
+    __LIGHTER__: color.__LIGHTER__,
+    __LIGHTEST__: color.__LIGHTEST__,
   };
   el.appendChild(b.render("colorSliders", subs));
 }
@@ -340,24 +340,6 @@ export function updateColorValue(_, __, el) {
 export function updateCSS(_, __, el) {
   b.warn("updateCSS");
 
-  // let variableValues = [];
-  // for (let mode of s.data.modes) {
-  //   variableValues.push(
-  //     [
-  //       `--${mode.__KEY__}--default-background-color`,
-  //       `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
-  //     ],
-  //   );
-  //   s.data.colorNames.forEach((name, index) => {
-  //     const color = mode.colors[index];
-  //     const key = `--${mode.__KEY__}--default-${name}-color`;
-  //     const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
-  //       mode.background.__H__) % 360;
-  //     const value = `oklch(${color.__L__} ${color.__C__} ${rotation})`;
-  //     variableValues.push([key, value]);
-  //   });
-  // }
-
   const variableValues = generatePageVariables();
 
   variableValues.forEach((vv) => {
@@ -391,22 +373,38 @@ function makePageVars(variableValues) {
 function makeSwitches(mode) {
   const background = [
     `--default-background-color: var(--switch--background-color, var(--${mode}--default-background-color));`,
+    `--lighter-background-color: var(--switch--background-color, var(--${mode}--lighter-background-color));`,
+    `--lightest-background-color: var(--switch--background-color, var(--${mode}--lightest-background-color));`,
   ];
-  const colors = s.data.colorNames.map((color) => {
+  const colors1 = s.data.colorNames.map((color) => {
     return `--default-${color}-color: var(--switch--${color}-color, var(--${mode}--default-${color}-color));`;
   });
-  const output = [...background, ...colors];
+  const colors2 = s.data.colorNames.map((color) => {
+    return `--lighter-${color}-color: var(--switch--${color}-color, var(--${mode}--lighter-${color}-color));`;
+  });
+  const colors3 = s.data.colorNames.map((color) => {
+    return `--lightest-${color}-color: var(--switch--${color}-color, var(--${mode}--lightest-${color}-color));`;
+  });
+  const output = [...background, ...colors1, ...colors2, ...colors3];
   return output.join("\n");
 }
 
 function makeClasses() {
   const background = [
     `.default-background-color { color: var(--default-background-color); }`,
+    `.lighter-background-color { color: var(--lighter-background-color); }`,
+    `.lightest-background-color { color: var(--lightest-background-color); }`,
   ];
-  const colors = s.data.colorNames.map((color) => {
+  const colors1 = s.data.colorNames.map((color) => {
     return `.default-${color}-color { color: var(--default-${color}-color); }`;
   });
-  const output = [...background, ...colors];
+  const colors2 = s.data.colorNames.map((color) => {
+    return `.lighter-${color}-color { color: var(--lighter-${color}-color); }`;
+  });
+  const colors3 = s.data.colorNames.map((color) => {
+    return `.lightest-${color}-color { color: var(--lightest-${color}-color); }`;
+  });
+  const output = [...background, ...colors1, ...colors2, ...colors3];
   return output.join("\n");
 }
 
@@ -453,13 +451,40 @@ function generatePageVariables() {
         `--${mode.__KEY__}--default-background-color`,
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
       ],
+      [
+        `--${mode.__KEY__}--lighter-background-color`,
+        `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__} / 0.8)`,
+      ],
+      [
+        `--${mode.__KEY__}--lightest-background-color`,
+        `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__} / 0.2)`,
+      ],
     );
+
     s.data.colorNames.forEach((name, index) => {
       const color = mode.colors[index];
       const key = `--${mode.__KEY__}--default-${name}-color`;
       const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
         mode.background.__H__) % 360;
       const value = `oklch(${color.__L__} ${color.__C__} ${rotation})`;
+      variableValues.push([key, value]);
+    });
+
+    s.data.colorNames.forEach((name, index) => {
+      const color = mode.colors[index];
+      const key = `--${mode.__KEY__}--lighter-${name}-color`;
+      const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
+        mode.background.__H__) % 360;
+      const value = `oklch(${color.__L__} ${color.__C__} ${rotation} / 0.8)`;
+      variableValues.push([key, value]);
+    });
+
+    s.data.colorNames.forEach((name, index) => {
+      const color = mode.colors[index];
+      const key = `--${mode.__KEY__}--lightest-${name}-color`;
+      const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
+        mode.background.__H__) % 360;
+      const value = `oklch(${color.__L__} ${color.__C__} ${rotation} / 0.2)`;
       variableValues.push([key, value]);
     });
   }
