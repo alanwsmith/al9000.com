@@ -4,30 +4,214 @@ title = "Color Picker"
 created = 2026-07-21T21:09:00-04:00
 status = "draft"
 id = "01/n6/06/1c" 
+flags = ["no-colors"]
 == endblock 
 
 
 == block styles
-<link rel="stylesheet" href="/styles/main.css" />
 <style>
-  :root {
-
+  * {
+    margin: 0;
   }
-  body { background-image: none; }
+
+  body { 
+    background-image: none; 
+    background-color: var(--default-background-color);
+    font-family: system-ui;
+    color: var(--default-base-color);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--default-accent-color);
+  }
+
+  a:hover {
+    color: var(--faded-warning-color);
+  }
+
   .active {
-    font-weight: var(--900-font-weight);
+    font-weight: 900;
+    text-decoration: underline;
+  }
+
+  .inactiveColor {
+    opacity: 0.3;
+    background-color: var(--default-black-color);
+  }
+
+  .inactiveMonoColor {
+    opacity: 0.3;
+    background-color: var(--default-warning-color);
+  }
+
+  button{
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    outline: inherit;
+    padding-inline: 0.4rem;
+    padding-block: 0.2rem;
+  }
+
+  .border-1 {
+    border: 1px solid var(--faint-reverse-color);
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    margin-block: 0.9rem;
+  }
+
+  h1 {
+    color: var(--default-heading-color);
+    margin-bottom: 1.3rem;
+    font-weight: 900;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+  }
+
+  main {
+    margin: 1.2rem;
+  }
+
+  ol > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
+  }
+
+  .two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.3rem;
+  }
+
+  .two-columns-left {
+    display: grid;
+    grid-template-columns: 2fr 1.6fr;
+    gap: 1.3rem;
+  }
+
+  textarea {
+    display: block;
+    width: 90vw;
+    height: 20rem;
+    font-size: 0.6rem;
+    margin-top: 2rem;
+  }
+
+  .warning-block {
+    border: 1px solid var(--faded-reverse-color);
+    background-color: var(--faded-warning-color);
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    color: var(--default-black-color);
   }
 </style>
 == endblock
 
 
 == block content
-<button data-s="resetDefaults">Reset Defaults</button>
-<div data-r="initModeButtons"></div>
-<div data-r="initBackgroundSliders"></div>
-<div data-r="initColorNameButtons"></div>
-<div data-r="initHueOffsetButtons"></div>
-<div data-r="initColorSliders"></div>
+<main>
+<div class="border-1"><a href="/">home</a></div>
+
+<h1>Color Picker 9000</h1>
+<div class="warning-block">
+    <p><strong>Head's up</strong></p>
+  <p>
+    This is a prototype. 
+    Most of the basic functionality
+    is in place. The design is still
+    a work in progress. 
+  </p>
+</div>
+
+<div class="border-1">
+<button data-s="resetDefaults">Reset to Defaults</button>
+<button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
+<button data-s="setLogLevel" data-key="WARN">WARN</button>
+</div>
+
+<h2>Instructions</h2>
+
+  <ol>
+    <li>Select the Mode you want to work on (either light or dark)</li>
+    <li>
+      Use the Background sliders to set a background color.
+      As you do, the colors in the Colors section
+      update automatically (each hue value
+      rotates 45 degrees).
+    </li>
+    <li>
+      Choose a color from the Colors section and
+      use the &quot;hue&quot; buttons below it to
+      select the hue portion of it's OKLCH value. 
+    </li>
+    <li>
+      Use the Lightness and Chroma sliders to 
+      adjust those values for the color. 
+    </li>
+    <li>
+      Copy the CSS block and paste it into
+      your style sheet to start using
+      the colors.
+    </li>
+  </ol>
+
+
+<div class="two-columns-left">
+
+  <div>
+    == for color in d["color-picker"].data.colors
+      <div class="border-1" data-r="updateActiveColor" data-key="[@ color @]">
+      == for kind in d["color-picker"].data.kinds
+        <div class="[@ kind @]-[@ color @]-color two-columns">
+          <div class="block [@ kind @]-[@ color @]-block">
+            <style>
+            .[@ kind @]-[@ color @]-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--[@ kind @]-[@ color @]-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>[@ kind @] [@ color @]</div>
+        </div>
+      == endfor
+    </div>
+    == endfor
+  </div>
+
+  <div>
+    <div class="border-1">
+      <h3>Mode</h3>
+      <div data-r="initModeButtons"></div>
+    </div>
+    <div class="border-1">
+      <h3>Background</h3>
+      <div data-r="initBackgroundSliders"></div>
+    </div>
+    <div class="border-1">
+      <h3>Colors</h3>
+      <div data-r="initColorNameButtons"></div>
+      <div class="border-1">
+        <div data-r="initHueOffsetButtons"></div>
+        <div data-r="initColorSliders"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <h3>CSS</h3>
+  <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
+  <button data-s="copyThis">Copy</button>
+</div>
+</main>
+
 == endblock 
 
 
@@ -52,69 +236,80 @@ id = "01/n6/06/1c"
 </script>
 
 <script type="text/html" data-template="colorNameButton">
-  <button data-s="setColorName" data-r="setColorNameStyles" data-index="__INDEX__">__COLOR__</button>
+<button class="default-__COLOR__-color" data-s="setColorName" data-r="setColorNameStyles" data-index="__INDEX__">__COLOR__</button>
 </script>
 
 <script type="text/html" data-template="colorSliders">
-<div><label>L</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="L"
-    min="0"
-    max="1.0"
-    step="0.001"
-    value="__L__"
-  />
+<div class="border-1">
+  <div><label>Lightness</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="L"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__L__"
+      autocomplete="off"
+    />
+  </div>
+  <div><label>Chroma</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="C"
+      min="0"
+      max="0.3"
+      step="0.0001"
+      value="__C__"
+      autocomplete="off"
+    />
+  </div>
 </div>
-<div><label>80</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="80"
-    min="0"
-    max="1.0"
-    step="0.001"
-    value="__80__"
-  />
-</div>
-<div><label>20</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="20"
-    min="0"
-    max="1.0"
-    step="0.001"
-    value="__20__"
-  />
-</div>
-<div><label>C</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="C"
-    min="0"
-    max="0.3"
-    step="0.0001"
-    value="__C__"
-  />
+<div class="border-1">
+  <div><label>Faded</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="FADED"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__FADED__"
+      autocomplete="off"
+    />
+  </div>
+  <div><label>Faint</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="FAINT"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__FAINT__"
+      autocomplete="off"
+    />
+  </div>
 </div>
 </script>
 
 <script type="text/html" data-template="hueOffsetButton">
-  <button data-s="setHueOffset" data-r="updateHueOffset" data-index="__INDEX__">set</button>
+  <button 
+    class="ui-set-__INDEX__"
+    data-s="setHueOffset" 
+    data-r="updateHueOffset" 
+    data-index="__INDEX__"
+  >hue</button>
 </script>
 
 <script type="text/html" data-template="modeButton">
-  <div>
-    <label>__KEY__
-      <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
-    </label>
-  </div>
+  <label>__KEY__
+    <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
+  </label>
 </script>
 == endblock

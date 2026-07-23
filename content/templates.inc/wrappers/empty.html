@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     == include "/templates.inc/includes/metadata.html"
+    == if "no-colors" not in p.flags
+    <!--
     <link rel="stylesheet" href="/styles/colors.css" />
+-->
+    == endif 
     <script src="[@ d.config.bittyURL @]" type="module"></script>
     == block head
     == endblock

@@ -96,7 +96,6 @@
     --text-align-left: left;
     --text-align-right: right;
     --text-align-start: start;
-
     --default-accent-border: 1px solid var(--default-accent-color);
     --faded-accent-border: 1px solid var(--faded-accent-color);
     --default-accent-border2: 2px solid var(--default-accent-color);
@@ -147,8 +146,8 @@
   --light--faded-base-color: oklch(0.1951 0.23 105.642 / 0.653);
   --light--default-heading-color: oklch(0.165 0.18556 225.642);
   --light--faded-heading-color: oklch(0.165 0.18556 225.642 / 0.18);
-  --light--default-link-color: oklch(0.5537 0.15458 225.642);
-  --light--faded-link-color: oklch(0.5537 0.15458 225.642 / 0.604);
+  --light--default-info-color: oklch(0.5537 0.15458 225.642);
+  --light--faded-info-color: oklch(0.5537 0.15458 225.642 / 0.604);
   --light--default-accent-color: oklch(0.4986 0.10843 165.642);
   --light--faded-accent-color: oklch(0.4986 0.10843 165.642 / 0.28);
   --light--default-warning-color: oklch(0.645 0.09691077318165202 345.642);
@@ -166,8 +165,8 @@
   --dark--faded-base-color: oklch(0.8747 0.04454 254.092 / 0.157);
   --dark--default-heading-color: oklch(0.6705 0.12874 254.092);
   --dark--faded-heading-color: oklch(0.6705 0.12874 254.092 / 0.308);
-  --dark--default-link-color: oklch(0.7299 0.07889 14.091999999999985);
-  --dark--faded-link-color: oklch(0.7299 0.07889 14.091999999999985 / 0.609);
+  --dark--default-info-color: oklch(0.7299 0.07889 14.091999999999985);
+  --dark--faded-info-color: oklch(0.7299 0.07889 14.091999999999985 / 0.609);
   --dark--default-accent-color: oklch(0.7338 0.06558 194.09199999999998);
   --dark--faded-accent-color: oklch(0.7338 0.06558 194.09199999999998 / 0.567);
   --dark--default-warning-color: oklch(0.4351 0.16022 74.09199999999998);
@@ -185,8 +184,8 @@
   --hc-light--faded-base-color: oklch(0.0995 0.23 259.652 / 0.242);
   --hc-light--default-heading-color: oklch(0.6217704856122922 0.08831300417260277 319.652);
   --hc-light--faded-heading-color: oklch(0.6217704856122922 0.08831300417260277 319.652 / 0.572);
-  --hc-light--default-link-color: oklch(0.5245 0.15006780734890438 259.652);
-  --hc-light--faded-link-color: oklch(0.5245 0.15006780734890438 259.652 / 0.437);
+  --hc-light--default-info-color: oklch(0.5245 0.15006780734890438 259.652);
+  --hc-light--faded-info-color: oklch(0.5245 0.15006780734890438 259.652 / 0.437);
   --hc-light--default-accent-color: oklch(0.3227 0.19753 19.651999999999987);
   --hc-light--faded-accent-color: oklch(0.3227 0.19753 19.651999999999987 / 0.318);
   --hc-light--default-warning-color: oklch(0.5586547900477358 0.169058911353704 199.65200000000004);
@@ -204,8 +203,8 @@
   --hc-dark--faded-base-color: oklch(1 0.20411 82 / 0.385);
   --hc-dark--default-heading-color: oklch(0.9552 0.09830629780740073 142);
   --hc-dark--faded-heading-color: oklch(0.9552 0.09830629780740073 142 / 0.697);
-  --hc-dark--default-link-color: oklch(0.962 0.004698125519856717 262);
-  --hc-dark--faded-link-color: oklch(0.962 0.004698125519856717 262 / 0.628);
+  --hc-dark--default-info-color: oklch(0.962 0.004698125519856717 262);
+  --hc-dark--faded-info-color: oklch(0.962 0.004698125519856717 262 / 0.628);
   --hc-dark--default-accent-color: oklch(0.874 0.23 142);
   --hc-dark--faded-accent-color: oklch(0.874 0.23 142 / 0.374);
   --hc-dark--default-warning-color: oklch(0.6882 0.21203825105953206 22);
@@ -222,10 +221,10 @@
   --highlight-2-color: oklch(from var(--default-accent-color) l c calc(h + 60));
   --highlight-3-color: oklch(from var(--default-accent-color) l c calc(h + 120));
   --highlight-4-color: oklch(from var(--default-accent-color) l c calc(h + 180));
-  --highlight-5-color: oklch(from var(--default-link-color) l c h);
-  --highlight-6-color: oklch(from var(--default-link-color) l c calc(h + 60));
-  --highlight-7-color: oklch(from var(--default-link-color) l c calc(h + 120));
-  --highlight-8-color: oklch(from var(--default-link-color) l c calc(h + 180));
+  --highlight-5-color: oklch(from var(--default-info-color) l c h);
+  --highlight-6-color: oklch(from var(--default-info-color) l c calc(h + 60));
+  --highlight-7-color: oklch(from var(--default-info-color) l c calc(h + 120));
+  --highlight-8-color: oklch(from var(--default-info-color) l c calc(h + 180));
 }
 
 :root {
@@ -234,8 +233,8 @@
   --faded-base-color: var(--switch--faded-base-color, var(--light--faded-base-color));
   --default-heading-color: var(--switch--heading-color, var(--light--default-heading-color));
   --faded-heading-color: var(--switch--faded-heading-color, var(--light--faded-heading-color));
-  --default-link-color: var(--switch--default-link-color, var(--light--default-link-color));
-  --faded-link-color: var(--switch--faded-link-color, var(--light--faded-link-color));
+  --default-info-color: var(--switch--default-info-color, var(--light--default-info-color));
+  --faded-info-color: var(--switch--faded-info-color, var(--light--faded-info-color));
   --default-accent-color: var(--switch--default-accent-color, var(--light--default-accent-color));
   --faded-accent-color: var(--switch--faded-accent-color, var(--light--faded-accent-color));
   --default-warning-color: var(--switch--warning-color, var(--light--default-warning-color));
@@ -257,8 +256,8 @@
 /*     --faded-base-color: var(--switch--faded-base-color, var(--dark--faded-base-color)); */
 /*     --default-heading-color: var(--switch--heading-color, var(--dark--default-heading-color)); */
 /*     --faded-heading-color: var(--switch--faded-heading-color, var(--dark--faded-heading-color)); */
-/*     --default-link-color: var(--switch--default-link-color, var(--dark--default-link-color)); */
-/*     --faded-link-color: var(--switch--faded-link-color, var(--dark--faded-link-color)); */
+/*     --default-info-color: var(--switch--default-info-color, var(--dark--default-info-color)); */
+/*     --faded-info-color: var(--switch--faded-info-color, var(--dark--faded-info-color)); */
 /*     --default-accent-color: var(--switch--default-accent-color, var(--dark--default-accent-color)); */
 /*     --faded-accent-color: var(--switch--faded-accent-color, var(--dark--faded-accent-color)); */
 /*     --default-warning-color: var(--switch--warning-color, var(--dark--default-warning-color)); */
@@ -572,7 +571,7 @@ body {
 }
 
 a {
-  color: var(--default-link-color);
+  color: var(--default-info-color);
   text-decoration: none;
 }
 
@@ -677,7 +676,7 @@ button {
   background: none;
   border: var(--faded-accent-border);
   border-radius: var(--default-border-radius);
-  color: var(--default-link-color);
+  color: var(--default-info-color);
   cursor: pointer;
   font-family: inherit;
   font-size: var(--small-font-size);
@@ -686,9 +685,11 @@ button {
   padding-inline: var(--small-padding);
 }
 
+/*
 button:hover {
   color: var(--default-accent-color);
 }
+*/
 
 code {
   font-family: monospace;

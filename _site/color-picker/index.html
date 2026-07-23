@@ -10,7 +10,7 @@
 <meta property="og:description" content="from alan w smith" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://al9000.com/templates.inc/includes/" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<meta property="og:image" content="https://al9000.com&#x2f;color-picker/og-image.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
@@ -22,16 +22,105 @@
   href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
 />
 
-    <link rel="stylesheet" href="/styles/colors.css" />
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
-<link rel="stylesheet" href="/styles/main.css" />
 <style>
-  :root {
-
+  * {
+    margin: 0;
   }
-  body { background-image: none; }
+
+  body { 
+    background-image: none; 
+    background-color: var(--default-background-color);
+    font-family: system-ui;
+    color: var(--default-base-color);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--default-accent-color);
+  }
+
+  a:hover {
+    color: var(--faded-warning-color);
+  }
+
   .active {
-    font-weight: var(--900-font-weight);
+    font-weight: 900;
+    text-decoration: underline;
+  }
+
+  .inactiveColor {
+    opacity: 0.3;
+    background-color: var(--default-black-color);
+  }
+
+  .inactiveMonoColor {
+    opacity: 0.3;
+    background-color: var(--default-warning-color);
+  }
+
+  button{
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    outline: inherit;
+    padding-inline: 0.4rem;
+    padding-block: 0.2rem;
+  }
+
+  .border-1 {
+    border: 1px solid var(--faint-reverse-color);
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    margin-block: 0.9rem;
+  }
+
+  h1 {
+    color: var(--default-heading-color);
+    margin-bottom: 1.3rem;
+    font-weight: 900;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+  }
+
+  main {
+    margin: 1.2rem;
+  }
+
+  ol > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
+  }
+
+  .two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.3rem;
+  }
+
+  .two-columns-left {
+    display: grid;
+    grid-template-columns: 2fr 1.6fr;
+    gap: 1.3rem;
+  }
+
+  textarea {
+    display: block;
+    width: 90vw;
+    height: 20rem;
+    font-size: 0.6rem;
+    margin-top: 2rem;
+  }
+
+  .warning-block {
+    border: 1px solid var(--faded-reverse-color);
+    background-color: var(--faded-warning-color);
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    color: var(--default-black-color);
   }
 </style>
   </head>
@@ -45,12 +134,455 @@
 </noscript>
 
     <div class="payload">
-      <button data-s="resetDefaults">Reset Defaults</button>
-<div data-r="initModeButtons"></div>
-<div data-r="initBackgroundSliders"></div>
-<div data-r="initColorNameButtons"></div>
-<div data-r="initHueOffsetButtons"></div>
-<div data-r="initColorSliders"></div>
+      <main>
+<div class="border-1"><a href="/">home</a></div>
+
+<h1>Color Picker 9000</h1>
+<div class="warning-block">
+    <p><strong>Head's up</strong></p>
+  <p>
+    This is a prototype. 
+    Most of the basic functionality
+    is in place. The design is still
+    a work in progress. 
+  </p>
+</div>
+
+<div class="border-1">
+<button data-s="resetDefaults">Reset to Defaults</button>
+<button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
+<button data-s="setLogLevel" data-key="WARN">WARN</button>
+</div>
+
+<h2>Instructions</h2>
+
+  <ol>
+    <li>Select the Mode you want to work on (either light or dark)</li>
+    <li>
+      Use the Background sliders to set a background color.
+      As you do, the colors in the Colors section
+      update automatically (each hue value
+      rotates 45 degrees).
+    </li>
+    <li>
+      Choose a color from the Colors section and
+      use the &quot;hue&quot; buttons below it to
+      select the hue portion of it's OKLCH value. 
+    </li>
+    <li>
+      Use the Lightness and Chroma sliders to 
+      adjust those values for the color. 
+    </li>
+    <li>
+      Copy the CSS block and paste it into
+      your style sheet to start using
+      the colors.
+    </li>
+  </ol>
+
+
+<div class="two-columns-left">
+
+  <div>
+      <div class="border-1" data-r="updateActiveColor" data-key="base">
+        <div class="default-base-color two-columns">
+          <div class="block default-base-block">
+            <style>
+            .default-base-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--default-base-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>default base</div>
+        </div>
+        <div class="faded-base-color two-columns">
+          <div class="block faded-base-block">
+            <style>
+            .faded-base-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faded-base-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faded base</div>
+        </div>
+        <div class="faint-base-color two-columns">
+          <div class="block faint-base-block">
+            <style>
+            .faint-base-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faint-base-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faint base</div>
+        </div>
+    </div>
+      <div class="border-1" data-r="updateActiveColor" data-key="heading">
+        <div class="default-heading-color two-columns">
+          <div class="block default-heading-block">
+            <style>
+            .default-heading-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--default-heading-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>default heading</div>
+        </div>
+        <div class="faded-heading-color two-columns">
+          <div class="block faded-heading-block">
+            <style>
+            .faded-heading-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faded-heading-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faded heading</div>
+        </div>
+        <div class="faint-heading-color two-columns">
+          <div class="block faint-heading-block">
+            <style>
+            .faint-heading-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faint-heading-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faint heading</div>
+        </div>
+    </div>
+      <div class="border-1" data-r="updateActiveColor" data-key="accent">
+        <div class="default-accent-color two-columns">
+          <div class="block default-accent-block">
+            <style>
+            .default-accent-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--default-accent-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>default accent</div>
+        </div>
+        <div class="faded-accent-color two-columns">
+          <div class="block faded-accent-block">
+            <style>
+            .faded-accent-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faded-accent-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faded accent</div>
+        </div>
+        <div class="faint-accent-color two-columns">
+          <div class="block faint-accent-block">
+            <style>
+            .faint-accent-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faint-accent-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faint accent</div>
+        </div>
+    </div>
+      <div class="border-1" data-r="updateActiveColor" data-key="info">
+        <div class="default-info-color two-columns">
+          <div class="block default-info-block">
+            <style>
+            .default-info-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--default-info-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>default info</div>
+        </div>
+        <div class="faded-info-color two-columns">
+          <div class="block faded-info-block">
+            <style>
+            .faded-info-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faded-info-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faded info</div>
+        </div>
+        <div class="faint-info-color two-columns">
+          <div class="block faint-info-block">
+            <style>
+            .faint-info-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faint-info-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faint info</div>
+        </div>
+    </div>
+      <div class="border-1" data-r="updateActiveColor" data-key="warning">
+        <div class="default-warning-color two-columns">
+          <div class="block default-warning-block">
+            <style>
+            .default-warning-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--default-warning-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>default warning</div>
+        </div>
+        <div class="faded-warning-color two-columns">
+          <div class="block faded-warning-block">
+            <style>
+            .faded-warning-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faded-warning-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faded warning</div>
+        </div>
+        <div class="faint-warning-color two-columns">
+          <div class="block faint-warning-block">
+            <style>
+            .faint-warning-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faint-warning-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faint warning</div>
+        </div>
+    </div>
+      <div class="border-1" data-r="updateActiveColor" data-key="black">
+        <div class="default-black-color two-columns">
+          <div class="block default-black-block">
+            <style>
+            .default-black-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--default-black-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>default black</div>
+        </div>
+        <div class="faded-black-color two-columns">
+          <div class="block faded-black-block">
+            <style>
+            .faded-black-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faded-black-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faded black</div>
+        </div>
+        <div class="faint-black-color two-columns">
+          <div class="block faint-black-block">
+            <style>
+            .faint-black-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faint-black-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faint black</div>
+        </div>
+    </div>
+      <div class="border-1" data-r="updateActiveColor" data-key="white">
+        <div class="default-white-color two-columns">
+          <div class="block default-white-block">
+            <style>
+            .default-white-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--default-white-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>default white</div>
+        </div>
+        <div class="faded-white-color two-columns">
+          <div class="block faded-white-block">
+            <style>
+            .faded-white-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faded-white-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faded white</div>
+        </div>
+        <div class="faint-white-color two-columns">
+          <div class="block faint-white-block">
+            <style>
+            .faint-white-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faint-white-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faint white</div>
+        </div>
+    </div>
+      <div class="border-1" data-r="updateActiveColor" data-key="match">
+        <div class="default-match-color two-columns">
+          <div class="block default-match-block">
+            <style>
+            .default-match-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--default-match-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>default match</div>
+        </div>
+        <div class="faded-match-color two-columns">
+          <div class="block faded-match-block">
+            <style>
+            .faded-match-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faded-match-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faded match</div>
+        </div>
+        <div class="faint-match-color two-columns">
+          <div class="block faint-match-block">
+            <style>
+            .faint-match-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faint-match-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faint match</div>
+        </div>
+    </div>
+      <div class="border-1" data-r="updateActiveColor" data-key="reverse">
+        <div class="default-reverse-color two-columns">
+          <div class="block default-reverse-block">
+            <style>
+            .default-reverse-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--default-reverse-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>default reverse</div>
+        </div>
+        <div class="faded-reverse-color two-columns">
+          <div class="block faded-reverse-block">
+            <style>
+            .faded-reverse-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faded-reverse-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faded reverse</div>
+        </div>
+        <div class="faint-reverse-color two-columns">
+          <div class="block faint-reverse-block">
+            <style>
+            .faint-reverse-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faint-reverse-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faint reverse</div>
+        </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="border-1">
+      <h3>Mode</h3>
+      <div data-r="initModeButtons"></div>
+    </div>
+    <div class="border-1">
+      <h3>Background</h3>
+      <div data-r="initBackgroundSliders"></div>
+    </div>
+    <div class="border-1">
+      <h3>Colors</h3>
+      <div data-r="initColorNameButtons"></div>
+      <div class="border-1">
+        <div data-r="initHueOffsetButtons"></div>
+        <div data-r="initColorSliders"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <h3>CSS</h3>
+  <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
+  <button data-s="copyThis">Copy</button>
+</div>
+</main>
+
 
 
 
@@ -80,70 +612,81 @@
 </script>
 
 <script type="text/html" data-template="colorNameButton">
-  <button data-s="setColorName" data-r="setColorNameStyles" data-index="__INDEX__">__COLOR__</button>
+<button class="default-__COLOR__-color" data-s="setColorName" data-r="setColorNameStyles" data-index="__INDEX__">__COLOR__</button>
 </script>
 
 <script type="text/html" data-template="colorSliders">
-<div><label>L</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="L"
-    min="0"
-    max="1.0"
-    step="0.001"
-    value="__L__"
-  />
+<div class="border-1">
+  <div><label>Lightness</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="L"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__L__"
+      autocomplete="off"
+    />
+  </div>
+  <div><label>Chroma</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="C"
+      min="0"
+      max="0.3"
+      step="0.0001"
+      value="__C__"
+      autocomplete="off"
+    />
+  </div>
 </div>
-<div><label>80</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="80"
-    min="0"
-    max="1.0"
-    step="0.001"
-    value="__80__"
-  />
-</div>
-<div><label>20</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="20"
-    min="0"
-    max="1.0"
-    step="0.001"
-    value="__20__"
-  />
-</div>
-<div><label>C</label>
-  <input 
-    type="range" 
-    data-s="setColorValue" 
-    data-r="updateColorValue"
-    data-key="C"
-    min="0"
-    max="0.3"
-    step="0.0001"
-    value="__C__"
-  />
+<div class="border-1">
+  <div><label>Faded</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="FADED"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__FADED__"
+      autocomplete="off"
+    />
+  </div>
+  <div><label>Faint</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="updateColorValue"
+      data-key="FAINT"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__FAINT__"
+      autocomplete="off"
+    />
+  </div>
 </div>
 </script>
 
 <script type="text/html" data-template="hueOffsetButton">
-  <button data-s="setHueOffset" data-r="updateHueOffset" data-index="__INDEX__">set</button>
+  <button 
+    class="ui-set-__INDEX__"
+    data-s="setHueOffset" 
+    data-r="updateHueOffset" 
+    data-index="__INDEX__"
+  >hue</button>
 </script>
 
 <script type="text/html" data-template="modeButton">
-  <div>
-    <label>__KEY__
-      <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
-    </label>
-  </div>
+  <label>__KEY__
+    <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
+  </label>
 </script>
     </div>
   </body>

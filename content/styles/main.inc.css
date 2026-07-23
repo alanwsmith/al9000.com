@@ -37,7 +37,7 @@ body {
 }
 
 a {
-  color: var(--default-link-color);
+  color: var(--default-info-color);
   text-decoration: none;
 }
 
@@ -142,7 +142,7 @@ button {
   background: none;
   border: var(--faded-accent-border);
   border-radius: var(--default-border-radius);
-  color: var(--default-link-color);
+  color: var(--default-info-color);
   cursor: pointer;
   font-family: inherit;
   font-size: var(--small-font-size);
@@ -151,9 +151,11 @@ button {
   padding-inline: var(--small-padding);
 }
 
+/*
 button:hover {
   color: var(--default-accent-color);
 }
+*/
 
 code {
   font-family: monospace;
