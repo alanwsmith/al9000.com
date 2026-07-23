@@ -92,8 +92,8 @@ const defaults = {
       },
       colors: [
         {
-          __L__: 0.8,
-          __C__: 0.2,
+          __L__: 0.9,
+          __C__: 0.1,
           __H_OFFSET__: 0,
           __LIGHTER__: 0.8,
           __LIGHTEST__: 0.2,
@@ -101,28 +101,28 @@ const defaults = {
         {
           __L__: 0.8,
           __C__: 0.2,
-          __H_OFFSET__: 0,
+          __H_OFFSET__: 1,
           __LIGHTER__: 0.8,
           __LIGHTEST__: 0.2,
         },
         {
-          __L__: 0.8,
-          __C__: 0.2,
-          __H_OFFSET__: 0,
+          __L__: 0.82,
+          __C__: 0.08,
+          __H_OFFSET__: 2,
           __LIGHTER__: 0.8,
           __LIGHTEST__: 0.2,
         },
         {
-          __L__: 0.8,
-          __C__: 0.2,
-          __H_OFFSET__: 0,
+          __L__: 0.93,
+          __C__: 0.15,
+          __H_OFFSET__: 3,
           __LIGHTER__: 0.8,
           __LIGHTEST__: 0.2,
         },
         {
-          __L__: 0.8,
-          __C__: 0.2,
-          __H_OFFSET__: 0,
+          __L__: 0.7,
+          __C__: 0.22,
+          __H_OFFSET__: 4,
           __LIGHTER__: 0.8,
           __LIGHTEST__: 0.2,
         },
@@ -348,8 +348,16 @@ export function updateCSS(_, __, el) {
 
   const sheetParts = [
     makePageVars(variableValues),
-    `:root { ${makeSwitches("light")} }`,
-    `@media (prefers-color-scheme: dark) { :root { ${makeSwitches("dark")} }}`,
+    `:root { 
+${makeSwitches("light")} 
+}
+`,
+    `@media (prefers-color-scheme: dark) {
+  :root { 
+${makeSwitches("dark")} 
+  }
+}
+`,
     makeClasses(),
   ].join("\n");
 
@@ -363,11 +371,14 @@ export function updateCSS(_, __, el) {
 }
 
 function makePageVars(variableValues) {
-  return `:root { ${
+  return `:root { 
+${
     variableValues.map((vv) => {
       return vv[0] + ": " + vv[1] + ";";
     }).join("\n")
-  }}`;
+  }
+}
+`;
 }
 
 function makeSwitches(mode) {
@@ -475,7 +486,8 @@ function generatePageVariables() {
       const key = `--${mode.__KEY__}--lighter-${name}-color`;
       const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
         mode.background.__H__) % 360;
-      const value = `oklch(${color.__L__} ${color.__C__} ${rotation} / 0.8)`;
+      const value =
+        `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__LIGHTER__})`;
       variableValues.push([key, value]);
     });
 
@@ -484,7 +496,8 @@ function generatePageVariables() {
       const key = `--${mode.__KEY__}--lightest-${name}-color`;
       const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
         mode.background.__H__) % 360;
-      const value = `oklch(${color.__L__} ${color.__C__} ${rotation} / 0.2)`;
+      const value =
+        `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__LIGHTEST__})`;
       variableValues.push([key, value]);
     });
   }
