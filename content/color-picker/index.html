@@ -98,6 +98,14 @@ flags = ["no-colors"]
     margin-top: var(--flow-space, 1em);
   }
 
+  textarea {
+    display: block;
+    width: 90vw;
+    height: 20rem;
+    font-size: 0.6rem;
+    margin-top: 2rem;
+  }
+
   .two-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -110,12 +118,9 @@ flags = ["no-colors"]
     gap: 1.3rem;
   }
 
-  textarea {
-    display: block;
-    width: 90vw;
-    height: 20rem;
-    font-size: 0.6rem;
-    margin-top: 2rem;
+
+  ul > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
   }
 
   .warning-block {
@@ -234,12 +239,33 @@ if it exist.
 
 
 
-
-
-
+## TODO
+- Add texture feature like [Texture Maker](/texture-maker/).
+- Document black, white, match, reverse colors.
+- Document color-scheme auto setting for light/dark mode.
+- Add swatch selector that let's you pick 
+      a background color and a foreground color
+      to see how they look together. 
+- Generate optional utility classes (e.g. for borders).
+- Add a note about how this is [built with bittyjs](https://bittyjs.com/).
+- Provide a way to update the example HTML.
+- Make controls look better. 
+- Keep controls visible/sticky so the content
+      can be scrolled without losing the controls. 
+- Add ability to show/hide controls.
+- Add ability to launch second window with
+      preview content so it can be 
+      viewed independently. 
+- Review things on mobile. 
+- Add a Save/Load feature that outputs
+      a JSON object.
+- Add settings to the URL in a comment
+      that gets updated so a link
+      can be sent to a given 
+      theme. 
+- Add high contrast modes. 
 
 ## Swatches
-
 
 == endfilter
 
@@ -262,6 +288,9 @@ if it exist.
       == endfor
     </div>
     == endfor
+
+
+
   </div>
 
   <div>
@@ -313,7 +342,7 @@ if it exist.
 
 
 <div>
-  <h3>CSS</h3>
+  <h2>CSS</h2>
   <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
   <button data-s="copyThis">Copy</button>
 </div>
