@@ -5,6 +5,7 @@ const defaults = {
   hueRotation: 45,
   activeMode: "light",
   colorNames: ["base", "accent", "heading", "info", "warning"],
+  colorTypes: ["default", "fainter", "faintest"],
   config: {
     __L__: {
       __NAME__: "Lightness",
@@ -244,6 +245,7 @@ export function initModeButtons(_, __, el) {
       b.render("modeButton", mode),
     );
   }
+  setSwitches(s.data.activeMode);
 }
 
 export async function resetDefaults() {
@@ -311,6 +313,7 @@ export function updateHueOffset(_, __, el) {
 export async function setMode(_, sender, ___) {
   b.warn("setMode");
   s.data.activeMode = sender.prop("key");
+  setSwitches(s.data.activeMode);
   await b.savePageData("data", s.data);
   b.trigger("updateColorValue updateBackgroundValue setColorNameStyles");
 }
@@ -383,18 +386,19 @@ ${
 
 function makeSwitches(mode) {
   const background = [
-    `--default-background-color: var(--switch--background-color, var(--${mode}--default-background-color));`,
-    `--fainter-background-color: var(--switch--background-color, var(--${mode}--fainter-background-color));`,
-    `--faintest-background-color: var(--switch--background-color, var(--${mode}--faintest-background-color));`,
+    `--default-background-color: var(--switch--default-background-color, var(--${mode}--default-background-color));`,
+    `--fainter-background-color: var(--switch--fainter-background-color, var(--${mode}--fainter-background-color));`,
+    `--faintest-background-color: var(--switch--faintest-background-color, var(--${mode}--faintest-background-color));`,
   ];
+
   const colors1 = s.data.colorNames.map((color) => {
-    return `--default-${color}-color: var(--switch--${color}-color, var(--${mode}--default-${color}-color));`;
+    return `--default-${color}-color: var(--switch--default-${color}-color, var(--${mode}--default-${color}-color));`;
   });
   const colors2 = s.data.colorNames.map((color) => {
-    return `--fainter-${color}-color: var(--switch--${color}-color, var(--${mode}--fainter-${color}-color));`;
+    return `--fainter-${color}-color: var(--switch--fainter-${color}-color, var(--${mode}--fainter-${color}-color));`;
   });
   const colors3 = s.data.colorNames.map((color) => {
-    return `--faintest-${color}-color: var(--switch--${color}-color, var(--${mode}--faintest-${color}-color));`;
+    return `--faintest-${color}-color: var(--switch--faintest-${color}-color, var(--${mode}--faintest-${color}-color));`;
   });
   const output = [...background, ...colors1, ...colors2, ...colors3];
   return output.join("\n");
@@ -502,6 +506,21 @@ function generatePageVariables() {
     });
   }
   return variableValues;
+}
+
+function setSwitches(mode) {
+  s.data.colorTypes.forEach((t) => {
+    b.setCSS(
+      `--switch--${t}-background-color`,
+      `var(--${mode}--${t}-background-color)`,
+    );
+    s.data.colorNames.forEach((name) => {
+      b.setCSS(
+        `--switch--${t}-${name}-color`,
+        `var(--${mode}--${t}-${name}-color)`,
+      );
+    });
+  });
 }
 
 export async function copyThis(_, sender, el) {

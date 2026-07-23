@@ -96,7 +96,6 @@
     --text-align-left: left;
     --text-align-right: right;
     --text-align-start: start;
-
     --default-accent-border: 1px solid var(--default-accent-color);
     --faded-accent-border: 1px solid var(--faded-accent-color);
     --default-accent-border2: 2px solid var(--default-accent-color);
