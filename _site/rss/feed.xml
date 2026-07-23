@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-23T13:43:31-04:00</updated>
+  <updated>2026-07-23T13:45:29-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -514,7 +514,7 @@ id = "01/n5/st/wc"
 
     <div class="templates" hidden>
       <bitty-9 data-connect="/bits/default.js"></bitty-9>
-      <script type="module" src="/bits.components.js"></script>
+      <script type="module" src="/bits/components.js"></script>
 
 
 
@@ -4677,7 +4677,7 @@ id = "01/mx/8y/ck"
 
     <div class="templates" hidden>
       <bitty-9 data-connect="/bits/default.js"></bitty-9>
-      <script type="module" src="/bits.components.js"></script>
+      <script type="module" src="/bits/components.js"></script>
 
 
 
