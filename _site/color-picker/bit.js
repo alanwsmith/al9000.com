@@ -368,7 +368,12 @@ export async function setMode(_, sender, ___) {
   s.data.activeMode = sender.prop("key");
   setSwitches(s.data.activeMode);
   await b.savePageData("data", s.data);
-  b.trigger("updateColorValue updateBackgroundValue setColorNameStyles");
+  b.trigger(`
+updateColorValue 
+updateBackgroundValue 
+setColorNameStyles
+updateActiveColor
+`);
 }
 
 export async function setParam(_, sender, ___) {
