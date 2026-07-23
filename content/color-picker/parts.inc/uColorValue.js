@@ -1,4 +1,3 @@
-
 export function updateColorValue(_, __, el) {
   b.trace("updateColorValue");
   const mode = s.getActiveMode();

@@ -9,4 +9,3 @@ export function updateHueOffset(_, __, el) {
     el.classList.remove("set-active");
   }
 }
-

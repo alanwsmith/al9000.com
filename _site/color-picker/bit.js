@@ -497,8 +497,7 @@ function makeUiVars() {
 }
 
 
-  
-export async function setColorValue(_, sender, ___) {
+  export async function setColorValue(_, sender, ___) {
   b.trace("setColorValue");
   requestAnimationFrame(async () => {
     const mode = s.getActiveMode();
@@ -508,6 +507,8 @@ export async function setColorValue(_, sender, ___) {
     b.trigger("updateCSS");
   });
 }
+
+
   export async function setHueOffset(_, sender, el) {
   b.trace("setHueOffset");
   const mode = s.getActiveMode();
@@ -539,6 +540,8 @@ export async function setColorValue(_, sender, ___) {
     b.trigger("updateCSS");
   });
 }
+
+
   function setSwitches(mode) {
   b.setCSS(
     `--switch--background`,
@@ -634,17 +637,6 @@ ${makeSwitches("dark")}
   b.trigger("uBackgroundValue uColorButton uColorName uHueOffset");
 }
 
-  export function uColorButton(_, __, el) {
-  b.trace("setColorNameStyles");
-  b.info(el);
-  // const mode = s.getActiveMode();
-  // if (el.propAsInt("index") === mode.activeColorIndex) {
-  //   el.classList.add("active");
-  // } else {
-  //   el.classList.remove("active");
-  // }
-}
-
   export function uColorName(_, __, el) {
   b.trace("uColorName");
   const mode = s.getActiveMode();
@@ -658,8 +650,7 @@ ${makeSwitches("dark")}
   });
 }
 
-  
-export function updateColorValue(_, __, el) {
+  export function updateColorValue(_, __, el) {
   b.trace("updateColorValue");
   const mode = s.getActiveMode();
   const v = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
@@ -677,7 +668,6 @@ export function updateColorValue(_, __, el) {
     el.classList.remove("set-active");
   }
 }
-
 
 
 let sheet = new CSSStyleSheet();

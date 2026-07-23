@@ -1,4 +1,3 @@
-
 export async function setColorValue(_, sender, ___) {
   b.trace("setColorValue");
   requestAnimationFrame(async () => {
@@ -9,3 +8,4 @@ export async function setColorValue(_, sender, ___) {
     b.trigger("updateCSS");
   });
 }
+
