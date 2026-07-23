@@ -44,6 +44,28 @@ const defaults = {
         __H__: 70,
         __T__: 0,
       },
+      monos: {
+        "black": {
+          __LIGHTNESS__: 0,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
+        },
+        "white": {
+          __LIGHTNESS__: 1,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
+        },
+        "match": {
+          __LIGHTNESS__: 1,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
+        },
+        "reverse": {
+          __LIGHTNESS__: 0,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
+        },
+      },
       colors: [
         {
           __L__: 0.3,
@@ -90,6 +112,28 @@ const defaults = {
         __C__: 0.2,
         __H__: 30,
         __T__: 0,
+      },
+      monos: {
+        "black": {
+          __LIGHTNESS__: 0,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
+        },
+        "white": {
+          __LIGHTNESS__: 1,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
+        },
+        "match": {
+          __LIGHTNESS__: 0,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
+        },
+        "reverse": {
+          __LIGHTNESS__: 1,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
+        },
       },
       colors: [
         {
@@ -343,14 +387,14 @@ export function updateColorValue(_, __, el) {
 export function updateCSS(_, __, el) {
   b.warn("updateCSS");
 
-  const variableValues = generatePageVariables();
+  const variables = generatePageVariables();
 
-  variableValues.forEach((vv) => {
+  variables.forEach((vv) => {
     b.setCSS(vv[0], vv[1]);
   });
 
   const sheetParts = [
-    makePageVars(variableValues),
+    makePageVars(variables),
     `:root { 
 ${makeSwitches("light")} 
 }
@@ -373,10 +417,10 @@ ${makeSwitches("dark")}
   sheet.replaceSync(combinedSheet);
 }
 
-function makePageVars(variableValues) {
+function makePageVars(variables) {
   return `:root { 
 ${
-    variableValues.map((vv) => {
+    variables.map((vv) => {
       return vv[0] + ": " + vv[1] + ";";
     }).join("\n")
   }
@@ -459,9 +503,9 @@ function makeUiClasses() {
 }
 
 function generatePageVariables() {
-  let variableValues = [];
+  let variables = [];
   for (let mode of s.data.modes) {
-    variableValues.push(
+    variables.push(
       [
         `--${mode.__KEY__}--default-background-color`,
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
@@ -482,7 +526,7 @@ function generatePageVariables() {
       const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
         mode.background.__H__) % 360;
       const value = `oklch(${color.__L__} ${color.__C__} ${rotation})`;
-      variableValues.push([key, value]);
+      variables.push([key, value]);
     });
 
     s.data.colorNames.forEach((name, index) => {
@@ -492,7 +536,7 @@ function generatePageVariables() {
         mode.background.__H__) % 360;
       const value =
         `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__FAINTER__})`;
-      variableValues.push([key, value]);
+      variables.push([key, value]);
     });
 
     s.data.colorNames.forEach((name, index) => {
@@ -502,10 +546,30 @@ function generatePageVariables() {
         mode.background.__H__) % 360;
       const value =
         `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__FAINTEST__})`;
-      variableValues.push([key, value]);
+      variables.push([key, value]);
     });
   }
-  return variableValues;
+
+  for (let mode of s.data.modes) {
+    const monos = mode.monos;
+    Object.keys(monos).forEach((mono) => {
+      b.info(monos[mono]);
+      variables.push([
+        `--${mode.__KEY__}--default-${mono}-color`,
+        `oklch(${monos[mono].__LIGHTNESS__} 0 0)`,
+      ]);
+      variables.push([
+        `--${mode.__KEY__}--fainter-${mono}-color`,
+        `oklch(${monos[mono].__LIGHTNESS__} 0 0 / ${monos[mono].__FAINTER__})`,
+      ]);
+      variables.push([
+        `--${mode.__KEY__}--fainter-${mono}-color`,
+        `oklch(${monos[mono].__LIGHTNESS__} 0 0 / ${monos[mono].__FAINTEST__})`,
+      ]);
+    });
+  }
+
+  return variables;
 }
 
 function setSwitches(mode) {
