@@ -686,7 +686,7 @@ theme.</li>
 
     <div class="border-1">
         <div data-r="initColorNameButtons"></div>
-        <div data-r="updateColorName" class="default-match-color bold"></div>
+        <div data-r="uColorName" class="default-match-color bold"></div>
         <div data-r="initHueOffsetButtons"></div>
         <div data-r="initColorSliders"></div>
     </div>
@@ -700,11 +700,11 @@ theme.</li>
 
   <div class="border-1 default-flow">
     <p>Prototype Tools:</p>
+    <button data-s="resetDefaults">Reset to Defaults</button>
     <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
     <button data-s="setLogLevel" data-key="WARN">WARN</button>
-    <button data-s="resetDefaults">Reset to Defaults</button>
+    <button data-s="setLogLevel" data-key="TRACE">TRACE</button>
   </div>
-
 </main>
 
 
@@ -725,7 +725,7 @@ theme.</li>
         id="bg-__NAME__"
         type="range" 
         data-s="setParam" 
-        data-r="updateBackgroundValue" 
+        data-r="uBackgroundValue" 
         data-key="__KEY__" 
         min="__MIN__" 
         max="__MAX__" 
@@ -808,11 +808,10 @@ theme.</li>
 
 <script type="text/html" data-template="modeButton">
     <label>
-      <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
+      <input data-s="sMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
       __KEY__ mode
     </label>
 </script>
-
 
 
     </div>

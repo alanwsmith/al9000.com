@@ -7,3 +7,4 @@ export async function sColor(_, sender, ___) {
     "updateCSS",
   );
 }
+

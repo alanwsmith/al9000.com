@@ -276,8 +276,10 @@ function generatePageVariables() {
     };
     el.appendChild(b.render("colorNameButton", subs));
   });
-  b.trigger("updateColorName");
+  b.trigger("uColorName");
 }
+
+
   export function initColorSliders(_, __, el) {
   const mode = s.getActiveMode();
   const color = s.getActiveMode().colors[mode.activeColorIndex];
@@ -313,19 +315,24 @@ function generatePageVariables() {
 }
 
   export async function init() {
-  // b.setLogLevel("WARN");
+  // b.setLogLevel("TRACE");
   // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
   b.setLogLevel(s.data.logLevel);
   b.trigger(
-    `initBaseStyles 
+    `
+initBaseStyles 
 initBackgroundSliders 
 initColorNameButtons 
 initHueOffsetButtons 
 initModeButtons
-initColorSliders`,
+initColorSliders
+iColorName
+`,
   );
 }
+
+
   
 function makeClasses() {
   const background = [
@@ -488,6 +495,8 @@ function makeUiVars() {
     "updateCSS",
   );
 }
+
+
   
 export async function setColorValue(_, sender, ___) {
   b.trace("setColorValue");
@@ -514,8 +523,8 @@ export async function setColorValue(_, sender, ___) {
   b.info(`Log level set to: ${sender.prop("key")}`);
   await b.savePageData("data", s.data);
 }
-  export async function setMode(_, sender, ___) {
-  b.trace("setMode");
+  export async function sMode(_, sender, ___) {
+  b.trace("sMode");
   s.data.activeMode = sender.prop("key");
   setSwitches(s.data.activeMode);
   await b.savePageData("data", s.data);
@@ -584,15 +593,13 @@ export async function setColorValue(_, sender, ___) {
     }
   }
 }
-  export function updateBackgroundValue(_, __, el) {
-  b.trace("updateBackgroundValue");
+  export function uBackgroundValue(_, __, el) {
+  b.trace("uBackgroundValue");
   const mode = s.getActiveMode();
   el.value = mode.background[`${el.prop("key")}`];
 }
 
-
-  
-export function updateCSS(_, __, el) {
+  export function updateCSS(_, __, el) {
   b.trace("updateCSS");
   const variables = generatePageVariables();
   variables.forEach((vv) => {
@@ -624,7 +631,7 @@ ${makeSwitches("dark")}
   ${makeUiVars()}
   ${makeUiClasses()}`;
   sheet.replaceSync(combinedSheet);
-  // b.trigger("uColorButton");
+  b.trigger("uBackgroundValue uColorButton uColorName uHueOffset");
 }
 
   export function uColorButton(_, __, el) {
@@ -650,6 +657,7 @@ ${makeSwitches("dark")}
     }
   });
 }
+
   
 export function updateColorValue(_, __, el) {
   b.trace("updateColorValue");
@@ -669,6 +677,8 @@ export function updateColorValue(_, __, el) {
     el.classList.remove("set-active");
   }
 }
+
+
 
 let sheet = new CSSStyleSheet();
 let s = new State();

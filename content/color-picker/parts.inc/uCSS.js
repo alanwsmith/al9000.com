@@ -1,4 +1,3 @@
-
 export function updateCSS(_, __, el) {
   b.trace("updateCSS");
   const variables = generatePageVariables();
@@ -31,5 +30,5 @@ ${makeSwitches("dark")}
   ${makeUiVars()}
   ${makeUiClasses()}`;
   sheet.replaceSync(combinedSheet);
-  // b.trigger("uColorButton");
+  b.trigger("uBackgroundValue uColorButton uColorName uHueOffset");
 }
