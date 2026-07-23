@@ -1,0 +1,176 @@
+const defaults = {
+  logLevel: "DEBUG",
+  hueRotation: 45,
+  activeMode: "light",
+  colorNames: ["base", "heading", "accent", "info", "warning"],
+  colorTypes: ["default", "faded", "faint"],
+  monoNames: ["black", "white", "match", "reverse"],
+  config: {
+    __L__: {
+      __NAME__: "Lightness",
+      __MIN__: 0,
+      __MAX__: 1,
+      __STEP__: 0.001,
+    },
+    __C__: {
+      __NAME__: "Chroma",
+      __MIN__: 0,
+      __MAX__: 0.3,
+      __STEP__: 0.0001,
+    },
+    __H__: {
+      __NAME__: "Hue",
+      __MIN__: 0,
+      __MAX__: 360,
+      __STEP__: 0.01,
+    },
+    /*
+    __T__: {
+      __NAME__: "Texture",
+      __MIN__: 0,
+      __MAX__: 100,
+      __STEP__: 0.1,
+    },
+    */
+  },
+  modes: [
+    {
+      __KEY__: "light",
+      activeColorIndex: 0,
+      background: {
+        __L__: 0.873,
+        __C__: 0.0299,
+        __H__: 217.5,
+        __T__: 0,
+      },
+      monos: {
+        "black": {
+          __LIGHTNESS__: 0,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        "white": {
+          __LIGHTNESS__: 1,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        "match": {
+          __LIGHTNESS__: 1,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        "reverse": {
+          __LIGHTNESS__: 0,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+      },
+      colors: [
+        {
+          __L__: 0.3,
+          __C__: 0.12,
+          __H_OFFSET__: 0,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        {
+          __L__: 0.4,
+          __C__: 0.16,
+          __H_OFFSET__: 3,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        {
+          __L__: 0.54,
+          __C__: 0.126,
+          __H_OFFSET__: 5,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        {
+          __L__: 0.62,
+          __C__: 0.12,
+          __H_OFFSET__: 2,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        {
+          __L__: 0.6,
+          __C__: 0.127,
+          __H_OFFSET__: 4,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+      ],
+    },
+    {
+      __KEY__: "dark",
+      activeColorIndex: 0,
+      background: {
+        __L__: 0.138,
+        __C__: 0.12,
+        __H__: 166.07,
+        __T__: 0,
+      },
+      monos: {
+        "black": {
+          __LIGHTNESS__: 0,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        "white": {
+          __LIGHTNESS__: 1,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        "match": {
+          __LIGHTNESS__: 0,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        "reverse": {
+          __LIGHTNESS__: 1,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+      },
+      colors: [
+        {
+          __L__: 0.883,
+          __C__: 0.0372,
+          __H_OFFSET__: 6,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        {
+          __L__: 0.773,
+          __C__: 0.12,
+          __H_OFFSET__: 2,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        {
+          __L__: 0.62,
+          __C__: 0.08,
+          __H_OFFSET__: 3,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        {
+          __L__: 0.93,
+          __C__: 0.15,
+          __H_OFFSET__: 3,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+        {
+          __L__: 0.7,
+          __C__: 0.122,
+          __H_OFFSET__: 4,
+          __FADED__: 0.6,
+          __FAINT__: 0.12,
+        },
+      ],
+    },
+  ],
+};
