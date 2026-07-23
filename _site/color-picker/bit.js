@@ -6,6 +6,7 @@ const defaults = {
   activeMode: "light",
   colorNames: ["base", "accent", "heading", "info", "warning"],
   colorTypes: ["default", "fainter", "faintest"],
+  monoNames: ["black", "white", "match", "reverse"],
   config: {
     __L__: {
       __NAME__: "Lightness",
@@ -444,7 +445,26 @@ function makeSwitches(mode) {
   const colors3 = s.data.colorNames.map((color) => {
     return `--faintest-${color}-color: var(--switch--faintest-${color}-color, var(--${mode}--faintest-${color}-color));`;
   });
-  const output = [...background, ...colors1, ...colors2, ...colors3];
+
+  const monos1 = s.data.monoNames.map((color) => {
+    return `--default-${color}-color: var(--switch--default-${color}-color, var(--${mode}--default-${color}-color));`;
+  });
+  const monos2 = s.data.monoNames.map((color) => {
+    return `--fainter-${color}-color: var(--switch--fainter-${color}-color, var(--${mode}--fainter-${color}-color));`;
+  });
+  const monos3 = s.data.monoNames.map((color) => {
+    return `--faintest-${color}-color: var(--switch--faintest-${color}-color, var(--${mode}--faintest-${color}-color));`;
+  });
+
+  const output = [
+    ...background,
+    ...colors1,
+    ...colors2,
+    ...colors3,
+    ...monos1,
+    ...monos2,
+    ...monos3,
+  ];
   return output.join("\n");
 }
 
@@ -463,7 +483,28 @@ function makeClasses() {
   const colors3 = s.data.colorNames.map((color) => {
     return `.faintest-${color}-color { color: var(--faintest-${color}-color); }`;
   });
-  const output = [...background, ...colors1, ...colors2, ...colors3];
+
+  const monos1 = s.data.monoNames.map((color) => {
+    return `.default-${color}-color { color: var(--default-${color}-color); }`;
+  });
+
+  const monos2 = s.data.monoNames.map((color) => {
+    return `.fainter-${color}-color { color: var(--fainter-${color}-color); }`;
+  });
+
+  const monos3 = s.data.monoNames.map((color) => {
+    return `.faintest-${color}-color { color: var(--faintest-${color}-color); }`;
+  });
+
+  const output = [
+    ...background,
+    ...colors1,
+    ...colors2,
+    ...colors3,
+    ...monos1,
+    ...monos2,
+    ...monos3,
+  ];
   return output.join("\n");
 }
 
@@ -563,7 +604,7 @@ function generatePageVariables() {
         `oklch(${monos[mono].__LIGHTNESS__} 0 0 / ${monos[mono].__FAINTER__})`,
       ]);
       variables.push([
-        `--${mode.__KEY__}--fainter-${mono}-color`,
+        `--${mode.__KEY__}--faintest-${mono}-color`,
         `oklch(${monos[mono].__LIGHTNESS__} 0 0 / ${monos[mono].__FAINTEST__})`,
       ]);
     });
