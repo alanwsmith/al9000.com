@@ -30,7 +30,7 @@
 
   body { 
     background-image: none; 
-    background-color: var(--default-background-color);
+    background-color: var(--background);
     font-family: system-ui;
     color: var(--default-base-color);
   }
@@ -47,16 +47,6 @@
   .active {
     font-weight: 900;
     text-decoration: underline;
-  }
-
-  .inactiveColor {
-    opacity: 0.3;
-    background-color: var(--default-black-color);
-  }
-
-  .inactiveMonoColor {
-    opacity: 0.3;
-    background-color: var(--default-warning-color);
   }
 
   button{
@@ -77,15 +67,42 @@
     margin-block: 0.9rem;
   }
 
+  .default-border-radius {
+    border-radius: 0.4rem;
+  }
+
+  .default-flow > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
+  }
+
+  .default-padding {
+    padding: 1rem;
+  }
+
   h1 {
     color: var(--default-heading-color);
-    margin-bottom: 1.3rem;
+    font-weight: 900;
+  }
+
+  h2 {
+    color: var(--default-heading-color);
     font-weight: 900;
   }
 
   h3 {
     font-size: 0.9rem;
   }
+
+  .inactiveColor {
+    opacity: 0.3;
+    background-color: var(--default-black-color);
+  }
+
+  .inactiveMonoColor {
+    opacity: 0.3;
+    background-color: var(--default-warning-color);
+  }
+
 
   main {
     margin: 1.2rem;
@@ -134,7 +151,7 @@
 </noscript>
 
     <div class="payload">
-      <main>
+      <main class="default-flow">
 <div class="border-1"><a href="/">home</a></div>
 
 <h1>Color Picker 9000</h1>
@@ -148,42 +165,84 @@
   </p>
 </div>
 
-<div class="border-1">
-<button data-s="resetDefaults">Reset to Defaults</button>
-<button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
-<button data-s="setLogLevel" data-key="WARN">WARN</button>
-</div>
-
-<h2>Instructions</h2>
-
-  <ol>
-    <li>Select the Mode you want to work on (either light or dark)</li>
-    <li>
-      Use the Background sliders to set a background color.
-      As you do, the colors in the Colors section
-      update automatically (each hue value
-      rotates 45 degrees).
-    </li>
-    <li>
-      Choose a color from the Colors section and
-      use the &quot;hue&quot; buttons below it to
-      select the hue portion of it's OKLCH value. 
-    </li>
-    <li>
-      Use the Lightness and Chroma sliders to 
-      adjust those values for the color. 
-    </li>
-    <li>
-      Copy the CSS block and paste it into
-      your style sheet to start using
-      the colors.
-    </li>
-  </ol>
-
 
 <div class="two-columns-left">
+  <div class="default-flow">
 
-  <div>
+<h2>Introduction</h2>
+<p>Welcome to Color Picker 9000. The
+tool I use to create the
+stylesheets for <a href="/">my site</a>.</p>
+<p>This page is a live preview of the
+generated styles. Play around
+with the controls to get things
+the way you like. Copy the
+CSS at the bottom of the page
+when you're done and paste
+it into your stylesheet to
+use the settings.</p>
+<p>The picker provides settings
+for five colors. This text
+uses <strong>base</strong> color.
+The heading at the top of
+the page uses the <strong>heading</strong>
+color and the link uses the
+<strong>accent</strong> color. There's
+also a <span class="default-warning-color">warning color</span>
+and an <span class="default-info-color">info color</span>.</p>
+<p>Each of the five colors have three variants:
+default, <span class="faded-base-color">faded</span>,
+and <span class="faint-base-color">faint</span>.
+The swatches further down the page
+have previews of all of them.</p>
+<p class="faded-info-background-color default-padding default-border-radius">
+        The tool outputs
+        CSS variables with OKLCH values. 
+        They can be used anywhere a colors can 
+        (e.g. the background of this paragraph
+        which uses the <strong>--faded-info-color</strong>).
+      </p>
+<p>The example swatches provide previews of
+background using the colors as well.</p>
+<h2>Modes</h2>
+<p>Two color modes are available: light and dark.
+The generated CSS starts with variables
+for each like <strong>--light--default-base-color</strong>.</p>
+<p>Variables without the mode prefix are defined
+as well (e.g. <strong>--default-base-color</strong>).
+One version is default in the base <code>:root</code>
+like:</p>
+<p><strong>--default-base-color: var(--switch--default-base-color, var(--light--default-base-color));</strong></p>
+<p>A second version is defined in a
+<strong>@media (prefers-color-scheme: dark) {}</strong> section:</p>
+<p><strong>--default-base-color: var(--switch--default-base-color, var(--dark--default-base-color));</strong></p>
+<p>These variables look for a <strong>--switch--default-base-color</strong>
+variable that can be updated with JavaScript to
+set the mode explicitly. If that variable isn't
+set, the mode falls back to calling <code>--light</code> or
+<code>--dark</code> as appropriate. Browsers that receive
+mode preferences from the operating system
+use them to switch modes automatically.</p>
+<p>Combined, that sets up the page to use the following
+order to set the mode:</p>
+<ol>
+<li>
+<p>Use the value from <strong>--switch--default-COLOR-color</strong>
+if it exist.</p>
+</li>
+<li>
+<p>Otherwise, use either the default value or the
+value from <strong>@media (prefers-color-scheme: dark)</strong>
+if the browser receives the mode preference
+from the operating system.</p>
+</li>
+<li>
+<p>Finally, fallback to using light mode if neither
+a switch nor OS provided mode is available.</p>
+</li>
+</ol>
+<h2>Swatches</h2>
+
       <div class="border-1" data-r="updateActiveColor" data-key="base">
         <div class="default-base-color two-columns">
           <div class="block default-base-block">
@@ -556,6 +615,33 @@
   </div>
 
   <div>
+
+  <details class="border-1"><summary class="h2">Instructions</summary>
+  <ol>
+    <li>Select the Mode you want to work on (either light or dark)</li>
+    <li>
+      Use the Background sliders to set a background color.
+      As you do, the colors in the Colors section
+      update automatically (each hue value
+      rotates 45 degrees).
+    </li>
+    <li>
+      Choose a color from the Colors section and
+      use the &quot;hue&quot; buttons below it to
+      select the hue portion of it's OKLCH value. 
+    </li>
+    <li>
+      Use the Lightness and Chroma sliders to 
+      adjust those values for the color. 
+    </li>
+    <li>
+      Copy the CSS block and paste it into
+      your style sheet to start using
+      the colors.
+    </li>
+  </ol>
+  </details>
+
     <div class="border-1">
       <h3>Mode</h3>
       <div data-r="initModeButtons"></div>
@@ -581,6 +667,14 @@
   <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
   <button data-s="copyThis">Copy</button>
 </div>
+
+<div class="border-1 default-flow">
+    <p>Prototype Tools:</p>
+<button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
+<button data-s="setLogLevel" data-key="WARN">WARN</button>
+<button data-s="resetDefaults">Reset to Defaults</button>
+</div>
+
 </main>
 
 
@@ -688,6 +782,9 @@
     <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
   </label>
 </script>
+
+
+
     </div>
   </body>
 </html>

@@ -40,8 +40,8 @@ const defaults = {
       __KEY__: "light",
       activeColorIndex: 0,
       background: {
-        __L__: 0.941,
-        __C__: 0.016,
+        __L__: 0.873,
+        __C__: 0.0299,
         __H__: 217.5,
         __T__: 0,
       },
@@ -386,16 +386,21 @@ export async function setParam(_, sender, ___) {
 }
 
 export function updateActiveColor(_, __, el) {
-  const mode = s.getActiveMode();
-  const targetColor = s.data.colorNames[mode.activeColorIndex];
-  if (el.prop("key") === targetColor) {
-    el.classList.remove("inactiveColor");
-  } else {
-    el.classList.add("inactiveColor");
-  }
-  if (s.data.monoNames.includes(el.prop("key"))) {
-    el.classList.remove("inactiveColor");
-  }
+  // this was an initial way to help focus
+  // on a specific color. It's been removed for
+  // now so the swatches are always fully
+  // visible now that there's more content
+  // on the page to preview.
+  // const mode = s.getActiveMode();
+  // const targetColor = s.data.colorNames[mode.activeColorIndex];
+  // if (el.prop("key") === targetColor) {
+  //   el.classList.remove("inactiveColor");
+  // } else {
+  //   el.classList.add("inactiveColor");
+  // }
+  // if (s.data.monoNames.includes(el.prop("key"))) {
+  //   el.classList.remove("inactiveColor");
+  // }
 }
 
 export function updateBackgroundValue(_, __, el) {
@@ -461,9 +466,7 @@ ${
 
 function makeSwitches(mode) {
   const background = [
-    `--default-background-color: var(--switch--default-background-color, var(--${mode}--default-background-color));`,
-    `--faded-background-color: var(--switch--faded-background-color, var(--${mode}--faded-background-color));`,
-    `--faint-background-color: var(--switch--faint-background-color, var(--${mode}--faint-background-color));`,
+    `--background: var(--switch--background, var(--${mode}--background));`,
   ];
   const colorScheme = [
     `--color-scheme: var(--switch--color-scheme, var(--${mode}--color-scheme));`,
@@ -502,10 +505,10 @@ function makeSwitches(mode) {
 
 function makeClasses() {
   const background = [
-    `.default-background-color { color: var(--default-background-color); }`,
-    `.faded-background-color { color: var(--faded-background-color); }`,
-    `.faint-background-color { color: var(--faint-background-color); }`,
+    `.background { color: var(--background); }`,
   ];
+  // TODO: Move these individual arrays into
+  // the collections array.
   const colors1 = s.data.colorNames.map((color) => {
     return `.default-${color}-color { color: var(--default-${color}-color); }`;
   });
@@ -524,6 +527,16 @@ function makeClasses() {
   const monos3 = s.data.monoNames.map((color) => {
     return `.faint-${color}-color { color: var(--faint-${color}-color); }`;
   });
+
+  const collection = [];
+  s.data.colorNames.forEach((color) => {
+    collection.push(
+      `.default-${color}-background-color { background-color: var(--default-${color}-color); }`,
+      `.faded-${color}-background-color { background-color: var(--faded-${color}-color); }`,
+      `.faint-${color}-background-color { background-color: var(--faint-${color}-color); }`,
+    );
+  });
+
   const output = [
     ...background,
     ...colors1,
@@ -532,6 +545,7 @@ function makeClasses() {
     ...monos1,
     ...monos2,
     ...monos3,
+    ...collection,
   ];
   return output.join("\n");
 }
@@ -582,16 +596,8 @@ function generatePageVariables() {
     );
     variables.push(
       [
-        `--${mode.__KEY__}--default-background-color`,
+        `--${mode.__KEY__}--background`,
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
-      ],
-      [
-        `--${mode.__KEY__}--faded-background-color`,
-        `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__} / 0.6)`,
-      ],
-      [
-        `--${mode.__KEY__}--faint-background-color`,
-        `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__} / 0.12)`,
       ],
     );
 
@@ -646,14 +652,14 @@ function generatePageVariables() {
 }
 
 function setSwitches(mode) {
+  b.setCSS(
+    `--switch--background`,
+    `var(--${mode}--background)`,
+  );
   s.data.colorTypes.forEach((t) => {
     b.setCSS(
       `--switch--color-scheme`,
       `var(--${mode}--color-scheme)`,
-    );
-    b.setCSS(
-      `--switch--${t}-background-color`,
-      `var(--${mode}--${t}-background-color)`,
     );
     s.data.colorNames.forEach((name) => {
       b.setCSS(
