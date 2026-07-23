@@ -4,7 +4,7 @@ const defaults = {
   logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
-  colorNames: ["base", "heading", "info", "accent", "warning"],
+  colorNames: ["base", "accent", "heading", "info", "warning"],
   config: {
     __L__: {
       __NAME__: "Lightness",
@@ -48,36 +48,36 @@ const defaults = {
           __L__: 0.3,
           __C__: 0.2,
           __H_OFFSET__: 0,
-          __LIGHTER__: 0.8,
-          __LIGHTEST__: 0.2,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
         },
         {
           __L__: 0.4,
           __C__: 0.16,
           __H_OFFSET__: 3,
-          __LIGHTER__: 0.8,
-          __LIGHTEST__: 0.2,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
         },
         {
           __L__: 0.54,
           __C__: 0.26,
           __H_OFFSET__: 5,
-          __LIGHTER__: 0.8,
-          __LIGHTEST__: 0.2,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
         },
         {
           __L__: 0.62,
           __C__: 0.2,
           __H_OFFSET__: 2,
-          __LIGHTER__: 0.8,
-          __LIGHTEST__: 0.2,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
         },
         {
           __L__: 0.6,
           __C__: 0.27,
           __H_OFFSET__: 4,
-          __LIGHTER__: 0.8,
-          __LIGHTEST__: 0.2,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
         },
       ],
     },
@@ -95,36 +95,36 @@ const defaults = {
           __L__: 0.9,
           __C__: 0.1,
           __H_OFFSET__: 0,
-          __LIGHTER__: 0.8,
-          __LIGHTEST__: 0.2,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
         },
         {
           __L__: 0.8,
           __C__: 0.2,
           __H_OFFSET__: 1,
-          __LIGHTER__: 0.8,
-          __LIGHTEST__: 0.2,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
         },
         {
           __L__: 0.82,
           __C__: 0.08,
           __H_OFFSET__: 2,
-          __LIGHTER__: 0.8,
-          __LIGHTEST__: 0.2,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
         },
         {
           __L__: 0.93,
           __C__: 0.15,
           __H_OFFSET__: 3,
-          __LIGHTER__: 0.8,
-          __LIGHTEST__: 0.2,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
         },
         {
           __L__: 0.7,
           __C__: 0.22,
           __H_OFFSET__: 4,
-          __LIGHTER__: 0.8,
-          __LIGHTEST__: 0.2,
+          __FAINTER__: 0.8,
+          __FAINTEST__: 0.2,
         },
       ],
     },
@@ -217,8 +217,8 @@ export function initColorSliders(_, __, el) {
   const subs = {
     __L__: color.__L__,
     __C__: color.__C__,
-    __LIGHTER__: color.__LIGHTER__,
-    __LIGHTEST__: color.__LIGHTEST__,
+    __FAINTER__: color.__FAINTER__,
+    __FAINTEST__: color.__FAINTEST__,
   };
   el.appendChild(b.render("colorSliders", subs));
 }
@@ -384,17 +384,17 @@ ${
 function makeSwitches(mode) {
   const background = [
     `--default-background-color: var(--switch--background-color, var(--${mode}--default-background-color));`,
-    `--lighter-background-color: var(--switch--background-color, var(--${mode}--lighter-background-color));`,
-    `--lightest-background-color: var(--switch--background-color, var(--${mode}--lightest-background-color));`,
+    `--fainter-background-color: var(--switch--background-color, var(--${mode}--fainter-background-color));`,
+    `--faintest-background-color: var(--switch--background-color, var(--${mode}--faintest-background-color));`,
   ];
   const colors1 = s.data.colorNames.map((color) => {
     return `--default-${color}-color: var(--switch--${color}-color, var(--${mode}--default-${color}-color));`;
   });
   const colors2 = s.data.colorNames.map((color) => {
-    return `--lighter-${color}-color: var(--switch--${color}-color, var(--${mode}--lighter-${color}-color));`;
+    return `--fainter-${color}-color: var(--switch--${color}-color, var(--${mode}--fainter-${color}-color));`;
   });
   const colors3 = s.data.colorNames.map((color) => {
-    return `--lightest-${color}-color: var(--switch--${color}-color, var(--${mode}--lightest-${color}-color));`;
+    return `--faintest-${color}-color: var(--switch--${color}-color, var(--${mode}--faintest-${color}-color));`;
   });
   const output = [...background, ...colors1, ...colors2, ...colors3];
   return output.join("\n");
@@ -403,17 +403,17 @@ function makeSwitches(mode) {
 function makeClasses() {
   const background = [
     `.default-background-color { color: var(--default-background-color); }`,
-    `.lighter-background-color { color: var(--lighter-background-color); }`,
-    `.lightest-background-color { color: var(--lightest-background-color); }`,
+    `.fainter-background-color { color: var(--fainter-background-color); }`,
+    `.faintest-background-color { color: var(--faintest-background-color); }`,
   ];
   const colors1 = s.data.colorNames.map((color) => {
     return `.default-${color}-color { color: var(--default-${color}-color); }`;
   });
   const colors2 = s.data.colorNames.map((color) => {
-    return `.lighter-${color}-color { color: var(--lighter-${color}-color); }`;
+    return `.fainter-${color}-color { color: var(--fainter-${color}-color); }`;
   });
   const colors3 = s.data.colorNames.map((color) => {
-    return `.lightest-${color}-color { color: var(--lightest-${color}-color); }`;
+    return `.faintest-${color}-color { color: var(--faintest-${color}-color); }`;
   });
   const output = [...background, ...colors1, ...colors2, ...colors3];
   return output.join("\n");
@@ -463,11 +463,11 @@ function generatePageVariables() {
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
       ],
       [
-        `--${mode.__KEY__}--lighter-background-color`,
+        `--${mode.__KEY__}--fainter-background-color`,
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__} / 0.8)`,
       ],
       [
-        `--${mode.__KEY__}--lightest-background-color`,
+        `--${mode.__KEY__}--faintest-background-color`,
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__} / 0.2)`,
       ],
     );
@@ -483,21 +483,21 @@ function generatePageVariables() {
 
     s.data.colorNames.forEach((name, index) => {
       const color = mode.colors[index];
-      const key = `--${mode.__KEY__}--lighter-${name}-color`;
+      const key = `--${mode.__KEY__}--fainter-${name}-color`;
       const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
         mode.background.__H__) % 360;
       const value =
-        `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__LIGHTER__})`;
+        `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__FAINTER__})`;
       variableValues.push([key, value]);
     });
 
     s.data.colorNames.forEach((name, index) => {
       const color = mode.colors[index];
-      const key = `--${mode.__KEY__}--lightest-${name}-color`;
+      const key = `--${mode.__KEY__}--faintest-${name}-color`;
       const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
         mode.background.__H__) % 360;
       const value =
-        `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__LIGHTEST__})`;
+        `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__FAINTEST__})`;
       variableValues.push([key, value]);
     });
   }
