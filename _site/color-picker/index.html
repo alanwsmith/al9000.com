@@ -10,7 +10,7 @@
 <meta property="og:description" content="from alan w smith" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://al9000.com/templates.inc/includes/" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<meta property="og:image" content="https://al9000.com&#x2f;color-picker/og-image.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
@@ -32,6 +32,7 @@
     background-image: none; 
     background-color: var(--default-background-color);
     font-family: system-ui;
+    color: var(--default-base-color);
   }
 
   a {
@@ -48,6 +49,16 @@
     text-decoration: underline;
   }
 
+  .inactiveColor {
+    opacity: 0.3;
+    background-color: var(--default-black-color);
+  }
+
+  .inactiveMonoColor {
+    opacity: 0.3;
+    background-color: var(--default-warning-color);
+  }
+
   button{
     background: none;
     border: none;
@@ -60,26 +71,28 @@
   }
 
   .border-1 {
-    border: 1px solid var(--faint-reversed-color);
+    border: 1px solid var(--faint-reverse-color);
     padding: 0.3rem;
     border-radius: 0.5rem;
     margin-block: 0.9rem;
   }
 
   h1 {
-    color: var(--20-heading-color);
     color: var(--default-heading-color);
+    margin-bottom: 1.3rem;
+    font-weight: 900;
   }
 
-  /*
-  .three-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  h3 {
+    font-size: 0.9rem;
   }
-  */
 
   main {
     margin: 1.2rem;
+  }
+
+  ol > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
   }
 
   .two-columns {
@@ -103,10 +116,11 @@
   }
 
   .warning-block {
-    border: 1px solid var(--faded-reversed-color);
-    background-color: var(--faint-warning-color);
+    border: 1px solid var(--faded-reverse-color);
+    background-color: var(--faded-warning-color);
     padding: 0.5rem;
     border-radius: 0.4rem;
+    color: var(--default-black-color);
   }
 </style>
   </head>
@@ -121,11 +135,11 @@
 
     <div class="payload">
       <main>
-<div class="border-1"><a href="/">al9000.com</a></div>
+<div class="border-1"><a href="/">home</a></div>
 
 <h1>Color Picker 9000</h1>
 <div class="warning-block">
-  <p>Head's up</p>
+    <p><strong>Head's up</strong></p>
   <p>
     This is a prototype. 
     Most of the basic functionality
@@ -140,10 +154,37 @@
 <button data-s="setLogLevel" data-key="WARN">WARN</button>
 </div>
 
+<h2>Instructions</h2>
+
+  <ol>
+    <li>Select the Mode you want to work on (either light or dark)</li>
+    <li>
+      Use the Background sliders to set a background color.
+      As you do, the colors in the Colors section
+      update automatically (each hue value
+      rotates 45 degrees).
+    </li>
+    <li>
+      Choose a color from the Colors section and
+      use the &quot;hue&quot; buttons below it to
+      select the hue portion of it's OKLCH value. 
+    </li>
+    <li>
+      Use the Lightness and Chroma sliders to 
+      adjust those values for the color. 
+    </li>
+    <li>
+      Copy the CSS block and paste it into
+      your style sheet to start using
+      the colors.
+    </li>
+  </ol>
+
+
 <div class="two-columns-left">
 
   <div>
-      <div class="border-1" data-r="activeColor">
+      <div class="border-1" data-r="updateActiveColor" data-key="base">
         <div class="default-base-color two-columns">
           <div class="block default-base-block">
             <style>
@@ -184,48 +225,7 @@
           <div>faint base</div>
         </div>
     </div>
-      <div class="border-1" data-r="activeColor">
-        <div class="default-accent-color two-columns">
-          <div class="block default-accent-block">
-            <style>
-            .default-accent-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--default-accent-color);
-                border-radius: 0.2rem;
-            }
-            </style>
-          </div>
-          <div>default accent</div>
-        </div>
-        <div class="faded-accent-color two-columns">
-          <div class="block faded-accent-block">
-            <style>
-            .faded-accent-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faded-accent-color);
-                border-radius: 0.2rem;
-            }
-            </style>
-          </div>
-          <div>faded accent</div>
-        </div>
-        <div class="faint-accent-color two-columns">
-          <div class="block faint-accent-block">
-            <style>
-            .faint-accent-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faint-accent-color);
-                border-radius: 0.2rem;
-            }
-            </style>
-          </div>
-          <div>faint accent</div>
-        </div>
-    </div>
-      <div class="border-1" data-r="activeColor">
+      <div class="border-1" data-r="updateActiveColor" data-key="heading">
         <div class="default-heading-color two-columns">
           <div class="block default-heading-block">
             <style>
@@ -266,7 +266,48 @@
           <div>faint heading</div>
         </div>
     </div>
-      <div class="border-1" data-r="activeColor">
+      <div class="border-1" data-r="updateActiveColor" data-key="accent">
+        <div class="default-accent-color two-columns">
+          <div class="block default-accent-block">
+            <style>
+            .default-accent-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--default-accent-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>default accent</div>
+        </div>
+        <div class="faded-accent-color two-columns">
+          <div class="block faded-accent-block">
+            <style>
+            .faded-accent-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faded-accent-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faded accent</div>
+        </div>
+        <div class="faint-accent-color two-columns">
+          <div class="block faint-accent-block">
+            <style>
+            .faint-accent-block {
+              margin: 0.3rem;
+              height: 1.2rem; 
+              background-color: var(--faint-accent-color);
+                border-radius: 0.2rem;
+            }
+            </style>
+          </div>
+          <div>faint accent</div>
+        </div>
+    </div>
+      <div class="border-1" data-r="updateActiveColor" data-key="info">
         <div class="default-info-color two-columns">
           <div class="block default-info-block">
             <style>
@@ -307,7 +348,7 @@
           <div>faint info</div>
         </div>
     </div>
-      <div class="border-1" data-r="activeColor">
+      <div class="border-1" data-r="updateActiveColor" data-key="warning">
         <div class="default-warning-color two-columns">
           <div class="block default-warning-block">
             <style>
@@ -348,7 +389,7 @@
           <div>faint warning</div>
         </div>
     </div>
-      <div class="border-1" data-r="activeColor">
+      <div class="border-1" data-r="updateActiveColor" data-key="black">
         <div class="default-black-color two-columns">
           <div class="block default-black-block">
             <style>
@@ -389,7 +430,7 @@
           <div>faint black</div>
         </div>
     </div>
-      <div class="border-1" data-r="activeColor">
+      <div class="border-1" data-r="updateActiveColor" data-key="white">
         <div class="default-white-color two-columns">
           <div class="block default-white-block">
             <style>
@@ -430,7 +471,7 @@
           <div>faint white</div>
         </div>
     </div>
-      <div class="border-1" data-r="activeColor">
+      <div class="border-1" data-r="updateActiveColor" data-key="match">
         <div class="default-match-color two-columns">
           <div class="block default-match-block">
             <style>
@@ -471,45 +512,45 @@
           <div>faint match</div>
         </div>
     </div>
-      <div class="border-1" data-r="activeColor">
-        <div class="default-reversed-color two-columns">
-          <div class="block default-reversed-block">
+      <div class="border-1" data-r="updateActiveColor" data-key="reverse">
+        <div class="default-reverse-color two-columns">
+          <div class="block default-reverse-block">
             <style>
-            .default-reversed-block {
+            .default-reverse-block {
               margin: 0.3rem;
               height: 1.2rem; 
-              background-color: var(--default-reversed-color);
+              background-color: var(--default-reverse-color);
                 border-radius: 0.2rem;
             }
             </style>
           </div>
-          <div>default reversed</div>
+          <div>default reverse</div>
         </div>
-        <div class="faded-reversed-color two-columns">
-          <div class="block faded-reversed-block">
+        <div class="faded-reverse-color two-columns">
+          <div class="block faded-reverse-block">
             <style>
-            .faded-reversed-block {
+            .faded-reverse-block {
               margin: 0.3rem;
               height: 1.2rem; 
-              background-color: var(--faded-reversed-color);
+              background-color: var(--faded-reverse-color);
                 border-radius: 0.2rem;
             }
             </style>
           </div>
-          <div>faded reversed</div>
+          <div>faded reverse</div>
         </div>
-        <div class="faint-reversed-color two-columns">
-          <div class="block faint-reversed-block">
+        <div class="faint-reverse-color two-columns">
+          <div class="block faint-reverse-block">
             <style>
-            .faint-reversed-block {
+            .faint-reverse-block {
               margin: 0.3rem;
               height: 1.2rem; 
-              background-color: var(--faint-reversed-color);
+              background-color: var(--faint-reverse-color);
                 border-radius: 0.2rem;
             }
             </style>
           </div>
-          <div>faint reversed</div>
+          <div>faint reverse</div>
         </div>
     </div>
   </div>
@@ -536,8 +577,9 @@
 
 
 <div>
-<textarea data-r="updateCSS copyThis"></textarea>
-<button data-s="copyThis">Copy</button>
+  <h3>CSS</h3>
+  <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
+  <button data-s="copyThis">Copy</button>
 </div>
 </main>
 
@@ -638,7 +680,7 @@
     data-s="setHueOffset" 
     data-r="updateHueOffset" 
     data-index="__INDEX__"
-  >set</button>
+  >hue</button>
 </script>
 
 <script type="text/html" data-template="modeButton">

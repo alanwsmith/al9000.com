@@ -4,9 +4,9 @@ const defaults = {
   logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
-  colorNames: ["base", "accent", "heading", "info", "warning"],
+  colorNames: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
-  monoNames: ["black", "white", "match", "reversed"],
+  monoNames: ["black", "white", "match", "reverse"],
   config: {
     __L__: {
       __NAME__: "Lightness",
@@ -61,7 +61,7 @@ const defaults = {
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
-        "reversed": {
+        "reverse": {
           __LIGHTNESS__: 0,
           __FADED__: 0.6,
           __FAINT__: 0.12,
@@ -109,9 +109,9 @@ const defaults = {
       __KEY__: "dark",
       activeColorIndex: 0,
       background: {
-        __L__: 0.12,
+        __L__: 0.138,
         __C__: 0.12,
-        __H__: 30,
+        __H__: 166.07,
         __T__: 0,
       },
       monos: {
@@ -130,7 +130,7 @@ const defaults = {
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
-        "reversed": {
+        "reverse": {
           __LIGHTNESS__: 1,
           __FADED__: 0.6,
           __FAINT__: 0.12,
@@ -138,23 +138,23 @@ const defaults = {
       },
       colors: [
         {
-          __L__: 0.9,
-          __C__: 0.1,
-          __H_OFFSET__: 0,
+          __L__: 0.883,
+          __C__: 0.0372,
+          __H_OFFSET__: 6,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
         {
-          __L__: 0.6,
+          __L__: 0.773,
           __C__: 0.12,
-          __H_OFFSET__: 1,
+          __H_OFFSET__: 2,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
         {
           __L__: 0.62,
           __C__: 0.08,
-          __H_OFFSET__: 2,
+          __H_OFFSET__: 3,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
@@ -209,7 +209,12 @@ export async function init() {
   s.data = await b.loadPageData("data", defaults);
   b.setLogLevel(s.data.logLevel);
   b.trigger(
-    "initBaseStyles initBackgroundSliders initColorNameButtons initHueOffsetButtons initModeButtons initColorSliders",
+    `initBaseStyles 
+initBackgroundSliders 
+initColorNameButtons 
+initHueOffsetButtons 
+initModeButtons
+initColorSliders`,
   );
 }
 
@@ -254,7 +259,7 @@ export function initColorNameButtons(_, __, el) {
     };
     el.appendChild(b.render("colorNameButton", subs));
   });
-  b.trigger("setColorNameStyles");
+  b.trigger("setColorNameStyles updateActiveColor");
 }
 
 export function initColorSliders(_, __, el) {
@@ -299,6 +304,7 @@ export async function resetDefaults() {
 }
 
 export async function setLogLevel(_, sender, ___) {
+  b.info(`Log level set to: ${sender.prop("key")}`);
   b.setLogLevel(sender.prop("key"));
   s.data.logLevel = sender.prop("key");
   await b.savePageData("data", s.data);
@@ -309,7 +315,9 @@ export async function setColorName(_, sender, ___) {
   const mode = s.getActiveMode();
   mode.activeColorIndex = sender.propAsInt("index");
   await b.savePageData("data", s.data);
-  b.trigger("setColorNameStyles updateHueOffset updateColorValue updateCSS");
+  b.trigger(
+    "setColorNameStyles updateHueOffset updateColorValue updateCSS updateActiveColor",
+  );
 }
 
 export function setColorNameStyles(_, __, el) {
@@ -370,6 +378,19 @@ export async function setParam(_, sender, ___) {
     await b.savePageData("data", s.data);
     b.trigger("updateCSS");
   });
+}
+
+export function updateActiveColor(_, __, el) {
+  const mode = s.getActiveMode();
+  const targetColor = s.data.colorNames[mode.activeColorIndex];
+  if (el.prop("key") === targetColor) {
+    el.classList.remove("inactiveColor");
+  } else {
+    el.classList.add("inactiveColor");
+  }
+  if (s.data.monoNames.includes(el.prop("key"))) {
+    el.classList.remove("inactiveColor");
+  }
 }
 
 export function updateBackgroundValue(_, __, el) {
@@ -439,11 +460,9 @@ function makeSwitches(mode) {
     `--faded-background-color: var(--switch--faded-background-color, var(--${mode}--faded-background-color));`,
     `--faint-background-color: var(--switch--faint-background-color, var(--${mode}--faint-background-color));`,
   ];
-
   const colorScheme = [
     `--color-scheme: var(--switch--color-scheme, var(--${mode}--color-scheme));`,
   ];
-
   const colors1 = s.data.colorNames.map((color) => {
     return `--default-${color}-color: var(--switch--default-${color}-color, var(--${mode}--default-${color}-color));`;
   });
@@ -453,7 +472,6 @@ function makeSwitches(mode) {
   const colors3 = s.data.colorNames.map((color) => {
     return `--faint-${color}-color: var(--switch--faint-${color}-color, var(--${mode}--faint-${color}-color));`;
   });
-
   const monos1 = s.data.monoNames.map((color) => {
     return `--default-${color}-color: var(--switch--default-${color}-color, var(--${mode}--default-${color}-color));`;
   });
@@ -605,7 +623,6 @@ function generatePageVariables() {
   for (let mode of s.data.modes) {
     const monos = mode.monos;
     Object.keys(monos).forEach((mono) => {
-      b.info(monos[mono]);
       variables.push([
         `--${mode.__KEY__}--default-${mono}-color`,
         `oklch(${monos[mono].__LIGHTNESS__} 0 0)`,
@@ -652,8 +669,8 @@ function setSwitches(mode) {
       `var(--${mode}--${t}-match-color)`,
     );
     b.setCSS(
-      `--switch--${t}-reversed-color`,
-      `var(--${mode}--${t}-reversed-color)`,
+      `--switch--${t}-reverse-color`,
+      `var(--${mode}--${t}-reverse-color)`,
     );
   });
 }

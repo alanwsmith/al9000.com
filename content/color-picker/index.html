@@ -18,6 +18,7 @@ flags = ["no-colors"]
     background-image: none; 
     background-color: var(--default-background-color);
     font-family: system-ui;
+    color: var(--default-base-color);
   }
 
   a {
@@ -34,6 +35,16 @@ flags = ["no-colors"]
     text-decoration: underline;
   }
 
+  .inactiveColor {
+    opacity: 0.3;
+    background-color: var(--default-black-color);
+  }
+
+  .inactiveMonoColor {
+    opacity: 0.3;
+    background-color: var(--default-warning-color);
+  }
+
   button{
     background: none;
     border: none;
@@ -46,26 +57,28 @@ flags = ["no-colors"]
   }
 
   .border-1 {
-    border: 1px solid var(--faint-reversed-color);
+    border: 1px solid var(--faint-reverse-color);
     padding: 0.3rem;
     border-radius: 0.5rem;
     margin-block: 0.9rem;
   }
 
   h1 {
-    color: var(--20-heading-color);
     color: var(--default-heading-color);
+    margin-bottom: 1.3rem;
+    font-weight: 900;
   }
 
-  /*
-  .three-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  h3 {
+    font-size: 0.9rem;
   }
-  */
 
   main {
     margin: 1.2rem;
+  }
+
+  ol > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
   }
 
   .two-columns {
@@ -89,10 +102,11 @@ flags = ["no-colors"]
   }
 
   .warning-block {
-    border: 1px solid var(--faded-reversed-color);
-    background-color: var(--faint-warning-color);
+    border: 1px solid var(--faded-reverse-color);
+    background-color: var(--faded-warning-color);
     padding: 0.5rem;
     border-radius: 0.4rem;
+    color: var(--default-black-color);
   }
 </style>
 == endblock
@@ -100,11 +114,11 @@ flags = ["no-colors"]
 
 == block content
 <main>
-<div class="border-1"><a href="/">al9000.com</a></div>
+<div class="border-1"><a href="/">home</a></div>
 
 <h1>Color Picker 9000</h1>
 <div class="warning-block">
-  <p>Head's up</p>
+    <p><strong>Head's up</strong></p>
   <p>
     This is a prototype. 
     Most of the basic functionality
@@ -119,11 +133,38 @@ flags = ["no-colors"]
 <button data-s="setLogLevel" data-key="WARN">WARN</button>
 </div>
 
+<h2>Instructions</h2>
+
+  <ol>
+    <li>Select the Mode you want to work on (either light or dark)</li>
+    <li>
+      Use the Background sliders to set a background color.
+      As you do, the colors in the Colors section
+      update automatically (each hue value
+      rotates 45 degrees).
+    </li>
+    <li>
+      Choose a color from the Colors section and
+      use the &quot;hue&quot; buttons below it to
+      select the hue portion of it's OKLCH value. 
+    </li>
+    <li>
+      Use the Lightness and Chroma sliders to 
+      adjust those values for the color. 
+    </li>
+    <li>
+      Copy the CSS block and paste it into
+      your style sheet to start using
+      the colors.
+    </li>
+  </ol>
+
+
 <div class="two-columns-left">
 
   <div>
     == for color in d["color-picker"].data.colors
-      <div class="border-1" data-r="activeColor">
+      <div class="border-1" data-r="updateActiveColor" data-key="[@ color @]">
       == for kind in d["color-picker"].data.kinds
         <div class="[@ kind @]-[@ color @]-color two-columns">
           <div class="block [@ kind @]-[@ color @]-block">
@@ -165,8 +206,9 @@ flags = ["no-colors"]
 
 
 <div>
-<textarea data-r="updateCSS copyThis"></textarea>
-<button data-s="copyThis">Copy</button>
+  <h3>CSS</h3>
+  <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
+  <button data-s="copyThis">Copy</button>
 </div>
 </main>
 
@@ -262,7 +304,7 @@ flags = ["no-colors"]
     data-s="setHueOffset" 
     data-r="updateHueOffset" 
     data-index="__INDEX__"
-  >set</button>
+  >hue</button>
 </script>
 
 <script type="text/html" data-template="modeButton">

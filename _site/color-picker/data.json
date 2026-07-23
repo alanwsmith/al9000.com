@@ -1,14 +1,14 @@
 {
   "colors": [
     "base",
-    "accent",
     "heading",
+    "accent",
     "info",
     "warning",
     "black",
     "white",
     "match",
-    "reversed"
+    "reverse"
   ],
   "kinds": [
     "default",
