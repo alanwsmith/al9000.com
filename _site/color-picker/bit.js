@@ -40,8 +40,8 @@ const defaults = {
       __KEY__: "light",
       activeColorIndex: 0,
       background: {
-        __L__: 0.941,
-        __C__: 0.016,
+        __L__: 0.873,
+        __C__: 0.0299,
         __H__: 217.5,
         __T__: 0,
       },
@@ -461,7 +461,7 @@ ${
 
 function makeSwitches(mode) {
   const background = [
-    `--background-color: var(--switch--background-color, var(--${mode}--background-color));`,
+    `--background: var(--switch--background, var(--${mode}--background));`,
   ];
   const colorScheme = [
     `--color-scheme: var(--switch--color-scheme, var(--${mode}--color-scheme));`,
@@ -500,7 +500,7 @@ function makeSwitches(mode) {
 
 function makeClasses() {
   const background = [
-    `.background-color { color: var(--background-color); }`,
+    `.background { color: var(--background); }`,
   ];
   const colors1 = s.data.colorNames.map((color) => {
     return `.default-${color}-color { color: var(--default-${color}-color); }`;
@@ -578,7 +578,7 @@ function generatePageVariables() {
     );
     variables.push(
       [
-        `--${mode.__KEY__}--background-color`,
+        `--${mode.__KEY__}--background`,
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
       ],
     );
@@ -635,8 +635,8 @@ function generatePageVariables() {
 
 function setSwitches(mode) {
   b.setCSS(
-    `--switch--background-color`,
-    `var(--${mode}--background-color)`,
+    `--switch--background`,
+    `var(--${mode}--background)`,
   );
   s.data.colorTypes.forEach((t) => {
     b.setCSS(
