@@ -260,7 +260,7 @@ export function initColorNameButtons(_, __, el) {
     };
     el.appendChild(b.render("colorNameButton", subs));
   });
-  b.trigger("setColorNameStyles updateActiveColor");
+  b.trigger("setColorNameStyles updateActiveColor updateColorName");
 }
 
 export function initColorSliders(_, __, el) {
@@ -317,7 +317,7 @@ export async function setColorName(_, sender, ___) {
   mode.activeColorIndex = sender.propAsInt("index");
   await b.savePageData("data", s.data);
   b.trigger(
-    "setColorNameStyles updateHueOffset updateColorValue updateCSS updateActiveColor",
+    "setColorNameStyles updateHueOffset updateColorValue updateCSS updateActiveColor updateColorName",
   );
 }
 
@@ -415,6 +415,18 @@ export function updateColorValue(_, __, el) {
   const mode = s.getActiveMode();
   const v = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
   el.value = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
+}
+
+export function updateColorName(_, __, el) {
+  const mode = s.getActiveMode();
+  s.data.colorNames.forEach((name) => {
+    if (s.data.colorNames[mode.activeColorIndex] === name) {
+      el.innerHTML = name;
+      el.classList.add(`default-${name}-background-color`);
+    } else {
+      el.classList.remove(`default-${name}-background-color`);
+    }
+  });
 }
 
 export function updateCSS(_, __, el) {

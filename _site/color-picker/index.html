@@ -683,37 +683,37 @@ theme.</li>
     </li>
   </ol>
 </details>
-<div class="border-1">
-  <div data-r="initModeButtons" class="flex-line"></div>
-</div>
+    <div class="border-1">
+        <div data-r="initModeButtons" class="flex-line"></div>
+    </div>
 
-<div class="border-1">
-  <h3>Background</h3>
-  <div class="background-sliders" data-r="initBackgroundSliders"></div>
-</div>
+    <div class="border-1">
+        <h3>Background</h3>
+        <div class="background-sliders" data-r="initBackgroundSliders"></div>
+    </div>
 
-<div class="border-1">
-  <div data-r="initColorNameButtons"></div>
-  <div class="border-1">
-    <div data-r="initHueOffsetButtons"></div>
-    <div data-r="initColorSliders"></div>
-  </div>
-</div>
-
+    <div class="border-1">
+        <div data-r="initColorNameButtons"></div>
+        <div data-r="updateColorName">-</div>
+        <div class="border-1">
+            <div data-r="initHueOffsetButtons"></div>
+            <div data-r="initColorSliders"></div>
+        </div>
+    </div>
 </div>  </div>
 
-<div>
-  <h2>CSS</h2>
-  <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
-  <button data-s="copyThis">Copy</button>
-</div>
+  <div>
+    <h2>CSS</h2>
+    <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
+    <button data-s="copyThis">Copy</button>
+  </div>
 
-<div class="border-1 default-flow">
+  <div class="border-1 default-flow">
     <p>Prototype Tools:</p>
-<button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
-<button data-s="setLogLevel" data-key="WARN">WARN</button>
-<button data-s="resetDefaults">Reset to Defaults</button>
-</div>
+    <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
+    <button data-s="setLogLevel" data-key="WARN">WARN</button>
+    <button data-s="resetDefaults">Reset to Defaults</button>
+  </div>
 
 </main>
 
@@ -724,6 +724,7 @@ theme.</li>
 
     <div class="template" hidden>
       <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <bitty-9 data-connect="/bits/dev-test.js"></bitty-9>
       <script type="module" src="/bits/components.js"></script>
       
 <bitty-9 data-connect="&#x2f;color-picker&#x2f;bit.js"></bitty-9>
@@ -812,7 +813,7 @@ theme.</li>
     data-s="setHueOffset" 
     data-r="updateHueOffset" 
     data-index="__INDEX__"
-  >hue</button>
+  >set</button>
 </script>
 
 <script type="text/html" data-template="modeButton">
