@@ -25,8 +25,14 @@
 
 
 
-    
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 <style>
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+}
+
 * {
   margin: 0;
 }
@@ -90,6 +96,7 @@ button{
   padding-left: 
     calc(var(--color-name-padding) * 1.8rem + 0.6rem);
     height: 1.5rem;
+  border-start-end-radius: 0.3rem;
 }
 
 .default-border-radius {
@@ -126,6 +133,7 @@ h3 {
 
 .hue-offset-buttons {
   display: flex;
+  justify-content: space-between;
 }
 
 .info-block {
@@ -173,6 +181,7 @@ ul > :where(:not(:first-child)) {
   color: var(--default-black-color);
 }
 </style>
+    
   </head>
   <body>
     <noscript>
@@ -283,6 +292,7 @@ a switch nor OS provided mode is available.</p>
 <ul>
 <li>Add texture feature like <a href="/texture-maker/">Texture Maker</a>.</li>
 <li>Document black, white, match, reverse colors.</li>
+<li>Add ability to set faded and faint values for black, white, match, and reverse.</li>
 <li>Document color-scheme auto setting for light/dark mode.</li>
 <li>Add swatch selector that let's you pick
 a background color and a foreground color
@@ -728,7 +738,6 @@ theme.</li>
     <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
     <button data-s="copyThis">Copy</button>
   </div>
-
 </main>
 
 
@@ -743,7 +752,6 @@ theme.</li>
       <script type="module" src="/bits/components.js"></script>
       
 <bitty-9 data-connect="&#x2f;color-picker&#x2f;bit.js"></bitty-9>
-
 <script type="text/html" data-template="backgroundSlider">
     <label for="bg-__NAME__">__NAME__</label>
       <input 

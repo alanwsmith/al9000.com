@@ -1,8 +1,8 @@
-  export async function copyThis(_, sender, el) {
+export async function copyThis(_, sender, el) {
   await b.quickCopy(el, sender);
 }
 
-  const defaults = {
+const defaults = {
   logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
@@ -178,7 +178,7 @@
     },
   ],
 };
-  
+
 function generatePageVariables() {
   let variables = [];
   for (let mode of s.data.modes) {
@@ -245,7 +245,7 @@ function generatePageVariables() {
   return variables;
 }
 
-  export function initBackgroundSliders(_, __, el) {
+export function initBackgroundSliders(_, __, el) {
   const mode = s.getActiveMode();
   for (let key of Object.keys(s.data.config)) {
     const subs = {
@@ -262,12 +262,12 @@ function generatePageVariables() {
   }
   b.trigger("updateCSS");
 }
-  export function initBaseStyles() {
+export function initBaseStyles() {
   const theStyles = ``;
   sheet.replaceSync(theStyles);
   document.adoptedStyleSheets.push(sheet);
 }
-  export function initColorNameButtons(_, __, el) {
+export function initColorNameButtons(_, __, el) {
   s.data.colorNames.forEach((name, index) => {
     const subs = {
       __INDEX__: index,
@@ -280,7 +280,7 @@ function generatePageVariables() {
 }
 
 
-  export function initColorSliders(_, __, el) {
+export function initColorSliders(_, __, el) {
   const mode = s.getActiveMode();
   const color = s.getActiveMode().colors[mode.activeColorIndex];
   const subs = {
@@ -291,7 +291,7 @@ function generatePageVariables() {
   };
   el.appendChild(b.render("colorSliders", subs));
 }
-  export function initHueOffsetButtons(_, __, el) {
+export function initHueOffsetButtons(_, __, el) {
   for (let index = 0; index < (360 / s.data.hueRotation); index += 1) {
     const subs = {
       __INDEX__: index,
@@ -302,7 +302,7 @@ function generatePageVariables() {
 }
 
 
-  export function initModeButtons(_, __, el) {
+export function initModeButtons(_, __, el) {
   for (let mode of s.data.modes) {
     if (mode.__KEY__ === s.data.activeMode) {
       mode.__CHECKED__ = "checked";
@@ -316,7 +316,7 @@ function generatePageVariables() {
   setSwitches(s.data.activeMode);
 }
 
-  export async function init() {
+export async function init() {
   // b.setLogLevel("TRACE");
   // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
@@ -335,7 +335,6 @@ iColorName
 }
 
 
-  
 function makeClasses() {
   const background = [
     `.background { color: var(--background); }`,
@@ -383,7 +382,7 @@ function makeClasses() {
   return output.join("\n");
 }
 
-  function makePageVars(variables) {
+function makePageVars(variables) {
   return `:root {
 ${variables.map((vv) => {
     return vv[0] + ": " + vv[1] + ";";
@@ -393,7 +392,7 @@ ${variables.map((vv) => {
 `;
 }
 
-  
+
 function makeSwitches(mode) {
   const background = [
     `--background: var(--switch--background, var(--${mode}--background));`,
@@ -433,7 +432,7 @@ function makeSwitches(mode) {
   return output.join("\n");
 }
 
-  
+
 function makeUiClasses() {
   const activeMode = s.getActiveMode();
   const activeColorIndex = activeMode.activeColorIndex;
@@ -463,7 +462,7 @@ function makeUiClasses() {
 
 
 
-  
+
 function makeUiVars() {
   const activeMode = s.getActiveMode();
   const activeColorIndex = activeMode.activeColorIndex;
@@ -483,12 +482,12 @@ function makeUiVars() {
   return `:root { ${out2.join("\n")}}`;
 }
 
-  export async function resetDefaults() {
+export async function resetDefaults() {
   await b.clearPageData();
   location.reload();
 }
 
-  export async function sColor(_, sender, ___) {
+export async function sColor(_, sender, ___) {
   b.trace("sColor");
   const mode = s.getActiveMode();
   mode.activeColorIndex = sender.propAsInt("index");
@@ -498,7 +497,7 @@ function makeUiVars() {
   );
 }
 
-  export async function setColorValue(_, sender, ___) {
+export async function setColorValue(_, sender, ___) {
   b.trace("setColorValue");
   requestAnimationFrame(async () => {
     const mode = s.getActiveMode();
@@ -510,7 +509,7 @@ function makeUiVars() {
 }
 
 
-  export async function setHueOffset(_, sender, el) {
+export async function setHueOffset(_, sender, el) {
   b.trace("setHueOffset");
   const mode = s.getActiveMode();
   mode.colors[mode.activeColorIndex][`__H_OFFSET__`] = sender.propAsInt(
@@ -521,13 +520,13 @@ function makeUiVars() {
 }
 
 
-  export async function setLogLevel(_, sender, ___) {
+export async function setLogLevel(_, sender, ___) {
   b.setLogLevel(sender.prop("key"));
   s.data.logLevel = sender.prop("key");
   b.info(`Log level set to: ${sender.prop("key")}`);
   await b.savePageData("data", s.data);
 }
-  export async function sMode(_, sender, ___) {
+export async function sMode(_, sender, ___) {
   b.trace("sMode");
   s.data.activeMode = sender.prop("key");
   setSwitches(s.data.activeMode);
@@ -535,7 +534,7 @@ function makeUiVars() {
   b.trigger(`updateCSS`);
 }
 
-  export async function setParam(_, sender, ___) {
+export async function setParam(_, sender, ___) {
   b.trace("setParam");
   await requestAnimationFrame(async () => {
     s.setActiveValue(sender.prop("key"), sender.valueAsFloat());
@@ -545,7 +544,7 @@ function makeUiVars() {
 }
 
 
-  function setSwitches(mode) {
+function setSwitches(mode) {
   b.setCSS(
     `--switch--background`,
     `var(--${mode}--background)`,
@@ -580,7 +579,7 @@ function makeUiVars() {
   });
 }
 
-  class State {
+class State {
   constructor() {
     this.data = {};
   }
@@ -599,13 +598,13 @@ function makeUiVars() {
     }
   }
 }
-  export function uBackgroundValue(_, __, el) {
+export function uBackgroundValue(_, __, el) {
   b.trace("uBackgroundValue");
   const mode = s.getActiveMode();
   el.value = mode.background[`${el.prop("key")}`];
 }
 
-  export function updateCSS(_, __, el) {
+export function updateCSS(_, __, el) {
   b.trace("updateCSS");
   const variables = generatePageVariables();
   variables.forEach((vv) => {
@@ -646,7 +645,7 @@ uColorValue
 `);
 }
 
-  export function uColorName(_, __, el) {
+export function uColorName(_, __, el) {
   b.trace("uColorName");
   const mode = s.getActiveMode();
   s.data.colorNames.forEach((name) => {
@@ -660,7 +659,7 @@ uColorValue
   });
 }
 
-  export function uColorValue(_, __, el) {
+export function uColorValue(_, __, el) {
   b.trace("uColorValue");
   if (el) {
     const mode = s.getActiveMode();
@@ -669,7 +668,7 @@ uColorValue
   }
 }
 
-  export function uHueOffset(_, __, el) {
+export function uHueOffset(_, __, el) {
   b.trace("uHueOffset");
   const mode = s.getActiveMode();
   if (el) {
