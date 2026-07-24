@@ -1,0 +1,129 @@
+== extends "/templates.inc/switches/default.html"
+== block toml 
+title = "Adding Copy Buttons with Bitty"
+created = 2026-07-24T09:04:37-04:00
+status = "draft"
+id = "01/n6/6r/q5"
+tags = []
+flags = []
+== endblock
+
+
+== block content 
+== filter md
+
+## Hitting a Single
+
+[Bitty](https://bittyjs.com) has a `.quickCopy()`
+method. It does two things:
+
+1. Copies the content of the target element. 
+
+2. Updates the text of the Copy button 
+to say "Copied" for two seconds then reverts it. 
+
+For example:
+
+<div class="example-container">
+== filter highlight("html", title="content.html", class="code-block numbers no-copy")
+== include template_dir("/examples/example-1/content.html")
+== endfilter 
+== filter highlight("js", title="bit.js", class="code-block numbers no-copy")
+[@ raw_include(template_dir("/examples/example-1/bit.js")) @]
+== endfilter 
+== filter example(title="Output")
+== include template_dir("/examples/example-1/content.html")
+== endfilter 
+</div>
+
+## Connecting Keys
+
+You can put multiple buttons on a 
+page that all use the same copy function 
+with the help of a `data-key` attribute:
+
+<div class="example-container">
+== filter highlight("html", title="content.html", class="code-block numbers no-copy")
+== include template_dir("/examples/example-2/content.html")
+== endfilter 
+== filter highlight("js", title="bit.js", class="code-block numbers no-copy")
+[@ raw_include(template_dir("/examples/example-2/bit.js")) @]
+== endfilter 
+== filter example(title="Output")
+== include template_dir("/examples/example-2/content.html")
+== endfilter 
+</div>
+
+## How It Works
+
+- The `data-s` attributes on the buttons
+sets them up to send a signal named `copyWithKey`.
+
+- When the signal comes in, bitty 
+loops through all the elements with a 
+`data-r` attribute whose value matches
+the `copyWithKey` signal name.
+
+  Each element is passed to the `copyWithKey`
+function as the `el` argument. The `sender`
+argument is populated by the button 
+that sent the signal. 
+
+- Since there are multiple elements
+with the `data-r="copyWithKey"` attribute
+we need a way to filter them down to just the
+one we want. The approach used here does the filtering 
+by comparing the `data-key` values of
+the sending and receiving elements
+via the `.prop()` method that bitty
+adds to the incoming elements. 
+
+  When they match, the function calls
+the `.quickCopy()` method with the elements
+to run the process. 
+
+
+## Outro
+
+Most of bitty is about setting up functions to
+add your own features. The `.quickCopy()` 
+method is an exception. It's fully baked. 
+I found myself adding the functionality
+so often it made since to include
+it directly. Check it out if your 
+site has content you want to make it 
+easier for your visitors to grab.
+
+-a
+
+== endfilter
+== endblock
+
+== block backmatter
+== filter md
+
+## References
+
+- Bitty is a signals based framework rolled
+into a web component. You can find
+out more about it at 
+[bittyjs.com](https://bittyjs.com).
+
+
+
+
+
+
+## Endnotes
+
+- This example is using `bitty-9`. At the
+time of this writing, that version is
+a private beta. The current production
+version of bitty is `bitty-8`. It
+provides the same functionality. 
+
+
+
+
+== endfilter
+== endblock

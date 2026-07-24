@@ -39,11 +39,14 @@ input {
 == endfilter
 
 <h2>Local</h2>
+
+
+
 == for folder in folders_in_folder("/tools", full = true) 
-  == if exists(folder + "/index.html")
-    == set key = stem(folder)
+  == set index_file = folder + "/index.html"
+  == if exists(index_file)
   <bitty-9 data-connect="[@ folder @]/bit.js"></bitty-9>
-   <details class="d"><summary>[@ d.tools[key].index.title @]</summary> 
+   <details class="d"><summary>[@ d[index_file].title @]</summary> 
     == include folder + "/index.html"
    </details> 
   == endif

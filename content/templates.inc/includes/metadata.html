@@ -2,7 +2,7 @@
 [!- if file_path == "/index.html" -!]
 https://al9000.com/
 [!- elif stem(file_path) == "index" -!]
-https://al9000.com[@ template_folder() @]/
+https://al9000.com[@ template_dir() @]/
 [!- else -!]
 https://al9000.com[@ file_path @]
 [!- endif -!]
@@ -19,21 +19,24 @@ https://al9000.com/images/open-graph/default.jpg
   [!- endif -!]
 [!- endset -!]
 
+
 [!- set og_title !]
   [!- if p.title !]
   [@- p.title -@]
   [!- else -!]
-  [@- d.config.site.title -@]
+  [@- d["/config.json"].site.title -@]
   [!- endif -!]
 [!- endset -!]
+
 
 [!- set og_description -!]
 [!- if p.og_description -!]
 [@ p.og_description @]
 [!- else -!]
-[@ d.config.og_image.default_description @]
+[@ d["/config.json"].og_image.default_description @]
 [!- endif -!]
 [!- endset -!]
+
 
 <link rel="shortcut icon" href="/favicon.ico" />
 <title>[@ og_title @]</title>
@@ -43,22 +46,25 @@ https://al9000.com/images/open-graph/default.jpg
 <meta property="og:type" content="article" />
 <meta property="og:url" content="[@ og_url @]" />
 <meta property="og:image" content="[@ og_image @]" />
-<link rel="apple-touch-icon" sizes="180x180" href="[@ d.config.site.favicon_root @]/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="[@ d.config.site.favicon_root @]/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="[@ d.config.site.favicon_root @]/favicon-32x32.png" />
-<link rel="manifest" href="[@ d.config.site.favicon_root @]/site.webmanifest" />
-<link rel="mask-icon" href="[@ d.config.site.favicon_root @]/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="apple-touch-icon" sizes="180x180" href="[@ d["/config.json"].site.favicon_root @]/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="[@ d["/config.json"].site.favicon_root @]/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="[@ d["/config.json"].site.favicon_root @]/favicon-32x32.png" />
+<link rel="manifest" href="[@ d["/config.json"].site.favicon_root @]/site.webmanifest" />
+<link rel="mask-icon" href="[@ d["/config.json"].site.favicon_root @]/safari-pinned-tab.svg" color="#5bbad5" />
 <link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
 <link
   rel="site.standard.publication"
-  href="at://[@ d.config.atproto.did @]/[@ d.config.atproto.siteRecord @]"
+  href="at://[@ d["/config.json"].atproto.did @]/[@ d["/config.json"].atproto.siteRecord @]"
 />
+
+
 == if p.tid
 <link
   rel="site.standard.document"
-  href="at://[@ d.config.atproto.did @]/site.standard.document/[@ p.tid @]"
+  href="at://[@ d["/config.json"].atproto.did @]/site.standard.document/[@ p.tid @]"
 />
 == endif
+
 
 [#
 <meta name="twitter:card" content="summary_large_image">

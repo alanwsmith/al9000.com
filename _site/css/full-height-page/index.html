@@ -22,9 +22,10 @@
   href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
 />
 
-    <!--
+
+
+
     <link rel="stylesheet" href="/styles/colors.css" />
--->
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 <style>
 body {
@@ -44,6 +45,7 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
 }</style>
+    
   </head>
   <body>
     <noscript>
@@ -88,11 +90,11 @@ body {
 
   <p>Given an HTML structure like</p>
 
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source css">&lt;<span class="meta selector css"><span class="entity name tag css">body</span><span class="punctuation separator combinator css">&gt;</span>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source css">&lt;<span class="meta selector css"><span class="entity name tag css">body</span><span class="punctuation separator combinator css">&gt;</span>
 <span class="line-marker" data-line="2"></span>  &lt;<span class="entity name tag css">header</span><span class="punctuation separator combinator css">&gt;</span>&lt;</span>/<span class="meta selector css"><span class="entity name tag css">header</span><span class="punctuation separator combinator css">&gt;</span>
 <span class="line-marker" data-line="3"></span>  &lt;<span class="entity name tag css">main</span><span class="punctuation separator combinator css">&gt;</span>&lt;</span>/<span class="meta selector css"><span class="entity name tag css">main</span><span class="punctuation separator combinator css">&gt;</span>
 <span class="line-marker" data-line="4"></span>  &lt;<span class="entity name tag css">footer</span><span class="punctuation separator combinator css">&gt;</span>&lt;</span>/<span class="meta selector css"><span class="entity name tag css">footer</span><span class="punctuation separator combinator css">&gt;</span>
-<span class="line-marker" data-line="5"></span>&lt;</span>/<span class="meta selector css"><span class="entity name tag css">body</span><span class="punctuation separator combinator css">&gt;</span></span></span></pre></div>
+<span class="line-marker" data-line="5"></span>&lt;</span>/<span class="meta selector css"><span class="entity name tag css">body</span><span class="punctuation separator combinator css">&gt;</span></span></span></pre></div></div>
     <p>
       This CSS will space things out so the
       `header` is at the top of the page and
@@ -102,7 +104,7 @@ body {
     </p>
 
 
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source css"><span class="meta selector css"><span class="entity name tag wildcard css">*</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source css"><span class="meta selector css"><span class="entity name tag wildcard css">*</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
 <span class="line-marker" data-line="2"></span>  <span class="meta property-name css"><span class="support type property-name css">margin</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">0</span></span><span class="punctuation terminator rule css">;</span>
 <span class="line-marker" data-line="3"></span></span><span class="punctuation section property-list css">}</span>
 <span class="line-marker" data-line="4"></span>
@@ -114,7 +116,7 @@ body {
 <span class="line-marker" data-line="10"></span>  <span class="meta property-name css"><span class="support type property-name css">min-height</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">100</span>svh</span><span class="punctuation terminator rule css">;</span>
 <span class="line-marker" data-line="11"></span>  <span class="meta property-name css"><span class="support type property-name css">display</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">grid</span></span><span class="punctuation terminator rule css">;</span>
 <span class="line-marker" data-line="12"></span>  <span class="meta property-name css"><span class="support type property-name css">grid-template-rows</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">auto</span> <span class="constant numeric css">1<span class="keyword other unit css">fr</span></span> <span class="support constant property-value css">auto</span></span><span class="punctuation terminator rule css">;</span>
-<span class="line-marker" data-line="13"></span></span><span class="punctuation section property-list css">}</span></span></pre></div>
+<span class="line-marker" data-line="13"></span></span><span class="punctuation section property-list css">}</span></span></pre></div></div>
     <p>
       This is not a sticky header. It just 
       makes sure the page takes up
@@ -160,6 +162,7 @@ body {
 
     <div class="template" hidden>
       <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <bitty-9 data-connect="/bits/dev-test.js"></bitty-9>
       <script type="module" src="/bits/components.js"></script>
       
     </div>

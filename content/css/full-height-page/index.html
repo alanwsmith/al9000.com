@@ -18,12 +18,12 @@ body {
   background-color: var(--background-color);
   color: var(--default-color);
 }
-== include template_folder() + "/styles.css"
+== include template_dir() + "/styles.css"
 </style>
 == endblock
 
 == block content 
 
-== include template_folder() + "/page.html"
+== include template_dir() + "/page.html"
 
 == endblock

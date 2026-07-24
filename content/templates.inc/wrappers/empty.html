@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     == include "/templates.inc/includes/metadata.html"
     == if "no-colors" not in p.flags
-    <!--
     <link rel="stylesheet" href="/styles/colors.css" />
--->
     == endif 
-    <script src="[@ d.config.bittyURL @]" type="module"></script>
+    <script src="[@ d["/config.json"].bittyURL @]" type="module"></script>
     == block head
     == endblock
     == block styles
     == endblock
+    [# TODO Move everything over to styles2 which
+    auto wrapper in the style tag and deprecate 
+    the original styles block #]
+    == set styles2block
+    [!- block styles2 !][! endblock -!]
+    == endset
     == block scripts
     == endblock
   </head>
@@ -26,6 +30,7 @@
 
     <div class="template" hidden>
       <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <bitty-9 data-connect="/bits/dev-test.js"></bitty-9>
       <script type="module" src="/bits/components.js"></script>
       [# TODO: Deprecate 'support' in favor of 'templates' #]
       == block support

@@ -1,0 +1,11 @@
+{
+  "titleLines": [
+    "justify-content: space-between;"
+  ],
+  "hiddenLies": [
+    "display: flex;",
+    "flex-flow: row wrap;"
+  ],
+  "className": "justify-content-space-between",
+  "payload": "default.html"
+}

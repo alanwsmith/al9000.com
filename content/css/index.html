@@ -1,18 +1,21 @@
-== extends "templates.inc/pages/default.html"
+== extends "templates.inc/switches/default.html"
 
 == block toml
 title = "CSS"
-status = "code"
+created = 2026-07-24T00:19:00-04:00
+id = "01/n6/5s/xm" 
+status = "done"
 flags = ["skip"]
 == endblock
 
 == block main
 
 <ul>
-== for folder in folders_in_folder(template_folder()) 
-  == if "index" in d.css[folder]
-    <li><a href="[@ folder @]">[@ d.css[folder].index.title @]</a></li>
-  == endif
+== for folder in folders_in_folder(template_dir(), full=true) 
+  == set index_file = folder + "/index.html"
+  [! if exists(index_file) !]
+    <li><a href="[@ folder @]">[@ d[index_file].title @]</a></li>
+  [! endif !]
 == endfor 
 </ul>
 

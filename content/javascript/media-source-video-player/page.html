@@ -1,23 +1,23 @@
 <video id="videoPlayer" controls></video>
 
 <script type="module">
-import { loadVideo } from "[@ template_folder() @]/media-source-player.js"
+import { loadVideo } from "[@ template_dir() @]/media-source-player.js"
 const config = {
   codec: `video/webm; codecs="vp9, vorbis"`,
   urls: [
-    "[@ template_folder() @]/sample-video/part-00.part",
-    "[@ template_folder() @]/sample-video/part-01.part",
-    "[@ template_folder() @]/sample-video/part-02.part",
-    "[@ template_folder() @]/sample-video/part-03.part",
-    "[@ template_folder() @]/sample-video/part-04.part",
-    "[@ template_folder() @]/sample-video/part-05.part",
-    "[@ template_folder() @]/sample-video/part-06.part",
-    "[@ template_folder() @]/sample-video/part-07.part",
-    "[@ template_folder() @]/sample-video/part-08.part",
-    "[@ template_folder() @]/sample-video/part-09.part",
-    "[@ template_folder() @]/sample-video/part-10.part",
+    "[@ template_dir() @]/sample-video/part-00.part",
+    "[@ template_dir() @]/sample-video/part-01.part",
+    "[@ template_dir() @]/sample-video/part-02.part",
+    "[@ template_dir() @]/sample-video/part-03.part",
+    "[@ template_dir() @]/sample-video/part-04.part",
+    "[@ template_dir() @]/sample-video/part-05.part",
+    "[@ template_dir() @]/sample-video/part-06.part",
+    "[@ template_dir() @]/sample-video/part-07.part",
+    "[@ template_dir() @]/sample-video/part-08.part",
+    "[@ template_dir() @]/sample-video/part-09.part",
+    "[@ template_dir() @]/sample-video/part-10.part",
   ],
-  fallback: "[@ template_folder() @]/sample-video/church-3818213.webm",
+  fallback: "[@ template_dir() @]/sample-video/church-3818213.webm",
 }
 loadVideo("#videoPlayer", config);
 </script>

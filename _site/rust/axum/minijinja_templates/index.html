@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
 
-    
-
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
 <link rel="shortcut icon" href="/favicon.ico" />
@@ -28,10 +26,19 @@
   href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
 />
 
+
+
+
     
     
     
     
+
+    
+
+
+    <style>
+    </style>
     
   </head>
   <body class="page">
@@ -45,6 +52,7 @@
   </p>
 
 </noscript>
+
 
     <div class="payload">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
@@ -100,7 +108,7 @@
 
 <h2>Files</h2>
 <h3>Cargo.toml</h3>
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;minijinja_templates&quot;
 <span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
 <span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
@@ -110,9 +118,9 @@
 <span class="line-marker" data-line="8"></span>axum = &quot;0.8.9&quot;
 <span class="line-marker" data-line="9"></span>chrono = &quot;0.4.45&quot;
 <span class="line-marker" data-line="10"></span>minijinja = { version = &quot;2.21.0&quot;, features = [&quot;custom_syntax&quot;, &quot;debug&quot;] }
-<span class="line-marker" data-line="11"></span>tokio = { version = &quot;1.52.3&quot;, features = [&quot;macros&quot;, &quot;rt-multi-thread&quot;] }</span></pre></div>
+<span class="line-marker" data-line="11"></span>tokio = { version = &quot;1.52.3&quot;, features = [&quot;macros&quot;, &quot;rt-multi-thread&quot;] }</span></pre></div></div>
 <h3>src/main.rs</h3>
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">extract<span class="punctuation accessor rust">::</span></span>State<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta path rust">http<span class="punctuation accessor rust">::</span></span>StatusCode<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">axum<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>Router<span class="punctuation separator rust">,</span> <span class="meta path rust">response<span class="punctuation accessor rust">::</span></span>Html<span class="punctuation separator rust">,</span> <span class="meta path rust">routing<span class="punctuation accessor rust">::</span></span>get</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
@@ -186,9 +194,9 @@
 <span class="line-marker" data-line="72"></span>      <span class="support type rust">Err</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta path rust">StatusCode<span class="punctuation accessor rust">::</span></span><span class="constant other rust">INTERNAL_SERVER_ERROR</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker" data-line="73"></span>    </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
 <span class="line-marker" data-line="74"></span>  </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
-<span class="line-marker" data-line="75"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
+<span class="line-marker" data-line="75"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
 <h3>templates/index.html</h3>
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag sgml html"><span class="punctuation definition tag html">&lt;!</span><span class="meta tag sgml doctype html"><span class="entity name tag doctype html">DOCTYPE</span> html</span><span class="punctuation definition tag html">&gt;</span></span>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag sgml html"><span class="punctuation definition tag html">&lt;!</span><span class="meta tag sgml doctype html"><span class="entity name tag doctype html">DOCTYPE</span> html</span><span class="punctuation definition tag html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span><span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag structure any html">html</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">lang</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>en<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="3"></span>  <span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag structure any html">head</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="4"></span>    <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">meta</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">charset</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>UTF-8<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
@@ -197,7 +205,7 @@
 <span class="line-marker" data-line="7"></span>  <span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag structure any html">body</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="8"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">h1</span><span class="punctuation definition tag end html">&gt;</span></span>[@ date() @]<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">h1</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="9"></span>  <span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag structure any html">body</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="10"></span><span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag structure any html">html</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div>
+<span class="line-marker" data-line="10"></span><span class="meta tag structure any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag structure any html">html</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
 <h2>Notes</h2>
 <ul>
 <li>

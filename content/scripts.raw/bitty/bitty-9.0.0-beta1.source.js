@@ -293,7 +293,7 @@ class BittyJs extends HTMLElement {
       if (typeof this.b.handleDebug === "function") {
         this.b.handleDebug(message, ev, sender, el);
       } else {
-        console.debug(message);
+        console.debug(`D|${this.b.timeMs()}`, message);
       }
     }
   }
@@ -344,7 +344,7 @@ class BittyJs extends HTMLElement {
       if (typeof this.b.handleError === "function") {
         this.b.handleError(message, ev, sender, el);
       } else {
-        console.error(message);
+        console.error(`E|${this.b.timeMs()}`, message);
       }
     }
   }
@@ -541,7 +541,7 @@ class BittyJs extends HTMLElement {
       if (typeof this.b.handleInfo === "function") {
         this.b.handleInfo(message, ev, sender, el);
       } else {
-        console.info(message);
+        console.info(`I|${this.b.timeMs()}`, message);
       }
     }
   }
@@ -1569,7 +1569,7 @@ class BittyJs extends HTMLElement {
       if (typeof this.b.handleTrace === "function") {
         this.b.handleTrace(message, ev, sender, el);
       } else {
-        console.trace(message);
+        console.log(`T|${this.b.timeMs()}`, message);
       }
     }
   }
@@ -1766,7 +1766,7 @@ class BittyJs extends HTMLElement {
       if (typeof this.b.handleWarn === "function") {
         this.b.handleWarn(message, ev, sender, el);
       } else {
-        console.warn(message);
+        console.warn(`W|${this.b.timeMs()}`, message);
       }
     }
   }

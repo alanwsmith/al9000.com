@@ -9,7 +9,7 @@ id = "01/mw/v6/y3"
 
 == block main
 
-<bitty-9 data-connect="[@ template_folder() @]/bit.js"></bitty-9>
+<bitty-9 data-connect="[@ template_dir() @]/bit.js"></bitty-9>
 
 <h2>Command Builder</h2>
 <p>
@@ -37,9 +37,10 @@ id = "01/mw/v6/y3"
 <h2>Posts</h2>
 
 <ul>
-== for folder in folders_in_folder(template_folder()) 
-  [! if "index" in d.ffmpeg[stem(folder)] !]
-    <li><a href="[@ folder @]">[@ d.ffmpeg[stem(folder)].index.title @]</a></li>
+== for folder in folders_in_folder(template_dir(), full=true) 
+  == set index_file = folder + "/index.html"
+  [! if exists(index_file) !]
+    <li><a href="[@ folder @]">[@ d[index_file].title @]</a></li>
   [! endif !]
 == endfor 
 </ul>

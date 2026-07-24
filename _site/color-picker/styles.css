@@ -1,0 +1,131 @@
+  * {
+    margin: 0;
+  }
+
+  body { 
+    background-image: none; 
+    background-color: var(--background);
+    font-family: system-ui;
+    color: var(--default-base-color);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--default-accent-color);
+  }
+
+  a:hover {
+    color: var(--faded-warning-color);
+  }
+
+  .active {
+    font-weight: 900;
+    text-decoration: underline;
+  }
+
+  .background-sliders {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  button{
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    outline: inherit;
+    padding-inline: 0.4rem;
+    padding-block: 0.2rem;
+  }
+
+  .border-1 {
+    border: 1px solid var(--faint-reverse-color);
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    margin-block: 0.9rem;
+  }
+
+  .default-border-radius {
+    border-radius: 0.4rem;
+  }
+
+  .default-flow > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
+  }
+
+  .default-padding {
+    padding: 1rem;
+  }
+
+  .flex-line {
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  h1 {
+    color: var(--default-heading-color);
+    font-weight: 900;
+  }
+
+  h2 {
+    color: var(--default-heading-color);
+    font-weight: 900;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+  }
+
+  .inactiveColor {
+    opacity: 0.3;
+    background-color: var(--default-black-color);
+  }
+
+  .inactiveMonoColor {
+    opacity: 0.3;
+    background-color: var(--default-warning-color);
+  }
+
+
+  main {
+    margin: 1.2rem;
+  }
+
+  ol > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
+  }
+
+  textarea {
+    display: block;
+    width: 90vw;
+    height: 20rem;
+    font-size: 0.6rem;
+    margin-top: 2rem;
+  }
+
+  .two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.3rem;
+  }
+
+  .two-columns-left {
+    display: grid;
+    grid-template-columns: 2fr 1.6fr;
+    gap: 1.3rem;
+  }
+
+
+  ul > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1em);
+  }
+
+  .warning-block {
+    border: 1px solid var(--faded-reverse-color);
+    background-color: var(--faded-warning-color);
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    color: var(--default-black-color);
+  }
+

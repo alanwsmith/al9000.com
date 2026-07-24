@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
 
-    
-
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
 <link rel="shortcut icon" href="/favicon.ico" />
@@ -28,10 +26,19 @@
   href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
 />
 
+
+
+
     
     
     
     
+
+    
+
+
+    <style>
+    </style>
     
   </head>
   <body class="page">
@@ -45,6 +52,7 @@
   </p>
 
 </noscript>
+
 
     <div class="payload">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
@@ -78,14 +86,14 @@
 
 <h3>Rust</h3>
 
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;parse-generic-arguments&quot;
 <span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
 <span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
 <span class="line-marker" data-line="5"></span>
 <span class="line-marker" data-line="6"></span>[dependencies]
-<span class="line-marker" data-line="7"></span>clap = { version = &quot;4.6.0&quot;, features = [&quot;derive&quot;] }</span></pre></div>
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">clap<span class="punctuation accessor rust">::</span></span>Parser<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="7"></span>clap = { version = &quot;4.6.0&quot;, features = [&quot;derive&quot;] }</span></pre></div></div>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">clap<span class="punctuation accessor rust">::</span></span>Parser<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta annotation rust"><span class="punctuation definition annotation rust">#</span><span class="punctuation section group begin rust">[</span><span class="variable annotation rust">derive</span><span class="meta annotation parameters rust"><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span></span><span class="meta annotation parameters rust"><span class="meta group rust">Parser</span></span><span class="meta annotation parameters rust"><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="punctuation section group end rust">]</span></span>
 <span class="line-marker" data-line="4"></span><span class="meta struct rust"><span class="storage type struct rust">struct</span> </span><span class="meta struct rust"><span class="entity name struct rust">Input</span> </span><span class="meta struct rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
@@ -99,16 +107,16 @@
 <span class="line-marker" data-line="12"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Arg 1: <span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> input.arg1<span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="13"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Arg 2: <span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> input.arg2<span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="14"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Arg 3: <span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> input.arg3<span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
-<span class="line-marker" data-line="15"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
+<span class="line-marker" data-line="15"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
 
 <h3>Command</h3>
 
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">./parse-generic-arguments alfa bravo charlie</span></code></pre></div>
+<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">./parse-generic-arguments alfa bravo charlie</span></pre></div></div>
 <h3>Output</h3>
 
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">Arg 1: alfa
+<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">Arg 1: alfa
 <span class="line-marker" data-line="2"></span>Arg 2: bravo
-<span class="line-marker" data-line="3"></span>Arg 3: charlie</span></code></pre></div>
+<span class="line-marker" data-line="3"></span>Arg 3: charlie</span></pre></div></div>
 
 
 

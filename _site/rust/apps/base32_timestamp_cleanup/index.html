@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
 
-    
-
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
 <link rel="shortcut icon" href="/favicon.ico" />
@@ -28,10 +26,19 @@
   href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
 />
 
+
+
+
     
     
     
     
+
+    
+
+
+    <style>
+    </style>
     
   </head>
   <body class="page">
@@ -45,6 +52,7 @@
   </p>
 
 </noscript>
+
 
     <div class="payload">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
@@ -83,9 +91,9 @@ to convert timestamps into strings of text.
 The idea being to get shorter
 IDs that still sort in chronological
 order. For example, this timestamp:</p>
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">2026-07-20T13:27:00-04:00</span></code></pre></div>
+<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">2026-07-20T13:27:00-04:00</span></pre></div></div>
 <p>Turns into this snippet:</p>
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">01n5wpk4</span></code></pre></div>
+<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">01n5wpk4</span></pre></div></div>
 <p>It works great, as long
 as you do the encoding properly.
 It turns out, Dear Reader, that
@@ -103,7 +111,7 @@ the new IDs.</p>
 </li>
 </ul>
 <h3>Rust</h3>
-<div class="code-block numbers copy-button"><div class="file-name">./Cargo.toml</div><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
+<div class="highlight-wrapper"><div class="file-name">./Cargo.toml</div><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;base32_timestamp_cleanup&quot;
 <span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
 <span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
@@ -113,8 +121,8 @@ the new IDs.</p>
 <span class="line-marker" data-line="8"></span>base32 = &quot;0.5.1&quot;
 <span class="line-marker" data-line="9"></span>chrono = &quot;0.4.45&quot;
 <span class="line-marker" data-line="10"></span>regex = &quot;1.13.1&quot;
-<span class="line-marker" data-line="11"></span>walkdir = &quot;2.5.0&quot;</span></pre></div>
-<div class="code-block numbers copy-button"><div class="file-name">./src/main.rs</div><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="11"></span>walkdir = &quot;2.5.0&quot;</span></pre></div></div>
+<div class="highlight-wrapper"><div class="file-name">./src/main.rs</div><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">base32<span class="punctuation accessor rust">::</span></span>Alphabet<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">chrono<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>DateTime<span class="punctuation separator rust">,</span> FixedOffset</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">regex<span class="punctuation accessor rust">::</span></span>Regex<span class="punctuation terminator rust">;</span>
@@ -224,7 +232,7 @@ the new IDs.</p>
 <span class="line-marker" data-line="108"></span>      </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
 <span class="line-marker" data-line="109"></span>    </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker" data-line="110"></span>    .<span class="support function rust">collect</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
-<span class="line-marker" data-line="111"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
+<span class="line-marker" data-line="111"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
 <h2>Measure Twice</h2>
 <p>I checked the original method I was using
 to make sure things were sorting properly.

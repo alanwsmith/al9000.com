@@ -1,0 +1,97 @@
+<script type="text/html" data-template="backgroundSlider">
+    <label for="bg-__NAME__">__NAME__</label>
+      <input 
+        id="bg-__NAME__"
+        type="range" 
+        data-s="setParam" 
+        data-r="uBackgroundValue" 
+        data-key="__KEY__" 
+        min="__MIN__" 
+        max="__MAX__" 
+        step="__STEP__" 
+        value="__VALUE__" 
+        autocomplete="off" />
+</script>
+
+<script type="text/html" data-template="colorNameButton">
+  <button 
+    class="default-__COLOR__-background-color default-match-color color-button" 
+    data-s="sColor" 
+    data-index="__INDEX__"
+  >__COLOR_LETTER__</button>
+</script>
+
+<script type="text/html" data-template="colorSliders">
+<div>
+  <div><label>Lightness</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="uColorValue"
+      data-key="L"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__L__"
+      autocomplete="off"
+    />
+  </div>
+  <div><label>Chroma</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="uColorValue"
+      data-key="C"
+      min="0"
+      max="0.3"
+      step="0.0001"
+      value="__C__"
+      autocomplete="off"
+    />
+  </div>
+</div>
+<div class="faded-sliders">
+  <div><label>Faded</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="uColorValue"
+      data-key="FADED"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__FADED__"
+      autocomplete="off"
+    />
+  </div>
+  <div><label>Faint</label>
+    <input 
+      type="range" 
+      data-s="setColorValue" 
+      data-r="uColorValue"
+      data-key="FAINT"
+      min="0"
+      max="1.0"
+      step="0.001"
+      value="__FAINT__"
+      autocomplete="off"
+    />
+  </div>
+</div>
+</script>
+
+<script type="text/html" data-template="hueOffsetButton">
+  <button 
+    class="ui-set-__INDEX__"
+    data-s="setHueOffset" 
+    data-r="uHueOffset" 
+    data-index="__INDEX__"
+  >set</button>
+</script>
+
+<script type="text/html" data-template="modeButton">
+    <label>
+      <input data-s="sMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
+      __KEY__ mode
+    </label>
+</script>

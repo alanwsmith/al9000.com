@@ -22,7 +22,10 @@ export async function updateData() {
 export function initCodeButtons() {
   const blocks = b.qsa(".code-block");
   for (let block of blocks) {
-    if (!block.classList.contains("no-buttons")) {
+    if (
+      !block.classList.contains("no-buttons") &&
+      !block.classList.contains("no-copy")
+    ) {
       const uuid = self.crypto.randomUUID();
       const preEl = block.querySelector("pre");
       preEl.dataset.copyId = uuid;

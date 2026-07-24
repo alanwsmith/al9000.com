@@ -1,3 +1,4 @@
+
 :root {
     --xxxsmall-border-radius: 0.1rem;
     --xxxsmall-flow: 0.2rem;
@@ -695,10 +696,8 @@ code {
   font-family: monospace;
 }
 
+
 .code-block {
-  background-color: var(--default-match-color);
-  border: var(--faded-reverse-border);
-  border-radius: var(--default-border-radius);
   font-size: var(--small-font-size);
   margin-block: var(--default-margin);
   padding-block: var(--xlarge-padding);
@@ -838,15 +837,29 @@ details > :where(:not(summary)) {
   content: "end of line";
 }
 
-.example-box {
+.example-wrapper {
   background-color: var(--default-match-color);
-  border: var(--base-border);
+  border: var(--faded-reverse-border);
   border-radius: var(--default-border-radius);
   padding: var(--default-padding);
+
+  > .title {
+    font-size: var(--default-font-size);
+    color: var(--default-heading-color);
+    font-weight: var(--xxxlarge-font-weight);
+    border-bottom: var(--faded-accent-border);
+    margin-bottom: var(--small-margin);
+  }
 }
 
-.example-box > :where(:not(:first-child)) {
+.example-block > :where(:not(:first-child)) {
   margin-top: var(--flow-space, var(--default-flow));
+}
+
+.example-container {
+  border: var(--faded-reverse-border);
+  border-radius: var(--default-border-radius);
+  padding: var(--default-padding);
 }
 
 footer {
@@ -876,7 +889,7 @@ footer {
 h1 {
   color: var(--default-heading-color);
   font-size: var(--xxxlarge-font-size);
-  font-weight: var(--xxlarge-font-weight);
+  font-weight: 900;
   line-height: var(--xxsmall-line-height);
   overflow-wrap: break-word;
   text-wrap: balance;
@@ -943,8 +956,50 @@ h6 {
   text-wrap: balance;
 }
 
+
 hgroup.default {
   border-bottom: var(--accent-border);
+}
+
+.highlight-wrapper {
+  background-color: var(--default-match-color);
+  border: var(--faded-reverse-border);
+  border-radius: var(--default-border-radius);
+  font-size: var(--small-font-size);
+  margin-block: var(--default-margin);
+  padding-block: var(--xlarge-padding);
+  padding-inline: var(--default-padding);
+  white-space: pre-wrap; 
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+  overscroll-behavior-x: auto;
+  /*
+  & .line-marker {
+    counter-increment: codeBlockLineNumberX;
+  }
+  */
+    /*
+  & .line-marker:before {
+      content: counter(codeBlockLineNumberX);
+    content: attr(data-line);
+      display: inline-block;
+      margin-left: -7.8ch;
+      padding-right: 1ch;
+      position: absolute;
+      text-align: end;
+      width: 7ch;
+      color: var(--default-accent-color);
+      border-right: var(--faded-accent-border);
+  }
+*/
+  > .title {
+    font-size: var(--default-font-size);
+    color: var(--default-heading-color);
+    font-weight: var(--xxxlarge-font-weight);
+    border-bottom: var(--faded-accent-border);
+    margin-bottom: var(--small-margin);
+  }
+}
 }
 
 hr {

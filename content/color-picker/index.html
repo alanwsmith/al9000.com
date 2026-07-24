@@ -1,462 +1,51 @@
-== extends "/templates.inc/switches/empty.html"
-== block toml
-title = "Color Picker 9000"
-created = 2026-07-21T21:09:00-04:00
-status = "draft"
+== extends "/templates.inc/switches/empty.html" 
+== block toml 
+title = "Color Picker 9000" 
+created = 2026-07-21T21:09:00-04:00 
+status = "draft" 
 id = "01/n6/06/1c" 
-flags = ["no-colors"]
+flags = ["no-colors"] 
 == endblock 
-
 
 == block styles
 <style>
-  * {
-    margin: 0;
-  }
-
-  body { 
-    background-image: none; 
-    background-color: var(--background);
-    font-family: system-ui;
-    color: var(--default-base-color);
-  }
-
-  a {
-    text-decoration: none;
-    color: var(--default-accent-color);
-  }
-
-  a:hover {
-    color: var(--faded-warning-color);
-  }
-
-  .active {
-    font-weight: 900;
-    text-decoration: underline;
-  }
-
-  button{
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    font: inherit;
-    outline: inherit;
-    padding-inline: 0.4rem;
-    padding-block: 0.2rem;
-  }
-
-  .border-1 {
-    border: 1px solid var(--faint-reverse-color);
-    padding: 0.3rem;
-    border-radius: 0.5rem;
-    margin-block: 0.9rem;
-  }
-
-  .default-border-radius {
-    border-radius: 0.4rem;
-  }
-
-  .default-flow > :where(:not(:first-child)) {
-    margin-top: var(--flow-space, 1em);
-  }
-
-  .default-padding {
-    padding: 1rem;
-  }
-
-  h1 {
-    color: var(--default-heading-color);
-    font-weight: 900;
-  }
-
-  h2 {
-    color: var(--default-heading-color);
-    font-weight: 900;
-  }
-
-  h3 {
-    font-size: 0.9rem;
-  }
-
-  .inactiveColor {
-    opacity: 0.3;
-    background-color: var(--default-black-color);
-  }
-
-  .inactiveMonoColor {
-    opacity: 0.3;
-    background-color: var(--default-warning-color);
-  }
-
-
-  main {
-    margin: 1.2rem;
-  }
-
-  ol > :where(:not(:first-child)) {
-    margin-top: var(--flow-space, 1em);
-  }
-
-  textarea {
-    display: block;
-    width: 90vw;
-    height: 20rem;
-    font-size: 0.6rem;
-    margin-top: 2rem;
-  }
-
-  .two-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.3rem;
-  }
-
-  .two-columns-left {
-    display: grid;
-    grid-template-columns: 2fr 1.6fr;
-    gap: 1.3rem;
-  }
-
-
-  ul > :where(:not(:first-child)) {
-    margin-top: var(--flow-space, 1em);
-  }
-
-  .warning-block {
-    border: 1px solid var(--faded-reverse-color);
-    background-color: var(--faded-warning-color);
-    padding: 0.5rem;
-    border-radius: 0.4rem;
-    color: var(--default-black-color);
-  }
+== include template_dir() + "/includes.inc/styles.css"
 </style>
-== endblock
-
+== endblock 
 
 == block content
 <main class="default-flow">
-<div class="border-1"><a href="/">home</a></div>
+  == include template_dir() + "/includes.inc/title.html"
+  <div class="border-1 info-block">
+    <button data-s="resetDefaults">Reset to Defaults</button>
+    <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
+    <button data-s="setLogLevel" data-key="WARN">WARN</button>
+    <button data-s="setLogLevel" data-key="TRACE">TRACE</button>
+  </div>
 
-<h1>Color Picker 9000</h1>
-<div class="warning-block">
-    <p><strong>Head's up</strong></p>
-  <p>
-    This is a prototype. 
-    Most of the basic functionality
-    is in place. The design is still
-    a work in progress. 
-  </p>
-</div>
-
-
-<div class="two-columns-left">
-  <div class="default-flow">
-
-== filter md
-## Introduction
-Welcome to Color Picker 9000. The
-tool I use to create the 
-stylesheets for [my site](/). 
-
-This page is a live preview of the 
-     generated styles. Play around
-      with the controls to get things
-      the way you like. Copy the
-      CSS at the bottom of the page
-      when you're done and paste
-      it into your stylesheet to
-      use the settings. 
-
-The picker provides settings
-      for five colors. This text
-      uses **base** color. 
-      The heading at the top of
-      the page uses the **heading**
-      color and the link uses the
-      **accent** color. There's
-      also a <span class="default-warning-color">warning color</span>
-      and an <span class="default-info-color">info color</span>.
-
-Each of the five colors have three variants:
-      default, <span class="faded-base-color">faded</span>,
-      and <span class="faint-base-color">faint</span>.
-      The swatches further down the page
-      have previews of all of them. 
-
-<p class="faded-info-background-color default-padding default-border-radius">
-        The tool outputs
-        CSS variables with OKLCH values. 
-        They can be used anywhere a colors can 
-        (e.g. the background of this paragraph
-        which uses the <strong>--faded-info-color</strong>).
-      </p>
-
-The example swatches provide previews of
-      background using the colors as well. 
-
-
-## Modes
-
-Two color modes are available: light and dark. 
-      The generated CSS starts with variables
-      for each like **--light--default-base-color**.
-
-Variables without the mode prefix are defined
-      as well (e.g. **--default-base-color**).
-      One version is default in the base `:root`
-      like:
-
-**--default-base-color: var(--switch--default-base-color, var(--light--default-base-color));**
-
-
-A second version is defined in a
-      **@media (prefers-color-scheme: dark) {}** section:
-
-**--default-base-color: var(--switch--default-base-color, var(--dark--default-base-color));**
-
-These variables look for a **--switch--default-base-color** 
-      variable that can be updated with JavaScript to 
-      set the mode explicitly. If that variable isn't
-      set, the mode falls back to calling `--light` or
-      `--dark` as appropriate. Browsers that receive
-      mode preferences from the operating system
-      use them to switch modes automatically. 
-
-Combined, that sets up the page to use the following
-      order to set the mode:
-
-1. Use the value from **--switch--default-COLOR-color**
-if it exist. 
-
-2. Otherwise, use either the default value or the
-      value from **@media (prefers-color-scheme: dark)**
-      if the browser receives the mode preference
-      from the operating system. 
-
-3. Finally, fallback to using light mode if neither
-      a switch nor OS provided mode is available. 
-
-
-
-## TODO
-- Add texture feature like [Texture Maker](/texture-maker/).
-- Document black, white, match, reverse colors.
-- Document color-scheme auto setting for light/dark mode.
-- Add swatch selector that let's you pick 
-      a background color and a foreground color
-      to see how they look together. 
-- Generate optional utility classes (e.g. for borders).
-- Add a note about how this is [built with bittyjs](https://bittyjs.com/).
-- Provide a way to update the example HTML.
-- Make controls look better. 
-- Keep controls visible/sticky so the content
-      can be scrolled without losing the controls. 
-- Add ability to show/hide controls.
-- Add ability to launch second window with
-      preview content so it can be 
-      viewed independently. 
-- Review things on mobile. 
-- Add a Save/Load feature that outputs
-      a JSON object.
-- Add settings to the URL in a comment
-      that gets updated so a link
-      can be sent to a given 
-      theme. 
-- Add high contrast modes. 
-
-## Swatches
-
-== endfilter
-
-    == for color in d["color-picker"].data.colors
-      <div class="border-1" data-r="updateActiveColor" data-key="[@ color @]">
-      == for kind in d["color-picker"].data.kinds
-        <div class="[@ kind @]-[@ color @]-color two-columns">
-          <div class="block [@ kind @]-[@ color @]-block">
-            <style>
-            .[@ kind @]-[@ color @]-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--[@ kind @]-[@ color @]-color);
-                border-radius: 0.2rem;
-            }
-            </style>
-          </div>
-          <div>[@ kind @] [@ color @]</div>
-        </div>
-      == endfor
-    </div>
-    == endfor
-
-
-
+  <div class="two-columns-left">
+    == include template_dir() + "/includes.inc/content.html" 
+    == include template_dir() + "/includes.inc/sidebar.html"
   </div>
 
   <div>
-
-  <details class="border-1"><summary class="h2">Instructions</summary>
-  <ol>
-    <li>Select the Mode you want to work on (either light or dark)</li>
-    <li>
-      Use the Background sliders to set a background color.
-      As you do, the colors in the Colors section
-      update automatically (each hue value
-      rotates 45 degrees).
-    </li>
-    <li>
-      Choose a color from the Colors section and
-      use the &quot;hue&quot; buttons below it to
-      select the hue portion of it's OKLCH value. 
-    </li>
-    <li>
-      Use the Lightness and Chroma sliders to 
-      adjust those values for the color. 
-    </li>
-    <li>
-      Copy the CSS block and paste it into
-      your style sheet to start using
-      the colors.
-    </li>
-  </ol>
-  </details>
-
-    <div class="border-1">
-      <h3>Mode</h3>
-      <div data-r="initModeButtons"></div>
-    </div>
-    <div class="border-1">
-      <h3>Background</h3>
-      <div data-r="initBackgroundSliders"></div>
-    </div>
-    <div class="border-1">
-      <h3>Colors</h3>
-      <div data-r="initColorNameButtons"></div>
-      <div class="border-1">
-        <div data-r="initHueOffsetButtons"></div>
-        <div data-r="initColorSliders"></div>
-      </div>
-    </div>
+    <h2>CSS</h2>
+    <textarea data-r="updateCSS copyThis" autocomplete="off" data-key="css"></textarea>
+    <button data-s="copyThis" data-key="css">Copy</button>
   </div>
-</div>
 
-
-<div>
-  <h2>CSS</h2>
-  <textarea data-r="updateCSS copyThis" autocomplete="off"></textarea>
-  <button data-s="copyThis">Copy</button>
-</div>
-
-<div class="border-1 default-flow">
-    <p>Prototype Tools:</p>
-<button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
-<button data-s="setLogLevel" data-key="WARN">WARN</button>
-<button data-s="resetDefaults">Reset to Defaults</button>
-</div>
-
+  <div>
+    <details><summary>JSON</summary>
+      <textarea data-r="updateJSON copyThis" autocomplete="off" data-key="json"></textarea>
+      <button data-s="copyThis" data-key="json">Copy</button>
+    </details>
+  </div>
 </main>
+
 
 == endblock 
 
-
 == block templates
-<bitty-9 data-connect="[@ template_folder() + '/bit.js' @]"></bitty-9>
-
-<script type="text/html" data-template="backgroundSlider">
-  <div>
-    <label>__NAME__
-      <input 
-        type="range" 
-        data-s="setParam" 
-        data-r="updateBackgroundValue" 
-        data-key="__KEY__" 
-        min="__MIN__" 
-        max="__MAX__" 
-        step="__STEP__" 
-        value="__VALUE__" 
-        autocomplete="off" />
-    </label>
-  </div>
-</script>
-
-<script type="text/html" data-template="colorNameButton">
-<button class="default-__COLOR__-color" data-s="setColorName" data-r="setColorNameStyles" data-index="__INDEX__">__COLOR__</button>
-</script>
-
-<script type="text/html" data-template="colorSliders">
-<div class="border-1">
-  <div><label>Lightness</label>
-    <input 
-      type="range" 
-      data-s="setColorValue" 
-      data-r="updateColorValue"
-      data-key="L"
-      min="0"
-      max="1.0"
-      step="0.001"
-      value="__L__"
-      autocomplete="off"
-    />
-  </div>
-  <div><label>Chroma</label>
-    <input 
-      type="range" 
-      data-s="setColorValue" 
-      data-r="updateColorValue"
-      data-key="C"
-      min="0"
-      max="0.3"
-      step="0.0001"
-      value="__C__"
-      autocomplete="off"
-    />
-  </div>
-</div>
-<div class="border-1">
-  <div><label>Faded</label>
-    <input 
-      type="range" 
-      data-s="setColorValue" 
-      data-r="updateColorValue"
-      data-key="FADED"
-      min="0"
-      max="1.0"
-      step="0.001"
-      value="__FADED__"
-      autocomplete="off"
-    />
-  </div>
-  <div><label>Faint</label>
-    <input 
-      type="range" 
-      data-s="setColorValue" 
-      data-r="updateColorValue"
-      data-key="FAINT"
-      min="0"
-      max="1.0"
-      step="0.001"
-      value="__FAINT__"
-      autocomplete="off"
-    />
-  </div>
-</div>
-</script>
-
-<script type="text/html" data-template="hueOffsetButton">
-  <button 
-    class="ui-set-__INDEX__"
-    data-s="setHueOffset" 
-    data-r="updateHueOffset" 
-    data-index="__INDEX__"
-  >hue</button>
-</script>
-
-<script type="text/html" data-template="modeButton">
-  <label>__KEY__
-    <input data-s="setMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
-  </label>
-</script>
-
-
-
+<bitty-9 data-connect="[@ template_dir() + '/bit.js' @]"></bitty-9>
+== include template_dir() + "/includes.inc/templates.html" 
 == endblock

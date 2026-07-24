@@ -6,17 +6,18 @@
 
 == block toml 
 title = "jq"
-status = "code"
+status = "done"
 created = 2026-04-10T22:21:12-04:00
 flags = ["skip"]
+id = "01/mx/kc/0r" 
 == endblock
 
-== block main
-
+== block content 
 <ul>
-== for folder in folders_in_folder(template_folder()) 
-  [! if "index" in d.jq[stem(folder)] !]
-    <li><a href="[@ folder @]">[@ d.jq[stem(folder)].index.title @]</a></li>
+== for folder in folders_in_folder(template_dir(), full = true) 
+  == set index_file = folder + "/index.html"
+  [! if exists(index_file) !]
+    <li><a href="[@ folder @]">[@ d[index_file].title @]</a></li>
   [! endif !]
 == endfor 
 </ul>
