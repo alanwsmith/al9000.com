@@ -1,0 +1,34 @@
+== extends "/templates.inc/switches/default.html"
+== block toml 
+title = "Adding Multiple Copy Buttons in Bitty"
+created = 2026-07-24T09:04:37-04:00
+status = "draft"
+id = "01/n6/6r/q5"
+tags = []
+flags = []
+== endblock
+
+
+== block content 
+== filter md
+[bitty](https://bittyjs.com) has a `.quickCopy()`
+method. It copies the content of an element
+and signals the status by updating the text
+of the copy button to let you know it worked. 
+
+For example:
+
+== filter output()
+[@ raw_include(template_folder() + "/examples/0010/html.html") @]
+== endfilter 
+
+
+== filter highlight("html", class="code-block numbers no-copy")
+[@ raw_include(template_folder() + "/examples/0010/html.html") @]
+== endfilter 
+
+
+
+
+== endfilter
+== endblock
