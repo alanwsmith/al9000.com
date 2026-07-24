@@ -889,7 +889,7 @@ footer {
 h1 {
   color: var(--default-heading-color);
   font-size: var(--xxxlarge-font-size);
-  font-weight: var(--xxlarge-font-weight);
+  font-weight: 900;
   line-height: var(--xxsmall-line-height);
   overflow-wrap: break-word;
   text-wrap: balance;
