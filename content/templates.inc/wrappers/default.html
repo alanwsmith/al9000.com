@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
 
-    [#
-    == include "/styles/_includes/initial-styles.html" 
-    <script src="/styles/styles.js"></script>
-    <link rel="stylesheet" href="/styles/colors.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-    #]
-
-    <script src="[@ d.config.bittyURL @]" type="module"></script>
+    <script src="[@ d["/config.json"].bittyURL @]" type="module"></script>
 
     == include "/templates.inc/includes/metadata.html" 
     [! block head !][! endblock !]

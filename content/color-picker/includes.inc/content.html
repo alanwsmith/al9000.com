@@ -1,5 +1,3 @@
-
-
   <div class="default-flow">
 
 == filter md
@@ -19,11 +17,11 @@ This page is a live preview of the
 
 The picker provides settings
       for five colors. This text
-      uses **base** color. 
+      uses _base_ color. 
       The heading at the top of
-      the page uses the **heading**
+      the page uses the _heading_
       color and the link uses the
-      **accent** color. There's
+      _accent_ color. There's
       also a <span class="default-warning-color">warning color</span>
       and an <span class="default-info-color">info color</span>.
 
@@ -119,9 +117,9 @@ if it exist.
 
 == endfilter
 
-    == for color in d["color-picker"].data.colors
+    == for color in d["/color-picker/data.json"].colors
       <div class="border-1" data-r="updateActiveColor" data-key="[@ color @]">
-      == for kind in d["color-picker"].data.kinds
+      == for kind in d["/color-picker/data.json"].kinds
         <div class="[@ kind @]-[@ color @]-color two-columns">
           <div class="block [@ kind @]-[@ color @]-block">
             <style>

@@ -5,6 +5,7 @@ export function uColorName(_, __, el) {
     if (s.data.colorNames[mode.activeColorIndex] === name) {
       el.innerHTML = name;
       el.classList.add(`default-${name}-background-color`);
+      b.setCSS("--color-name-padding", mode.activeColorIndex);
     } else {
       el.classList.remove(`default-${name}-background-color`);
     }

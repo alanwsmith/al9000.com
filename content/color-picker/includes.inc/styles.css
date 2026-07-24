@@ -38,15 +38,29 @@ button{
   cursor: pointer;
   font: inherit;
   outline: inherit;
-  padding-inline: 0.4rem;
   padding-block: 0.2rem;
 }
 
 .border-1 {
   border: 1px solid var(--faint-reverse-color);
-  padding: 0.3rem;
+  padding: 0.6rem;
   border-radius: 0.5rem;
   margin-block: 0.9rem;
+}
+
+.color-button {
+  font-weight: 900;
+  width: 1.8rem;
+}
+
+.color-buttons :first-child {
+  border-start-start-radius: 0.3rem;
+}
+
+.color-name {
+  padding-left: 
+    calc(var(--color-name-padding) * 1.8rem + 0.6rem);
+    height: 1.5rem;
 }
 
 .default-border-radius {
@@ -69,6 +83,7 @@ button{
 h1 {
   color: var(--default-heading-color);
   font-weight: 900;
+  font-size: 2.8rem;
 }
 
 h2 {
@@ -78,6 +93,14 @@ h2 {
 
 h3 {
   font-size: 0.9rem;
+}
+
+.hue-offset-buttons {
+  display: flex;
+}
+
+.info-block {
+  background-color: var(--faded-info-color);
 }
 
 main {

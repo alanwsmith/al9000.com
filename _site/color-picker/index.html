@@ -3,26 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>Color Picker 9000</title>
-<meta property="og:title" content="Color Picker 9000" />
-<meta name="description" content="from alan w smith" />
-<meta property="og:description" content="from alan w smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/templates.inc/includes/" />
-<meta property="og:image" content="https://al9000.com&#x2f;color-picker/og-image.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
-<link
-  rel="site.standard.publication"
-  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
-/>
 
-    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+    
 <style>
 * {
   margin: 0;
@@ -64,15 +47,29 @@ button{
   cursor: pointer;
   font: inherit;
   outline: inherit;
-  padding-inline: 0.4rem;
   padding-block: 0.2rem;
 }
 
 .border-1 {
   border: 1px solid var(--faint-reverse-color);
-  padding: 0.3rem;
+  padding: 0.6rem;
   border-radius: 0.5rem;
   margin-block: 0.9rem;
+}
+
+.color-button {
+  font-weight: 900;
+  width: 1.8rem;
+}
+
+.color-buttons :first-child {
+  border-start-start-radius: 0.3rem;
+}
+
+.color-name {
+  padding-left: 
+    calc(var(--color-name-padding) * 1.8rem + 0.6rem);
+    height: 1.5rem;
 }
 
 .default-border-radius {
@@ -95,6 +92,7 @@ button{
 h1 {
   color: var(--default-heading-color);
   font-weight: 900;
+  font-size: 2.8rem;
 }
 
 h2 {
@@ -104,6 +102,14 @@ h2 {
 
 h3 {
   font-size: 0.9rem;
+}
+
+.hue-offset-buttons {
+  display: flex;
+}
+
+.info-block {
+  background-color: var(--faded-info-color);
 }
 
 main {
@@ -171,7 +177,7 @@ ul > :where(:not(:first-child)) {
     a work in progress. 
   </p>
 </div>
-  <div class="border-1">
+  <div class="border-1 info-block">
     <button data-s="resetDefaults">Reset to Defaults</button>
     <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
     <button data-s="setLogLevel" data-key="WARN">WARN</button>
@@ -179,8 +185,6 @@ ul > :where(:not(:first-child)) {
   </div>
 
   <div class="two-columns-left">
-
-
   <div class="default-flow">
 
 <h2>Introduction</h2>
@@ -197,11 +201,11 @@ it into your stylesheet to
 use the settings.</p>
 <p>The picker provides settings
 for five colors. This text
-uses <strong>base</strong> color.
+uses <em>base</em> color.
 The heading at the top of
-the page uses the <strong>heading</strong>
+the page uses the <em>heading</em>
 color and the link uses the
-<strong>accent</strong> color. There's
+<em>accent</em> color. There's
 also a <span class="default-warning-color">warning color</span>
 and an <span class="default-info-color">info color</span>.</p>
 <p>Each of the five colors have three variants:
@@ -692,9 +696,9 @@ theme.</li>
     </div>
 
     <div class="border-1">
-        <div data-r="initColorNameButtons"></div>
-        <div data-r="uColorName" class="default-match-color bold"></div>
-        <div data-r="initHueOffsetButtons"></div>
+        <div data-r="initColorNameButtons" class="color-buttons"></div>
+        <div data-r="uColorName" class="default-match-color bold color-name"></div>
+        <div data-r="initHueOffsetButtons" class="hue-offset-buttons"></div>
         <div data-r="initColorSliders"></div>
     </div>
 </div>  </div>
@@ -736,11 +740,15 @@ theme.</li>
 </script>
 
 <script type="text/html" data-template="colorNameButton">
-  <button class="default-__COLOR__-background-color default-match-color" data-s="sColor" data-index="__INDEX__">__COLOR_LETTER__</button>
+  <button 
+    class="default-__COLOR__-background-color default-match-color color-button" 
+    data-s="sColor" 
+    data-index="__INDEX__"
+  >__COLOR_LETTER__</button>
 </script>
 
 <script type="text/html" data-template="colorSliders">
-<div class="border-1">
+<div>
   <div><label>Lightness</label>
     <input 
       type="range" 
@@ -768,7 +776,7 @@ theme.</li>
     />
   </div>
 </div>
-<div class="border-1">
+<div class="faded-sliders">
   <div><label>Faded</label>
     <input 
       type="range" 
@@ -812,9 +820,6 @@ theme.</li>
       <input data-s="sMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
       __KEY__ mode
     </label>
-</script>
-
-
-    </div>
+</script>    </div>
   </body>
 </html>

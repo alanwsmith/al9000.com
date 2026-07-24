@@ -1,4 +1,5 @@
-== set styles = d.styles.styles 
+== set styles = d["/styles/styles.json"]
+
 :root {
   == for size in styles.sizes
     --[@ size @]-border-radius: [@ styles.borderRadii[loop.index0] @];

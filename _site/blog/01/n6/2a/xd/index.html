@@ -5,28 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
 
-    
-
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>Week Notes (through Saturday June 25, 2026)</title>
-<meta property="og:title" content="Week Notes (through Saturday June 25, 2026)" />
-<meta name="description" content="from alan w smith" />
-<meta property="og:description" content="from alan w smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/templates.inc/includes/" />
-<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
-<link
-  rel="site.standard.publication"
-  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
-/>
+
 
     
     
@@ -162,6 +143,51 @@ way to change).</p>
 <p>I've temporarily set the dark
 mode styles to point to light
 mode so everything works the same.</p>
+<h2>Thursday July 23, 2026</h2>
+<ul>
+<li>
+<p>Did a bunch of work on the
+<a href="/color-picker">Color Picker</a>.
+The initial mechanics were mostly
+done so this was mainly design
+and layout work. It's making
+good progress.</p>
+</li>
+<li>
+<p>I made some changes to
+Static Site Generator 9000.
+Mainly, I change the way
+I access data from JSON and
+content files. I used to break
+things up as keys like.</p>
+</li>
+</ul>
+<p>d.some.path.to.index.title</p>
+<p>The <code>index</code> is really <code>index.html</code>
+but I removed the extension.
+I did that originally to
+keep from having to use brackets
+around the keys like this:</p>
+<p>d.some.path.to[&quot;index.html&quot;].title</p>
+<p>Because the <code>.</code> in the filename would
+have been seen as a new level.
+It's generally fine since there aren't
+two files at that same place, but
+depending on how I implement
+<a href="/neopoligen">Neopoligen</a> that
+may not be the case. Still TBD,
+but I wanted to fix it now.</p>
+<p>Also, going key by key is a pain.
+For example, if I'm doing a for loop
+with file paths like</p>
+<p>/some/path/to/index.html</p>
+<p>I have to do:</p>
+<p>d.some.path.to[&quot;index.html&quot;].title</p>
+<p>I realized there's no reason not
+to just use the file path itself
+as the key. So, now I do this:</p>
+<p>d[&quot;/some/path/to/index.html&quot;].title</p>
+<p>Much nicer.</p>
 <h2>Overall</h2>
 <ul>
 <li>

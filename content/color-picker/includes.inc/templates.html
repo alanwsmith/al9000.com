@@ -14,11 +14,15 @@
 </script>
 
 <script type="text/html" data-template="colorNameButton">
-  <button class="default-__COLOR__-background-color default-match-color" data-s="sColor" data-index="__INDEX__">__COLOR_LETTER__</button>
+  <button 
+    class="default-__COLOR__-background-color default-match-color color-button" 
+    data-s="sColor" 
+    data-index="__INDEX__"
+  >__COLOR_LETTER__</button>
 </script>
 
 <script type="text/html" data-template="colorSliders">
-<div class="border-1">
+<div>
   <div><label>Lightness</label>
     <input 
       type="range" 
@@ -46,7 +50,7 @@
     />
   </div>
 </div>
-<div class="border-1">
+<div class="faded-sliders">
   <div><label>Faded</label>
     <input 
       type="range" 
@@ -91,6 +95,3 @@
       __KEY__ mode
     </label>
 </script>
-
-
-
