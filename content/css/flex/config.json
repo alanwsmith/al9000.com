@@ -13,6 +13,77 @@
 
     {
       "titleLines": [
+        "justify-content: space-between;",
+        "gap: 1rem;"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    },
+
+    {
+      "titleLines": [
+        "justify-content: space-between;",
+        "gap: 1rem;",
+        "align-items: flex-start"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    },
+
+    {
+      "titleLines": [
+        "justify-content: space-between;",
+        "gap: 1rem;",
+        "align-items: center"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    },
+
+    {
+      "titleLines": [
+        "justify-content: space-around;"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    },
+
+    {
+      "titleLines": [
+        "justify-content: space-evenly;"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    },
+
+    {
+      "titleLines": [
+        "justify-content: center;"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    },
+
+    {
+      "titleLines": [
         "justify-content: flex-start;"
       ],
       "hiddenLines": [
@@ -38,6 +109,18 @@
       "titleLines": [
         "justify-content: flex-start;",
         "column-gap: 1rem;"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    },
+
+    {
+      "titleLines": [
+        "justify-content: flex-start;",
+        "row-gap: 1rem;"
       ],
       "hiddenLines": [
         "display: flex;",

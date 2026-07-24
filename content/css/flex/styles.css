@@ -5,11 +5,18 @@
   margin-block: 3.4rem;
 }
 
+.example-wrapper {
+  min-height: 14rem;
+  background-color: var(--faded-info-color);
+  border-radius: 0.6rem;
+}
+
 .example-divs > div > div {
-  width: 6rem;
+  min-width: 6rem;
   text-align: center;
   background-color: var(--faded-accent-color);
   border: 1px solid var(--default-base-color);
+  border-radius: 0.4rem;
 }
 
 .spacer {
