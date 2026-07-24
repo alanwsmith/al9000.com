@@ -25,17 +25,17 @@ from TOML with chrono for formatting.
 <h3>Rust</h3>
 
 [! filter highlight("toml", "Cargo.toml") !]
-[! include template_folder() + "/Cargo.toml" !]
+[! include template_dir() + "/Cargo.toml" !]
 [! endfilter !]
 
 [! filter highlight("rust", "src/main.rs") !]
-[! include template_folder() + "/src/main.rs" !]
+[! include template_dir() + "/src/main.rs" !]
 [! endfilter !]
 
 <h3>Output</h3>
 
 [! filter output() !]
-[! include template_folder() + "/output.txt" !]
+[! include template_dir() + "/output.txt" !]
 [! endfilter !]
 
 

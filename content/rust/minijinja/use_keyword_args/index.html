@@ -16,24 +16,24 @@ id = "01/mx/mz/1w"
 <h3>Rust</h3>
 
 [! filter highlight("rust", "Cargo.toml") !]
-[! include template_folder() + "/Cargo.toml"  !]
+[! include template_dir() + "/Cargo.toml"  !]
 [! endfilter !]
 
 [! filter highlight("rust", "src/main.rs") !]
-[! include template_folder() + "/src/main.rs"  !]
+[! include template_dir() + "/src/main.rs"  !]
 [! endfilter !]
 
 [#
 
 <h3>Input</h3>
 [! filter highlight("txt", "samples/data.toml") !]
-[! include template_folder() + "/samples/data.toml"  !]
+[! include template_dir() + "/samples/data.toml"  !]
 [! endfilter !]
 
 <h3>Output</h3>
 
 [! filter output() !]
-[! include template_folder() + "/samples/output.txt"  !]
+[! include template_dir() + "/samples/output.txt"  !]
 [! endfilter !]
 
 #]

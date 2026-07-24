@@ -1,4 +1,4 @@
-== set parts_dir = template_folder() + "/parts.inc"
+== set parts_dir = template_dir() + "/parts.inc"
 == for f in files_in_folder(parts_dir)
 [@raw_include(parts_dir + "/" + f) @]
 == endfor

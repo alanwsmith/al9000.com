@@ -29,7 +29,7 @@ flags = ["skip"]
 == endblock
 
 == block main 
-<bitty-9 data-connect="[@ template_folder() @]/bit.js"></bitty-9>
+<bitty-9 data-connect="[@ template_dir() @]/bit.js"></bitty-9>
 <div data-r="overlay"></div>
 <script type="text/html" data-template="svg">
   <svg width="__PAGE_WIDTH__" height="__PAGE_HEIGHT__" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +42,7 @@ flags = ["skip"]
       y="0" 
       width="__PAGE_WIDTH__" 
       height="__PAGE_HEIGHT__" 
-      href="[@ parent(parent(template_folder())) @]/backgrounds/chip-background-black-and-white.jpg" 
+      href="[@ parent(parent(template_dir())) @]/backgrounds/chip-background-black-and-white.jpg" 
       mask="url(#mainMask)" />
   </svg>
 </script>

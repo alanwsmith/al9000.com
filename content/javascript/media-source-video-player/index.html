@@ -66,7 +66,7 @@ which is a nice place to get free videos.
 == endfilter
 
 
-== include template_folder() + "/page.html"
+== include template_dir() + "/page.html"
 
 
 == filter md
@@ -81,7 +81,7 @@ this module:
 == endfilter
 
 == filter highlight("js", "media-source-player.js")
-== include template_folder() + "/media-source-player.js"
+== include template_dir() + "/media-source-player.js"
 == endfilter
 
 == filter md
@@ -121,7 +121,7 @@ Here's the HTML I'm using on the page:
 == endfilter
 
 == filter highlight("html")
-== include template_folder() + "/page.html"
+== include template_dir() + "/page.html"
 == endfilter
 
 
@@ -156,7 +156,7 @@ with a silent audio track.
 
 
 == filter highlight("bash", "audio-fix.bash") 
-== include template_folder() + "/sample-video/audio-fix.bash"
+== include template_dir() + "/sample-video/audio-fix.bash"
 == endfilter
 
 The resulting file is encoded so that it matches the
@@ -180,7 +180,7 @@ handy to determine the command on that OS).
 
 
 == filter highlight("bash", "split-video.bash") 
-== include template_folder() + "/sample-video/split-video.bash"
+== include template_dir() + "/sample-video/split-video.bash"
 == endfilter
 
 Line 3 does the split. 

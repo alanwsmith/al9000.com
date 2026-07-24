@@ -10,16 +10,16 @@ flags = ["no-date"]
 == endblock
 
 == block styles2
-[@ raw_include(template_folder() + "/styles.css") @]
+[@ raw_include(template_dir() + "/styles.css") @]
 == endblock
 
 
 == block content 
 
-== for example in  d[template_folder() + "/config.json"].examples 
+== for example in  d[template_dir() + "/config.json"].examples 
 == set title = example.titleLines|join(" ")
 == set className = title|replace(":", "")|replace(";", "")|replace(" ", "-")
-== set payload = template_folder() + "/payloads/" + example.payload|replace("className", className)
+== set payload = template_dir() + "/payloads/" + example.payload|replace("className", className)
 == set css
 .[@ className @] {
 == for hiddenLine in example.hiddenLines

@@ -35,8 +35,8 @@ the combination.
 [! endfilter !]
 
 <h2>The Encryptor</h2>
-[! include "/" + template_folder() + "/script.inc.html" !]
-[! include "/" + template_folder() + "/html.inc.html" !]
+[! include "/" + template_dir() + "/script.inc.html" !]
+[! include "/" + template_dir() + "/html.inc.html" !]
 
 <h2>Wrap Up</h2>
 
@@ -65,26 +65,26 @@ I use a command line version
 
 <h4>Rust Code</h4>
 [! filter highlight("rust", title="src/lib.rs") !]
-[! include "/" + template_folder() + "/src/lib.rs" !]
+[! include "/" + template_dir() + "/src/lib.rs" !]
 [! endfilter !]
 
 [! filter highlight("rust", title="Cargo.toml") !]
-[! include "/" + template_folder() + "/Cargo.toml" !]
+[! include "/" + template_dir() + "/Cargo.toml" !]
 [! endfilter !]
 
 <h4>Rust Build Script</h4>
 [! filter highlight("bash", title="built-release.bash") !]
-[! include "/" + template_folder() + "/build_release.inc.bash" !]
+[! include "/" + template_dir() + "/build_release.inc.bash" !]
 [! endfilter !]
 
 <h4>Web Page Code</h4>
 
 [! filter highlight("html", title="HTML") !]
-[! include "/" + template_folder() + "/html.inc.html" !]
+[! include "/" + template_dir() + "/html.inc.html" !]
 [! endfilter !]
 
 [! filter highlight("html", title="JavaScript") !]
-[! include "/" + template_folder() + "/script.inc.html" !]
+[! include "/" + template_dir() + "/script.inc.html" !]
 [! endfilter !]
 
 

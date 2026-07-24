@@ -14,7 +14,7 @@ id = "01/mx/kc/0r"
 
 == block content 
 <ul>
-== for folder in folders_in_folder(template_folder(), full = true) 
+== for folder in folders_in_folder(template_dir(), full = true) 
   == set index_file = folder + "/index.html"
   [! if exists(index_file) !]
     <li><a href="[@ folder @]">[@ d[index_file].title @]</a></li>
