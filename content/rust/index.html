@@ -1,8 +1,4 @@
-== if rss
-== extends "/templates.inc/rss/default.html"
-== else 
-== extends "/templates.inc/pages/default.html"
-== endif 
+== extends "/templates.inc/switches/default.html"
 
 == block toml
 title = "Rust"
@@ -15,24 +11,26 @@ flags = ["skip"]
 == block main 
 
 <ul>
-== for folder in folders_in_folder(template_folder()) 
+== for folder in folders_in_folder(template_folder(), full=true) 
+  == set index_file = folder + "/index.html"
   <li>
 
-    <p>[@ d.rust[folder].index.title @]</p>
+    <p>[@ d[index_file].title @]</p>
     <ul>
-      == for subfolder in folders_in_folder("/rust/" + folder) 
-        == if "index" in d.rust[folder][subfolder]
+      == for subfolder in folders_in_folder(folder, full=true) 
+      == set sub_index_file = subfolder + "/index.html"
+        == if exists(sub_index_file)
         <li>
-        <a href="[@ '/rust/' + folder + '/' + subfolder + '/' @]">
-          [! if d.rust[folder][subfolder].index.short_title !]
-          [@ d.rust[folder][subfolder].index.short_title @]
+        <a href="[@  subfolder @]">
+          [! if d[sub_index_file].short_title !]
+            [@ d[sub_index_file].short_title @]
           [! else !]
-          [@ d.rust[folder][subfolder].index.title @]
+            [@ d[sub_index_file].title @]
           [! endif !]
           </a>
         </li>
         == else 
-        <li><a href="[@ '/rust/' + folder  + '/' + subfolder + '/' @]">TKTKTK</a></li>
+        <li><a href="[@ subfolder @]">TKTKTK</a></li>
         == endif
       == endfor
     </ul>

@@ -1,0 +1,49 @@
+{
+  "examples": [
+    {
+      "titleLines": [
+        "justify-content: space-between;"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    },
+
+    {
+      "titleLines": [
+        "justify-content: flex-start;"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    },
+
+    {
+      "titleLines": [
+        "justify-content: flex-start;",
+        "gap: 1rem;"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    },
+
+    {
+      "titleLines": [
+        "justify-content: flex-start;",
+        "column-gap: 1rem;"
+      ],
+      "hiddenLines": [
+        "display: flex;",
+        "flex-flow: row wrap;"
+      ],
+      "payload": "default.html"
+    }
+  ]
+}

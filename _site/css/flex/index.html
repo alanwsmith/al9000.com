@@ -1,18 +1,475 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
+
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+
+
+    
+    
+    
+    
+
+    
+
+
+    <style>
+.example-box-wrapper  {
+  border-radius: var(--default-border-radius);
+  border: 1px solid var(--faded-base-color);
+  padding: var(--default-padding);
+  margin-block: 3.4rem;
+}
+
+.example-divs > div > div {
+  width: 6rem;
+  text-align: center;
+  background-color: var(--faded-accent-color);
+  border: 1px solid var(--default-base-color);
+}
+
+.spacer {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: var(--default-base-border);
+}
+
+
+    </style>
+
+
+    <style>
+    </style>
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+    <h1>DO NOTE DEPLOY UNTIL METADATA IS FIXED</h1>
+
+    <div class="payload">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> |
+    <a href="https://bittyjs.com/">bitty</a>
+  </div>
+
+
+</header>
+
+
+<main class="default default-wrapper default-flow">
+
+  <hgroup class="default">
+      <div class="title-wrapper">
+        <h1>Flex Cheat Sheet</h1>
+      </div>
+  </hgroup>
+
+
+
+
+<div class="example-box-wrapper default-flow">
+  <div>justify-content: space-between;</div>
   <style>
-    body {
-      background-color: black;
-      color: goldenrod;
-    } 
+  .justify-content-space-between {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
   </style>
-</head>
-<body>
-undefined value (in /css/flex/index.html:15)
-</body>
+
+<div class="example-divs">
+<div class="justify-content-space-between">
+  <div>alfa</div>
+  <div>bravo</div>
+  <div>charlie</div>
+  <div>delta</div>
+  <div>echo</div>
+  <div>foxtrot</div>
+  <div>golf</div>
+  <div>hotel</div>
+  <div>india</div>
+  <div>juliet</div>
+  <div>kilo</div>
+</div>
+
+<div class="spacer"></div>
+
+<div class="justify-content-space-between">
+  <div>alfa</div>
+  <div>bravo</div>
+  <div>charlie</div>
+  <div>delta</div>
+</div>
+
+<div class="spacer"></div>
+
+<div class="justify-content-space-between">
+  <div>alfa</div>
+  <div>bravo</div>
+</div>
+
+<div class="spacer"></div></div>
+
+<details><summary>HTML</summary>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;div class=&quot;justify-content-space-between&quot;&gt;
+<span class="line-marker" data-line="2"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="3"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="4"></span>  &lt;div&gt;charlie&lt;/div&gt;
+<span class="line-marker" data-line="5"></span>  &lt;div&gt;delta&lt;/div&gt;
+<span class="line-marker" data-line="6"></span>  &lt;div&gt;echo&lt;/div&gt;
+<span class="line-marker" data-line="7"></span>  &lt;div&gt;foxtrot&lt;/div&gt;
+<span class="line-marker" data-line="8"></span>  &lt;div&gt;golf&lt;/div&gt;
+<span class="line-marker" data-line="9"></span>  &lt;div&gt;hotel&lt;/div&gt;
+<span class="line-marker" data-line="10"></span>  &lt;div&gt;india&lt;/div&gt;
+<span class="line-marker" data-line="11"></span>  &lt;div&gt;juliet&lt;/div&gt;
+<span class="line-marker" data-line="12"></span>  &lt;div&gt;kilo&lt;/div&gt;
+<span class="line-marker" data-line="13"></span>&lt;/div&gt;
+<span class="line-marker" data-line="14"></span>
+<span class="line-marker" data-line="15"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
+<span class="line-marker" data-line="16"></span>
+<span class="line-marker" data-line="17"></span>&lt;div class=&quot;justify-content-space-between&quot;&gt;
+<span class="line-marker" data-line="18"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="19"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="20"></span>  &lt;div&gt;charlie&lt;/div&gt;
+<span class="line-marker" data-line="21"></span>  &lt;div&gt;delta&lt;/div&gt;
+<span class="line-marker" data-line="22"></span>&lt;/div&gt;
+<span class="line-marker" data-line="23"></span>
+<span class="line-marker" data-line="24"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
+<span class="line-marker" data-line="25"></span>
+<span class="line-marker" data-line="26"></span>&lt;div class=&quot;justify-content-space-between&quot;&gt;
+<span class="line-marker" data-line="27"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="28"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="29"></span>&lt;/div&gt;
+<span class="line-marker" data-line="30"></span>
+<span class="line-marker" data-line="31"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;</span></pre></div></details>
+
+<details><summary>CSS</summary>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">.justify-content-space-between {
+<span class="line-marker" data-line="2"></span>  display: flex;
+<span class="line-marker" data-line="3"></span>  flex-flow: row wrap;
+<span class="line-marker" data-line="4"></span>  justify-content: space-between;
+<span class="line-marker" data-line="5"></span>}</span></pre></div></details>
+
+</div>
+
+<div class="example-box-wrapper default-flow">
+  <div>justify-content: flex-start;</div>
+  <style>
+  .justify-content-flex-start {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+  </style>
+
+<div class="example-divs">
+<div class="justify-content-flex-start">
+  <div>alfa</div>
+  <div>bravo</div>
+  <div>charlie</div>
+  <div>delta</div>
+  <div>echo</div>
+  <div>foxtrot</div>
+  <div>golf</div>
+  <div>hotel</div>
+  <div>india</div>
+  <div>juliet</div>
+  <div>kilo</div>
+</div>
+
+<div class="spacer"></div>
+
+<div class="justify-content-flex-start">
+  <div>alfa</div>
+  <div>bravo</div>
+  <div>charlie</div>
+  <div>delta</div>
+</div>
+
+<div class="spacer"></div>
+
+<div class="justify-content-flex-start">
+  <div>alfa</div>
+  <div>bravo</div>
+</div>
+
+<div class="spacer"></div></div>
+
+<details><summary>HTML</summary>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;div class=&quot;justify-content-flex-start&quot;&gt;
+<span class="line-marker" data-line="2"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="3"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="4"></span>  &lt;div&gt;charlie&lt;/div&gt;
+<span class="line-marker" data-line="5"></span>  &lt;div&gt;delta&lt;/div&gt;
+<span class="line-marker" data-line="6"></span>  &lt;div&gt;echo&lt;/div&gt;
+<span class="line-marker" data-line="7"></span>  &lt;div&gt;foxtrot&lt;/div&gt;
+<span class="line-marker" data-line="8"></span>  &lt;div&gt;golf&lt;/div&gt;
+<span class="line-marker" data-line="9"></span>  &lt;div&gt;hotel&lt;/div&gt;
+<span class="line-marker" data-line="10"></span>  &lt;div&gt;india&lt;/div&gt;
+<span class="line-marker" data-line="11"></span>  &lt;div&gt;juliet&lt;/div&gt;
+<span class="line-marker" data-line="12"></span>  &lt;div&gt;kilo&lt;/div&gt;
+<span class="line-marker" data-line="13"></span>&lt;/div&gt;
+<span class="line-marker" data-line="14"></span>
+<span class="line-marker" data-line="15"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
+<span class="line-marker" data-line="16"></span>
+<span class="line-marker" data-line="17"></span>&lt;div class=&quot;justify-content-flex-start&quot;&gt;
+<span class="line-marker" data-line="18"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="19"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="20"></span>  &lt;div&gt;charlie&lt;/div&gt;
+<span class="line-marker" data-line="21"></span>  &lt;div&gt;delta&lt;/div&gt;
+<span class="line-marker" data-line="22"></span>&lt;/div&gt;
+<span class="line-marker" data-line="23"></span>
+<span class="line-marker" data-line="24"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
+<span class="line-marker" data-line="25"></span>
+<span class="line-marker" data-line="26"></span>&lt;div class=&quot;justify-content-flex-start&quot;&gt;
+<span class="line-marker" data-line="27"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="28"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="29"></span>&lt;/div&gt;
+<span class="line-marker" data-line="30"></span>
+<span class="line-marker" data-line="31"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;</span></pre></div></details>
+
+<details><summary>CSS</summary>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">.justify-content-flex-start {
+<span class="line-marker" data-line="2"></span>  display: flex;
+<span class="line-marker" data-line="3"></span>  flex-flow: row wrap;
+<span class="line-marker" data-line="4"></span>  justify-content: flex-start;
+<span class="line-marker" data-line="5"></span>}</span></pre></div></details>
+
+</div>
+
+<div class="example-box-wrapper default-flow">
+  <div>justify-content: flex-start; gap: 1rem;</div>
+  <style>
+  .justify-content-flex-start-gap-1rem {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+  </style>
+
+<div class="example-divs">
+<div class="justify-content-flex-start-gap-1rem">
+  <div>alfa</div>
+  <div>bravo</div>
+  <div>charlie</div>
+  <div>delta</div>
+  <div>echo</div>
+  <div>foxtrot</div>
+  <div>golf</div>
+  <div>hotel</div>
+  <div>india</div>
+  <div>juliet</div>
+  <div>kilo</div>
+</div>
+
+<div class="spacer"></div>
+
+<div class="justify-content-flex-start-gap-1rem">
+  <div>alfa</div>
+  <div>bravo</div>
+  <div>charlie</div>
+  <div>delta</div>
+</div>
+
+<div class="spacer"></div>
+
+<div class="justify-content-flex-start-gap-1rem">
+  <div>alfa</div>
+  <div>bravo</div>
+</div>
+
+<div class="spacer"></div></div>
+
+<details><summary>HTML</summary>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;div class=&quot;justify-content-flex-start-gap-1rem&quot;&gt;
+<span class="line-marker" data-line="2"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="3"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="4"></span>  &lt;div&gt;charlie&lt;/div&gt;
+<span class="line-marker" data-line="5"></span>  &lt;div&gt;delta&lt;/div&gt;
+<span class="line-marker" data-line="6"></span>  &lt;div&gt;echo&lt;/div&gt;
+<span class="line-marker" data-line="7"></span>  &lt;div&gt;foxtrot&lt;/div&gt;
+<span class="line-marker" data-line="8"></span>  &lt;div&gt;golf&lt;/div&gt;
+<span class="line-marker" data-line="9"></span>  &lt;div&gt;hotel&lt;/div&gt;
+<span class="line-marker" data-line="10"></span>  &lt;div&gt;india&lt;/div&gt;
+<span class="line-marker" data-line="11"></span>  &lt;div&gt;juliet&lt;/div&gt;
+<span class="line-marker" data-line="12"></span>  &lt;div&gt;kilo&lt;/div&gt;
+<span class="line-marker" data-line="13"></span>&lt;/div&gt;
+<span class="line-marker" data-line="14"></span>
+<span class="line-marker" data-line="15"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
+<span class="line-marker" data-line="16"></span>
+<span class="line-marker" data-line="17"></span>&lt;div class=&quot;justify-content-flex-start-gap-1rem&quot;&gt;
+<span class="line-marker" data-line="18"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="19"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="20"></span>  &lt;div&gt;charlie&lt;/div&gt;
+<span class="line-marker" data-line="21"></span>  &lt;div&gt;delta&lt;/div&gt;
+<span class="line-marker" data-line="22"></span>&lt;/div&gt;
+<span class="line-marker" data-line="23"></span>
+<span class="line-marker" data-line="24"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
+<span class="line-marker" data-line="25"></span>
+<span class="line-marker" data-line="26"></span>&lt;div class=&quot;justify-content-flex-start-gap-1rem&quot;&gt;
+<span class="line-marker" data-line="27"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="28"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="29"></span>&lt;/div&gt;
+<span class="line-marker" data-line="30"></span>
+<span class="line-marker" data-line="31"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;</span></pre></div></details>
+
+<details><summary>CSS</summary>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">.justify-content-flex-start-gap-1rem {
+<span class="line-marker" data-line="2"></span>  display: flex;
+<span class="line-marker" data-line="3"></span>  flex-flow: row wrap;
+<span class="line-marker" data-line="4"></span>  justify-content: flex-start;
+<span class="line-marker" data-line="5"></span>  gap: 1rem;
+<span class="line-marker" data-line="6"></span>}</span></pre></div></details>
+
+</div>
+
+<div class="example-box-wrapper default-flow">
+  <div>justify-content: flex-start; column-gap: 1rem;</div>
+  <style>
+  .justify-content-flex-start-column-gap-1rem {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  column-gap: 1rem;
+}
+
+  </style>
+
+<div class="example-divs">
+<div class="justify-content-flex-start-column-gap-1rem">
+  <div>alfa</div>
+  <div>bravo</div>
+  <div>charlie</div>
+  <div>delta</div>
+  <div>echo</div>
+  <div>foxtrot</div>
+  <div>golf</div>
+  <div>hotel</div>
+  <div>india</div>
+  <div>juliet</div>
+  <div>kilo</div>
+</div>
+
+<div class="spacer"></div>
+
+<div class="justify-content-flex-start-column-gap-1rem">
+  <div>alfa</div>
+  <div>bravo</div>
+  <div>charlie</div>
+  <div>delta</div>
+</div>
+
+<div class="spacer"></div>
+
+<div class="justify-content-flex-start-column-gap-1rem">
+  <div>alfa</div>
+  <div>bravo</div>
+</div>
+
+<div class="spacer"></div></div>
+
+<details><summary>HTML</summary>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;div class=&quot;justify-content-flex-start-column-gap-1rem&quot;&gt;
+<span class="line-marker" data-line="2"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="3"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="4"></span>  &lt;div&gt;charlie&lt;/div&gt;
+<span class="line-marker" data-line="5"></span>  &lt;div&gt;delta&lt;/div&gt;
+<span class="line-marker" data-line="6"></span>  &lt;div&gt;echo&lt;/div&gt;
+<span class="line-marker" data-line="7"></span>  &lt;div&gt;foxtrot&lt;/div&gt;
+<span class="line-marker" data-line="8"></span>  &lt;div&gt;golf&lt;/div&gt;
+<span class="line-marker" data-line="9"></span>  &lt;div&gt;hotel&lt;/div&gt;
+<span class="line-marker" data-line="10"></span>  &lt;div&gt;india&lt;/div&gt;
+<span class="line-marker" data-line="11"></span>  &lt;div&gt;juliet&lt;/div&gt;
+<span class="line-marker" data-line="12"></span>  &lt;div&gt;kilo&lt;/div&gt;
+<span class="line-marker" data-line="13"></span>&lt;/div&gt;
+<span class="line-marker" data-line="14"></span>
+<span class="line-marker" data-line="15"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
+<span class="line-marker" data-line="16"></span>
+<span class="line-marker" data-line="17"></span>&lt;div class=&quot;justify-content-flex-start-column-gap-1rem&quot;&gt;
+<span class="line-marker" data-line="18"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="19"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="20"></span>  &lt;div&gt;charlie&lt;/div&gt;
+<span class="line-marker" data-line="21"></span>  &lt;div&gt;delta&lt;/div&gt;
+<span class="line-marker" data-line="22"></span>&lt;/div&gt;
+<span class="line-marker" data-line="23"></span>
+<span class="line-marker" data-line="24"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
+<span class="line-marker" data-line="25"></span>
+<span class="line-marker" data-line="26"></span>&lt;div class=&quot;justify-content-flex-start-column-gap-1rem&quot;&gt;
+<span class="line-marker" data-line="27"></span>  &lt;div&gt;alfa&lt;/div&gt;
+<span class="line-marker" data-line="28"></span>  &lt;div&gt;bravo&lt;/div&gt;
+<span class="line-marker" data-line="29"></span>&lt;/div&gt;
+<span class="line-marker" data-line="30"></span>
+<span class="line-marker" data-line="31"></span>&lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;</span></pre></div></details>
+
+<details><summary>CSS</summary>
+<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">.justify-content-flex-start-column-gap-1rem {
+<span class="line-marker" data-line="2"></span>  display: flex;
+<span class="line-marker" data-line="3"></span>  flex-flow: row wrap;
+<span class="line-marker" data-line="4"></span>  justify-content: flex-start;
+<span class="line-marker" data-line="5"></span>  column-gap: 1rem;
+<span class="line-marker" data-line="6"></span>}</span></pre></div></details>
+
+</div>
+
+<div class="end-of-line"></div>
+
+
+
+</main>
+
+<footer class="default-wrapper xxlarge-block-padding xxxlarge-top-margin">
+  <div class="small-font-size text-align-center">
+    from <a href="https://bsky.app/profile/alanwsmith.com">alan w smith</a>
+  </div>
+  <div class="small-font-size text-align-center">
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+</footer>
+
+
+    </div>
+
+      
+    <div class="default-wrapper text-align-center faded-base-color"
+    style="opacity: 0.05; padding-bottom: 0.3rem;">
+id = "01/n6/5c/50"
+    </div>
+      
+
+    <div class="templates" hidden>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <script type="module" src="/bits/components.js"></script>
+
+
+
+    </div>
+  </body>
 </html>
-  

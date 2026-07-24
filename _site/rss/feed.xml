@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-23T22:07:59-04:00</updated>
+  <updated>2026-07-23T23:41:43-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -322,6 +322,14 @@ the timestamps I use look like this:</li>
     
     
     
+
+    
+
+
+
+
+    <style>
+    </style>
     
   </head>
   <body class="page">
@@ -335,6 +343,8 @@ the timestamps I use look like this:</li>
   </p>
 
 </noscript>
+
+    <h1>DO NOTE DEPLOY UNTIL METADATA IS FIXED</h1>
 
     <div class="payload">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
@@ -4612,6 +4622,14 @@ with a bunch of random characters.</p>
     
     
     
+
+    
+
+
+
+
+    <style>
+    </style>
     
   </head>
   <body class="page">
@@ -4625,6 +4643,8 @@ with a bunch of random characters.</p>
   </p>
 
 </noscript>
+
+    <h1>DO NOTE DEPLOY UNTIL METADATA IS FIXED</h1>
 
     <div class="payload">
       
