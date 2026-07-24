@@ -2,12 +2,155 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-24T11:38:14-04:00</updated>
+  <updated>2026-07-24T11:41:04-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
+  
+  <entry>
+    <title>Adding Copy Buttons with Bitty</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n6&#x2f;6r&#x2f;q5/"/><id>urn:uuid:b036d48b-70bb-5540-b49a-7c094701e075</id>
+    <updated>2026-07-24T09:04:37-04:00</updated>
+    <summary><![CDATA[
+
+<h2>Hitting a Single</h2>
+<p><a href="https://bittyjs.com">Bitty</a> has a <code>.quickCopy()</code>
+method. It does two things:</p>
+<ol>
+<li>
+<p>Copies the content of the target element.</p>
+</li>
+<li>
+<p>Updates the text of the Copy button
+to say &quot;Copied&quot; for two seconds then reverts it.</p>
+</li>
+</ol>
+<p>For example:</p>
+<div class="example-container">
+<div class="highlight-wrapper"><div class="title">content.html</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">bitty-9</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-connect</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/blog/01/n6/6r/q5/examples/example-1/bit.js<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">bitty-9</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">button</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-s</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>basicCopy<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Copy<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">button</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="4"></span><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">span</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-r</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>basicCopy<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="5"></span>  The quick brown fox
+<span class="line-marker" data-line="6"></span><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">span</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div><div class="highlight-wrapper"><div class="title">bit.js</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="source js"><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="storage type js">const</span> <span class="variable other readwrite js">b</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span><span class="punctuation section block js">}</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="variable other readwrite js">function</span> </span><span class="meta function-call js"><span class="variable function js">basicCopy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">_</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">el</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="4"></span>  <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">quickCopy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="5"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog/01/n6/6r/q5/examples/example-1/bit.js"></bitty-9>
+<p><button data-s="basicCopy">Copy</button>
+<span data-r="basicCopy">
+The quick brown fox
+</span></p>
+</div></div></div>
+<h2>Connecting Keys</h2>
+<p>You can put multiple buttons on a
+page that all use the same copy function
+with the help of a <code>data-key</code> attribute:</p>
+<div class="example-container">
+<div class="highlight-wrapper"><div class="title">content.html</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">bitty-9</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-connect</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/blog/01/n6/6r/q5/examples/example-2/bit.js<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">bitty-9</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="4"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">button</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-s</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>copyWithKey<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-key</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>alfa<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="5"></span>    Copy
+<span class="line-marker" data-line="6"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">button</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="7"></span>  <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">span</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-r</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>copyWithKey<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-key</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>alfa<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="8"></span>    The quick brown fox
+<span class="line-marker" data-line="9"></span>  <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">span</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="10"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="11"></span>
+<span class="line-marker" data-line="12"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="13"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">button</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-s</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>copyWithKey<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-key</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>bravo<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="14"></span>    Copy
+<span class="line-marker" data-line="15"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">button</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="16"></span>  <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">span</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-r</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>copyWithKey<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-key</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>bravo<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="17"></span>    The lazy dog
+<span class="line-marker" data-line="18"></span>  <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">span</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="19"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div><div class="highlight-wrapper"><div class="title">bit.js</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="source js"><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="storage type js">const</span> <span class="variable other readwrite js">b</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span><span class="punctuation section block js">}</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="variable other readwrite js">function</span> </span><span class="meta function-call js"><span class="variable function js">copyWithKey</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">_</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">el</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="4"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">sender</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">prop</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>key<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="keyword operator comparison js">===</span> <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">prop</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>key<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
+<span class="line-marker" data-line="5"></span>    <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">quickCopy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="6"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
+<span class="line-marker" data-line="7"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog/01/n6/6r/q5/examples/example-2/bit.js"></bitty-9>
+<div>
+  <button data-s="copyWithKey" data-key="alfa">
+    Copy
+  </button>
+  <span data-r="copyWithKey" data-key="alfa">
+    The quick brown fox
+  </span>
+</div>
+<div>
+  <button data-s="copyWithKey" data-key="bravo">
+    Copy
+  </button>
+  <span data-r="copyWithKey" data-key="bravo">
+    The lazy dog
+  </span>
+</div></div></div></div>
+<h2>How It Works</h2>
+<ul>
+<li>
+<p>The <code>data-s</code> attributes on the buttons
+sets them up to send a signal named <code>copyWithKey</code>.</p>
+</li>
+<li>
+<p>When the signal comes in, bitty
+loops through all the elements with a
+<code>data-r</code> attribute whose value matches
+the <code>copyWithKey</code> signal name.</p>
+<p>Each element is passed to the <code>copyWithKey</code>
+function as the <code>el</code> argument. The <code>sender</code>
+argument is populated by the button
+that sent the signal.</p>
+</li>
+<li>
+<p>Since there are multiple elements
+with the <code>data-r=&quot;copyWithKey&quot;</code> attribute
+we need a way to filter them down to just the
+one we want. The approach used here does the filtering
+by comparing the <code>data-key</code> values of
+the sending and receiving elements
+via the <code>.prop()</code> method that bitty
+adds to the incoming elements.</p>
+<p>When they match, the function calls
+the <code>.quickCopy()</code> method with the elements
+to run the process.</p>
+</li>
+</ul>
+<h2>Outro</h2>
+<p>Most of bitty is about setting up functions to
+add your own features. The <code>.quickCopy()</code>
+method is an exception. It's fully baked.
+I found myself adding the functionality
+so often it made since to include
+it directly. Check it out if your
+site has content you want to make it
+easier for your visitors to grab.</p>
+<p>-a</p>
+
+<h2>References</h2>
+<ul>
+<li>
+<p>Bitty is a signals based framework rolled
+into a web component. You can find
+out more about it at
+<a href="https://bittyjs.com">bittyjs.com</a>.</p>
+</li>
+</ul>
+<h2>Endnotes</h2>
+<ul>
+<li>
+<p>This example is using <code>bitty-9</code>. At the
+time of this writing, that version is
+a private beta. The current production
+version of bitty is <code>bitty-8</code>. It
+provides the same functionality.</p>
+</li>
+</ul>
+]]></summary>
+  </entry>
   
   <entry>
     <title>Background Texture Maker - Give your site a little grit</title><link href="https://al9000.com&#x2f;texture-maker/"/><id>urn:uuid:b936489f-8c7a-5916-8683-845d3512447b</id>
