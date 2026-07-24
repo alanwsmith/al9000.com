@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-24T00:09:30-04:00</updated>
+  <updated>2026-07-24T00:21:34-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -316,6 +316,26 @@ the timestamps I use look like this:</li>
 
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Three Dates in a Trench Coat</title>
+<meta property="og:title" content="Three Dates in a Trench Coat" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
 
 
     
@@ -324,7 +344,6 @@ the timestamps I use look like this:</li>
     
 
     
-
 
 
 
@@ -344,7 +363,6 @@ the timestamps I use look like this:</li>
 
 </noscript>
 
-    <h1>DO NOTE DEPLOY UNTIL METADATA IS FIXED</h1>
 
     <div class="payload">
       <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
@@ -4616,6 +4634,26 @@ with a bunch of random characters.</p>
 
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Create an HLS Encrypted Video with ffmpeg</title>
+<meta property="og:title" content="Create an HLS Encrypted Video with ffmpeg" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
+<meta property="og:image" content="https://al9000.com&#x2f;ffmpeg&#x2f;create-an-hls-encrypted-video/og-image-auto.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
 
 
     
@@ -4624,7 +4662,6 @@ with a bunch of random characters.</p>
     
 
     
-
 
 
 
@@ -4644,7 +4681,6 @@ with a bunch of random characters.</p>
 
 </noscript>
 
-    <h1>DO NOTE DEPLOY UNTIL METADATA IS FIXED</h1>
 
     <div class="payload">
       
