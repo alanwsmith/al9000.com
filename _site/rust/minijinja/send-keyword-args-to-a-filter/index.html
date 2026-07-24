@@ -86,7 +86,7 @@
 
 TODO: make an example from this:
 
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="keyword other rust">crate</span><span class="meta path rust"><span class="punctuation accessor rust">::</span></span><span class="meta path rust">builder<span class="punctuation accessor rust">::</span></span>trim_empty_leading_lines<span class="punctuation terminator rust">;</span>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="keyword other rust">crate</span><span class="meta path rust"><span class="punctuation accessor rust">::</span></span><span class="meta path rust">builder<span class="punctuation accessor rust">::</span></span>trim_empty_leading_lines<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">minijinja<span class="punctuation accessor rust">::</span></span>Value<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">syntect<span class="punctuation accessor rust">::</span></span><span class="meta path rust">html<span class="punctuation accessor rust">::</span></span>ClassStyle<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">syntect<span class="punctuation accessor rust">::</span></span><span class="meta path rust">html<span class="punctuation accessor rust">::</span></span>ClassedHTMLGenerator<span class="punctuation terminator rust">;</span>
@@ -130,7 +130,7 @@ TODO: make an example from this:
 <span class="line-marker" data-line="42"></span>    <span class="string quoted double raw rust"><span class="storage type string rust">r</span><span class="punctuation definition string begin rust">#</span>&quot;&lt;div class=&quot;command-block<span class="constant other placeholder rust">{}</span>&quot;&gt;<span class="constant other placeholder rust">{}</span>&lt;pre&gt;&lt;code&gt;<span class="constant other placeholder rust">{}</span>&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;<span class="punctuation definition string end rust">&quot;#</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span>
 <span class="line-marker" data-line="43"></span>    extra_classes<span class="punctuation separator rust">,</span> title<span class="punctuation separator rust">,</span> html
 <span class="line-marker" data-line="44"></span>  <span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
-<span class="line-marker" data-line="45"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
+<span class="line-marker" data-line="45"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
 Which gets used like:
 
 <div class="command-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">== filter command(classes=&quot;other-class&quot;)

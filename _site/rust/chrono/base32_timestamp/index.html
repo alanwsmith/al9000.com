@@ -101,7 +101,7 @@
 
 <h3>Rust</h3>
 
-<div class="code-block numbers copy-button"><div class="file-name">Cargo.toml</div><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
+<div class="highlight-wrapper"><div class="file-name">Cargo.toml</div><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;base32_timestamp&quot;
 <span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
 <span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
@@ -109,9 +109,9 @@
 <span class="line-marker" data-line="6"></span>[dependencies]
 <span class="line-marker" data-line="7"></span>anyhow = &quot;1.0.104&quot;
 <span class="line-marker" data-line="8"></span>base32 = &quot;0.5.1&quot;
-<span class="line-marker" data-line="9"></span>chrono = &quot;0.4.45&quot;</span></pre></div>
+<span class="line-marker" data-line="9"></span>chrono = &quot;0.4.45&quot;</span></pre></div></div>
 
-<div class="code-block numbers copy-button"><div class="file-name">src/main.rs</div><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span><span class="support type rust">Result</span><span class="punctuation separator rust">,</span> anyhow</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
+<div class="highlight-wrapper"><div class="file-name">src/main.rs</div><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span><span class="support type rust">Result</span><span class="punctuation separator rust">,</span> anyhow</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">base32<span class="punctuation accessor rust">::</span></span>Alphabet<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">chrono<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>DateTime<span class="punctuation separator rust">,</span> FixedOffset<span class="punctuation separator rust">,</span> Utc</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span>
@@ -151,14 +151,14 @@
 <span class="line-marker" data-line="38"></span>  <span class="storage type rust">let</span> ts <span class="keyword operator rust">=</span> <span class="storage type rust">i64</span><span class="meta path rust"><span class="punctuation accessor rust">::</span></span>from_be_bytes<span class="meta group rust"><span class="punctuation section group begin rust">(</span>buf</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="39"></span>  <span class="meta path rust">DateTime<span class="punctuation accessor rust">::</span></span>from_timestamp<span class="meta group rust"><span class="punctuation section group begin rust">(</span>ts<span class="punctuation separator rust">,</span> <span class="constant numeric integer decimal rust">0</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker" data-line="40"></span>    .<span class="support function rust">ok_or</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="support macro rust">anyhow!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Could not decode timestamp<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
-<span class="line-marker" data-line="41"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
+<span class="line-marker" data-line="41"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
 
 <h3>Output</h3>
 
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">01n5mf38
+<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">01n5mf38
 <span class="line-marker" data-line="2"></span>01n5mfeg
 <span class="line-marker" data-line="3"></span>2026-07-17T14:30:00+00:00
-<span class="line-marker" data-line="4"></span>2026-07-17T14:36:00+00:00</span></code></pre></div>
+<span class="line-marker" data-line="4"></span>2026-07-17T14:36:00+00:00</span></pre></div></div>
 
 <h2>Outro</h2>
 
@@ -211,7 +211,7 @@ to make the URLs somewhat approachable (e.g. <code>/blog/01/n5/mf/38/</code>).
 Or, at least, not as wild as using something like
 a <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID (v7)</a>
 that give you milliseconds but is way longer and looks like this:</p>
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">  fb2a482b-3694-4d8f-a2ed-402077fe97c4</span></code></pre></div>
+<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">  fb2a482b-3694-4d8f-a2ed-402077fe97c4</span></pre></div></div>
 </li>
 <li>
 <p>I had been truncating a <a href="https://github.com/segmentio/ksuid">KSUID</a>

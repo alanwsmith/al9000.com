@@ -94,7 +94,7 @@ from TOML with chrono for formatting.
 
 <h3>Rust</h3>
 
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;parse_toml_date&quot;
 <span class="line-marker" data-line="3"></span>version = &quot;0.1.0&quot;
 <span class="line-marker" data-line="4"></span>edition = &quot;2024&quot;
@@ -102,9 +102,9 @@ from TOML with chrono for formatting.
 <span class="line-marker" data-line="6"></span>[dependencies]
 <span class="line-marker" data-line="7"></span>anyhow = &quot;1.0.102&quot;
 <span class="line-marker" data-line="8"></span>chrono = &quot;0.4.44&quot;
-<span class="line-marker" data-line="9"></span>toml = &quot;1.1.2&quot;</span></pre></div>
+<span class="line-marker" data-line="9"></span>toml = &quot;1.1.2&quot;</span></pre></div></div>
 
-<div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">chrono<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>DateTime<span class="punctuation separator rust">,</span> Local</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">toml<span class="punctuation accessor rust">::</span></span>Table<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="4"></span>
@@ -129,11 +129,11 @@ from TOML with chrono for formatting.
 <span class="line-marker" data-line="23"></span>    <span class="support type rust">Some</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>dt</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=&gt;</span> dt.<span class="support function rust">to_string</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="meta path rust">parse<span class="punctuation accessor rust">::</span></span><span class="meta generic rust"><span class="punctuation definition generic begin rust">&lt;</span><span class="meta generic rust">DateTime<span class="punctuation definition generic begin rust">&lt;</span>Local<span class="punctuation definition generic end rust">&gt;</span></span><span class="punctuation definition generic end rust">&gt;</span></span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation separator rust">,</span>
 <span class="line-marker" data-line="24"></span>    <span class="support type rust">None</span> <span class="keyword operator rust">=&gt;</span> <span class="support type rust">None</span><span class="punctuation separator rust">,</span>
 <span class="line-marker" data-line="25"></span>  </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
-<span class="line-marker" data-line="26"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div>
+<span class="line-marker" data-line="26"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
 
 <h3>Output</h3>
 
-<div class="output-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">Mon. April 6 - 2:23PM</span></code></pre></div>
+<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">Mon. April 6 - 2:23PM</span></pre></div></div>
 
 
 
