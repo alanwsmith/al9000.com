@@ -2,12 +2,217 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-25T07:59:47-05:00</updated>
+  <updated>2026-07-25T18:31:05-05:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
+  
+  <entry>
+    <title>A CSS Only Tabs Prototype (No JavaScript Required)</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n6&#x2f;a8&#x2f;6j/"/><id>urn:uuid:da7607ba-0815-5430-bf31-43f72931a57c</id>
+    <updated>2026-07-25T15:47:14-05:00</updated>
+    <summary><![CDATA[
+
+<h2>Component Kickoff</h2>
+<p>I was listening to an episode of <a href="https://shoptalkshow.com/">Shop Talk Show</a>
+that discussed putting native HTML elements inside
+web components instead of having
+the component insert them. For example,
+a <em>fancy-checkbox</em> component could contain
+a checkbox element:</p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">fancy-checkbox</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">for</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>checkbox-x<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Show Example<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="3"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">checkbox-x</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>checkbox<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
+<span class="line-marker" data-line="4"></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">fancy-checkbox</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
+<p>Or, it could be empty, pushing the responsibility
+for adding the checkbox element into
+the component itself.</p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">fancy-checkbox</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">fancy-checkbox</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
+With the first one, a checkbox shows up even if JavaScript
+or the web component fails to load. Not so with the second.
+<h2>Modal Pondering</h2>
+<p>The conversation got me wondering what you can do
+with a checkbox if there's no JavaScript running on the
+page. Specifically, I was wondering if you could do something
+like make a dark mode switcher using only
+HTML and CSS. The answer is, yes, you can.</p>
+<p>Check this out:</p>
+<div class="mode-wrapper-x">
+  <label for="mode-checkbox-x">
+    Activate Dark Mode:
+  </label>
+  <input id="mode-checkbox-x" type="checkbox" />
+</div>
+<p>There's no JavaScript involved. Everything happens
+thanks to this HTML:</p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">mode-wrapper-x</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">for</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>mode-checkbox-x<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="3"></span>    Activate Dark Mode:
+<span class="line-marker" data-line="4"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="5"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">mode-checkbox-x</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>checkbox<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
+<span class="line-marker" data-line="6"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
+<p>and this CSS:</p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="source css"><span class="meta selector css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>root</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="2"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-background-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant color w3c-standard-color-name css">white</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="3"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-color-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant color w3c-standard-color-name css">black</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="4"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span><span class="meta selector css"><span class="entity other attribute-name class css"><span class="punctuation definition entity css">.</span>mode-wrapper-x</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="7"></span>  <span class="meta property-name css"><span class="support type property-name css">background-color</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-background-x</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="8"></span>  <span class="meta property-name css"><span class="support type property-name css">color</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-color-x</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="9"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="10"></span>
+<span class="line-marker" data-line="11"></span><span class="meta selector css"><span class="entity name tag css">body</span><span class="meta function-call css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>has</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>mode-checkbox-x</span><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>checked</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="12"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-background-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant color w3c-standard-color-name css">black</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="13"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-color-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant color w3c-standard-color-name css">white</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="14"></span></span><span class="punctuation section property-list css">}</span></span></pre></div></div>
+<p>The magic is the <code>:has()</code> pseudo-class on the
+body element on line 11. It watches the <code>#mode-checkbox-x</code> element
+to see if it's check. When it is, it overrides
+the default property variables to do the switch.</p>
+<h2>Tab Coded</h2>
+<p>Of course, the dark mode switcher doesn't set
+anything on the browser to maintain the mode
+between pages. You would need JavaScript for that.</p>
+<p>However, there are other things that
+don't require keeping track of state
+across pages. Tabs come to mind.
+For example:</p>
+
+<div class="tabs-wrapper-x">
+<div>
+  <input id="tab1" type="radio" name="tabSwtich" checked />
+  <label for="tab1" >Tab 1</label>
+
+  <input id="tab2" type="radio" name="tabSwtich" />
+  <label for="tab2">Tab 2</label>
+
+  <input id="tab3" type="radio" name="tabSwtich" />
+  <label for="tab3">Tab 3</label>
+</div>
+
+<div id="content1">Content 1</div>
+<div id="content2">Content 2</div>
+<div id="content3">Content 3</div></div>
+
+<p>Again, no JavaScript. Just this HTML:</p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">tab1</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>radio<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">name</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tabSwtich<span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">checked</span><span class="punctuation definition tag end html"> /&gt;</span></span>
+<span class="line-marker" data-line="3"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">for</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tab1<span class="punctuation definition string end html">&quot;</span></span></span> <span class="punctuation definition tag end html">&gt;</span></span>Tab 1<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="4"></span>
+<span class="line-marker" data-line="5"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">tab2</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>radio<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">name</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tabSwtich<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
+<span class="line-marker" data-line="6"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">for</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tab2<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Tab 2<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="7"></span>
+<span class="line-marker" data-line="8"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">tab3</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>radio<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">name</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tabSwtich<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
+<span class="line-marker" data-line="9"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">for</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tab3<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Tab 3<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="10"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="11"></span>
+<span class="line-marker" data-line="12"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">content1</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Content 1<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="13"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">content2</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Content 2<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="14"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">content3</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Content 3<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
+<p>and this CSS:</p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="source css"><span class="meta selector css"><span class="entity name tag css">body</span><span class="meta function-call css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>has</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>tab1</span><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>checked</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="meta property-list css"><span class="punctuation section property-list css">{</span> 
+<span class="line-marker" data-line="2"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-1-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">block</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="3"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-2-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="4"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-3-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="5"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="6"></span>
+<span class="line-marker" data-line="7"></span><span class="meta selector css"><span class="entity name tag css">body</span><span class="meta function-call css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>has</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>tab2</span><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>checked</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="meta property-list css"><span class="punctuation section property-list css">{</span> 
+<span class="line-marker" data-line="8"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-1-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="9"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-2-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">block</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="10"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-3-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="11"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="12"></span>
+<span class="line-marker" data-line="13"></span><span class="meta selector css"><span class="entity name tag css">body</span><span class="meta function-call css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>has</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>tab3</span><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>checked</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="meta property-list css"><span class="punctuation section property-list css">{</span> 
+<span class="line-marker" data-line="14"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-1-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="15"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-2-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="16"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-3-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">block</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="17"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="18"></span>
+<span class="line-marker" data-line="19"></span>
+<span class="line-marker" data-line="20"></span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>content1</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="21"></span>  <span class="meta property-name css"><span class="support type property-name css">display</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-1-display-x</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="22"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="23"></span>
+<span class="line-marker" data-line="24"></span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>content2</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="25"></span>  <span class="meta property-name css"><span class="support type property-name css">display</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-2-display-x</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="26"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="27"></span>
+<span class="line-marker" data-line="28"></span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>content3</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="29"></span>  <span class="meta property-name css"><span class="support type property-name css">display</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-3-display-x</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="30"></span></span><span class="punctuation section property-list css">}</span></span></pre></div></div>
+<h2>First Try</h2>
+<p>To be clear: this is a prototype. It's
+purpose is a first test to see what's
+possible. There's several things
+to investigate, including:</p>
+<ul>
+<li>
+<p>What's the accessibility of this like?
+Is it dead on arrival? Are there
+adjustments that can be made to bring
+it in line?</p>
+</li>
+<li>
+<p>The radio buttons themselves being visible
+is pretty ugly. I'm pretty sure they
+can be hidden. TBD on what that does
+to accessibility.</p>
+</li>
+<li>
+<p>The CSS is pretty verbose. It does an explicit
+check for each radio button and updates all
+the variables inside each check. I wouldn't
+be surprised to learn there's a more
+efficient way to do that.</p>
+</li>
+</ul>
+<p>Overall, it's very exciting.
+Even if there are reasons not to do
+it now, the continuing march of
+CSS makes me think it won't be long.</p>
+<p>-a</p>
+
+<h2>References</h2>
+<ul>
+<li>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:has">CSS :has() pseudo-class</a>
+which provides the horsepower for the functionality. It hit <em>Baseline Widely Available</em>
+in December 2023.</li>
+</ul>
+<h2>Endnotes</h2>
+<ul>
+<li>
+<p>Thanks to <a href="https://alex.party/">Alex</a> for introducing
+me to <code>:has()</code> and showing me how to use it.</p>
+</li>
+<li>
+<p>Another episode of Shop Talk Show was
+<a href="https://shoptalkshow.com/724/">an interview</a> with
+<a href="https://danabra.mov/">Dan Abramov</a> about
+<a href="https://atproto.com/">AT Proto</a>. I'd been
+toying with the idea of creating a
+<a href="https://atproto.com/specs/lexicon">lexicon</a> for
+<a href="neopolitan/">Neopolitan</a> (my markdown replacement
+format). After the episode, I'm absolutely
+gonna do it. The goal being to provide
+a nice way to created pages and posts
+using less than HTML but more than
+Markdown.</p>
+<p>One of the biggest considerations is if
+JavaScript will be allowed. I love
+the idea of providing for interaction.
+I hate the idea of introducing the
+security issues that come with the
+language. Seeing this prototype seals
+the deal. Current CSS can do so much
+the reward of introducing the JavaScript risk
+isn't worth it. And, I expect
+CSS will get nothing but more powerful.</p>
+</li>
+</ul>
+]]></summary>
+  </entry>
   
   <entry>
     <title>Adding Copy Buttons with Bitty</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n6&#x2f;6r&#x2f;q5/"/><id>urn:uuid:b036d48b-70bb-5540-b49a-7c094701e075</id>

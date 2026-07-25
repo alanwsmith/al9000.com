@@ -1,4 +1,5 @@
 const defaults = {
+  customStyles: "/* add your custom css here */",
   logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
@@ -24,26 +25,23 @@ const defaults = {
       __MAX__: 360,
       __STEP__: 0.001,
     },
-    /*
     __T__: {
       __NAME__: "Texture",
       __MIN__: 0,
       __MAX__: 100,
       __STEP__: 0.1,
     },
-    */
   },
   modes: [
     {
       __KEY__: "light",
       activeColorIndex: 0,
       background: {
-        __L__: 0.873,
-        __C__: 0.0299,
-        __H__: 217.5,
+        __L__: 1,
+        __C__: 0.01726,
+        __H__: 45.298,
         __T__: 0,
       },
-      customStyles: "/* Add Custom Styles Here */",
       monos: {
         "black": {
           __LIGHTNESS__: 0,
@@ -113,7 +111,6 @@ const defaults = {
         __H__: 166.07,
         __T__: 0,
       },
-      customStyles: "/* Add Custom Styles Here */",
       monos: {
         "black": {
           __LIGHTNESS__: 0,
@@ -176,4 +173,3 @@ const defaults = {
     },
   ],
 };
-

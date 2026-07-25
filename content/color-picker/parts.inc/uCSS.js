@@ -3,7 +3,6 @@ export function updateCSS(_, __, el) {
   // TODO: Remove save page from everywhere
   // else and just do it here.
   b.savePageData("data", s.data);
-  b.trigger("iCustomStyles");
   const mode = s.getActiveMode();
   const variables = generatePageVariables();
   variables.forEach((vv) => {
@@ -27,7 +26,7 @@ ${makeSwitches("dark")}
 }
 `,
     makeClasses(),
-    mode.customStyles,
+    s.data.customStyles,
   ].join("\n");
 
   el.innerHTML = sheetParts;

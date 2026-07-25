@@ -1,0 +1,36 @@
+:root {
+  --content-1-display: block;
+  --content-2-display: none;
+  --content-3-display: none;
+}
+
+body:has(#tab1:checked){ 
+  --content-1-display: block; 
+  --content-2-display: none; 
+  --content-3-display: none; 
+}
+
+body:has(#tab2:checked){ 
+  --content-1-display: none; 
+  --content-2-display: block; 
+  --content-3-display: none; 
+}
+
+body:has(#tab3:checked){ 
+  --content-1-display: none; 
+  --content-2-display: none; 
+  --content-3-display: block; 
+}
+
+
+#content1 {
+  display: var(--content-1-display);
+}
+
+#content2 {
+  display: var(--content-2-display);
+}
+
+#content3 {
+  display: var(--content-3-display);
+}

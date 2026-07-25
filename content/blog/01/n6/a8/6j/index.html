@@ -1,0 +1,199 @@
+== extends "/templates.inc/switches/default.html"
+== block toml 
+title = "A CSS Only Tabs Prototype (No JavaScript Required)"
+created = 2026-07-25T15:47:14-05:00
+status = "done"
+id = "01/n6/a8/6j"
+tags = ["css"]
+flags = []
+== endblock
+
+== block styles2
+== include template_dir("/styles.css")
+== include template_dir("/mode-example/styles.css")
+== include template_dir("/tabs/styles.css")
+== endblock
+
+== block content 
+== filter md
+## Component Kickoff
+
+I was listening to an episode of [Shop Talk Show](https://shoptalkshow.com/) 
+that discussed putting native HTML elements inside
+web components instead of having
+the component insert them. For example,
+a _fancy-checkbox_ component could contain 
+a checkbox element:
+
+== filter highlight("html", class="code-block no-copy numbers")
+[@ raw_include(template_dir() + "/fancy-checkbox/content.html") @]
+== endfilter
+
+[# Uncomment to test the output of the html example:
+== include template_dir() + "/fancy-checkbox/content.html"
+#]
+
+Or, it could be empty, pushing the responsibility
+for adding the checkbox element into 
+the component itself. 
+
+
+== filter highlight("html", class="code-block no-copy numbers")
+<fancy-checkbox></fancy-checkbox>
+== endfilter
+
+With the first one, a checkbox shows up even if JavaScript
+or the web component fails to load. Not so with the second.
+
+## Modal Pondering
+
+The conversation got me wondering what you can do
+with a checkbox if there's no JavaScript running on the 
+page. Specifically, I was wondering if you could do something
+like make a dark mode switcher using only
+HTML and CSS. The answer is, yes, you can. 
+
+Check this out:
+
+== include template_dir("/mode-example/content.html")
+
+
+There's no JavaScript involved. Everything happens
+thanks to this HTML:
+
+== filter highlight("html", class="code-block no-copy numbers")
+[@ raw_include(template_dir("/mode-example/content.html")) @]
+== endfilter
+
+
+and this CSS:
+
+
+== filter highlight("css", class="code-block no-copy numbers")
+[@ raw_include(template_dir("/mode-example/styles.css")) @]
+== endfilter
+
+
+The magic is the `:has()` pseudo-class on the 
+body element on line 11. It watches the `#mode-checkbox-x` element
+to see if it's check. When it is, it overrides
+the default property variables to do the switch. 
+
+
+## Tab Coded
+
+Of course, the dark mode switcher doesn't set
+anything on the browser to maintain the mode
+between pages. You would need JavaScript for that.
+
+However, there are other things that 
+don't require keeping track of state
+across pages. Tabs come to mind. 
+For example:
+
+
+== endfilter
+
+<div class="tabs-wrapper-x">
+== include template_dir("/tabs/content.html")
+</div>
+
+== filter md
+
+Again, no JavaScript. Just this HTML:
+
+== filter highlight("html", class="code-block no-copy numbers")
+[@ raw_include(template_dir("/tabs/content.html")) @]
+== endfilter
+
+
+and this CSS:
+
+== filter highlight("css", class="code-block no-copy numbers")
+[@ raw_include(template_dir("/tabs/styles.css")) @]
+== endfilter
+
+
+## First Try
+
+To be clear: this is a prototype. It's 
+purpose is a first test to see what's
+possible. There's several things
+to investigate, including:
+
+- What's the accessibility of this like?
+Is it dead on arrival? Are there
+adjustments that can be made to bring
+it in line?
+
+- The radio buttons themselves being visible
+is pretty ugly. I'm pretty sure they
+can be hidden. TBD on what that does
+to accessibility. 
+
+- The CSS is pretty verbose. It does an explicit 
+check for each radio button and updates all
+the variables inside each check. I wouldn't
+be surprised to learn there's a more
+efficient way to do that. 
+
+Overall, it's very exciting.
+Even if there are reasons not to do
+it now, the continuing march of
+CSS makes me think it won't be long. 
+
+-a
+
+
+== endfilter
+== endblock
+
+
+== block backmatter
+== filter md
+
+## References
+
+- The [CSS :has() pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:has)
+which provides the horsepower for the functionality. It hit _Baseline Widely Available_
+in December 2023. 
+
+## Endnotes
+
+- Thanks to [Alex](https://alex.party/) for introducing
+me to `:has()` and showing me how to use it. 
+
+- Another episode of Shop Talk Show was 
+[an interview](https://shoptalkshow.com/724/) with
+[Dan Abramov](https://danabra.mov/) about 
+[AT Proto](https://atproto.com/). I'd been 
+toying with the idea of creating a
+[lexicon](https://atproto.com/specs/lexicon) for
+[Neopolitan](neopolitan/) (my markdown replacement
+format). After the episode, I'm absolutely 
+gonna do it. The goal being to provide
+a nice way to created pages and posts
+using less than HTML but more than 
+Markdown. 
+
+  One of the biggest considerations is if
+JavaScript will be allowed. I love
+the idea of providing for interaction.
+I hate the idea of introducing the
+security issues that come with the
+language. Seeing this prototype seals
+the deal. Current CSS can do so much
+the reward of introducing the JavaScript risk
+isn't worth it. And, I expect
+CSS will get nothing but more powerful. 
+
+
+
+
+
+
+
+
+== endfilter
+== endblock
+
