@@ -1,4 +1,3 @@
-
 function generatePageVariables() {
   let variables = [];
   for (let mode of s.data.modes) {

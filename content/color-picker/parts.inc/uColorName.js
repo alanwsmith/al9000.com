@@ -3,7 +3,7 @@ export function uColorName(_, __, el) {
   const mode = s.getActiveMode();
   s.data.colorNames.forEach((name) => {
     if (s.data.colorNames[mode.activeColorIndex] === name) {
-      el.innerHTML = name;
+      el.innerHTML = `${name} color`;
       el.classList.add(`default-${name}-background-color`);
       b.setCSS("--color-name-padding", mode.activeColorIndex);
     } else {

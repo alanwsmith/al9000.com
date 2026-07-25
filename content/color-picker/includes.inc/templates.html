@@ -1,5 +1,6 @@
 <script type="text/html" data-template="backgroundSlider">
-    <label for="bg-__NAME__">__NAME__</label>
+    <label for="bg-__NAME__">Background __NAME__</label>
+    <div>
       <input 
         id="bg-__NAME__"
         type="range" 
@@ -11,6 +12,7 @@
         step="__STEP__" 
         value="__VALUE__" 
         autocomplete="off" />
+    </div>
 </script>
 
 <script type="text/html" data-template="colorNameButton">
@@ -86,7 +88,7 @@
     data-s="setHueOffset" 
     data-r="uHueOffset" 
     data-index="__INDEX__"
-  >set</button>
+  >hue</button>
 </script>
 
 <script type="text/html" data-template="modeButton">

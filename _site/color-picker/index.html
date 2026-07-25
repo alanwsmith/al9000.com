@@ -97,9 +97,8 @@ button{
 }
 
 .color-name {
-  padding-left: 
-    calc(var(--color-name-padding) * 1.8rem + 0.6rem);
-    height: 1.5rem;
+  padding-left: 0.6rem;
+  padding-block: 0.2rem;
   border-start-end-radius: 0.3rem;
 }
 
@@ -138,8 +137,8 @@ h3 {
 .hue-offset-buttons {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid red;
-  border-inline: 1px solid red;
+  border-bottom: 1px solid var(--ui-border);
+  border-inline: 1px solid var(--ui-border);
   border-end-start-radius: 0.4rem;
   border-end-end-radius: 0.4rem;
 }
@@ -155,6 +154,10 @@ h3 {
 
 .info-block {
   background-color: var(--faded-info-color);
+}
+
+input[type=range]{
+  width: 100%
 }
 
 main {
@@ -738,14 +741,13 @@ theme.</li>
     </div>
 
     <div class="border-1">
-        <h3>Background</h3>
-        <div class="background-sliders" data-r="initBackgroundSliders"></div>
+        <div data-r="initBackgroundSliders"></div>
     </div>
 
     <div class="border-1">
         <div data-r="initColorNameButtons" class="color-buttons"></div>
         <div data-r="uColorName" class="default-match-color bold color-name"></div>
-        <div data-r="initHueOffsetButtons" class="hue-offset-buttons"></div>
+        <div data-r="initHueOffsetButtons uHueOffsetButtons" class="hue-offset-buttons"></div>
         <div data-r="initColorSliders"></div>
     </div>
 </div>  </div>
@@ -755,13 +757,7 @@ theme.</li>
     <textarea data-r="updateCSS copyThis" autocomplete="off" data-key="css"></textarea>
     <button data-s="copyThis" data-key="css">Copy</button>
   </div>
-
-  <div>
-    <details><summary>JSON</summary>
-      <textarea data-r="updateJSON copyThis" autocomplete="off" data-key="json"></textarea>
-      <button data-s="copyThis" data-key="json">Copy</button>
-    </details>
-  </div>
+  
 </main>
 
 
@@ -777,7 +773,8 @@ theme.</li>
       
 <bitty-9 data-connect="&#x2f;color-picker&#x2f;bit.js"></bitty-9>
 <script type="text/html" data-template="backgroundSlider">
-    <label for="bg-__NAME__">__NAME__</label>
+    <label for="bg-__NAME__">Background __NAME__</label>
+    <div>
       <input 
         id="bg-__NAME__"
         type="range" 
@@ -789,6 +786,7 @@ theme.</li>
         step="__STEP__" 
         value="__VALUE__" 
         autocomplete="off" />
+    </div>
 </script>
 
 <script type="text/html" data-template="colorNameButton">
@@ -864,7 +862,7 @@ theme.</li>
     data-s="setHueOffset" 
     data-r="uHueOffset" 
     data-index="__INDEX__"
-  >set</button>
+  >hue</button>
 </script>
 
 <script type="text/html" data-template="modeButton">

@@ -178,7 +178,6 @@ const defaults = {
     },
   ],
 };
-
 function generatePageVariables() {
   let variables = [];
   for (let mode of s.data.modes) {
@@ -462,7 +461,6 @@ function makeUiClasses() {
 
 
 
-
 function makeUiVars() {
   const activeMode = s.getActiveMode();
   const activeColorIndex = activeMode.activeColorIndex;
@@ -475,10 +473,21 @@ function makeUiVars() {
     const value =
       `oklch(${activeColor.__L__} ${activeColor.__C__} ${rotation})`;
     output.push([key, value]);
+    if (i === activeColorIndex) {
+      output.push(
+        [
+          `--ui-border`,
+          `var(--ui-set-${activeColor.__H_OFFSET__})`,
+        ],
+      );
+    }
   }
+  // Make the color border
+
   const out2 = output.map((x) => {
     return `${x[0]}: ${x[1]};`;
   });
+
   return `:root { ${out2.join("\n")}}`;
 }
 
@@ -650,7 +659,7 @@ export function uColorName(_, __, el) {
   const mode = s.getActiveMode();
   s.data.colorNames.forEach((name) => {
     if (s.data.colorNames[mode.activeColorIndex] === name) {
-      el.innerHTML = name;
+      el.innerHTML = `${name} color`;
       el.classList.add(`default-${name}-background-color`);
       b.setCSS("--color-name-padding", mode.activeColorIndex);
     } else {

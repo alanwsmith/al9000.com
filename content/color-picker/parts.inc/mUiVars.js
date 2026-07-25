@@ -1,4 +1,3 @@
-
 function makeUiVars() {
   const activeMode = s.getActiveMode();
   const activeColorIndex = activeMode.activeColorIndex;
@@ -11,9 +10,20 @@ function makeUiVars() {
     const value =
       `oklch(${activeColor.__L__} ${activeColor.__C__} ${rotation})`;
     output.push([key, value]);
+    if (i === activeColorIndex) {
+      output.push(
+        [
+          `--ui-border`,
+          `var(--ui-set-${activeColor.__H_OFFSET__})`,
+        ],
+      );
+    }
   }
+  // Make the color border
+
   const out2 = output.map((x) => {
     return `${x[0]}: ${x[1]};`;
   });
+
   return `:root { ${out2.join("\n")}}`;
 }
