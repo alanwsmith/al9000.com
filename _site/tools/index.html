@@ -30,12 +30,12 @@
 
 
     <style>
-body {
-  color-scheme: dark light;
-}
-
 input {
   width: 100%;
+}
+
+textarea {
+  font-size: var(--small-font-size);
 }
 </style>
 
@@ -98,29 +98,25 @@ input {
 
 
 
-  <bitty-9 data-connect="/tools/amazon-link-fixer/bit.js"></bitty-9>
-   <details class="d"><summary>Amazon Link Fixer</summary> 
+  <bitty-9 data-connect="/tools/amazon-link-scrubber/bit.js"></bitty-9>
+   <details class="d"><summary>Amazon Link Scrubber</summary> 
 <div class="two-columns">
   <div>
-    <input 
-      type="text" 
-      class="default" 
-      data-s="updateAmazonLinkFixer" 
-      data-r="showAmazonLinkFixerExample clearAmazonLinkFixer" 
-      autocomplete="off"
-    />
-    <button data-s="showAmazonLinkFixerExample">Show Example</button>
-    <button data-s="clearAmazonLinkFixer">Clear Input</button>
+    <textarea 
+      class="d" 
+      data-s="updateAmazonLinkScrubber" 
+      data-r="showAmazonLinkScrubberExample clearAmazonLinkScrubber" 
+      autocomplete="off"></textarea>
+    <button data-s="showAmazonLinkScrubberExample">Show Example</button>
+    <button data-s="clearAmazonLinkScrubber">Clear Input</button>
   </div>
   <div>
-    <input 
-      type="text" 
-      class="default" 
-      data-r="updateAmazonLinkFixer copyAmazonLinkFixer" 
-      autocomplete="off"
-    />
+    <textarea 
+      class="d" 
+      data-r="updateAmazonLinkScrubber copyAmazonLinkScrubber" 
+      autocomplete="off"></textarea>
     <div class="text-align-right">
-      <button data-s="copyAmazonLinkFixer">Copy</button>
+      <button data-s="copyAmazonLinkScrubber">Copy</button>
     </div>
   </div>
 </div>
