@@ -16,13 +16,13 @@
     [# TODO Move everything over to styles2 which
     auto wrapper in the style tag and deprecate 
     the original styles block #]
-    == set styles2block
+    == set styles2_handler
     [!- block styles2 !][! endblock -!]
     == endset
 
-    == if styles2block|trim|length > 0
+    == if styles2_handler|trim|length > 0
     <style>
-[@ styles2block @]
+[@ styles2_handler @]
     </style>
     == endif
 

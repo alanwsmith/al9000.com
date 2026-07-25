@@ -15,3 +15,4 @@ export function initBackgroundSliders(_, __, el) {
   }
   b.trigger("updateCSS");
 }
+

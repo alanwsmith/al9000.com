@@ -12,7 +12,7 @@ initHueOffsetButtons
 initModeButtons
 initColorSliders
 iColorName
-iCustomStyles
+uCustomStyles
 `,
   );
 }

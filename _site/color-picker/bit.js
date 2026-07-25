@@ -3,6 +3,7 @@ export async function copyThis(_, sender, el) {
 }
 
 const defaults = {
+  customStyles: "/* add your custom css here */",
   logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
@@ -28,26 +29,23 @@ const defaults = {
       __MAX__: 360,
       __STEP__: 0.001,
     },
-    /*
     __T__: {
       __NAME__: "Texture",
       __MIN__: 0,
       __MAX__: 100,
       __STEP__: 0.1,
     },
-    */
   },
   modes: [
     {
       __KEY__: "light",
       activeColorIndex: 0,
       background: {
-        __L__: 0.873,
-        __C__: 0.0299,
-        __H__: 217.5,
+        __L__: 1,
+        __C__: 0.01726,
+        __H__: 45.298,
         __T__: 0,
       },
-      customStyles: "/* Add Custom Styles Here */",
       monos: {
         "black": {
           __LIGHTNESS__: 0,
@@ -117,7 +115,6 @@ const defaults = {
         __H__: 166.07,
         __T__: 0,
       },
-      customStyles: "/* Add Custom Styles Here */",
       monos: {
         "black": {
           __LIGHTNESS__: 0,
@@ -180,14 +177,6 @@ const defaults = {
     },
   ],
 };
-
-
-export function gCustomStyles(_, __, el) {
-  const mode = s.getActiveMode();
-  mode.customStyles = el.value;
-  b.info(mode);
-  b.trigger("updateCSS");
-}
 
 function generatePageVariables() {
   let variables = [];
@@ -272,6 +261,8 @@ export function initBackgroundSliders(_, __, el) {
   }
   b.trigger("updateCSS");
 }
+
+
 export function initBaseStyles() {
   const theStyles = ``;
   sheet.replaceSync(theStyles);
@@ -300,11 +291,6 @@ export function initColorSliders(_, __, el) {
   };
   el.appendChild(b.render("colorSliders", subs));
 }
-export function iCustomStyles(_, __, el) {
-  const mode = s.getActiveMode();
-  el.innerHTML = mode.customStyles;
-}
-
 export function initHueOffsetButtons(_, __, el) {
   for (let index = 0; index < (360 / s.data.hueRotation); index += 1) {
     const subs = {
@@ -344,7 +330,7 @@ initHueOffsetButtons
 initModeButtons
 initColorSliders
 iColorName
-iCustomStyles
+uCustomStyles
 `,
   );
 }
@@ -527,6 +513,12 @@ export async function setColorValue(_, sender, ___) {
 }
 
 
+export function sCustomStyles(_, __, el) {
+  b.trace("sCustomStyles");
+  s.data.customStyles = el.value;
+  b.trigger("updateCSS");
+}
+
 export async function setHueOffset(_, sender, el) {
   b.trace("setHueOffset");
   const mode = s.getActiveMode();
@@ -549,7 +541,7 @@ export async function sMode(_, sender, ___) {
   s.data.activeMode = sender.prop("key");
   setSwitches(s.data.activeMode);
   await b.savePageData("data", s.data);
-  b.trigger(`updateCSS`);
+  b.trigger(`updateCSS uCustomStyles`);
 }
 
 export async function setParam(_, sender, ___) {
@@ -627,7 +619,6 @@ export function updateCSS(_, __, el) {
   // TODO: Remove save page from everywhere
   // else and just do it here.
   b.savePageData("data", s.data);
-  b.trigger("iCustomStyles");
   const mode = s.getActiveMode();
   const variables = generatePageVariables();
   variables.forEach((vv) => {
@@ -651,7 +642,7 @@ ${makeSwitches("dark")}
 }
 `,
     makeClasses(),
-    mode.customStyles,
+    s.data.customStyles,
   ].join("\n");
 
   el.innerHTML = sheetParts;
@@ -692,6 +683,11 @@ export function uColorValue(_, __, el) {
     const v = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
     el.value = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
   }
+}
+
+export function uCustomStyles(_, __, el) {
+  b.trace("uCustomStyles");
+  el.innerHTML = s.data.customStyles;
 }
 
 export function uHueOffset(_, __, el) {
