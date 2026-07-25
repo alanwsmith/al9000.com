@@ -10,7 +10,6 @@ export async function htmlColors(_, __, el) {
         __NAME__: key,
       };
       el.appendChild(b.render("htmlColor", subs));
-      console.log(key);
     }
   }
 }

@@ -84,7 +84,6 @@ button{
 }
 
 .color-button {
-  font-weight: 900;
   width: 1.8rem;
 }
 
@@ -97,10 +96,11 @@ button{
 }
 
 .color-name {
-  padding-left: 
-    calc(var(--color-name-padding) * 1.8rem + 0.6rem);
-    height: 1.5rem;
+  padding-left: 0.2rem;
+  padding-block: 0.2rem;
   border-start-end-radius: 0.3rem;
+  border: 1px solid var(--ui-border);
+
 }
 
 .default-border-radius {
@@ -136,10 +136,15 @@ h3 {
 }
 
 .hue-offset-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hue-offset-buttons_v1 {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid red;
-  border-inline: 1px solid red;
+  border-bottom: 1px solid var(--ui-border);
+  border-inline: 1px solid var(--ui-border);
   border-end-start-radius: 0.4rem;
   border-end-end-radius: 0.4rem;
 }
@@ -157,6 +162,10 @@ h3 {
   background-color: var(--faded-info-color);
 }
 
+input[type=range]{
+  width: 100%
+}
+
 main {
   margin: 1.2rem;
 }
@@ -167,7 +176,7 @@ ol > :where(:not(:first-child)) {
 
 textarea {
   display: block;
-  width: 90vw;
+  width: 96%;
   height: 20rem;
   font-size: 0.6rem;
   margin-top: 2rem;
@@ -738,15 +747,28 @@ theme.</li>
     </div>
 
     <div class="border-1">
-        <h3>Background</h3>
-        <div class="background-sliders" data-r="initBackgroundSliders"></div>
+        <div data-r="initBackgroundSliders"></div>
     </div>
 
+
     <div class="border-1">
-        <div data-r="initColorNameButtons" class="color-buttons"></div>
-        <div data-r="uColorName" class="default-match-color bold color-name"></div>
-        <div data-r="initHueOffsetButtons" class="hue-offset-buttons"></div>
+        <div class="two-columns-left">
+            <div data-r="initColorNameButtons" class="color-buttons"></div>
+            <div data-r="initHueOffsetButtons uHueOffsetButtons" class="hue-offset-buttons"></div>
+        </div>
+        
         <div data-r="initColorSliders"></div>
+    </div>
+
+    <div>
+        <details>
+            <summary>Custom Styles</summary>
+            <textarea 
+                data-r="iCustomStyles gCustomStyles"
+                autocomplete="off"
+            ></textarea>
+            <button data-s="gCustomStyles">Save Styles</button>
+        </details>
     </div>
 </div>  </div>
 
@@ -755,13 +777,7 @@ theme.</li>
     <textarea data-r="updateCSS copyThis" autocomplete="off" data-key="css"></textarea>
     <button data-s="copyThis" data-key="css">Copy</button>
   </div>
-
-  <div>
-    <details><summary>JSON</summary>
-      <textarea data-r="updateJSON copyThis" autocomplete="off" data-key="json"></textarea>
-      <button data-s="copyThis" data-key="json">Copy</button>
-    </details>
-  </div>
+  
 </main>
 
 
@@ -777,7 +793,8 @@ theme.</li>
       
 <bitty-9 data-connect="&#x2f;color-picker&#x2f;bit.js"></bitty-9>
 <script type="text/html" data-template="backgroundSlider">
-    <label for="bg-__NAME__">__NAME__</label>
+    <label for="bg-__NAME__">Background __NAME__</label>
+    <div>
       <input 
         id="bg-__NAME__"
         type="range" 
@@ -789,14 +806,17 @@ theme.</li>
         step="__STEP__" 
         value="__VALUE__" 
         autocomplete="off" />
+    </div>
 </script>
 
 <script type="text/html" data-template="colorNameButton">
+  <div>
   <button 
-    class="default-__COLOR__-background-color default-match-color color-button" 
+    class="default-__COLOR__-color color-button" 
     data-s="sColor" 
     data-index="__INDEX__"
-  >__COLOR_LETTER__</button>
+  >__COLOR__</button>
+  </div>
 </script>
 
 <script type="text/html" data-template="colorSliders">
@@ -864,7 +884,7 @@ theme.</li>
     data-s="setHueOffset" 
     data-r="uHueOffset" 
     data-index="__INDEX__"
-  >set</button>
+  >hue</button>
 </script>
 
 <script type="text/html" data-template="modeButton">

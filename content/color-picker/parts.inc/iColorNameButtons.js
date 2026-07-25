@@ -7,6 +7,5 @@ export function initColorNameButtons(_, __, el) {
     };
     el.appendChild(b.render("colorNameButton", subs));
   });
-  b.trigger("uColorName");
+  //b.trigger("uColorName");
 }
-

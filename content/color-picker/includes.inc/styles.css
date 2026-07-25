@@ -55,7 +55,6 @@ button{
 }
 
 .color-button {
-  font-weight: 900;
   width: 1.8rem;
 }
 
@@ -68,10 +67,11 @@ button{
 }
 
 .color-name {
-  padding-left: 
-    calc(var(--color-name-padding) * 1.8rem + 0.6rem);
-    height: 1.5rem;
+  padding-left: 0.2rem;
+  padding-block: 0.2rem;
   border-start-end-radius: 0.3rem;
+  border: 1px solid var(--ui-border);
+
 }
 
 .default-border-radius {
@@ -107,10 +107,15 @@ h3 {
 }
 
 .hue-offset-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hue-offset-buttons_v1 {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid red;
-  border-inline: 1px solid red;
+  border-bottom: 1px solid var(--ui-border);
+  border-inline: 1px solid var(--ui-border);
   border-end-start-radius: 0.4rem;
   border-end-end-radius: 0.4rem;
 }
@@ -128,6 +133,10 @@ h3 {
   background-color: var(--faded-info-color);
 }
 
+input[type=range]{
+  width: 100%
+}
+
 main {
   margin: 1.2rem;
 }
@@ -138,7 +147,7 @@ ol > :where(:not(:first-child)) {
 
 textarea {
   display: block;
-  width: 90vw;
+  width: 96%;
   height: 20rem;
   font-size: 0.6rem;
   margin-top: 2rem;

@@ -15,12 +15,12 @@ id = "01/mw/nf/v9"
 
 == block head 
 <style>
-body {
-  color-scheme: dark light;
-}
-
 input {
   width: 100%;
+}
+
+textarea {
+  font-size: var(--small-font-size);
 }
 </style>
 
@@ -43,6 +43,7 @@ input {
 
 
 == for folder in folders_in_folder("/tools", full = true) 
+  == set input = "textarea"
   == set index_file = folder + "/index.html"
   == if exists(index_file)
   <bitty-9 data-connect="[@ folder @]/bit.js"></bitty-9>
