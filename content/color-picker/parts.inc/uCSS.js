@@ -1,5 +1,10 @@
 export function updateCSS(_, __, el) {
   b.trace("updateCSS");
+  // TODO: Remove save page from everywhere
+  // else and just do it here.
+  b.savePageData("data", s.data);
+  b.trigger("iCustomStyles");
+  const mode = s.getActiveMode();
   const variables = generatePageVariables();
   variables.forEach((vv) => {
     b.setCSS(vv[0], vv[1]);
@@ -22,19 +27,22 @@ ${makeSwitches("dark")}
 }
 `,
     makeClasses(),
+    mode.customStyles,
   ].join("\n");
 
   el.innerHTML = sheetParts;
 
   const combinedSheet = `${sheetParts}
   ${makeUiVars()}
-  ${makeUiClasses()}`;
+  ${makeUiClasses()}
+${mode.customStyles}
+`;
   sheet.replaceSync(combinedSheet);
   b.trigger(`
 uBackgroundValue 
 uColorButton 
-uColorName 
 uHueOffset
 uColorValue
 `);
+  //uColorName
 }

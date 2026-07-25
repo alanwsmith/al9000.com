@@ -14,19 +14,19 @@ const defaults = {
       __NAME__: "Lightness",
       __MIN__: 0,
       __MAX__: 1,
-      __STEP__: 0.001,
+      __STEP__: 0.0001,
     },
     __C__: {
       __NAME__: "Chroma",
       __MIN__: 0,
       __MAX__: 0.3,
-      __STEP__: 0.0001,
+      __STEP__: 0.00001,
     },
     __H__: {
       __NAME__: "Hue",
       __MIN__: 0,
       __MAX__: 360,
-      __STEP__: 0.01,
+      __STEP__: 0.001,
     },
     /*
     __T__: {
@@ -47,6 +47,7 @@ const defaults = {
         __H__: 217.5,
         __T__: 0,
       },
+      customStyles: "/* Add Custom Styles Here */",
       monos: {
         "black": {
           __LIGHTNESS__: 0,
@@ -116,6 +117,7 @@ const defaults = {
         __H__: 166.07,
         __T__: 0,
       },
+      customStyles: "/* Add Custom Styles Here */",
       monos: {
         "black": {
           __LIGHTNESS__: 0,
@@ -178,6 +180,15 @@ const defaults = {
     },
   ],
 };
+
+
+export function gCustomStyles(_, __, el) {
+  const mode = s.getActiveMode();
+  mode.customStyles = el.value;
+  b.info(mode);
+  b.trigger("updateCSS");
+}
+
 function generatePageVariables() {
   let variables = [];
   for (let mode of s.data.modes) {
@@ -275,9 +286,8 @@ export function initColorNameButtons(_, __, el) {
     };
     el.appendChild(b.render("colorNameButton", subs));
   });
-  b.trigger("uColorName");
+  //b.trigger("uColorName");
 }
-
 
 export function initColorSliders(_, __, el) {
   const mode = s.getActiveMode();
@@ -290,6 +300,11 @@ export function initColorSliders(_, __, el) {
   };
   el.appendChild(b.render("colorSliders", subs));
 }
+export function iCustomStyles(_, __, el) {
+  const mode = s.getActiveMode();
+  el.innerHTML = mode.customStyles;
+}
+
 export function initHueOffsetButtons(_, __, el) {
   for (let index = 0; index < (360 / s.data.hueRotation); index += 1) {
     const subs = {
@@ -329,6 +344,7 @@ initHueOffsetButtons
 initModeButtons
 initColorSliders
 iColorName
+iCustomStyles
 `,
   );
 }
@@ -431,7 +447,6 @@ function makeSwitches(mode) {
   return output.join("\n");
 }
 
-
 function makeUiClasses() {
   const activeMode = s.getActiveMode();
   const activeColorIndex = activeMode.activeColorIndex;
@@ -448,18 +463,12 @@ function makeUiClasses() {
 
   output.forEach((x) => {
     out2.push(
-      `${
-        x[0]
-      }.set-active { color: var(--default-match-color); background-color: ${
-        x[1]
-      }; }`,
+      `${x[0]}.set-active { font-weight: 900; color: ${x[1]}; }`,
     );
   });
 
   return out2.join("\n");
 }
-
-
 
 function makeUiVars() {
   const activeMode = s.getActiveMode();
@@ -615,6 +624,11 @@ export function uBackgroundValue(_, __, el) {
 
 export function updateCSS(_, __, el) {
   b.trace("updateCSS");
+  // TODO: Remove save page from everywhere
+  // else and just do it here.
+  b.savePageData("data", s.data);
+  b.trigger("iCustomStyles");
+  const mode = s.getActiveMode();
   const variables = generatePageVariables();
   variables.forEach((vv) => {
     b.setCSS(vv[0], vv[1]);
@@ -637,21 +651,24 @@ ${makeSwitches("dark")}
 }
 `,
     makeClasses(),
+    mode.customStyles,
   ].join("\n");
 
   el.innerHTML = sheetParts;
 
   const combinedSheet = `${sheetParts}
   ${makeUiVars()}
-  ${makeUiClasses()}`;
+  ${makeUiClasses()}
+${mode.customStyles}
+`;
   sheet.replaceSync(combinedSheet);
   b.trigger(`
 uBackgroundValue 
 uColorButton 
-uColorName 
 uHueOffset
 uColorValue
 `);
+  //uColorName
 }
 
 export function uColorName(_, __, el) {
@@ -660,10 +677,10 @@ export function uColorName(_, __, el) {
   s.data.colorNames.forEach((name) => {
     if (s.data.colorNames[mode.activeColorIndex] === name) {
       el.innerHTML = `${name} color`;
-      el.classList.add(`default-${name}-background-color`);
-      b.setCSS("--color-name-padding", mode.activeColorIndex);
+      el.classList.add(`default-${name}-color`);
+      // b.setCSS("--color-name-padding", mode.activeColorIndex);
     } else {
-      el.classList.remove(`default-${name}-background-color`);
+      el.classList.remove(`default-${name}-color`);
     }
   });
 }

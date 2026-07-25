@@ -4,10 +4,10 @@ export function uColorName(_, __, el) {
   s.data.colorNames.forEach((name) => {
     if (s.data.colorNames[mode.activeColorIndex] === name) {
       el.innerHTML = `${name} color`;
-      el.classList.add(`default-${name}-background-color`);
-      b.setCSS("--color-name-padding", mode.activeColorIndex);
+      el.classList.add(`default-${name}-color`);
+      // b.setCSS("--color-name-padding", mode.activeColorIndex);
     } else {
-      el.classList.remove(`default-${name}-background-color`);
+      el.classList.remove(`default-${name}-color`);
     }
   });
 }

@@ -43,6 +43,7 @@ input {
 
 
 == for folder in folders_in_folder("/tools", full = true) 
+  == set input = "textarea"
   == set index_file = folder + "/index.html"
   == if exists(index_file)
   <bitty-9 data-connect="[@ folder @]/bit.js"></bitty-9>

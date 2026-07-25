@@ -1,4 +1,3 @@
-
 function makeUiClasses() {
   const activeMode = s.getActiveMode();
   const activeColorIndex = activeMode.activeColorIndex;
@@ -15,15 +14,9 @@ function makeUiClasses() {
 
   output.forEach((x) => {
     out2.push(
-      `${
-        x[0]
-      }.set-active { color: var(--default-match-color); background-color: ${
-        x[1]
-      }; }`,
+      `${x[0]}.set-active { font-weight: 900; color: ${x[1]}; }`,
     );
   });
 
   return out2.join("\n");
 }
-
-

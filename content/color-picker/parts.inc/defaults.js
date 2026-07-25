@@ -10,19 +10,19 @@ const defaults = {
       __NAME__: "Lightness",
       __MIN__: 0,
       __MAX__: 1,
-      __STEP__: 0.001,
+      __STEP__: 0.0001,
     },
     __C__: {
       __NAME__: "Chroma",
       __MIN__: 0,
       __MAX__: 0.3,
-      __STEP__: 0.0001,
+      __STEP__: 0.00001,
     },
     __H__: {
       __NAME__: "Hue",
       __MIN__: 0,
       __MAX__: 360,
-      __STEP__: 0.01,
+      __STEP__: 0.001,
     },
     /*
     __T__: {
@@ -43,6 +43,7 @@ const defaults = {
         __H__: 217.5,
         __T__: 0,
       },
+      customStyles: "/* Add Custom Styles Here */",
       monos: {
         "black": {
           __LIGHTNESS__: 0,
@@ -112,6 +113,7 @@ const defaults = {
         __H__: 166.07,
         __T__: 0,
       },
+      customStyles: "/* Add Custom Styles Here */",
       monos: {
         "black": {
           __LIGHTNESS__: 0,
@@ -174,3 +176,4 @@ const defaults = {
     },
   ],
 };
+
