@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>CSS Sticky Sidebar</title>
+<meta property="og:title" content="CSS Sticky Sidebar" />
+<meta name="description" content="from alan w smith" />
+<meta property="og:description" content="from alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://al9000.com/templates.inc/includes/" />
+<meta property="og:image" content="https://al9000.com/images/open-graph/default.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
+
+
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+
+
+    
+
+    <style>
+:root {
+  --svg-bg-url: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20150%20150%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cfilter%20id%3D%22noiseFilter%22%3E%0A%20%20%20%20%20%20%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%223%22%20numOctaves%3D%222%22%20result%3D%22noise%22%3E%3C%2FfeTurbulence%3E%0A%20%20%20%20%20%20%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%20result%3D%22grayscale%22%3E%3C%2FfeColorMatrix%3E%0A%20%20%20%20%20%20%3CfeComponentTransfer%3E%0A%20%20%20%20%20%20%20%20%3CfeFuncA%20in%3D%22grayscale%22%20type%3D%22linear%22%20slope%3D%220.4%22%20result%3D%22updated%22%3E%3C%2FfeFuncA%3E%0A%20%20%20%20%20%20%3C%2FfeComponentTransfer%3E%0A%20%20%20%20%20%20%3CfeMerge%3E%0A%20%20%20%20%20%20%20%20%3CfeMergeNode%20in%3D%22noise%22%3E%3C%2FfeMergeNode%3E%0A%20%20%20%20%20%20%20%20%3CfeMergeNode%20in%3D%22updated%22%3E%3C%2FfeMergeNode%3E%0A%20%20%20%20%20%20%3C%2FfeMerge%3E%0A%20%20%20%20%3C%2Ffilter%3E%0A%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20opacity%3D%2225.4%25%22%20filter%3D%22url(%23noiseFilter)%22%3E%3C%2Frect%3E%0A%20%20%3C%2Fsvg%3E");
+  --light--default-background-color: oklch(0.9634 0.02097 105.642);
+  --light--default-base-color: oklch(0.1951 0.23 105.642);
+  --light--faded-base-color: oklch(0.1951 0.23 105.642 / 0.653);
+  --light--default-heading-color: oklch(0.165 0.18556 225.642);
+  --light--faded-heading-color: oklch(0.165 0.18556 225.642 / 0.18);
+  --light--default-info-color: oklch(0.5537 0.15458 225.642);
+  --light--faded-info-color: oklch(0.5537 0.15458 225.642 / 0.604);
+  --light--default-accent-color: oklch(0.4986 0.10843 165.642);
+  --light--faded-accent-color: oklch(0.4986 0.10843 165.642 / 0.28);
+  --light--default-warning-color: oklch(0.645 0.09691077318165202 345.642);
+  --light--faded-warning-color: oklch(0.645 0.09691077318165202 345.642 / 0.376);
+  --light--default-black-color: oklch(0 0 301.9078701095805);
+  --light--faded-black-color: oklch(0 0 301.9078701095805 / 0.46);
+  --light--default-white-color: oklch(1 0 301.9078701095805);
+  --light--faded-white-color: oklch(1 0 301.9078701095805 / 0.46);
+  --light--default-match-color: oklch(1 0 301.9078701095805);
+  --light--faded-match-color: oklch(1 0 301.9078701095805 / 0.46);
+  --light--default-reverse-color: oklch(0 0 301.9078701095805);
+  --light--faded-reverse-color: oklch(0 0 301.9078701095805 / 0.46);
+  --dark--default-background-color: oklch(0.2124 0.0298 254.092);
+  --dark--default-base-color: oklch(0.8747 0.04454 254.092);
+  --dark--faded-base-color: oklch(0.8747 0.04454 254.092 / 0.157);
+  --dark--default-heading-color: oklch(0.6705 0.12874 254.092);
+  --dark--faded-heading-color: oklch(0.6705 0.12874 254.092 / 0.308);
+  --dark--default-info-color: oklch(0.7299 0.07889 14.091999999999985);
+  --dark--faded-info-color: oklch(0.7299 0.07889 14.091999999999985 / 0.609);
+  --dark--default-accent-color: oklch(0.7338 0.06558 194.09199999999998);
+  --dark--faded-accent-color: oklch(0.7338 0.06558 194.09199999999998 / 0.567);
+  --dark--default-warning-color: oklch(0.4351 0.16022 74.09199999999998);
+  --dark--faded-warning-color: oklch(0.4351 0.16022 74.09199999999998 / 0.359);
+  --dark--default-black-color: oklch(0 0 232.79402489007663);
+  --dark--faded-black-color: oklch(0 0 232.79402489007663 / 0.46);
+  --dark--default-white-color: oklch(1 0 232.79402489007663);
+  --dark--faded-white-color: oklch(1 0 232.79402489007663 / 0.46);
+  --dark--default-match-color: oklch(0 0 232.79402489007663);
+  --dark--faded-match-color: oklch(0 0 232.79402489007663 / 0.46);
+  --dark--default-reverse-color: oklch(1 0 232.79402489007663);
+  --dark--faded-reverse-color: oklch(1 0 232.79402489007663 / 0.46);
+  --hc-light--default-background-color: oklch(1 0.06752 259.652);
+  --hc-light--default-base-color: oklch(0.0995 0.23 259.652);
+  --hc-light--faded-base-color: oklch(0.0995 0.23 259.652 / 0.242);
+  --hc-light--default-heading-color: oklch(0.6217704856122922 0.08831300417260277 319.652);
+  --hc-light--faded-heading-color: oklch(0.6217704856122922 0.08831300417260277 319.652 / 0.572);
+  --hc-light--default-info-color: oklch(0.5245 0.15006780734890438 259.652);
+  --hc-light--faded-info-color: oklch(0.5245 0.15006780734890438 259.652 / 0.437);
+  --hc-light--default-accent-color: oklch(0.3227 0.19753 19.651999999999987);
+  --hc-light--faded-accent-color: oklch(0.3227 0.19753 19.651999999999987 / 0.318);
+  --hc-light--default-warning-color: oklch(0.5586547900477358 0.169058911353704 199.65200000000004);
+  --hc-light--faded-warning-color: oklch(0.5586547900477358 0.169058911353704 199.65200000000004 / 0.34);
+  --hc-light--default-black-color: oklch(0 0 53.5090680592232);
+  --hc-light--faded-black-color: oklch(0 0 53.5090680592232 / 0.46);
+  --hc-light--default-white-color: oklch(1 0 53.5090680592232);
+  --hc-light--faded-white-color: oklch(1 0 53.5090680592232 / 0.46);
+  --hc-light--default-match-color: oklch(1 0 53.5090680592232);
+  --hc-light--faded-match-color: oklch(1 0 53.5090680592232 / 0.46);
+  --hc-light--default-reverse-color: oklch(0 0 53.5090680592232);
+  --hc-light--faded-reverse-color: oklch(0 0 53.5090680592232 / 0.46);
+  --hc-dark--default-background-color: oklch(0 0.20706934229967444 142);
+  --hc-dark--default-base-color: oklch(1 0.20411 82);
+  --hc-dark--faded-base-color: oklch(1 0.20411 82 / 0.385);
+  --hc-dark--default-heading-color: oklch(0.9552 0.09830629780740073 142);
+  --hc-dark--faded-heading-color: oklch(0.9552 0.09830629780740073 142 / 0.697);
+  --hc-dark--default-info-color: oklch(0.962 0.004698125519856717 262);
+  --hc-dark--faded-info-color: oklch(0.962 0.004698125519856717 262 / 0.628);
+  --hc-dark--default-accent-color: oklch(0.874 0.23 142);
+  --hc-dark--faded-accent-color: oklch(0.874 0.23 142 / 0.374);
+  --hc-dark--default-warning-color: oklch(0.6882 0.21203825105953206 22);
+  --hc-dark--faded-warning-color: oklch(0.6882 0.21203825105953206 22 / 0.418);
+  --hc-dark--default-black-color: oklch(0 0 78.02412821214362);
+  --hc-dark--faded-black-color: oklch(0 0 78.02412821214362 / 0.46);
+  --hc-dark--default-white-color: oklch(1 0 78.02412821214362);
+  --hc-dark--faded-white-color: oklch(1 0 78.02412821214362 / 0.46);
+  --hc-dark--default-match-color: oklch(0 0 78.02412821214362);
+  --hc-dark--faded-match-color: oklch(0 0 78.02412821214362 / 0.46);
+  --hc-dark--default-reverse-color: oklch(1 0 78.02412821214362);
+  --hc-dark--faded-reverse-color: oklch(1 0 78.02412821214362 / 0.46);
+  --highlight-1-color: oklch(from var(--default-accent-color) l c h);
+  --highlight-2-color: oklch(from var(--default-accent-color) l c calc(h + 60));
+  --highlight-3-color: oklch(from var(--default-accent-color) l c calc(h + 120));
+  --highlight-4-color: oklch(from var(--default-accent-color) l c calc(h + 180));
+  --highlight-5-color: oklch(from var(--default-info-color) l c h);
+  --highlight-6-color: oklch(from var(--default-info-color) l c calc(h + 60));
+  --highlight-7-color: oklch(from var(--default-info-color) l c calc(h + 120));
+  --highlight-8-color: oklch(from var(--default-info-color) l c calc(h + 180));
+}
+
+:root {
+  --default-background-color: var(--switch--background-color, var(--light--default-background-color));
+  --default-base-color: var(--switch--base-color, var(--light--default-base-color));
+  --faded-base-color: var(--switch--faded-base-color, var(--light--faded-base-color));
+  --default-heading-color: var(--switch--heading-color, var(--light--default-heading-color));
+  --faded-heading-color: var(--switch--faded-heading-color, var(--light--faded-heading-color));
+  --default-info-color: var(--switch--default-info-color, var(--light--default-info-color));
+  --faded-info-color: var(--switch--faded-info-color, var(--light--faded-info-color));
+  --default-accent-color: var(--switch--default-accent-color, var(--light--default-accent-color));
+  --faded-accent-color: var(--switch--faded-accent-color, var(--light--faded-accent-color));
+  --default-warning-color: var(--switch--warning-color, var(--light--default-warning-color));
+  --faded-warning-color: var(--switch--faded-warning-color, var(--light--faded-warning-color));
+  --default-black-color: var(--switch--black-color, var(--light--default-black-color));
+  --faded-black-color: var(--switch--faded-black-color, var(--light--faded-black-color));
+  --default-white-color: var(--switch--white-color, var(--light--default-white-color));
+  --faded-white-color: var(--switch--faded-white-color, var(--light--faded-white-color));
+  --default-match-color: var(--switch--match-color, var(--light--default-match-color));
+  --faded-match-color: var(--switch--faded-match-color, var(--light--faded-match-color));
+  --default-reverse-color: var(--switch--reverse-color, var(--light--default-reverse-color));
+  --faded-reverse-color: var(--switch--faded-reverse-color, var(--light--faded-reverse-color));
+}
+
+/* @media (prefers-color-scheme: dark) { */
+/*   :root { */
+/*     --default-background-color: var(--switch--background-color, var(--dark--default-background-color)); */
+/*     --default-base-color: var(--switch--base-color, var(--dark--default-base-color)); */
+/*     --faded-base-color: var(--switch--faded-base-color, var(--dark--faded-base-color)); */
+/*     --default-heading-color: var(--switch--heading-color, var(--dark--default-heading-color)); */
+/*     --faded-heading-color: var(--switch--faded-heading-color, var(--dark--faded-heading-color)); */
+/*     --default-info-color: var(--switch--default-info-color, var(--dark--default-info-color)); */
+/*     --faded-info-color: var(--switch--faded-info-color, var(--dark--faded-info-color)); */
+/*     --default-accent-color: var(--switch--default-accent-color, var(--dark--default-accent-color)); */
+/*     --faded-accent-color: var(--switch--faded-accent-color, var(--dark--faded-accent-color)); */
+/*     --default-warning-color: var(--switch--warning-color, var(--dark--default-warning-color)); */
+/*     --faded-warning-color: var(--switch--faded-warning-color, var(--dark--faded-warning-color)); */
+/*     --default-black-color: var(--switch--black-color, var(--dark--default-black-color)); */
+/*     --faded-black-color: var(--switch--faded-black-color, var(--dark--faded-black-color)); */
+/*     --default-white-color: var(--switch--white-color, var(--dark--default-white-color)); */
+/*     --faded-white-color: var(--switch--faded-white-color, var(--dark--faded-white-color)); */
+/*     --default-match-color: var(--switch--match-color, var(--dark--default-match-color)); */
+/*     --faded-match-color: var(--switch--faded-match-color, var(--dark--faded-match-color)); */
+/*     --default-reverse-color: var(--switch--reverse-color, var(--dark--default-reverse-color)); */
+/*     --faded-reverse-color: var(--switch--faded-reverse-color, var(--dark--faded-reverse-color)); */
+/*   } */
+/* } */
+
+.code, .text.html.basic .meta.tag.other.html, .text.html.basic .meta.tag.any.html, .text.html.basic .meta.tag.block.any, .text.html.basic .meta.tag.inline.any, .text.html.basic .meta.tag.structure.any.html, .text.html.basic .source.js.embedded.html, .punctuation.separator.key-value.html, .sublimelinter.outline.violation, .sublimelinter.gutter-mark, .variable.other.readwrite.js, .variable.other.object.js, .variable.other.constant.js { color: var(--highlight-1-color); }
+.variable, .entity.other.inherited-class, .entity.name.tag, .storage.type, .meta.brace.square, .punctuation.section.brackets, .entity.other.attribute-name.pseudo-element, .entity.other.attribute-name.tag.pseudo-element, .entity.other.attribute-name.pseudo-class, .entity.other.attribute-name.tag.pseudo-class, .support.function.perl, .meta.diff.range, .variable.language, .constant.numeric, .constant.other.reference.link.markdown { color: var(--highlight-2-color); }
+.string, .string.regexp, .string.quoted.double, .string.quoted.single, .constant.other.symbol.ruby, .meta.preprocessor.c.include .string.quoted.other.lt-gt.include.c, .meta.preprocessor.c.include .punctuation.definition.string.begin.c, .meta.preprocessor.c.include .punctuation.definition.string.end.c, .other.add, .text.tex.latex .constant.other.math.tex, .constant.other.general.math.tex, .constant.other.general.math.tex, .constant.character.math.tex, .keyword.control.label.latex, .text.tex.latex .constant.other.general.math.tex, .support.function.general.tex, .keyword.control.ref.latex, .markup.changed, .markup.underline.link.markdown, .meta.link.reference .constant.other.reference.link.markdown, .entity.name.filename.find-in-files { color: var(--highlight-3-color); }
+.storage.modifier, .meta.scope.for-in-loop.shell, .variable.other.loop.shell, .meta.scope.case-block.shell, .meta.scope.case-body.shell, .comment, .meta.documentation, .punctuation.definition.tag.html, .punctuation.definition.tag.begin, .punctuation.definition.tag.end, .meta.diff, .meta.diff.header, .sublimelinter.outline.illegal, .brackethighlighter.all, .constant.numeric.line-number.find-in-files, .sublimelinter.notes, .punctuation.definition.string, .sublimelinter.outline.warning { color: var(--highlight-4-color); }
+.keyword, .storage, .support, .support.type, .support.class, .punctuation.definition.variable, .support.function, .keyword.other.special-method.ruby, .support.function.be.latex, .storage.type.class.python, .storage.type.function.python, .storage.modifier.global.python, .storage.modifier.c\+\+, .markup.inserted, .markup.quote, .markup.inserted.git_gutter { color: var(--highlight-5-color); }
+.variable.function, .keyword.control.class, .entity.name, .entity.name.class, .entity.name.type.class, .entity.other.attribute-name, .entity.name.function, .constant, .constant.language, .meta.preprocessor, .support.constant.color, .invalid.deprecated.color.w3c-non-standard-color-name.scss, .entity.name.tag.css, .entity.name.tag.scss, .source.less .keyword.control.html.elements, .source.sass .keyword.control.untitled, .entity.other.attribute-name.class, .entity.other.attribute-name.id, .text.html.basic .entity.other.attribute-name.html, .meta.tag.xml .entity.other.attribute-name, .variable.other.constant.ruby, .meta.array .support.function.construct.php, .meta.group.braces.tex, .string.other.math.tex, .string.other.math.tex, .support.type.exception.python, .markup.heading, .punctuation.definition.heading.markdown, .sublimelinter.mark.warning, .markup.changed.git_gutter { color: var(--highlight-6-color); }
+.meta.import .keyword, .keyword.control.import, .keyword.control.import.from, .keyword.other.import, .keyword.control.at-rule.include, .keyword.control.at-rule.import, .entity.name.section, .constant.character, .constant.other, .support.type.exception, .keyword.other.special-method, .keyword.other.special-method.ruby, .entity.name.function.preprocessor.c, .meta.preprocessor.c.include, .meta.preprocessor.macro.c, .variable.parameter.function.latex, .support.function.section.latex { color: var(--highlight-7-color); }
+.keyword.operator.comparison, .keyword.operator.assignment, .keyword.operator.arithmetic, .meta.brace.round, .meta.brace.curly, .punctuation.section, .punctuation.section.block, .punctuation.definition.parameters, .punctuation.section.group, .meta.selector.css, .constant.character.escape, .support.function.construct, .keyword.other.new, .punctuation.separator.continuation, .other.package.exclude, .other.remove, .punctuation.section.group.tex, .punctuation.definition.arguments.begin.latex, .punctuation.definition.arguments.end.latex, .punctuation.definition.arguments.latex, .punctuation.definition.constant.math.tex, .punctuation.definition.string.begin.tex, .punctuation.definition.string.end.tex, .variable.parameter.definition.label.latex, .punctuation.definition.logical-expression.shell, .markup.deleted, .sublimelinter.mark.error, .markup.deleted.git_gutter { color: var(--highlight-8-color); }.code-block {
+  font-size: var(--small-font-size);
+  margin-block: var(--default-margin);
+  padding-block: var(--xlarge-padding);
+  padding-inline: var(--default-padding);
+  white-space: pre-wrap; 
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+  overscroll-behavior-x: auto;
+  /*
+  & .line-marker {
+    counter-increment: codeBlockLineNumberX;
+  }
+  */
+    /*
+  & .line-marker:before {
+      content: counter(codeBlockLineNumberX);
+    content: attr(data-line);
+      display: inline-block;
+      margin-left: -7.8ch;
+      padding-right: 1ch;
+      position: absolute;
+      text-align: end;
+      width: 7ch;
+      color: var(--default-accent-color);
+      border-right: var(--faded-accent-border);
+  }
+*/
+  > .title {
+    font-size: var(--default-font-size);
+    color: var(--default-heading-color);
+    font-weight: var(--xxxlarge-font-weight);
+    border-bottom: var(--faded-accent-border);
+    margin-bottom: var(--small-margin);
+  }
+}
+
+.code-block.numbers {
+  padding-left: 3.2rem;
+}
+
+.code-block.numbers .line-marker:before {
+  content: attr(data-line);
+  display: inline-block;
+  margin-left: -7.8ch;
+  padding-right: 1ch;
+  position: absolute;
+  text-align: end;
+  width: 7ch;
+  color: var(--default-accent-color);
+  border-right: var(--faded-accent-border);
+}
+
+.code-block.nowrap {
+  white-space: pre; 
+  overflow-wrap: normal;
+  overflow-x: scroll; 
+  overscroll-behavior-x: none;
+}
+footer.default {
+  color: var(--faded-accent-color);
+  margin-bottom: 1.8rem;
+  margin-inline: auto;
+  margin-top: 2.8rem;
+  width: var(--default-width);
+}
+
+footer.default div {
+  font-size: var(--small-font-size);
+  text-align: center;
+}:root {
+  --sidebar-width: 14rem;
+}
+
+.package-1 {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.content-1 {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-1 {
+  position: sticky;
+  flex: 0 0 var(--sidebar-width);
+  width: var(--sidebar-width);
+  top: 1.5rem;
+  max-height: calc(100vh - 3rem); 
+  overflow-y: auto;
+}
+
+
+
+body {
+  font-family: system-ui, sans-serif;
+  max-width: min(52rem, calc(100vw - 2rem));
+  margin-inline: auto;
+  background-color: var(--default-background-color);
+  color: var(--default-base-color);
+  font-size: var(--default-font-size);
+}
+
+.sidebar-1 {
+  background: #555;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.2rem;
+}
+
+.content-1 p { 
+  margin-bottom: 1rem; 
+}
+
+.sidebar-1 ul { 
+  padding: 0;
+  list-style: none;
+}
+.sidebar-1 li { 
+  min-height: 8rem;
+  padding: 0.5rem 0; 
+  border-bottom: 1px solid #d0d7d9; 
+}
+
+
+
+    </style>
+
+  </head>
+  <body>
+    <noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+
+    <div class="payload">
+      
+<header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> |
+    <a href="https://bittyjs.com/">bitty</a>
+  </div>
+
+
+</header>
+
+  <main>
+    <h1>CSS Sticky Sidebar</h1>
+    <div class="package-1">
+      <div class="content-1"><p>This is my reference for how to make a non-responsive
+layout with a content area and a sticky
+sidebar.</p>
+<p>The HTML looks like this:</p>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text html basic">  <span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag other html">main</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="2"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">h1</span><span class="punctuation definition tag end html">&gt;</span></span>CSS Sticky Sidebar<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">h1</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="3"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">package-1</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="4"></span>      <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">content-1</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="5"></span>        <span class="comment block html"><span class="punctuation definition comment begin html">&lt;!--</span> content goes here <span class="punctuation definition comment end html">--&gt;</span></span>
+<span class="line-marker" data-line="6"></span>      <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="7"></span>
+<span class="line-marker" data-line="8"></span>      <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">sidebar-1</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="9"></span>        <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">ul</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="10"></span>          <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>Item 1<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="11"></span>          <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>Item 2<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="12"></span>          <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>Item 3<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="13"></span>          <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>Item 4<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="14"></span>          <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>Item 5<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="15"></span>          <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>Item 6<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="16"></span>          <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>Item 7<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="17"></span>          <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>Item 8<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="18"></span>          <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>Item 9<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="19"></span>          <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>Item 10<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">li</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="20"></span>        <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">ul</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="21"></span>      <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="22"></span>    <span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
+<span class="line-marker" data-line="23"></span>  <span class="meta tag other html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag other html">main</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
+<p>The CSS Looks like this:</p>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source css"><span class="meta selector css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>root</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="2"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">sidebar-width</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">14<span class="keyword other unit css">rem</span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="3"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="4"></span>
+<span class="line-marker" data-line="5"></span><span class="meta selector css"><span class="entity other attribute-name class css"><span class="punctuation definition entity css">.</span>package-1</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="6"></span>  <span class="meta property-name css"><span class="support type property-name css">display</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">flex</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="7"></span>  <span class="meta property-name css"><span class="support type property-name css">align-items</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">flex-start</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="8"></span>  <span class="meta property-name css">gap</span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">1.5<span class="keyword other unit css">rem</span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="9"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="10"></span>
+<span class="line-marker" data-line="11"></span><span class="meta selector css"><span class="entity other attribute-name class css"><span class="punctuation definition entity css">.</span>content-1</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="12"></span>  <span class="meta property-name css"><span class="support type property-name css">flex</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">1</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="13"></span>  <span class="meta property-name css"><span class="support type property-name css">min-width</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">0</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="14"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="15"></span>
+<span class="line-marker" data-line="16"></span><span class="meta selector css"><span class="entity other attribute-name class css"><span class="punctuation definition entity css">.</span>sidebar-1</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="17"></span>  <span class="meta property-name css"><span class="support type property-name css">position</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">sticky</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="18"></span>  <span class="meta property-name css"><span class="support type property-name css">flex</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">0</span> <span class="constant numeric css">0</span> <span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">sidebar-width</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="19"></span>  <span class="meta property-name css"><span class="support type property-name css">width</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">sidebar-width</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="20"></span>  <span class="meta property-name css"><span class="support type property-name css">top</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">1.5<span class="keyword other unit css">rem</span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="21"></span>  <span class="meta property-name css"><span class="support type property-name css">max-height</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function calc css">calc</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="constant numeric css">100<span class="keyword other unit css">vh</span></span> <span class="keyword operator css">-</span> <span class="constant numeric css">3<span class="keyword other unit css">rem</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="22"></span>  <span class="meta property-name css"><span class="support type property-name css">overflow-y</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">auto</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="23"></span></span><span class="punctuation section property-list css">}</span></span></pre></div></div>
+<h2>Details</h2>
+<hr />
+<p>Flexbox makes child elements the same height
+by default. That would mean the sticky
+sidebar would take up the same height as
+the content which would end up with
+a lot of empty space at the end and
+prevent the sticky feather from kicking
+in. Setting <code>align-items</code> to
+<code>flex-start</code> adjusts the behavior of
+child elements so they only
+take up as much vertical space as
+they need.</p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="7"></span>  <span class="meta property-name css"><span class="support type property-name css">align-items</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">flex-start</span></span><span class="punctuation terminator rule css">;</span></pre></div></div>
+<hr />
+<p>The main content area is set up
+with <code>flex: 1</code> so that it changes
+size dynamically based on how
+much space is available after
+accounting for the sidebar.
+The <code>min-width: 0;</code> line
+prevents issues with content
+that would otherwise overflow
+the content area.</p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="11"></span><span class="meta selector css"><span class="entity other attribute-name class css"><span class="punctuation definition entity css">.</span>content-1</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="12"></span>  <span class="meta property-name css"><span class="support type property-name css">flex</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">1</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="13"></span>  <span class="meta property-name css"><span class="support type property-name css">min-width</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">0</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="14"></span></span><span class="punctuation section property-list css">}</span></pre></div></div>
+<hr />
+<p>The CSS for the sidebar breaks down like
+this:</p>
+
+
+<ul>
+  <li>
+    <p>Set the sidebar to be sticky in the viewport.</p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="17"></span>  <span class="meta property-name css"><span class="support type property-name css">position</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">sticky</span></span><span class="punctuation terminator rule css">;</span></pre></div></div>  </li>
+
+
+  <li>
+    <p>
+      Give it a fixed width.
+    </p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="18"></span>  <span class="meta property-name css"><span class="support type property-name css">flex</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">0</span> <span class="constant numeric css">0</span> <span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">sidebar-width</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="19"></span>  <span class="meta property-name css"><span class="support type property-name css">width</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">sidebar-width</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span></pre></div></div>  </li>
+
+  <li>
+    <p>
+      Use `top` to give it some padding when
+      it hits the top of the page. 
+    </p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="20"></span>  <span class="meta property-name css"><span class="support type property-name css">top</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">1.5<span class="keyword other unit css">rem</span></span></span><span class="punctuation terminator rule css">;</span></pre></div></div>  </li>
+  <li>
+    <p>
+      Set the max hight of the sidebar to a little
+      less than the viewport height and set
+      the overflow so it scrolls internally
+      if the content exceeds the height.
+    </p>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="21"></span>  <span class="meta property-name css"><span class="support type property-name css">max-height</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function calc css">calc</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="constant numeric css">100<span class="keyword other unit css">vh</span></span> <span class="keyword operator css">-</span> <span class="constant numeric css">3<span class="keyword other unit css">rem</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="22"></span>  <span class="meta property-name css"><span class="support type property-name css">overflow-y</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">auto</span></span><span class="punctuation terminator rule css">;</span></pre></div></div>  </li>
+
+</ul>
+
+
+<h2>Outro</h2>
+<p>This isn't a responsive design. If you
+squish it onto a phone it'll just
+squish instead of reorienting itself.
+I'm fine with that. It's purpose is
+to use with tools designed for a
+full size screen.</p>
+<p>As with lots of things, this got
+way easier to do as CSS continued
+to improve. We live in the future,
+and some parts of it are very nice.</p>
+<p>-a</p>
+<h2>Endnotes</h2>
+<ul>
+<li>
+<p>The styles above provide the core layout.
+There's a few ancillary styles that make
+it look nicer. They also add a lot of
+space to the sidebar items to give
+it a better shot of needing to scroll.
+The extra styles look like this:</p>
+</li>
+</ul>
+<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="source css"><span class="meta selector css"><span class="entity name tag css">body</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="2"></span>  <span class="meta property-name css"><span class="support type property-name css">font-family</span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant font-name css">system-ui</span><span class="punctuation separator css">,</span> <span class="support constant font-name css">sans-serif</span></span><span class="punctuation terminator rule css">;</span></span>
+<span class="line-marker" data-line="3"></span>  <span class="meta property-name css"><span class="support type property-name css">max-width</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css">min(<span class="constant numeric css">52<span class="keyword other unit css">rem</span></span>, <span class="meta function-call css"><span class="support function calc css">calc</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="constant numeric css">100<span class="keyword other unit css">vw</span></span> <span class="keyword operator css">-</span> <span class="constant numeric css">2<span class="keyword other unit css">rem</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span>);
+<span class="line-marker" data-line="4"></span>  <span class="meta property-name css"><span class="support type property-name css">margin</span>-inline</span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">auto</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="5"></span>  <span class="meta property-name css"><span class="support type property-name css">background-color</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">default-background-color</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="6"></span>  <span class="meta property-name css"><span class="support type property-name css">color</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">default-base-color</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="7"></span>  <span class="meta property-name css"><span class="support type property-name css">font-size</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">default-font-size</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="8"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="9"></span>
+<span class="line-marker" data-line="10"></span><span class="meta selector css"><span class="entity other attribute-name class css"><span class="punctuation definition entity css">.</span>sidebar-1</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
+<span class="line-marker" data-line="11"></span>  <span class="meta property-name css"><span class="support type property-name css">background</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant other color rgb-value css"><span class="punctuation definition constant css">#</span>555</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="12"></span>  <span class="meta property-name css"><span class="support type property-name css">padding</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">1<span class="keyword other unit css">rem</span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="13"></span>  <span class="meta property-name css"><span class="support type property-name css">border-radius</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">8<span class="keyword other unit css">px</span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="14"></span>  <span class="meta property-name css"><span class="support type property-name css">margin-top</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">1.2<span class="keyword other unit css">rem</span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="15"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="16"></span>
+<span class="line-marker" data-line="17"></span><span class="meta selector css"><span class="entity other attribute-name class css"><span class="punctuation definition entity css">.</span>content-1</span> <span class="entity name tag css">p</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span> 
+<span class="line-marker" data-line="18"></span>  <span class="meta property-name css"><span class="support type property-name css">margin-bottom</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">1<span class="keyword other unit css">rem</span></span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="19"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="20"></span>
+<span class="line-marker" data-line="21"></span><span class="meta selector css"><span class="entity other attribute-name class css"><span class="punctuation definition entity css">.</span>sidebar-1</span> <span class="entity name tag css">ul</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span> 
+<span class="line-marker" data-line="22"></span>  <span class="meta property-name css"><span class="support type property-name css">padding</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">0</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="23"></span>  <span class="meta property-name css"><span class="support type property-name css">list-style</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="24"></span></span><span class="punctuation section property-list css">}</span>
+<span class="line-marker" data-line="25"></span><span class="meta selector css"><span class="entity other attribute-name class css"><span class="punctuation definition entity css">.</span>sidebar-1</span> <span class="entity name tag css">li</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span> 
+<span class="line-marker" data-line="26"></span>  <span class="meta property-name css"><span class="support type property-name css">min-height</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">8<span class="keyword other unit css">rem</span></span></span><span class="punctuation terminator rule css">;</span>
+<span class="line-marker" data-line="27"></span>  <span class="meta property-name css"><span class="support type property-name css">padding</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">0.5<span class="keyword other unit css">rem</span></span> <span class="constant numeric css">0</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="28"></span>  <span class="meta property-name css"><span class="support type property-name css">border-bottom</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="constant numeric css">1<span class="keyword other unit css">px</span></span> <span class="support constant property-value css">solid</span> <span class="constant other color rgb-value css"><span class="punctuation definition constant css">#</span>d0d7d9</span></span><span class="punctuation terminator rule css">;</span> 
+<span class="line-marker" data-line="29"></span></span><span class="punctuation section property-list css">}</span></span></pre></div></div>
+      </div>
+
+      <div class="sidebar-1">
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+          <li>Item 5</li>
+          <li>Item 6</li>
+          <li>Item 7</li>
+          <li>Item 8</li>
+          <li>Item 9</li>
+          <li>Item 10</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+<footer class="default">
+  <div>
+    from <a href="https://bsky.app/profile/alanwsmith.com">alan w smith</a>
+  </div>
+  <div>
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+</footer>
+
+
+
+
+    </div>
+
+    <div class="template" hidden>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <bitty-9 data-connect="/bits/dev-test.js"></bitty-9>
+      <script type="module" src="/bits/components.js"></script>
+      
+    </div>
+  </body>
+</html>

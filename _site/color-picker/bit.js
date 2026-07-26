@@ -1,3 +1,21 @@
+export function blockBuilderInit(_, __, el) {
+  const textOptions = [
+    b.render("blockBuilderOption", { __KEY__: "none" }),
+    ...s.data.colorTypes.map((colorType) => {
+      return s.data.colorNames.map((colorName) => {
+        const subs = {
+          __KEY__: `${colorType}-${colorName}`,
+        };
+        return b.render("blockBuilderOption", subs);
+      });
+    }).flat(),
+  ];
+  const subs = {
+    __BLOCK_BUILDER_OPTIONS__: textOptions,
+  };
+  el.replaceChildren(b.render("blockBuilder", subs));
+}
+
 export async function copyThis(_, sender, el) {
   await b.quickCopy(el, sender);
 }
@@ -6,8 +24,15 @@ const defaults = {
   customStyles: "",
   baseCSS: `
 :root {
+  color-scheme: var(--color-scheme);
+}
 
-
+body { 
+  background-color: var(--background-color);
+  background-image: var(--background-image);
+  background-repeat: repeat;
+  background-size: 150px 150px;
+  color: var(--default-base-color);
 }
 `,
   logLevel: "DEBUG",
@@ -16,6 +41,14 @@ const defaults = {
   colorNames: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
+  monoMap: {
+    "faded": "__FADED__",
+    "faint": "__FAINT__",
+  },
+  monoSliders: [
+    { key: "faded", name: "Faded", token: "__FADED__" },
+    { key: "faint", name: "Faint", token: "__FAINT__" },
+  ],
   config: {
     __L__: {
       __NAME__: "Lightness",
@@ -46,11 +79,12 @@ const defaults = {
     {
       __KEY__: "light",
       activeColorIndex: 0,
+      activeMonoKey: "black",
       background: {
         __L__: 1,
         __C__: 0.01726,
         __H__: 45.298,
-        __T__: 0,
+        __T__: 45,
       },
       monos: {
         "black": {
@@ -78,7 +112,7 @@ const defaults = {
         {
           __L__: 0.3,
           __C__: 0.12,
-          __H_OFFSET__: 0,
+          __H_OFFSET__: 4,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
@@ -115,6 +149,7 @@ const defaults = {
     {
       __KEY__: "dark",
       activeColorIndex: 0,
+      activeMonoKey: "black",
       background: {
         __L__: 0.138,
         __C__: 0.12,
@@ -183,6 +218,28 @@ const defaults = {
     },
   ],
 };
+
+function generateDefaultBlocks() {
+  s.data.blocks = {};
+  s.data.colorTypes.forEach((colorType) => {
+    s.data.blocks[colorType] = {};
+    s.data.colorNames.forEach((colorName) => {
+      s.data.blocks[colorType][colorName] = {
+        text: ["default", "base"],
+        background: [colorType, colorName],
+        border: [colorType, colorName],
+      };
+    });
+    s.data.monoNames.forEach((colorName) => {
+      s.data.blocks[colorType][colorName] = {
+        text: ["default", "base"],
+        background: [colorType, colorName],
+        border: [colorType, colorName],
+      };
+    });
+  });
+  b.info(s.data.blocks);
+}
 
 function generatePageVariables() {
   let variables = [];
@@ -323,12 +380,16 @@ export function initModeButtons(_, __, el) {
 }
 
 export async function init() {
-  // b.setLogLevel("TRACE");
+  b.setLogLevel("DEBUG");
   // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
+  if (!s.data.blocks) {
+    generateDefaultBlocks();
+  }
   b.setLogLevel(s.data.logLevel);
   b.trigger(
     `
+monoBoxInit
 initBaseStyles 
 initBackgroundSliders 
 initColorNameButtons 
@@ -337,6 +398,7 @@ initModeButtons
 initColorSliders
 iColorName
 uCustomStyles
+blockBuilderInit
 `,
   );
 }
@@ -490,6 +552,91 @@ function makeUiVars() {
   return `:root { ${out2.join("\n")}}`;
 }
 
+export function monoBoxInit(_, __, el) {
+  b.trace("monoBoxInit");
+  const mode = s.getActiveMode();
+  const colors = s.data.monoNames.map((color) => {
+    const classes = ["mono-button"];
+    if (mode.activeMonoKey === color) {
+      classes.push("active");
+    }
+    const subs = {
+      __COLOR__: color,
+      __KEY__: color,
+      __CLASSES__: classes.join(" "),
+    };
+    return b.render("monoColor", subs);
+  });
+
+  const sliders = s.data.monoSliders.map((slider) => {
+    const value = mode.monos[mode.activeMonoKey][slider.token];
+    const subs = {
+      __NAME__: slider.name,
+      __KEY__: slider.key,
+      __MIN__: s.data.config.__L__.__MIN__,
+      __MAX__: s.data.config.__L__.__MAX__,
+      __STEP__: s.data.config.__L__.__STEP__,
+      __VALUE__: value,
+    };
+    return b.render("monoSlider", subs);
+  });
+
+  const subs = {
+    __COLORS__: colors,
+    __SLIDERS__: sliders,
+  };
+
+  el.replaceChildren(
+    b.render("monoBox", subs),
+  );
+}
+
+export function monoBoxSet() {}
+
+export function monoBoxUpdate() {}
+
+export function monoColorSet(_, sender, ___) {
+  const mode = s.getActiveMode();
+  mode.activeMonoKey = sender.prop("key");
+  b.savePageData("data", s.data);
+  b.trigger("monoColorUpdate monoSliderUpdate");
+}
+
+export function monoColorUpdate(_, __, el) {
+  const mode = s.getActiveMode();
+  if (el.prop("key") === mode.activeMonoKey) {
+    el.classList.add("active");
+  } else {
+    el.classList.remove("active");
+  }
+}
+
+export async function monoSliderSet(_, sender, ___) {
+  await requestAnimationFrame(async () => {
+    const mode = s.getActiveMode();
+    const monoKey = mode.activeMonoKey;
+    const mono = mode.monos[monoKey];
+    const token = s.data.monoMap[sender.prop("key")];
+    mono[token] = sender.valueAsFloat();
+    await b.savePageData("data", s.data);
+    b.trigger("updateCSS");
+  });
+}
+
+export async function monoSliderUpdate(_, __, el) {
+  b.trace("monoSliderUpdate");
+  const mode = s.getActiveMode();
+
+  // this is a gross way to get the
+  // keys but it works until everything
+  // can be refactored
+  const value = mode.monos[mode.activeMonoKey][s.data.monoMap[el.prop("key")]];
+  // b.debug(value);
+  // const x = s.data.monoMap[el.prop("key")];
+  // b.info(x);
+  el.value = value;
+}
+
 export async function resetDefaults() {
   await b.clearPageData();
   location.reload();
@@ -617,20 +764,69 @@ export function uBackgroundValue(_, __, el) {
   el.value = mode.background[`${el.prop("key")}`];
 }
 
+let working = {};
+
+export async function updateCSSx(_, __, el) {
+  s.svg = encodeURIComponent(
+    b.render("mainSVG", {
+      __OPACITY__: `${s.data.o}%`,
+    }).outerHTML,
+  )
+    .replace(/'/g, "%27")
+    .replace(/"/g, "%22");
+  const cssURL = `url("data:image/svg+xml,${s.svg}")`;
+  b.setCSS(
+    `--svg-bg-url`,
+    `url("data:image/svg+xml,${s.svg}")`,
+  );
+  const subs = {
+    __l__: s.data.l,
+    __c__: s.data.c,
+    __h__: s.data.h,
+    __url__: cssURL,
+  };
+
+  el.replaceChildren(
+    b.render("mainCSS", subs),
+  );
+}
+
 export function updateCSS(_, __, el) {
   b.trace("updateCSS");
+
   // TODO: Remove save page from everywhere
   // else and just do it here.
   b.savePageData("data", s.data);
   const mode = s.getActiveMode();
+
+  let bgImage = "none";
+  if (mode.background.__T__ > 0) {
+    const svg = encodeURIComponent(
+      b.render("mainSVG", {
+        __OPACITY__: `${mode.background.__T__}%`,
+      }).outerHTML,
+    )
+      .replace(/'/g, "%27")
+      .replace(/"/g, "%22");
+
+    bgImage = `url("data:image/svg+xml,${svg}")`;
+    // const cssURL = `url("data:image/svg+xml,${svg}")`;
+    // b.setCSS(
+    //   `--background-image`,
+    //   `url("data:image/svg+xml,${svg}")`,
+    // );
+  }
+
   const variables = generatePageVariables();
   variables.forEach((vv) => {
     b.setCSS(vv[0], vv[1]);
   });
 
-  const sheetParts = [
-    `:root {
-color-scheme: var(--color-scheme);
+  working.sheetParts = [
+    s.data.baseCSS,
+    `
+:root { 
+--background-image: ${bgImage};
 }
 `,
     makePageVars(variables),
@@ -648,9 +844,9 @@ ${makeSwitches("dark")}
     s.data.customStyles,
   ].join("\n");
 
-  el.innerHTML = sheetParts;
+  el.innerHTML = working.sheetParts;
 
-  const combinedSheet = `${sheetParts}
+  const combinedSheet = `${working.sheetParts}
   ${makeUiVars()}
   ${makeUiClasses()}
 ${mode.customStyles}
@@ -661,6 +857,7 @@ uBackgroundValue
 uColorButton 
 uHueOffset
 uColorValue
+monoColorUpdate
 `);
   //uColorName
 }

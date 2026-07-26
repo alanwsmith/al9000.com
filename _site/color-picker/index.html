@@ -26,6 +26,7 @@
 
 
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
 <style>
 *, 
 *::before, 
@@ -35,13 +36,6 @@
 
 * {
   margin: 0;
-}
-
-body { 
-  background-image: none; 
-  background-color: var(--background-color);
-  font-family: system-ui;
-  color: var(--default-base-color);
 }
 
 a {
@@ -158,10 +152,6 @@ h3 {
   border-end-end-radius: 0.4rem;
 }
 
-.info-block {
-  background-color: var(--faded-info-color);
-}
-
 input[type=range]{
   width: 100%
 }
@@ -197,17 +187,12 @@ textarea {
 
 ul > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
-}
+}</style>
 
-.warning-block {
-  border: 1px solid var(--faded-reverse-color);
-  background-color: var(--faded-warning-color);
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  color: var(--default-black-color);
-}
-</style>
+
     
+
+
   </head>
   <body>
     <noscript>
@@ -232,7 +217,7 @@ ul > :where(:not(:first-child)) {
     a work in progress. 
   </p>
 </div>
-  <div class="border-1 info-block">
+  <div class="">
     <button data-s="resetDefaults">Reset to Defaults</button>
     <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
     <button data-s="setLogLevel" data-key="WARN">WARN</button>
@@ -246,6 +231,12 @@ ul > :where(:not(:first-child)) {
 <p>Welcome to Color Picker 9000. The
 tool I use to create the
 stylesheets for <a href="/">my site</a>.</p>
+
+    <div data-r="blockBuilderInit">
+      Initializing block builder.
+    </div>
+
+
 <p>This page is a live preview of the
 generated styles. Play around
 with the controls to get things
@@ -268,12 +259,10 @@ default, <span class="faded-base-color">faded</span>,
 and <span class="faint-base-color">faint</span>.
 The swatches further down the page
 have previews of all of them.</p>
-<p class="faded-info-background-color default-padding default-border-radius">
+<p>
         The tool outputs
         CSS variables with OKLCH values. 
-        They can be used anywhere a colors can 
-        (e.g. the background of this paragraph
-        which uses the <strong>--faded-info-color</strong>).
+        They can be used anywhere a colors can. 
       </p>
 <p>The example swatches provide previews of
 background using the colors as well.</p>
@@ -801,6 +790,10 @@ ratios.</p>
         <div data-r="initColorSliders"></div>
     </div>
 
+
+    <div data-r="monoBoxInit" class="mono-box"></div>
+    <div class="faint-black-color">asdf</div>
+
     <div>
         <details>
             <summary>Custom Page Styles</summary>
@@ -818,6 +811,8 @@ ratios.</p>
     <textarea data-r="updateCSS copyThis" autocomplete="off" data-key="css"></textarea>
     <button data-s="copyThis" data-key="css">Copy</button>
   </div>
+
+
   
 </main>
 
@@ -928,11 +923,85 @@ ratios.</p>
   >hue</button>
 </script>
 
+
+
 <script type="text/html" data-template="modeButton">
     <label>
       <input data-s="sMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
       __KEY__ mode
     </label>
-</script>    </div>
+</script>
+
+<script type="image/svg" data-template="mainSVG">
+  <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="3" numOctaves="2" result="noise" />
+      <feColorMatrix type="saturate" values="0" result="grayscale" />
+      <feComponentTransfer>
+        <feFuncA in="grayscale" type="linear" slope="0.4" result="updated" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="noise" />
+        <feMergeNode in="updated" />
+      </feMerge>
+    </filter>
+    <rect width="100%" height="100%" opacity="__OPACITY__" filter="url(#noiseFilter)"/>
+  </svg>
+</script>
+
+
+<script type="text/html" data-template="blockBuilder">
+<div>Text</div>
+<div>
+  <select data-s="blockBuilderTextSet">
+    __BLOCK_BUILDER_OPTIONS__
+  </select>
+</div>
+<div>Background</div>
+<div>
+  <select data-s="blockBuilderBackgroundSet">
+    __BLOCK_BUILDER_OPTIONS__
+  </select>
+</div>
+<div>Border</div>
+<div>
+  <select data-s="blockBuilderBorderSet">
+    __BLOCK_BUILDER_OPTIONS__
+  </select>
+</div>
+</script><script type="text/html" data-template="blockBuilderOption">
+<option value="__KEY__">__KEY__</option>
+</script>
+<script type="text/html" data-template="monoBox">
+  <div>
+  __COLORS__
+  </div>
+  <div>
+    __SLIDERS__
+  </div>
+</script><script type="text/html" data-template="monoColor">
+  <button 
+    class="__CLASSES__"
+    data-r="monoColorInit monoColorUpdate" 
+    data-s="monoColorSet"
+    data-key="__KEY__"
+  >__COLOR__</button>
+</script><script type="text/html" data-template="monoSlider">
+  <label for="mono-slider-__KEY__">
+    __NAME__
+  </label>
+  <input 
+    id="mono-slider-__KEY__"
+    type="range" 
+    data-s="monoSliderSet" 
+    data-r="monoSliderUpdate" 
+    data-key="__KEY__" 
+    min="__MIN__" 
+    max="__MAX__" 
+    step="__STEP__" 
+    value="__VALUE__" 
+    autocomplete="off" />
+</script>
+    </div>
   </body>
 </html>

@@ -2,8 +2,15 @@ const defaults = {
   customStyles: "",
   baseCSS: `
 :root {
+  color-scheme: var(--color-scheme);
+}
 
-
+body { 
+  background-color: var(--background-color);
+  background-image: var(--background-image);
+  background-repeat: repeat;
+  background-size: 150px 150px;
+  color: var(--default-base-color);
 }
 `,
   logLevel: "DEBUG",
@@ -12,6 +19,14 @@ const defaults = {
   colorNames: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
+  monoMap: {
+    "faded": "__FADED__",
+    "faint": "__FAINT__",
+  },
+  monoSliders: [
+    { key: "faded", name: "Faded", token: "__FADED__" },
+    { key: "faint", name: "Faint", token: "__FAINT__" },
+  ],
   config: {
     __L__: {
       __NAME__: "Lightness",
@@ -42,11 +57,12 @@ const defaults = {
     {
       __KEY__: "light",
       activeColorIndex: 0,
+      activeMonoKey: "black",
       background: {
         __L__: 1,
         __C__: 0.01726,
         __H__: 45.298,
-        __T__: 0,
+        __T__: 45,
       },
       monos: {
         "black": {
@@ -74,7 +90,7 @@ const defaults = {
         {
           __L__: 0.3,
           __C__: 0.12,
-          __H_OFFSET__: 0,
+          __H_OFFSET__: 4,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
@@ -111,6 +127,7 @@ const defaults = {
     {
       __KEY__: "dark",
       activeColorIndex: 0,
+      activeMonoKey: "black",
       background: {
         __L__: 0.138,
         __C__: 0.12,

@@ -1,0 +1,12 @@
+footer.default {
+  color: var(--faded-accent-color);
+  margin-bottom: 1.8rem;
+  margin-inline: auto;
+  margin-top: 2.8rem;
+  width: var(--default-width);
+}
+
+footer.default div {
+  font-size: var(--small-font-size);
+  text-align: center;
+}

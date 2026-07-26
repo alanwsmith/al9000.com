@@ -1,0 +1,148 @@
+== filter md
+This is my reference for how to make a non-responsive
+layout with a content area and a sticky
+sidebar. 
+
+The HTML looks like this:
+
+== filter highlight("html")
+== include template_dir("/main-top.html")
+
+        <!-- content goes here -->
+== include template_dir("/main-bottom.html")
+== endfilter
+
+
+The CSS Looks like this:
+
+== filter highlight("css")
+== include template_dir("/layout-styles.css")
+== endfilter
+
+
+## Details 
+
+---
+
+Flexbox makes child elements the same height
+by default. That would mean the sticky
+sidebar would take up the same height as
+the content which would end up with
+a lot of empty space at the end and
+prevent the sticky feather from kicking
+in. Setting `align-items` to 
+`flex-start` adjusts the behavior of
+child elements so they only 
+take up as much vertical space as
+they need. 
+
+
+== filter highlight("css", selection="7-7", class="code-block no-copy numbers")
+== include template_dir("/layout-styles.css")
+== endfilter
+
+
+---
+
+
+The main content area is set up
+with `flex: 1` so that it changes
+size dynamically based on how
+much space is available after
+accounting for the sidebar. 
+The `min-width: 0;` line
+prevents issues with content
+that would otherwise overflow
+the content area. 
+
+== filter highlight("css", selection="11-14", class="code-block no-copy numbers")
+== include template_dir("/layout-styles.css")
+== endfilter
+
+
+---
+
+The CSS for the sidebar breaks down like
+this:
+
+== endfilter
+
+
+<ul>
+  <li>
+    <p>Set the sidebar to be sticky in the viewport.</p>
+== filter highlight("css", selection="17-17", class="code-block no-copy numbers")
+== include template_dir("/layout-styles.css")
+== endfilter
+  </li>
+
+
+  <li>
+    <p>
+      Give it a fixed width.
+    </p>
+== filter highlight("css", selection="18-19", class="code-block no-copy numbers")
+== include template_dir("/layout-styles.css")
+== endfilter
+  </li>
+
+  <li>
+    <p>
+      Use `top` to give it some padding when
+      it hits the top of the page. 
+    </p>
+== filter highlight("css", selection="20-20", class="code-block no-copy numbers")
+== include template_dir("/layout-styles.css")
+== endfilter
+  </li>
+  <li>
+    <p>
+      Set the max hight of the sidebar to a little
+      less than the viewport height and set
+      the overflow so it scrolls internally
+      if the content exceeds the height.
+    </p>
+== filter highlight("css", selection="21-22", class="code-block no-copy numbers")
+== include template_dir("/layout-styles.css")
+== endfilter
+  </li>
+
+</ul>
+
+
+== filter md
+## Outro
+
+This isn't a responsive design. If you
+squish it onto a phone it'll just
+squish instead of reorienting itself. 
+I'm fine with that. It's purpose is
+to use with tools designed for a
+full size screen. 
+
+As with lots of things, this got
+way easier to do as CSS continued
+to improve. We live in the future,
+and some parts of it are very nice.
+
+-a
+
+
+## Endnotes
+
+- The styles above provide the core layout.
+There's a few ancillary styles that make 
+it look nicer. They also add a lot of
+space to the sidebar items to give
+it a better shot of needing to scroll. 
+The extra styles look like this:
+
+
+  == filter highlight("css", class="code-block no-copy numbers")
+== include template_dir("/ui-styles.css")
+== endfilter
+
+
+
+
+== endfilter

@@ -696,7 +696,6 @@ code {
   font-family: monospace;
 }
 
-
 .code-block {
   font-size: var(--small-font-size);
   margin-block: var(--default-margin);
@@ -756,7 +755,6 @@ code {
   overflow-x: scroll; 
   overscroll-behavior-x: none;
 }
-
 
 .command-block {
   background-color: var(--default-match-color);
@@ -862,16 +860,19 @@ details > :where(:not(summary)) {
   padding: var(--default-padding);
 }
 
-footer {
+
+footer.default {
   color: var(--faded-accent-color);
-  font-size: var(--small-font);
-  margin-bottom: var(--default-margin);
+  margin-bottom: 1.8rem;
   margin-inline: auto;
-  margin-top: var(--xxxlarge-margin);
-  text-align: var(--align-center);
+  margin-top: 2.8rem;
   width: var(--default-width);
 }
 
+footer.default div {
+  font-size: var(--small-font-size);
+  text-align: center;
+}
 .footnote-ref {
   display: block;
   border-bottom: var(--faded-accent-border);
@@ -1303,5 +1304,3 @@ video {
   background-color: var(--faded-warning-color);
   --flow-space: var(--xxxlarge-margin);
 }
-
-

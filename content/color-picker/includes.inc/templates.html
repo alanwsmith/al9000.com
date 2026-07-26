@@ -93,9 +93,30 @@
   >hue</button>
 </script>
 
+
+
 <script type="text/html" data-template="modeButton">
     <label>
       <input data-s="sMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
       __KEY__ mode
     </label>
 </script>
+
+<script type="image/svg" data-template="mainSVG">
+  <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="3" numOctaves="2" result="noise" />
+      <feColorMatrix type="saturate" values="0" result="grayscale" />
+      <feComponentTransfer>
+        <feFuncA in="grayscale" type="linear" slope="0.4" result="updated" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="noise" />
+        <feMergeNode in="updated" />
+      </feMerge>
+    </filter>
+    <rect width="100%" height="100%" opacity="__OPACITY__" filter="url(#noiseFilter)"/>
+  </svg>
+</script>
+
+

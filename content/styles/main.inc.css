@@ -161,67 +161,7 @@ code {
   font-family: monospace;
 }
 
-
-.code-block {
-  font-size: var(--small-font-size);
-  margin-block: var(--default-margin);
-  padding-block: var(--xlarge-padding);
-  padding-inline: var(--default-padding);
-  white-space: pre-wrap; 
-  overflow-wrap: anywhere;
-  overflow-x: auto;
-  overscroll-behavior-x: auto;
-  /*
-  & .line-marker {
-    counter-increment: codeBlockLineNumberX;
-  }
-  */
-    /*
-  & .line-marker:before {
-      content: counter(codeBlockLineNumberX);
-    content: attr(data-line);
-      display: inline-block;
-      margin-left: -7.8ch;
-      padding-right: 1ch;
-      position: absolute;
-      text-align: end;
-      width: 7ch;
-      color: var(--default-accent-color);
-      border-right: var(--faded-accent-border);
-  }
-*/
-  > .title {
-    font-size: var(--default-font-size);
-    color: var(--default-heading-color);
-    font-weight: var(--xxxlarge-font-weight);
-    border-bottom: var(--faded-accent-border);
-    margin-bottom: var(--small-margin);
-  }
-}
-
-.code-block.numbers {
-  padding-left: 3.2rem;
-}
-
-.code-block.numbers .line-marker:before {
-  content: attr(data-line);
-  display: inline-block;
-  margin-left: -7.8ch;
-  padding-right: 1ch;
-  position: absolute;
-  text-align: end;
-  width: 7ch;
-  color: var(--default-accent-color);
-  border-right: var(--faded-accent-border);
-}
-
-.code-block.nowrap {
-  white-space: pre; 
-  overflow-wrap: normal;
-  overflow-x: scroll; 
-  overscroll-behavior-x: none;
-}
-
+== include "/styles/includes/code-block.css"
 
 .command-block {
   background-color: var(--default-match-color);
@@ -327,15 +267,8 @@ details > :where(:not(summary)) {
   padding: var(--default-padding);
 }
 
-footer {
-  color: var(--faded-accent-color);
-  font-size: var(--small-font);
-  margin-bottom: var(--default-margin);
-  margin-inline: auto;
-  margin-top: var(--xxxlarge-margin);
-  text-align: var(--align-center);
-  width: var(--default-width);
-}
+
+== include "/styles/includes/footer.css"
 
 .footnote-ref {
   display: block;
@@ -768,4 +701,3 @@ video {
   background-color: var(--faded-warning-color);
   --flow-space: var(--xxxlarge-margin);
 }
-

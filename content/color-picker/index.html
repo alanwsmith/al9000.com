@@ -16,7 +16,7 @@ flags = ["no-colors"]
 == block content
 <main class="default-flow">
   == include template_dir() + "/includes.inc/title.html"
-  <div class="border-1 info-block">
+  <div class="">
     <button data-s="resetDefaults">Reset to Defaults</button>
     <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
     <button data-s="setLogLevel" data-key="WARN">WARN</button>
@@ -33,6 +33,8 @@ flags = ["no-colors"]
     <textarea data-r="updateCSS copyThis" autocomplete="off" data-key="css"></textarea>
     <button data-s="copyThis" data-key="css">Copy</button>
   </div>
+
+
   [#
   <div>
     <details><summary>JSON</summary>
@@ -49,4 +51,9 @@ flags = ["no-colors"]
 == block templates
 <bitty-9 data-connect="[@ template_dir() + '/bit.js' @]"></bitty-9>
 == include template_dir() + "/includes.inc/templates.html" 
+
+== for template_file in files_in_folder(template_dir("/templates"), full=true)
+== include template_file
+== endfor
+
 == endblock
