@@ -773,37 +773,14 @@ ratios.</p>
   </div>
 
 <div class="sidebar">
-  <details class="border-1"><summary class="h2">Instructions</summary>
-  <ol>
-    <li>Select the Mode you want to work on (either light or dark)</li>
-    <li>
-      Use the Background sliders to set a background color.
-      As you do, the colors in the Colors section
-      update automatically (each hue value
-      rotates 45 degrees).
-    </li>
-    <li>
-      Choose a color from the Colors section and
-      use the &quot;hue&quot; buttons below it to
-      select the hue portion of it's OKLCH value. 
-    </li>
-    <li>
-      Use the Lightness and Chroma sliders to 
-      adjust those values for the color. 
-    </li>
-    <li>
-      Copy the CSS block and paste it into
-      your style sheet to start using
-      the colors.
-    </li>
-  </ol>
-</details>
+    
+
     <div class="border-1">
         <div data-r="modesInit" class="flex-line"></div>
     </div>
 
     <div class="border-1">
-        <div data-r="initBackgroundSliders"></div>
+        <div data-r="backgroundSlidersInit"></div>
     </div>
 
 
@@ -855,7 +832,24 @@ ratios.</p>
       
 <bitty-9 data-connect="&#x2f;color-picker&#x2f;bit.js"></bitty-9>
 
-<script type="text/html" data-template="blockOption">
+<script type="text/html" data-template="backgroundSlider">
+    <label for="backgroundSlider-__KEY__">Background __NAME__</label>
+    <div>
+      <input 
+        id="backgroundSlider-__KEY__"
+        type="range" 
+        data-s="backgroundSliderSet" 
+        data-r="backgroundSliderUpdate" 
+        data-key="__KEY__" 
+        min="__MIN__" 
+        max="__MAX__" 
+        step="__STEP__" 
+        autocomplete="off" />
+    </div>
+</script>
+<script type="text/html" data-template="backgroundSliders">
+  __SLIDERS__
+</script><script type="text/html" data-template="blockOption">
   <option value="__KEY__" __SELECTED__>__KEY__</option>
 </script><script type="text/html" data-template="blockOptions">
 __OPTIONS__

@@ -28,25 +28,25 @@ body {
     { key: "faint", name: "Faint", token: "__FAINT__" },
   ],
   config: {
-    __L__: {
+    "lightness": {
       __NAME__: "Lightness",
       __MIN__: 0,
       __MAX__: 1,
       __STEP__: 0.0001,
     },
-    __C__: {
+    "chroma": {
       __NAME__: "Chroma",
       __MIN__: 0,
       __MAX__: 0.3,
       __STEP__: 0.00001,
     },
-    __H__: {
+    "hue": {
       __NAME__: "Hue",
       __MIN__: 0,
       __MAX__: 360,
       __STEP__: 0.001,
     },
-    __T__: {
+    "texture": {
       __NAME__: "Texture",
       __MIN__: 0,
       __MAX__: 100,

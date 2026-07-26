@@ -1,3 +1,15 @@
+export function backgroundSlidersInit(_, __, el) {
+  b.trace("backgroundSlidersInit");
+  const sliders = Object.entries(s.data.config).map(([key, subs]) => {
+    subs.__KEY__ = key;
+    return b.render("backgroundSlider", subs);
+  });
+  const subs = {
+    __SLIDERS__: sliders,
+  };
+  el.replaceChildren(b.render("backgroundSliders", subs));
+}
+
 export function blockOptionsInit(_, __, el) {
   // b.trace("blockOptionsInit");
   // const mode = s.getActiveMode();
@@ -132,25 +144,25 @@ body {
     { key: "faint", name: "Faint", token: "__FAINT__" },
   ],
   config: {
-    __L__: {
+    "lightness": {
       __NAME__: "Lightness",
       __MIN__: 0,
       __MAX__: 1,
       __STEP__: 0.0001,
     },
-    __C__: {
+    "chroma": {
       __NAME__: "Chroma",
       __MIN__: 0,
       __MAX__: 0.3,
       __STEP__: 0.00001,
     },
-    __H__: {
+    "hue": {
       __NAME__: "Hue",
       __MIN__: 0,
       __MAX__: 360,
       __STEP__: 0.001,
     },
-    __T__: {
+    "texture": {
       __NAME__: "Texture",
       __MIN__: 0,
       __MAX__: 100,
@@ -302,13 +314,14 @@ body {
 };
 
 export async function init() {
-  // b.savePageData("data", defaults);
+  b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
   s.data.logLevel = "TRACE";
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    "modesInit",
+    "backgroundSlidersInit",
+    //"modesInit",
     //"modesInit blocksInit",
   );
   /*
