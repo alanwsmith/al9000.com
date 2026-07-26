@@ -1,23 +1,21 @@
 export function monoBoxInit(_, __, el) {
   b.trace("monoBoxInit");
   const mode = s.getActiveMode();
-  const colors = s.data.monoNames.map((color, index) => {
+  const colors = s.data.monoNames.map((color) => {
     const classes = ["mono-button"];
-    if (mode.activeMonoIndex === index) {
+    if (mode.activeMonoKey === color) {
       classes.push("active");
     }
     const subs = {
       __COLOR__: color,
-      __INDEX__: index,
+      __KEY__: color,
       __CLASSES__: classes.join(" "),
     };
     return b.render("monoColor", subs);
   });
 
   const sliders = s.data.monoSliders.map((slider) => {
-    const value =
-      mode.monos[s.data.monoNames[mode.activeMonoIndex]][slider.token];
-    b.info(value);
+    const value = mode.monos[mode.activeMonoKey][slider.token];
     const subs = {
       __NAME__: slider.name,
       __KEY__: slider.key,
@@ -26,7 +24,6 @@ export function monoBoxInit(_, __, el) {
       __STEP__: s.data.config.__L__.__STEP__,
       __VALUE__: value,
     };
-
     return b.render("monoSlider", subs);
   });
 

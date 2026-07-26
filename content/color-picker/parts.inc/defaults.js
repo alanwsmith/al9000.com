@@ -19,6 +19,10 @@ body {
   colorNames: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
+  monoMap: {
+    "faded": "__FADED__",
+    "faint": "__FAINT__",
+  },
   monoSliders: [
     { key: "faded", name: "Faded", token: "__FADED__" },
     { key: "faint", name: "Faint", token: "__FAINT__" },
@@ -53,7 +57,7 @@ body {
     {
       __KEY__: "light",
       activeColorIndex: 0,
-      activeMonoIndex: 0,
+      activeMonoKey: "black",
       background: {
         __L__: 1,
         __C__: 0.01726,
@@ -123,7 +127,7 @@ body {
     {
       __KEY__: "dark",
       activeColorIndex: 0,
-      activeMonoIndex: 0,
+      activeMonoKey: "black",
       background: {
         __L__: 0.138,
         __C__: 0.12,

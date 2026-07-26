@@ -1,5 +1,5 @@
 export async function init() {
-  // b.setLogLevel("TRACE");
+  b.setLogLevel("DEBUG");
   // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
   b.setLogLevel(s.data.logLevel);

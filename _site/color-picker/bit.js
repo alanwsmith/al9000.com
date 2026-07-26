@@ -23,6 +23,10 @@ body {
   colorNames: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
+  monoMap: {
+    "faded": "__FADED__",
+    "faint": "__FAINT__",
+  },
   monoSliders: [
     { key: "faded", name: "Faded", token: "__FADED__" },
     { key: "faint", name: "Faint", token: "__FAINT__" },
@@ -57,7 +61,7 @@ body {
     {
       __KEY__: "light",
       activeColorIndex: 0,
-      activeMonoIndex: 0,
+      activeMonoKey: "black",
       background: {
         __L__: 1,
         __C__: 0.01726,
@@ -127,7 +131,7 @@ body {
     {
       __KEY__: "dark",
       activeColorIndex: 0,
-      activeMonoIndex: 0,
+      activeMonoKey: "black",
       background: {
         __L__: 0.138,
         __C__: 0.12,
@@ -336,7 +340,7 @@ export function initModeButtons(_, __, el) {
 }
 
 export async function init() {
-  // b.setLogLevel("TRACE");
+  b.setLogLevel("DEBUG");
   // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
   b.setLogLevel(s.data.logLevel);
@@ -507,23 +511,21 @@ function makeUiVars() {
 export function monoBoxInit(_, __, el) {
   b.trace("monoBoxInit");
   const mode = s.getActiveMode();
-  const colors = s.data.monoNames.map((color, index) => {
+  const colors = s.data.monoNames.map((color) => {
     const classes = ["mono-button"];
-    if (mode.activeMonoIndex === index) {
+    if (mode.activeMonoKey === color) {
       classes.push("active");
     }
     const subs = {
       __COLOR__: color,
-      __INDEX__: index,
+      __KEY__: color,
       __CLASSES__: classes.join(" "),
     };
     return b.render("monoColor", subs);
   });
 
   const sliders = s.data.monoSliders.map((slider) => {
-    const value =
-      mode.monos[s.data.monoNames[mode.activeMonoIndex]][slider.token];
-    b.info(value);
+    const value = mode.monos[mode.activeMonoKey][slider.token];
     const subs = {
       __NAME__: slider.name,
       __KEY__: slider.key,
@@ -532,7 +534,6 @@ export function monoBoxInit(_, __, el) {
       __STEP__: s.data.config.__L__.__STEP__,
       __VALUE__: value,
     };
-
     return b.render("monoSlider", subs);
   });
 
@@ -552,18 +553,48 @@ export function monoBoxUpdate() {}
 
 export function monoColorSet(_, sender, ___) {
   const mode = s.getActiveMode();
-  mode.activeMonoIndex = sender.propAsInt("index");
+  mode.activeMonoKey = sender.prop("key");
   b.savePageData("data", s.data);
-  b.trigger("monoColorUpdate");
+  b.trigger("monoColorUpdate monoSliderUpdate");
 }
 
 export function monoColorUpdate(_, __, el) {
   const mode = s.getActiveMode();
-  if (el.propAsInt("index") === mode.activeMonoIndex) {
+  if (el.prop("key") === mode.activeMonoKey) {
     el.classList.add("active");
   } else {
     el.classList.remove("active");
   }
+}
+
+export async function monoSliderSet(_, sender, ___) {
+  await requestAnimationFrame(async () => {
+    const mode = s.getActiveMode();
+    const monoKey = mode.activeMonoKey;
+    const mono = mode.monos[monoKey];
+    const token = s.data.monoMap[sender.prop("key")];
+    b.info(mono);
+    b.info(sender.prop("key"));
+    b.info(mono);
+    b.info(token);
+    mono[token] = sender.valueAsFloat();
+    await b.savePageData("data", s.data);
+    b.trigger("updateCSS");
+  });
+}
+
+export async function monoSliderUpdate(_, __, el) {
+  b.trace("monoSliderUpdate");
+  const mode = s.getActiveMode();
+
+  // this is a gross way to get the
+  // keys but it works until everything
+  // can be refactored
+  const value = mode.monos[mode.activeMonoKey][s.data.monoMap[el.prop("key")]];
+  // b.debug(value);
+  // const x = s.data.monoMap[el.prop("key")];
+  // b.info(x);
+  el.value = value;
 }
 
 export async function resetDefaults() {

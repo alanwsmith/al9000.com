@@ -1,6 +1,6 @@
 export function monoColorSet(_, sender, ___) {
   const mode = s.getActiveMode();
-  mode.activeMonoIndex = sender.propAsInt("index");
+  mode.activeMonoKey = sender.prop("key");
   b.savePageData("data", s.data);
-  b.trigger("monoColorUpdate");
+  b.trigger("monoColorUpdate monoSliderUpdate");
 }
