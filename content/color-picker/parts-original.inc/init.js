@@ -2,7 +2,7 @@ export async function init() {
   s.data = await b.loadPageData("data", defaults);
   s.data.logLevel = "TRACE";
   b.setLogLevel(s.data.logLevel);
-  if (!s.data.blocks) {
+  if (!s.data.modes[0].blocks) {
     initDefaultBlocks();
   }
   b.trigger(

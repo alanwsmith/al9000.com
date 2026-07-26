@@ -1,5 +1,6 @@
 class State {
-  constructor() {
+  constructor(b) {
+    this.b = b;
     this.data = {};
   }
   getActiveMode() {
@@ -16,4 +17,9 @@ class State {
       }
     }
   }
+  save() {
+    b.info("Saving data");
+    b.savePageData("data", this.data);
+  }
 }
+

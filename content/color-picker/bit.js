@@ -5,7 +5,8 @@
 
 
 let sheet = new CSSStyleSheet();
-let s = new State();
 export const b = {
   init: "init",
 };
+
+let s = new State(b);

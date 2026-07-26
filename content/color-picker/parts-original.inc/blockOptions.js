@@ -1,14 +1,17 @@
 export function blockOptionsInit(_, __, el) {
-  b.info("blockOptionsInit");
+  b.trace("blockOptionsInit");
   const mode = s.getActiveMode();
-  b.info(mode.blocks);
   const options = Object.keys(mode.blocks).map((key) => {
+    let selected = "";
+    if (key === mode.activeBlock) {
+      selected = " selected";
+    }
     const optionSubs = {
       __KEY__: key,
+      __SELECTED__: selected,
     };
     return b.render("blockOption", optionSubs);
   });
-
   const subs = {
     __OPTIONS__: options,
   };

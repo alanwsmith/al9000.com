@@ -1,0 +1,14 @@
+export function blockSelectInit(_, __, el) {
+  b.trace("blockSelectInit");
+  el.replaceChildren(b.render("blockSelect"));
+  b.trigger("blockOptionsInit");
+}
+
+export function blockSelectSet(_, sender, ___) {
+  const mode = s.getActiveMode();
+  mode.activeBlock = sender.value;
+  s.save();
+  // b.savePageData("data", s.data);
+  b.info(sender.value);
+  b.info(mode);
+}
