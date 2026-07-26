@@ -26,6 +26,7 @@
 
 
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
 <style>
 *, 
 *::before, 
@@ -187,7 +188,11 @@ textarea {
 ul > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
 }</style>
+
+
     
+
+
   </head>
   <body>
     <noscript>
@@ -226,6 +231,12 @@ ul > :where(:not(:first-child)) {
 <p>Welcome to Color Picker 9000. The
 tool I use to create the
 stylesheets for <a href="/">my site</a>.</p>
+
+    <div data-r="blockBuilderInit">
+      Initializing block builder.
+    </div>
+
+
 <p>This page is a live preview of the
 generated styles. Play around
 with the controls to get things
@@ -939,6 +950,28 @@ ratios.</p>
 </script>
 
 
+<script type="text/html" data-template="blockBuilder">
+<div>Text</div>
+<div>
+  <select data-s="blockBuilderTextSet">
+    __BLOCK_BUILDER_OPTIONS__
+  </select>
+</div>
+<div>Background</div>
+<div>
+  <select data-s="blockBuilderBackgroundSet">
+    __BLOCK_BUILDER_OPTIONS__
+  </select>
+</div>
+<div>Border</div>
+<div>
+  <select data-s="blockBuilderBorderSet">
+    __BLOCK_BUILDER_OPTIONS__
+  </select>
+</div>
+</script><script type="text/html" data-template="blockBuilderOption">
+<option value="__KEY__">__KEY__</option>
+</script>
 <script type="text/html" data-template="monoBox">
   <div>
   __COLORS__

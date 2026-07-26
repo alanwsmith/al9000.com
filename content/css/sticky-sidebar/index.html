@@ -1,0 +1,28 @@
+== extends "/templates.inc/switches/empty.html"
+
+== block toml
+title =  "CSS Sticky Sidebar"
+created = 2026-07-26T08:09:00-04:00
+status = "done"
+flags = []
+tags = ["css"]
+id = "01/n6/by/6w" 
+== endblock
+
+== block styles2
+== include "/styles/colors.css"
+== include "/styles/includes/code-block.css"
+== include "/styles/includes/footer.css"
+[@ raw_include(template_dir("/layout-styles.css")) @]
+[@ raw_include(template_dir("/ui-styles.css")) @]
+== endblock
+
+
+== block content
+
+== include "/templates.inc/headers/default.html"
+== include template_dir("/main.html") 
+== include "/templates.inc/footers/default.html"
+
+== endblock
+

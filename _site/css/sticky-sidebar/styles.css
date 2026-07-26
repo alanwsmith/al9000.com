@@ -1,0 +1,37 @@
+.content-wrapper {
+  display: flex;
+  align-items: flex-start; /* critical: lets sidebar's sticky work independently */
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* Left column has dynamic (flexible) width */
+.content {
+  flex: 1;      /* grows/shrinks to fill remaining space */
+  min-width: 0; /* prevents flex overflow issues */
+}
+
+/* Right column: fixed-width sticky sidebar */
+.sidebar {
+  flex: 0 0 18rem;   /* fixed width, no grow/shrink */
+  width: 18rem;
+  position: sticky;
+  top: 1.5rem;       /* offset from the top when sticking */
+
+  /* If the sidebar is taller than the viewport, scroll it internally.
+     max-height keeps it within the available viewport area, and
+     overflow-y lets its own content scroll. */
+  max-height: calc(100vh - 3rem); /* viewport minus top+bottom breathing room */
+  overflow-y: auto;
+
+  background: #ecf0f1;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+
+/* Demo styling */
+.content p { margin-bottom: 1rem; }
+.sidebar h2 { margin-bottom: 0.75rem; }
+.sidebar ul { list-style: none; }
+.sidebar li { padding: 0.5rem 0; border-bottom: 1px solid #d0d7d9; }

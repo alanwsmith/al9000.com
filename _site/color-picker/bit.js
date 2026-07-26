@@ -1,3 +1,21 @@
+export function blockBuilderInit(_, __, el) {
+  const textOptions = [
+    b.render("blockBuilderOption", { __KEY__: "none" }),
+    ...s.data.colorTypes.map((colorType) => {
+      return s.data.colorNames.map((colorName) => {
+        const subs = {
+          __KEY__: `${colorType}-${colorName}`,
+        };
+        return b.render("blockBuilderOption", subs);
+      });
+    }).flat(),
+  ];
+  const subs = {
+    __BLOCK_BUILDER_OPTIONS__: textOptions,
+  };
+  el.replaceChildren(b.render("blockBuilder", subs));
+}
+
 export async function copyThis(_, sender, el) {
   await b.quickCopy(el, sender);
 }
@@ -201,6 +219,28 @@ body {
   ],
 };
 
+function generateDefaultBlocks() {
+  s.data.blocks = {};
+  s.data.colorTypes.forEach((colorType) => {
+    s.data.blocks[colorType] = {};
+    s.data.colorNames.forEach((colorName) => {
+      s.data.blocks[colorType][colorName] = {
+        text: ["default", "base"],
+        background: [colorType, colorName],
+        border: [colorType, colorName],
+      };
+    });
+    s.data.monoNames.forEach((colorName) => {
+      s.data.blocks[colorType][colorName] = {
+        text: ["default", "base"],
+        background: [colorType, colorName],
+        border: [colorType, colorName],
+      };
+    });
+  });
+  b.info(s.data.blocks);
+}
+
 function generatePageVariables() {
   let variables = [];
   for (let mode of s.data.modes) {
@@ -343,6 +383,9 @@ export async function init() {
   b.setLogLevel("DEBUG");
   // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
+  if (!s.data.blocks) {
+    generateDefaultBlocks();
+  }
   b.setLogLevel(s.data.logLevel);
   b.trigger(
     `
@@ -355,6 +398,7 @@ initModeButtons
 initColorSliders
 iColorName
 uCustomStyles
+blockBuilderInit
 `,
   );
 }
@@ -573,10 +617,6 @@ export async function monoSliderSet(_, sender, ___) {
     const monoKey = mode.activeMonoKey;
     const mono = mode.monos[monoKey];
     const token = s.data.monoMap[sender.prop("key")];
-    b.info(mono);
-    b.info(sender.prop("key"));
-    b.info(mono);
-    b.info(token);
     mono[token] = sender.valueAsFloat();
     await b.savePageData("data", s.data);
     b.trigger("updateCSS");
