@@ -53,9 +53,8 @@ body {
       __STEP__: 0.1,
     },
   },
-  modes: [
-    {
-      __KEY__: "light",
+  modes: {
+    "light": {
       activeColorIndex: 0,
       activeMonoKey: "black",
       activeBlock: "default-accent",
@@ -125,8 +124,7 @@ body {
         },
       ],
     },
-    {
-      __KEY__: "dark",
+    "dark": {
       activeColorIndex: 0,
       activeMonoKey: "black",
       activeBlock: "default-base",
@@ -196,5 +194,5 @@ body {
         },
       ],
     },
-  ],
+  },
 };

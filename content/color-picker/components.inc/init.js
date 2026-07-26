@@ -6,7 +6,7 @@ export async function init() {
     initDefaultBlocks();
   }
   b.trigger(
-    "blocksInit",
+    "modesInit blocksInit",
   );
   /*
   b.trigger(
