@@ -1,3 +1,7 @@
+export function backgroundSliderUpdate(_, __, el) {
+  el.value = b.tee(s.data.modes[s.data.activeMode].background[el.prop("key")]);
+}
+
 export function backgroundSlidersInit(_, __, el) {
   b.trace("backgroundSlidersInit");
   const sliders = Object.entries(s.data.config).map(([key, subs]) => {
@@ -8,6 +12,7 @@ export function backgroundSlidersInit(_, __, el) {
     __SLIDERS__: sliders,
   };
   el.replaceChildren(b.render("backgroundSliders", subs));
+  b.trigger("backgroundSliderUpdate");
 }
 
 export function blockOptionsInit(_, __, el) {
@@ -175,10 +180,10 @@ body {
       activeMonoKey: "black",
       activeBlock: "default-accent",
       background: {
-        __L__: 1,
-        __C__: 0.01726,
-        __H__: 45.298,
-        __T__: 45,
+        lightness: 1,
+        chroma: 0.01726,
+        hue: 45.298,
+        texture: 45,
       },
       monos: {
         "black": {
@@ -204,36 +209,36 @@ body {
       },
       colors: [
         {
-          __L__: 0.3,
-          __C__: 0.12,
+          lightness: 0.3,
+          chroma: 0.12,
           __H_OFFSET__: 4,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
         {
-          __L__: 0.4,
-          __C__: 0.16,
+          lightness: 0.4,
+          chroma: 0.16,
           __H_OFFSET__: 3,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
         {
-          __L__: 0.54,
-          __C__: 0.126,
+          lightness: 0.54,
+          chroma: 0.126,
           __H_OFFSET__: 5,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
         {
-          __L__: 0.62,
-          __C__: 0.12,
+          lightness: 0.62,
+          chroma: 0.12,
           __H_OFFSET__: 2,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
         {
-          __L__: 0.6,
-          __C__: 0.127,
+          lightness: 0.6,
+          chroma: 0.127,
           __H_OFFSET__: 4,
           __FADED__: 0.6,
           __FAINT__: 0.12,
@@ -245,10 +250,10 @@ body {
       activeMonoKey: "black",
       activeBlock: "default-base",
       background: {
-        __L__: 0.138,
-        __C__: 0.12,
-        __H__: 166.07,
-        __T__: 0,
+        lightness: 0.138,
+        chroma: 0.12,
+        hue: 166.07,
+        texture: 0,
       },
       monos: {
         "black": {
@@ -274,36 +279,36 @@ body {
       },
       colors: [
         {
-          __L__: 0.883,
-          __C__: 0.0372,
+          lightness: 0.883,
+          chroma: 0.0372,
           __H_OFFSET__: 6,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
         {
-          __L__: 0.773,
-          __C__: 0.12,
+          lightness: 0.773,
+          chroma: 0.12,
           __H_OFFSET__: 2,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
         {
-          __L__: 0.62,
-          __C__: 0.08,
+          lightness: 0.62,
+          chroma: 0.08,
           __H_OFFSET__: 3,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
         {
-          __L__: 0.93,
-          __C__: 0.15,
+          lightness: 0.93,
+          chroma: 0.15,
           __H_OFFSET__: 3,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
         {
-          __L__: 0.7,
-          __C__: 0.122,
+          lightness: 0.7,
+          chroma: 0.122,
           __H_OFFSET__: 4,
           __FADED__: 0.6,
           __FAINT__: 0.12,

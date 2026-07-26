@@ -8,4 +8,5 @@ export function backgroundSlidersInit(_, __, el) {
     __SLIDERS__: sliders,
   };
   el.replaceChildren(b.render("backgroundSliders", subs));
+  b.trigger("backgroundSliderUpdate");
 }
