@@ -1,19 +1,69 @@
 export function blockBuilderInit(_, __, el) {
-  const textOptions = [
-    b.render("blockBuilderOption", { __KEY__: "none" }),
-    ...s.data.colorTypes.map((colorType) => {
-      return s.data.colorNames.map((colorName) => {
-        const subs = {
-          __KEY__: `${colorType}-${colorName}`,
-        };
-        return b.render("blockBuilderOption", subs);
-      });
-    }).flat(),
-  ];
+  const mode = s.getActiveMode();
+
+  const examples = [];
+
+  const textOptions = s.data.colorTypes.map((colorType) => {
+    return s.data.colorNames.map((colorName) => {
+      const backgroundKey = `${colorType}-${colorName}`;
+      let selected = "";
+      if (mode.activeBlock === backgroundKey) {
+        selected = " selected";
+
+        s.data.colorTypes.forEach((colorTextType) => {
+          return s.data.colorNames.map((colorTextName) => {
+            const colorKey = `${colorTextType}-${colorTextName}`;
+            const textSubs = {
+              __BACKGROUND_KEY__: backgroundKey,
+              __COLOR_KEY__: colorKey,
+            };
+            examples.push(b.render("blockExample", textSubs));
+          });
+        });
+      }
+
+      const subs = {
+        __KEY__: backgroundKey,
+        __SELECTED__: selected,
+      };
+
+      return b.render("blockBuilderOption", subs);
+    });
+  }).flat();
+
   const subs = {
     __BLOCK_BUILDER_OPTIONS__: textOptions,
+    __BLOCK_EXAMPLES__: examples,
   };
+
   el.replaceChildren(b.render("blockBuilder", subs));
+}
+
+export function blockExamplesUpdate(_, sender, ___) {
+  b.trace("blockExamplesUpdate");
+}
+
+export function blockSelectorSet(_, sender, ___) {
+}
+
+export function blockSelectorUpdate(_, __, el) {
+  el.replaceChildren();
+  const mode = s.getActiveMode();
+  s.data.colorTypes.map((colorType) => {
+    return s.data.colorNames.map((colorName) => {
+      const key = `${colorType}-${colorName}`;
+      let selected = "";
+      if (mode.activeBlock === key) {
+        b.info(key);
+        selected = " selected";
+      }
+      const subs = {
+        __KEY__: `${colorType}-${colorName}`,
+        __SELECTED__: selected,
+      };
+      el.appendChild(b.render("blockBuilderOption", subs));
+    });
+  });
 }
 
 export async function copyThis(_, sender, el) {
@@ -80,6 +130,7 @@ body {
       __KEY__: "light",
       activeColorIndex: 0,
       activeMonoKey: "black",
+      activeBlock: "default-accent",
       background: {
         __L__: 1,
         __C__: 0.01726,
@@ -150,6 +201,7 @@ body {
       __KEY__: "dark",
       activeColorIndex: 0,
       activeMonoKey: "black",
+      activeBlock: "default-base",
       background: {
         __L__: 0.138,
         __C__: 0.12,
@@ -692,7 +744,7 @@ export async function sMode(_, sender, ___) {
   s.data.activeMode = sender.prop("key");
   setSwitches(s.data.activeMode);
   await b.savePageData("data", s.data);
-  b.trigger(`updateCSS uCustomStyles`);
+  b.trigger(`updateCSS uCustomStyles blockSelectorUpdate blockExamplesUpdate`);
 }
 
 export async function setParam(_, sender, ___) {

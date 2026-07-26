@@ -58,6 +58,7 @@ body {
       __KEY__: "light",
       activeColorIndex: 0,
       activeMonoKey: "black",
+      activeBlock: "default-accent",
       background: {
         __L__: 1,
         __C__: 0.01726,
@@ -128,6 +129,7 @@ body {
       __KEY__: "dark",
       activeColorIndex: 0,
       activeMonoKey: "black",
+      activeBlock: "default-base",
       background: {
         __L__: 0.138,
         __C__: 0.12,

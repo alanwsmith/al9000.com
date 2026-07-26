@@ -1,20 +1,11 @@
 <script type="text/html" data-template="blockBuilder">
-<div>Text</div>
+<h2>Block Builder</h2>
 <div>
-  <select data-s="blockBuilderTextSet">
+  <select data-s="blockSelectorSet" data-r="blockSelectorUpdate" autocomplete="off">
     __BLOCK_BUILDER_OPTIONS__
   </select>
 </div>
-<div>Background</div>
-<div>
-  <select data-s="blockBuilderBackgroundSet">
-    __BLOCK_BUILDER_OPTIONS__
-  </select>
-</div>
-<div>Border</div>
-<div>
-  <select data-s="blockBuilderBorderSet">
-    __BLOCK_BUILDER_OPTIONS__
-  </select>
+<div data-r="blockExamplesInit blockExaplesUpdate">
+  __BLOCK_EXAMPLES__
 </div>
 </script>

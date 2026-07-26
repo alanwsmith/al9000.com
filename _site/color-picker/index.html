@@ -38,6 +38,10 @@
   margin: 0;
 }
 
+:root {
+  --sidebar-width: 18rem;
+}
+
 a {
   text-decoration: none;
   color: var(--default-accent-color);
@@ -95,6 +99,11 @@ button{
   border-start-end-radius: 0.3rem;
   border: 1px solid var(--ui-border);
 
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
 }
 
 .default-border-radius {
@@ -164,6 +173,21 @@ ol > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
 }
 
+.package {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.sidebar {
+  position: sticky;
+  flex: 0 0 var(--sidebar-width);
+  width: var(--sidebar-width);
+  top: 1.5rem;
+  max-height: calc(100vh - 3rem); 
+  overflow-y: auto;
+}
+
 textarea {
   display: block;
   width: 96%;
@@ -224,8 +248,8 @@ ul > :where(:not(:first-child)) {
     <button data-s="setLogLevel" data-key="TRACE">TRACE</button>
   </div>
 
-  <div class="two-columns-left">
-  <div class="default-flow">
+  <div class="package">
+  <div class="content default-flow">
 
 <h2>Introduction</h2>
 <p>Welcome to Color Picker 9000. The
@@ -746,7 +770,7 @@ ratios.</p>
     </div>
   </div>
 
-<div>
+<div class="sidebar">
   <details class="border-1"><summary class="h2">Instructions</summary>
   <ol>
     <li>Select the Mode you want to work on (either light or dark)</li>
@@ -951,28 +975,23 @@ ratios.</p>
 
 
 <script type="text/html" data-template="blockBuilder">
-<div>Text</div>
+<h2>Block Builder</h2>
 <div>
-  <select data-s="blockBuilderTextSet">
+  <select data-s="blockSelectorSet" data-r="blockSelectorUpdate" autocomplete="off">
     __BLOCK_BUILDER_OPTIONS__
   </select>
 </div>
-<div>Background</div>
-<div>
-  <select data-s="blockBuilderBackgroundSet">
-    __BLOCK_BUILDER_OPTIONS__
-  </select>
-</div>
-<div>Border</div>
-<div>
-  <select data-s="blockBuilderBorderSet">
-    __BLOCK_BUILDER_OPTIONS__
-  </select>
+<div data-r="blockExamplesInit blockExaplesUpdate">
+  __BLOCK_EXAMPLES__
 </div>
 </script><script type="text/html" data-template="blockBuilderOption">
-<option value="__KEY__">__KEY__</option>
+  <option value="__KEY__" __SELECTED__>__KEY__</option>
 </script>
-<script type="text/html" data-template="monoBox">
+<script type="text/html" data-template="blockExample">
+<div class="block-example">
+  __BACKGROUND_KEY__ - __COLOR_KEY__
+</div>
+</script><script type="text/html" data-template="monoBox">
   <div>
   __COLORS__
   </div>

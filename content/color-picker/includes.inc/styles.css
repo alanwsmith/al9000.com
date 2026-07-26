@@ -8,6 +8,10 @@
   margin: 0;
 }
 
+:root {
+  --sidebar-width: 18rem;
+}
+
 a {
   text-decoration: none;
   color: var(--default-accent-color);
@@ -65,6 +69,11 @@ button{
   border-start-end-radius: 0.3rem;
   border: 1px solid var(--ui-border);
 
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
 }
 
 .default-border-radius {
@@ -132,6 +141,21 @@ main {
 
 ol > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
+}
+
+.package {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.sidebar {
+  position: sticky;
+  flex: 0 0 var(--sidebar-width);
+  width: var(--sidebar-width);
+  top: 1.5rem;
+  max-height: calc(100vh - 3rem); 
+  overflow-y: auto;
 }
 
 textarea {
