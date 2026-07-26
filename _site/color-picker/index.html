@@ -799,7 +799,7 @@ ratios.</p>
   </ol>
 </details>
     <div class="border-1">
-        <div data-r="modeInit" class="flex-line"></div>
+        <div data-r="modesInit" class="flex-line"></div>
     </div>
 
     <div class="border-1">
@@ -872,7 +872,17 @@ __OPTIONS__
 </script>
 
 <script type="text/html" data-template="mode">
-MODE
+  <label>
+    <input 
+      data-s="modesSet" 
+      data-key="__KEY__" 
+      type="radio" 
+      name="mode" 
+      __CHECKED__ 
+      autocomplete="off" 
+    />
+    __KEY__ mode
+  </label>
 </script><script type="text/html" data-template="modes">
 __MODES__
 </script>

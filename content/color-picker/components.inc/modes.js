@@ -1,8 +1,20 @@
 export function modesInit(_, __, el) {
-  b.info(s.data.modes);
-  // const modes = Object.keys(s.data.modes).map((mode) => {
-  //   b.info(mode);
-  // });
+  b.trace("modesInit");
+  const modes = Object.keys(s.data.modes).map((key) => {
+    let checked = "";
+    if (key === s.data.activeMode) {
+      checked = " checked";
+    }
+    const subs = {
+      __KEY__: key,
+      __CHECKED__: checked,
+    };
+    return b.render("mode", subs);
+  });
+  const subs = {
+    __MODES__: modes,
+  };
+  el.replaceChildren(b.render("modes", subs));
 }
 
 export async function modesSet(_, sender, ___) {
