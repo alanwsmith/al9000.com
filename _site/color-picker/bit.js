@@ -1,5 +1,61 @@
-export function blockBuilderInit(_, __, el) {
+
+export function blockExamplesUpdate(_, sender, ___) {
+  b.trace("blockExamplesUpdate");
+}
+
+export function blockOptionsInit(_, __, el) {
+  b.info("blockOptionsInit");
   const mode = s.getActiveMode();
+  b.info(mode.blocks);
+  const options = Object.keys(mode.blocks).map((key) => {
+    const optionSubs = {
+      __KEY__: key,
+    };
+    return b.render("blockOption", optionSubs);
+  });
+
+  const subs = {
+    __OPTIONS__: options,
+  };
+  el.replaceChildren(b.render("blockOptions", subs));
+}
+
+// export function blockOptionsSet(_, sender, ___) {
+//   const mode = s.getActiveMode();
+//   b.info(mode.blocks);
+// }
+
+// export function blockOptionsUpdate(_, __, el) {
+//   el.replaceChildren();
+//   const mode = s.getActiveMode();
+//   s.data.colorTypes.map((colorType) => {
+//     return s.data.colorNames.map((colorName) => {
+//       const key = `${colorType}-${colorName}`;
+//       let selected = "";
+//       if (mode.activeBlock === key) {
+//         selected = " selected";
+//       }
+//       const subs = {
+//         __KEY__: `${colorType}-${colorName}`,
+//         __SELECTED__: selected,
+//       };
+//       el.appendChild(b.render("blockBuilderOption", subs));
+//     });
+//   });
+// }
+
+export function blockSelectInit(_, __, el) {
+  b.trace("blockSelectInit");
+  el.replaceChildren(b.render("blockSelect"));
+  b.trigger("blockOptionsInit");
+}
+
+export function blocksInit(_, __, el) {
+  b.trace("blocksInit");
+  el.replaceChildren(b.render("blocks"));
+  b.trigger("blockSelectInit");
+
+  /*
 
   const examples = [];
 
@@ -9,7 +65,6 @@ export function blockBuilderInit(_, __, el) {
       let selected = "";
       if (mode.activeBlock === backgroundKey) {
         selected = " selected";
-
         s.data.colorTypes.forEach((colorTextType) => {
           return s.data.colorNames.map((colorTextName) => {
             const colorKey = `${colorTextType}-${colorTextName}`;
@@ -37,33 +92,7 @@ export function blockBuilderInit(_, __, el) {
   };
 
   el.replaceChildren(b.render("blockBuilder", subs));
-}
-
-export function blockExamplesUpdate(_, sender, ___) {
-  b.trace("blockExamplesUpdate");
-}
-
-export function blockSelectorSet(_, sender, ___) {
-}
-
-export function blockSelectorUpdate(_, __, el) {
-  el.replaceChildren();
-  const mode = s.getActiveMode();
-  s.data.colorTypes.map((colorType) => {
-    return s.data.colorNames.map((colorName) => {
-      const key = `${colorType}-${colorName}`;
-      let selected = "";
-      if (mode.activeBlock === key) {
-        b.info(key);
-        selected = " selected";
-      }
-      const subs = {
-        __KEY__: `${colorType}-${colorName}`,
-        __SELECTED__: selected,
-      };
-      el.appendChild(b.render("blockBuilderOption", subs));
-    });
-  });
+  */
 }
 
 export async function copyThis(_, sender, el) {
@@ -432,27 +461,54 @@ export function initModeButtons(_, __, el) {
 }
 
 export async function init() {
-  b.setLogLevel("DEBUG");
-  // await b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
-  if (!s.data.blocks) {
-    generateDefaultBlocks();
-  }
+  s.data.logLevel = "TRACE";
   b.setLogLevel(s.data.logLevel);
+  if (!s.data.blocks) {
+    initDefaultBlocks();
+  }
+  b.trigger(
+    "blocksInit",
+  );
+  /*
   b.trigger(
     `
 monoBoxInit
-initBaseStyles 
-initBackgroundSliders 
-initColorNameButtons 
-initHueOffsetButtons 
+initBaseStyles
+initBackgroundSliders
+initColorNameButtons
+initHueOffsetButtons
 initModeButtons
 initColorSliders
 iColorName
 uCustomStyles
-blockBuilderInit
+blocksInit
 `,
   );
+  */
+}
+
+function initDefaultBlocks() {
+  b.trace("initDefaultBlocks");
+  const mode = s.getActiveMode();
+  if (!mode.blocks) {
+    mode.blocks = {};
+    s.data.colorTypes.forEach((backgroundColorType) => {
+      s.data.colorNames.forEach((backgroundColorName) => {
+        const backgroundKey = `${backgroundColorType}-${backgroundColorName}`;
+        mode.blocks[backgroundKey] = {};
+        s.data.colorTypes.forEach((textColorType) => {
+          s.data.colorNames.forEach((textColorName) => {
+            const textKey = `${textColorType}-${textColorName}`;
+            mode.blocks[backgroundKey][textKey] = {
+              name: null,
+              border: textKey,
+            };
+          });
+        });
+      });
+    });
+  }
 }
 
 function makeClasses() {
@@ -604,6 +660,14 @@ function makeUiVars() {
   return `:root { ${out2.join("\n")}}`;
 }
 
+export async function sMode(_, sender, ___) {
+  b.trace("sMode");
+  s.data.activeMode = sender.prop("key");
+  setSwitches(s.data.activeMode);
+  await b.savePageData("data", s.data);
+  b.trigger(`updateCSS uCustomStyles blockOptionsUpdate blockExamplesUpdate`);
+}
+
 export function monoBoxInit(_, __, el) {
   b.trace("monoBoxInit");
   const mode = s.getActiveMode();
@@ -739,14 +803,6 @@ export async function setLogLevel(_, sender, ___) {
   b.info(`Log level set to: ${sender.prop("key")}`);
   await b.savePageData("data", s.data);
 }
-export async function sMode(_, sender, ___) {
-  b.trace("sMode");
-  s.data.activeMode = sender.prop("key");
-  setSwitches(s.data.activeMode);
-  await b.savePageData("data", s.data);
-  b.trigger(`updateCSS uCustomStyles blockSelectorUpdate blockExamplesUpdate`);
-}
-
 export async function setParam(_, sender, ___) {
   b.trace("setParam");
   await requestAnimationFrame(async () => {

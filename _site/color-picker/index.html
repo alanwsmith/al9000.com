@@ -251,14 +251,16 @@ ul > :where(:not(:first-child)) {
   <div class="package">
   <div class="content default-flow">
 
+    <div data-r="blocksInit">
+      Initializing block builder.
+    </div>
+
+
+
 <h2>Introduction</h2>
 <p>Welcome to Color Picker 9000. The
 tool I use to create the
 stylesheets for <a href="/">my site</a>.</p>
-
-    <div data-r="blockBuilderInit">
-      Initializing block builder.
-    </div>
 
 
 <p>This page is a live preview of the
@@ -974,23 +976,29 @@ ratios.</p>
 </script>
 
 
-<script type="text/html" data-template="blockBuilder">
-<h2>Block Builder</h2>
-<div>
-  <select data-s="blockSelectorSet" data-r="blockSelectorUpdate" autocomplete="off">
-    __BLOCK_BUILDER_OPTIONS__
-  </select>
-</div>
-<div data-r="blockExamplesInit blockExaplesUpdate">
-  __BLOCK_EXAMPLES__
-</div>
-</script><script type="text/html" data-template="blockBuilderOption">
+<script type="text/html" data-template="blockBuilderOption">
   <option value="__KEY__" __SELECTED__>__KEY__</option>
 </script>
 <script type="text/html" data-template="blockExample">
-<div class="block-example">
+<div class="__BACKGROUND_KEY__-background-color __COLOR_KEY__-color">
   __BACKGROUND_KEY__ - __COLOR_KEY__
 </div>
+</script><div data-r="blockExamplesInit blockExaplesUpdate">
+  __BLOCK_EXAMPLE_DIVS__
+</div><script type="text/html" data-template="blockOption">
+<option value="__KEY__">__KEY__</option>
+</script><script type="text/html" data-template="blockOptions">
+__OPTIONS__
+</script><script type="text/html" data-template="blockSelect">
+<select 
+  data-s="blockSelectSet" 
+  data-r="blockOptionsInit blockOptionsUpdate" 
+  autocomplete="off">
+</select>
+</script><script type="text/html" data-template="blocks">
+<h2>Blocks</h2>
+<div data-r="blockSelectInit">TODO: Block List</div>
+<div data-r="blockExamplesInit"></div>
 </script><script type="text/html" data-template="monoBox">
   <div>
   __COLORS__
