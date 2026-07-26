@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-25T18:36:44-05:00</updated>
+  <updated>2026-07-25T19:46:05-05:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -185,6 +185,18 @@ in December 2023.</li>
 <li>
 <p>Thanks to <a href="https://alex.party/">Alex</a> for introducing
 me to <code>:has()</code> and showing me how to use it.</p>
+</li>
+<li>
+<p>If you've got feedback on the
+accessibility aspects of this approach
+please hit me up on <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>
+or <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a></p>
+</li>
+<li>
+<p>Another thing I learned about
+is <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#command">command and commandfor</a>
+for buttons. Feels like there's a lot of potential
+there in future updates.</p>
 </li>
 <li>
 <p>Another episode of Shop Talk Show was
