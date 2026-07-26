@@ -2,8 +2,15 @@ const defaults = {
   customStyles: "",
   baseCSS: `
 :root {
+  color-scheme: var(--color-scheme);
+}
 
-
+body { 
+  background-color: var(--background-color);
+  background-image: var(--background-image);
+  background-repeat: repeat;
+  background-size: 150px 150px;
+  color: var(--default-base-color);
 }
 `,
   logLevel: "DEBUG",

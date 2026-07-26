@@ -37,13 +37,6 @@
   margin: 0;
 }
 
-body { 
-  background-image: none; 
-  background-color: var(--background-color);
-  font-family: system-ui;
-  color: var(--default-base-color);
-}
-
 a {
   text-decoration: none;
   color: var(--default-accent-color);
@@ -158,10 +151,6 @@ h3 {
   border-end-end-radius: 0.4rem;
 }
 
-.info-block {
-  background-color: var(--faded-info-color);
-}
-
 input[type=range]{
   width: 100%
 }
@@ -197,16 +186,7 @@ textarea {
 
 ul > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
-}
-
-.warning-block {
-  border: 1px solid var(--faded-reverse-color);
-  background-color: var(--faded-warning-color);
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  color: var(--default-black-color);
-}
-</style>
+}</style>
     
   </head>
   <body>
@@ -232,7 +212,7 @@ ul > :where(:not(:first-child)) {
     a work in progress. 
   </p>
 </div>
-  <div class="border-1 info-block">
+  <div class="">
     <button data-s="resetDefaults">Reset to Defaults</button>
     <button data-s="setLogLevel" data-key="DEBUG">DEBUG</button>
     <button data-s="setLogLevel" data-key="WARN">WARN</button>
@@ -268,12 +248,10 @@ default, <span class="faded-base-color">faded</span>,
 and <span class="faint-base-color">faint</span>.
 The swatches further down the page
 have previews of all of them.</p>
-<p class="faded-info-background-color default-padding default-border-radius">
+<p>
         The tool outputs
         CSS variables with OKLCH values. 
-        They can be used anywhere a colors can 
-        (e.g. the background of this paragraph
-        which uses the <strong>--faded-info-color</strong>).
+        They can be used anywhere a colors can. 
       </p>
 <p>The example swatches provide previews of
 background using the colors as well.</p>
@@ -818,6 +796,8 @@ ratios.</p>
     <textarea data-r="updateCSS copyThis" autocomplete="off" data-key="css"></textarea>
     <button data-s="copyThis" data-key="css">Copy</button>
   </div>
+
+
   
 </main>
 
@@ -933,6 +913,23 @@ ratios.</p>
       <input data-s="sMode" data-key="__KEY__" type="radio" name="modeButton" __CHECKED__ autocomplete="off" />
       __KEY__ mode
     </label>
+</script>
+
+<script type="image/svg" data-template="mainSVG">
+  <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="3" numOctaves="2" result="noise" />
+      <feColorMatrix type="saturate" values="0" result="grayscale" />
+      <feComponentTransfer>
+        <feFuncA in="grayscale" type="linear" slope="0.4" result="updated" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="noise" />
+        <feMergeNode in="updated" />
+      </feMerge>
+    </filter>
+    <rect width="100%" height="100%" opacity="__OPACITY__" filter="url(#noiseFilter)"/>
+  </svg>
 </script>    </div>
   </body>
 </html>

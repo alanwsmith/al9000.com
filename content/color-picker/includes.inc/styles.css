@@ -8,13 +8,6 @@
   margin: 0;
 }
 
-body { 
-  background-image: none; 
-  background-color: var(--background-color);
-  font-family: system-ui;
-  color: var(--default-base-color);
-}
-
 a {
   text-decoration: none;
   color: var(--default-accent-color);
@@ -129,10 +122,6 @@ h3 {
   border-end-end-radius: 0.4rem;
 }
 
-.info-block {
-  background-color: var(--faded-info-color);
-}
-
 input[type=range]{
   width: 100%
 }
@@ -169,12 +158,3 @@ textarea {
 ul > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
 }
-
-.warning-block {
-  border: 1px solid var(--faded-reverse-color);
-  background-color: var(--faded-warning-color);
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  color: var(--default-black-color);
-}
-
