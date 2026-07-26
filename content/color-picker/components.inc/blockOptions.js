@@ -1,21 +1,21 @@
 export function blockOptionsInit(_, __, el) {
-  b.trace("blockOptionsInit");
-  const mode = s.getActiveMode();
-  const options = Object.keys(mode.blocks).map((key) => {
-    let selected = "";
-    if (key === mode.activeBlock) {
-      selected = " selected";
-    }
-    const optionSubs = {
-      __KEY__: key,
-      __SELECTED__: selected,
-    };
-    return b.render("blockOption", optionSubs);
-  });
-  const subs = {
-    __OPTIONS__: options,
-  };
-  el.replaceChildren(b.render("blockOptions", subs));
+  // b.trace("blockOptionsInit");
+  // const mode = s.getActiveMode();
+  // const options = Object.keys(mode.blocks).map((key) => {
+  //   let selected = "";
+  //   if (key === mode.activeBlock) {
+  //     selected = " selected";
+  //   }
+  //   const optionSubs = {
+  //     __KEY__: key,
+  //     __SELECTED__: selected,
+  //   };
+  //   return b.render("blockOption", optionSubs);
+  // });
+  // const subs = {
+  //   __OPTIONS__: options,
+  // };
+  // el.replaceChildren(b.render("blockOptions", subs));
 }
 
 // export function blockOptionsSet(_, sender, ___) {
