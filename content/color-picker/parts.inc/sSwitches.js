@@ -1,7 +1,7 @@
 function setSwitches(mode) {
   b.setCSS(
-    `--switch--background`,
-    `var(--${mode}--background)`,
+    `--switch--background-color`,
+    `var(--${mode}--background-color)`,
   );
   s.data.colorTypes.forEach((t) => {
     b.setCSS(

@@ -9,7 +9,7 @@ function generatePageVariables() {
     );
     variables.push(
       [
-        `--${mode.__KEY__}--background`,
+        `--${mode.__KEY__}--background-color`,
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
       ],
     );

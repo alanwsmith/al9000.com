@@ -10,7 +10,7 @@
 
 body { 
   background-image: none; 
-  background-color: var(--background);
+  background-color: var(--background-color);
   font-family: system-ui;
   color: var(--default-base-color);
 }

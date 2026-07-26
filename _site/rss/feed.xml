@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-07-25T19:46:05-05:00</updated>
+  <updated>2026-07-25T20:42:48-05:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -14,6 +14,22 @@
     <updated>2026-07-25T15:47:14-05:00</updated>
     <summary><![CDATA[
 
+<div class="warning-block">
+  <p>
+    Head's Up
+  </p>
+  <p>
+    This is prototype testing code to see how
+    this could work. According to <a href="https://adrianroselli.com/2023/03/css-only-widgets-are-inaccessible.html#Tabs">this post</a>
+    it's not accessible. That's not really a surprise. 
+    So, treat this as an interesting experiment instead
+    of something to actually implement.
+    I got pointed to 
+    <a href="https://inclusive-components.design/tabbed-interfaces/">
+      Tabbed Interfaces on inclusive-components.design</a>
+    for an actual alternative.
+  </p>
+</div>
 <h2>Component Kickoff</h2>
 <p>I was listening to an episode of <a href="https://shoptalkshow.com/">Shop Talk Show</a>
 that discussed putting native HTML elements inside

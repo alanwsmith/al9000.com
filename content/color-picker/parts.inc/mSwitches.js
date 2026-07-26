@@ -1,7 +1,6 @@
-
 function makeSwitches(mode) {
   const background = [
-    `--background: var(--switch--background, var(--${mode}--background));`,
+    `--background-color: var(--switch--background-color, var(--${mode}--background-color));`,
   ];
   const colorScheme = [
     `--color-scheme: var(--switch--color-scheme, var(--${mode}--color-scheme));`,

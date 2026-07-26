@@ -1,5 +1,11 @@
 const defaults = {
-  customStyles: "/* add your custom css here */",
+  customStyles: "",
+  baseCSS: `
+:root {
+
+
+}
+`,
   logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
