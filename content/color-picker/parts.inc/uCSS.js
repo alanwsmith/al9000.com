@@ -91,6 +91,7 @@ uBackgroundValue
 uColorButton 
 uHueOffset
 uColorValue
+monoColorUpdate
 `);
   //uColorName
 }

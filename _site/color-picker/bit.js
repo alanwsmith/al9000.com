@@ -23,6 +23,10 @@ body {
   colorNames: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
+  monoSliders: [
+    { key: "faded", name: "Faded", token: "__FADED__" },
+    { key: "faint", name: "Faint", token: "__FAINT__" },
+  ],
   config: {
     __L__: {
       __NAME__: "Lightness",
@@ -53,11 +57,12 @@ body {
     {
       __KEY__: "light",
       activeColorIndex: 0,
+      activeMonoIndex: 0,
       background: {
         __L__: 1,
         __C__: 0.01726,
         __H__: 45.298,
-        __T__: 0,
+        __T__: 45,
       },
       monos: {
         "black": {
@@ -85,7 +90,7 @@ body {
         {
           __L__: 0.3,
           __C__: 0.12,
-          __H_OFFSET__: 0,
+          __H_OFFSET__: 4,
           __FADED__: 0.6,
           __FAINT__: 0.12,
         },
@@ -122,6 +127,7 @@ body {
     {
       __KEY__: "dark",
       activeColorIndex: 0,
+      activeMonoIndex: 0,
       background: {
         __L__: 0.138,
         __C__: 0.12,
@@ -336,6 +342,7 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   b.trigger(
     `
+monoBoxInit
 initBaseStyles 
 initBackgroundSliders 
 initColorNameButtons 
@@ -495,6 +502,68 @@ function makeUiVars() {
   });
 
   return `:root { ${out2.join("\n")}}`;
+}
+
+export function monoBoxInit(_, __, el) {
+  b.trace("monoBoxInit");
+  const mode = s.getActiveMode();
+  const colors = s.data.monoNames.map((color, index) => {
+    const classes = ["mono-button"];
+    if (mode.activeMonoIndex === index) {
+      classes.push("active");
+    }
+    const subs = {
+      __COLOR__: color,
+      __INDEX__: index,
+      __CLASSES__: classes.join(" "),
+    };
+    return b.render("monoColor", subs);
+  });
+
+  const sliders = s.data.monoSliders.map((slider) => {
+    const value =
+      mode.monos[s.data.monoNames[mode.activeMonoIndex]][slider.token];
+    b.info(value);
+    const subs = {
+      __NAME__: slider.name,
+      __KEY__: slider.key,
+      __MIN__: s.data.config.__L__.__MIN__,
+      __MAX__: s.data.config.__L__.__MAX__,
+      __STEP__: s.data.config.__L__.__STEP__,
+      __VALUE__: value,
+    };
+
+    return b.render("monoSlider", subs);
+  });
+
+  const subs = {
+    __COLORS__: colors,
+    __SLIDERS__: sliders,
+  };
+
+  el.replaceChildren(
+    b.render("monoBox", subs),
+  );
+}
+
+export function monoBoxSet() {}
+
+export function monoBoxUpdate() {}
+
+export function monoColorSet(_, sender, ___) {
+  const mode = s.getActiveMode();
+  mode.activeMonoIndex = sender.propAsInt("index");
+  b.savePageData("data", s.data);
+  b.trigger("monoColorUpdate");
+}
+
+export function monoColorUpdate(_, __, el) {
+  const mode = s.getActiveMode();
+  if (el.propAsInt("index") === mode.activeMonoIndex) {
+    el.classList.add("active");
+  } else {
+    el.classList.remove("active");
+  }
 }
 
 export async function resetDefaults() {
@@ -717,6 +786,7 @@ uBackgroundValue
 uColorButton 
 uHueOffset
 uColorValue
+monoColorUpdate
 `);
   //uColorName
 }

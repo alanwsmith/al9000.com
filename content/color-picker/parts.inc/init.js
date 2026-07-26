@@ -5,6 +5,7 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   b.trigger(
     `
+monoBoxInit
 initBaseStyles 
 initBackgroundSliders 
 initColorNameButtons 
