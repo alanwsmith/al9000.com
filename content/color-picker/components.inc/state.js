@@ -22,4 +22,3 @@ class State {
     b.savePageData("data", this.data);
   }
 }
-

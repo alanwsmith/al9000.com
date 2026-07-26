@@ -50,10 +50,18 @@ flags = ["no-colors"]
 
 == block templates
 <bitty-9 data-connect="[@ template_dir() + '/bit.js' @]"></bitty-9>
-== include template_dir() + "/includes.inc/templates.html" 
 
+== for template_file in files_in_folder(template_dir("/components.inc"), full=true)
+== if extension(template_file) == "html"
+== include template_file
+== endif
+== endfor
+
+[# DEPREXATED
+== include template_dir() + "/includes.inc/templates.html" 
 == for template_file in files_in_folder(template_dir("/templates"), full=true)
 == include template_file
 == endfor
+#]
 
 == endblock
