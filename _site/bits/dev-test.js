@@ -1,7 +1,7 @@
 export const b = {
   init: "init",
 };
-/*
+
 export function init() {
   document.addEventListener("mouseover", (event) => {
     if (
@@ -11,4 +11,3 @@ export function init() {
     }
   });
 }
-*/

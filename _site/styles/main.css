@@ -1295,5 +1295,13 @@ video {
   --flow-space: var(--xxxlarge-margin);
 }
 
+.warning-block {
+  border: var(--default-warning-border);
+  border-radius: var(--default-border-radius);
+  margin-inline: var(--default-margin);
+  padding: var(--default-padding);
+  background-color: var(--faded-warning-color);
+  --flow-space: var(--xxxlarge-margin);
+}
 
 

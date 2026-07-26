@@ -3,7 +3,13 @@ export async function copyThis(_, sender, el) {
 }
 
 const defaults = {
-  customStyles: "/* add your custom css here */",
+  customStyles: "",
+  baseCSS: `
+:root {
+
+
+}
+`,
   logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
@@ -189,7 +195,7 @@ function generatePageVariables() {
     );
     variables.push(
       [
-        `--${mode.__KEY__}--background`,
+        `--${mode.__KEY__}--background-color`,
         `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
       ],
     );
@@ -335,10 +341,9 @@ uCustomStyles
   );
 }
 
-
 function makeClasses() {
   const background = [
-    `.background { color: var(--background); }`,
+    `.background-color { color: var(--background-color); }`,
   ];
   // TODO: Move these individual arrays into
   // the collections array.
@@ -393,10 +398,9 @@ ${variables.map((vv) => {
 `;
 }
 
-
 function makeSwitches(mode) {
   const background = [
-    `--background: var(--switch--background, var(--${mode}--background));`,
+    `--background-color: var(--switch--background-color, var(--${mode}--background-color));`,
   ];
   const colorScheme = [
     `--color-scheme: var(--switch--color-scheme, var(--${mode}--color-scheme));`,
@@ -553,11 +557,10 @@ export async function setParam(_, sender, ___) {
   });
 }
 
-
 function setSwitches(mode) {
   b.setCSS(
-    `--switch--background`,
-    `var(--${mode}--background)`,
+    `--switch--background-color`,
+    `var(--${mode}--background-color)`,
   );
   s.data.colorTypes.forEach((t) => {
     b.setCSS(
@@ -704,6 +707,7 @@ export function uHueOffset(_, __, el) {
     }
   }
 }
+
 
 
 let sheet = new CSSStyleSheet();

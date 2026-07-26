@@ -1,7 +1,6 @@
-
 function makeClasses() {
   const background = [
-    `.background { color: var(--background); }`,
+    `.background-color { color: var(--background-color); }`,
   ];
   // TODO: Move these individual arrays into
   // the collections array.
