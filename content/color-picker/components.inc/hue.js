@@ -4,7 +4,7 @@ export async function hueSet(_, sender, ___) {
   const color = mode.colors[mode.activeColor];
   color.hueOffset = sender.propAsInt("index");
   await s.save();
-  b.trigger("hueUpdate");
+  b.trigger("hueUpdate updateCSS");
 }
 
 export function hueUpdate(_, __, el) {

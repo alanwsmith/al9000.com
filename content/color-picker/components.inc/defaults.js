@@ -52,6 +52,18 @@ body {
       __MAX__: 100,
       __STEP__: 0.1,
     },
+    "faded": {
+      __NAME__: "Faded",
+      __MIN__: 0,
+      __MAX__: 1,
+      __STEP__: 0.0001,
+    },
+    "faint": {
+      __NAME__: "Faint",
+      __MIN__: 0,
+      __MAX__: 1,
+      __STEP__: 0.0001,
+    },
   },
   modes: {
     "light": {
@@ -87,40 +99,50 @@ body {
         },
       },
       colors: {
-        "base": {
-          lightness: 0.3,
-          chroma: 0.12,
+        base: {
           hueOffset: 4,
-          faded: 0.6,
-          faint: 0.12,
+          values: {
+            lightness: 0.3,
+            chroma: 0.12,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        "heading": {
-          lightness: 0.4,
-          chroma: 0.16,
+        heading: {
           hueOffset: 3,
-          faded: 0.6,
-          faint: 0.12,
+          values: {
+            lightness: 0.4,
+            chroma: 0.16,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        "accent": {
-          lightness: 0.54,
-          chroma: 0.126,
+        accent: {
           hueOffset: 5,
-          faded: 0.6,
-          faint: 0.12,
+          values: {
+            lightness: 0.54,
+            chroma: 0.126,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        "info": {
-          lightness: 0.62,
-          chroma: 0.12,
+        info: {
           hueOffset: 2,
-          faded: 0.6,
-          faint: 0.12,
+          values: {
+            lightness: 0.62,
+            chroma: 0.12,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        "warning": {
-          lightness: 0.6,
-          chroma: 0.127,
+        warning: {
           hueOffset: 4,
-          faded: 0.6,
-          faint: 0.12,
+          values: {
+            lightness: 0.6,
+            chroma: 0.127,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
       },
     },
@@ -158,39 +180,49 @@ body {
       },
       colors: {
         base: {
-          lightness: 0.883,
-          chroma: 0.0372,
           hueOffset: 6,
-          faded: 0.6,
-          faint: 0.12,
+          values: {
+            lightness: 0.883,
+            chroma: 0.0372,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
         heading: {
-          lightness: 0.773,
-          chroma: 0.12,
           hueOffset: 2,
-          faded: 0.6,
-          faint: 0.12,
+          values: {
+            faded: 0.6,
+            faint: 0.12,
+            lightness: 0.773,
+            chroma: 0.12,
+          },
         },
         accent: {
-          lightness: 0.62,
-          chroma: 0.08,
           hueOffset: 3,
-          faded: 0.6,
-          faint: 0.12,
+          values: {
+            lightness: 0.62,
+            chroma: 0.08,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
         info: {
-          lightness: 0.93,
-          chroma: 0.15,
           hueOffset: 3,
-          faded: 0.6,
-          faint: 0.12,
+          values: {
+            lightness: 0.93,
+            chroma: 0.15,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
         warning: {
-          lightness: 0.7,
-          chroma: 0.122,
           hueOffset: 4,
-          faded: 0.6,
-          faint: 0.12,
+          values: {
+            faded: 0.6,
+            faint: 0.12,
+            lightness: 0.7,
+            chroma: 0.122,
+          },
         },
       },
     },

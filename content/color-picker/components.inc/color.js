@@ -2,7 +2,7 @@ export async function colorSet(_, sender, ___) {
   b.trace("colorSet");
   s.data.modes[s.data.activeMode].activeColor = sender.prop("key");
   await s.save();
-  b.trigger("colorUpdate hueUpdate");
+  b.trigger("colorUpdate hueUpdate colorSliderUpdate updateCSS");
 }
 
 export function colorUpdate(_, __, el) {

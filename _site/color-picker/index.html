@@ -789,7 +789,7 @@ ratios.</p>
             <div data-r="colorsInit" class="colors"></div>
             <div data-r="huesInit" class="hues"></div>
         </div>
-        <div data-r="initColorSliders"></div>
+        <div data-r="colorSlidersInit"></div>
     </div>
 
 
@@ -873,6 +873,20 @@ __OPTIONS__
     data-r="colorUpdate"
   >__KEY__</div>
 
+</script><script type="text/html" data-template="colorSlider">
+    <label for="colorSlider-__KEY__">__NAME__</label>
+    <div>
+      <input 
+        id="colorSlider-__KEY__"
+        type="range" 
+        data-s="colorSliderSet" 
+        data-r="colorSliderUpdate" 
+        data-key="__KEY__" 
+        min="__MIN__" 
+        max="__MAX__" 
+        step="__STEP__" 
+        autocomplete="off" />
+    </div>
 </script><script type="text/html" data-template="hue">
 <div 
   class="hue" 
