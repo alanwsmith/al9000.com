@@ -5,8 +5,8 @@ const defaults = {
 }
 
 body { 
-  background-color: var(--background-color);
-  background-image: var(--background-image);
+  background-color: var(--default-background-color);
+  background-image: var(--default-background-image);
   background-repeat: repeat;
   background-size: 150px 150px;
   color: var(--default-base-color);

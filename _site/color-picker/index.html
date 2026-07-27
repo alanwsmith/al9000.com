@@ -27,7 +27,17 @@
 
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
-<style>
+
+
+    
+
+    <style>
+/* these classes are only for the layout
+* everything else should be built 
+* dynamically in the output sheet or
+* the dyncmaic style update */
+
+
 *, 
 *::before, 
 *::after {
@@ -42,63 +52,12 @@
   --sidebar-width: 18rem;
 }
 
-a {
-  text-decoration: none;
-  color: var(--default-accent-color);
-}
-
-a:hover {
-  color: var(--faded-warning-color);
+body {
+  margin: 1.4rem;
 }
 
 .active {
   font-weight: 900;
-}
-
-.background-sliders {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-
-.bold {
-  font-weight: 900;
-}
-
-button{
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  outline: inherit;
-  padding-block: 0.2rem;
-}
-
-.border-1 {
-  border: 1px solid var(--faint-reverse-color);
-  padding: 0.6rem;
-  border-radius: 0.5rem;
-  margin-block: 0.9rem;
-}
-
-.color-button {
-  width: 1.8rem;
-}
-
-.color-buttons :first-child {
-  border-start-start-radius: 0.3rem;
-}
-
-.color-buttons :last-child {
-  border-start-end-radius: 0.3rem;
-}
-
-.color-name {
-  padding-left: 0.2rem;
-  padding-block: 0.2rem;
-  border-start-end-radius: 0.3rem;
-  border: 1px solid var(--ui-border);
-
 }
 
 .content {
@@ -106,71 +65,12 @@ button{
   min-width: 0;
 }
 
-.default-border-radius {
-  border-radius: 0.4rem;
-}
-
 .default-flow > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
 }
 
-.default-padding {
-  padding: 1rem;
-}
-
-.flex-line {
-  display: flex;
-  gap: 1.2rem;
-}
-
-h1 {
-  color: var(--default-heading-color);
-  font-weight: 900;
-  font-size: 2.8rem;
-}
-
-h2 {
-  color: var(--default-heading-color);
-  font-weight: 900;
-}
-
-h3 {
-  font-size: 0.9rem;
-}
-
-.hue-offset-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.hue-offset-buttons_v1 {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--ui-border);
-  border-inline: 1px solid var(--ui-border);
-  border-end-start-radius: 0.4rem;
-  border-end-end-radius: 0.4rem;
-}
-
-
-.hue-offset-buttons :first-child {
-  border-end-start-radius: 0.4rem;
-}
-
-.hue-offset-buttons :last-child {
-  border-end-end-radius: 0.4rem;
-}
-
 input[type=range]{
   width: 100%
-}
-
-main {
-  margin: 1.2rem;
-}
-
-ol > :where(:not(:first-child)) {
-  margin-top: var(--flow-space, 1em);
 }
 
 .package {
@@ -188,14 +88,6 @@ ol > :where(:not(:first-child)) {
   overflow-y: auto;
 }
 
-textarea {
-  display: block;
-  width: 96%;
-  height: 20rem;
-  font-size: 0.6rem;
-  margin-top: 2rem;
-}
-
 .two-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -209,13 +101,7 @@ textarea {
 }
 
 
-ul > :where(:not(:first-child)) {
-  margin-top: var(--flow-space, 1em);
-}</style>
-
-
-    
-
+    </style>
 
   </head>
   <body>
@@ -404,40 +290,16 @@ ratios.</p>
       <div class="border-1" data-r="updateActiveColor" data-key="base">
         <div class="default-base-color two-columns">
           <div class="block default-base-block">
-            <style>
-            .default-base-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--default-base-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>default base</div>
         </div>
         <div class="faded-base-color two-columns">
           <div class="block faded-base-block">
-            <style>
-            .faded-base-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faded-base-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faded base</div>
         </div>
         <div class="faint-base-color two-columns">
           <div class="block faint-base-block">
-            <style>
-            .faint-base-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faint-base-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faint base</div>
         </div>
@@ -445,40 +307,16 @@ ratios.</p>
       <div class="border-1" data-r="updateActiveColor" data-key="heading">
         <div class="default-heading-color two-columns">
           <div class="block default-heading-block">
-            <style>
-            .default-heading-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--default-heading-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>default heading</div>
         </div>
         <div class="faded-heading-color two-columns">
           <div class="block faded-heading-block">
-            <style>
-            .faded-heading-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faded-heading-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faded heading</div>
         </div>
         <div class="faint-heading-color two-columns">
           <div class="block faint-heading-block">
-            <style>
-            .faint-heading-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faint-heading-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faint heading</div>
         </div>
@@ -486,40 +324,16 @@ ratios.</p>
       <div class="border-1" data-r="updateActiveColor" data-key="accent">
         <div class="default-accent-color two-columns">
           <div class="block default-accent-block">
-            <style>
-            .default-accent-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--default-accent-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>default accent</div>
         </div>
         <div class="faded-accent-color two-columns">
           <div class="block faded-accent-block">
-            <style>
-            .faded-accent-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faded-accent-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faded accent</div>
         </div>
         <div class="faint-accent-color two-columns">
           <div class="block faint-accent-block">
-            <style>
-            .faint-accent-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faint-accent-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faint accent</div>
         </div>
@@ -527,40 +341,16 @@ ratios.</p>
       <div class="border-1" data-r="updateActiveColor" data-key="info">
         <div class="default-info-color two-columns">
           <div class="block default-info-block">
-            <style>
-            .default-info-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--default-info-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>default info</div>
         </div>
         <div class="faded-info-color two-columns">
           <div class="block faded-info-block">
-            <style>
-            .faded-info-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faded-info-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faded info</div>
         </div>
         <div class="faint-info-color two-columns">
           <div class="block faint-info-block">
-            <style>
-            .faint-info-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faint-info-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faint info</div>
         </div>
@@ -568,40 +358,16 @@ ratios.</p>
       <div class="border-1" data-r="updateActiveColor" data-key="warning">
         <div class="default-warning-color two-columns">
           <div class="block default-warning-block">
-            <style>
-            .default-warning-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--default-warning-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>default warning</div>
         </div>
         <div class="faded-warning-color two-columns">
           <div class="block faded-warning-block">
-            <style>
-            .faded-warning-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faded-warning-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faded warning</div>
         </div>
         <div class="faint-warning-color two-columns">
           <div class="block faint-warning-block">
-            <style>
-            .faint-warning-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faint-warning-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faint warning</div>
         </div>
@@ -609,40 +375,16 @@ ratios.</p>
       <div class="border-1" data-r="updateActiveColor" data-key="black">
         <div class="default-black-color two-columns">
           <div class="block default-black-block">
-            <style>
-            .default-black-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--default-black-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>default black</div>
         </div>
         <div class="faded-black-color two-columns">
           <div class="block faded-black-block">
-            <style>
-            .faded-black-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faded-black-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faded black</div>
         </div>
         <div class="faint-black-color two-columns">
           <div class="block faint-black-block">
-            <style>
-            .faint-black-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faint-black-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faint black</div>
         </div>
@@ -650,40 +392,16 @@ ratios.</p>
       <div class="border-1" data-r="updateActiveColor" data-key="white">
         <div class="default-white-color two-columns">
           <div class="block default-white-block">
-            <style>
-            .default-white-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--default-white-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>default white</div>
         </div>
         <div class="faded-white-color two-columns">
           <div class="block faded-white-block">
-            <style>
-            .faded-white-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faded-white-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faded white</div>
         </div>
         <div class="faint-white-color two-columns">
           <div class="block faint-white-block">
-            <style>
-            .faint-white-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faint-white-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faint white</div>
         </div>
@@ -691,40 +409,16 @@ ratios.</p>
       <div class="border-1" data-r="updateActiveColor" data-key="match">
         <div class="default-match-color two-columns">
           <div class="block default-match-block">
-            <style>
-            .default-match-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--default-match-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>default match</div>
         </div>
         <div class="faded-match-color two-columns">
           <div class="block faded-match-block">
-            <style>
-            .faded-match-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faded-match-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faded match</div>
         </div>
         <div class="faint-match-color two-columns">
           <div class="block faint-match-block">
-            <style>
-            .faint-match-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faint-match-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faint match</div>
         </div>
@@ -732,40 +426,16 @@ ratios.</p>
       <div class="border-1" data-r="updateActiveColor" data-key="reverse">
         <div class="default-reverse-color two-columns">
           <div class="block default-reverse-block">
-            <style>
-            .default-reverse-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--default-reverse-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>default reverse</div>
         </div>
         <div class="faded-reverse-color two-columns">
           <div class="block faded-reverse-block">
-            <style>
-            .faded-reverse-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faded-reverse-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faded reverse</div>
         </div>
         <div class="faint-reverse-color two-columns">
           <div class="block faint-reverse-block">
-            <style>
-            .faint-reverse-block {
-              margin: 0.3rem;
-              height: 1.2rem; 
-              background-color: var(--faint-reverse-color);
-                border-radius: 0.2rem;
-            }
-            </style>
           </div>
           <div>faint reverse</div>
         </div>
@@ -872,7 +542,7 @@ __OPTIONS__
 
 <script type="text/html" data-template="color">
   <div 
-    class="color" 
+    class="color default-__KEY__-color" 
     data-key="__KEY__"
     data-s="colorSet"
     data-r="colorUpdate"
@@ -894,7 +564,7 @@ __OPTIONS__
     </div>
 </script><script type="text/html" data-template="hue">
 <div 
-  class="hue" 
+  class="hue ui--hue-color-__INDEX__" 
   data-index="__INDEX__"
   data-s="hueSet"
   data-r="hueUpdate">hue</div>
