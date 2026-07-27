@@ -14,14 +14,10 @@ export async function backgroundSliderSet(_, sender, ___) {
 
 export function backgroundSlidersInit(_, __, el) {
   b.trace("backgroundSlidersInit");
-  const sliders = Object.entries(s.data.config).map(([key, subs]) => {
+  Object.entries(s.data.config).forEach(([key, subs]) => {
     subs.__KEY__ = key;
-    return b.render("backgroundSlider", subs);
+    el.appendChild(b.render("backgroundSlider", subs));
   });
-  const subs = {
-    __SLIDERS__: sliders,
-  };
-  el.replaceChildren(b.render("backgroundSliders", subs));
   b.trigger("backgroundSliderUpdate");
 }
 
@@ -127,6 +123,10 @@ export function blocksInit(_, __, el) {
 
   el.replaceChildren(b.render("blockBuilder", subs));
   */
+}
+
+export function colorsInit(_, __, el) {
+  b.l(el);
 }
 
 const defaults = {
@@ -335,6 +335,7 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
+    // "colorsInit",
     "backgroundSlidersInit",
     //"modesInit",
     //"modesInit blocksInit",
