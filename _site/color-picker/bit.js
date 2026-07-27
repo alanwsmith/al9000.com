@@ -129,7 +129,7 @@ export async function colorSet(_, sender, ___) {
   b.trace("colorSet");
   s.data.modes[s.data.activeMode].activeColor = sender.prop("key");
   await s.save();
-  b.trigger("colorUpdate");
+  b.trigger("colorUpdate hueUpdate");
 }
 
 export function colorUpdate(_, __, el) {
@@ -391,7 +391,8 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    "huesInit",
+    "modesInit backgroundSlidersInit colorsInit huesInit",
+    //"huesInit",
     //"colorsInit",
     // "backgroundSlidersInit",
     //"modesInit",
@@ -441,6 +442,13 @@ function initDefaultBlocks() {
   s.save();
 }
 
+export async function modeSet(_, sender, ___) {
+  b.trace("modeSet");
+  s.data.activeMode = sender.prop("key");
+  await s.save();
+  b.trigger("backgroundSliderUpdate colorUpdate hueUpdate");
+}
+
 export function modesInit(_, __, el) {
   b.trace("modesInit");
   const modes = Object.keys(s.data.modes).map((key) => {
@@ -458,12 +466,6 @@ export function modesInit(_, __, el) {
     __MODES__: modes,
   };
   el.replaceChildren(b.render("modes", subs));
-}
-
-export async function modesSet(_, sender, ___) {
-  b.trace("modeSet");
-  s.data.activeMode = sender.prop("key");
-  await s.save();
 }
 
 export async function resetDefaults(_, __, ___) {

@@ -16,9 +16,3 @@ export function modesInit(_, __, el) {
   };
   el.replaceChildren(b.render("modes", subs));
 }
-
-export async function modesSet(_, sender, ___) {
-  b.trace("modeSet");
-  s.data.activeMode = sender.prop("key");
-  await s.save();
-}

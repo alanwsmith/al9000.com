@@ -5,7 +5,8 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    "huesInit",
+    "modesInit backgroundSlidersInit colorsInit huesInit",
+    //"huesInit",
     //"colorsInit",
     // "backgroundSlidersInit",
     //"modesInit",
