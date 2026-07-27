@@ -1,3 +1,9 @@
+/* these classes are only for the layout
+* everything else should be built 
+* dynamically in the output sheet or
+* the dyncmaic style update */
+
+
 *, 
 *::before, 
 *::after {
@@ -8,138 +14,44 @@
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-  color: var(--default-accent-color);
+:root {
+  --sidebar-width: 18rem;
 }
 
-a:hover {
-  color: var(--faded-warning-color);
+body {
+  margin: 1.4rem;
 }
 
 .active {
   font-weight: 900;
 }
 
-.background-sliders {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-
-.bold {
-  font-weight: 900;
-}
-
-button{
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  outline: inherit;
-  padding-block: 0.2rem;
-}
-
-.border-1 {
-  border: 1px solid var(--faint-reverse-color);
-  padding: 0.6rem;
-  border-radius: 0.5rem;
-  margin-block: 0.9rem;
-}
-
-.color-button {
-  width: 1.8rem;
-}
-
-.color-buttons :first-child {
-  border-start-start-radius: 0.3rem;
-}
-
-.color-buttons :last-child {
-  border-start-end-radius: 0.3rem;
-}
-
-.color-name {
-  padding-left: 0.2rem;
-  padding-block: 0.2rem;
-  border-start-end-radius: 0.3rem;
-  border: 1px solid var(--ui-border);
-
-}
-
-.default-border-radius {
-  border-radius: 0.4rem;
+.content {
+  flex: 1;
+  min-width: 0;
 }
 
 .default-flow > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
 }
 
-.default-padding {
-  padding: 1rem;
-}
-
-.flex-line {
-  display: flex;
-  gap: 1.2rem;
-}
-
-h1 {
-  color: var(--default-heading-color);
-  font-weight: 900;
-  font-size: 2.8rem;
-}
-
-h2 {
-  color: var(--default-heading-color);
-  font-weight: 900;
-}
-
-h3 {
-  font-size: 0.9rem;
-}
-
-.hue-offset-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.hue-offset-buttons_v1 {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--ui-border);
-  border-inline: 1px solid var(--ui-border);
-  border-end-start-radius: 0.4rem;
-  border-end-end-radius: 0.4rem;
-}
-
-
-.hue-offset-buttons :first-child {
-  border-end-start-radius: 0.4rem;
-}
-
-.hue-offset-buttons :last-child {
-  border-end-end-radius: 0.4rem;
-}
-
 input[type=range]{
   width: 100%
 }
 
-main {
-  margin: 1.2rem;
+.package {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
 }
 
-ol > :where(:not(:first-child)) {
-  margin-top: var(--flow-space, 1em);
-}
-
-textarea {
-  display: block;
-  width: 96%;
-  height: 20rem;
-  font-size: 0.6rem;
-  margin-top: 2rem;
+.sidebar {
+  position: sticky;
+  flex: 0 0 var(--sidebar-width);
+  width: var(--sidebar-width);
+  top: 1.5rem;
+  max-height: calc(100vh - 3rem); 
+  overflow-y: auto;
 }
 
 .two-columns {
@@ -155,6 +67,3 @@ textarea {
 }
 
 
-ul > :where(:not(:first-child)) {
-  margin-top: var(--flow-space, 1em);
-}

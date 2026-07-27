@@ -288,10 +288,10 @@ class BittyJs extends HTMLElement {
     }, ms);
   }
 
-  _debug(message, ev, sender, el) {
+  _debug(message) {
     if (this.b._logLevel >= 2) {
       if (typeof this.b.handleDebug === "function") {
-        this.b.handleDebug(message, ev, sender, el);
+        this.b.handleDebug(message);
       } else {
         console.debug(`[D|${this.b.timeMs()}]`, message);
       }
@@ -339,10 +339,10 @@ class BittyJs extends HTMLElement {
     });
   }
 
-  _error(message, ev, sender, el) {
+  _error(message) {
     if (this.b._logLevel >= 4) {
       if (typeof this.b.handleError === "function") {
-        this.b.handleError(message, ev, sender, el);
+        this.b.handleError(message);
       } else {
         console.error(`[E|${this.b.timeMs()}]`, message);
       }
@@ -536,10 +536,20 @@ class BittyJs extends HTMLElement {
       });
   }
 
-  _info(message, ev, sender, el) {
+  _info(message) {
     if (this.b._logLevel >= 1) {
       if (typeof this.b.handleInfo === "function") {
-        this.b.handleInfo(message, ev, sender, el);
+        this.b.handleInfo(message);
+      } else {
+        console.info(`[I|${this.b.timeMs()}]`, message);
+      }
+    }
+  }
+
+  _l(message) {
+    if (this.b._logLevel >= 1) {
+      if (typeof this.b.handleLog === "function") {
+        this.b.handleLog(message);
       } else {
         console.info(`[I|${this.b.timeMs()}]`, message);
       }
@@ -1564,10 +1574,10 @@ class BittyJs extends HTMLElement {
     return this.b.time(datetime, true);
   }
 
-  _trace(message, ev, sender, el) {
+  _trace(message) {
     if (this.b._logLevel >= 5) {
       if (typeof this.b.handleTrace === "function") {
-        this.b.handleTrace(message, ev, sender, el);
+        this.b.handleTrace(message);
       } else {
         console.log(`[T|${this.b.timeMs()}]`, message);
       }
@@ -1761,10 +1771,10 @@ class BittyJs extends HTMLElement {
     }
   }
 
-  _warn(message, ev, sender, el) {
+  _warn(message) {
     if (this.b._logLevel >= 3) {
       if (typeof this.b.handleWarn === "function") {
-        this.b.handleWarn(message, ev, sender, el);
+        this.b.handleWarn(message);
       } else {
         console.warn(`[W|${this.b.timeMs()}]`, message);
       }

@@ -1,35 +1,197 @@
-export function blockBuilderInit(_, __, el) {
-  const textOptions = [
-    b.render("blockBuilderOption", { __KEY__: "none" }),
-    ...s.data.colorTypes.map((colorType) => {
-      return s.data.colorNames.map((colorName) => {
-        const subs = {
-          __KEY__: `${colorType}-${colorName}`,
-        };
-        return b.render("blockBuilderOption", subs);
-      });
-    }).flat(),
-  ];
-  const subs = {
-    __BLOCK_BUILDER_OPTIONS__: textOptions,
-  };
-  el.replaceChildren(b.render("blockBuilder", subs));
+export function backgroundSliderUpdate(_, __, el) {
+  el.value = s.data.modes[s.data.activeMode].background[el.prop("key")];
 }
 
-export async function copyThis(_, sender, el) {
-  await b.quickCopy(el, sender);
+export async function backgroundSliderSet(_, sender, ___) {
+  await requestAnimationFrame(async () => {
+    s.data.modes[s.data.activeMode].background[sender.prop("key")] = sender
+      .valueAsFloat();
+    await b.savePageData("data", s.data);
+    b.trigger("updateCSS updateJSON");
+  });
+}
+
+export function backgroundSlidersInit(_, __, el) {
+  b.trace("backgroundSlidersInit");
+  Object.entries(s.data.config).forEach(([key, subs]) => {
+    if (key !== "faded" && key !== "faint") {
+      subs.__KEY__ = key;
+      el.appendChild(b.render("backgroundSlider", subs));
+    }
+  });
+  b.trigger("backgroundSliderUpdate");
+}
+
+export function blockOptionsInit(_, __, el) {
+  // b.trace("blockOptionsInit");
+  // const mode = s.getActiveMode();
+  // const options = Object.keys(mode.blocks).map((key) => {
+  //   let selected = "";
+  //   if (key === mode.activeBlock) {
+  //     selected = " selected";
+  //   }
+  //   const optionSubs = {
+  //     __KEY__: key,
+  //     __SELECTED__: selected,
+  //   };
+  //   return b.render("blockOption", optionSubs);
+  // });
+  // const subs = {
+  //   __OPTIONS__: options,
+  // };
+  // el.replaceChildren(b.render("blockOptions", subs));
+}
+
+// export function blockOptionsSet(_, sender, ___) {
+//   const mode = s.getActiveMode();
+//   b.info(mode.blocks);
+// }
+
+// export function blockOptionsUpdate(_, __, el) {
+//   el.replaceChildren();
+//   const mode = s.getActiveMode();
+//   s.data.colorTypes.map((colorType) => {
+//     return s.data.colorNames.map((colorName) => {
+//       const key = `${colorType}-${colorName}`;
+//       let selected = "";
+//       if (mode.activeBlock === key) {
+//         selected = " selected";
+//       }
+//       const subs = {
+//         __KEY__: `${colorType}-${colorName}`,
+//         __SELECTED__: selected,
+//       };
+//       el.appendChild(b.render("blockBuilderOption", subs));
+//     });
+//   });
+// }
+
+export function blockSelectInit(_, __, el) {
+  b.trace("blockSelectInit");
+  el.replaceChildren(b.render("blockSelect"));
+  b.trigger("blockOptionsInit");
+}
+
+export function blockSelectSet(_, sender, ___) {
+  const mode = s.getActiveMode();
+  mode.activeBlock = sender.value;
+  s.save();
+  // b.savePageData("data", s.data);
+  b.info(sender.value);
+  b.info(mode);
+}
+
+export function blocksInit(_, __, el) {
+  b.trace("blocksInit");
+  el.replaceChildren(b.render("blocks"));
+  b.trigger("blockSelectInit");
+
+  /*
+
+  const examples = [];
+
+  const textOptions = s.data.colorTypes.map((colorType) => {
+    return s.data.colorNames.map((colorName) => {
+      const backgroundKey = `${colorType}-${colorName}`;
+      let selected = "";
+      if (mode.activeBlock === backgroundKey) {
+        selected = " selected";
+        s.data.colorTypes.forEach((colorTextType) => {
+          return s.data.colorNames.map((colorTextName) => {
+            const colorKey = `${colorTextType}-${colorTextName}`;
+            const textSubs = {
+              __BACKGROUND_KEY__: backgroundKey,
+              __COLOR_KEY__: colorKey,
+            };
+            examples.push(b.render("blockExample", textSubs));
+          });
+        });
+      }
+
+      const subs = {
+        __KEY__: backgroundKey,
+        __SELECTED__: selected,
+      };
+
+      return b.render("blockBuilderOption", subs);
+    });
+  }).flat();
+
+  const subs = {
+    __BLOCK_BUILDER_OPTIONS__: textOptions,
+    __BLOCK_EXAMPLES__: examples,
+  };
+
+  el.replaceChildren(b.render("blockBuilder", subs));
+  */
+}
+
+export async function colorSet(_, sender, ___) {
+  b.trace("colorSet");
+  s.data.modes[s.data.activeMode].activeColor = sender.prop("key");
+  await s.save();
+  b.trigger("colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON");
+}
+
+export function colorUpdate(_, __, el) {
+  b.trace("colorUpdate");
+  if (
+    el.prop("key") ===
+      s.data.modes[s.data.activeMode].activeColor
+  ) {
+    el.classList.add("active");
+  } else {
+    el.classList.remove("active");
+  }
+}
+
+export function colorSliderSet(_, sender, ___) {
+  const mode = s.data.modes[s.data.activeMode];
+  const color = mode.colors[mode.activeColor];
+  color.values[sender.prop("key")] = sender.valueAsFloat();
+  s.save();
+  b.trigger("updateCSS updateJSON");
+}
+
+export function colorSliderUpdate(_, __, el) {
+  const mode = s.data.modes[s.data.activeMode];
+  const color = mode.colors[mode.activeColor];
+  el.value = color.values[el.prop("key")];
+}
+
+export function colorSlidersInit(_, __, el) {
+  b.trace("colorSliderInit");
+  const mode = s.data.modes[s.data.activeMode];
+  const color = mode.colors[mode.activeColor];
+  Object.keys(color.values).forEach((key) => {
+    const subs = JSON.parse(JSON.stringify(
+      s.data.config[key],
+    ));
+    subs.__KEY__ = key;
+    el.appendChild(b.render("colorSlider", subs));
+  });
+  b.trigger("colorSliderUpdate");
+}
+
+export function colorsInit(_, __, el) {
+  s.data.colorKeys.forEach((key) => {
+    const subs = {
+      __KEY__: key,
+    };
+    el.appendChild(b.render("color", subs));
+  });
+  b.trigger("colorUpdate");
 }
 
 const defaults = {
-  customStyles: "",
   baseCSS: `
 :root {
   color-scheme: var(--color-scheme);
 }
 
 body { 
-  background-color: var(--background-color);
-  background-image: var(--background-image);
+  background-color: var(--default-background-color);
+  background-image: var(--default-background-image);
   background-repeat: repeat;
   background-size: 150px 150px;
   color: var(--default-base-color);
@@ -38,877 +200,523 @@ body {
   logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
-  colorNames: ["base", "heading", "accent", "info", "warning"],
+  colorKeys: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
-  monoMap: {
-    "faded": "__FADED__",
-    "faint": "__FAINT__",
-  },
-  monoSliders: [
-    { key: "faded", name: "Faded", token: "__FADED__" },
-    { key: "faint", name: "Faint", token: "__FAINT__" },
-  ],
   config: {
-    __L__: {
+    "lightness": {
       __NAME__: "Lightness",
       __MIN__: 0,
       __MAX__: 1,
       __STEP__: 0.0001,
     },
-    __C__: {
+    "chroma": {
       __NAME__: "Chroma",
       __MIN__: 0,
       __MAX__: 0.3,
       __STEP__: 0.00001,
     },
-    __H__: {
+    "hue": {
       __NAME__: "Hue",
       __MIN__: 0,
       __MAX__: 360,
       __STEP__: 0.001,
     },
-    __T__: {
+    "texture": {
       __NAME__: "Texture",
       __MIN__: 0,
       __MAX__: 100,
       __STEP__: 0.1,
     },
+    "faded": {
+      __NAME__: "Faded",
+      __MIN__: 0,
+      __MAX__: 1,
+      __STEP__: 0.0001,
+    },
+    "faint": {
+      __NAME__: "Faint",
+      __MIN__: 0,
+      __MAX__: 1,
+      __STEP__: 0.0001,
+    },
   },
-  modes: [
-    {
-      __KEY__: "light",
-      activeColorIndex: 0,
+  modes: {
+    "light": {
+      activeColor: "base",
       activeMonoKey: "black",
+      activeBlock: "default-accent",
       background: {
-        __L__: 1,
-        __C__: 0.01726,
-        __H__: 45.298,
-        __T__: 45,
+        lightness: 1,
+        chroma: 0.01726,
+        hue: 45.298,
+        texture: 45,
       },
       monos: {
         "black": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "white": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "match": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "reverse": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
       },
-      colors: [
-        {
-          __L__: 0.3,
-          __C__: 0.12,
-          __H_OFFSET__: 4,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+      colors: {
+        base: {
+          hueOffset: 4,
+          values: {
+            lightness: 0.3,
+            chroma: 0.12,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        {
-          __L__: 0.4,
-          __C__: 0.16,
-          __H_OFFSET__: 3,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+        heading: {
+          hueOffset: 3,
+          values: {
+            lightness: 0.4,
+            chroma: 0.16,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        {
-          __L__: 0.54,
-          __C__: 0.126,
-          __H_OFFSET__: 5,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+        accent: {
+          hueOffset: 5,
+          values: {
+            lightness: 0.54,
+            chroma: 0.126,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        {
-          __L__: 0.62,
-          __C__: 0.12,
-          __H_OFFSET__: 2,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+        info: {
+          hueOffset: 2,
+          values: {
+            lightness: 0.62,
+            chroma: 0.12,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        {
-          __L__: 0.6,
-          __C__: 0.127,
-          __H_OFFSET__: 4,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+        warning: {
+          hueOffset: 4,
+          values: {
+            lightness: 0.6,
+            chroma: 0.127,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-      ],
+      },
     },
-    {
-      __KEY__: "dark",
-      activeColorIndex: 0,
+    "dark": {
+      activeColor: "base",
       activeMonoKey: "black",
+      activeBlock: "default-base",
       background: {
-        __L__: 0.138,
-        __C__: 0.12,
-        __H__: 166.07,
-        __T__: 0,
+        lightness: 0.138,
+        chroma: 0.12,
+        hue: 166.07,
+        texture: 0,
       },
       monos: {
         "black": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "white": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "match": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "reverse": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
       },
-      colors: [
-        {
-          __L__: 0.883,
-          __C__: 0.0372,
-          __H_OFFSET__: 6,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+      colors: {
+        base: {
+          hueOffset: 6,
+          values: {
+            lightness: 0.883,
+            chroma: 0.0372,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        {
-          __L__: 0.773,
-          __C__: 0.12,
-          __H_OFFSET__: 2,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+        heading: {
+          hueOffset: 2,
+          values: {
+            faded: 0.6,
+            faint: 0.12,
+            lightness: 0.773,
+            chroma: 0.12,
+          },
         },
-        {
-          __L__: 0.62,
-          __C__: 0.08,
-          __H_OFFSET__: 3,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+        accent: {
+          hueOffset: 3,
+          values: {
+            lightness: 0.62,
+            chroma: 0.08,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        {
-          __L__: 0.93,
-          __C__: 0.15,
-          __H_OFFSET__: 3,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+        info: {
+          hueOffset: 3,
+          values: {
+            lightness: 0.93,
+            chroma: 0.15,
+            faded: 0.6,
+            faint: 0.12,
+          },
         },
-        {
-          __L__: 0.7,
-          __C__: 0.122,
-          __H_OFFSET__: 4,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+        warning: {
+          hueOffset: 4,
+          values: {
+            faded: 0.6,
+            faint: 0.12,
+            lightness: 0.7,
+            chroma: 0.122,
+          },
         },
-      ],
+      },
     },
-  ],
+  },
 };
 
-function generateDefaultBlocks() {
-  s.data.blocks = {};
-  s.data.colorTypes.forEach((colorType) => {
-    s.data.blocks[colorType] = {};
-    s.data.colorNames.forEach((colorName) => {
-      s.data.blocks[colorType][colorName] = {
-        text: ["default", "base"],
-        background: [colorType, colorName],
-        border: [colorType, colorName],
-      };
-    });
-    s.data.monoNames.forEach((colorName) => {
-      s.data.blocks[colorType][colorName] = {
-        text: ["default", "base"],
-        background: [colorType, colorName],
-        border: [colorType, colorName],
-      };
-    });
-  });
-  b.info(s.data.blocks);
+export async function hueSet(_, sender, ___) {
+  b.trace("hueSet");
+  const mode = s.data.modes[s.data.activeMode];
+  const color = mode.colors[mode.activeColor];
+  color.hueOffset = sender.propAsInt("index");
+  await s.save();
+  b.trigger("hueUpdate updateCSS updateJSON");
 }
 
-function generatePageVariables() {
-  let variables = [];
-  for (let mode of s.data.modes) {
-    variables.push(
-      [
-        `--${mode.__KEY__}--color-scheme`,
-        mode.__KEY__,
-      ],
-    );
-    variables.push(
-      [
-        `--${mode.__KEY__}--background-color`,
-        `oklch(${mode.background.__L__} ${mode.background.__C__} ${mode.background.__H__})`,
-      ],
-    );
-
-    s.data.colorNames.forEach((name, index) => {
-      const color = mode.colors[index];
-      const key = `--${mode.__KEY__}--default-${name}-color`;
-      const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
-        mode.background.__H__) % 360;
-      const value = `oklch(${color.__L__} ${color.__C__} ${rotation})`;
-      variables.push([key, value]);
-    });
-
-    s.data.colorNames.forEach((name, index) => {
-      const color = mode.colors[index];
-      const key = `--${mode.__KEY__}--faded-${name}-color`;
-      const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
-        mode.background.__H__) % 360;
-      const value =
-        `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__FADED__})`;
-      variables.push([key, value]);
-    });
-
-    s.data.colorNames.forEach((name, index) => {
-      const color = mode.colors[index];
-      const key = `--${mode.__KEY__}--faint-${name}-color`;
-      const rotation = ((s.data.hueRotation * color.__H_OFFSET__) +
-        mode.background.__H__) % 360;
-      const value =
-        `oklch(${color.__L__} ${color.__C__} ${rotation} / ${color.__FAINT__})`;
-      variables.push([key, value]);
-    });
-  }
-
-  for (let mode of s.data.modes) {
-    const monos = mode.monos;
-    Object.keys(monos).forEach((mono) => {
-      variables.push([
-        `--${mode.__KEY__}--default-${mono}-color`,
-        `oklch(${monos[mono].__LIGHTNESS__} 0 0)`,
-      ]);
-      variables.push([
-        `--${mode.__KEY__}--faded-${mono}-color`,
-        `oklch(${monos[mono].__LIGHTNESS__} 0 0 / ${monos[mono].__FADED__})`,
-      ]);
-      variables.push([
-        `--${mode.__KEY__}--faint-${mono}-color`,
-        `oklch(${monos[mono].__LIGHTNESS__} 0 0 / ${monos[mono].__FAINT__})`,
-      ]);
-    });
-  }
-  return variables;
-}
-
-export function initBackgroundSliders(_, __, el) {
-  const mode = s.getActiveMode();
-  for (let key of Object.keys(s.data.config)) {
-    const subs = {
-      __KEY__: key,
-      __MIN__: s.data.config[key].__MIN__,
-      __MAX__: s.data.config[key].__MAX__,
-      __NAME__: s.data.config[key].__NAME__,
-      __STEP__: s.data.config[key].__STEP__,
-      __VALUE__: mode.background[key],
-    };
-    el.appendChild(
-      b.render("backgroundSlider", subs),
-    );
-  }
-  b.trigger("updateCSS");
-}
-
-
-export function initBaseStyles() {
-  const theStyles = ``;
-  sheet.replaceSync(theStyles);
-  document.adoptedStyleSheets.push(sheet);
-}
-export function initColorNameButtons(_, __, el) {
-  s.data.colorNames.forEach((name, index) => {
-    const subs = {
-      __INDEX__: index,
-      __COLOR__: name,
-      __COLOR_LETTER__: name.charAt(0),
-    };
-    el.appendChild(b.render("colorNameButton", subs));
-  });
-  //b.trigger("uColorName");
-}
-
-export function initColorSliders(_, __, el) {
-  const mode = s.getActiveMode();
-  const color = s.getActiveMode().colors[mode.activeColorIndex];
-  const subs = {
-    __L__: color.__L__,
-    __C__: color.__C__,
-    __FADED__: color.__FADED__,
-    __FAINT__: color.__FAINT__,
-  };
-  el.appendChild(b.render("colorSliders", subs));
-}
-export function initHueOffsetButtons(_, __, el) {
-  for (let index = 0; index < (360 / s.data.hueRotation); index += 1) {
-    const subs = {
-      __INDEX__: index,
-    };
-    el.appendChild(b.render("hueOffsetButton", subs));
-  }
-  b.trigger("uHueOffset");
-}
-
-
-export function initModeButtons(_, __, el) {
-  for (let mode of s.data.modes) {
-    if (mode.__KEY__ === s.data.activeMode) {
-      mode.__CHECKED__ = "checked";
-    } else {
-      mode.__CHECKED__ = "";
-    }
-    el.appendChild(
-      b.render("modeButton", mode),
-    );
-  }
-  setSwitches(s.data.activeMode);
-}
-
-export async function init() {
-  b.setLogLevel("DEBUG");
-  // await b.savePageData("data", defaults);
-  s.data = await b.loadPageData("data", defaults);
-  if (!s.data.blocks) {
-    generateDefaultBlocks();
-  }
-  b.setLogLevel(s.data.logLevel);
-  b.trigger(
-    `
-monoBoxInit
-initBaseStyles 
-initBackgroundSliders 
-initColorNameButtons 
-initHueOffsetButtons 
-initModeButtons
-initColorSliders
-iColorName
-uCustomStyles
-blockBuilderInit
-`,
-  );
-}
-
-function makeClasses() {
-  const background = [
-    `.background-color { color: var(--background-color); }`,
-  ];
-  // TODO: Move these individual arrays into
-  // the collections array.
-  const colors1 = s.data.colorNames.map((color) => {
-    return `.default-${color}-color { color: var(--default-${color}-color); }`;
-  });
-  const colors2 = s.data.colorNames.map((color) => {
-    return `.faded-${color}-color { color: var(--faded-${color}-color); }`;
-  });
-  const colors3 = s.data.colorNames.map((color) => {
-    return `.faint-${color}-color { color: var(--faint-${color}-color); }`;
-  });
-  const monos1 = s.data.monoNames.map((color) => {
-    return `.default-${color}-color { color: var(--default-${color}-color); }`;
-  });
-  const monos2 = s.data.monoNames.map((color) => {
-    return `.faded-${color}-color { color: var(--faded-${color}-color); }`;
-  });
-  const monos3 = s.data.monoNames.map((color) => {
-    return `.faint-${color}-color { color: var(--faint-${color}-color); }`;
-  });
-
-  const collection = [];
-  s.data.colorNames.forEach((color) => {
-    collection.push(
-      `.default-${color}-background-color { background-color: var(--default-${color}-color); }`,
-      `.faded-${color}-background-color { background-color: var(--faded-${color}-color); }`,
-      `.faint-${color}-background-color { background-color: var(--faint-${color}-color); }`,
-    );
-  });
-
-  const output = [
-    ...background,
-    ...colors1,
-    ...colors2,
-    ...colors3,
-    ...monos1,
-    ...monos2,
-    ...monos3,
-    ...collection,
-  ];
-  return output.join("\n");
-}
-
-function makePageVars(variables) {
-  return `:root {
-${variables.map((vv) => {
-    return vv[0] + ": " + vv[1] + ";";
-  }).join("\n")
-    }
-}
-`;
-}
-
-function makeSwitches(mode) {
-  const background = [
-    `--background-color: var(--switch--background-color, var(--${mode}--background-color));`,
-  ];
-  const colorScheme = [
-    `--color-scheme: var(--switch--color-scheme, var(--${mode}--color-scheme));`,
-  ];
-  const colors1 = s.data.colorNames.map((color) => {
-    return `--default-${color}-color: var(--switch--default-${color}-color, var(--${mode}--default-${color}-color));`;
-  });
-  const colors2 = s.data.colorNames.map((color) => {
-    return `--faded-${color}-color: var(--switch--faded-${color}-color, var(--${mode}--faded-${color}-color));`;
-  });
-  const colors3 = s.data.colorNames.map((color) => {
-    return `--faint-${color}-color: var(--switch--faint-${color}-color, var(--${mode}--faint-${color}-color));`;
-  });
-  const monos1 = s.data.monoNames.map((color) => {
-    return `--default-${color}-color: var(--switch--default-${color}-color, var(--${mode}--default-${color}-color));`;
-  });
-  const monos2 = s.data.monoNames.map((color) => {
-    return `--faded-${color}-color: var(--switch--faded-${color}-color, var(--${mode}--faded-${color}-color));`;
-  });
-  const monos3 = s.data.monoNames.map((color) => {
-    return `--faint-${color}-color: var(--switch--faint-${color}-color, var(--${mode}--faint-${color}-color));`;
-  });
-
-  const output = [
-    ...colorScheme,
-    ...background,
-    ...colors1,
-    ...colors2,
-    ...colors3,
-    ...monos1,
-    ...monos2,
-    ...monos3,
-  ];
-  return output.join("\n");
-}
-
-function makeUiClasses() {
-  const activeMode = s.getActiveMode();
-  const activeColorIndex = activeMode.activeColorIndex;
-  const activeColor = activeMode.colors[activeColorIndex];
-  const output = [];
-  for (let i = 0; i < 8; i += 1) {
-    const key = `.ui-set-${i}`;
-    const value = `var(--ui-set-${i})`;
-    output.push([key, value]);
-  }
-  const out2 = output.map((x) => {
-    return `${x[0]} { color: ${x[1]}; }`;
-  });
-
-  output.forEach((x) => {
-    out2.push(
-      `${x[0]}.set-active { font-weight: 900; color: ${x[1]}; }`,
-    );
-  });
-
-  return out2.join("\n");
-}
-
-function makeUiVars() {
-  const activeMode = s.getActiveMode();
-  const activeColorIndex = activeMode.activeColorIndex;
-  const activeColor = activeMode.colors[activeColorIndex];
-  const output = [];
-  for (let i = 0; i < 8; i += 1) {
-    const key = `--ui-set-${i}`;
-    const rotation = ((s.data.hueRotation * i) +
-      activeMode.background.__H__) % 360;
-    const value =
-      `oklch(${activeColor.__L__} ${activeColor.__C__} ${rotation})`;
-    output.push([key, value]);
-    if (i === activeColorIndex) {
-      output.push(
-        [
-          `--ui-border`,
-          `var(--ui-set-${activeColor.__H_OFFSET__})`,
-        ],
-      );
-    }
-  }
-  // Make the color border
-
-  const out2 = output.map((x) => {
-    return `${x[0]}: ${x[1]};`;
-  });
-
-  return `:root { ${out2.join("\n")}}`;
-}
-
-export function monoBoxInit(_, __, el) {
-  b.trace("monoBoxInit");
-  const mode = s.getActiveMode();
-  const colors = s.data.monoNames.map((color) => {
-    const classes = ["mono-button"];
-    if (mode.activeMonoKey === color) {
-      classes.push("active");
-    }
-    const subs = {
-      __COLOR__: color,
-      __KEY__: color,
-      __CLASSES__: classes.join(" "),
-    };
-    return b.render("monoColor", subs);
-  });
-
-  const sliders = s.data.monoSliders.map((slider) => {
-    const value = mode.monos[mode.activeMonoKey][slider.token];
-    const subs = {
-      __NAME__: slider.name,
-      __KEY__: slider.key,
-      __MIN__: s.data.config.__L__.__MIN__,
-      __MAX__: s.data.config.__L__.__MAX__,
-      __STEP__: s.data.config.__L__.__STEP__,
-      __VALUE__: value,
-    };
-    return b.render("monoSlider", subs);
-  });
-
-  const subs = {
-    __COLORS__: colors,
-    __SLIDERS__: sliders,
-  };
-
-  el.replaceChildren(
-    b.render("monoBox", subs),
-  );
-}
-
-export function monoBoxSet() {}
-
-export function monoBoxUpdate() {}
-
-export function monoColorSet(_, sender, ___) {
-  const mode = s.getActiveMode();
-  mode.activeMonoKey = sender.prop("key");
-  b.savePageData("data", s.data);
-  b.trigger("monoColorUpdate monoSliderUpdate");
-}
-
-export function monoColorUpdate(_, __, el) {
-  const mode = s.getActiveMode();
-  if (el.prop("key") === mode.activeMonoKey) {
+export function hueUpdate(_, __, el) {
+  b.trace("hueUpdate");
+  const mode = s.data.modes[s.data.activeMode];
+  const color = mode.colors[mode.activeColor];
+  if (el.propAsInt("index") === color.hueOffset) {
     el.classList.add("active");
   } else {
     el.classList.remove("active");
   }
 }
 
-export async function monoSliderSet(_, sender, ___) {
-  await requestAnimationFrame(async () => {
-    const mode = s.getActiveMode();
-    const monoKey = mode.activeMonoKey;
-    const mono = mode.monos[monoKey];
-    const token = s.data.monoMap[sender.prop("key")];
-    mono[token] = sender.valueAsFloat();
-    await b.savePageData("data", s.data);
-    b.trigger("updateCSS");
+export function huesInit(_, __, el) {
+  b.trace("huesInit");
+  for (let index = 0; index < s.hueCount(); index += 1) {
+    const subs = {
+      __INDEX__: index,
+    };
+    el.appendChild(b.render("hue", subs));
+  }
+  b.trigger("hueUpdate");
+}
+
+export async function init() {
+  s.data = await b.loadPageData("data", defaults);
+  s.data.logLevel = "DEBUG";
+  b.setLogLevel(s.data.logLevel);
+  initDefaultBlocks();
+  b.trigger(
+    "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit updateCSS updateJSON",
+  );
+  setModeCSS(s.data.activeMode);
+}
+
+function initDefaultBlocks() {
+  b.trace("initDefaultBlocks");
+  Object.keys(s.data.modes).forEach((key) => {
+    const mode = s.data.modes[key];
+    if (!mode.blocks) {
+      mode.blocks = {};
+      s.data.colorTypes.forEach((backgroundColorType) => {
+        s.data.colorKeys.forEach((backgroundColorName) => {
+          const backgroundKey = `${backgroundColorType}-${backgroundColorName}`;
+          mode.blocks[backgroundKey] = {};
+          s.data.colorTypes.forEach((textColorType) => {
+            s.data.colorKeys.forEach((textColorName) => {
+              const textKey = `${textColorType}-${textColorName}`;
+              mode.blocks[backgroundKey][textKey] = {
+                name: null,
+                border: textKey,
+              };
+            });
+          });
+        });
+      });
+    }
   });
+  s.save();
 }
 
-export async function monoSliderUpdate(_, __, el) {
-  b.trace("monoSliderUpdate");
-  const mode = s.getActiveMode();
-
-  // this is a gross way to get the
-  // keys but it works until everything
-  // can be refactored
-  const value = mode.monos[mode.activeMonoKey][s.data.monoMap[el.prop("key")]];
-  // b.debug(value);
-  // const x = s.data.monoMap[el.prop("key")];
-  // b.info(x);
-  el.value = value;
+export async function modeSet(_, sender, ___) {
+  b.trace("modeSet");
+  s.data.activeMode = sender.prop("key");
+  await s.save();
+  b.trigger(
+    "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON",
+  );
+  setModeCSS(s.data.activeMode);
 }
 
-export async function resetDefaults() {
-  await b.clearPageData();
+export function modesInit(_, __, el) {
+  b.trace("modesInit");
+  const modes = Object.keys(s.data.modes).map((key) => {
+    let checked = "";
+    if (key === s.data.activeMode) {
+      checked = " checked";
+    }
+    const subs = {
+      __KEY__: key,
+      __CHECKED__: checked,
+    };
+    return b.render("mode", subs);
+  });
+  const subs = {
+    __MODES__: modes,
+  };
+  el.replaceChildren(b.render("modes", subs));
+}
+
+export async function resetDefaults(_, __, ___) {
+  s.data = defaults;
+  await s.save();
   location.reload();
 }
 
-export async function sColor(_, sender, ___) {
-  b.trace("sColor");
-  const mode = s.getActiveMode();
-  mode.activeColorIndex = sender.propAsInt("index");
-  await b.savePageData("data", s.data);
-  b.trigger(
-    "updateCSS",
-  );
-}
+export function setModeCSS(mode) {
+  const colors = ["base", "heading", "accent", "info", "warning", "background"];
+  const kinds = ["default", "faded", "faint"];
 
-export async function setColorValue(_, sender, ___) {
-  b.trace("setColorValue");
-  requestAnimationFrame(async () => {
-    const mode = s.getActiveMode();
-    mode.colors[mode.activeColorIndex][`__${sender.prop("key")}__`] = sender
-      .valueAsFloat();
-    await b.savePageData("data", s.data);
-    b.trigger("updateCSS");
-  });
-}
-
-
-export function sCustomStyles(_, __, el) {
-  b.trace("sCustomStyles");
-  s.data.customStyles = el.value;
-  b.trigger("updateCSS");
-}
-
-export async function setHueOffset(_, sender, el) {
-  b.trace("setHueOffset");
-  const mode = s.getActiveMode();
-  mode.colors[mode.activeColorIndex][`__H_OFFSET__`] = sender.propAsInt(
-    "index",
-  );
-  await b.savePageData("data", s.data);
-  b.trigger("updateCSS");
-}
-
-
-export async function setLogLevel(_, sender, ___) {
-  b.setLogLevel(sender.prop("key"));
-  s.data.logLevel = sender.prop("key");
-  b.info(`Log level set to: ${sender.prop("key")}`);
-  await b.savePageData("data", s.data);
-}
-export async function sMode(_, sender, ___) {
-  b.trace("sMode");
-  s.data.activeMode = sender.prop("key");
-  setSwitches(s.data.activeMode);
-  await b.savePageData("data", s.data);
-  b.trigger(`updateCSS uCustomStyles`);
-}
-
-export async function setParam(_, sender, ___) {
-  b.trace("setParam");
-  await requestAnimationFrame(async () => {
-    s.setActiveValue(sender.prop("key"), sender.valueAsFloat());
-    await b.savePageData("data", s.data);
-    b.trigger("updateCSS");
-  });
-}
-
-function setSwitches(mode) {
-  b.setCSS(
-    `--switch--background-color`,
-    `var(--${mode}--background-color)`,
-  );
-  s.data.colorTypes.forEach((t) => {
-    b.setCSS(
-      `--switch--color-scheme`,
-      `var(--${mode}--color-scheme)`,
-    );
-    s.data.colorNames.forEach((name) => {
+  kinds.forEach((kind) => {
+    colors.forEach((color) => {
+      const key = `--switch--${kind}-${color}-color`;
+      const value = `var(--${mode}--${kind}-${color}-color)`;
+      b.l(key);
       b.setCSS(
-        `--switch--${t}-${name}-color`,
-        `var(--${mode}--${t}-${name}-color)`,
+        key,
+        value,
       );
     });
-    b.setCSS(
-      `--switch--${t}-black-color`,
-      `var(--${mode}--${t}-black-color)`,
-    );
-    b.setCSS(
-      `--switch--${t}-white-color`,
-      `var(--${mode}--${t}-white-color)`,
-    );
-    b.setCSS(
-      `--switch--${t}-match-color`,
-      `var(--${mode}--${t}-match-color)`,
-    );
-    b.setCSS(
-      `--switch--${t}-reverse-color`,
-      `var(--${mode}--${t}-reverse-color)`,
-    );
   });
 }
 
 class State {
-  constructor() {
+  constructor(b) {
+    this.b = b;
     this.data = {};
   }
-  getActiveMode() {
-    for (let mode of this.data.modes) {
-      if (this.data.activeMode === mode.__KEY__) {
-        return mode;
-      }
-    }
+  hueCount() {
+    return 360 / this.data.hueRotation;
   }
-  setActiveValue(key, value) {
-    for (let mode of this.data.modes) {
-      if (this.data.activeMode === mode.__KEY__) {
-        mode.background[key] = value;
-      }
-    }
+  async save() {
+    b.trace("Saving data");
+    await b.savePageData("data", this.data);
   }
 }
-export function uBackgroundValue(_, __, el) {
-  b.trace("uBackgroundValue");
-  const mode = s.getActiveMode();
-  el.value = mode.background[`${el.prop("key")}`];
-}
 
-let working = {};
-
-export async function updateCSSx(_, __, el) {
-  s.svg = encodeURIComponent(
-    b.render("mainSVG", {
-      __OPACITY__: `${s.data.o}%`,
-    }).outerHTML,
-  )
-    .replace(/'/g, "%27")
-    .replace(/"/g, "%22");
-  const cssURL = `url("data:image/svg+xml,${s.svg}")`;
-  b.setCSS(
-    `--svg-bg-url`,
-    `url("data:image/svg+xml,${s.svg}")`,
-  );
-  const subs = {
-    __l__: s.data.l,
-    __c__: s.data.c,
-    __h__: s.data.h,
-    __url__: cssURL,
-  };
-
-  el.replaceChildren(
-    b.render("mainCSS", subs),
-  );
-}
+let css;
+let output;
 
 export function updateCSS(_, __, el) {
-  b.trace("updateCSS");
+  output = [];
+  css = {
+    classes: [],
+    modes: {
+      light: [],
+      dark: [],
+    },
+    raw: [],
+    ui: [],
+  };
 
-  // TODO: Remove save page from everywhere
-  // else and just do it here.
-  b.savePageData("data", s.data);
-  const mode = s.getActiveMode();
+  const c = css.classes;
+  const l = css.modes.light;
+  const d = css.modes.dark;
+  const r = css.raw;
 
-  let bgImage = "none";
-  if (mode.background.__T__ > 0) {
-    const svg = encodeURIComponent(
-      b.render("mainSVG", {
-        __OPACITY__: `${mode.background.__T__}%`,
-      }).outerHTML,
-    )
-      .replace(/'/g, "%27")
-      .replace(/"/g, "%22");
+  l.push(`:root {`);
+  d.push(`@media (prefers-color-scheme: dark) { :root {`);
 
-    bgImage = `url("data:image/svg+xml,${svg}")`;
-    // const cssURL = `url("data:image/svg+xml,${svg}")`;
-    // b.setCSS(
-    //   `--background-image`,
-    //   `url("data:image/svg+xml,${svg}")`,
-    // );
-  }
+  addBaseCSS();
 
-  const variables = generatePageVariables();
-  variables.forEach((vv) => {
-    b.setCSS(vv[0], vv[1]);
+  ["light", "dark"].forEach((mode) => {
+    addBackgroundOKLCH(mode);
+    addDefaultVars(mode);
+    addFadeVars(mode);
+    addDefaultSwitches(mode);
+    addFadeSwitches(mode);
+    addDefaultClasses(mode);
+    addFadeClasses(mode);
   });
 
-  working.sheetParts = [
-    s.data.baseCSS,
-    `
-:root { 
---background-image: ${bgImage};
-}
-`,
-    makePageVars(variables),
-    `:root { 
-${makeSwitches("light")} 
-}
-`,
-    `@media (prefers-color-scheme: dark) {
-  :root { 
-${makeSwitches("dark")} 
-  }
-}
-`,
-    makeClasses(),
-    s.data.customStyles,
-  ].join("\n");
+  l.push(`}`);
+  d.push(`}}`);
 
-  el.innerHTML = working.sheetParts;
-
-  const combinedSheet = `${working.sheetParts}
-  ${makeUiVars()}
-  ${makeUiClasses()}
-${mode.customStyles}
-`;
-  sheet.replaceSync(combinedSheet);
-  b.trigger(`
-uBackgroundValue 
-uColorButton 
-uHueOffset
-uColorValue
-monoColorUpdate
-`);
-  //uColorName
+  output = [...l, ...d, ...r, ...c];
+  el.innerHTML = output.join("\n");
+  addUI();
+  sheet.replaceSync(output.join("\n"));
 }
 
-export function uColorName(_, __, el) {
-  b.trace("uColorName");
-  const mode = s.getActiveMode();
-  s.data.colorNames.forEach((name) => {
-    if (s.data.colorNames[mode.activeColorIndex] === name) {
-      el.innerHTML = `${name} color`;
-      el.classList.add(`default-${name}-color`);
-      // b.setCSS("--color-name-padding", mode.activeColorIndex);
-    } else {
-      el.classList.remove(`default-${name}-color`);
-    }
+function addFadeVars(m) {
+  const fadeTypes = ["faded", "faint"];
+  const target = css.modes[m];
+  const mode = s.data.modes[m];
+  const colors = mode.colors;
+  fadeTypes.forEach((ft) => {
+    Object.entries(colors).forEach(([key, content]) => {
+      const values = content.values;
+      const oklch = `oklch(${values.lightness} ${values.chroma} ${
+        hueRotate(
+          mode.background.hue,
+          content.hueOffset,
+        )
+      } / ${values[ft]})`;
+      target.push(
+        `--${m}--${ft}-${key}-color: ${oklch};`,
+      );
+    });
   });
 }
 
-export function uColorValue(_, __, el) {
-  b.trace("uColorValue");
-  if (el) {
-    const mode = s.getActiveMode();
-    const v = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
-    el.value = mode.colors[mode.activeColorIndex][`__${el.prop("key")}__`];
+function addUI() {
+  // TODO: Set these once with variables
+  // then update the variables.
+  const mode = s.data.modes[s.data.activeMode];
+  const colors = mode.colors;
+  const color = colors[mode.activeColor];
+  for (let i = 0; i <= s.hueCount(); i += 1) {
+    output.push(
+      `.ui--hue-color-${i} { color: oklch(${color.values.lightness} ${color.values.chroma} ${
+        hueRotate(mode.background.hue, i)
+      }); }`,
+    );
   }
 }
 
-export function uCustomStyles(_, __, el) {
-  b.trace("uCustomStyles");
-  el.innerHTML = s.data.customStyles;
+function hueRotate(value, index) {
+  const adjust = index * s.data.hueRotation;
+  return (value + adjust) % 360;
 }
 
-export function uHueOffset(_, __, el) {
-  b.trace("uHueOffset");
-  const mode = s.getActiveMode();
-  if (el) {
-    if (
-      el.propAsInt("index") ===
-        mode.colors[mode.activeColorIndex][`__H_OFFSET__`]
-    ) {
-      el.classList.add("set-active");
-    } else {
-      el.classList.remove("set-active");
-    }
-  }
+function addBackgroundOKLCH(m) {
+  css.modes[m].push(
+    `--${m}--default-background-color: oklch(${
+      s.data.modes[m].background.lightness
+    } ${s.data.modes[m].background.chroma} ${s.data.modes[m].background.hue});`,
+  );
+}
+
+function addBaseCSS() {
+  css.raw.push(s.data.baseCSS);
+}
+
+function addDefaultClasses(m) {
+  const target = css.classes;
+  const mode = s.data.modes[m];
+  const colors = mode.colors;
+  Object.entries(colors).forEach(([key, content]) => {
+    target.push(
+      `.default-${key}-color { color: var(--default-${key}-color); }`,
+    );
+  });
+}
+
+function addFadeClasses(m) {
+  const fadeTypes = ["faded", "faint"];
+  const target = css.classes;
+  const mode = s.data.modes[m];
+  const colors = mode.colors;
+  fadeTypes.forEach((ft) => {
+    Object.entries(colors).forEach(([key, content]) => {
+      target.push(
+        `.${ft}-${key}-color { color: var(--${ft}-${key}-color); }`,
+      );
+    });
+  });
+}
+
+function addDefaultVars(m) {
+  const target = css.modes[m];
+  const mode = s.data.modes[m];
+  const colors = mode.colors;
+  Object.entries(colors).forEach(([key, content]) => {
+    const values = content.values;
+    const oklch = `oklch(${values.lightness} ${values.chroma} ${
+      hueRotate(
+        mode.background.hue,
+        content.hueOffset,
+      )
+    })`;
+    target.push(
+      `--${m}--default-${key}-color: ${oklch};`,
+    );
+  });
+}
+
+function addFadeSwitches(m) {
+  const fadeTypes = ["faded", "faint"];
+  const target = css.modes[m];
+  const mode = s.data.modes.light;
+  const colors = mode.colors;
+  fadeTypes.forEach((ft) => {
+    Object.entries(colors).forEach(([key, content]) => {
+      target.push(
+        `--${ft}-${key}-color: var(--switch--${ft}-${key}-color, var(--${m}--${ft}-${key}-color));`,
+      );
+    });
+  });
+}
+
+function addDefaultSwitches(m) {
+  const target = css.modes[m];
+  target.push(
+    `--default-background-color: var(--switch--default-background-color, var(--${m}--default-background-color));`,
+  );
+  const mode = s.data.modes.light;
+  const colors = mode.colors;
+  Object.entries(colors).forEach(([key, content]) => {
+    target.push(
+      `--default-${key}-color: var(--switch--default-${key}-color, var(--${m}--default-${key}-color));`,
+    );
+  });
+}
+
+export function updateJSON(_, __, el) {
+  el.innerHTML = JSON.stringify(s.data, null, 2);
 }
 
 
 
 let sheet = new CSSStyleSheet();
-let s = new State();
+document.adoptedStyleSheets.push(sheet);
 export const b = {
   init: "init",
 };
+
+let s = new State(b);

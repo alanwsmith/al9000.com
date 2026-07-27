@@ -2,7 +2,7 @@
 == block toml 
 title = "Week Notes (through Saturday June 25, 2026)"
 created = 2026-07-22T16:44:29-04:00
-status = "draft"
+status = "done"
 id = "01/n6/2a/xd"
 tags = ["week notes"]
 flags = []
@@ -114,17 +114,17 @@ I access data from JSON and
 content files. I used to break
 things up as keys like.
 
-d.some.path.to.index.title
+  d.some.path.to.index.title
 
-The `index` is really `index.html`
+  The `index` is really `index.html`
 but I removed the extension. 
 I did that originally to 
 keep from having to use brackets
 around the keys like this:
 
-d.some.path.to["index.html"].title
+  d.some.path.to["index.html"].title
 
-Because the `.` in the filename would
+  Because the `.` in the filename would
 have been seen as a new level. 
 It's generally fine since there aren't
 two files at that same place, but 
@@ -133,23 +133,23 @@ depending on how I implement
 may not be the case. Still TBD,
 but I wanted to fix it now. 
 
-Also, going key by key is a pain.
+  Also, going key by key is a pain.
 For example, if I'm doing a for loop
 with file paths like 
 
-/some/path/to/index.html
+  /some/path/to/index.html
 
-I have to do:
+  I have to do:
 
-d.some.path.to["index.html"].title
+  d.some.path.to["index.html"].title
 
-I realized there's no reason not 
+  I realized there's no reason not 
 to just use the file path itself
 as the key. So, now I do this:
 
-d["/some/path/to/index.html"].title
+  d["/some/path/to/index.html"].title
 
-Much nicer. 
+  Much nicer. 
 
 
 

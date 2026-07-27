@@ -7,10 +7,8 @@ id = "01/n6/06/1c"
 flags = ["no-colors"] 
 == endblock 
 
-== block styles
-<style>
+== block styles2
 == include template_dir() + "/includes.inc/styles.css"
-</style>
 == endblock 
 
 == block content
@@ -23,26 +21,24 @@ flags = ["no-colors"]
     <button data-s="setLogLevel" data-key="TRACE">TRACE</button>
   </div>
 
-  <div class="two-columns-left">
+  <div class="package">
     == include template_dir() + "/includes.inc/content.html" 
     == include template_dir() + "/includes.inc/sidebar.html"
   </div>
 
   <div>
     <h2>CSS</h2>
-    <textarea data-r="updateCSS copyThis" autocomplete="off" data-key="css"></textarea>
+    <pre data-r="updateCSS copyThis" data-key="css"></pre>
     <button data-s="copyThis" data-key="css">Copy</button>
   </div>
 
 
-  [#
   <div>
     <details><summary>JSON</summary>
-      <textarea data-r="updateJSON copyThis" autocomplete="off" data-key="json"></textarea>
+      <pre data-r="updateJSON copyThis" data-key="json"></pre>
       <button data-s="copyThis" data-key="json">Copy</button>
     </details>
   </div>
-  #]
 </main>
 
 
@@ -50,10 +46,18 @@ flags = ["no-colors"]
 
 == block templates
 <bitty-9 data-connect="[@ template_dir() + '/bit.js' @]"></bitty-9>
-== include template_dir() + "/includes.inc/templates.html" 
 
+== for template_file in files_in_folder(template_dir("/components.inc"), full=true)
+== if extension(template_file) == "html"
+== include template_file
+== endif
+== endfor
+
+[# DEPREXATED
+== include template_dir() + "/includes.inc/templates.html" 
 == for template_file in files_in_folder(template_dir("/templates"), full=true)
 == include template_file
 == endfor
+#]
 
 == endblock
