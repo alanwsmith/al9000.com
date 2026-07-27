@@ -55,7 +55,7 @@ body {
   },
   modes: {
     "light": {
-      activeColorIndex: 0,
+      activeColor: "base",
       activeMonoKey: "black",
       activeBlock: "default-accent",
       background: {
@@ -125,7 +125,7 @@ body {
       ],
     },
     "dark": {
-      activeColorIndex: 0,
+      activeColor: "base",
       activeMonoKey: "black",
       activeBlock: "default-base",
       background: {

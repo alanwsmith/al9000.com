@@ -1,5 +1,15 @@
 export function backgroundSliderUpdate(_, __, el) {
-  el.value = b.tee(s.data.modes[s.data.activeMode].background[el.prop("key")]);
+  el.value = s.data.modes[s.data.activeMode].background[el.prop("key")];
+}
+
+export async function backgroundSliderSet(_, sender, ___) {
+  await requestAnimationFrame(async () => {
+    s.data.modes[s.data.activeMode].background[sender.prop("key")] = sender
+      .valueAsFloat();
+    // s.setActiveValue(sender.prop("key"), sender.valueAsFloat());
+    await b.savePageData("data", s.data);
+    // b.trigger("updateCSS");
+  });
 }
 
 export function backgroundSlidersInit(_, __, el) {
@@ -176,7 +186,7 @@ body {
   },
   modes: {
     "light": {
-      activeColorIndex: 0,
+      activeColor: "base",
       activeMonoKey: "black",
       activeBlock: "default-accent",
       background: {
@@ -246,7 +256,7 @@ body {
       ],
     },
     "dark": {
-      activeColorIndex: 0,
+      activeColor: "base",
       activeMonoKey: "black",
       activeBlock: "default-base",
       background: {
@@ -319,7 +329,7 @@ body {
 };
 
 export async function init() {
-  b.savePageData("data", defaults);
+  // b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
   s.data.logLevel = "TRACE";
   b.setLogLevel(s.data.logLevel);
@@ -396,6 +406,12 @@ export async function modesSet(_, sender, ___) {
   b.trace("modeSet");
   s.data.activeMode = sender.prop("key");
   await s.save();
+}
+
+export async function resetDefaults(_, __, ___) {
+  s.data = defaults;
+  await s.save();
+  location.reload();
 }
 
 class State {
