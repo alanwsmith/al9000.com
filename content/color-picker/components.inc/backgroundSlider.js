@@ -7,6 +7,6 @@ export async function backgroundSliderSet(_, sender, ___) {
     s.data.modes[s.data.activeMode].background[sender.prop("key")] = sender
       .valueAsFloat();
     await b.savePageData("data", s.data);
-    b.trigger("updateCSS outputJSON");
+    b.trigger("updateCSS updateJSON");
   });
 }

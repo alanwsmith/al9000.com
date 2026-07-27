@@ -1,5 +1,4 @@
 const defaults = {
-  customStyles: "",
   baseCSS: `
 :root {
   color-scheme: var(--color-scheme);
@@ -19,10 +18,6 @@ body {
   colorKeys: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
-  monoSliders: [
-    { key: "faded", name: "Faded", token: "faded" },
-    { key: "faint", name: "Faint", token: "faint" },
-  ],
   config: {
     "lightness": {
       __NAME__: "Lightness",

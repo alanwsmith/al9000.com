@@ -1,7 +1,6 @@
 export async function init() {
-  // b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
-  s.data.logLevel = "TRACE";
+  s.data.logLevel = "DEBUG";
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(

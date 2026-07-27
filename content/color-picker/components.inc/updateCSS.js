@@ -1,5 +1,5 @@
 let css = {};
 
 export function updateCSS(_, __, el) {
-  el.innerHTML = JSON.stringify(s.data, null, 2);
+  el.innerHTML = JSON.stringify(css, null, 2);
 }

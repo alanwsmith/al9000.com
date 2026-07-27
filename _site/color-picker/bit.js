@@ -7,7 +7,7 @@ export async function backgroundSliderSet(_, sender, ___) {
     s.data.modes[s.data.activeMode].background[sender.prop("key")] = sender
       .valueAsFloat();
     await b.savePageData("data", s.data);
-    b.trigger("updateCSS outputJSON");
+    b.trigger("updateCSS updateJSON");
   });
 }
 
@@ -130,7 +130,7 @@ export async function colorSet(_, sender, ___) {
   b.trace("colorSet");
   s.data.modes[s.data.activeMode].activeColor = sender.prop("key");
   await s.save();
-  b.trigger("colorUpdate hueUpdate colorSliderUpdate updateCSS");
+  b.trigger("colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON");
 }
 
 export function colorUpdate(_, __, el) {
@@ -150,7 +150,7 @@ export function colorSliderSet(_, sender, ___) {
   const color = mode.colors[mode.activeColor];
   color.values[sender.prop("key")] = sender.valueAsFloat();
   s.save();
-  b.trigger("updateCSS");
+  b.trigger("updateCSS updateJSON");
 }
 
 export function colorSliderUpdate(_, __, el) {
@@ -184,7 +184,6 @@ export function colorsInit(_, __, el) {
 }
 
 const defaults = {
-  customStyles: "",
   baseCSS: `
 :root {
   color-scheme: var(--color-scheme);
@@ -204,10 +203,6 @@ body {
   colorKeys: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
-  monoSliders: [
-    { key: "faded", name: "Faded", token: "faded" },
-    { key: "faint", name: "Faint", token: "faint" },
-  ],
   config: {
     "lightness": {
       __NAME__: "Lightness",
@@ -416,7 +411,7 @@ export async function hueSet(_, sender, ___) {
   const color = mode.colors[mode.activeColor];
   color.hueOffset = sender.propAsInt("index");
   await s.save();
-  b.trigger("hueUpdate updateCSS");
+  b.trigger("hueUpdate updateCSS updateJSON");
 }
 
 export function hueUpdate(_, __, el) {
@@ -442,9 +437,8 @@ export function huesInit(_, __, el) {
 }
 
 export async function init() {
-  // b.savePageData("data", defaults);
   s.data = await b.loadPageData("data", defaults);
-  s.data.logLevel = "TRACE";
+  s.data.logLevel = "DEBUG";
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
@@ -483,7 +477,7 @@ export async function modeSet(_, sender, ___) {
   s.data.activeMode = sender.prop("key");
   await s.save();
   b.trigger(
-    "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS outputJSON",
+    "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON",
   );
 }
 
@@ -504,10 +498,6 @@ export function modesInit(_, __, el) {
     __MODES__: modes,
   };
   el.replaceChildren(b.render("modes", subs));
-}
-
-export function outputJSON(_, __, el) {
-  el.innerHTML = JSON.stringify(s.data, null, 2);
 }
 
 export async function resetDefaults(_, __, ___) {
@@ -533,6 +523,10 @@ class State {
 let css = {};
 
 export function updateCSS(_, __, el) {
+  el.innerHTML = JSON.stringify(css, null, 2);
+}
+
+export function updateJSON(_, __, el) {
   el.innerHTML = JSON.stringify(s.data, null, 2);
 }
 

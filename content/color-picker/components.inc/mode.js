@@ -3,6 +3,6 @@ export async function modeSet(_, sender, ___) {
   s.data.activeMode = sender.prop("key");
   await s.save();
   b.trigger(
-    "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS outputJSON",
+    "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON",
   );
 }

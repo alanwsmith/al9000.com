@@ -3,7 +3,7 @@ export function colorSliderSet(_, sender, ___) {
   const color = mode.colors[mode.activeColor];
   color.values[sender.prop("key")] = sender.valueAsFloat();
   s.save();
-  b.trigger("updateCSS");
+  b.trigger("updateCSS updateJSON");
 }
 
 export function colorSliderUpdate(_, __, el) {
