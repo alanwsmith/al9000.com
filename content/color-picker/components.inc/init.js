@@ -6,6 +6,7 @@ export async function init() {
   b.trigger(
     "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit updateCSS updateJSON",
   );
+  setModeCSS(s.data.activeMode);
 }
 
 function initDefaultBlocks() {

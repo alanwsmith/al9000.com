@@ -444,6 +444,7 @@ export async function init() {
   b.trigger(
     "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit updateCSS updateJSON",
   );
+  setModeCSS(s.data.activeMode);
 }
 
 function initDefaultBlocks() {
@@ -479,6 +480,7 @@ export async function modeSet(_, sender, ___) {
   b.trigger(
     "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON",
   );
+  setModeCSS(s.data.activeMode);
 }
 
 export function modesInit(_, __, el) {
@@ -504,6 +506,23 @@ export async function resetDefaults(_, __, ___) {
   s.data = defaults;
   await s.save();
   location.reload();
+}
+
+export function setModeCSS(mode) {
+  const colors = ["base", "heading", "accent", "info", "warning", "background"];
+  const kinds = ["default", "faded", "faint"];
+
+  kinds.forEach((kind) => {
+    colors.forEach((color) => {
+      const key = `--switch--${kind}-${color}-color`;
+      const value = `var(--${mode}--${kind}-${color}-color)`;
+      b.l(key);
+      b.setCSS(
+        key,
+        value,
+      );
+    });
+  });
 }
 
 class State {
@@ -586,15 +605,17 @@ function addFadeVars(m) {
 }
 
 function addUI() {
+  // TODO: Set these once with variables
+  // then update the variables.
   const mode = s.data.modes[s.data.activeMode];
   const colors = mode.colors;
   const color = colors[mode.activeColor];
   for (let i = 0; i <= s.hueCount(); i += 1) {
-    output.push(`.ui--hue-color-${i} { color: oklch(
-${color.values.lightness}
-${color.values.chroma}
-${hueRotate(mode.background.hue, i)}
-); }`);
+    output.push(
+      `.ui--hue-color-${i} { color: oklch(${color.values.lightness} ${color.values.chroma} ${
+        hueRotate(mode.background.hue, i)
+      }); }`,
+    );
   }
 }
 

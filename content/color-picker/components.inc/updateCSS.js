@@ -64,15 +64,17 @@ function addFadeVars(m) {
 }
 
 function addUI() {
+  // TODO: Set these once with variables
+  // then update the variables.
   const mode = s.data.modes[s.data.activeMode];
   const colors = mode.colors;
   const color = colors[mode.activeColor];
   for (let i = 0; i <= s.hueCount(); i += 1) {
-    output.push(`.ui--hue-color-${i} { color: oklch(
-${color.values.lightness}
-${color.values.chroma}
-${hueRotate(mode.background.hue, i)}
-); }`);
+    output.push(
+      `.ui--hue-color-${i} { color: oklch(${color.values.lightness} ${color.values.chroma} ${
+        hueRotate(mode.background.hue, i)
+      }); }`,
+    );
   }
 }
 
