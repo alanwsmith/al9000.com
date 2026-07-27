@@ -6,9 +6,8 @@ export async function backgroundSliderSet(_, sender, ___) {
   await requestAnimationFrame(async () => {
     s.data.modes[s.data.activeMode].background[sender.prop("key")] = sender
       .valueAsFloat();
-    // s.setActiveValue(sender.prop("key"), sender.valueAsFloat());
     await b.savePageData("data", s.data);
-    // b.trigger("updateCSS");
+    b.trigger("updateCSS outputJSON");
   });
 }
 
@@ -205,10 +204,6 @@ body {
   colorKeys: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
-  monoMap: {
-    "faded": "faded",
-    "faint": "faint",
-  },
   monoSliders: [
     { key: "faded", name: "Faded", token: "faded" },
     { key: "faint", name: "Faint", token: "faint" },
@@ -453,25 +448,8 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    // "colorSlidersInit",
     "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit",
   );
-  /*
-  b.trigger(
-    `
-monoBoxInit
-initBaseStyles
-initBackgroundSliders
-initColorNameButtons
-initHueOffsetButtons
-initModeButtons
-initColorSliders
-iColorName
-uCustomStyles
-blocksInit
-`,
-  );
-  */
 }
 
 function initDefaultBlocks() {
@@ -505,7 +483,7 @@ export async function modeSet(_, sender, ___) {
   s.data.activeMode = sender.prop("key");
   await s.save();
   b.trigger(
-    "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS",
+    "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS outputJSON",
   );
 }
 
@@ -528,6 +506,10 @@ export function modesInit(_, __, el) {
   el.replaceChildren(b.render("modes", subs));
 }
 
+export function outputJSON(_, __, el) {
+  el.innerHTML = JSON.stringify(s.data, null, 2);
+}
+
 export async function resetDefaults(_, __, ___) {
   s.data = defaults;
   await s.save();
@@ -548,8 +530,10 @@ class State {
   }
 }
 
+let css = {};
+
 export function updateCSS(_, __, el) {
-  el.innerHTML = "fd";
+  el.innerHTML = JSON.stringify(s.data, null, 2);
 }
 
 

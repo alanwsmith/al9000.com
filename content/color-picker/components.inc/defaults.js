@@ -19,10 +19,6 @@ body {
   colorKeys: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
-  monoMap: {
-    "faded": "faded",
-    "faint": "faint",
-  },
   monoSliders: [
     { key: "faded", name: "Faded", token: "faded" },
     { key: "faint", name: "Faint", token: "faint" },
