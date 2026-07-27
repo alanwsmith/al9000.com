@@ -442,7 +442,7 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit",
+    "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit updateCSS updateJSON",
   );
 }
 
@@ -520,10 +520,56 @@ class State {
   }
 }
 
-let css = {};
+let output = [];
 
 export function updateCSS(_, __, el) {
-  el.innerHTML = JSON.stringify(css, null, 2);
+  output = [];
+  addBaseCSS();
+  addDefaultLightVars();
+  addDefaultLightSwitches();
+  el.innerHTML = output.join("\n");
+
+  sheet.replaceSync(output.join("\n"));
+}
+
+function hueRotate(value, index) {
+  const adjust = index * s.data.hueRotation;
+  return (value + adjust) % 360;
+}
+
+function addBaseCSS() {
+  output.push(s.data.baseCSS);
+}
+
+function addDefaultLightVars() {
+  output.push(`:root {`);
+  const mode = s.data.modes.light;
+  const colors = mode.colors;
+  Object.entries(colors).forEach(([key, content]) => {
+    const values = content.values;
+    const oklch = `oklch(${values.lightness} ${values.chroma} ${
+      hueRotate(
+        mode.background.hue,
+        content.hueOffset,
+      )
+    })`;
+    output.push(
+      `--light--default-${key}-color: ${oklch};`,
+    );
+  });
+  output.push(`}`);
+}
+
+function addDefaultLightSwitches() {
+  output.push(`:root {`);
+  const mode = s.data.modes.light;
+  const colors = mode.colors;
+  Object.entries(colors).forEach(([key, content]) => {
+    output.push(
+      `--default-${key}-color: var(--switch--default-${key}-color, var(--light--default-${key}-color));`,
+    );
+  });
+  output.push(`}`);
 }
 
 export function updateJSON(_, __, el) {
@@ -533,6 +579,7 @@ export function updateJSON(_, __, el) {
 
 
 let sheet = new CSSStyleSheet();
+document.adoptedStyleSheets.push(sheet);
 export const b = {
   init: "init",
 };

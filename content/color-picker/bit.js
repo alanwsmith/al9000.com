@@ -7,6 +7,7 @@
 
 
 let sheet = new CSSStyleSheet();
+document.adoptedStyleSheets.push(sheet);
 export const b = {
   init: "init",
 };
