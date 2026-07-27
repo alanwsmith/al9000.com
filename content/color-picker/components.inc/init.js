@@ -5,8 +5,9 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    // "colorsInit",
-    "backgroundSlidersInit",
+    "huesInit",
+    //"colorsInit",
+    // "backgroundSlidersInit",
     //"modesInit",
     //"modesInit blocksInit",
   );
@@ -35,11 +36,11 @@ function initDefaultBlocks() {
     if (!mode.blocks) {
       mode.blocks = {};
       s.data.colorTypes.forEach((backgroundColorType) => {
-        s.data.colorNames.forEach((backgroundColorName) => {
+        s.data.colorKeys.forEach((backgroundColorName) => {
           const backgroundKey = `${backgroundColorType}-${backgroundColorName}`;
           mode.blocks[backgroundKey] = {};
           s.data.colorTypes.forEach((textColorType) => {
-            s.data.colorNames.forEach((textColorName) => {
+            s.data.colorKeys.forEach((textColorName) => {
               const textKey = `${textColorType}-${textColorName}`;
               mode.blocks[backgroundKey][textKey] = {
                 name: null,

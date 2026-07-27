@@ -125,8 +125,33 @@ export function blocksInit(_, __, el) {
   */
 }
 
+export async function colorSet(_, sender, ___) {
+  b.trace("colorSet");
+  s.data.modes[s.data.activeMode].activeColor = sender.prop("key");
+  await s.save();
+  b.trigger("colorUpdate");
+}
+
+export function colorUpdate(_, __, el) {
+  b.trace("colorUpdate");
+  if (
+    el.prop("key") ===
+      s.data.modes[s.data.activeMode].activeColor
+  ) {
+    el.classList.add("active");
+  } else {
+    el.classList.remove("active");
+  }
+}
+
 export function colorsInit(_, __, el) {
-  b.l(el);
+  s.data.colorKeys.forEach((key) => {
+    const subs = {
+      __KEY__: key,
+    };
+    el.appendChild(b.render("color", subs));
+  });
+  b.trigger("colorUpdate");
 }
 
 const defaults = {
@@ -147,16 +172,16 @@ body {
   logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
-  colorNames: ["base", "heading", "accent", "info", "warning"],
+  colorKeys: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
   monoMap: {
-    "faded": "__FADED__",
-    "faint": "__FAINT__",
+    "faded": "faded",
+    "faint": "faint",
   },
   monoSliders: [
-    { key: "faded", name: "Faded", token: "__FADED__" },
-    { key: "faint", name: "Faint", token: "__FAINT__" },
+    { key: "faded", name: "Faded", token: "faded" },
+    { key: "faint", name: "Faint", token: "faint" },
   ],
   config: {
     "lightness": {
@@ -198,62 +223,62 @@ body {
       monos: {
         "black": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "white": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "match": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "reverse": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
       },
-      colors: [
-        {
+      colors: {
+        "base": {
           lightness: 0.3,
           chroma: 0.12,
-          __H_OFFSET__: 4,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 4,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        "heading": {
           lightness: 0.4,
           chroma: 0.16,
-          __H_OFFSET__: 3,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 3,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        "accent": {
           lightness: 0.54,
           chroma: 0.126,
-          __H_OFFSET__: 5,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 5,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        "info": {
           lightness: 0.62,
           chroma: 0.12,
-          __H_OFFSET__: 2,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 2,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        "warning": {
           lightness: 0.6,
           chroma: 0.127,
-          __H_OFFSET__: 4,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 4,
+          faded: 0.6,
+          faint: 0.12,
         },
-      ],
+      },
     },
     "dark": {
       activeColor: "base",
@@ -268,65 +293,96 @@ body {
       monos: {
         "black": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "white": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "match": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "reverse": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
       },
-      colors: [
-        {
+      colors: {
+        base: {
           lightness: 0.883,
           chroma: 0.0372,
-          __H_OFFSET__: 6,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 6,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        heading: {
           lightness: 0.773,
           chroma: 0.12,
-          __H_OFFSET__: 2,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 2,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        accent: {
           lightness: 0.62,
           chroma: 0.08,
-          __H_OFFSET__: 3,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 3,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        info: {
           lightness: 0.93,
           chroma: 0.15,
-          __H_OFFSET__: 3,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 3,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        warning: {
           lightness: 0.7,
           chroma: 0.122,
-          __H_OFFSET__: 4,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 4,
+          faded: 0.6,
+          faint: 0.12,
         },
-      ],
+      },
     },
   },
 };
+
+export async function hueSet(_, sender, ___) {
+  b.trace("hueSet");
+  const mode = s.data.modes[s.data.activeMode];
+  const color = mode.colors[mode.activeColor];
+  color.hueOffset = sender.propAsInt("index");
+  await s.save();
+  b.trigger("hueUpdate");
+}
+
+export function hueUpdate(_, __, el) {
+  b.trace("hueUpdate");
+  const mode = s.data.modes[s.data.activeMode];
+  const color = mode.colors[mode.activeColor];
+  if (el.propAsInt("index") === color.hueOffset) {
+    el.classList.add("active");
+  } else {
+    el.classList.remove("active");
+  }
+}
+
+export function huesInit(_, __, el) {
+  b.trace("huesInit");
+  for (let index = 0; index < s.hueCount(); index += 1) {
+    const subs = {
+      __INDEX__: index,
+    };
+    el.appendChild(b.render("hue", subs));
+  }
+  b.trigger("hueUpdate");
+}
 
 export async function init() {
   // b.savePageData("data", defaults);
@@ -335,8 +391,9 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    // "colorsInit",
-    "backgroundSlidersInit",
+    "huesInit",
+    //"colorsInit",
+    // "backgroundSlidersInit",
     //"modesInit",
     //"modesInit blocksInit",
   );
@@ -365,11 +422,11 @@ function initDefaultBlocks() {
     if (!mode.blocks) {
       mode.blocks = {};
       s.data.colorTypes.forEach((backgroundColorType) => {
-        s.data.colorNames.forEach((backgroundColorName) => {
+        s.data.colorKeys.forEach((backgroundColorName) => {
           const backgroundKey = `${backgroundColorType}-${backgroundColorName}`;
           mode.blocks[backgroundKey] = {};
           s.data.colorTypes.forEach((textColorType) => {
-            s.data.colorNames.forEach((textColorName) => {
+            s.data.colorKeys.forEach((textColorName) => {
               const textKey = `${textColorType}-${textColorName}`;
               mode.blocks[backgroundKey][textKey] = {
                 name: null,
@@ -420,15 +477,11 @@ class State {
     this.b = b;
     this.data = {};
   }
-  setActiveValue(key, value) {
-    for (let mode of this.data.modes) {
-      if (this.data.activeMode === mode.__KEY__) {
-        mode.background[key] = value;
-      }
-    }
+  hueCount() {
+    return 360 / this.data.hueRotation;
   }
   async save() {
-    b.info("Saving data");
+    b.trace("Saving data");
     await b.savePageData("data", this.data);
   }
 }

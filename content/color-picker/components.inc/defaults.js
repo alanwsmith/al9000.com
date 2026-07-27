@@ -16,16 +16,16 @@ body {
   logLevel: "DEBUG",
   hueRotation: 45,
   activeMode: "light",
-  colorNames: ["base", "heading", "accent", "info", "warning"],
+  colorKeys: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
   monoNames: ["black", "white", "match", "reverse"],
   monoMap: {
-    "faded": "__FADED__",
-    "faint": "__FAINT__",
+    "faded": "faded",
+    "faint": "faint",
   },
   monoSliders: [
-    { key: "faded", name: "Faded", token: "__FADED__" },
-    { key: "faint", name: "Faint", token: "__FAINT__" },
+    { key: "faded", name: "Faded", token: "faded" },
+    { key: "faint", name: "Faint", token: "faint" },
   ],
   config: {
     "lightness": {
@@ -67,62 +67,62 @@ body {
       monos: {
         "black": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "white": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "match": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "reverse": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
       },
-      colors: [
-        {
+      colors: {
+        "base": {
           lightness: 0.3,
           chroma: 0.12,
-          __H_OFFSET__: 4,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 4,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        "heading": {
           lightness: 0.4,
           chroma: 0.16,
-          __H_OFFSET__: 3,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 3,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        "accent": {
           lightness: 0.54,
           chroma: 0.126,
-          __H_OFFSET__: 5,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 5,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        "info": {
           lightness: 0.62,
           chroma: 0.12,
-          __H_OFFSET__: 2,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 2,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        "warning": {
           lightness: 0.6,
           chroma: 0.127,
-          __H_OFFSET__: 4,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 4,
+          faded: 0.6,
+          faint: 0.12,
         },
-      ],
+      },
     },
     "dark": {
       activeColor: "base",
@@ -137,62 +137,62 @@ body {
       monos: {
         "black": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "white": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "match": {
           __LIGHTNESS__: 0,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
         "reverse": {
           __LIGHTNESS__: 1,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          faded: 0.6,
+          faint: 0.12,
         },
       },
-      colors: [
-        {
+      colors: {
+        base: {
           lightness: 0.883,
           chroma: 0.0372,
-          __H_OFFSET__: 6,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 6,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        heading: {
           lightness: 0.773,
           chroma: 0.12,
-          __H_OFFSET__: 2,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 2,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        accent: {
           lightness: 0.62,
           chroma: 0.08,
-          __H_OFFSET__: 3,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 3,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        info: {
           lightness: 0.93,
           chroma: 0.15,
-          __H_OFFSET__: 3,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 3,
+          faded: 0.6,
+          faint: 0.12,
         },
-        {
+        warning: {
           lightness: 0.7,
           chroma: 0.122,
-          __H_OFFSET__: 4,
-          __FADED__: 0.6,
-          __FAINT__: 0.12,
+          hueOffset: 4,
+          faded: 0.6,
+          faint: 0.12,
         },
-      ],
+      },
     },
   },
 };

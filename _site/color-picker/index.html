@@ -787,7 +787,7 @@ ratios.</p>
     <div class="border-1">
         <div class="two-columns-left">
             <div data-r="colorsInit" class="colors"></div>
-            <div data-r="initHueOffsetButtons uHueOffsetButtons" class="hue-offset-buttons"></div>
+            <div data-r="huesInit" class="hues"></div>
         </div>
         <div data-r="initColorSliders"></div>
     </div>
@@ -865,7 +865,21 @@ __OPTIONS__
 <div data-r="blockExamplesInit"></div>
 </script>
 
-<script type="text/html" data-template="mode">
+<script type="text/html" data-template="color">
+  <div 
+    class="color" 
+    data-key="__KEY__"
+    data-s="colorSet"
+    data-r="colorUpdate"
+  >__KEY__</div>
+
+</script><script type="text/html" data-template="hue">
+<div 
+  class="hue" 
+  data-index="__INDEX__"
+  data-s="hueSet"
+  data-r="hueUpdate">hue</div>
+</script><script type="text/html" data-template="mode">
   <label>
     <input 
       data-s="modesSet" 
