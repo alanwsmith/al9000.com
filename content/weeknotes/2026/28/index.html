@@ -1,0 +1,57 @@
+== extends "/templates.inc/switches/default.html"
+== block toml 
+title = "Week Notes 2026-28"
+created = 2026-07-15T16:44:19-04:00
+status = "done"
+id = "01/n5/fw/93"
+tags = []
+flags = []
+== endblock
+
+== block content
+== filter md
+## Intro
+
+As of this post, I've moved Week Notes
+to a new location on the site `/weeknotes/`
+where the format is `/weeknotes/YEAR/WEEK/`.
+
+I'll eventually move prior week notes
+into the same structure. For now, 
+it only applies to notes moving
+forward. The idea is to make it
+easier to define starts and stops
+and keep track because I'm using
+automatic output from the 
+date function (via rust's chronos
+crate) to generate the week numbers. 
+That way, I don't have to think
+about it. 
+
+(I actually moved things in
+week 30, this is just pulling
+the content from a prior
+not on al9000 here. All the
+rest of the notes that will
+be moved are still sitting on
+alanwsmith.com)
+
+
+## Sunday - June 19
+
+- Added a feature to my site 
+builder so that [posts and
+page can have three dates](/blog/01/n5/st/wc/):
+created, completed, and updated. 
+Did that because I'll often 
+have posts that take me a long
+time to write. I want to
+keep track of when I start them
+and when I publish them. 
+It felt weird to use "update"
+for the publication date. Hence
+the new "completed" date. 
+
+
+== endfilter
+== endblock
