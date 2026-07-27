@@ -22,12 +22,16 @@ export function updateCSS(_, __, el) {
   d.push(`@media (prefers-color-scheme: dark) { :root {`);
 
   addBaseCSS();
-  addBackgroundOKLCH("light");
-  addDefaultVars("light");
-  addFadeVars("light");
-  addDefaultSwitches("light");
-  addFadeSwitches("light");
-  addDefaultClasses("light");
+
+  ["light", "dark"].forEach((mode) => {
+    addBackgroundOKLCH(mode);
+    addDefaultVars(mode);
+    addFadeVars(mode);
+    addDefaultSwitches(mode);
+    addFadeSwitches(mode);
+    addDefaultClasses(mode);
+    addFadeClasses(mode);
+  });
 
   l.push(`}`);
   d.push(`}}`);
@@ -53,7 +57,7 @@ function addFadeVars(m) {
         )
       } / ${values[ft]})`;
       target.push(
-        `--light--${ft}-${key}-color: ${oklch};`,
+        `--${m}--${ft}-${key}-color: ${oklch};`,
       );
     });
   });
@@ -79,7 +83,7 @@ function hueRotate(value, index) {
 
 function addBackgroundOKLCH(m) {
   css.modes[m].push(
-    `--light--default-background-color: oklch(${
+    `--${m}--default-background-color: oklch(${
       s.data.modes[m].background.lightness
     } ${s.data.modes[m].background.chroma} ${s.data.modes[m].background.hue});`,
   );
@@ -91,15 +95,26 @@ function addBaseCSS() {
 
 function addDefaultClasses(m) {
   const target = css.classes;
-  target.push(
-    `.default-background-color { color: var(--default-background-color); }`,
-  );
   const mode = s.data.modes[m];
   const colors = mode.colors;
   Object.entries(colors).forEach(([key, content]) => {
     target.push(
       `.default-${key}-color { color: var(--default-${key}-color); }`,
     );
+  });
+}
+
+function addFadeClasses(m) {
+  const fadeTypes = ["faded", "faint"];
+  const target = css.classes;
+  const mode = s.data.modes[m];
+  const colors = mode.colors;
+  fadeTypes.forEach((ft) => {
+    Object.entries(colors).forEach(([key, content]) => {
+      target.push(
+        `.${ft}-${key}-color { color: var(--${ft}-${key}-color); }`,
+      );
+    });
   });
 }
 
@@ -116,7 +131,7 @@ function addDefaultVars(m) {
       )
     })`;
     target.push(
-      `--light--default-${key}-color: ${oklch};`,
+      `--${m}--default-${key}-color: ${oklch};`,
     );
   });
 }
@@ -129,7 +144,7 @@ function addFadeSwitches(m) {
   fadeTypes.forEach((ft) => {
     Object.entries(colors).forEach(([key, content]) => {
       target.push(
-        `--${ft}-${key}-color: var(--switch--${ft}-${key}-color, var(--light--${ft}-${key}-color));`,
+        `--${ft}-${key}-color: var(--switch--${ft}-${key}-color, var(--${m}--${ft}-${key}-color));`,
       );
     });
   });
@@ -138,13 +153,13 @@ function addFadeSwitches(m) {
 function addDefaultSwitches(m) {
   const target = css.modes[m];
   target.push(
-    `--default-background-color: var(--switch--default-background-color, var(--light--default-background-color));`,
+    `--default-background-color: var(--switch--default-background-color, var(--${m}--default-background-color));`,
   );
   const mode = s.data.modes.light;
   const colors = mode.colors;
   Object.entries(colors).forEach(([key, content]) => {
     target.push(
-      `--default-${key}-color: var(--switch--default-${key}-color, var(--light--default-${key}-color));`,
+      `--default-${key}-color: var(--switch--default-${key}-color, var(--${m}--default-${key}-color));`,
     );
   });
 }
