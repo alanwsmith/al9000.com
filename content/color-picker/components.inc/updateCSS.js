@@ -222,7 +222,7 @@ function addMonoFadeSwitches(m) {
   const fadeTypes = ["faded", "faint"];
   const target = css.modes[m];
   const mode = s.data.modes[m];
-  const monos = mode.colors;
+  const monos = mode.monos;
   fadeTypes.forEach((ft) => {
     Object.entries(monos).forEach(([key, content]) => {
       target.push(

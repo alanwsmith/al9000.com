@@ -11,5 +11,13 @@ export function setModeCSS(mode) {
         value,
       );
     });
+    s.data.monoNames.forEach((mono) => {
+      const key = `--switch--${kind}-${mono}-color`;
+      const value = `var(--${mode}--${kind}-${mono}-color)`;
+      b.setCSS(
+        key,
+        value,
+      );
+    });
   });
 }

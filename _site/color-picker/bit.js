@@ -574,6 +574,14 @@ export function setModeCSS(mode) {
         value,
       );
     });
+    s.data.monoNames.forEach((mono) => {
+      const key = `--switch--${kind}-${mono}-color`;
+      const value = `var(--${mode}--${kind}-${mono}-color)`;
+      b.setCSS(
+        key,
+        value,
+      );
+    });
   });
 }
 
@@ -815,7 +823,7 @@ function addMonoFadeSwitches(m) {
   const fadeTypes = ["faded", "faint"];
   const target = css.modes[m];
   const mode = s.data.modes[m];
-  const monos = mode.colors;
+  const monos = mode.monos;
   fadeTypes.forEach((ft) => {
     Object.entries(monos).forEach(([key, content]) => {
       target.push(
