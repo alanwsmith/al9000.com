@@ -22,33 +22,58 @@ export function backgroundSlidersInit(_, __, el) {
   b.trigger("backgroundSliderUpdate");
 }
 
-export function blockSelectInit(_, __, el) {
-  b.trace("blockSelectInit");
+export function blockUpdate(_, __, el) {
+  b.trace(el);
+
+  const mode = s.data.modes[s.data.activeMode];
   s.data.colorKeys.forEach((color) => {
     s.data.colorTypes.forEach((type) => {
+      const key = `${type}-${color}`;
+      const backgroundColor = `${key}-background-color`;
+      if (mode.activeBlock === key) {
+        el.classList.add(backgroundColor);
+      } else {
+        el.classList.remove(backgroundColor);
+      }
+    });
+  });
+}
+
+export function blockSelectInit(_, __, el) {
+  b.trace("blockSelectInit");
+  const mode = s.data.modes[s.data.activeMode];
+  s.data.colorKeys.forEach((color) => {
+    s.data.colorTypes.forEach((type) => {
+      const key = `${type}-${color}`;
       const subs = {
-        __KEY__: `${type}-${color}`,
+        __KEY__: key,
         __NAME__: `${color}: ${type}`,
       };
+      if (mode.activeBlock === key) {
+        subs.__SELECTED__ = " selected";
+      } else {
+        subs.__SELECTED__ = "";
+      }
       el.appendChild(b.render("blockOption", subs));
     });
   });
-  // el.replaceChildren(b.render("blockOption"));
-  //b.trigger("blockOptionsInit");
 }
 
 export function blockSelectSet(_, sender, ___) {
-  const mode = s.getActiveMode();
+  const mode = s.data.modes[s.data.activeMode];
+  mode.activeBlock = sender.value;
   s.save();
+  b.trigger("blockUpdate");
 }
 
-export function blocksInit(_, __, el) {
+export function blocksInit(_, sender, el) {
   b.trace("blocksInit");
+  const mode = s.data.modes[s.data.activeMode];
   s.data.colorKeys.forEach((color) => {
     s.data.colorTypes.forEach((type) => {
       const subs = {
-        __KEY__: `${type}-${color}`,
-        __NAME__: `${color}: ${type}`,
+        __COLOR_CLASS__: `${type}-${color}-color`,
+        __BACKGROUND_CLASS__: `${mode.activeBlock}-background-color`,
       };
       el.appendChild(b.render("block", subs));
     });
