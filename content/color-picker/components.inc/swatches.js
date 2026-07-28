@@ -5,6 +5,7 @@ export function swatchesUpdate(_, __, el) {
       const subs = {
         __COLOR_TYPE__: type,
         __COLOR_KEY__: key,
+        __COLOR_NAME__: key,
       };
       el.appendChild(b.render("swatch", subs));
     });

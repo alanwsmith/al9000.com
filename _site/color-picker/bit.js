@@ -68,8 +68,13 @@ export function blockOptionsInit(_, __, el) {
 
 export function blockSelectInit(_, __, el) {
   b.trace("blockSelectInit");
-  el.replaceChildren(b.render("blockSelect"));
-  b.trigger("blockOptionsInit");
+  s.data.colorKeys.forEach((key) => {
+    const subs = {};
+    el.appendChild(b.render("blockOption", subs));
+  });
+
+  // el.replaceChildren(b.render("blockOption"));
+  //b.trigger("blockOptionsInit");
 }
 
 export function blockSelectSet(_, sender, ___) {
@@ -432,6 +437,7 @@ colorSlidersInit
 monosInit
 monoSlidersInit
 swatchesUpdate
+blocksInit
 updateCSS 
 `,
   );
@@ -591,6 +597,7 @@ export function swatchesUpdate(_, __, el) {
       const subs = {
         __COLOR_TYPE__: type,
         __COLOR_KEY__: key,
+        __COLOR_NAME__: key,
       };
       el.appendChild(b.render("swatch", subs));
     });

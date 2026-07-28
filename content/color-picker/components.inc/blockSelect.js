@@ -1,7 +1,12 @@
 export function blockSelectInit(_, __, el) {
   b.trace("blockSelectInit");
-  el.replaceChildren(b.render("blockSelect"));
-  b.trigger("blockOptionsInit");
+  s.data.colorKeys.forEach((key) => {
+    const subs = {};
+    el.appendChild(b.render("blockOption", subs));
+  });
+
+  // el.replaceChildren(b.render("blockOption"));
+  //b.trigger("blockOptionsInit");
 }
 
 export function blockSelectSet(_, sender, ___) {

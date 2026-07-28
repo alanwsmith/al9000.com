@@ -141,18 +141,10 @@ input[type=range]{
   <div class="package">
   <div class="content default-flow">
 
-    <div data-r="blocksInit">
-      Initializing block builder.
-    </div>
-
-
-
 <h2>Introduction</h2>
 <p>Welcome to Color Picker 9000. The
 tool I use to create the
 stylesheets for <a href="/">my site</a>.</p>
-
-
 <p>This page is a live preview of the
 generated styles. Play around
 with the controls to get things
@@ -161,6 +153,10 @@ CSS at the bottom of the page
 when you're done and paste
 it into your stylesheet to
 use the settings.</p>
+
+    <div data-r="blocksInit"></div>
+
+
 <p>The picker provides settings
 for five colors. This text
 uses <em>base</em> color.
@@ -391,7 +387,7 @@ __OPTIONS__
 </select>
 </script><script type="text/html" data-template="blocks">
 <h2>Blocks</h2>
-<div data-r="blockSelectInit">TODO: Block List</div>
+<select data-s="blockSelectSet" data-r="blockSelectInit blockSelectUpdate"></select>
 <div data-r="blockExamplesInit"></div>
 </script>
 
