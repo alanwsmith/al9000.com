@@ -24,7 +24,7 @@ https://al9000.com/images/open-graph/default.jpg
   [!- if p.title !]
   [@- p.title -@]
   [!- else -!]
-  [@- d["/config.json"].site.title -@]
+  [@- d["/site.json"].site.title -@]
   [!- endif -!]
 [!- endset -!]
 
@@ -33,7 +33,7 @@ https://al9000.com/images/open-graph/default.jpg
 [!- if p.og_description -!]
 [@ p.og_description @]
 [!- else -!]
-[@ d["/config.json"].og_image.default_description @]
+[@ d["/site.json"].og_image.default_description @]
 [!- endif -!]
 [!- endset -!]
 
@@ -46,22 +46,22 @@ https://al9000.com/images/open-graph/default.jpg
 <meta property="og:type" content="article" />
 <meta property="og:url" content="[@ og_url @]" />
 <meta property="og:image" content="[@ og_image @]" />
-<link rel="apple-touch-icon" sizes="180x180" href="[@ d["/config.json"].site.favicon_root @]/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="[@ d["/config.json"].site.favicon_root @]/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="[@ d["/config.json"].site.favicon_root @]/favicon-32x32.png" />
-<link rel="manifest" href="[@ d["/config.json"].site.favicon_root @]/site.webmanifest" />
-<link rel="mask-icon" href="[@ d["/config.json"].site.favicon_root @]/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="apple-touch-icon" sizes="180x180" href="[@ d["/site.json"].site.favicon_root @]/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="[@ d["/site.json"].site.favicon_root @]/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="[@ d["/site.json"].site.favicon_root @]/favicon-32x32.png" />
+<link rel="manifest" href="[@ d["/site.json"].site.favicon_root @]/site.webmanifest" />
+<link rel="mask-icon" href="[@ d["/site.json"].site.favicon_root @]/safari-pinned-tab.svg" color="#5bbad5" />
 <link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
 <link
   rel="site.standard.publication"
-  href="at://[@ d["/config.json"].atproto.did @]/[@ d["/config.json"].atproto.siteRecord @]"
+  href="at://[@ d["/site.json"].atproto.did @]/[@ d["/site.json"].atproto.siteRecord @]"
 />
 
 
 == if p.tid
 <link
   rel="site.standard.document"
-  href="at://[@ d["/config.json"].atproto.did @]/site.standard.document/[@ p.tid @]"
+  href="at://[@ d["/site.json"].atproto.did @]/site.standard.document/[@ p.tid @]"
 />
 == endif
 

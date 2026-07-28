@@ -4,7 +4,7 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit updateCSS updateJSON",
+    "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit updateCSS updateJSON monosInit",
   );
   setModeCSS(s.data.activeMode);
 }

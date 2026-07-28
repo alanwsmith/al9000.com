@@ -442,7 +442,7 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit updateCSS updateJSON",
+    "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit updateCSS updateJSON monosInit",
   );
   setModeCSS(s.data.activeMode);
 }
@@ -500,6 +500,32 @@ export function modesInit(_, __, el) {
     __MODES__: modes,
   };
   el.replaceChildren(b.render("modes", subs));
+}
+
+export function monoSet(_, sender, ___) {
+  const mode = s.data.modes[s.data.activeMode];
+  mode.activeMonoKey = sender.prop("key");
+  s.save();
+  b.trigger("monoUpdate");
+}
+
+export function monoUpdate(_, __, el) {
+  const mode = s.data.modes[s.data.activeMode];
+  if (el.prop("key") === mode.activeMonoKey) {
+    el.classList.add("active");
+  } else {
+    el.classList.remove("active");
+  }
+}
+
+export function monosInit(_, __, el) {
+  s.data.monoNames.forEach((name) => {
+    const subs = {
+      __KEY__: name,
+    };
+    el.appendChild(b.render("mono", subs));
+  });
+  b.trigger("monoUpdate");
 }
 
 export async function resetDefaults(_, __, ___) {
