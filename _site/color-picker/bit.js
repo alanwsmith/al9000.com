@@ -76,9 +76,6 @@ export function blockSelectSet(_, sender, ___) {
   const mode = s.getActiveMode();
   mode.activeBlock = sender.value;
   s.save();
-  // b.savePageData("data", s.data);
-  b.info(sender.value);
-  b.info(mode);
 }
 
 export function blocksInit(_, __, el) {
@@ -478,7 +475,7 @@ export async function modeSet(_, sender, ___) {
   s.data.activeMode = sender.prop("key");
   await s.save();
   b.trigger(
-    "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON",
+    "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON monoUpdate",
   );
   setModeCSS(s.data.activeMode);
 }
@@ -542,7 +539,6 @@ export function setModeCSS(mode) {
     colors.forEach((color) => {
       const key = `--switch--${kind}-${color}-color`;
       const value = `var(--${mode}--${kind}-${color}-color)`;
-      b.l(key);
       b.setCSS(
         key,
         value,

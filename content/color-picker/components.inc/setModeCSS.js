@@ -6,7 +6,6 @@ export function setModeCSS(mode) {
     colors.forEach((color) => {
       const key = `--switch--${kind}-${color}-color`;
       const value = `var(--${mode}--${kind}-${color}-color)`;
-      b.l(key);
       b.setCSS(
         key,
         value,
