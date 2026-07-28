@@ -291,159 +291,11 @@ ratios.</p>
 </ul>
 <h2>Swatches</h2>
 
-      <div class="border-1" data-r="updateActiveColor" data-key="base">
-        <div class="default-base-color two-columns">
-          <div class="block default-base-block">
-          </div>
-          <div>default base</div>
-        </div>
-        <div class="faded-base-color two-columns">
-          <div class="block faded-base-block">
-          </div>
-          <div>faded base</div>
-        </div>
-        <div class="faint-base-color two-columns">
-          <div class="block faint-base-block">
-          </div>
-          <div>faint base</div>
-        </div>
-    </div>
-      <div class="border-1" data-r="updateActiveColor" data-key="heading">
-        <div class="default-heading-color two-columns">
-          <div class="block default-heading-block">
-          </div>
-          <div>default heading</div>
-        </div>
-        <div class="faded-heading-color two-columns">
-          <div class="block faded-heading-block">
-          </div>
-          <div>faded heading</div>
-        </div>
-        <div class="faint-heading-color two-columns">
-          <div class="block faint-heading-block">
-          </div>
-          <div>faint heading</div>
-        </div>
-    </div>
-      <div class="border-1" data-r="updateActiveColor" data-key="accent">
-        <div class="default-accent-color two-columns">
-          <div class="block default-accent-block">
-          </div>
-          <div>default accent</div>
-        </div>
-        <div class="faded-accent-color two-columns">
-          <div class="block faded-accent-block">
-          </div>
-          <div>faded accent</div>
-        </div>
-        <div class="faint-accent-color two-columns">
-          <div class="block faint-accent-block">
-          </div>
-          <div>faint accent</div>
-        </div>
-    </div>
-      <div class="border-1" data-r="updateActiveColor" data-key="info">
-        <div class="default-info-color two-columns">
-          <div class="block default-info-block">
-          </div>
-          <div>default info</div>
-        </div>
-        <div class="faded-info-color two-columns">
-          <div class="block faded-info-block">
-          </div>
-          <div>faded info</div>
-        </div>
-        <div class="faint-info-color two-columns">
-          <div class="block faint-info-block">
-          </div>
-          <div>faint info</div>
-        </div>
-    </div>
-      <div class="border-1" data-r="updateActiveColor" data-key="warning">
-        <div class="default-warning-color two-columns">
-          <div class="block default-warning-block">
-          </div>
-          <div>default warning</div>
-        </div>
-        <div class="faded-warning-color two-columns">
-          <div class="block faded-warning-block">
-          </div>
-          <div>faded warning</div>
-        </div>
-        <div class="faint-warning-color two-columns">
-          <div class="block faint-warning-block">
-          </div>
-          <div>faint warning</div>
-        </div>
-    </div>
-      <div class="border-1" data-r="updateActiveColor" data-key="black">
-        <div class="default-black-color two-columns">
-          <div class="block default-black-block">
-          </div>
-          <div>default black</div>
-        </div>
-        <div class="faded-black-color two-columns">
-          <div class="block faded-black-block">
-          </div>
-          <div>faded black</div>
-        </div>
-        <div class="faint-black-color two-columns">
-          <div class="block faint-black-block">
-          </div>
-          <div>faint black</div>
-        </div>
-    </div>
-      <div class="border-1" data-r="updateActiveColor" data-key="white">
-        <div class="default-white-color two-columns">
-          <div class="block default-white-block">
-          </div>
-          <div>default white</div>
-        </div>
-        <div class="faded-white-color two-columns">
-          <div class="block faded-white-block">
-          </div>
-          <div>faded white</div>
-        </div>
-        <div class="faint-white-color two-columns">
-          <div class="block faint-white-block">
-          </div>
-          <div>faint white</div>
-        </div>
-    </div>
-      <div class="border-1" data-r="updateActiveColor" data-key="match">
-        <div class="default-match-color two-columns">
-          <div class="block default-match-block">
-          </div>
-          <div>default match</div>
-        </div>
-        <div class="faded-match-color two-columns">
-          <div class="block faded-match-block">
-          </div>
-          <div>faded match</div>
-        </div>
-        <div class="faint-match-color two-columns">
-          <div class="block faint-match-block">
-          </div>
-          <div>faint match</div>
-        </div>
-    </div>
-      <div class="border-1" data-r="updateActiveColor" data-key="reverse">
-        <div class="default-reverse-color two-columns">
-          <div class="block default-reverse-block">
-          </div>
-          <div>default reverse</div>
-        </div>
-        <div class="faded-reverse-color two-columns">
-          <div class="block faded-reverse-block">
-          </div>
-          <div>faded reverse</div>
-        </div>
-        <div class="faint-reverse-color two-columns">
-          <div class="block faint-reverse-block">
-          </div>
-          <div>faint reverse</div>
-        </div>
-    </div>
+
+    <div data-r="swatchesInit" class="swatches"></div>
+
+    
+
   </div>
 
 <div class="sidebar">
@@ -601,6 +453,11 @@ __MODES__
         step="__STEP__" 
         autocomplete="off" />
     </div>
+</script><script type="text/html" data-template="swatch">
+<div class="two-columns">
+<div class="__COLOR_TYPE__-__COLOR_KEY__-color">__COLOR_TYPE__ __COLOR_KEY__</div>
+<div class="__COLOR_TYPE__-__COLOR_KEY__-background-c0lor background-swatch">x</div>
+</div>
 </script>
 
 

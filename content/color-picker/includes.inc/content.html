@@ -130,6 +130,10 @@ if it exist.
 
 == endfilter
 
+
+    <div data-r="swatchesInit" class="swatches"></div>
+
+    [#
     == for color in d["/color-picker/data.json"].colors
       <div class="border-1" data-r="updateActiveColor" data-key="[@ color @]">
       == for kind in d["/color-picker/data.json"].kinds
@@ -141,6 +145,8 @@ if it exist.
       == endfor
     </div>
     == endfor
+    #]
+
   </div>
 
 

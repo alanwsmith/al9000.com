@@ -196,7 +196,6 @@ function addMonoDefaultVars(m) {
   const mode = s.data.modes[m];
   const monos = mode.monos;
   Object.entries(monos).forEach(([key, values]) => {
-    b.l(key);
     const oklch = `oklch(${values.lightness} 0 0)`;
     target.push(
       `--${m}--default-${key}-color: ${oklch};`,

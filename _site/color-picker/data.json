@@ -6,9 +6,7 @@
     "info",
     "warning",
     "black",
-    "white",
-    "match",
-    "reverse"
+    "white"
   ],
   "kinds": [
     "default",

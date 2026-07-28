@@ -17,7 +17,7 @@ body {
   activeMode: "light",
   colorKeys: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
-  monoNames: ["black", "white", "match", "reverse"],
+  monoNames: ["black", "white"],
   config: {
     "lightness": {
       __NAME__: "Lightness",
@@ -69,24 +69,16 @@ body {
       },
       monos: {
         "black": {
+          alt: "reverse",
           lightness: 0,
           faded: 0.1,
           faint: 0.12,
         },
         "white": {
+          alt: "match",
           lightness: 1,
           faded: 0.2,
           faint: 0.22,
-        },
-        "match": {
-          lightness: 1,
-          faded: 0.3,
-          faint: 0.32,
-        },
-        "reverse": {
-          lightness: 0,
-          faded: 0.4,
-          faint: 0.42,
         },
       },
       colors: {
@@ -149,24 +141,16 @@ body {
       },
       monos: {
         "black": {
+          alt: "match",
           lightness: 0,
           faded: 0.5,
           faint: 0.22,
         },
         "white": {
+          alt: "reverse",
           lightness: 1,
           faded: 0.4,
           faint: 0.32,
-        },
-        "match": {
-          lightness: 0,
-          faded: 0.6,
-          faint: 0.12,
-        },
-        "reverse": {
-          lightness: 1,
-          faded: 0.7,
-          faint: 0.42,
         },
       },
       colors: {
