@@ -13,7 +13,6 @@ colorSlidersInit
 monosInit
 monoSlidersInit
 updateCSS 
-updateJSON 
 `,
   );
   setModeCSS(s.data.activeMode);

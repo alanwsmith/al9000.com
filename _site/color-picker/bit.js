@@ -448,7 +448,6 @@ colorSlidersInit
 monosInit
 monoSlidersInit
 updateCSS 
-updateJSON 
 `,
   );
   setModeCSS(s.data.activeMode);
@@ -534,7 +533,7 @@ export function monoSliderSet(_, sender, ___) {
 
 export function monoSliderUpdate(_, __, el) {
   const mode = s.data.modes[s.data.activeMode];
-  el.value = b.tee(mode.monos[mode.activeMonoKey][el.prop("key")]);
+  el.value = mode.monos[mode.activeMonoKey][el.prop("key")];
 }
 
 export function monoSlidersInit(_, __, el) {
@@ -619,12 +618,23 @@ export function updateCSS(_, __, el) {
 
   ["light", "dark"].forEach((mode) => {
     addBackgroundOKLCH(mode);
-    addDefaultVars(mode);
-    addFadeVars(mode);
-    addDefaultSwitches(mode);
-    addFadeSwitches(mode);
-    addDefaultClasses(mode);
-    addFadeClasses(mode);
+
+    addColorDefaultVars(mode);
+    addColorFadeVars(mode);
+    addMonoDefaultVars(mode);
+    addMonoFadeVars(mode);
+
+    addColorDefaultSwitches(mode);
+    addMonoDefaultSwitches(mode);
+
+    addColorDefaultClasses(mode);
+    addMonoDefaultClasses(mode);
+
+    addColorFadeClasses(mode);
+    addColorFadeSwitches(mode);
+
+    addMonoFadeClasses(mode);
+    addMonoFadeSwitches(mode);
   });
 
   l.push(`}`);
@@ -634,9 +644,11 @@ export function updateCSS(_, __, el) {
   el.innerHTML = output.join("\n");
   addUI();
   sheet.replaceSync(output.join("\n"));
+
+  b.trigger("updateJSON");
 }
 
-function addFadeVars(m) {
+function addColorFadeVars(m) {
   const fadeTypes = ["faded", "faint"];
   const target = css.modes[m];
   const mode = s.data.modes[m];
@@ -650,6 +662,21 @@ function addFadeVars(m) {
           content.hueOffset,
         )
       } / ${values[ft]})`;
+      target.push(
+        `--${m}--${ft}-${key}-color: ${oklch};`,
+      );
+    });
+  });
+}
+
+function addMonoFadeVars(m) {
+  const fadeTypes = ["faded", "faint"];
+  const target = css.modes[m];
+  const mode = s.data.modes[m];
+  const monos = mode.monos;
+  fadeTypes.forEach((ft) => {
+    Object.entries(monos).forEach(([key, values]) => {
+      const oklch = `oklch(${values.lightness} 0 0 / ${values[ft]})`;
       target.push(
         `--${m}--${ft}-${key}-color: ${oklch};`,
       );
@@ -689,7 +716,7 @@ function addBaseCSS() {
   css.raw.push(s.data.baseCSS);
 }
 
-function addDefaultClasses(m) {
+function addColorDefaultClasses(m) {
   const target = css.classes;
   const mode = s.data.modes[m];
   const colors = mode.colors;
@@ -700,7 +727,18 @@ function addDefaultClasses(m) {
   });
 }
 
-function addFadeClasses(m) {
+function addMonoDefaultClasses(m) {
+  const target = css.classes;
+  const mode = s.data.modes[m];
+  const monos = mode.monos;
+  Object.entries(monos).forEach(([key, content]) => {
+    target.push(
+      `.default-${key}-color { color: var(--default-${key}-color); }`,
+    );
+  });
+}
+
+function addColorFadeClasses(m) {
   const fadeTypes = ["faded", "faint"];
   const target = css.classes;
   const mode = s.data.modes[m];
@@ -714,7 +752,21 @@ function addFadeClasses(m) {
   });
 }
 
-function addDefaultVars(m) {
+function addMonoFadeClasses(m) {
+  const fadeTypes = ["faded", "faint"];
+  const target = css.classes;
+  const mode = s.data.modes[m];
+  const monos = mode.monos;
+  fadeTypes.forEach((ft) => {
+    Object.entries(monos).forEach(([key, content]) => {
+      target.push(
+        `.${ft}-${key}-color { color: var(--${ft}-${key}-color); }`,
+      );
+    });
+  });
+}
+
+function addColorDefaultVars(m) {
   const target = css.modes[m];
   const mode = s.data.modes[m];
   const colors = mode.colors;
@@ -732,10 +784,23 @@ function addDefaultVars(m) {
   });
 }
 
-function addFadeSwitches(m) {
+function addMonoDefaultVars(m) {
+  const target = css.modes[m];
+  const mode = s.data.modes[m];
+  const monos = mode.monos;
+  Object.entries(monos).forEach(([key, values]) => {
+    b.l(key);
+    const oklch = `oklch(${values.lightness} 0 0)`;
+    target.push(
+      `--${m}--default-${key}-color: ${oklch};`,
+    );
+  });
+}
+
+function addColorFadeSwitches(m) {
   const fadeTypes = ["faded", "faint"];
   const target = css.modes[m];
-  const mode = s.data.modes.light;
+  const mode = s.data.modes[m];
   const colors = mode.colors;
   fadeTypes.forEach((ft) => {
     Object.entries(colors).forEach(([key, content]) => {
@@ -746,14 +811,39 @@ function addFadeSwitches(m) {
   });
 }
 
-function addDefaultSwitches(m) {
+function addMonoFadeSwitches(m) {
+  const fadeTypes = ["faded", "faint"];
+  const target = css.modes[m];
+  const mode = s.data.modes[m];
+  const monos = mode.colors;
+  fadeTypes.forEach((ft) => {
+    Object.entries(monos).forEach(([key, content]) => {
+      target.push(
+        `--${ft}-${key}-color: var(--switch--${ft}-${key}-color, var(--${m}--${ft}-${key}-color));`,
+      );
+    });
+  });
+}
+
+function addColorDefaultSwitches(m) {
   const target = css.modes[m];
   target.push(
     `--default-background-color: var(--switch--default-background-color, var(--${m}--default-background-color));`,
   );
-  const mode = s.data.modes.light;
+  const mode = s.data.modes[m];
   const colors = mode.colors;
   Object.entries(colors).forEach(([key, content]) => {
+    target.push(
+      `--default-${key}-color: var(--switch--default-${key}-color, var(--${m}--default-${key}-color));`,
+    );
+  });
+}
+
+function addMonoDefaultSwitches(m) {
+  const target = css.modes[m];
+  const mode = s.data.modes[m];
+  const monos = mode.monos;
+  Object.entries(monos).forEach(([key, content]) => {
     target.push(
       `--default-${key}-color: var(--switch--default-${key}-color, var(--${m}--default-${key}-color));`,
     );

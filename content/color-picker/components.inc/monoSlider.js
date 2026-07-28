@@ -7,5 +7,5 @@ export function monoSliderSet(_, sender, ___) {
 
 export function monoSliderUpdate(_, __, el) {
   const mode = s.data.modes[s.data.activeMode];
-  el.value = b.tee(mode.monos[mode.activeMonoKey][el.prop("key")]);
+  el.value = mode.monos[mode.activeMonoKey][el.prop("key")];
 }
