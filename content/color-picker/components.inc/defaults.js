@@ -69,24 +69,24 @@ body {
       },
       monos: {
         "black": {
-          __LIGHTNESS__: 0,
-          faded: 0.6,
+          lightness: 0,
+          faded: 0.1,
           faint: 0.12,
         },
         "white": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 1,
+          faded: 0.2,
+          faint: 0.22,
         },
         "match": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 1,
+          faded: 0.3,
+          faint: 0.32,
         },
         "reverse": {
-          __LIGHTNESS__: 0,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 0,
+          faded: 0.4,
+          faint: 0.42,
         },
       },
       colors: {
@@ -149,24 +149,24 @@ body {
       },
       monos: {
         "black": {
-          __LIGHTNESS__: 0,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 0,
+          faded: 0.5,
+          faint: 0.22,
         },
         "white": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 1,
+          faded: 0.4,
+          faint: 0.32,
         },
         "match": {
-          __LIGHTNESS__: 0,
+          lightness: 0,
           faded: 0.6,
           faint: 0.12,
         },
         "reverse": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 1,
+          faded: 0.7,
+          faint: 0.42,
         },
       },
       colors: {

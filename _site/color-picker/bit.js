@@ -251,24 +251,24 @@ body {
       },
       monos: {
         "black": {
-          __LIGHTNESS__: 0,
-          faded: 0.6,
+          lightness: 0,
+          faded: 0.1,
           faint: 0.12,
         },
         "white": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 1,
+          faded: 0.2,
+          faint: 0.22,
         },
         "match": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 1,
+          faded: 0.3,
+          faint: 0.32,
         },
         "reverse": {
-          __LIGHTNESS__: 0,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 0,
+          faded: 0.4,
+          faint: 0.42,
         },
       },
       colors: {
@@ -331,24 +331,24 @@ body {
       },
       monos: {
         "black": {
-          __LIGHTNESS__: 0,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 0,
+          faded: 0.5,
+          faint: 0.22,
         },
         "white": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 1,
+          faded: 0.4,
+          faint: 0.32,
         },
         "match": {
-          __LIGHTNESS__: 0,
+          lightness: 0,
           faded: 0.6,
           faint: 0.12,
         },
         "reverse": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
+          lightness: 1,
+          faded: 0.7,
+          faint: 0.42,
         },
       },
       colors: {
@@ -439,7 +439,17 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit updateCSS updateJSON monosInit",
+    `
+modesInit 
+backgroundSlidersInit 
+colorsInit 
+huesInit 
+colorSlidersInit 
+monosInit
+monoSlidersInit
+updateCSS 
+updateJSON 
+`,
   );
   setModeCSS(s.data.activeMode);
 }
@@ -503,7 +513,7 @@ export function monoSet(_, sender, ___) {
   const mode = s.data.modes[s.data.activeMode];
   mode.activeMonoKey = sender.prop("key");
   s.save();
-  b.trigger("monoUpdate");
+  b.trigger("monoUpdate monoSliderUpdate");
 }
 
 export function monoUpdate(_, __, el) {
@@ -513,6 +523,27 @@ export function monoUpdate(_, __, el) {
   } else {
     el.classList.remove("active");
   }
+}
+
+export function monoSliderSet(_, sender, ___) {
+  const mode = s.data.modes[s.data.activeMode];
+  mode.monos[mode.activeMonoKey][sender.prop("key")] = sender.valueAsFloat();
+  s.save();
+  b.trigger("updateCSS");
+}
+
+export function monoSliderUpdate(_, __, el) {
+  const mode = s.data.modes[s.data.activeMode];
+  el.value = b.tee(mode.monos[mode.activeMonoKey][el.prop("key")]);
+}
+
+export function monoSlidersInit(_, __, el) {
+  ["faded", "faint"].forEach((key) => {
+    const subs = JSON.parse(JSON.stringify(s.data.config[key]));
+    subs.__KEY__ = key;
+    el.appendChild(b.render("monoSlider", subs));
+  });
+  b.trigger("monoSliderUpdate");
 }
 
 export function monosInit(_, __, el) {

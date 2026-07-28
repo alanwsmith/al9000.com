@@ -467,6 +467,7 @@ ratios.</p>
     </div>
 
     <div data-r="monosInit" class="mono-box"></div>
+    <div data-r="monoSlidersInit" class="mono-sliders"></div>
 
 
     <div class="faint-black-color"></div>
@@ -586,6 +587,20 @@ __OPTIONS__
 __MODES__
 </script><script type="text/html" data-template="mono">
 <div data-s="monoSet" data-r="monoUpdate" data-key="__KEY__">__KEY__</div>
+</script><script type="text/html" data-template="monoSlider">
+    <label for="monoSlider-__KEY__">__NAME__</label>
+    <div>
+      <input 
+        id="monoSlider-__KEY__"
+        type="range" 
+        data-s="monoSliderSet" 
+        data-r="monoSliderUpdate" 
+        data-key="__KEY__" 
+        min="__MIN__" 
+        max="__MAX__" 
+        step="__STEP__" 
+        autocomplete="off" />
+    </div>
 </script>
 
 

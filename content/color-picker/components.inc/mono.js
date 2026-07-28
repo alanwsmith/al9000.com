@@ -2,7 +2,7 @@ export function monoSet(_, sender, ___) {
   const mode = s.data.modes[s.data.activeMode];
   mode.activeMonoKey = sender.prop("key");
   s.save();
-  b.trigger("monoUpdate");
+  b.trigger("monoUpdate monoSliderUpdate");
 }
 
 export function monoUpdate(_, __, el) {
