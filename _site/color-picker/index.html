@@ -154,7 +154,9 @@ when you're done and paste
 it into your stylesheet to
 use the settings.</p>
 
-    <div data-r="blocksInit"></div>
+<h2>Blocks</h2>
+<select data-s="blockSelectSet" data-r="blockSelectInit blockSelectUpdate"></select>
+<div data-r="blocksInit"></div>
 
 
 <p>The picker provides settings
@@ -375,17 +377,9 @@ ratios.</p>
         autocomplete="off" />
     </div>
 </script>
-<script type="text/html" data-template="blockOption">
-  <option 
-    value="__KEY__" 
-    __SELECTED__>__NAME__</option>
-</script><script type="text/html" data-template="blocks">
-<h2>Blocks</h2>
-<select data-s="blockSelectSet" data-r="blockSelectInit blockSelectUpdate"></select>
-<div data-r="blockExamplesInit"></div>
-</script>
-
-<script type="text/html" data-template="color">
+<div>block</div><script type="text/html" data-template="blockOption">
+  <option value="__KEY__" __SELECTED__>__NAME__</option>
+</script><script type="text/html" data-template="color">
   <div 
     class="color default-__KEY__-color" 
     data-key="__KEY__"

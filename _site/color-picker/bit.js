@@ -33,60 +33,26 @@ export function blockSelectInit(_, __, el) {
       el.appendChild(b.render("blockOption", subs));
     });
   });
-
   // el.replaceChildren(b.render("blockOption"));
   //b.trigger("blockOptionsInit");
 }
 
 export function blockSelectSet(_, sender, ___) {
   const mode = s.getActiveMode();
-  mode.activeBlock = sender.value;
   s.save();
 }
 
 export function blocksInit(_, __, el) {
   b.trace("blocksInit");
-  el.replaceChildren(b.render("blocks"));
-  b.trigger("blockSelectInit");
-
-  /*
-
-  const examples = [];
-
-  const textOptions = s.data.colorTypes.map((colorType) => {
-    return s.data.colorNames.map((colorName) => {
-      const backgroundKey = `${colorType}-${colorName}`;
-      let selected = "";
-      if (mode.activeBlock === backgroundKey) {
-        selected = " selected";
-        s.data.colorTypes.forEach((colorTextType) => {
-          return s.data.colorNames.map((colorTextName) => {
-            const colorKey = `${colorTextType}-${colorTextName}`;
-            const textSubs = {
-              __BACKGROUND_KEY__: backgroundKey,
-              __COLOR_KEY__: colorKey,
-            };
-            examples.push(b.render("blockExample", textSubs));
-          });
-        });
-      }
-
+  s.data.colorKeys.forEach((color) => {
+    s.data.colorTypes.forEach((type) => {
       const subs = {
-        __KEY__: backgroundKey,
-        __SELECTED__: selected,
+        __KEY__: `${type}-${color}`,
+        __NAME__: `${color}: ${type}`,
       };
-
-      return b.render("blockBuilderOption", subs);
+      el.appendChild(b.render("block", subs));
     });
-  }).flat();
-
-  const subs = {
-    __BLOCK_BUILDER_OPTIONS__: textOptions,
-    __BLOCK_EXAMPLES__: examples,
-  };
-
-  el.replaceChildren(b.render("blockBuilder", subs));
-  */
+  });
 }
 
 export async function colorSet(_, sender, ___) {
@@ -398,6 +364,7 @@ colorSlidersInit
 monosInit
 monoSlidersInit
 swatchesUpdate
+blockSelectInit
 blocksInit
 updateCSS 
 `,
