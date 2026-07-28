@@ -631,15 +631,14 @@ export function updateCSS(_, __, el) {
 
     addColorDefaultSwitches(mode);
     addMonoDefaultSwitches(mode);
+    addColorFadeSwitches(mode);
+    addMonoFadeSwitches(mode);
 
     addColorDefaultClasses(mode);
     addMonoDefaultClasses(mode);
 
     addColorFadeClasses(mode);
-    addColorFadeSwitches(mode);
-
     addMonoFadeClasses(mode);
-    addMonoFadeSwitches(mode);
   });
 
   l.push(`}`);
@@ -729,6 +728,9 @@ function addColorDefaultClasses(m) {
     target.push(
       `.default-${key}-color { color: var(--default-${key}-color); }`,
     );
+    target.push(
+      `.default-${key}-background-color { background-color: var(--default-${key}-color); }`,
+    );
   });
 }
 
@@ -739,6 +741,9 @@ function addMonoDefaultClasses(m) {
   Object.entries(monos).forEach(([key, content]) => {
     target.push(
       `.default-${key}-color { color: var(--default-${key}-color); }`,
+    );
+    target.push(
+      `.default-${key}-background-color { background-color: var(--default-${key}-color); }`,
     );
   });
 }
@@ -752,6 +757,9 @@ function addColorFadeClasses(m) {
     Object.entries(colors).forEach(([key, content]) => {
       target.push(
         `.${ft}-${key}-color { color: var(--${ft}-${key}-color); }`,
+      );
+      target.push(
+        `.${ft}-${key}-background-color { background-color: var(--${ft}-${key}-color); }`,
       );
     });
   });
