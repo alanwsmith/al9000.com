@@ -12,7 +12,7 @@ huesInit
 colorSlidersInit 
 monosInit
 monoSlidersInit
-swatchesInit
+swatchesUpdate
 updateCSS 
 `,
   );
