@@ -109,26 +109,26 @@ function cardSorter(a, b) {
 }
 
 export async function clearCardLevel(_, sender, el) {
-  if (sender.prop("id") === el.prop("id")) {
-    delete state.cardLevels[sender.prop("id")];
+  if (sender.key("id") === el.key("id")) {
+    delete state.cardLevels[sender.key("id")];
     // await b.savePageData(state, "state");
     el.innerHTML = "";
   }
-  if (sender.propAsInt("key") < state.viewLevel) {
+  if (sender.keyAsInt("key") < state.viewLevel) {
     b.trigger("results");
   }
 }
 
 export function clearQuery(_, sender, el) {
-  if (sender.prop("key") === el.prop("key")) {
+  if (sender.key("key") === el.key("key")) {
     el.value = "";
     b.trigger("searchFromStart");
   }
 }
 
 export function excludeDefaults(_, sender, el) {
-  if (sender.prop("key") === el.prop("key")) {
-    el.value = defaultExcludes[sender.prop("key")];
+  if (sender.key("key") === el.key("key")) {
+    el.value = defaultExcludes[sender.key("key")];
     b.trigger("search");
   }
 }
@@ -355,7 +355,7 @@ export function searchFromStart(_, __, ___) {
 }
 
 export function selectOption(_, sender, el) {
-  if (sender.prop("key") === el.prop("key")) {
+  if (sender.key("key") === el.key("key")) {
     el.value = sender.value.toLowerCase();
     sender.selectedIndex = 0;
     b.trigger("search");
@@ -363,11 +363,11 @@ export function selectOption(_, sender, el) {
 }
 
 export function setCardStars(_, sender, el) {
-  if (sender.prop("id") === el.prop("id")) {
-    cards[sender.prop("id")].stars = sender.propAsInt("key");
+  if (sender.key("id") === el.key("id")) {
+    cards[sender.key("id")].stars = sender.keyAsInt("key");
     // saveData();
-    el.innerHTML = sender.prop("key");
-    if (sender.propAsInt("key") < state.viewLevel) {
+    el.innerHTML = sender.key("key");
+    if (sender.keyAsInt("key") < state.viewLevel) {
       b.trigger("results");
     }
   }
@@ -493,7 +493,7 @@ export function uiOptions(_, __, el) {
   if (el) {
     el.replaceChildren();
     el.appendChild(b.render("optionSpacerTemplate"));
-    for (const value of options[el.prop("key")]) {
+    for (const value of options[el.key("key")]) {
       el.appendChild(b.render("optionTemplate", { __VALUE__: value }));
     }
   }

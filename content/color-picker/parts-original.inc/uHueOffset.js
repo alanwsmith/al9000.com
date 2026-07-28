@@ -3,7 +3,7 @@ export function uHueOffset(_, __, el) {
   const mode = s.getActiveMode();
   if (el) {
     if (
-      el.propAsInt("index") ===
+      el.keyAsInt("index") ===
         mode.colors[mode.activeColorIndex][`__H_OFFSET__`]
     ) {
       el.classList.add("set-active");

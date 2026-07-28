@@ -17,7 +17,7 @@ export function update(_, sender, el) {
 }
 
 export function copyRatio(_, sender, el) {
-  if (sender.prop("key") === el.prop("key")) {
+  if (sender.key("key") === el.key("key")) {
     b.quickCopy(el, sender);
   }
 }

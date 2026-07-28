@@ -1,10 +1,10 @@
 export function backgroundSliderUpdate(_, __, el) {
-  el.value = s.data.modes[s.data.activeMode].background[el.prop("key")];
+  el.value = s.data.modes[s.data.activeMode].background[el.key("key")];
 }
 
 export async function backgroundSliderSet(_, sender, ___) {
   await requestAnimationFrame(async () => {
-    s.data.modes[s.data.activeMode].background[sender.prop("key")] = sender
+    s.data.modes[s.data.activeMode].background[sender.key("key")] = sender
       .valueAsFloat();
     await b.savePageData("data", s.data);
     b.trigger("updateCSS updateJSON");
@@ -57,7 +57,7 @@ export function blocksInit(_, __, el) {
 
 export async function colorSet(_, sender, ___) {
   b.trace("colorSet");
-  s.data.modes[s.data.activeMode].activeColor = sender.prop("key");
+  s.data.modes[s.data.activeMode].activeColor = sender.key("key");
   await s.save();
   b.trigger("colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON");
 }
@@ -65,7 +65,7 @@ export async function colorSet(_, sender, ___) {
 export function colorUpdate(_, __, el) {
   b.trace("colorUpdate");
   if (
-    el.prop("key") ===
+    el.key("key") ===
       s.data.modes[s.data.activeMode].activeColor
   ) {
     el.classList.add("active");
@@ -77,7 +77,7 @@ export function colorUpdate(_, __, el) {
 export function colorSliderSet(_, sender, ___) {
   const mode = s.data.modes[s.data.activeMode];
   const color = mode.colors[mode.activeColor];
-  color.values[sender.prop("key")] = sender.valueAsFloat();
+  color.values[sender.key("key")] = sender.valueAsFloat();
   s.save();
   b.trigger("updateCSS updateJSON");
 }
@@ -85,7 +85,7 @@ export function colorSliderSet(_, sender, ___) {
 export function colorSliderUpdate(_, __, el) {
   const mode = s.data.modes[s.data.activeMode];
   const color = mode.colors[mode.activeColor];
-  el.value = color.values[el.prop("key")];
+  el.value = color.values[el.key("key")];
 }
 
 export function colorSlidersInit(_, __, el) {
@@ -322,7 +322,7 @@ export async function hueSet(_, sender, ___) {
   b.trace("hueSet");
   const mode = s.data.modes[s.data.activeMode];
   const color = mode.colors[mode.activeColor];
-  color.hueOffset = sender.propAsInt("index");
+  color.hueOffset = sender.keyAsInt("index");
   await s.save();
   b.trigger("hueUpdate updateCSS updateJSON");
 }
@@ -331,7 +331,7 @@ export function hueUpdate(_, __, el) {
   b.trace("hueUpdate");
   const mode = s.data.modes[s.data.activeMode];
   const color = mode.colors[mode.activeColor];
-  if (el.propAsInt("index") === color.hueOffset) {
+  if (el.keyAsInt("index") === color.hueOffset) {
     el.classList.add("active");
   } else {
     el.classList.remove("active");
@@ -400,7 +400,7 @@ function initDefaultBlocks() {
 
 export async function modeSet(_, sender, ___) {
   b.trace("modeSet");
-  s.data.activeMode = sender.prop("key");
+  s.data.activeMode = sender.key("key");
   await s.save();
   b.trigger(
     "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON monoUpdate swatchesUpdate ",
@@ -429,14 +429,14 @@ export function modesInit(_, __, el) {
 
 export function monoSet(_, sender, ___) {
   const mode = s.data.modes[s.data.activeMode];
-  mode.activeMonoKey = sender.prop("key");
+  mode.activeMonoKey = sender.key("key");
   s.save();
   b.trigger("monoUpdate monoSliderUpdate");
 }
 
 export function monoUpdate(_, __, el) {
   const mode = s.data.modes[s.data.activeMode];
-  if (el.prop("key") === mode.activeMonoKey) {
+  if (el.key("key") === mode.activeMonoKey) {
     el.classList.add("active");
   } else {
     el.classList.remove("active");
@@ -445,14 +445,14 @@ export function monoUpdate(_, __, el) {
 
 export function monoSliderSet(_, sender, ___) {
   const mode = s.data.modes[s.data.activeMode];
-  mode.monos[mode.activeMonoKey][sender.prop("key")] = sender.valueAsFloat();
+  mode.monos[mode.activeMonoKey][sender.key("key")] = sender.valueAsFloat();
   s.save();
   b.trigger("updateCSS");
 }
 
 export function monoSliderUpdate(_, __, el) {
   const mode = s.data.modes[s.data.activeMode];
-  el.value = mode.monos[mode.activeMonoKey][el.prop("key")];
+  el.value = mode.monos[mode.activeMonoKey][el.key("key")];
 }
 
 export function monoSlidersInit(_, __, el) {

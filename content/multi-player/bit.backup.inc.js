@@ -281,8 +281,8 @@ export async function videoList(_, __, el) {
 // export async function video(_, __, el) {
 //   el.muted = true;
 //   el.src = videoData;
-//   // console.log(el.propAsInt("index"));
-//   if (el.propAsInt("index") === 0) {
+//   // console.log(el.keyAsInt("index"));
+//   if (el.keyAsInt("index") === 0) {
 //     el.addEventListener("canplaythrough", async () => {
 //       await b.sleep(100);
 //       b.send("Play", "playButton");
@@ -338,12 +338,12 @@ export async function videoList(_, __, el) {
 //     videoData = URL.createObjectURL(videoBlob);
 //   }
 //   const layout = getBlockLayout(
-//     el.propAsInt("minWidth"),
-//     el.propAsInt("maxWidth"),
+//     el.keyAsInt("minWidth"),
+//     el.keyAsInt("maxWidth"),
 //     parseInt(el.getBoundingClientRect().width),
 //     parseInt(el.getBoundingClientRect().height),
-//     el.propAsInt("ratioWidth"),
-//     el.propAsInt("ratioHeight"),
+//     el.keyAsInt("ratioWidth"),
+//     el.keyAsInt("ratioHeight"),
 //   );
 //   console.log(layout);
 //   for (let i = 0; i < layout.cells; i = i + 1) {

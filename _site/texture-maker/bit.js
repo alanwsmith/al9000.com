@@ -14,7 +14,7 @@ export async function init(_, __, ___) {
 }
 
 export function initValue(_, __, el) {
-  const key = el.prop("key");
+  const key = el.key("key");
   const value = s.data[key];
   b.setCSS(`--svg-bg-${key}`, value);
   el.value = value;
@@ -26,7 +26,7 @@ export async function restoreDefaults() {
 }
 
 export async function updateValue(_, sender, ___) {
-  const key = sender.prop("key");
+  const key = sender.key("key");
   s.data[key] = sender.valueAsFloat();
   b.setCSS(`--svg-bg-${key}`, sender.valueAsFloat());
   await b.savePageData("data", s.data);

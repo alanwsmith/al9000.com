@@ -22041,7 +22041,7 @@
 
 				afterDatasetsUpdate: function(chart, options) {
 					var count = (chart.data.datasets || []).length;
-					var propagate = options.propagate;
+					var propagate = options.keyagate;
 					var sources = [];
 					var meta, i, el, source;
 
@@ -24339,10 +24339,10 @@
 	    onDemoConfigChanged();
 	  });
 	  $('#limitMetrics').val(limitMetrics);
-	  $('#enableStreaming').prop('checked', enableStreaming);
-	  $('#autoRecoverError').prop('checked', autoRecoverError);
-	  $('#stopOnStall').prop('checked', stopOnStall);
-	  $('#dumpfMP4').prop('checked', dumpfMP4);
+	  $('#enableStreaming').key('checked', enableStreaming);
+	  $('#autoRecoverError').key('checked', autoRecoverError);
+	  $('#stopOnStall').key('checked', stopOnStall);
+	  $('#dumpfMP4').key('checked', dumpfMP4);
 	  $('#levelCapping').val(levelCapping);
 
 	  // If cloudflare pages build link to branch

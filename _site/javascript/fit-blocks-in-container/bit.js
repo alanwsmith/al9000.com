@@ -2,12 +2,12 @@ export const b = { init: "blocks" };
 
 export function blocks(_, __, el) {
   const layout = getBlockLayout(
-    el.propAsInt("minWidth"),
-    el.propAsInt("maxWidth"),
+    el.keyAsInt("minWidth"),
+    el.keyAsInt("maxWidth"),
     parseInt(el.getBoundingClientRect().width),
     parseInt(el.getBoundingClientRect().height),
-    el.propAsInt("ratioWidth"),
-    el.propAsInt("ratioHeight"),
+    el.keyAsInt("ratioWidth"),
+    el.keyAsInt("ratioHeight"),
   );
   for (let i = 0; i < layout.cells; i = i + 1) {
     el.append(b.render("cellTemplate"));

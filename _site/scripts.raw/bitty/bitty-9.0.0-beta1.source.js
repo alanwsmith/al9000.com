@@ -1540,7 +1540,7 @@ class BittyJs extends HTMLElement {
 
   _tee(input, log = true) {
     if (log !== false && log !== 0) {
-      console.log(input);
+      console.log(`TEE: ${input}`);
     }
     return input;
   }
@@ -1656,7 +1656,7 @@ class BittyJs extends HTMLElement {
     el.innerHTMLAsInt = () => {
       return parseInt(el.innerHTML.trim().replace(",", ""), 10);
     };
-    el.prop = (key) => {
+    el.key = (key) => {
       if (el.dataset && el.dataset[key] !== undefined) {
         return el.dataset[key];
       }
@@ -1666,7 +1666,7 @@ class BittyJs extends HTMLElement {
       }
       return undefined;
     };
-    el.propAsBool = (key) => {
+    el.keyAsBool = (key) => {
       if (el.dataset && el.dataset[key] !== undefined) {
         return this.b._getBool(el.dataset[key]);
       }
@@ -1676,7 +1676,7 @@ class BittyJs extends HTMLElement {
       }
       return undefined;
     };
-    el.propAsFloat = (key) => {
+    el.keyAsFloat = (key) => {
       if (el.dataset && el.dataset[key] !== undefined) {
         return parseFloat(el.dataset[key]);
       }
@@ -1686,7 +1686,7 @@ class BittyJs extends HTMLElement {
       }
       return undefined;
     };
-    el.propAsInt = (key) => {
+    el.keyAsInt = (key) => {
       if (el.dataset && el.dataset[key] !== undefined) {
         return parseInt(el.dataset[key], 10);
       }
@@ -1704,7 +1704,7 @@ class BittyJs extends HTMLElement {
         el.setAttribute(`aria-${key}`, value);
       }
     };
-    el.setProp = (key, value) => {
+    el.setKey = (key, value) => {
       const propEl = el.closest(`[data-${key}]`);
       if (propEl) {
         propEl.dataset[key] = value;
@@ -1731,7 +1731,7 @@ class BittyJs extends HTMLElement {
         }
       }
     };
-    el.toggleProp = (key) => {
+    el.toggleKey = (key) => {
       const propEl = el.closest(`[data-${key}]`);
       if (propEl) {
         let index = this.b._trueValues.indexOf(

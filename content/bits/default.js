@@ -40,7 +40,7 @@ export function initCodeButtons() {
 }
 
 export async function copyCode(_, sender, el) {
-  if (sender.prop("copyId") === el.prop("copyId")) {
+  if (sender.key("copyId") === el.key("copyId")) {
     await b.quickCopy(el, sender);
   }
 }
