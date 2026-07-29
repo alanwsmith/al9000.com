@@ -1,0 +1,9 @@
+export async function modeSet(_, sender, ___) {
+  b.trace("modeSet");
+  s.data.activeMode = sender.key("key");
+  await s.save();
+  b.trigger(
+    "backgroundSliderUpdate colorUpdate hueUpdate colorSliderUpdate updateCSS updateJSON monoUpdate swatchesUpdate ",
+  );
+  setModeCSS(s.data.activeMode);
+}
