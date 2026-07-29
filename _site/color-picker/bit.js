@@ -39,8 +39,26 @@ export function blockUpdate(_, __, el) {
   });
 }
 
-export function blockSelectInit(_, __, el) {
-  b.trace("blockSelectInit");
+export function blockNameUpdate(_, __, el) {
+  const mode = s.data.modes[s.data.activeMode];
+  if (el.key("key") === mode.activeBlock) {
+    el.classList.add("active");
+  } else {
+    el.classList.remove("active");
+  }
+}
+
+export function blockNameSet(_, sender, ___) {
+  const mode = s.data.modes[s.data.activeMode];
+  mode.activeBlock = sender.key("key");
+  s.save();
+  b.trigger("blockNameUpdate blockUpdate");
+}
+
+export function blockNamesInit(_, __, el) {
+  b.trace("blockNamestInit");
+
+  b.l(el);
   const mode = s.data.modes[s.data.activeMode];
   s.data.colorKeys.forEach((color) => {
     s.data.colorTypes.forEach((type) => {
@@ -49,24 +67,48 @@ export function blockSelectInit(_, __, el) {
         __KEY__: key,
         __NAME__: `${color}: ${type}`,
       };
-      if (mode.activeBlock === key) {
-        subs.__SELECTED__ = " selected";
-      } else {
-        subs.__SELECTED__ = "";
-      }
-      el.appendChild(b.render("blockOption", subs));
+      el.appendChild(b.render("blockName", subs));
     });
   });
+
+  //
 }
 
-export function blockSelectSet(_, sender, ___) {
-  const mode = s.data.modes[s.data.activeMode];
-  mode.activeBlock = sender.value;
-  s.save();
-  b.trigger("blockUpdate");
-}
+// export function blockSelectSet(_, sender, ___) {
+//   const mode = s.data.modes[s.data.activeMode];
+//   mode.activeBlock = sender.value;
+//   s.save();
+//   b.trigger("blockUpdate");
+// }
 
-export function blocksInit(_, sender, el) {
+// export function blockSelectInit(_, __, el) {
+//   b.trace("blockSelectInit");
+//   const mode = s.data.modes[s.data.activeMode];
+//   s.data.colorKeys.forEach((color) => {
+//     s.data.colorTypes.forEach((type) => {
+//       const key = `${type}-${color}`;
+//       const subs = {
+//         __KEY__: key,
+//         __NAME__: `${color}: ${type}`,
+//       };
+//       if (mode.activeBlock === key) {
+//         subs.__SELECTED__ = " selected";
+//       } else {
+//         subs.__SELECTED__ = "";
+//       }
+//       el.appendChild(b.render("blockOption", subs));
+//     });
+//   });
+// }
+
+// export function blockSelectSet(_, sender, ___) {
+//   const mode = s.data.modes[s.data.activeMode];
+//   mode.activeBlock = sender.value;
+//   s.save();
+//   b.trigger("blockUpdate");
+// }
+
+export function blocksInit(_, __, el) {
   b.trace("blocksInit");
   const mode = s.data.modes[s.data.activeMode];
   s.data.colorKeys.forEach((color) => {
@@ -78,7 +120,35 @@ export function blocksInit(_, sender, el) {
       el.appendChild(b.render("block", subs));
     });
   });
+  b.trigger("blockNameUpdate");
 }
+
+// export function blockSelectInit(_, __, el) {
+//   b.trace("blockSelectInit");
+//   const mode = s.data.modes[s.data.activeMode];
+//   s.data.colorKeys.forEach((color) => {
+//     s.data.colorTypes.forEach((type) => {
+//       const key = `${type}-${color}`;
+//       const subs = {
+//         __KEY__: key,
+//         __NAME__: `${color}: ${type}`,
+//       };
+//       if (mode.activeBlock === key) {
+//         subs.__SELECTED__ = " selected";
+//       } else {
+//         subs.__SELECTED__ = "";
+//       }
+//       el.appendChild(b.render("blockOption", subs));
+//     });
+//   });
+// }
+
+// export function blockSelectSet(_, sender, ___) {
+//   const mode = s.data.modes[s.data.activeMode];
+//   mode.activeBlock = sender.value;
+//   s.save();
+//   b.trigger("blockUpdate");
+// }
 
 export async function colorSet(_, sender, ___) {
   b.trace("colorSet");
@@ -389,7 +459,7 @@ colorSlidersInit
 monosInit
 monoSlidersInit
 swatchesUpdate
-blockSelectInit
+blockNamesInit
 blocksInit
 updateCSS 
 `,

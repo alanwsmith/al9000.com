@@ -13,7 +13,7 @@ colorSlidersInit
 monosInit
 monoSlidersInit
 swatchesUpdate
-blockSelectInit
+blockNamesInit
 blocksInit
 updateCSS 
 `,

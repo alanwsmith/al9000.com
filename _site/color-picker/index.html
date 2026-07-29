@@ -155,9 +155,10 @@ it into your stylesheet to
 use the settings.</p>
 
 <h2>Blocks</h2>
-<select data-s="blockSelectSet" data-r="blockSelectInit blockSelectUpdate"></select>
+  <div class="two-columns">
+<div data-s="blockNamesSet" data-r="blockNamesInit blockNamesUpdate"></div>
 <div data-r="blocksInit"></div>
-
+      </div>
 
 <p>The picker provides settings
 for five colors. This text
@@ -382,9 +383,9 @@ ratios.</p>
   class="__BACKGROUND_CLASS__ __COLOR_CLASS__ block"
   data-r="blockUpdate"
 >block</div>
-</script><script type="text/html" data-template="blockOption">
-  <option value="__KEY__" __SELECTED__>__NAME__</option>
-</script><script type="text/html" data-template="color">
+</script><script type="text/html" data-template="blockName">
+  <div data-s="blockNameSet" data-r="blockNameUpdate" data-key="__KEY__">__KEY__</div>
+</script>;<script type="text/html" data-template="color">
   <div 
     class="color default-__KEY__-color" 
     data-key="__KEY__"
