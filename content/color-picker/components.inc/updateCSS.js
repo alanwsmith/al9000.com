@@ -177,6 +177,9 @@ function addMonoFadeClasses(m) {
       target.push(
         `.${ft}-${key}-color { color: var(--${ft}-${key}-color); }`,
       );
+      target.push(
+        `.${ft}-${key}-background-color { background-color: var(--${ft}-${key}-color); }`,
+      );
     });
   });
 }

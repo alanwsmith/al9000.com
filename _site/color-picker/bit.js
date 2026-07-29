@@ -37,6 +37,18 @@ export function blockUpdate(_, __, el) {
       }
     });
   });
+
+  s.data.monoNames.forEach((color) => {
+    s.data.colorTypes.forEach((type) => {
+      const key = `${type}-${color}`;
+      const backgroundColor = `${key}-background-color`;
+      if (mode.activeBlock === key) {
+        el.classList.add(backgroundColor);
+      } else {
+        el.classList.remove(backgroundColor);
+      }
+    });
+  });
 }
 
 export function blockNameUpdate(_, __, el) {
@@ -51,6 +63,23 @@ export function blockNameUpdate(_, __, el) {
 export function blockNameSet(_, sender, ___) {
   const mode = s.data.modes[s.data.activeMode];
   mode.activeBlock = sender.key("key");
+
+  const newColor = sender.key("color");
+  if (s.data.colorKeys.includes(newColor)) {
+    mode.activeColor = newColor;
+    b.l(newColor);
+    b.trigger(
+      "colorUpdate hueUpdate colorSliderUpdate",
+    );
+  }
+
+  if (s.data.monoNames.includes(newColor)) {
+    mode.activeMonoKey = newColor;
+    b.l(newColor);
+    b.trigger(
+      "monoUpdate",
+    );
+  }
   s.save();
   b.trigger("blockNameUpdate blockUpdate");
 }
@@ -64,6 +93,7 @@ export function blockNamesInit(_, __, el) {
       const key = `${type}-${color}`;
       const subs = {
         __KEY__: key,
+        __COLOR__: color,
         __NAME__: `${color}: ${type}`,
       };
       el.appendChild(b.render("blockName", subs));
@@ -75,6 +105,7 @@ export function blockNamesInit(_, __, el) {
       const key = `${type}-${color}`;
       const subs = {
         __KEY__: key,
+        __COLOR__: color,
         __NAME__: `${color}: ${type}`,
       };
       el.appendChild(b.render("blockName", subs));
@@ -802,6 +833,9 @@ function addMonoFadeClasses(m) {
     Object.entries(monos).forEach(([key, content]) => {
       target.push(
         `.${ft}-${key}-color { color: var(--${ft}-${key}-color); }`,
+      );
+      target.push(
+        `.${ft}-${key}-background-color { background-color: var(--${ft}-${key}-color); }`,
       );
     });
   });

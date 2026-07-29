@@ -7,6 +7,7 @@ export function blockNamesInit(_, __, el) {
       const key = `${type}-${color}`;
       const subs = {
         __KEY__: key,
+        __COLOR__: color,
         __NAME__: `${color}: ${type}`,
       };
       el.appendChild(b.render("blockName", subs));
@@ -18,6 +19,7 @@ export function blockNamesInit(_, __, el) {
       const key = `${type}-${color}`;
       const subs = {
         __KEY__: key,
+        __COLOR__: color,
         __NAME__: `${color}: ${type}`,
       };
       el.appendChild(b.render("blockName", subs));
