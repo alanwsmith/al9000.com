@@ -16,6 +16,7 @@ swatchesUpdate
 blockNamesInit
 blocksInit
 updateCSS 
+blockBordersInit
 `,
   );
   setModeCSS(s.data.activeMode);

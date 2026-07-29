@@ -49,7 +49,7 @@
 }
 
 :root {
-  --sidebar-width: 18rem;
+  --sidebar-width: 16rem;
 }
 
 body {
@@ -60,6 +60,11 @@ body {
   font-weight: 900;
 }
 
+.block {
+  margin: 0.3rem;
+  padding: 1rem;
+}
+
 .content {
   flex: 1;
   min-width: 0;
@@ -67,6 +72,10 @@ body {
 
 .default-flow > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--default-heading-color);
 }
 
 input[type=range]{
@@ -86,6 +95,12 @@ input[type=range]{
   top: 1.5rem;
   max-height: calc(100vh - 3rem); 
   overflow-y: auto;
+}
+
+.three-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.3rem;
 }
 
 .two-columns {
@@ -155,9 +170,10 @@ it into your stylesheet to
 use the settings.</p>
 
 <h2>Blocks</h2>
-  <div class="two-columns">
-<div data-s="blockNamesSet" data-r="blockNamesInit blockNamesUpdate"></div>
+  <div class="three-columns">
 <div data-r="blocksInit"></div>
+<div data-s="blockNamesSet" data-r="blockNamesInit blockNamesUpdate"></div>
+<div data-s="blockBordersSet" data-r="blockBordersInit"></div>
       </div>
 
 <p>The picker provides settings
@@ -380,15 +396,25 @@ ratios.</p>
 </script>
 <script type="text/html" data-template="block">
 <div 
-  class="__BACKGROUND_CLASS__ __COLOR_CLASS__ block"
+  class="__BACKGROUND_CLASS__ __COLOR_CLASS__ block ui-block-border"
   data-r="blockUpdate"
->block</div>
+>
+  <div>__COLOR_CLASS__</div>
+  <div>__BACKGROUND_CLASS__</div>
+
+</div>
+</script><script type="text/html" data-template="blockBorder">
+  <button 
+    data-s="blockBorderSet" 
+    data-r="blockBorderUpdate" 
+    data-key="__KEY__" 
+    data-color="__COLOR__">__KEY__</button>
 </script><script type="text/html" data-template="blockName">
-  <div 
+  <button
     data-s="blockNameSet" 
     data-r="blockNameUpdate" 
     data-key="__KEY__" 
-    data-color="__COLOR__">__KEY__</div>
+    data-color="__COLOR__">__KEY__</button>
 </script>;<script type="text/html" data-template="color">
   <div 
     class="color default-__KEY__-color" 

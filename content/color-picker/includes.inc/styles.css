@@ -15,7 +15,7 @@
 }
 
 :root {
-  --sidebar-width: 18rem;
+  --sidebar-width: 16rem;
 }
 
 body {
@@ -26,6 +26,11 @@ body {
   font-weight: 900;
 }
 
+.block {
+  margin: 0.3rem;
+  padding: 1rem;
+}
+
 .content {
   flex: 1;
   min-width: 0;
@@ -33,6 +38,10 @@ body {
 
 .default-flow > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1em);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--default-heading-color);
 }
 
 input[type=range]{
@@ -52,6 +61,12 @@ input[type=range]{
   top: 1.5rem;
   max-height: calc(100vh - 3rem); 
   overflow-y: auto;
+}
+
+.three-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.3rem;
 }
 
 .two-columns {
