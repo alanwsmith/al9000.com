@@ -10,6 +10,17 @@ export function blocksInit(_, __, el) {
       el.appendChild(b.render("block", subs));
     });
   });
+
+  s.data.monoNames.forEach((color) => {
+    s.data.colorTypes.forEach((type) => {
+      const subs = {
+        __COLOR_CLASS__: `${type}-${color}-color`,
+        __BACKGROUND_CLASS__: `${mode.activeBlock}-background-color`,
+      };
+      el.appendChild(b.render("block", subs));
+    });
+  });
+
   b.trigger("blockNameUpdate");
 }
 
