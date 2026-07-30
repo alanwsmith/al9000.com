@@ -1,5 +1,5 @@
 export function monoSlidersInit(_, __, el) {
-  ["faded", "faint"].forEach((key) => {
+  ["faded"].forEach((key) => {
     const subs = JSON.parse(JSON.stringify(s.data.config[key]));
     subs.__KEY__ = key;
     el.appendChild(b.render("monoSlider", subs));

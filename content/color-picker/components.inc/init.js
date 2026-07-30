@@ -13,14 +13,15 @@ colorSlidersInit
 monosInit
 monoSlidersInit
 swatchesUpdate
-blockNamesInit
-blocksInit
+ blocksInit
 updateCSS 
-blockBordersInit
 `,
   );
   setModeCSS(s.data.activeMode);
 }
+
+// blockNamesInit
+// blockBordersInit
 
 function initDefaultBlocks() {
   b.trace("initDefaultBlocks");

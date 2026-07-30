@@ -75,7 +75,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--default-heading-color);
+  color: var(--heading-color);
 }
 
 input[type=range]{
@@ -171,9 +171,8 @@ use the settings.</p>
 
 <h2>Blocks</h2>
   <div class="three-columns">
-<div data-r="blocksInit"></div>
-<div data-s="blockNamesSet" data-r="blockNamesInit blockNamesUpdate"></div>
-<div data-s="blockBordersSet" data-r="blockBordersInit"></div>
+    <div data-r="blocksInit"></div>
+      
       </div>
 
 <p>The picker provides settings
@@ -396,11 +395,11 @@ ratios.</p>
 </script>
 <script type="text/html" data-template="block">
 <div 
-  class="__BACKGROUND_CLASS__ __COLOR_CLASS__ block ui-block-border"
   data-r="blockUpdate"
+data-key="__COLOR__"
 >
-  <div>__COLOR_CLASS__</div>
-  <div>__BACKGROUND_CLASS__</div>
+  <div> the quick brown fox</div>
+  __COLOR__
 
 </div>
 </script><script type="text/html" data-template="blockBorder">
@@ -413,8 +412,7 @@ ratios.</p>
   <button
     data-s="blockNameSet" 
     data-r="blockNameUpdate" 
-    data-key="__KEY__" 
-    data-color="__COLOR__">__KEY__</button>
+    data-key="__KEY__">__KEY__</button>
 </script>;<script type="text/html" data-template="color">
   <div 
     class="color default-__KEY__-color" 
