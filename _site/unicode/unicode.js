@@ -98,8 +98,8 @@ function isAvailable(
 }
 
 //export async function outputCharacter(_, __, el) {
-//  el.innerHTML = `&#x${el.prop("hex")};`;
-//  //el.innerHTML = `${el.prop("hex")`;
+//  el.innerHTML = `&#x${el.key("hex")};`;
+//  //el.innerHTML = `${el.key("hex")`;
 //}
 //
 

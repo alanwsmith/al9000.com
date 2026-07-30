@@ -25,12 +25,12 @@ render it even though it works find in Chrome and Firefox. Give one of
   }
 
   const layout = getBlockLayout(
-    el.propAsInt("minWidth"),
-    el.propAsInt("maxWidth"),
+    el.keyAsInt("minWidth"),
+    el.keyAsInt("maxWidth"),
     parseInt(el.getBoundingClientRect().width),
     parseInt(el.getBoundingClientRect().height),
-    el.propAsInt("ratioWidth"),
-    el.propAsInt("ratioHeight"),
+    el.keyAsInt("ratioWidth"),
+    el.keyAsInt("ratioHeight"),
   );
   layout.cellWidth -= layout.cellWidth % 2;
   b.setCSS("--cell-width", `${layout.cellWidth}px`);

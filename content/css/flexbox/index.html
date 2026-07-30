@@ -16,7 +16,7 @@ flags = ["no-date"]
 
 == block content 
 
-== for example in  d[template_dir() + "/config.json"].examples 
+== for example in  d[template_dir() + "/site.json"].examples 
 == set title = example.titleLines|join(" ")
 == set className = title|replace(":", "")|replace(";", "")|replace(" ", "-")
 == set payload = template_dir() + "/payloads/" + example.payload|replace("className", className)

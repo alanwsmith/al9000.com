@@ -1,8 +1,4 @@
-== if rss
-== extends "/templates.inc/rss/empty.html"
-== else
-== extends "/templates.inc/pages/empty.html"
-== endif
+== extends "/templates.inc/switches/empty.html"
 
 == block toml
 title = "ASCII Bear - Left"
@@ -28,9 +24,12 @@ flags = ["skip"]
 </style>
 == endblock
 
-== block main 
+== block payload 
 <bitty-9 data-connect="[@ template_dir() @]/bit.js"></bitty-9>
 <div data-r="overlay"></div>
+
+[@ parent(parent(template_dir())) @]/backgrounds/chip-background-black-and-white.jpg" 
+
 <script type="text/html" data-template="svg">
   <svg width="__PAGE_WIDTH__" height="__PAGE_HEIGHT__" xmlns="http://www.w3.org/2000/svg">
     <mask id="mainMask">

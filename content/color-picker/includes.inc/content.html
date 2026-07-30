@@ -1,20 +1,12 @@
   <div class="content default-flow">
 
-    <div data-r="blocksInit">
-      Initializing block builder.
-    </div>
-
-
-
 == filter md
 ## Introduction
 Welcome to Color Picker 9000. The
 tool I use to create the 
 stylesheets for [my site](/). 
-== endfilter
 
 
-== filter md
 This page is a live preview of the 
      generated styles. Play around
       with the controls to get things
@@ -24,6 +16,18 @@ This page is a live preview of the
       it into your stylesheet to
       use the settings. 
 
+== endfilter
+
+<h2>Blocks</h2>
+  <div class="three-columns">
+    <div data-r="blocksInit"></div>
+      [#
+<div data-s="blockNamesSet" data-r="blockNamesInit blockNamesUpdate"></div>
+<div data-s="blockBordersSet" data-r="blockBordersInit"></div>
+      #]
+      </div>
+
+== filter md
 The picker provides settings
       for five colors. This text
       uses _base_ color. 
@@ -130,6 +134,10 @@ if it exist.
 
 == endfilter
 
+
+    <div data-r="swatchesUpdate" class="swatches"></div>
+
+    [#
     == for color in d["/color-picker/data.json"].colors
       <div class="border-1" data-r="updateActiveColor" data-key="[@ color @]">
       == for kind in d["/color-picker/data.json"].kinds
@@ -141,6 +149,8 @@ if it exist.
       == endfor
     </div>
     == endfor
+    #]
+
   </div>
 
 

@@ -5,11 +5,11 @@ const defaults = {
 }
 
 body { 
-  background-color: var(--default-background-color);
-  background-image: var(--default-background-image);
+  background-color: var(--background-color);
+  background-image: var(--background-image);
   background-repeat: repeat;
   background-size: 150px 150px;
-  color: var(--default-base-color);
+  color: var(--base-color);
 }
 `,
   logLevel: "DEBUG",
@@ -17,7 +17,7 @@ body {
   activeMode: "light",
   colorKeys: ["base", "heading", "accent", "info", "warning"],
   colorTypes: ["default", "faded", "faint"],
-  monoNames: ["black", "white", "match", "reverse"],
+  monoNames: ["black", "white"],
   config: {
     "lightness": {
       __NAME__: "Lightness",
@@ -60,7 +60,7 @@ body {
     "light": {
       activeColor: "base",
       activeMonoKey: "black",
-      activeBlock: "default-accent",
+      activeBlock: "faded-accent",
       background: {
         lightness: 1,
         chroma: 0.01726,
@@ -69,24 +69,14 @@ body {
       },
       monos: {
         "black": {
-          __LIGHTNESS__: 0,
-          faded: 0.6,
-          faint: 0.12,
+          alt: "reverse",
+          lightness: 0,
+          faded: 0.1,
         },
         "white": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
-        },
-        "match": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
-        },
-        "reverse": {
-          __LIGHTNESS__: 0,
-          faded: 0.6,
-          faint: 0.12,
+          alt: "match",
+          lightness: 1,
+          faded: 0.2,
         },
       },
       colors: {
@@ -96,7 +86,6 @@ body {
             lightness: 0.3,
             chroma: 0.12,
             faded: 0.6,
-            faint: 0.12,
           },
         },
         heading: {
@@ -105,7 +94,6 @@ body {
             lightness: 0.4,
             chroma: 0.16,
             faded: 0.6,
-            faint: 0.12,
           },
         },
         accent: {
@@ -114,7 +102,6 @@ body {
             lightness: 0.54,
             chroma: 0.126,
             faded: 0.6,
-            faint: 0.12,
           },
         },
         info: {
@@ -123,7 +110,6 @@ body {
             lightness: 0.62,
             chroma: 0.12,
             faded: 0.6,
-            faint: 0.12,
           },
         },
         warning: {
@@ -132,7 +118,6 @@ body {
             lightness: 0.6,
             chroma: 0.127,
             faded: 0.6,
-            faint: 0.12,
           },
         },
       },
@@ -140,7 +125,7 @@ body {
     "dark": {
       activeColor: "base",
       activeMonoKey: "black",
-      activeBlock: "default-base",
+      activeBlock: "faded-base",
       background: {
         lightness: 0.138,
         chroma: 0.12,
@@ -149,24 +134,14 @@ body {
       },
       monos: {
         "black": {
-          __LIGHTNESS__: 0,
-          faded: 0.6,
-          faint: 0.12,
+          alt: "match",
+          lightness: 0,
+          faded: 0.5,
         },
         "white": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
-        },
-        "match": {
-          __LIGHTNESS__: 0,
-          faded: 0.6,
-          faint: 0.12,
-        },
-        "reverse": {
-          __LIGHTNESS__: 1,
-          faded: 0.6,
-          faint: 0.12,
+          alt: "reverse",
+          lightness: 1,
+          faded: 0.4,
         },
       },
       colors: {
@@ -176,16 +151,14 @@ body {
             lightness: 0.883,
             chroma: 0.0372,
             faded: 0.6,
-            faint: 0.12,
           },
         },
         heading: {
           hueOffset: 2,
           values: {
-            faded: 0.6,
-            faint: 0.12,
             lightness: 0.773,
             chroma: 0.12,
+            faded: 0.6,
           },
         },
         accent: {
@@ -194,7 +167,6 @@ body {
             lightness: 0.62,
             chroma: 0.08,
             faded: 0.6,
-            faint: 0.12,
           },
         },
         info: {
@@ -203,16 +175,14 @@ body {
             lightness: 0.93,
             chroma: 0.15,
             faded: 0.6,
-            faint: 0.12,
           },
         },
         warning: {
           hueOffset: 4,
           values: {
-            faded: 0.6,
-            faint: 0.12,
             lightness: 0.7,
             chroma: 0.122,
+            faded: 0.6,
           },
         },
       },

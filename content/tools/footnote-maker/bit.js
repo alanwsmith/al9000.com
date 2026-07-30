@@ -12,11 +12,11 @@ export function bodyLink(_, sender, el) {
 }
 
 export function copyBodyLink(_, sender, ___) {
-  b.copy(sender.prop("target"), sender);
+  b.copy(sender.key("target"), sender);
 }
 
 export function copyFootnoteLink(_, sender, ___) {
-  b.copy(sender.prop("target"), sender);
+  b.copy(sender.key("target"), sender);
 }
 
 export function footnoteLink(_, sender, el) {

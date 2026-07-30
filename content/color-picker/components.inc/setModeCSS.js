@@ -1,16 +1,22 @@
 export function setModeCSS(mode) {
-  const colors = ["base", "heading", "accent", "info", "warning", "background"];
-  const kinds = ["default", "faded", "faint"];
-
-  kinds.forEach((kind) => {
-    colors.forEach((color) => {
-      const key = `--switch--${kind}-${color}-color`;
-      const value = `var(--${mode}--${kind}-${color}-color)`;
-      b.l(key);
-      b.setCSS(
-        key,
-        value,
-      );
-    });
+  b.setCSS(
+    `--switch--background-color`,
+    `var(--${mode}--background-color)`,
+  );
+  s.data.colorKeys.forEach((color) => {
+    const key = `--switch--${color}-color`;
+    const value = `var(--${mode}--${color}-color)`;
+    b.setCSS(
+      key,
+      value,
+    );
+  });
+  s.data.monoNames.forEach((mono) => {
+    const key = `--switch--${mono}-color`;
+    const value = `var(--${mode}--${mono}-color)`;
+    b.setCSS(
+      key,
+      value,
+    );
   });
 }

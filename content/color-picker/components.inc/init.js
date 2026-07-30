@@ -4,10 +4,24 @@ export async function init() {
   b.setLogLevel(s.data.logLevel);
   initDefaultBlocks();
   b.trigger(
-    "modesInit backgroundSlidersInit colorsInit huesInit colorSlidersInit updateCSS updateJSON",
+    `
+modesInit 
+backgroundSlidersInit 
+colorsInit 
+huesInit 
+colorSlidersInit 
+monosInit
+monoSlidersInit
+swatchesUpdate
+ blocksInit
+updateCSS 
+`,
   );
   setModeCSS(s.data.activeMode);
 }
+
+// blockNamesInit
+// blockBordersInit
 
 function initDefaultBlocks() {
   b.trace("initDefaultBlocks");

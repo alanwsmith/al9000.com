@@ -3,11 +3,11 @@ export const b = { init: "cells" };
 export function cells(_, __, el) {
   const layout = getLayout(
     {
-      maxWidth: el.propAsInt("maxWidth"),
+      maxWidth: el.keyAsInt("maxWidth"),
       containerWidth: parseInt(el.getBoundingClientRect().width),
       containerHeight: parseInt(el.getBoundingClientRect().height),
-      ratioWidth: el.propAsInt("ratioWidth"),
-      ratioHeight: el.propAsInt("ratioHeight"),
+      ratioWidth: el.keyAsInt("ratioWidth"),
+      ratioHeight: el.keyAsInt("ratioHeight"),
       minColumns: 5,
       maxColumns: 19,
     },

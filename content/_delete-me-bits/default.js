@@ -35,7 +35,7 @@ export class ThemeSwitcher {
   }
 
   setTheme(ev, _) {
-    localStorage.setItem("theme", ev.prop("key"));
+    localStorage.setItem("theme", ev.key("key"));
     switchColorStyles();
     this.api.trigger("doUpdates");
   }
@@ -96,7 +96,7 @@ export class ThemeSwitcher {
   }
 
   syncCheckedTheme(_, el) {
-    if (el.prop("key") === this.getCurrentTheme()) {
+    if (el.key("key") === this.getCurrentTheme()) {
       el.classList.add("active");
     } else {
       el.classList.remove("active");
@@ -162,7 +162,7 @@ export class CodeBlockControls {
   }
 
   async copyText(ev, el) {
-    if (el.propMatchesSender("index")) {
+    if (el.keyMatchesSender("index")) {
       try {
         await navigator.clipboard.writeText(el.innerText);
         ev.sender.innerHTML = "Copied";
@@ -193,7 +193,7 @@ export class CodeBlockControls {
   }
 
   toggleWrap(_, el) {
-    if (el.propMatchesSender("index")) {
+    if (el.keyMatchesSender("index")) {
       el.classList.toggle("nowrap");
     }
   }
