@@ -6,7 +6,7 @@ flags = ["skip"]
 
 == block main
 <ul>
-== for f in file_list() 
+== for f in fileList() 
   == if f[1].status == "done"
     <li><a href="[@ f[1].dir @]/">[@ f[1].title @]</a></li>
   == endif

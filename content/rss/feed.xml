@@ -10,7 +10,7 @@
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
-== for f in file_list()
+== for f in fileList()
   == if f[1].status == "done"
   [# Load p with f[1] so things like p.dir work #]
   == set p = f[1]

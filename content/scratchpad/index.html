@@ -20,10 +20,14 @@ status = "done"
 
 == block content 
 <ul>
-== for folder in folders_in_folder(template_dir(), full=true) 
+== for folder in foldersInFolder(dir(), full=true) 
   == set index_file = folder + "/index.html"
   <li>
+    == if exists(index_file) and d[index_file].title
     <a href="[@ index_file @]">[@ d[index_file].title @]</a>
+    == else
+    Untitled item
+    == endif
   </li>
 == endfor
 </ul>

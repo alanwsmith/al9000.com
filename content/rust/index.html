@@ -11,13 +11,18 @@ flags = ["skip"]
 == block main 
 
 <ul>
-== for folder in folders_in_folder(template_dir(), full=true) 
+== for folder in foldersInFolder(dir(), full=true) 
   == set index_file = folder + "/index.html"
   <li>
-
-    <p>[@ d[index_file].title @]</p>
+    <p>
+      == if d[index_file]
+      [@ d[index_file].title @]
+      == else
+      Unnamed Section
+      == endif
+    </p>
     <ul>
-      == for subfolder in folders_in_folder(folder, full=true) 
+      == for subfolder in foldersInFolder(folder, full=true) 
       == set sub_index_file = subfolder + "/index.html"
         == if exists(sub_index_file)
         <li>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
+    <link rel="stylesheet" href="/styles/main.css" />
 
     <script src="[@ d["/site.json"].bittyURL @]" type="module"></script>
 
@@ -41,7 +41,7 @@
       [! if p.created !]
     <div class="default-wrapper text-align-center faded-base-color"
     style="opacity: 0.05; padding-bottom: 0.3rem;">
-id = "[@ id_from_timestamp(p.created["$__toml_private_datetime"]) @]"
+id = "[@ idFromDate(p.created["$__toml_private_datetime"]) @]"
     </div>
       [! endif !]
 

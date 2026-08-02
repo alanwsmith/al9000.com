@@ -25,23 +25,23 @@ to a default if the arg doesn't exist.
 <h3>Rust</h3>
 
 [! filter highlight("rust", file_name="Cargo.toml") !]
-[! include template_dir() + "/Cargo.toml"  !]
+[! include dir() + "/Cargo.toml"  !]
 [! endfilter !]
 
 [! filter highlight("rust", file_name="src/main.rs") !]
-[@ raw_include(template_dir() + "/src/main.rs")  @]
+[@ rawFile(dir() + "/src/main.rs")  @]
 [! endfilter !]
 
 <h3>Output</h3>
 [! filter output() !]
-[@ raw_include(template_dir() + "/output.txt") @]
+[@ rawFile(dir() + "/output.txt") @]
 [! endfilter !]
 
 [#
 
 <h3>Input</h3>
 [! filter highlight("txt", "samples/data.toml") !]
-[! include template_dir() + "/samples/data.toml"  !]
+[! include dir() + "/samples/data.toml"  !]
 [! endfilter !]
 
 

@@ -26,13 +26,13 @@ For example:
 
 <div class="example-container">
 == filter highlight("html", title="content.html", class="code-block numbers no-copy")
-== include template_dir("/examples/example-1/content.html")
+== include dir("/examples/example-1/content.html")
 == endfilter 
 == filter highlight("js", title="bit.js", class="code-block numbers no-copy")
-[@ raw_include(template_dir("/examples/example-1/bit.js")) @]
+[@ rawFile(dir("/examples/example-1/bit.js")) @]
 == endfilter 
 == filter example(title="Output")
-== include template_dir("/examples/example-1/content.html")
+== include dir("/examples/example-1/content.html")
 == endfilter 
 </div>
 
@@ -44,13 +44,13 @@ with the help of a `data-key` attribute:
 
 <div class="example-container">
 == filter highlight("html", title="content.html", class="code-block numbers no-copy")
-== include template_dir("/examples/example-2/content.html")
+== include dir("/examples/example-2/content.html")
 == endfilter 
 == filter highlight("js", title="bit.js", class="code-block numbers no-copy")
-[@ raw_include(template_dir("/examples/example-2/bit.js")) @]
+[@ rawFile(dir("/examples/example-2/bit.js")) @]
 == endfilter 
 == filter example(title="Output")
-== include template_dir("/examples/example-2/content.html")
+== include dir("/examples/example-2/content.html")
 == endfilter 
 </div>
 

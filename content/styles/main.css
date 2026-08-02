@@ -28,7 +28,7 @@
 }
 
 
-[@ raw_include("/styles/colors.css") @]
+[@ rawFile("/styles/colors.css") @]
 
 [# TODO: Add .light- when that's ready #]
 == for color in styles.colors

@@ -6,17 +6,17 @@ sidebar.
 The HTML looks like this:
 
 == filter highlight("html")
-== include template_dir("/main-top.html")
+== include dir("/main-top.html")
 
         <!-- content goes here -->
-== include template_dir("/main-bottom.html")
+== include dir("/main-bottom.html")
 == endfilter
 
 
 The CSS Looks like this:
 
 == filter highlight("css")
-== include template_dir("/layout-styles.css")
+== include dir("/layout-styles.css")
 == endfilter
 
 
@@ -38,7 +38,7 @@ they need.
 
 
 == filter highlight("css", selection="7-7", class="code-block no-copy numbers")
-== include template_dir("/layout-styles.css")
+== include dir("/layout-styles.css")
 == endfilter
 
 
@@ -56,7 +56,7 @@ that would otherwise overflow
 the content area. 
 
 == filter highlight("css", selection="11-14", class="code-block no-copy numbers")
-== include template_dir("/layout-styles.css")
+== include dir("/layout-styles.css")
 == endfilter
 
 
@@ -72,7 +72,7 @@ this:
   <li>
     <p>Set the sidebar to be sticky in the viewport.</p>
 == filter highlight("css", selection="17-17", class="code-block no-copy numbers")
-== include template_dir("/layout-styles.css")
+== include dir("/layout-styles.css")
 == endfilter
   </li>
 
@@ -82,7 +82,7 @@ this:
       Give it a fixed width.
     </p>
 == filter highlight("css", selection="18-19", class="code-block no-copy numbers")
-== include template_dir("/layout-styles.css")
+== include dir("/layout-styles.css")
 == endfilter
   </li>
 
@@ -92,7 +92,7 @@ this:
       it hits the top of the page. 
     </p>
 == filter highlight("css", selection="20-20", class="code-block no-copy numbers")
-== include template_dir("/layout-styles.css")
+== include dir("/layout-styles.css")
 == endfilter
   </li>
   <li>
@@ -103,7 +103,7 @@ this:
       if the content exceeds the height.
     </p>
 == filter highlight("css", selection="21-22", class="code-block no-copy numbers")
-== include template_dir("/layout-styles.css")
+== include dir("/layout-styles.css")
 == endfilter
   </li>
 
@@ -139,7 +139,7 @@ The extra styles look like this:
 
 
   == filter highlight("css", class="code-block no-copy numbers")
-== include template_dir("/ui-styles.css")
+== include dir("/ui-styles.css")
 == endfilter
 
 

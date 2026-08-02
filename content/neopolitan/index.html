@@ -16,7 +16,7 @@ id = "01/n5/9q/7s"
 
 == block css
 <style>
-== include template_dir() + "/styles.css"
+== include dir() + "/styles.css"
 </style>
 == endblock
 
@@ -410,12 +410,12 @@ The HTML for a web page might looks like
 this:
 
 == filter highlight("html")
-== include template_dir() + "/examples/1.html"
+== include dir() + "/examples/1.html"
 == endfilter
 
 When, in turn, gets rendered like this:
 
-== include template_dir() + "/examples/1.html"
+== include dir() + "/examples/1.html"
 
 
 Achieving that layout in Markdown 
