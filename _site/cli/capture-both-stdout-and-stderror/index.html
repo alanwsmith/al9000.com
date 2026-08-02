@@ -95,10 +95,10 @@ regular output from command line tools:</p>
 <div class="command-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">rm -v example.txt 2&gt;&amp;1 | cat &gt; report.txt</span></code></pre></div>
 <p>If the file exists and is deleted, then it's file name is
 output to the <code>report-1.txt</code> via <code>STDOUT</code>.</p>
-<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">example.txt</span></pre></div></div>
+<section class="output-wrapper"><pre class="output-block"><span class="line-marker" data-line="1"></span><span class="text plain">example.txt</span></pre></section>
 If the file doesn't exist, or can't be removed, then an
 error message is output to `report-1.txt` via `STDERR`.
-<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">rm: example.txt: No such file or directory</span></pre></div></div>
+<section class="output-wrapper"><pre class="output-block"><span class="line-marker" data-line="1"></span><span class="text plain">rm: example.txt: No such file or directory</span></pre></section>
 <h2>Seeing The Output</h2>
 <p>Running the above command doesn't output anything to
 the terminal. You can add <code>tee /dev/tty</code> to see

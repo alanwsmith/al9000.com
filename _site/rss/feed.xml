@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-08-02T14:50:53-04:00</updated>
+  <updated>2026-08-02T18:16:21-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -926,9 +926,9 @@ to convert timestamps into strings of text.
 The idea being to get shorter
 IDs that still sort in chronological
 order. For example, this timestamp:</p>
-<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">2026-07-20T13:27:00-04:00</span></pre></div></div>
+<section class="output-wrapper"><pre class="output-block"><span class="line-marker" data-line="1"></span><span class="text plain">2026-07-20T13:27:00-04:00</span></pre></section>
 <p>Turns into this snippet:</p>
-<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">01n5wpk4</span></pre></div></div>
+<section class="output-wrapper"><pre class="output-block"><span class="line-marker" data-line="1"></span><span class="text plain">01n5wpk4</span></pre></section>
 <p>It works great, as long
 as you do the encoding properly.
 It turns out, Dear Reader, that
@@ -5167,7 +5167,7 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
 <span class="line-marker" data-line="6"></span><span class="variable other readwrite assignment shell">STEM</span><span class="keyword operator assignment shell">=</span><span class="string unquoted shell"><span class="string quoted double shell"><span class="punctuation definition string begin shell">&quot;</span><span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="punctuation section expansion parameter begin shell">{</span></span><span class="meta group expansion parameter shell"><span class="variable other readwrite shell">BASENAME<span class="keyword operator expansion shell">%</span></span></span><span class="meta group expansion parameter shell">.<span class="keyword operator regexp quantifier shell">*</span></span><span class="meta group expansion parameter shell"><span class="punctuation section expansion parameter end shell">}</span></span><span class="punctuation definition string end shell">&quot;</span></span></span>
 <span class="line-marker" data-line="7"></span>
 <span class="line-marker" data-line="8"></span><span class="meta function-call shell"><span class="support function echo shell">echo</span></span><span class="meta function-call arguments shell"> <span class="meta group expansion parameter shell"><span class="punctuation definition variable shell">$</span><span class="variable other readwrite shell">STEM</span></span></span></span></pre></div></div>
-<div class="output-wrapper"><div class="title">output</div><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">example-file</span></pre></div></div>
+<section class="output-wrapper"><div class="title">output</div><pre class="output-block"><span class="line-marker" data-line="1"></span><span class="text plain">example-file</span></pre></section>
 
 
 ]]></summary>
@@ -5353,10 +5353,10 @@ regular output from command line tools:</p>
 <div class="command-block"><pre><code><span class="line-marker" data-line="1"></span><span class="text plain">rm -v example.txt 2&gt;&amp;1 | cat &gt; report.txt</span></code></pre></div>
 <p>If the file exists and is deleted, then it's file name is
 output to the <code>report-1.txt</code> via <code>STDOUT</code>.</p>
-<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">example.txt</span></pre></div></div>
+<section class="output-wrapper"><pre class="output-block"><span class="line-marker" data-line="1"></span><span class="text plain">example.txt</span></pre></section>
 If the file doesn't exist, or can't be removed, then an
 error message is output to `report-1.txt` via `STDERR`.
-<div class="output-wrapper"><div class="output-block"><code><span class="line-marker" data-line="1"></span><span class="text plain">rm: example.txt: No such file or directory</span></pre></div></div>
+<section class="output-wrapper"><pre class="output-block"><span class="line-marker" data-line="1"></span><span class="text plain">rm: example.txt: No such file or directory</span></pre></section>
 <h2>Seeing The Output</h2>
 <p>Running the above command doesn't output anything to
 the terminal. You can add <code>tee /dev/tty</code> to see

@@ -1,12 +1,19 @@
 // Set up state (can add defaults here if needed)
 let s = {};
 
-// Fire inits
-export const b = { init: "initDetails initCodeButtons" };
+export const b = { init: "loadState" };
+
+// Load state and fire inits
+export async function loadState() {
+  s = await b.loadPageData("state", s);
+  b.trigger("initDetails initCodeButtons");
+}
 
 // Details Opener
 export async function initDetails() {
-  s = await b.loadPageData("state", s);
+  if (!s.details) {
+    s.details = { data: [] };
+  }
   b.qsa("details").forEach((el, index) => {
     el.open = s.details.data[index] ? true : false;
     el.addEventListener("toggle", (_) => updateData());
