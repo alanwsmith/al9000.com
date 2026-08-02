@@ -196,88 +196,91 @@ class BittyJs extends HTMLElement {
     return document.createElement(tag, options);
   }
 
-  async _copy(selector, sender, options = {}) {
-    if (options.success === undefined) {
-      options.success = "Copied";
-    }
-    if (options.failed === undefined) {
-      options.failed = "Could not copy";
-    }
-    if (options.ms === undefined) {
-      options.ms = 1500;
-    }
-    if (sender.debounceId === undefined) {
-      sender.debounceId === this.b.uuid();
-    }
-    if (this.b._debouncers[sender.debounceId]) {
-      window.clearTimeout(this.b._debouncers[sender.debounceId]);
-    }
-    const el = document.querySelector(selector);
-    if (el.value !== undefined && el.value !== "") {
-      try {
-        await navigator.clipboard.writeText(el.value);
-        if (sender) {
-          if (sender.originalInnerHTML === undefined) {
-            sender.originalInnerHTML = JSON.stringify({
-              value: sender.innerHTML,
-            });
-            sender.innerHTML = options.success;
-          }
-          this.b._debouncers[sender.copyId] = setTimeout(() => {
-            sender.innerHTML = JSON.parse(sender.originalInnerHTML).value;
-            delete sender.originalInnerHTML;
-          }, options.ms);
-        }
-      } catch (error) {
-        console.error(`Could not copy .value from ${selector}`);
-        if (sender) {
-          if (sender.originalInnerHTML === undefined) {
-            sender.originalInnerHTML = JSON.stringify({
-              value: sender.innerHTML,
-            });
-            sender.innerHTML = options.failed;
-          }
-          this.b._debouncers[sender.copyId] = setTimeout(() => {
-            sender.innerHTML = JSON.parse(sender.originalInnerHTML).value;
-            delete sender.originalInnerHTML;
-          }, options.ms);
-          return false;
-        }
-      }
-    } else {
-      try {
-        await navigator.clipboard.writeText(el.innerText);
-        if (sender) {
-          if (sender.originalInnerHTML === undefined) {
-            sender.originalInnerHTML = JSON.stringify({
-              value: sender.innerHTML,
-            });
-            sender.innerHTML = options.success;
-          }
-          this.b._debouncers[sender.copyId] = setTimeout(() => {
-            sender.innerHTML = JSON.parse(sender.originalInnerHTML).value;
-            delete sender.originalInnerHTML;
-          }, options.ms);
-        }
-      } catch (error) {
-        console.error(`Could not copy .innerHTML from ${selector}`);
-        if (sender) {
-          if (sender.originalInnerHTML === undefined) {
-            sender.originalInnerHTML = JSON.stringify({
-              value: sender.innerHTML,
-            });
-            sender.innerHTML = options.failed;
-          }
-          this.b._debouncers[sender.copyId] = setTimeout(() => {
-            sender.innerHTML = JSON.parse(sender.originalInnerHTML).value;
-            delete sender.originalInnerHTML;
-          }, options.ms);
-          return false;
-        }
-      }
-    }
-    return true;
-  }
+  // // This is the v8 version. It's been taken
+  // // over by the functionality (and function
+  // // signature) of .quickCopy in v9
+  // async _copy(selector, sender, options = {}) {
+  //   if (options.success === undefined) {
+  //     options.success = "Copied";
+  //   }
+  //   if (options.failed === undefined) {
+  //     options.failed = "Could not copy";
+  //   }
+  //   if (options.ms === undefined) {
+  //     options.ms = 1500;
+  //   }
+  //   if (sender.debounceId === undefined) {
+  //     sender.debounceId === this.b.uuid();
+  //   }
+  //   if (this.b._debouncers[sender.debounceId]) {
+  //     window.clearTimeout(this.b._debouncers[sender.debounceId]);
+  //   }
+  //   const el = document.querySelector(selector);
+  //   if (el.value !== undefined && el.value !== "") {
+  //     try {
+  //       await navigator.clipboard.writeText(el.value);
+  //       if (sender) {
+  //         if (sender.originalInnerHTML === undefined) {
+  //           sender.originalInnerHTML = JSON.stringify({
+  //             value: sender.innerHTML,
+  //           });
+  //           sender.innerHTML = options.success;
+  //         }
+  //         this.b._debouncers[sender.copyId] = setTimeout(() => {
+  //           sender.innerHTML = JSON.parse(sender.originalInnerHTML).value;
+  //           delete sender.originalInnerHTML;
+  //         }, options.ms);
+  //       }
+  //     } catch (error) {
+  //       console.error(`Could not copy .value from ${selector}`);
+  //       if (sender) {
+  //         if (sender.originalInnerHTML === undefined) {
+  //           sender.originalInnerHTML = JSON.stringify({
+  //             value: sender.innerHTML,
+  //           });
+  //           sender.innerHTML = options.failed;
+  //         }
+  //         this.b._debouncers[sender.copyId] = setTimeout(() => {
+  //           sender.innerHTML = JSON.parse(sender.originalInnerHTML).value;
+  //           delete sender.originalInnerHTML;
+  //         }, options.ms);
+  //         return false;
+  //       }
+  //     }
+  //   } else {
+  //     try {
+  //       await navigator.clipboard.writeText(el.innerText);
+  //       if (sender) {
+  //         if (sender.originalInnerHTML === undefined) {
+  //           sender.originalInnerHTML = JSON.stringify({
+  //             value: sender.innerHTML,
+  //           });
+  //           sender.innerHTML = options.success;
+  //         }
+  //         this.b._debouncers[sender.copyId] = setTimeout(() => {
+  //           sender.innerHTML = JSON.parse(sender.originalInnerHTML).value;
+  //           delete sender.originalInnerHTML;
+  //         }, options.ms);
+  //       }
+  //     } catch (error) {
+  //       console.error(`Could not copy .innerHTML from ${selector}`);
+  //       if (sender) {
+  //         if (sender.originalInnerHTML === undefined) {
+  //           sender.originalInnerHTML = JSON.stringify({
+  //             value: sender.innerHTML,
+  //           });
+  //           sender.innerHTML = options.failed;
+  //         }
+  //         this.b._debouncers[sender.copyId] = setTimeout(() => {
+  //           sender.innerHTML = JSON.parse(sender.originalInnerHTML).value;
+  //           delete sender.originalInnerHTML;
+  //         }, options.ms);
+  //         return false;
+  //       }
+  //     }
+  //   }
+  //   return true;
+  // }
 
   _debounce(key, signals, ms, payload = {}) {
     if (this.b._debouncers[key]) {
@@ -1211,9 +1214,11 @@ class BittyJs extends HTMLElement {
     }
   }
 
-  // DEPRECATED: See `b.copy(selector, true)`
-  // TODO: Remove in v9.0.0
-  async _quickCopy(el, sender, options = {}) {
+  // TODO: Add an option that prevents the
+  // text from being switched in and out
+  // on the sending element.
+  async _copy(el, sender, options = {}) {
+    const copyPayload = el.value !== undefined ? el.value : el.innerText;
     if (options.success === undefined) {
       options.success = "Copied";
     }
@@ -1221,7 +1226,7 @@ class BittyJs extends HTMLElement {
       options.failed = "Could not copy";
     }
     if (options.ms === undefined) {
-      options.ms = 2000;
+      options.ms = 1800;
     }
     if (sender.copyId === undefined) {
       sender.copyId === this.b.uuid();
@@ -1229,7 +1234,6 @@ class BittyJs extends HTMLElement {
     if (this.b._debouncers[sender.copyId]) {
       window.clearTimeout(this.b._debouncers[sender.copyId]);
     }
-    const copyPayload = el.value !== undefined ? el.value : el.innerText;
     try {
       await navigator.clipboard.writeText(copyPayload);
       if (sender.originalInnerHTML === undefined) {

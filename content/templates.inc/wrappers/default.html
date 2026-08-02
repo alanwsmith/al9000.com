@@ -38,9 +38,9 @@
       [! block payload !][! endblock !]
     </div>
 
-      [! if p.created !]
+      [! if p.created and not p.id !]
     <div class="default-wrapper text-align-center faded-base-color"
-    style="opacity: 0.05; padding-bottom: 0.3rem;">
+    style="opacity: 0.10; padding-bottom: 0.3rem;">
 id = "[@ idFromDate(p.created["$__toml_private_datetime"]) @]"
     </div>
       [! endif !]

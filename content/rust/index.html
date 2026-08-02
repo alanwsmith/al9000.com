@@ -1,48 +1,42 @@
 == extends "/templates.inc/switches/default.html"
 
 == block toml
-title = "Rust"
-status = "code"
+title = "Rust Stuff"
+status = "done"
 created = 2026-04-10T12:22:00-04:00
 id = "01/mx/j8/x8" 
-flags = ["skip"]
+flags = ["skip", "no-date"]
 == endblock 
 
-== block main 
-
+== block content 
 <ul>
 == for folder in foldersInFolder(dir(), full=true) 
   == set index_file = folder + "/index.html"
   <li>
     <p>
-      == if d[index_file]
-      [@ d[index_file].title @]
-      == else
+    == if d[index_file]
+      [@ ifOutput(d[index_file].shortTitle, d[index_file].title, "Untitled Section") @]
+    == else
       Unnamed Section
-      == endif
+    == endif
     </p>
     <ul>
       == for subfolder in foldersInFolder(folder, full=true) 
-      == set sub_index_file = subfolder + "/index.html"
-        == if exists(sub_index_file)
         <li>
-        <a href="[@  subfolder @]">
-          [! if d[sub_index_file].short_title !]
-            [@ d[sub_index_file].short_title @]
-          [! else !]
-            [@ d[sub_index_file].title @]
-          [! endif !]
+        <a href="[@ subfolder @]">
+        == set sub_index_file = subfolder + "/index.html"
+        == if exists(sub_index_file)
+          [@ ifOutput(d[sub_index_file].shortTitle, d[sub_index_file].title, "Untitled Example") @]
+        == else 
+          Untitled Example
+        == endif
           </a>
         </li>
-        == else 
-        <li><a href="[@ subfolder @]">TKTKTK</a></li>
-        == endif
       == endfor
     </ul>
   </li>
 == endfor
 </ul>
-
 == endblock
 
 
