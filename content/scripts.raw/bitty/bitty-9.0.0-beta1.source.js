@@ -198,7 +198,7 @@ class BittyJs extends HTMLElement {
 
   // // This is the v8 version. It's been taken
   // // over by the functionality (and function
-  // // signature) of .quickCopy in v9
+  // // signature) of .copy in v9
   // async _copy(selector, sender, options = {}) {
   //   if (options.success === undefined) {
   //     options.success = "Copied";

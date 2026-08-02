@@ -6,7 +6,7 @@ export function clearHTMLEscaper(_, __, el) {
 }
 
 export function copyHTMLEscaper(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function showHTMLEscaperExample(_, __, el) {
