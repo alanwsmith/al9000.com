@@ -6,7 +6,7 @@ export function clearToBase64(_, __, el) {
 }
 
 export function copyToBase64(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function showToBase64Example(_, __, el) {
@@ -24,7 +24,7 @@ export function clearFromBase64(_, __, el) {
 }
 
 export function copyFromBase64(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function showFromBase64Example(_, __, el) {

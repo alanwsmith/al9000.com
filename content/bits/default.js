@@ -49,5 +49,5 @@ export async function copyCode(_, sender, el) {
 
 // Copy the contents of an element
 export async function copyElement(_, sender, ___) {
-  await b.copy(sender);
+  await b.copy(sender, sender);
 }

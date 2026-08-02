@@ -33,17 +33,10 @@
   <body class="[! block body_class !]page[! endblock !]">
     == include "/templates.inc/noscript/default.html"
 
-
     <div class="payload">
       [! block payload !][! endblock !]
     </div>
 
-      [! if p.created and not p.id !]
-    <div class="default-wrapper text-align-center faded-base-color"
-    style="opacity: 0.10; padding-bottom: 0.3rem;">
-id = "[@ idFromDate(p.created["$__toml_private_datetime"]) @]"
-    </div>
-      [! endif !]
 
     <div class="templates" hidden>
       <bitty-9 data-connect="/bits/default.js"></bitty-9>
