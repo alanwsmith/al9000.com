@@ -81,7 +81,7 @@ in place:
 
 <div class="card-backs">
 
-== for card in files_in_folder(cards_dir)
+== for card in filesInFolder(cards_dir)
   <div>
     <img src="[@ card @]" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
@@ -108,7 +108,7 @@ of the source images doesn't matter.
 
 <div class="play-mats">
 
-== for folder in folders_in_folder(dir)
+== for folder in foldersInFolder(dir)
   <div class="play-mat-image">
     <img src="[@ dir @]/[@ folder @]/image.jpg" alt="A playmat for Magic: The Gathering in Tabletop Simulator" />
     <input 

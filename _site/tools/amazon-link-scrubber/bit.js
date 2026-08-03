@@ -6,7 +6,7 @@ export function fixLink(_, __, el) {
 }
 
 export function copyAmazonLinkScrubber(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function showAmazonLinkScrubberExample(_, __, el) {

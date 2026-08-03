@@ -6,7 +6,7 @@ export function clearDedupeLines(_, __, el) {
 }
 
 export function copyDedupeLines(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function showDedupeLinesExample(_, __, el) {

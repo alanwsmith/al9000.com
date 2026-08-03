@@ -1,7 +1,7 @@
 export const b = { init: "makeUUID" };
 
 export function copyUUID(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function makeUUID(_, __, el) {

@@ -26,7 +26,7 @@ this page is currently broken. when it's back it'll be a bunch of little videos 
 
 == block head
 <style>
-== include template_dir() + "/styles.css"
+== include dir() + "/styles.css"
 </style>
 == endblock
 
@@ -50,8 +50,8 @@ this page is currently broken. when it's back it'll be a bunch of little videos 
 </main>
 
 <div class="followup">
-  <div class="center"><a href="[@ template_dir() @]/about/">about assembly</a></div>
-  <bitty-9 data-connect="[@template_dir()@]/bit.js"></bitty-9>
+  <div class="center"><a href="[@ dir() @]/about/">about assembly</a></div>
+  <bitty-9 data-connect="[@dir()@]/bit.js"></bitty-9>
   <script type="text/html" id="layerTemplate">
     <div class="player-layer">__CELLS__</div>
   </script>

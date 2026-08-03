@@ -79,6 +79,6 @@ regular old CSS.
 
 [x] Added IDs and or skip flags
 to all pages with titles so 
-`file_list()` is up to date. 
+`fileList()` is up to date. 
 == endfilter
 

@@ -17,11 +17,11 @@ status = "draft"
 <h3>Rust</h3>
 
 == filter highlight("toml", "Cargo.toml")
-== include template_dir() + "/Cargo.toml"
+== include dir() + "/Cargo.toml"
 == endfilter
 
 == filter highlight("rs", "src/main.rs")
-== include template_dir() + "/src/main.rs"
+== include dir() + "/src/main.rs"
 == endfilter
 
 
@@ -34,7 +34,7 @@ status = "draft"
 <h3>Output</h3>
 
 == filter output()
-== include template_dir() + "/output.txt"
+== include dir() + "/output.txt"
 == endfilter
 
 

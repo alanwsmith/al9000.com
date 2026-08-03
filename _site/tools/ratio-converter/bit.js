@@ -18,6 +18,6 @@ export function update(_, sender, el) {
 
 export function copyRatio(_, sender, el) {
   if (sender.key("key") === el.key("key")) {
-    b.quickCopy(el, sender);
+    b.copy(el, sender);
   }
 }

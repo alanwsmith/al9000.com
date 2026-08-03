@@ -19,30 +19,30 @@ id = "01/mw/tf/2g"
 
 <h3>Rust</h3>
 [! filter highlight("html", file_name="Cargo.toml") !]
-[! include "/" + template_dir() + "/Cargo.toml" !]
+[! include "/" + dir() + "/Cargo.toml" !]
 [! endfilter !]
 
 [! filter highlight("rust", file_name="src/lib.rs") !]
-[! include "/" + template_dir() + "/src/lib.rs" !]
+[! include "/" + dir() + "/src/lib.rs" !]
 [! endfilter !]
 
 [! filter highlight("bash", file_name="build script") !]
-[! include "/" + template_dir() + "/build_release" !]
+[! include "/" + dir() + "/build_release" !]
 [! endfilter !]
 
 <h3>HTML</h3>
 [! filter highlight("html", file_name="page.html") !]
-[! include "/" + template_dir() + "/page.html" !]
+[! include "/" + dir() + "/page.html" !]
 [! endfilter !]
 
 <h4>JavaScript</h4>
 [! filter highlight("js", file_name="hello-world.js") !]
-[! include "/" + template_dir() + "/hello-world.js" !]
+[! include "/" + dir() + "/hello-world.js" !]
 [! endfilter !]
 
 <h4>Output</h4>
 <div class="output-block"><pre><code>
-[! include template_dir() + "/page.html" !]
+[! include dir() + "/page.html" !]
 </code></pre></div>
 
 [! endblock !]

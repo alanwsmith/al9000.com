@@ -5,7 +5,7 @@
 == endif 
 
 == block toml
-title = "Neopolitan"
+title = "NeoDoc"
 subtitle = "Notes with Superpowers"
 created = 2026-07-13T08:41:29-04:00
 tags = []
@@ -16,7 +16,7 @@ id = "01/n5/9q/7s"
 
 == block css
 <style>
-== include template_dir() + "/styles.css"
+== include dir() + "/styles.css"
 </style>
 == endblock
 
@@ -26,7 +26,7 @@ id = "01/n5/9q/7s"
     Head's up
   </p>
   <p>
-    Neopolitan is currently embedded 
+    NeoDoc is currently embedded 
     in the app I use to build my
     websites. I'm in the process of splitting it
     out to its own project. 
@@ -39,23 +39,23 @@ id = "01/n5/9q/7s"
 == filter md
 ## Introduction
 
-Neopolitan is a way to take notes. It's easy to 
+NeoDoc is a way to take notes. It's easy to 
 learn, quick to customize, and super powerful. 
 
 ## Sections
 
 ### Section Names
 
-Neopolitan note are made of sections. Sections
+NeoDoc note are made of sections. Sections
 are defined by lines that start with
 two dashes followed by a name. Content
 for the section comes after an empty 
 line. 
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 -- title
 
-A Neopolitan Overview
+A NeoDoc Overview
 == endfilter
 
 The section names can be pretty much anything
@@ -75,7 +75,7 @@ image's filename. The content portion of the section
 is used for the image's alt text:
 
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 -- image 
 -- example-image.jpg
 
@@ -87,7 +87,7 @@ start with a keyword followed by a colon.
 For example, here's a "aside" section
 with a "class" attribute of "warning":
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 -- aside 
 -- class: warning
 
@@ -106,7 +106,7 @@ type of a section is done by the name of the type
 after the name of the section:
 
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 -- notes list
 
 - A note about something. 
@@ -115,7 +115,7 @@ after the name of the section:
 == endfilter
 
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 -- todo checklist 
 
 [] Something that needs to be done
@@ -126,7 +126,7 @@ after the name of the section:
 The section types can also be used generically 
 as their own section names:
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 -- list
 
 - Item for a list without a more
@@ -195,7 +195,7 @@ by default.
 The defaults for these sections map to
 how they'll be used the majority of the time.
 They ensure that different implementations
-of Neopolitan will have a consistent baseline.
+of NeoDoc will have a consistent baseline.
 
 
 ## Spans
@@ -208,7 +208,7 @@ text to alter it in some way.
 
 A basic span looks like this:
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 <<code|console.log()>>
 == endfilter
 
@@ -231,7 +231,7 @@ that mark the end of the span.
 Here's what a span looks like surrounded
 by more content:
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 The JavaScript function <<code|console.log()>>
 prints information to the developer console. 
 == endfilter
@@ -241,7 +241,7 @@ the span turns into an HTML `&lt;code&gt;` tag
 like this:
 
 
-== filter highlight("html", class="code-block")
+== filter highlight("html", class="")
 The JavaScript function <code>console.log()</code>
 prints information to the developer console. 
 == endfilter
@@ -257,13 +257,13 @@ them from the content. For example,
 a class attribute can be added to
 the span like this:
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 <<code|console.log()|class: featured>>
 == endfilter
 
 which outputs this HTML:
 
-== filter highlight("html", class="code-block")
+== filter highlight("html", class="")
 <code class="featured">console.log()</code>
 == endfilter
 
@@ -274,7 +274,7 @@ adds a `data-language` attribute that can be
 used to apply syntax highlighting to the
 code:
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 <<code
   |console.log()
   |class: featured
@@ -283,7 +283,7 @@ code:
 
 The output HTML looks like this:
 
-== filter highlight("html", class="code-block")
+== filter highlight("html", class="")
 <code class="featured" data-language="javascript">console.log()</code>
 == endfilter
 
@@ -296,13 +296,13 @@ There are shorthands for frequenly used
 spans. For example, backtics denote code
 spans. The orignal example above:
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 <<code|console.log()|class: featured|language: javascript>>
 == endfilter
 
 can be written as:
 
-== filter highlight("neo", class="code-block")
+== filter highlight("neo", class="")
 ``console.log()|class: featured|language: javascript``
 == endfilter
 
@@ -331,7 +331,7 @@ can be written as:
 
 ## Content Generation 
 
-Neopolitan notes are designed to be turned
+NeoDoc notes are designed to be turned
 into or other forms of content (e.g. web pages). 
 Apps apply templates to the notes to generate 
 the final content. Since each app is 
@@ -342,7 +342,7 @@ pages without having to change the notes.
 
 <details><summary>Technical Overview</summary>
 
-  Neopolitan is a specification for turning
+  NeoDoc is a specification for turning
   a plain-text document into an Abstract
   Syntax Tree (AST). Parsers are responsible
   for converting notes into ASTs. Those
@@ -361,16 +361,16 @@ pages without having to change the notes.
 
 ## Why Not Markdown?
 
-Neopolitan is similar to another format 
+NeoDoc is similar to another format 
 called Markdown. Both rely on text files
 to store their content and formatting
 details. The first question
 anyone who knows about Markdown
-asks when I tell them about Neopolitan
+asks when I tell them about NeoDoc 
 is why I don't use it instead. 
 
 The short answer comes down the 
-the core design features of Neopolitan:
+the core design features of NeoDoc:
 
 - The ability to create custom sections 
 and spans.
@@ -381,13 +381,13 @@ attributes to content.
 ### Layout Flexibility 
 
 Here's an example to help demonstrate
-what Neopolitan is capable of. It's
+what NeoDoc is capable of. It's
 a __book-review__ section that includes
 attributes for the title, author, and
 cover image along with the review itself.
 
 
-== filter highlight("neo", class = "code-block")
+== filter highlight("neo", class = "")
 -- book-review
 -- title: Dungeon Crawler Carl
 -- author: Matt Dinniman
@@ -402,7 +402,7 @@ is absolute gold.
 etc.
 == endfilter
 
-Apps that use Neopolitan can access
+Apps that use NeoDoc can access
 the content and attributes as independent
 pieces of data. They can be placed 
 wherever they need to be in the output. 
@@ -410,12 +410,12 @@ The HTML for a web page might looks like
 this:
 
 == filter highlight("html")
-== include template_dir() + "/examples/1.html"
+== include dir() + "/examples/1.html"
 == endfilter
 
 When, in turn, gets rendered like this:
 
-== include template_dir() + "/examples/1.html"
+== include dir() + "/examples/1.html"
 
 
 Achieving that layout in Markdown 
@@ -432,7 +432,7 @@ multiple ways without duplicating it.
 
 ### Data Access
 
-Neopolitan allows section
+NeoDoc allows section
 content, flags, and attributes to
 be treated as data that's available
 beyond the individual notes
@@ -460,7 +460,7 @@ same content in multiple places.
 
 ## Wrap-Up
 
-Neopolitan is designed to be as simple as
+NeoDoc is designed to be as simple as
 possible while providing flexibility 
 for your content. Defining your own
 sections, spans, attributes, and
@@ -470,7 +470,7 @@ everything as data means you can
 lay out, link and, index 
 your content out in any number of ways. 
 
-I've been using Neopolitan for a few 
+I've been using NeoDoc for a few 
 years and couldn't be happier with it.  
 Once the parser is available, I 
 hope you'll enjoy it too. 
@@ -485,13 +485,13 @@ hope you'll enjoy it too.
 == filter md
 ## Endnotes
 
-- Neopolitan was born out of frustration 
+- NeoDoc was born out of frustration 
 with Markdown. As great as that format is, 
 I kept wanting to do more than it could handle.
 I'd have to either inject HTML directly in
 my files or switch to using database or
 data files to accomplish what I wanted. 
-Neopolitan is designed to bridge the 
+NeoDoc is designed to bridge the 
 gap. Full featured content can
 be stored in plain-text and rendered without
 the need for databases or data
@@ -499,17 +499,17 @@ formats designed more for computers
 than humans. 
 
 - The page provides the high level overview
-of Neopolitan. It covers the fundamentals
+of NeoDoc. It covers the fundamentals
 without digging into specifics. For example,
 it doesn't cover how sections can be nested 
 inside each other. Those details are covered 
 in the documentation that will be released when 
 the parser has been extracted from my website builder.
 
-- I've been using Neopolitan for a few years
+- I've been using NeoDoc for a few years
 for my web sites and personal grimoire of notes. 
 The later of which is currently 11,629
-Neopolitan files. I've yet to run into 
+NeoDoc files. I've yet to run into 
 something it can't handle. 
 
 == endfilter

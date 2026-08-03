@@ -1,11 +1,19 @@
-export const b = { init: "initDetails initCodeButtons" };
+// Set up state (can add defaults here if needed)
+let s = {};
 
-let s = {
-  details: { data: {}, key: `details-opener` },
-};
+export const b = { init: "loadState" };
 
+// Load state and fire inits
+export async function loadState() {
+  s = await b.loadPageData("state", s);
+  b.trigger("initDetails initCodeButtons");
+}
+
+// Details Opener
 export async function initDetails() {
-  s.details.data = await b.loadPageData(s.details.key, []);
+  if (!s.details) {
+    s.details = { data: [] };
+  }
   b.qsa("details").forEach((el, index) => {
     el.open = s.details.data[index] ? true : false;
     el.addEventListener("toggle", (_) => updateData());
@@ -16,9 +24,10 @@ export async function updateData() {
   b.qsa("details").forEach((el, index) => {
     s.details.data[index] = el.open;
   });
-  await b.savePageData(s.details.key, s.details.data);
+  await b.savePageData("state", s);
 }
 
+// Automatic Code Buttons
 export function initCodeButtons() {
   const blocks = b.qsa(".code-block");
   for (let block of blocks) {
@@ -41,6 +50,11 @@ export function initCodeButtons() {
 
 export async function copyCode(_, sender, el) {
   if (sender.key("copyId") === el.key("copyId")) {
-    await b.quickCopy(el, sender);
+    await b.copy(el, sender);
   }
+}
+
+// Copy the contents of an element
+export async function copyElement(_, sender, ___) {
+  await b.copy(sender, sender);
 }

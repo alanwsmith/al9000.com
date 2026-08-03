@@ -8,13 +8,13 @@ flags = ["no-colors"]
 == endblock 
 
 == block styles2
-== include template_dir() + "/includes.inc/styles.css"
+== include dir() + "/includes.inc/styles.css"
 == endblock 
 
 == block content
 <main class="default-flow">
 
-  == include template_dir() + "/includes.inc/title.html"
+  == include dir() + "/includes.inc/title.html"
 
   <div class="">
     <button data-s="resetDefaults">Reset to Defaults</button>
@@ -24,8 +24,8 @@ flags = ["no-colors"]
   </div>
 
   <div class="package">
-    == include template_dir() + "/includes.inc/content.html" 
-    == include template_dir() + "/includes.inc/sidebar.html"
+    == include dir() + "/includes.inc/content.html" 
+    == include dir() + "/includes.inc/sidebar.html"
   </div>
 
   <div>
@@ -47,17 +47,17 @@ flags = ["no-colors"]
 == endblock 
 
 == block templates
-<bitty-9 data-connect="[@ template_dir() + '/bit.js' @]"></bitty-9>
+<bitty-9 data-connect="[@ dir() + '/bit.js' @]"></bitty-9>
 
-== for template_file in files_in_folder(template_dir("/components.inc"), full=true)
+== for template_file in filesInFolder(dir("/components.inc"), full=true)
 == if extension(template_file) == "html"
 == include template_file
 == endif
 == endfor
 
 [# DEPREXATED
-== include template_dir() + "/includes.inc/templates.html" 
-== for template_file in files_in_folder(template_dir("/templates"), full=true)
+== include dir() + "/includes.inc/templates.html" 
+== for template_file in filesInFolder(dir("/templates"), full=true)
 == include template_file
 == endfor
 #]

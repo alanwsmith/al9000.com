@@ -3,9 +3,9 @@
 [! set keys = namespace() !]
 [! set keys.date = "" !]
 
-[! for f1 in folders_in_folder("/blog")|reverse !]
-  [! for f2 in folders_in_folder("/blog/" + f1)|reverse !]
-    [! for f3 in folders_in_folder("/blog/" + f1 + "/" + f2)|reverse !]
+[! for f1 in foldersInFolder("/blog")|reverse !]
+  [! for f2 in foldersInFolder("/blog/" + f1)|reverse !]
+    [! for f3 in foldersInFolder("/blog/" + f1 + "/" + f2)|reverse !]
       [! set f_path = ["/blog", f1, f2, f3, "index.html"]|join("/")|safe !]
       [! if exists(f_path) !]
         [! if d.blog[f1][f2][f3].index.status == "done" !]

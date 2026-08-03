@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css?welwewerwe" />
+    <link rel="stylesheet" href="/styles/main.css" />
 
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
@@ -53,7 +53,6 @@
 
 </noscript>
 
-
     <div class="payload">
       
 
@@ -87,7 +86,7 @@
 
 
 <h2>Hitting a Single</h2>
-<p><a href="https://bittyjs.com">Bitty</a> has a <code>.quickCopy()</code>
+<p><a href="https://bittyjs.com">Bitty</a> has a <code>.copy()</code>
 method. It does two things:</p>
 <ol>
 <li>
@@ -108,7 +107,7 @@ to say &quot;Copied&quot; for two seconds then reverts it.</p>
 <span class="line-marker" data-line="6"></span><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">span</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div><div class="highlight-wrapper"><div class="title">bit.js</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="source js"><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="storage type js">const</span> <span class="variable other readwrite js">b</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span><span class="punctuation section block js">}</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="variable other readwrite js">function</span> </span><span class="meta function-call js"><span class="variable function js">basicCopy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">_</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">el</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
-<span class="line-marker" data-line="4"></span>  <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">quickCopy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="4"></span>  <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">copy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="5"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog/01/n6/6r/q5/examples/example-1/bit.js"></bitty-9>
 <p><button data-s="basicCopy">Copy</button>
 <span data-r="basicCopy">
@@ -142,7 +141,7 @@ with the help of a <code>data-key</code> attribute:</p>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="variable other readwrite js">function</span> </span><span class="meta function-call js"><span class="variable function js">copyWithKey</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">_</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">el</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
 <span class="line-marker" data-line="4"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">sender</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">key</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>key<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="keyword operator comparison js">===</span> <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">key</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>key<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
-<span class="line-marker" data-line="5"></span>    <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">quickCopy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
+<span class="line-marker" data-line="5"></span>    <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">copy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="6"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
 <span class="line-marker" data-line="7"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog/01/n6/6r/q5/examples/example-2/bit.js"></bitty-9>
 <div>
@@ -187,13 +186,13 @@ the sending and receiving elements
 via the <code>.key()</code> method that bitty
 adds to the incoming elements.</p>
 <p>When they match, the function calls
-the <code>.quickCopy()</code> method with the elements
+the <code>.copy()</code> method with the elements
 to run the process.</p>
 </li>
 </ul>
 <h2>Outro</h2>
 <p>Most of bitty is about setting up functions to
-add your own features. The <code>.quickCopy()</code>
+add your own features. The <code>.copy()</code>
 method is an exception. It's fully baked.
 I found myself adding the functionality
 so often it made since to include
@@ -237,17 +236,16 @@ provides the same functionality.</p>
   <div>
     who also makes <a href="https://bittyjs.com">bitty</a>
   </div>
+  <div>
+    and is working on <a href="https://neodoc.style">neodoc.style</a>
+  </div>
+
+      
 </footer>
 
 
     </div>
 
-      
-    <div class="default-wrapper text-align-center faded-base-color"
-    style="opacity: 0.05; padding-bottom: 0.3rem;">
-id = "01/n6/6r/q5"
-    </div>
-      
 
     <div class="templates" hidden>
       <bitty-9 data-connect="/bits/default.js"></bitty-9>

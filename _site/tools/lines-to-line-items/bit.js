@@ -6,7 +6,7 @@ export function clearLinesToLineItems(_, __, el) {
 }
 
 export function copyLinesToLineItems(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function showLinesToLineItemsExample(_, __, el) {

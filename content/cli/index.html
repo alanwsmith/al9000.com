@@ -11,7 +11,7 @@ flags = ["skip"]
 == block content 
 
 <ul>
-== for folder in folders_in_folder(template_dir(), full=true) 
+== for folder in foldersInFolder(dir(), full=true) 
   == set index_file = folder + "/index.html"
   [! if exists(index_file)!]
     <li><a href="[@ folder @]">[@ d[index_file].title @]</a></li>

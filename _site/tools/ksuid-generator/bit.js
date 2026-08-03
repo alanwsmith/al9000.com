@@ -5,7 +5,7 @@ export const b = { init: "makeKSUID" };
 let current;
 
 export function copyKSUID(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function makeKSUID(_, __, el) {

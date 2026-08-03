@@ -1,2 +1,9 @@
 [build]
   publish = "_site/"
+
+
+[[redirects]]
+  from = "/neopolitan/*"
+  to = "/neodoc/"
+  status = 301
+  force = true

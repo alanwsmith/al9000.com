@@ -6,7 +6,7 @@ export function clearYouTubeLinksToNeopolitan(_, __, el) {
 }
 
 export function copyYouTubeLinksToNeopolitan(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function showYouTubeLinksToNeopolitanExample(_, __, el) {

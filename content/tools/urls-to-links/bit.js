@@ -6,7 +6,7 @@ export function clearURLsToLinks(_, __, el) {
 }
 
 export function copyURLsToLinks(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function showURLsToLinksExample(_, __, el) {

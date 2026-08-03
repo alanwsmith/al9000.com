@@ -9,9 +9,9 @@ flags = []
 == endblock
 
 == block styles2
-== include template_dir("/styles.css")
-== include template_dir("/mode-example/styles.css")
-== include template_dir("/tabs/styles.css")
+== include dir("/styles.css")
+== include dir("/mode-example/styles.css")
+== include dir("/tabs/styles.css")
 == endblock
 
 == block content 
@@ -45,11 +45,11 @@ a _fancy-checkbox_ component could contain
 a checkbox element:
 
 == filter highlight("html", class="code-block no-copy numbers")
-[@ raw_include(template_dir() + "/fancy-checkbox/content.html") @]
+[@ rawFile(dir() + "/fancy-checkbox/content.html") @]
 == endfilter
 
 [# Uncomment to test the output of the html example:
-== include template_dir() + "/fancy-checkbox/content.html"
+== include dir() + "/fancy-checkbox/content.html"
 #]
 
 Or, it could be empty, pushing the responsibility
@@ -74,14 +74,14 @@ HTML and CSS. The answer is, yes, you can.
 
 Check this out:
 
-== include template_dir("/mode-example/content.html")
+== include dir("/mode-example/content.html")
 
 
 There's no JavaScript involved. Everything happens
 thanks to this HTML:
 
 == filter highlight("html", class="code-block no-copy numbers")
-[@ raw_include(template_dir("/mode-example/content.html")) @]
+[@ rawFile(dir("/mode-example/content.html")) @]
 == endfilter
 
 
@@ -89,7 +89,7 @@ and this CSS:
 
 
 == filter highlight("css", class="code-block no-copy numbers")
-[@ raw_include(template_dir("/mode-example/styles.css")) @]
+[@ rawFile(dir("/mode-example/styles.css")) @]
 == endfilter
 
 
@@ -114,7 +114,7 @@ For example:
 == endfilter
 
 <div class="tabs-wrapper-x">
-== include template_dir("/tabs/content.html")
+== include dir("/tabs/content.html")
 </div>
 
 == filter md
@@ -122,14 +122,14 @@ For example:
 Again, no JavaScript. Just this HTML:
 
 == filter highlight("html", class="code-block no-copy numbers")
-[@ raw_include(template_dir("/tabs/content.html")) @]
+[@ rawFile(dir("/tabs/content.html")) @]
 == endfilter
 
 
 and this CSS:
 
 == filter highlight("css", class="code-block no-copy numbers")
-[@ raw_include(template_dir("/tabs/styles.css")) @]
+[@ rawFile(dir("/tabs/styles.css")) @]
 == endfilter
 
 

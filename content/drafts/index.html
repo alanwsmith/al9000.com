@@ -11,7 +11,7 @@ flags = ["skip", "no-date"]
 == block main
 
 <ul>
-== for f in file_list() 
+== for f in fileList() 
   == if f[1].status != "done" 
     <li><a href="[@ f[0] @]">[@ f[1].title @]</a></li>
   == endif

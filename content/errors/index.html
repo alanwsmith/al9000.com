@@ -10,13 +10,12 @@ flags = ["skip"]
 == block content 
 
 <ul>
-  == for f in file_list_errors() 
+  == for f in fileListErrors() 
   <li><a href="[@ f[1].dir @]/">[@ f[1].title @]</a></li>
   == endfor
 </ul>
 
 == filter md
-
 
 == endfilter
 == endblock

@@ -6,7 +6,7 @@ export function clearUniqueWords(_, __, el) {
 }
 
 export function copyUniqueWords(_, sender, el) {
-  b.quickCopy(el, sender);
+  b.copy(el, sender);
 }
 
 export function showUniqueWordsExample(_, __, el) {

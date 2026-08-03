@@ -36,7 +36,7 @@ body {
   color: var(--default-color);
 }
 
-== include template_dir() + "/styles.css"
+== include dir() + "/styles.css"
 
 </style>
 == endblock
@@ -66,17 +66,17 @@ body {
 
   <h3>HTML</h3>
   == filter highlight("html")
-  == include template_dir() + "/page.html"
+  == include dir() + "/page.html"
   == endfilter
 
   <h3>CSS</h3>
   == filter highlight("css")
-  == include template_dir() + "/styles.css"
+  == include dir() + "/styles.css"
   == endfilter
 
 
   <h3>Output</h3>
-== include template_dir() + "/page.html"
+== include dir() + "/page.html"
   <p>Via: https://www.youtube.com/watch?v=Vzj3jSUbMtI</p>
 </main>
 

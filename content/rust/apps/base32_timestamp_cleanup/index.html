@@ -44,11 +44,11 @@ the new IDs.
 ### Rust
 
 == filter highlight("toml", file_name="./Cargo.toml")
-[@ raw_include(template_dir() + "/Cargo.toml") @]
+[@ rawFile(dir() + "/Cargo.toml") @]
 == endfilter
 
 == filter highlight("rust", file_name="./src/main.rs")
-[@ raw_include(template_dir() + "/src/main.rs") @]
+[@ rawFile(dir() + "/src/main.rs") @]
 == endfilter
 
 
