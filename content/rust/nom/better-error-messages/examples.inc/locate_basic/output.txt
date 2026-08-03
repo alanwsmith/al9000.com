@@ -5,7 +5,7 @@ Err(
                 offset: 0,
                 line: 1,
                 fragment: "target",
-                extra: "parser",
+                extra: "some_parser",
             },
             code: Tag,
         },

@@ -1,6 +1,8 @@
 use nom::branch::alt;
 use nom::bytes::complete::tag;
-use nom::character::complete::{line_ending, space1, usize};
+use nom::character::complete::{
+  line_ending, space1, usize,
+};
 use nom::error::Error;
 use nom::{Err, Finish};
 use nom::{IResult, Parser};
@@ -28,7 +30,8 @@ enum Content<'a> {
 fn parser(mut s: Span) -> IResult<Span, Payload> {
   s.extra = "parser";
   let (s, _) =
-    (tag("alfa"), line_ending, tag("bravo"), space1).parse(s)?;
+    (tag("alfa"), line_ending, tag("bravo"), space1)
+      .parse(s)?;
   let (s, result) = alt((charlie, number)).parse(s)?;
   Ok((s, result))
 }
@@ -58,8 +61,12 @@ fn number(mut s: Span) -> IResult<Span, Payload> {
 fn report(result: Report) {
   match result.finish() {
     Ok(details) => match details.1.content {
-      Content::Number(number) => println!("Found: {}", number),
-      Content::Text(text) => println!("Found: {}", text),
+      Content::Number(number) => {
+        println!("Found: {}", number)
+      }
+      Content::Text(text) => {
+        println!("Found: {}", text)
+      }
     },
     Err(e) => {
       let error_message = format!(
@@ -68,9 +75,10 @@ fn report(result: Report) {
         e.input.location_line(),
         e.input.get_utf8_column(),
       );
-      let error_line =
-        String::from_utf8(e.input.get_line_beginning().to_vec())
-          .unwrap();
+      let error_line = String::from_utf8(
+        e.input.get_line_beginning().to_vec(),
+      )
+      .unwrap();
 
       let divider_spaces = max(
         error_message.chars().collect::<Vec<_>>().len(),
@@ -78,9 +86,8 @@ fn report(result: Report) {
       );
 
       let pointer_line = format!(
-        "{}{}",
+        "{}^",
         " ".repeat(e.input.get_utf8_column() - 1),
-        "^".repeat(e.input.fragment().len())
       );
 
       println!("{}", error_message);
@@ -92,18 +99,24 @@ fn report(result: Report) {
 }
 
 fn main() {
-  let input1 =
-    Span::new_extra("alfa\nbravo charlie remainder after text", "");
+  let input1 = Span::new_extra(
+    "alfa\nbravo charlie remainder after text",
+    "",
+  );
   let result1 = parser.parse(input1);
   report(result1);
 
-  let input2 =
-    Span::new_extra("alfa\nbravo 100 remainder after number", "");
+  let input2 = Span::new_extra(
+    "alfa\nbravo 100 remainder after number",
+    "",
+  );
   let result2 = parser.parse(input2);
   report(result2);
 
-  let input3 =
-    Span::new_extra("alfa\nbravo xxx remainder after error", "");
+  let input3 = Span::new_extra(
+    "alfa\nbravo xxx remainder after error",
+    "",
+  );
   let result3 = parser.parse(input3);
   report(result3);
 }

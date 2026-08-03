@@ -1,0 +1,4 @@
+ERROR: second_parser failed on line 2 column 7
+----------------------------------------------
+spacer target
+      ^

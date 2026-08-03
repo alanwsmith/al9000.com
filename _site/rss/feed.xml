@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-08-02T18:16:21-04:00</updated>
+  <updated>2026-08-02T20:53:16-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -434,6 +434,10 @@ The extra styles look like this:</p>
   <div>
     who also makes <a href="https://bittyjs.com">bitty</a>
   </div>
+  <div>
+    and is working on <a href="https://neodoc.style">neodoc.style</a>
+  </div>
+
       
 </footer>
 
@@ -1317,6 +1321,10 @@ want to check it out.
   <div>
     who also makes <a href="https://bittyjs.com">bitty</a>
   </div>
+  <div>
+    and is working on <a href="https://neodoc.style">neodoc.style</a>
+  </div>
+
       
 </footer>
 
@@ -1417,7 +1425,7 @@ the new &quot;completed&quot; date.</p>
   </entry>
   
   <entry>
-    <title>Neopolitan - Notes with Superpowers</title><link href="https://al9000.com&#x2f;neopolitan/"/><id>urn:uuid:5960ba1c-4dcd-5692-844f-7a98ec050306</id>
+    <title>NeoDoc - Notes with Superpowers</title><link href="https://al9000.com&#x2f;neodoc/"/><id>urn:uuid:dd27b276-bd2f-526c-bb49-474af7001d30</id>
     <updated>2026-07-13T08:41:29-04:00</updated>
     <summary><![CDATA[
 
@@ -1426,7 +1434,7 @@ the new &quot;completed&quot; date.</p>
     Head's up
   </p>
   <p>
-    Neopolitan is currently embedded 
+    NeoDoc is currently embedded 
     in the app I use to build my
     websites. I'm in the process of splitting it
     out to its own project. 
@@ -1437,18 +1445,18 @@ the new &quot;completed&quot; date.</p>
 </div>
 
 <h2>Introduction</h2>
-<p>Neopolitan is a way to take notes. It's easy to
+<p>NeoDoc is a way to take notes. It's easy to
 learn, quick to customize, and super powerful.</p>
 <h2>Sections</h2>
 <h3>Section Names</h3>
-<p>Neopolitan note are made of sections. Sections
+<p>NeoDoc note are made of sections. Sections
 are defined by lines that start with
 two dashes followed by a name. Content
 for the section comes after an empty
 line.</p>
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- title
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- title
 <span class="line-marker" data-line="2"></span>
-<span class="line-marker" data-line="3"></span>A Neopolitan Overview</span></pre></div></div>
+<span class="line-marker" data-line="3"></span>A NeoDoc Overview</span></pre></div></div>
 The section names can be pretty much anything
 as long as they don't contain spaces.
 <h3>Section Flags and Attributes</h3>
@@ -1460,7 +1468,7 @@ section name. For example, this is
 an <strong>image</strong> section with a flag for the
 image's filename. The content portion of the section
 is used for the image's alt text:</p>
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- image 
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- image 
 <span class="line-marker" data-line="2"></span>-- example-image.jpg
 <span class="line-marker" data-line="3"></span>
 <span class="line-marker" data-line="4"></span>This is where the alt text for the image goes.</span></pre></div></div>
@@ -1468,7 +1476,7 @@ Attributes work the same way as flags but
 start with a keyword followed by a colon. 
 For example, here's a "aside" section
 with a "class" attribute of "warning":
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- aside 
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- aside 
 <span class="line-marker" data-line="2"></span>-- class: warning
 <span class="line-marker" data-line="3"></span>
 <span class="line-marker" data-line="4"></span>There is where you can put something 
@@ -1480,19 +1488,19 @@ changes the handling. Two section types
 are &quot;list&quot; and &quot;checklist&quot;. Changing the
 type of a section is done by the name of the type
 after the name of the section:</p>
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- notes list
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- notes list
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span>- A note about something. 
 <span class="line-marker" data-line="4"></span>
 <span class="line-marker" data-line="5"></span>- Another note about something.</span></pre></div></div>
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- todo checklist 
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- todo checklist 
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span>[] Something that needs to be done
 <span class="line-marker" data-line="4"></span>
 <span class="line-marker" data-line="5"></span>[x] Something that has been done.</span></pre></div></div>
 The section types can also be used generically 
 as their own section names:
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- list
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- list
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span>- Item for a list without a more
 <span class="line-marker" data-line="4"></span>specific section name. 
@@ -1572,14 +1580,14 @@ by default.</p>
 <p>The defaults for these sections map to
 how they'll be used the majority of the time.
 They ensure that different implementations
-of Neopolitan will have a consistent baseline.</p>
+of NeoDoc will have a consistent baseline.</p>
 <h2>Spans</h2>
 <p>Section content can contain spans.
 They're snippets that wrap
 text to alter it in some way.</p>
 <h3>Example Span</h3>
 <p>A basic span looks like this:</p>
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()&gt;&gt;</span></pre></div></div>
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()&gt;&gt;</span></pre></div></div>
 The parts are:
 <ul>
 <li>
@@ -1604,12 +1612,12 @@ that mark the end of the span.</p>
 </ul>
 <p>Here's what a span looks like surrounded
 by more content:</p>
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">The JavaScript function &lt;&lt;code|console.log()&gt;&gt;
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">The JavaScript function &lt;&lt;code|console.log()&gt;&gt;
 <span class="line-marker" data-line="2"></span>prints information to the developer console.</span></pre></div></div>
 When that content is turned into a web page
 the span turns into an HTML `&lt;code&gt;` tag
 like this:
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text html basic">The JavaScript function <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text html basic">The JavaScript function <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span>prints information to the developer console.</span></pre></div></div>
 <h3>Span Attributes</h3>
 <p>Spans can have attributes that further
@@ -1618,28 +1626,28 @@ by using additional pipes to separate
 them from the content. For example,
 a class attribute can be added to
 the span like this:</p>
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured&gt;&gt;</span></pre></div></div>
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured&gt;&gt;</span></pre></div></div>
 which outputs this HTML:
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
 Multiple attributes can be added by using
 more pipes. For example, this span (which
 also shows how spans can be split across lines)
 adds a `data-language` attribute that can be
 used to apply syntax highlighting to the
 code:
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code
 <span class="line-marker" data-line="2"></span>  |console.log()
 <span class="line-marker" data-line="3"></span>  |class: featured
 <span class="line-marker" data-line="4"></span>  |data-language: javascript&gt;&gt;</span></pre></div></div>
 The output HTML looks like this:
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-language</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>javascript<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">code</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">featured</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-language</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>javascript<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>console.log()<span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">code</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
 <h3>Span Shorthands</h3>
 <p>There are shorthands for frequenly used
 spans. For example, backtics denote code
 spans. The orignal example above:</p>
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured|language: javascript&gt;&gt;</span></pre></div></div>
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">&lt;&lt;code|console.log()|class: featured|language: javascript&gt;&gt;</span></pre></div></div>
 can be written as:
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">``console.log()|class: featured|language: javascript``</span></pre></div></div>
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">``console.log()|class: featured|language: javascript``</span></pre></div></div>
 <details><summary>Full List of Span Shorthands</summary>
 <ul>
 <li>
@@ -1666,7 +1674,7 @@ can be written as:
 </ul>
 </details>
 <h2>Content Generation</h2>
-<p>Neopolitan notes are designed to be turned
+<p>NeoDoc notes are designed to be turned
 into or other forms of content (e.g. web pages).
 Apps apply templates to the notes to generate
 the final content. Since each app is
@@ -1675,7 +1683,7 @@ same note can be laid out in any number
 of ways. Updating templates redesigns
 pages without having to change the notes.</p>
 <details><summary>Technical Overview</summary>
-<p>Neopolitan is a specification for turning
+<p>NeoDoc is a specification for turning
 a plain-text document into an Abstract
 Syntax Tree (AST). Parsers are responsible
 for converting notes into ASTs. Those
@@ -1691,15 +1699,15 @@ how that happens are the responsibility
 of the generator.</p>
 </details>
 <h2>Why Not Markdown?</h2>
-<p>Neopolitan is similar to another format
+<p>NeoDoc is similar to another format
 called Markdown. Both rely on text files
 to store their content and formatting
 details. The first question
 anyone who knows about Markdown
-asks when I tell them about Neopolitan
+asks when I tell them about NeoDoc
 is why I don't use it instead.</p>
 <p>The short answer comes down the
-the core design features of Neopolitan:</p>
+the core design features of NeoDoc:</p>
 <ul>
 <li>
 <p>The ability to create custom sections
@@ -1712,11 +1720,11 @@ attributes to content.</p>
 </ul>
 <h3>Layout Flexibility</h3>
 <p>Here's an example to help demonstrate
-what Neopolitan is capable of. It's
+what NeoDoc is capable of. It's
 a <strong>book-review</strong> section that includes
 attributes for the title, author, and
 cover image along with the review itself.</p>
-<div class="highlight-wrapper"><div class="code-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- book-review
+<div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">-- book-review
 <span class="line-marker" data-line="2"></span>-- title: Dungeon Crawler Carl
 <span class="line-marker" data-line="3"></span>-- author: Matt Dinniman
 <span class="line-marker" data-line="4"></span>-- cover: dungeon-crawler-carl-cover.jpg
@@ -1728,7 +1736,7 @@ cover image along with the review itself.</p>
 <span class="line-marker" data-line="10"></span>is absolute gold. 
 <span class="line-marker" data-line="11"></span>
 <span class="line-marker" data-line="12"></span>etc.</span></pre></div></div>
-Apps that use Neopolitan can access
+Apps that use NeoDoc can access
 the content and attributes as independent
 pieces of data. They can be placed 
 wherever they need to be in the output. 
@@ -1790,7 +1798,7 @@ It also means you can't
 use the same content in
 multiple ways without duplicating it.</p>
 <h3>Data Access</h3>
-<p>Neopolitan allows section
+<p>NeoDoc allows section
 content, flags, and attributes to
 be treated as data that's available
 beyond the individual notes
@@ -1814,7 +1822,7 @@ All without having to maintain
 different copies of the
 same content in multiple places.</p>
 <h2>Wrap-Up</h2>
-<p>Neopolitan is designed to be as simple as
+<p>NeoDoc is designed to be as simple as
 possible while providing flexibility
 for your content. Defining your own
 sections, spans, attributes, and
@@ -1823,7 +1831,7 @@ about anything. The ability to treat
 everything as data means you can
 lay out, link and, index
 your content out in any number of ways.</p>
-<p>I've been using Neopolitan for a few
+<p>I've been using NeoDoc for a few
 years and couldn't be happier with it.<br />
 Once the parser is available, I
 hope you'll enjoy it too.</p>
@@ -1832,13 +1840,13 @@ hope you'll enjoy it too.</p>
 <h2>Endnotes</h2>
 <ul>
 <li>
-<p>Neopolitan was born out of frustration
+<p>NeoDoc was born out of frustration
 with Markdown. As great as that format is,
 I kept wanting to do more than it could handle.
 I'd have to either inject HTML directly in
 my files or switch to using database or
 data files to accomplish what I wanted.
-Neopolitan is designed to bridge the
+NeoDoc is designed to bridge the
 gap. Full featured content can
 be stored in plain-text and rendered without
 the need for databases or data
@@ -1847,7 +1855,7 @@ than humans.</p>
 </li>
 <li>
 <p>The page provides the high level overview
-of Neopolitan. It covers the fundamentals
+of NeoDoc. It covers the fundamentals
 without digging into specifics. For example,
 it doesn't cover how sections can be nested
 inside each other. Those details are covered
@@ -1855,10 +1863,10 @@ in the documentation that will be released when
 the parser has been extracted from my website builder.</p>
 </li>
 <li>
-<p>I've been using Neopolitan for a few years
+<p>I've been using NeoDoc for a few years
 for my web sites and personal grimoire of notes.
 The later of which is currently 11,629
-Neopolitan files. I've yet to run into
+NeoDoc files. I've yet to run into
 something it can't handle.</p>
 </li>
 </ul>
