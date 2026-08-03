@@ -11,12 +11,10 @@ export function bodyLink(_, sender, el) {
   el.value = parts.join("");
 }
 
-export function copyBodyLink(_, sender, ___) {
-  b.copy(sender.key("target"), sender);
-}
-
-export function copyFootnoteLink(_, sender, ___) {
-  b.copy(sender.key("target"), sender);
+export function copyTarget(_, sender, el) {
+  if (sender.key("key") === el.key("key")) {
+    b.copy(el, sender);
+  }
 }
 
 export function footnoteLink(_, sender, el) {
