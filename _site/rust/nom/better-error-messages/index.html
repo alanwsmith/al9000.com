@@ -86,15 +86,22 @@
 
 
 <h2>Parsing Parser Errors</h2>
-<p>I'm extracting NeoDoc's parser from my
-static site generator. It's
-built using a Rust parser/combinator
-crate called <em>nom</em>. It's fantastic.
-Except for the part where the
-error messages are cryptic as hell.
-For example, this code uses nom's <code>alt</code>
-feature to try two different ways to
-parse an input:</p>
+<p>I designed a note taking format called
+NeoDoc<sup class="footnote-link" id="footnote-link-nd"><a href="#footnote-ref-nd">nd</a></sup>.
+It currently exists only as an embedded
+feature of my personal static site generator.
+I'm in the process of extracting it
+to its own library. That means
+digging into the <em>nom</em><sup class="footnote-link" id="footnote-link-nom"><a href="#footnote-ref-nom">nom</a></sup>
+parser/combinator and its cryptic as
+hell error messages.</p>
+<p>&quot;Just how cryptic?&quot; you ask. Let me
+give you an example.</p>
+<h2>A First Look</h2>
+<p>This codes makes a tiny rust app that
+uses <em>nom</em>'s <code>alt</code> feature to attempt
+to use two child parsers to process
+a piece of text.</p>
 <details><summary>Cargo.toml</summary>
 <div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;default_errors&quot;
@@ -124,12 +131,12 @@ parse an input:</p>
 <span class="line-marker" data-line="19"></span>  <span class="storage type rust">let</span> <span class="meta group rust"><span class="punctuation section group begin rust">(</span>input<span class="punctuation separator rust">,</span> result</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=</span> <span class="support function rust">tag</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>yyy<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">parse</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>input</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="20"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>input<span class="punctuation separator rust">,</span> result</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker" data-line="21"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
-<p>Both parsers fail since neither of their patterns
-(i.e. &quot;xxx&quot; or &quot;yyy&quot;) match the &quot;target&quot;
-text of the input.</p>
-<p>nom throws an error when parsing fails.
-Here's what it looks like for this
-example:</p>
+<p>The parsers attempt to process the
+word &quot;target&quot; as input. They both fail
+since neither of their patterns
+(i.e. &quot;xxx&quot; or &quot;yyy&quot;) match the word.
+The result is that <em>nom</em>
+throws this error:</p>
 <section class="output-wrapper"><pre class="output-block"><span class="line-marker" data-line="1"></span><span class="text plain">Err(
 <span class="line-marker" data-line="2"></span>    Error(
 <span class="line-marker" data-line="3"></span>        Error {
@@ -141,7 +148,7 @@ example:</p>
 <ul>
 <li>
 <p>The <code>input: &quot;target&quot;</code> shows us what
-the parser attempted to process.j</p>
+the parser attempted to process.</p>
 </li>
 <li>
 <p>The <code>code: Tag</code> lets us know that the
@@ -154,33 +161,32 @@ one of them failed.</p>
 <p>Figuring out the issue in this example is
 no big deal. It's quick to see that
 neither the <code>alfa</code> nor the <code>bravo</code>
-parsers match the <code>target</code>
-input that was passed to them.
-Things are rarely so obvious in more
-complicated parsers.
-Each branch of the <code>alt</code> could call
-multiple child parers that call
-ones further down the tree, etc.
-It doesn't take long to cross a
+parsers match the &quot;target&quot;
+input passed to them.
+Things aren't so obvious in
+real world parsers. There are tons
+of different functions branching
+out and interacting with
+each other. It doesn't take long to cross a
 threshold where figuring out where
 an error occurred is a non-trivial
 task.</p>
 <p>I used to use a crate called
-<em>nom_supreme</em> on top of nom. It
+<em>nom_supreme</em><sup class="footnote-link" id="footnote-link-ns"><a href="#footnote-ref-ns">ns</a></sup>
+to help with this. It
 provided errors with more details
 about where they came from.
-Unfortunately, nom_supreme doesn't
-work with nom's most recent
-major version update.</p>
-<p>That's where <em>nom_locate</em> enters
+Unfortunately, it doesn't
+work with the most recent version
+of <em>nom</em>.</p>
+<p>That's where the <em>nom_locate</em> crate enters
 the scene.</p>
 <h2>Locating Errors</h2>
-<p>nom_locate works by adding a
+<p><em>nom_locate</em><sup class="footnote-link" id="footnote-link-nl"><a href="#footnote-ref-nl">nl</a></sup> works by adding a
 <code>LocatedSpan</code> struct to the mix.
 Your input goes inside and
-gets passed around by it.
-Here's another example
-with an intentional error:</p>
+gets passed around as a passenger.
+For example:</p>
 <details><summary>Cargo.toml</summary>
 <div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;locate_basic&quot;
@@ -210,7 +216,7 @@ with an intentional error:</p>
 <span class="line-marker" data-line="18"></span>  <span class="storage type rust">let</span> <span class="meta group rust"><span class="punctuation section group begin rust">(</span>span<span class="punctuation separator rust">,</span> result</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=</span> <span class="support function rust">tag</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>xxx<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">parse</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>span</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="19"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>span<span class="punctuation separator rust">,</span> result</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker" data-line="20"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
-<p>The error message now looks like this:</p>
+This is the error that gets produced:
 <section class="output-wrapper"><pre class="output-block"><span class="line-marker" data-line="1"></span><span class="text plain">Err(
 <span class="line-marker" data-line="2"></span>    Error(
 <span class="line-marker" data-line="3"></span>        Error {
@@ -226,16 +232,15 @@ with an intentional error:</p>
 <span class="line-marker" data-line="13"></span>)</span></pre></section>
 <p>The <code>input</code> now contains the <code>LocatedSpan</code> with
 more details about where the error occurred.
-The value of the <code>extra</code> field is what we set
-on line 17. With it, we know the exact function
-that failed.</p>
-<p>As big an improvement as that is, it gets even
+The value of the <code>extra</code> field is what we
+defined on line 17. Using it as a reference, we
+know in which function the failure occurred.</p>
+<p>That's a huge improvement. And, it gets even
 better.</p>
-<h2>Errors Reporting In</h2>
-<p>To really show off a nice approach
-to error messages we need a little
-bigger example. We'll start
-by defining two parser functions.</p>
+<h2>Showing Off Errors</h2>
+<p>We'll use a little more complicated example
+to demonstrate what <em>nom_locate</em> can do.
+It starts by defining two parser functions:</p>
 <details><summary>Cargo.toml</summary>
 <div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">[package]
 <span class="line-marker" data-line="2"></span>name = &quot;locate_report&quot;
@@ -280,7 +285,7 @@ prior examples. The big difference is that <code>first_parser</code>
 does a little more work to get us down to a second
 line before passing off to <code>second_parser</code>.
 That'll help demonstrate the error output
-of this report function:</p>
+of this <em>report</em> function:</p>
 <div class="highlight-wrapper"><div class="file-name">src/report.rs</div><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="keyword other rust">crate</span><span class="meta path rust"><span class="punctuation accessor rust">::</span></span>Span<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">nom<span class="punctuation accessor rust">::</span></span><span class="meta path rust">error<span class="punctuation accessor rust">::</span></span>Error<span class="punctuation terminator rust">;</span>
@@ -336,11 +341,11 @@ definition.</p>
 </li>
 <li>
 <p>The <code>result.finish()</code> call on line 14 combines
-a couple of different nom error types so they can
+a couple of different <em>nom</em> error types so they can
 be matched in a single call.</p>
 </li>
 <li>
-<p>Line 15 prints a succsss message of everything
+<p>Line 15 prints a success message of everything
 parsed properly.</p>
 </li>
 <li>
@@ -379,37 +384,105 @@ occurred and puts a <code>^</code> under the column
 where the error started.</p>
 </li>
 </ul>
-<p>After all that, here's what we get:</p>
+<p>We tie all that toghter in this <em>main.rs</em> file:</p>
+<div class="highlight-wrapper"><div class="file-name">src/main.rs</div><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta module rust"><span class="storage type module rust">mod</span> <span class="entity name module rust">first_parser</span><span class="punctuation terminator rust">;</span></span>
+<span class="line-marker" data-line="2"></span><span class="meta module rust"><span class="storage type module rust">mod</span> <span class="entity name module rust">report</span><span class="punctuation terminator rust">;</span></span>
+<span class="line-marker" data-line="3"></span><span class="meta module rust"><span class="storage type module rust">mod</span> <span class="entity name module rust">second_parser</span><span class="punctuation terminator rust">;</span></span>
+<span class="line-marker" data-line="4"></span>
+<span class="line-marker" data-line="5"></span><span class="keyword other rust">use</span> <span class="meta path rust">first_parser<span class="punctuation accessor rust">::</span></span>first_parser<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="6"></span><span class="keyword other rust">use</span> <span class="meta path rust">nom<span class="punctuation accessor rust">::</span></span>Parser<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="7"></span><span class="keyword other rust">use</span> <span class="meta path rust">nom_locate<span class="punctuation accessor rust">::</span></span>LocatedSpan<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="8"></span><span class="keyword other rust">use</span> <span class="meta path rust">report<span class="punctuation accessor rust">::</span></span>report<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="9"></span><span class="keyword other rust">use</span> <span class="meta path rust">second_parser<span class="punctuation accessor rust">::</span></span>second_parser<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="10"></span>
+<span class="line-marker" data-line="11"></span><span class="storage type type rust">type</span> <span class="entity name type rust">Span</span><span class="keyword operator rust">&lt;</span><span class="storage modifier lifetime rust">&#39;a</span><span class="keyword operator rust">&gt;</span> <span class="keyword operator rust">=</span> <span class="meta generic rust">LocatedSpan<span class="punctuation definition generic begin rust">&lt;</span><span class="keyword operator rust">&amp;</span><span class="storage modifier lifetime rust">&#39;a</span> <span class="storage type rust">str</span>, <span class="keyword operator rust">&amp;</span><span class="storage modifier lifetime rust">&#39;a</span> <span class="storage type rust">str</span><span class="punctuation definition generic end rust">&gt;</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="12"></span>
+<span class="line-marker" data-line="13"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="14"></span>  <span class="storage type rust">let</span> input <span class="keyword operator rust">=</span>
+<span class="line-marker" data-line="15"></span>    <span class="meta path rust">Span<span class="punctuation accessor rust">::</span></span>new_extra<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>prelude<span class="constant character escape rust">\n</span>spacer target<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="16"></span>  <span class="storage type rust">let</span> result <span class="keyword operator rust">=</span> first_parser.<span class="support function rust">parse</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>input</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="17"></span>  <span class="support function rust">report</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>result</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="18"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
+<p>And, when we run it, we get this:</p>
 <div class="highlight-wrapper"><div class=""><pre><span class="line-marker" data-line="1"></span><span class="text plain">ERROR: second_parser failed on line 2 column 7
 <span class="line-marker" data-line="2"></span>----------------------------------------------
 <span class="line-marker" data-line="3"></span>spacer target
 <span class="line-marker" data-line="4"></span>      ^</span></pre></div></div>
 <p>Orders of magnititude more useful than
 the original.</p>
-<p>I took an hour or two to figure
+<h2>Outro</h2>
+<p>It took an hour or two to figure
 out the approach and dial things in.
 It took the rest of the day to write
-this post. It's 8pm and I've done
+this post. At 8pm I've done
 zero work on the parser itself. I'm
 cool with that. I'll be able to move
 so much faster with these upgraded
-error messages I'll make up
+error messages. I'll make up
 the time in nothing flat.</p>
 <p>-a</p>
-<p>-- endnote</p>
-<p>TODO: The reason the error messages aren't
-great is to optimize for speed. You
-can figure everything out with the defaults.
-It's just a time intensive pain.</p>
-
-
-
-
-
 
 <div class="end-of-line"></div>
 
 
+<div class="backmatter default-flow">
+    <h2>Endnote</h2>
+<ul>
+<li>
+<p>I'm not knocking
+<em>nom</em> for the terse error messages. It's
+designed to be as fast as possible.
+You can use the error payload to figure
+out where issues are. It just takes
+a lot of effort.</p>
+<p>I expect I'm taking a hit on the parsing
+speed by using <em>nom_locate</em>. I can't tell
+though. It rips through blog posts so
+fast it might as well be instentaneous.</p>
+</li>
+</ul>
+<h2>Footnotes</h2>
+<ul>
+<li>
+<p><a class="footnote-ref" id="footnote-ref-nd" href="#footnote-link-nd">nd</a>
+<a href="/neodoc/">NeoDoc</a> is a note taking format. It's similar to
+<a href="https://www.markdownguide.org/">Markdown</a>, but much more powerful.
+It's currently embedded in my personal
+static site generator. I want to be able
+to do more with it so I'll pulling it
+out to its own library.</p>
+</li>
+<li>
+<p><a class="footnote-ref" id="footnote-ref-nom" href="#footnote-link-nom">nom</a>
+<a href="https://docs.rs/nom/latest/nom/">nom</a> is a
+<a href="https://en.wikipedia.org/wiki/Parser_combinator">parser combinator</a>
+(aka text processig on steriods). The
+learning curve is significant. I recommend
+against learning it at the same time
+you're learning Rust. Ask me how I know.</p>
+</li>
+<li>
+<p><a class="footnote-ref" id="footnote-ref-ns" href="#footnote-link-ns">ns</a>
+<a href="https://docs.rs/nom-supreme/latest/nom_supreme/">nom_supreme</a>
+was my go to helper for improving
+<em>nom</em> error messages in <em>nom</em> v7. It was a
+bit tricky to set up though. Even if
+it was available in the current
+<em>nom</em> v8 I'd probably still use the
+<em>nom_locate</em> approach as it's simpler
+to get going.</p>
+</li>
+<li>
+<p><a class="footnote-ref" id="footnote-ref-nl" href="#footnote-link-nl">nl</a>
+<a href="https://docs.rs/nom_locate/latest/nom_locate/index.html">nom_locate</a>
+is my new best friend. Judging by the 30 million
+downloads on <a href="https://crates.io/crates/nom_locate">crates.io</a>
+it looks like I'm not alone. It's going to save
+me sooo much time. It almost feels like cheating.</p>
+</li>
+</ul>
+
+</div>
 
 </main>
 
@@ -420,9 +493,7 @@ It's just a time intensive pain.</p>
   <div>
     who also makes <a href="https://bittyjs.com">bitty</a>
   </div>
-  <div>
-    and is working on <a href="https://neodoc.style">neodoc.style</a>
-  </div>
+  
 
       
 </footer>

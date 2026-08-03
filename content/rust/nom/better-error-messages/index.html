@@ -3,7 +3,7 @@
 == block toml
 title = "Better nom Error Messages with nom_locate"
 created = 2026-08-20T14:02:00-04:00
-status = "draft"
+status = "done"
 id = "01/n8/eg/8r"
 tags = ["rust"]
 == endblock
@@ -12,15 +12,26 @@ tags = ["rust"]
 == filter md
 ## Parsing Parser Errors
 
-I'm extracting NeoDoc's parser from my 
-static site generator. It's
-built using a Rust parser/combinator 
-crate called _nom_. It's fantastic. 
-Except for the part where the 
-error messages are cryptic as hell. 
-For example, this code uses nom's `alt` 
-feature to try two different ways to 
-parse an input:
+I designed a note taking format called 
+NeoDoc<sup class="footnote-link" id="footnote-link-nd"><a href="#footnote-ref-nd">nd</a></sup>.
+It currently exists only as an embedded
+feature of my personal static site generator. 
+I'm in the process of extracting it
+to its own library. That means
+digging into the _nom_<sup class="footnote-link" id="footnote-link-nom"><a href="#footnote-ref-nom">nom</a></sup>
+parser/combinator and its cryptic as
+hell error messages. 
+
+"Just how cryptic?" you ask. Let me 
+give you an example.
+
+
+## A First Look
+
+This codes makes a tiny rust app that
+uses _nom_'s `alt` feature to attempt
+to use two child parsers to process
+a piece of text. 
 
 <details><summary>Cargo.toml</summary>
 == filter highlight("toml")
@@ -33,13 +44,12 @@ parse an input:
 == endfilter
 
 
-Both parsers fail since neither of their patterns
-(i.e. "xxx" or "yyy") match the "target"
-text of the input. 
-
-nom throws an error when parsing fails.
-Here's what it looks like for this
-example:
+The parsers attempt to process the 
+word "target" as input. They both fail 
+since neither of their patterns
+(i.e. "xxx" or "yyy") match the word. 
+The result is that _nom_
+throws this error:
 
 
 == filter output()
@@ -48,7 +58,7 @@ example:
 
 
 - The `input: "target"` shows us what 
-the parser attempted to process.j
+the parser attempted to process.
 
 - The `code: Tag` lets us know that the 
 error was generated because on of the 
@@ -60,39 +70,37 @@ one of them failed.
 Figuring out the issue in this example is
 no big deal. It's quick to see that
 neither the `alfa` nor the `bravo` 
-parsers match the `target`
-input that was passed to them. 
-Things are rarely so obvious in more 
-complicated parsers. 
-Each branch of the `alt` could call 
-multiple child parers that call 
-ones further down the tree, etc.
-It doesn't take long to cross a
+parsers match the "target"
+input passed to them. 
+Things aren't so obvious in
+real world parsers. There are tons
+of different functions branching
+out and interacting with 
+each other. It doesn't take long to cross a
 threshold where figuring out where
 an error occurred is a non-trivial
 task.
 
 I used to use a crate called 
-_nom_supreme_ on top of nom. It
+_nom_supreme_<sup class="footnote-link" id="footnote-link-ns"><a href="#footnote-ref-ns">ns</a></sup>
+to help with this. It
 provided errors with more details
 about where they came from. 
-Unfortunately, nom_supreme doesn't
-work with nom's most recent
-major version update.
+Unfortunately, it doesn't
+work with the most recent version
+of _nom_.
 
-That's where _nom_locate_ enters
+That's where the _nom_locate_ crate enters
 the scene. 
 
 
 ## Locating Errors 
 
-nom_locate works by adding a
+_nom_locate_<sup class="footnote-link" id="footnote-link-nl"><a href="#footnote-ref-nl">nl</a></sup> works by adding a
 `LocatedSpan` struct to the mix.
 Your input goes inside and 
-gets passed around by it. 
-Here's another example
-with an intentional error:
-
+gets passed around as a passenger. 
+For example: 
 
 <details><summary>Cargo.toml</summary>
 == filter highlight("toml")
@@ -104,8 +112,8 @@ with an intentional error:
 == include dir() + "/examples.inc/locate_basic/src/main.rs" 
 == endfilter
 
+This is the error that gets produced:
 
-The error message now looks like this:
 
 == filter output()
 == include dir() + "/examples.inc/locate_basic/output.txt" 
@@ -114,20 +122,19 @@ The error message now looks like this:
 
 The `input` now contains the `LocatedSpan` with
 more details about where the error occurred. 
-The value of the `extra` field is what we set
-on line 17. With it, we know the exact function
-that failed. 
+The value of the `extra` field is what we 
+defined on line 17. Using it as a reference, we 
+know in which function the failure occurred.  
 
-As big an improvement as that is, it gets even
+That's a huge improvement. And, it gets even
 better. 
 
 
-## Errors Reporting In
+## Showing Off Errors 
 
-To really show off a nice approach
-to error messages we need a little
-bigger example. We'll start 
-by defining two parser functions. 
+We'll use a little more complicated example
+to demonstrate what _nom_locate_ can do.
+It starts by defining two parser functions:
 
 
 <details><summary>Cargo.toml</summary>
@@ -155,7 +162,7 @@ prior examples. The big difference is that `first_parser`
 does a little more work to get us down to a second
 line before passing off to `second_parser`.
 That'll help demonstrate the error output 
-of this report function:
+of this _report_ function:
 
 
 == filter highlight("rust", file_name="src/report.rs")
@@ -173,10 +180,10 @@ having to put the entire signature in the function
 definition. 
 
 - The `result.finish()` call on line 14 combines
-a couple of different nom error types so they can
+a couple of different _nom_ error types so they can
 be matched in a single call. 
 
-- Line 15 prints a succsss message of everything 
+- Line 15 prints a success message of everything 
 parsed properly. 
 
 
@@ -215,7 +222,15 @@ occurred and puts a `^` under the column
 where the error started. 
 
 
-After all that, here's what we get:
+We tie all that toghter in this _main.rs_ file:
+
+== filter highlight("rust", file_name="src/main.rs")
+== include dir() + "/examples.inc/locate_report/src/main.rs" 
+== endfilter
+
+
+And, when we run it, we get this:
+
 
 == filter highlight("txt", class="")
 == include dir() + "/examples.inc/locate_report/output.txt" 
@@ -225,32 +240,82 @@ After all that, here's what we get:
 Orders of magnititude more useful than
 the original. 
 
-I took an hour or two to figure
+## Outro
+
+It took an hour or two to figure
 out the approach and dial things in. 
 It took the rest of the day to write
-this post. It's 8pm and I've done
+this post. At 8pm I've done
 zero work on the parser itself. I'm 
 cool with that. I'll be able to move
 so much faster with these upgraded
-error messages I'll make up 
+error messages. I'll make up 
 the time in nothing flat. 
 
 -a
 
 
 
--- endnote
+== endfilter
+== endblock
 
-TODO: The reason the error messages aren't
-great is to optimize for speed. You 
-can figure everything out with the defaults.
-It's just a time intensive pain. 
+
+== block backmatter
+== filter md
+## Endnote
+
+- I'm not knocking
+_nom_ for the terse error messages. It's
+designed to be as fast as possible. 
+You can use the error payload to figure
+out where issues are. It just takes
+a lot of effort. 
+
+  I expect I'm taking a hit on the parsing
+speed by using _nom_locate_. I can't tell
+though. It rips through blog posts so
+fast it might as well be instentaneous. 
+
+
+
+
+
+
+## Footnotes
+
+- <a class="footnote-ref" id="footnote-ref-nd" href="#footnote-link-nd">nd</a>
+[NeoDoc](/neodoc/) is a note taking format. It's similar to 
+[Markdown](https://www.markdownguide.org/), but much more powerful. 
+It's currently embedded in my personal
+static site generator. I want to be able
+to do more with it so I'll pulling it
+out to its own library. 
+
+- <a class="footnote-ref" id="footnote-ref-nom" href="#footnote-link-nom">nom</a>
+[nom](https://docs.rs/nom/latest/nom/) is a 
+[parser combinator](https://en.wikipedia.org/wiki/Parser_combinator)
+(aka text processig on steriods). The
+learning curve is significant. I recommend
+against learning it at the same time
+you're learning Rust. Ask me how I know. 
+
+- <a class="footnote-ref" id="footnote-ref-ns" href="#footnote-link-ns">ns</a>
+[nom_supreme](https://docs.rs/nom-supreme/latest/nom_supreme/)
+was my go to helper for improving
+_nom_ error messages in _nom_ v7. It was a 
+bit tricky to set up though. Even if
+it was available in the current 
+_nom_ v8 I'd probably still use the
+_nom_locate_ approach as it's simpler
+to get going. 
+
+- <a class="footnote-ref" id="footnote-ref-nl" href="#footnote-link-nl">nl</a>
+[nom_locate](https://docs.rs/nom_locate/latest/nom_locate/index.html)
+is my new best friend. Judging by the 30 million
+downloads on [crates.io](https://crates.io/crates/nom_locate)
+it looks like I'm not alone. It's going to save
+me sooo much time. It almost feels like cheating. 
 
 
 == endfilter
-
-
-
-
-
 == endblock
