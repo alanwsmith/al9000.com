@@ -1,4 +1,8 @@
-ERROR: second_parser failed on line 2 column 7
-----------------------------------------------
-spacer target
-      ^
+PARSING ERROR:
+-> first_parser
+-> second_parser
+failed at:
+ charlie delta
+on line 2 column 6:
+bravo charlie delta
+     ^

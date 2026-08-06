@@ -1,14 +1,13 @@
-use crate::Span;
+use crate::Content;
 
 use nom::error::Error;
 use nom::{Err, Finish};
 use nom_locate::LocatedSpan;
-use std::cmp::max;
 use std::fs;
 
 type ResultHolder<'a> = Result<
-  (Span<'a>, Span<'a>),
-  Err<Error<LocatedSpan<&'a str, &'a str>>>,
+  (Content<'a>, Content<'a>),
+  Err<Error<LocatedSpan<&'a str, Vec<&'a str>>>>,
 >;
 
 pub fn report(result: ResultHolder) {
@@ -16,8 +15,9 @@ pub fn report(result: ResultHolder) {
     Ok(_) => println!("Parsing successful"),
     Err(e) => {
       let error_message = format!(
-        "ERROR: {} failed on line {} column {}",
-        e.input.extra,
+        "PARSING ERROR:\n-> {}\nfailed at:\n{}\non line {} column {}:",
+        e.input.extra.join("\n-> "),
+        e.input.fragment(),
         e.input.location_line(),
         e.input.get_utf8_column(),
       );
@@ -25,17 +25,12 @@ pub fn report(result: ResultHolder) {
         e.input.get_line_beginning().to_vec(),
       )
       .unwrap();
-      let divider_spaces = max(
-        error_message.chars().collect::<Vec<_>>().len(),
-        error_line.chars().collect::<Vec<_>>().len(),
-      );
       let pointer_line = format!(
         "{}^",
         " ".repeat(e.input.get_utf8_column() - 1),
       );
       let parts = [
         error_message.to_string(),
-        "-".repeat(divider_spaces).to_string(),
         error_line.to_string(),
         pointer_line.to_string(),
       ];
