@@ -2,10 +2,13 @@ Err(
     Error(
         Error {
             input: LocatedSpan {
-                offset: 0,
+                offset: 5,
                 line: 1,
-                fragment: "target",
-                extra: "some_parser",
+                fragment: "not bravo",
+                extra: [
+                    "alfa_parser",
+                    "bravo_parser",
+                ],
             },
             code: Tag,
         },

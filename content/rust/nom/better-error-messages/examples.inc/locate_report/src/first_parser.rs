@@ -1,4 +1,4 @@
-use crate::Span;
+use crate::Content;
 use crate::second_parser;
 
 use nom::bytes::complete::tag;
@@ -6,12 +6,13 @@ use nom::character::complete::line_ending;
 use nom::{IResult, Parser};
 
 pub fn first_parser(
-  mut span: Span
-) -> IResult<Span, Span> {
-  span.extra = "prelude_parser";
-  let (span, _) = tag("prelude").parse(span)?;
-  let (span, _) = line_ending.parse(span)?;
-  let (span, _) = tag("spacer").parse(span)?;
-  let (span, result) = second_parser.parse(span)?;
-  Ok((span, result))
+  mut content: Content
+) -> IResult<Content, Content> {
+  content.extra.push("first_parser");
+  let (content, _) = tag("alfa").parse(content)?;
+  let (content, _) = line_ending.parse(content)?;
+  let (content, _) = tag("bravo").parse(content)?;
+  let (content, result) =
+    second_parser.parse(content)?;
+  Ok((content, result))
 }

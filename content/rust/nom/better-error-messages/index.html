@@ -2,7 +2,8 @@
 
 == block toml
 title = "Better nom Error Messages with nom_locate"
-created = 2026-08-20T14:02:00-04:00
+created = 2026-08-02T14:02:00-04:00
+updated = 2026-08-06T15:02:00-04:00
 status = "done"
 id = "01/n8/eg/8r"
 tags = ["rust"]
@@ -10,6 +11,13 @@ tags = ["rust"]
 
 == block content
 == filter md
+
+UPDATE: The original version of this post
+only passed the name of the last parser
+in the chain. This version is updated
+to show all the parsers that lead
+to the error. 
+
 ## Parsing Parser Errors
 
 I designed a note taking format called 
@@ -112,6 +120,9 @@ For example:
 == include dir() + "/examples.inc/locate_basic/src/main.rs" 
 == endfilter
 
+
+That codes contains an intentional error
+where the `bravo_parser` fails. 
 This is the error that gets produced:
 
 
@@ -120,11 +131,13 @@ This is the error that gets produced:
 == endfilter
 
 
-The `input` now contains the `LocatedSpan` with
-more details about where the error occurred. 
-The value of the `extra` field is what we 
-defined on line 17. Using it as a reference, we 
-know in which function the failure occurred.  
+The `input` of the `Error` now contains a
+`LocatedSpan` with more details about where 
+the error occurred. The `extra`
+field contains the values we appended 
+to its Vec on lines 19 and 28. Collectively
+they give us the path to the parser
+that failed. 
 
 That's a huge improvement. And, it gets even
 better. 
@@ -158,7 +171,7 @@ and
 
 
 These are the same basic type of parsers from the
-prior examples. The big difference is that `first_parser` 
+prior example. The big difference is that `first_parser` 
 does a little more work to get us down to a second
 line before passing off to `second_parser`.
 That'll help demonstrate the error output 
@@ -196,21 +209,26 @@ the LocatedSpan struct that was passed in
 to the report. 
 
   `e.input.extra` on line 19 pulls the 
-value with the name of the parser we added
-in those functions. 
+vec with the values of the names of
+the parsers we added with `content.extra.push()`
+in the parsers. 
 
-  `e.input.location_line()` on line 20 gets
+  `e.input.fragment()` on line 20 gets
+the text that was attempting to be
+parsed where the failure occurred. 
+
+  `e.input.location_line()` on line 21 gets
 the line number from the original input where
 the error occured (which will be 2 in our
 case since first_parser got us to the second line).
 
-  `e.input.get_utf8_column()` on line 21
+  `e.input.get_utf8_column()` on line 22
 give us the column of the `.location_line()`
 where the error starts. (There's a similar 
 `.get_column()` that can be used if all 
 you've got is ASCII, but I don't mess with that.)
 
-- Lines 23-25 contain `e.input.get_line_beginning()`
+- Lines 24-27 contain `e.input.get_line_beginning()`
 that pulls in the full line that the 
 error occured on. It comes in as `&[u8]` so the
 `.to_vec()` and `String::from_utf8()` calls 
@@ -269,7 +287,7 @@ _nom_ for the terse error messages. It's
 designed to be as fast as possible. 
 You can use the error payload to figure
 out where issues are. It just takes
-a lot of effort. 
+a lot more effort. 
 
   I expect I'm taking a hit on the parsing
 speed by using _nom_locate_. I can't tell

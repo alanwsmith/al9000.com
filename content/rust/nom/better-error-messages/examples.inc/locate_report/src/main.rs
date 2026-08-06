@@ -8,11 +8,13 @@ use nom_locate::LocatedSpan;
 use report::report;
 use second_parser::second_parser;
 
-type Span<'a> = LocatedSpan<&'a str, &'a str>;
+type Content<'a> = LocatedSpan<&'a str, Vec<&'a str>>;
 
 fn main() {
-  let input =
-    Span::new_extra("prelude\nspacer target", "");
+  let input = Content::new_extra(
+    "alfa\nbravo charlie delta",
+    vec![],
+  );
   let result = first_parser.parse(input);
   report(result);
 }

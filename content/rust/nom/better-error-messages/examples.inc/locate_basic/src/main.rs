@@ -3,18 +3,29 @@ use nom::{IResult, Parser};
 use nom_locate::LocatedSpan;
 use std::fs;
 
-type Span<'a> = LocatedSpan<&'a str, &'a str>;
+type Content<'a> = LocatedSpan<&'a str, Vec<&'a str>>;
 
 fn main() {
-  let input = "target";
-  let span = Span::new_extra(input, "");
-  let result = some_parser(span);
+  let input = "alfa not bravo";
+  let content = Content::new_extra(input, vec![]);
+  let result = alfa_parser(content);
   fs::write("output.txt", format!("{:#?}", result))
     .unwrap();
 }
 
-fn some_parser(mut span: Span) -> IResult<Span, Span> {
-  span.extra = "some_parser";
-  let (span, result) = tag("xxx").parse(span)?;
-  Ok((span, result))
+fn alfa_parser(
+  mut content: Content
+) -> IResult<Content, ()> {
+  content.extra.push("alfa_parser");
+  let (content, _) = tag("alfa ").parse(content)?;
+  let (content, _) = bravo_parser.parse(content)?;
+  Ok((content, ()))
+}
+
+fn bravo_parser(
+  mut content: Content
+) -> IResult<Content, ()> {
+  content.extra.push("bravo_parser");
+  let (content, _) = tag("xxx").parse(content)?;
+  Ok((content, ()))
 }
