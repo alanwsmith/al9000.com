@@ -4,7 +4,7 @@ use nom::{IResult, Parser};
 use std::fs;
 
 fn main() {
-  let input = "target";
+  let input = "charlie delta";
   let result = alt((alfa, bravo)).parse(input);
   fs::write("output.txt", format!("{:#?}", result))
     .unwrap();

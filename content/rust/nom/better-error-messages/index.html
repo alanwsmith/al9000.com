@@ -53,7 +53,7 @@ a piece of text.
 
 
 The parsers attempt to process the 
-word "target" as input. They both fail 
+words "charlie delta" as input. They both fail 
 since neither of their patterns
 (i.e. "xxx" or "yyy") match the word. 
 The result is that _nom_
@@ -65,7 +65,7 @@ throws this error:
 == endfilter
 
 
-- The `input: "target"` shows us what 
+- The `input: "charlie delta"` shows us what 
 the parser attempted to process.
 
 - The `code: Tag` lets us know that the 
@@ -78,7 +78,7 @@ one of them failed.
 Figuring out the issue in this example is
 no big deal. It's quick to see that
 neither the `alfa` nor the `bravo` 
-parsers match the "target"
+parsers match the "charlie delta"
 input passed to them. 
 Things aren't so obvious in
 real world parsers. There are tons
