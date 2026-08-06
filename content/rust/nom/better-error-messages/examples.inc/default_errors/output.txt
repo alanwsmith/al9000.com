@@ -1,7 +1,7 @@
 Err(
     Error(
         Error {
-            input: "target",
+            input: "charlie delta",
             code: Tag,
         },
     ),

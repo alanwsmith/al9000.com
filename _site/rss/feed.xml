@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-08-06T15:03:13-04:00</updated>
+  <updated>2026-08-06T15:44:31-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -135,7 +135,7 @@ a piece of text.</p>
 <span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span>fs<span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="5"></span>
 <span class="line-marker" data-line="6"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
-<span class="line-marker" data-line="7"></span>  <span class="storage type rust">let</span> input <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>target<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="7"></span>  <span class="storage type rust">let</span> input <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>charlie delta<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="8"></span>  <span class="storage type rust">let</span> result <span class="keyword operator rust">=</span> <span class="support function rust">alt</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>alfa<span class="punctuation separator rust">,</span> bravo</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">parse</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>input</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
 <span class="line-marker" data-line="9"></span>  <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>write<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>output.txt<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation separator rust">,</span> <span class="support macro rust">format!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span><span class="constant other placeholder rust">{:#?}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> result<span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker" data-line="10"></span>    .<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
@@ -151,7 +151,7 @@ a piece of text.</p>
 <span class="line-marker" data-line="20"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>input<span class="punctuation separator rust">,</span> result</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
 <span class="line-marker" data-line="21"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
 <p>The parsers attempt to process the
-word &quot;target&quot; as input. They both fail
+words &quot;charlie delta&quot; as input. They both fail
 since neither of their patterns
 (i.e. &quot;xxx&quot; or &quot;yyy&quot;) match the word.
 The result is that <em>nom</em>
@@ -159,14 +159,14 @@ throws this error:</p>
 <section class="output-wrapper"><pre class="output-block"><span class="line-marker" data-line="1"></span><span class="text plain">Err(
 <span class="line-marker" data-line="2"></span>    Error(
 <span class="line-marker" data-line="3"></span>        Error {
-<span class="line-marker" data-line="4"></span>            input: &quot;target&quot;,
+<span class="line-marker" data-line="4"></span>            input: &quot;charlie delta&quot;,
 <span class="line-marker" data-line="5"></span>            code: Tag,
 <span class="line-marker" data-line="6"></span>        },
 <span class="line-marker" data-line="7"></span>    ),
 <span class="line-marker" data-line="8"></span>)</span></pre></section>
 <ul>
 <li>
-<p>The <code>input: &quot;target&quot;</code> shows us what
+<p>The <code>input: &quot;charlie delta&quot;</code> shows us what
 the parser attempted to process.</p>
 </li>
 <li>
@@ -180,7 +180,7 @@ one of them failed.</p>
 <p>Figuring out the issue in this example is
 no big deal. It's quick to see that
 neither the <code>alfa</code> nor the <code>bravo</code>
-parsers match the &quot;target&quot;
+parsers match the &quot;charlie delta&quot;
 input passed to them.
 Things aren't so obvious in
 real world parsers. There are tons
