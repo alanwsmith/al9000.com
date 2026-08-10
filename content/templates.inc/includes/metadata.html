@@ -1,3 +1,50 @@
+== set og_url
+  == if p.path == "/index.html"
+    [@- d["/site.json"].rootURL -@]
+  == elif stem(p.path) == "index"
+    [@- d["/site.json"].rootURL @][@ p.dir -@]/
+  == else
+    [@ p.path @]
+  == endif
+== endset
+
+== set og_image_base
+  == if p.dir == "/"
+    [@- d["/site.json"].rootURL -@]
+  == else
+    [@- d["/site.json"].rootURL @][@- p.dir -@]
+  == endif
+== endset 
+
+== set og_image 
+  == if exists(p.dir + "/og-image.jpg")
+    [@- og_image_base -@]/og-image.jpg[@- "" -@]
+  == elif exists(p.dir + "/og-image-auto.jpg")
+    [@- og_image_base -@]/og-image-auto.jpg[@- "" -@]
+  == else
+    [@- d["/site.json"].rootURL -@]/og-image.jpg[@- "" -@]
+  == endif
+== endset 
+
+== set og_title
+  [@- if(p.linkTitle, p.title, d["/site.json"].title) -@]
+== endset
+
+== set og_description 
+  [@- if(p.description, d["/site.json"].openGraph.description) -@]
+== endset
+
+== set og_type
+  == if p.path == "/index.html"
+    [@- "website" -@]
+  == else
+    [@- "article" -@]
+  == endif
+== endset
+
+
+[#
+
 [!- set og_url -!]
 [!- if file_path == "/index.html" -!]
 https://al9000.com/
@@ -36,6 +83,8 @@ https://al9000.com/images/open-graph/default.jpg
 [@ d["/site.json"].og_image.default_description @]
 [!- endif -!]
 [!- endset -!]
+
+#]
 
 
 <link rel="shortcut icon" href="/favicon.ico" />

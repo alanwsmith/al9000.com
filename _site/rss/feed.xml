@@ -2,12 +2,112 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-08-06T15:44:31-04:00</updated>
+  <updated>2026-08-10T18:24:52-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
+  
+  <entry>
+    <title>Week Notes #31 - 2026</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;31/"/><id>urn:uuid:76c807f3-5347-5d43-b66e-522c18f0a2b7</id>
+    <updated>2026-08-04T21:00:00-04:00</updated>
+    <summary><![CDATA[
+
+<h2>Tuesday - Aug. 4th</h2>
+<ul>
+<li>
+<p>Spent yesterday and today working
+on an intro piece about NeoDoc
+to post on the
+<a href="https://discourse.atmosphere.community/">atmosphere.community discourse server</a>.</p>
+<p>Posted a <a href="https://neodoc.style/blog/neodoc-and-the-atmosphere/">copy on the NeoDoc site</a>
+as well.</p>
+</li>
+<li>
+<p>I put so much effort into writing
+the long intro pieces that I wanted to
+make stick that I'm wiped out.</p>
+<p>Was gonna try to do some parser work
+tonight, but I'm thinking I may just
+crash early.</p>
+</li>
+</ul>
+<h2>Wednesday - Aug. 5th</h2>
+<ul>
+<li>
+<p>Finally got back to actually working
+on the NeoDoc parser.</p>
+</li>
+<li>
+<p>I've been kinda tired the past few
+days. Still am, but maybe less?
+Got a little headache going to. I
+think part of it was just from
+pushing so hard on writing
+a few days earlier.</p>
+</li>
+</ul>
+<h2>Thursday - Aug. 6th</h2>
+<ul>
+<li>
+<p>Yeah, I'm feeling better. Was
+definitely a bit down. I'm increasingly
+thinking it really does take a full
+week for me to recover from the
+road trips.</p>
+<p>10hours both ways,
+sleeping on a mattress that is
+just slightly uncomfortable, and
+the stress of moving someone
+probably is a reasonable
+for needing time to recover.
+Just surprises me that it's
+a full week. I would have
+thought a few days would
+do it.</p>
+</li>
+</ul>
+<h2>Friday - Aug. 8th</h2>
+<ul>
+<li>
+<p>Made a <a href="https://pckt.blog/@al9000.com">blog</a>
+on <a href="https://pckt.blog/">pckt.blog</a>.
+I don't expect to do a lot with it,
+but I wanted to see what it's like.</p>
+<p>Especially as a kind of scouting to see
+how NeoDoc could fit with it.</p>
+</li>
+</ul>
+<h2>Sunday - Aug. 10th</h2>
+<ul>
+<li>
+<p>Did a bunch of writing the
+past few days. Not as much work
+on the parser as I was intending,
+but I was in the flow with the
+writing so that's where the
+energy went.</p>
+<p>A thing that maybe I knew before,
+but feels like a rediscovery is
+how much writing takes out of
+my vs coding. Writing is way more.
+Probably something to do with
+with imagining myself in the mind
+of the audience. It's like
+ersatz social interaction.</p>
+</li>
+</ul>
+<h2>Outro</h2>
+<p>Was kinda feeling under it for a bit,
+but feel back to nominal now.
+Sleep schedule is still wonky, but
+that's fine for now. Just have to not
+let it get too sideways.</p>
+
+
+]]></summary>
+  </entry>
   
   <entry>
     <title>Better nom Error Messages with nom_locate</title><link href="https://al9000.com&#x2f;rust&#x2f;nom&#x2f;better-error-messages/"/><id>urn:uuid:7841fc1d-c96d-5c8b-b21a-b5328694c922</id>
@@ -21,14 +121,25 @@
 
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
+
+
+
+
+
+
+
+
+
+
 <link rel="shortcut icon" href="/favicon.ico" />
 <title>Better nom Error Messages with nom_locate</title>
 <meta property="og:title" content="Better nom Error Messages with nom_locate" />
-<meta name="description" content="from alan w smith" />
-<meta property="og:description" content="from alan w smith" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com&#x2f;rust&#x2f;nom&#x2f;better-error-messages/og-image.jpg" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;rust&#x2f;nom&#x2f;better-error-messages/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com&#x2f;rust&#x2f;nom&#x2f;better-error-messages/og-image.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
@@ -559,7 +670,7 @@ me sooo much time. It almost feels like cheating.</p>
   </entry>
   
   <entry>
-    <title>Week Notes 2026-30</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;30/"/><id>urn:uuid:ae90736d-d0a4-5826-9157-d88dcc9d8cf2</id>
+    <title>Week Notes #30 - 2026</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;30/"/><id>urn:uuid:ae90736d-d0a4-5826-9157-d88dcc9d8cf2</id>
     <updated>2026-07-27T07:53:00-04:00</updated>
     <summary><![CDATA[
 
@@ -669,212 +780,6 @@ get back to extracting the
 parser so I can start building
 on top of it.</p>
 
-
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>Week Notes 2026-29</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;29/"/><id>urn:uuid:e22111ac-a070-50cf-8782-8f9c75348c9a</id>
-    <updated>2026-07-22T16:44:29-04:00</updated>
-    <summary><![CDATA[
-
-<h2>Monday - June 20</h2>
-<ul>
-<li>Wrote <a href="/rust/apps/base32_timestamp_cleanup/">a script</a>
-to update the IDs for my sites
-pages to make them sort chronologically.
-I though I has them set up that way.
-There was a bug that means sorting
-got messed up if the IDs had numbers
-in them (which a high portion will have).</li>
-</ul>
-<h2>Tuesday - June 21</h2>
-<ul>
-<li>
-<p>Set up Static Site Builder
-9000 to automatically
-generate Open Graph Image
-(i.e. the images that show up
-when you post a link on
-a social media site). The
-text for each is the
-title of the post/page
-they are associated with.</p>
-<p>I did the work on stream
-which was a good time. It
-turned out to be more
-straight-forward than I
-had expected. All thanks
-to <a href="https://imagemagick.org/">ImageMagick</a>.</p>
-<p>I still need to get things
-set up to automatically read
-alt text from the image files.
-That's pretty high on the TODO
-list.</p>
-</li>
-<li>
-<p>Migrated my <a href="/texture-maker">Background
-Texture Maker</a>
-to al9000.com. I cleaned it
-up a little in the process
-by moving the SVG that's used
-for the texture into a variable.
-Don't make any real difference.
-Just more idiomatic.</p>
-</li>
-</ul>
-<h2>Wednesday - June 22</h2>
-<ul>
-<li>
-<p>Spent some time working on my
-new <a href="/color-picker">color picker</a>.
-I think it's the fourth one I've
-made. Maybe the fifth. I've
-got a good feeling about this one.</p>
-</li>
-<li>
-<p>Realized that this new al9000.com
-site has light and dark mode in the
-style sheet. I though it was just
-dark mode because my system setting
-are set to that so that's all
-I saw. (Since I haven't built a
-manual switch in yet, there's no
-way to change).</p>
-</li>
-</ul>
-<p>Oops.</p>
-<p>I've temporarily set the dark
-mode styles to point to light
-mode so everything works the same.</p>
-<h2>Thursday - July 23</h2>
-<ul>
-<li>
-<p>Did a bunch of work on the
-<a href="/color-picker">Color Picker</a>.
-The initial mechanics were mostly
-done so this was mainly design
-and layout work. It's making
-good progress.</p>
-</li>
-<li>
-<p>I made some changes to
-Static Site Generator 9000.
-Mainly, I change the way
-I access data from JSON and
-content files. I used to break
-things up as keys like.</p>
-<p>d.some.path.to.index.title</p>
-<p>The <code>index</code> is really <code>index.html</code>
-but I removed the extension.
-I did that originally to
-keep from having to use brackets
-around the keys like this:</p>
-<p>d.some.path.to[&quot;index.html&quot;].title</p>
-<p>Because the <code>.</code> in the filename would
-have been seen as a new level.
-It's generally fine since there aren't
-two files at that same place, but
-depending on how I implement
-<a href="/neopoligen">Neopoligen</a> that
-may not be the case. Still TBD,
-but I wanted to fix it now.</p>
-<p>Also, going key by key is a pain.
-For example, if I'm doing a for loop
-with file paths like</p>
-<p>/some/path/to/index.html</p>
-<p>I have to do:</p>
-<p>d.some.path.to[&quot;index.html&quot;].title</p>
-<p>I realized there's no reason not
-to just use the file path itself
-as the key. So, now I do this:</p>
-<p>d[&quot;/some/path/to/index.html&quot;].title</p>
-<p>Much nicer.</p>
-</li>
-</ul>
-<h2>Friday - June 24</h2>
-<ul>
-<li>
-<p>Road tripping.</p>
-</li>
-<li>
-<p>Listened to a Shot Talk Show
-podcast episode with Dan Abramov
-talking about AT Proto and
-the Atmosphere. It started me
-thinking about making a lexicon
-for Neopolitan.</p>
-</li>
-</ul>
-<h2>Sunday - June 26</h2>
-<ul>
-<li>
-<p>I'm on a road trip. Helping a family
-member finish up a move.</p>
-</li>
-<li>
-<p>Over the past few days I've
-been thinking a lot about Neopolitan
-and the AT Proto Atmosphere. The idea
-is more and more solid in my brain.
-I've started writing up notes
-about how it'll work.</p>
-</li>
-<li>
-<p>Spent a bunch of time
-working on <a href="/color-picker">my Color Picker</a>.
-It's still a work in progress. Even more
-so since I've been refactoring it
-basically from scratch. The
-reason for the overhaul is I've
-come up with a better general approach
-to naming, initializing, and file storage.
-Basically, each component gets its
-own <code>.js</code> and <code>.html</code> files that isolate
-it from other components.
-Then the standard naming convention is for
-<code>componentInit</code>, <code>componentSet</code>, and
-<code>componentUpdate</code> for the core
-functionality.</p>
-<p>I'm really liking the approach. It's
-a lot easier to keep things focused
-in my head.</p>
-</li>
-<li>
-<p>I bought the domain neoprose.com
-for the Neopolitan lexicon. I'm
-not sure I'm going to use it
-though. Thinking about <code>neodoc.style</code>
-instead which feels more like
-it's focused on the format
-than creating a service
-(which is how I plan on playing
-things)</p>
-</li>
-</ul>
-<h2>Overall</h2>
-<ul>
-<li>
-<p>I did a bunch of work on
-Static Site Builder 9000
-(which will eventually
-<a href="/ssg9000/">be here</a> if it's
-not by the time you read this).</p>
-<p>It's the new builder I'm
-using for al9000.com. I'm really
-happy with the way it's shaping
-up.</p>
-</li>
-<li>
-<p>I've stream a few times this week.
-It's been fun. Definitely
-helps me get back into the
-swing of working on things.</p>
-</li>
-</ul>
-<p>Hope y'all had a good week and
-a better one in the week go come.</p>
-<p>-a</p>
 
 ]]></summary>
   </entry>
@@ -1484,6 +1389,212 @@ provides the same functionality.</p>
   </entry>
   
   <entry>
+    <title>Week Notes #29 - 2026</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;29/"/><id>urn:uuid:e22111ac-a070-50cf-8782-8f9c75348c9a</id>
+    <updated>2026-07-22T16:44:29-04:00</updated>
+    <summary><![CDATA[
+
+<h2>Monday - June 20</h2>
+<ul>
+<li>Wrote <a href="/rust/apps/base32_timestamp_cleanup/">a script</a>
+to update the IDs for my sites
+pages to make them sort chronologically.
+I though I has them set up that way.
+There was a bug that means sorting
+got messed up if the IDs had numbers
+in them (which a high portion will have).</li>
+</ul>
+<h2>Tuesday - June 21</h2>
+<ul>
+<li>
+<p>Set up Static Site Builder
+9000 to automatically
+generate Open Graph Image
+(i.e. the images that show up
+when you post a link on
+a social media site). The
+text for each is the
+title of the post/page
+they are associated with.</p>
+<p>I did the work on stream
+which was a good time. It
+turned out to be more
+straight-forward than I
+had expected. All thanks
+to <a href="https://imagemagick.org/">ImageMagick</a>.</p>
+<p>I still need to get things
+set up to automatically read
+alt text from the image files.
+That's pretty high on the TODO
+list.</p>
+</li>
+<li>
+<p>Migrated my <a href="/texture-maker">Background
+Texture Maker</a>
+to al9000.com. I cleaned it
+up a little in the process
+by moving the SVG that's used
+for the texture into a variable.
+Don't make any real difference.
+Just more idiomatic.</p>
+</li>
+</ul>
+<h2>Wednesday - June 22</h2>
+<ul>
+<li>
+<p>Spent some time working on my
+new <a href="/color-picker">color picker</a>.
+I think it's the fourth one I've
+made. Maybe the fifth. I've
+got a good feeling about this one.</p>
+</li>
+<li>
+<p>Realized that this new al9000.com
+site has light and dark mode in the
+style sheet. I though it was just
+dark mode because my system setting
+are set to that so that's all
+I saw. (Since I haven't built a
+manual switch in yet, there's no
+way to change).</p>
+</li>
+</ul>
+<p>Oops.</p>
+<p>I've temporarily set the dark
+mode styles to point to light
+mode so everything works the same.</p>
+<h2>Thursday - July 23</h2>
+<ul>
+<li>
+<p>Did a bunch of work on the
+<a href="/color-picker">Color Picker</a>.
+The initial mechanics were mostly
+done so this was mainly design
+and layout work. It's making
+good progress.</p>
+</li>
+<li>
+<p>I made some changes to
+Static Site Generator 9000.
+Mainly, I change the way
+I access data from JSON and
+content files. I used to break
+things up as keys like.</p>
+<p>d.some.path.to.index.title</p>
+<p>The <code>index</code> is really <code>index.html</code>
+but I removed the extension.
+I did that originally to
+keep from having to use brackets
+around the keys like this:</p>
+<p>d.some.path.to[&quot;index.html&quot;].title</p>
+<p>Because the <code>.</code> in the filename would
+have been seen as a new level.
+It's generally fine since there aren't
+two files at that same place, but
+depending on how I implement
+<a href="/neopoligen">Neopoligen</a> that
+may not be the case. Still TBD,
+but I wanted to fix it now.</p>
+<p>Also, going key by key is a pain.
+For example, if I'm doing a for loop
+with file paths like</p>
+<p>/some/path/to/index.html</p>
+<p>I have to do:</p>
+<p>d.some.path.to[&quot;index.html&quot;].title</p>
+<p>I realized there's no reason not
+to just use the file path itself
+as the key. So, now I do this:</p>
+<p>d[&quot;/some/path/to/index.html&quot;].title</p>
+<p>Much nicer.</p>
+</li>
+</ul>
+<h2>Friday - June 24</h2>
+<ul>
+<li>
+<p>Road tripping.</p>
+</li>
+<li>
+<p>Listened to a Shot Talk Show
+podcast episode with Dan Abramov
+talking about AT Proto and
+the Atmosphere. It started me
+thinking about making a lexicon
+for Neopolitan.</p>
+</li>
+</ul>
+<h2>Sunday - June 26</h2>
+<ul>
+<li>
+<p>I'm on a road trip. Helping a family
+member finish up a move.</p>
+</li>
+<li>
+<p>Over the past few days I've
+been thinking a lot about Neopolitan
+and the AT Proto Atmosphere. The idea
+is more and more solid in my brain.
+I've started writing up notes
+about how it'll work.</p>
+</li>
+<li>
+<p>Spent a bunch of time
+working on <a href="/color-picker">my Color Picker</a>.
+It's still a work in progress. Even more
+so since I've been refactoring it
+basically from scratch. The
+reason for the overhaul is I've
+come up with a better general approach
+to naming, initializing, and file storage.
+Basically, each component gets its
+own <code>.js</code> and <code>.html</code> files that isolate
+it from other components.
+Then the standard naming convention is for
+<code>componentInit</code>, <code>componentSet</code>, and
+<code>componentUpdate</code> for the core
+functionality.</p>
+<p>I'm really liking the approach. It's
+a lot easier to keep things focused
+in my head.</p>
+</li>
+<li>
+<p>I bought the domain neoprose.com
+for the Neopolitan lexicon. I'm
+not sure I'm going to use it
+though. Thinking about <code>neodoc.style</code>
+instead which feels more like
+it's focused on the format
+than creating a service
+(which is how I plan on playing
+things)</p>
+</li>
+</ul>
+<h2>Overall</h2>
+<ul>
+<li>
+<p>I did a bunch of work on
+Static Site Builder 9000
+(which will eventually
+<a href="/ssg9000/">be here</a> if it's
+not by the time you read this).</p>
+<p>It's the new builder I'm
+using for al9000.com. I'm really
+happy with the way it's shaping
+up.</p>
+</li>
+<li>
+<p>I've stream a few times this week.
+It's been fun. Definitely
+helps me get back into the
+swing of working on things.</p>
+</li>
+</ul>
+<p>Hope y'all had a good week and
+a better one in the week go come.</p>
+<p>-a</p>
+
+]]></summary>
+  </entry>
+  
+  <entry>
     <title>Background Texture Maker - Give your site a little grit</title><link href="https://al9000.com&#x2f;texture-maker/"/><id>urn:uuid:b936489f-8c7a-5916-8683-845d3512447b</id>
     <updated>2026-01-03T10:36:00-05:00</updated>
     <summary><![CDATA[
@@ -1790,14 +1901,25 @@ the timestamps I use look like this:</li>
 
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
+
+
+
+
+
+
+
+
+
+
 <link rel="shortcut icon" href="/favicon.ico" />
 <title>Three Dates in a Trench Coat</title>
 <meta property="og:title" content="Three Dates in a Trench Coat" />
-<meta name="description" content="from alan w smith" />
-<meta property="og:description" content="from alan w smith" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/og-image.jpg" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;blog&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com&#x2f;blog&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/og-image.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
@@ -2037,7 +2159,7 @@ up in the chronological timeline.</p>
   </entry>
   
   <entry>
-    <title>Week Notes 2026-28</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;28/"/><id>urn:uuid:a8de8881-6dd0-5c0e-a832-7b81832ae62e</id>
+    <title>Week Notes #28 - 2026</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;28/"/><id>urn:uuid:a8de8881-6dd0-5c0e-a832-7b81832ae62e</id>
     <updated>2026-07-15T16:44:19-04:00</updated>
     <summary><![CDATA[
 
@@ -4878,131 +5000,131 @@ alt="A view of Tabletop Simulator showing an angel playmat and a custom card bac
 <h2>Card Backs</h2>
 <div class="card-backs">
   <div>
-    <img src=".DS_Store" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/.DS_Store" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card1" 
-      value="https://al9000.com.DS_Store" />
+      value="https://al9000.com/tts/card-backs/.DS_Store" />
     <button data-s="copy" data-key="card1">Copy</button>
   </div>
   <div>
-    <img src="001.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/001.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card2" 
-      value="https://al9000.com001.jpg" />
+      value="https://al9000.com/tts/card-backs/001.jpg" />
     <button data-s="copy" data-key="card2">Copy</button>
   </div>
   <div>
-    <img src="002.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/002.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card3" 
-      value="https://al9000.com002.jpg" />
+      value="https://al9000.com/tts/card-backs/002.jpg" />
     <button data-s="copy" data-key="card3">Copy</button>
   </div>
   <div>
-    <img src="003.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/003.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card4" 
-      value="https://al9000.com003.jpg" />
+      value="https://al9000.com/tts/card-backs/003.jpg" />
     <button data-s="copy" data-key="card4">Copy</button>
   </div>
   <div>
-    <img src="004.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/004.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card5" 
-      value="https://al9000.com004.jpg" />
+      value="https://al9000.com/tts/card-backs/004.jpg" />
     <button data-s="copy" data-key="card5">Copy</button>
   </div>
   <div>
-    <img src="005.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/005.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card6" 
-      value="https://al9000.com005.jpg" />
+      value="https://al9000.com/tts/card-backs/005.jpg" />
     <button data-s="copy" data-key="card6">Copy</button>
   </div>
   <div>
-    <img src="006.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/006.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card7" 
-      value="https://al9000.com006.jpg" />
+      value="https://al9000.com/tts/card-backs/006.jpg" />
     <button data-s="copy" data-key="card7">Copy</button>
   </div>
   <div>
-    <img src="007.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/007.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card8" 
-      value="https://al9000.com007.jpg" />
+      value="https://al9000.com/tts/card-backs/007.jpg" />
     <button data-s="copy" data-key="card8">Copy</button>
   </div>
   <div>
-    <img src="008.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/008.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card9" 
-      value="https://al9000.com008.jpg" />
+      value="https://al9000.com/tts/card-backs/008.jpg" />
     <button data-s="copy" data-key="card9">Copy</button>
   </div>
   <div>
-    <img src="009.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/009.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card10" 
-      value="https://al9000.com009.jpg" />
+      value="https://al9000.com/tts/card-backs/009.jpg" />
     <button data-s="copy" data-key="card10">Copy</button>
   </div>
   <div>
-    <img src="010.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/010.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card11" 
-      value="https://al9000.com010.jpg" />
+      value="https://al9000.com/tts/card-backs/010.jpg" />
     <button data-s="copy" data-key="card11">Copy</button>
   </div>
   <div>
-    <img src="011.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/011.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card12" 
-      value="https://al9000.com011.jpg" />
+      value="https://al9000.com/tts/card-backs/011.jpg" />
     <button data-s="copy" data-key="card12">Copy</button>
   </div>
   <div>
-    <img src="012.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/012.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card13" 
-      value="https://al9000.com012.jpg" />
+      value="https://al9000.com/tts/card-backs/012.jpg" />
     <button data-s="copy" data-key="card13">Copy</button>
   </div>
   <div>
-    <img src="013.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/013.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card14" 
-      value="https://al9000.com013.jpg" />
+      value="https://al9000.com/tts/card-backs/013.jpg" />
     <button data-s="copy" data-key="card14">Copy</button>
   </div>
   <div>
-    <img src="014.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/014.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card15" 
-      value="https://al9000.com014.jpg" />
+      value="https://al9000.com/tts/card-backs/014.jpg" />
     <button data-s="copy" data-key="card15">Copy</button>
   </div>
   <div>
-    <img src="015.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
+    <img src="/tts/card-backs/015.jpg" alt="A card back for Magic: The Gathering in Tabletop Simulator" />
     <input 
       type="hidden" 
       id="card16" 
-      value="https://al9000.com015.jpg" />
+      value="https://al9000.com/tts/card-backs/015.jpg" />
     <button data-s="copy" data-key="card16">Copy</button>
   </div>
 </div>
@@ -6143,14 +6265,25 @@ with a bunch of random characters.</p>
 
     <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
 
+
+
+
+
+
+
+
+
+
+
 <link rel="shortcut icon" href="/favicon.ico" />
 <title>Create an HLS Encrypted Video with ffmpeg</title>
 <meta property="og:title" content="Create an HLS Encrypted Video with ffmpeg" />
-<meta name="description" content="from alan w smith" />
-<meta property="og:description" content="from alan w smith" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://al9000.com/rss/feed.xml" />
-<meta property="og:image" content="https://al9000.com&#x2f;ffmpeg&#x2f;create-an-hls-encrypted-video/og-image-auto.jpg" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;ffmpeg&#x2f;create-an-hls-encrypted-video/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com&#x2f;ffmpeg&#x2f;create-an-hls-encrypted-video/og-image-auto.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />

@@ -1,4 +1,9 @@
 {
+  "rootURL": "https://al9000.com",
+  "openGraph": {
+    "description": "the online home of alan w smith"
+  },
+
   "site": {
     "description": "the future home of alan w. smith",
     "domain_without_trailing_slash": "www.al9000.com",
