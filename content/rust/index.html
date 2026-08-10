@@ -15,7 +15,7 @@ flags = ["skip", "no-date"]
   <li>
     <p>
     == if d[index_file]
-      [@ ifOutput(d[index_file].shortTitle, d[index_file].title, "Untitled Section") @]
+      [@ if(d[index_file].shortTitle, d[index_file].title, "Untitled Section") @]
     == else
       Unnamed Section
     == endif
@@ -26,7 +26,7 @@ flags = ["skip", "no-date"]
         <a href="[@ subfolder @]">
         == set sub_index_file = subfolder + "/index.html"
         == if exists(sub_index_file)
-          [@ ifOutput(d[sub_index_file].shortTitle, d[sub_index_file].title, "Untitled Example") @]
+          [@ if(d[sub_index_file].shortTitle, d[sub_index_file].title, "Untitled Example") @]
         == else 
           Untitled Example
         == endif
