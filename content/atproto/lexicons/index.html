@@ -1,0 +1,28 @@
+== extends "/templates.inc/switches/default.html"
+
+== block toml
+title = "AT Proto Lexicon Playground"
+created = 2026-08-12T11:04:00-04:00
+published = 2026-08-12T18:08:00-04:00
+status = "done"
+tags = []
+flags = []
+id = "01/n7/s2/v0"
+== endblock 
+
+== block content
+== filter md
+A place to prototype lexicons
+until I figure out a better way to do 
+it. 
+
+Here one based off of 
+[this proposal](https://discourse.atmosphere.community/t/proposal-a-community-lexicon-for-standalone-images/1091)
+
+
+== filter highlight("json")
+[@ rawFile(dir("/ing.dasl.masl.image/lexicon.json")) @]
+== endfilter
+
+== endfilter
+== endblock

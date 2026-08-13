@@ -1,0 +1,160 @@
+{
+  "id": "this-is-a-placeholder",
+  "description": "A collection of associated assets to be delivered in response to calls for an image and corresponding metadata.",
+  "defs": {
+    "main": {
+      "key": "tid",
+      "type": "record",
+      "record": {
+        "type": "object",
+        "required": [
+          "cid",
+          "assets",
+          "createdAt",
+          "nameKey",
+          "tags",
+          "updatedAt"
+        ],
+        "properties": {
+          "assets": {
+            "items": {
+              "ref": "#asset",
+              "type": "ref"
+            },
+            "type": "array"
+          },
+          "cid": {
+            "description": "The DRISL CID of the MASL for the image",
+            "format": "cid",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "The timestamp that represents when the record was created.",
+            "format": "datetime",
+            "type": "string"
+          },
+          "nameKey": {
+            "description": "The primary human readable key for the record. It can be used to represent the file name. (File extensions should not be included. Types are provided by the contentType",
+            "type": "string"
+          },
+          "pathKey": {
+            "description": "A optional, secondary human readable key. It can contain slashes and be used to represent a storage directory path.",
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "updatedAt": {
+            "description": "The timestamp that represents the last time the record was update. Always availalbe. Matches createdAt when the image is first created.",
+            "format": "datetime",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "alt": {
+    "type": "record",
+    "record": {
+      "required": [
+        "extendedText",
+        "language",
+        "text"
+      ],
+      "properties": {
+        "extendedText": {
+          "type": "string",
+          "description": "A second text field to match the format of the IPTC metadata setup."
+        },
+        "language": {
+          "type": "string",
+          "description": "The ISO 639 language code for the alt text."
+        },
+        "text": {
+          "type": "string",
+          "description": "The text content of the alt text."
+        }
+      }
+    }
+  },
+  "asset": {
+    "type": "object",
+    "required": [
+      "alts",
+      "contentType",
+      "copyright",
+      "height",
+      "payload",
+      "tags",
+      "width"
+    ],
+    "properties": {
+      "alts": {
+        "type": "array",
+        "items": {
+          "ref": "#alt",
+          "type": "ref"
+        }
+      },
+      "contentType": {
+        "description": "The MIME content type for the payload",
+        "type": "string"
+      },
+      "copyright": {
+        "ref": "#copyright",
+        "type": "ref"
+      },
+      "height": {
+        "description": "The height of the image payload in pixels",
+        "type": "integer"
+      },
+      "payload": {
+        "_TODO": "Verify SVG isn't under 'image/*' and decided if it should be accepted or not",
+        "accept": [
+          "image/*"
+        ],
+        "description": "The raw image blob",
+        "type": "blob"
+      },
+      "tags": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "width": {
+        "description": "The width of the image payload in pixels",
+        "type": "integer"
+      }
+    }
+  },
+  "copyright": {
+    "type": "object",
+    "required": [
+      "infoURL",
+      "notice",
+      "status"
+    ],
+    "properties": {
+      "infoURL": {
+        "description": "The link to the place with more information about the copyright.",
+        "type": "string"
+      },
+      "notice": {
+        "description": "The text to use when display the copyright",
+        "type": "string"
+      },
+      "status": {
+        "description": "The copyright status of the asset",
+        "type": "string",
+        "enum": ["unknown", "publicDomain", "copyrighted"]
+      }
+    }
+  },
+  "lexicon": 1,
+  "$type": "com.atproto.lexicon.schema"
+}
+

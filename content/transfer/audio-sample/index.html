@@ -1,0 +1,21 @@
+== extends "/templates.inc/switches/default.html"
+
+== block toml
+title = "Audio Sample"
+created = 2026-08-12T21:15:00-04:00
+flags = ["skip"]
+id = "01/n7/t6/mm"
+== endblock
+
+== block content
+== filter md
+If you found this page. No you didn't. 
+== endfilter
+
+<audio controls>
+  <source src="sample.mp3" type="audio/mpeg" />
+  An audio sample.
+</audio>
+
+== endblock
+
