@@ -1,0 +1,64 @@
+== extends "/templates.inc/switches/default.html"
+
+== block toml
+title = "Week Notes #32 - 2026"
+created = 2026-08-10T01:00:00-04:00
+status = "draft"
+flags = []
+tags = ["weeknotes"]
+id = "01/n7/52/rg"
+== endblock
+
+== block content
+== filter md
+
+## Monday - Aug. 10, 2026
+
+- Was chatting with prof. of rhetoric 
+buddy that turned into working
+on a blog post that's ending up becoming
+an intro post on [leaflet.pub](https://leaflet.pub/home)
+about [NeoDoc](https://neodoc.style/).
+
+  I started at 11am. Ate lunch and took a
+nap from 2-3. It's now 7 and I'm still going. 
+Well, I'm taking a break, but the point
+is it ain't done yet. Figure I'm gonna
+go full send with it, because why
+the fuck not. 
+
+## Tuesday - Aug. 11, 2026
+
+- Did a bunch of work on the testing
+features for NeoDoc. It's much smoother
+now. 
+
+- Published the first set of tests
+on the NeoDoc site. 
+
+- Seriously considering going to 
+NY for the AT Proto Meetup in
+a couple weeks. 
+
+- Learned a new Rust thing thanks to clippy. 
+
+Instead of doing: 
+
+`let x = test_root.map(|p| PathBuf::from(p));`
+
+to change the type of an option you can just do:
+
+`let x = test_root.map(PathBuf::from)`
+
+That just clicked about why that works. The 
+value from the map just gets passed into 
+the `PathBuf::from` function directly. 
+
+So dope. 
+
+
+
+
+== endfilter
+== endblock
+
