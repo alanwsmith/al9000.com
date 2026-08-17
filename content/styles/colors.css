@@ -86,27 +86,51 @@
   --highlight-8-color: oklch(from var(--default-info-color) l c calc(h + 180));
 }
 
-:root {
-  --default-background-color: var(--switch--background-color, var(--light--default-background-color));
-  --default-base-color: var(--switch--base-color, var(--light--default-base-color));
-  --faded-base-color: var(--switch--faded-base-color, var(--light--faded-base-color));
-  --default-heading-color: var(--switch--heading-color, var(--light--default-heading-color));
-  --faded-heading-color: var(--switch--faded-heading-color, var(--light--faded-heading-color));
-  --default-info-color: var(--switch--default-info-color, var(--light--default-info-color));
-  --faded-info-color: var(--switch--faded-info-color, var(--light--faded-info-color));
-  --default-accent-color: var(--switch--default-accent-color, var(--light--default-accent-color));
-  --faded-accent-color: var(--switch--faded-accent-color, var(--light--faded-accent-color));
-  --default-warning-color: var(--switch--warning-color, var(--light--default-warning-color));
-  --faded-warning-color: var(--switch--faded-warning-color, var(--light--faded-warning-color));
-  --default-black-color: var(--switch--black-color, var(--light--default-black-color));
-  --faded-black-color: var(--switch--faded-black-color, var(--light--faded-black-color));
-  --default-white-color: var(--switch--white-color, var(--light--default-white-color));
-  --faded-white-color: var(--switch--faded-white-color, var(--light--faded-white-color));
-  --default-match-color: var(--switch--match-color, var(--light--default-match-color));
-  --faded-match-color: var(--switch--faded-match-color, var(--light--faded-match-color));
-  --default-reverse-color: var(--switch--reverse-color, var(--light--default-reverse-color));
-  --faded-reverse-color: var(--switch--faded-reverse-color, var(--light--faded-reverse-color));
+/* :root { */
+/*   --default-background-color: var(--switch--background-color, var(--light--default-background-color)); */
+/*   --default-base-color: var(--switch--base-color, var(--light--default-base-color)); */
+/*   --faded-base-color: var(--switch--faded-base-color, var(--light--faded-base-color)); */
+/*   --default-heading-color: var(--switch--heading-color, var(--light--default-heading-color)); */
+/*   --faded-heading-color: var(--switch--faded-heading-color, var(--light--faded-heading-color)); */
+/*   --default-info-color: var(--switch--default-info-color, var(--light--default-info-color)); */
+/*   --faded-info-color: var(--switch--faded-info-color, var(--light--faded-info-color)); */
+/*   --default-accent-color: var(--switch--default-accent-color, var(--light--default-accent-color)); */
+/*   --faded-accent-color: var(--switch--faded-accent-color, var(--light--faded-accent-color)); */
+/*   --default-warning-color: var(--switch--warning-color, var(--light--default-warning-color)); */
+/*   --faded-warning-color: var(--switch--faded-warning-color, var(--light--faded-warning-color)); */
+/*   --default-black-color: var(--switch--black-color, var(--light--default-black-color)); */
+/*   --faded-black-color: var(--switch--faded-black-color, var(--light--faded-black-color)); */
+/*   --default-white-color: var(--switch--white-color, var(--light--default-white-color)); */
+/*   --faded-white-color: var(--switch--faded-white-color, var(--light--faded-white-color)); */
+/*   --default-match-color: var(--switch--match-color, var(--light--default-match-color)); */
+/*   --faded-match-color: var(--switch--faded-match-color, var(--light--faded-match-color)); */
+/*   --default-reverse-color: var(--switch--reverse-color, var(--light--default-reverse-color)); */
+/*   --faded-reverse-color: var(--switch--faded-reverse-color, var(--light--faded-reverse-color)); */
+/* } */
+
+/* temp default to dark mode until theme switcher is in place */
+ :root { 
+    --default-background-color: var(--switch--background-color, var(--dark--default-background-color));
+    --default-base-color: var(--switch--base-color, var(--dark--default-base-color));
+    --faded-base-color: var(--switch--faded-base-color, var(--dark--faded-base-color));
+    --default-heading-color: var(--switch--heading-color, var(--dark--default-heading-color));
+    --faded-heading-color: var(--switch--faded-heading-color, var(--dark--faded-heading-color));
+    --default-info-color: var(--switch--default-info-color, var(--dark--default-info-color));
+    --faded-info-color: var(--switch--faded-info-color, var(--dark--faded-info-color));
+    --default-accent-color: var(--switch--default-accent-color, var(--dark--default-accent-color));
+    --faded-accent-color: var(--switch--faded-accent-color, var(--dark--faded-accent-color));
+    --default-warning-color: var(--switch--warning-color, var(--dark--default-warning-color));
+    --faded-warning-color: var(--switch--faded-warning-color, var(--dark--faded-warning-color));
+    --default-black-color: var(--switch--black-color, var(--dark--default-black-color));
+    --faded-black-color: var(--switch--faded-black-color, var(--dark--faded-black-color));
+    --default-white-color: var(--switch--white-color, var(--dark--default-white-color));
+    --faded-white-color: var(--switch--faded-white-color, var(--dark--faded-white-color));
+    --default-match-color: var(--switch--match-color, var(--dark--default-match-color));
+    --faded-match-color: var(--switch--faded-match-color, var(--dark--faded-match-color));
+    --default-reverse-color: var(--switch--reverse-color, var(--dark--default-reverse-color));
+    --faded-reverse-color: var(--switch--faded-reverse-color, var(--dark--faded-reverse-color));
 }
+
 
 /* @media (prefers-color-scheme: dark) { */
 /*   :root { */
