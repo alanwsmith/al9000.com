@@ -18,8 +18,8 @@
 
 
 <link rel="shortcut icon" href="/favicon.ico" />
-<title>Week Notes #32 - 2026</title>
-<meta property="og:title" content="Week Notes #32 - 2026" />
+<title>Week Notes [2026 #32]</title>
+<meta property="og:title" content="Week Notes [2026 #32]" />
 <meta name="description" content="the online home of alan w smith" />
 <meta property="og:description" content="the online home of alan w smith" />
 <meta property="og:type" content="article" />
@@ -89,7 +89,7 @@
 
   <hgroup class="default">
       <div class="title-wrapper">
-        <h1>Week Notes #32 - 2026</h1>
+        <h1>Week Notes [2026 #32]</h1>
       </div>
         <div class="date">August 2026</div>
   </hgroup>
@@ -168,6 +168,121 @@ too at some point, but for tonight
 I was cool with just chill'n.</p>
 </li>
 </ul>
+<h2>Sunday - Aug. 16</h2>
+<ul>
+<li>
+<p>Did a lot of work on NeoDoc the
+past few days. Mainly it was setting
+up a way to make testing easier and
+to auto generate repetitive code.</p>
+<p>I'm really liking where things are
+at.</p>
+</li>
+<li>
+<p>I did a recording of
+<a href="https://torrent-empress.leaflet.pub/3mskr4u3ouk2h">this post</a>
+over the past few days.
+Took the better part of a day
+to record. There's about three
+hours of raw tap and that was
+with a decent number of full
+stops to look things up like
+how to pronounce names.</p>
+<p>Probably spent eight hours
+total editing it down (which
+was really just removing
+all the bad takes).</p>
+<p>I tried to post the MP3, but
+it's too big to go to github
+so I had to throw it to an
+S3 bucket. It's been forever
+since I logged into that,
+but it was ready to go.</p>
+</li>
+<li>
+<p>I decided to throw a video version
+up on youtube. I did the initial
+recording in Adobe Audible so
+there wasn't even a face cam to
+go with the audio. I've played
+around with rendering waveforms
+for audio in the past but
+never really solved it.</p>
+<p>I decided that today was going
+to be the day.</p>
+<p>I found <a href="https://www.youtube.com/watch?v=kIE7QrMBo2g">this video</a>
+which walks through how to do
+a waveform in DaVinci Resolve both
+with and without a plugin. The
+version without seems like it's
+more random and representative.
+So, I started down the path
+of installing the plugin.</p>
+<p>The video recommends using
+&quot;Reactor&quot; (which is a plugin
+manager), but DaVinci seems
+to have removed it's ability
+to run since the video was
+recorded.</p>
+<p>So, I found the plugin
+itself and installed it manually.
+<a href="https://gitlab.com/WeSuckLess/Reactor/-/blob/master/Atoms/com.JiPi.AudioWaveform/Fuses/Miscellaneous/AudioWaveform.fuse?ref_type=heads">this is where you can get the file</a>
+which you download and drop
+in the appropriate folder
+for DaVinci to pick it up.</p>
+<p>In my case, that's this on
+my mac:</p>
+<p>~/Library/Application Support/Blackmagic Design/DaVinci Resolve/Fusion/Fuses</p>
+<p>I got it set up and working nicely.
+Also, used the notes from <a href="https://www.youtube.com/watch?v=LXTwhlf3Qas">this video</a>
+to clean up the audio a little. I'd
+originally tried doing it in Audition, but
+I'm not sure what I'm doing there.
+The video made it really straight
+forward in Resolve.</p>
+<p>Then I went to render it. The
+50 min video was going to take
+10 hours to render. I could let
+it run overnight, but I'd rather
+see what other options there are.</p>
+<p>Biggest issue is I'm using my
+several year old mac that doesn't
+have a GPU with any umph. I could
+switch on my windows machine,
+that does have a card, but I'm
+trying to avoid that.</p>
+<p>So, I'm down another rabbit
+hole of looking at AWS Workspaces
+to fire up a machine in the
+cloud with a nice GPU to
+render on. TBD on how that goes.</p>
+<p>{Time Passes...}</p>
+<p>Well shit.</p>
+<p>The audio waveform plugin is
+CPU bound. The beefy remote
+GPU I set up didn't make
+a difference.</p>
+<p>Back to the drawing board
+to figure this out.
+(or leave the machine rendering
+over night)</p>
+</li>
+<li>
+<p>Still haven't finished the
+post I started on Monday.
+It's still on the stack though.</p>
+</li>
+</ul>
+<h2>Outro</h2>
+<p>Good week overall.</p>
+<p>I'm ready to solve for this waveform
+thing and finish up that leaflet
+post to get them finished up.
+They're both close. First 90% is
+done. Just gotta do the last
+90%.</p>
+<p>Hope you have a great week.</p>
+<p>-a</p>
 
 <div class="end-of-line"></div>
 
