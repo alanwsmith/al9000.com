@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Compare HTML Fragments in Rust to See if They Match</title>
+<meta property="og:title" content="Compare HTML Fragments in Rust to See if They Match" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;rust&#x2f;misc&#x2f;compare-html/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
+
+
+    
+    
+    
+    
+
+    
+
+
+    <style>
+    </style>
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+    <div class="payload">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> ~
+    <a href="https://bittyjs.com/">bitty</a> ~
+    <a href="https://neodoc.style/">neodoc</a>
+  </div>
+
+
+</header>
+
+
+<main class="default default-wrapper default-flow">
+
+  <hgroup class="default">
+      <div class="title-wrapper">
+        <h1>Compare HTML Fragments in Rust to See if They Match</h1>
+      </div>
+        <div class="date">August 2026</div>
+  </hgroup>
+
+<p>I'm working on extracting <a href="https://neodoc.style">NeoDoc</a>
+from my static site generator to
+pitch the format as an option for
+the <a href="https://atmosphere.community/">Atmosphere</a> of
+<a href="https://atproto.com/">AT Proto</a>.
+Part of that process is making an
+explicit spec for HTML output.
+The goal being to avoid a Markdown
+type situation where different parsers
+have different features that produces
+different outputs from the same input.</p>
+<p>Validating the output is a little tricky.
+The simplest way would be to just compare
+to strings.</p>
+<pre><code>is
+&lt;strong&gt;test&lt;/strong&gt;
+the same as:
+&lt;strong&gt;test&lt;/strong&gt;
+yes? you're good
+</code></pre>
+<p>The problem is whitespace. Take these
+two snippets for example:</p>
+<pre><code>&lt;div&gt;
+&lt;strong&gt;test&lt;/strong&gt;
+&lt;/div&gt;
+</code></pre>
+<p>and</p>
+<pre><code>&lt;div&gt;
+  &lt;strong&gt;test&lt;/strong&gt;
+&lt;/div&gt;
+</code></pre>
+<p>The only difference in them is the
+<code>strong</code> tag has a couple spaces
+in front of it in the second sample.</p>
+<p>Both samples produce the exact
+same thing in the browser. And,
+for testing purposes, they should
+be considered as matching.</p>
+<p>But, thanks to the whitespace, the
+strings are different. So, the
+test would fail.</p>
+<p>I've done simple testing before where
+I just yoinked all the spaces to
+collapse everything. That works
+great, as long as you don't
+need to run tests that confirm
+what space that should show up does.
+NeoDoc has some of those tests.</p>
+<p>I'm using a rust crate called
+<a href="https://docs.rs/scraper/latest/scraper/">scraper</a>
+to work around that. It parses
+HTML that can be compared more
+abstractly.</p>
+<p>This is how I'm using it:</p>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">scraper<span class="punctuation accessor rust">::</span></span><span class="meta block rust"><span class="punctuation section block begin rust">{</span>Html<span class="punctuation separator rust">,</span> Selector</span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="4"></span>  <span class="storage type rust">let</span> left <span class="keyword operator rust">=</span> <span class="string quoted double raw rust"><span class="storage type string rust">r</span><span class="punctuation definition string begin rust">#</span>&quot;
+<span class="line-marker" data-line="5"></span>&lt;h1 class=&quot;red&quot; id=&quot;ping&quot;&gt;Hello World&lt;/h1&gt;
+<span class="line-marker" data-line="6"></span><span class="punctuation definition string end rust">&quot;#</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="7"></span>
+<span class="line-marker" data-line="8"></span>  <span class="storage type rust">let</span> right <span class="keyword operator rust">=</span> <span class="string quoted double raw rust"><span class="storage type string rust">r</span><span class="punctuation definition string begin rust">#</span>&quot;
+<span class="line-marker" data-line="9"></span>&lt;h1 id=&quot;ping&quot; 
+<span class="line-marker" data-line="10"></span>    class=&quot;red&quot;&gt;Hello World&lt;/h1&gt;
+<span class="line-marker" data-line="11"></span><span class="punctuation definition string end rust">&quot;#</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="12"></span>
+<span class="line-marker" data-line="13"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust">
+<span class="line-marker" data-line="14"></span>    <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Is Same HTML: <span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span>
+<span class="line-marker" data-line="15"></span>    <span class="support function rust">is_same_html</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>left<span class="punctuation separator rust">,</span> right</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation separator rust">,</span>
+<span class="line-marker" data-line="16"></span>  <span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="17"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
+<span class="line-marker" data-line="18"></span>
+<span class="line-marker" data-line="19"></span><span class="meta function rust"><span class="meta function rust"><span class="storage modifier rust">pub</span> <span class="storage type function rust">fn</span> </span><span class="entity name function rust">is_same_html</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span>
+<span class="line-marker" data-line="20"></span>  <span class="variable parameter rust">left_input</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span><span class="storage type rust">str</span>,
+<span class="line-marker" data-line="21"></span>  <span class="variable parameter rust">right_input</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span><span class="storage type rust">str</span>,
+<span class="line-marker" data-line="22"></span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="storage type rust">bool</span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="23"></span>  <span class="storage type rust">let</span> selector <span class="keyword operator rust">=</span> <span class="meta path rust">Selector<span class="punctuation accessor rust">::</span></span>parse<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>*<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="24"></span>  <span class="storage type rust">let</span> left_frag <span class="keyword operator rust">=</span> <span class="meta path rust">Html<span class="punctuation accessor rust">::</span></span>parse_fragment<span class="meta group rust"><span class="punctuation section group begin rust">(</span>left_input</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="25"></span>  <span class="storage type rust">let</span> right_frag <span class="keyword operator rust">=</span> <span class="meta path rust">Html<span class="punctuation accessor rust">::</span></span>parse_fragment<span class="meta group rust"><span class="punctuation section group begin rust">(</span>right_input</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="26"></span>  <span class="storage type rust">let</span> left <span class="keyword operator rust">=</span>
+<span class="line-marker" data-line="27"></span>    left_frag.<span class="support function rust">select</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>selector</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">next</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="28"></span>  <span class="storage type rust">let</span> right <span class="keyword operator rust">=</span>
+<span class="line-marker" data-line="29"></span>    right_frag.<span class="support function rust">select</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>selector</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">next</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">unwrap</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="30"></span>  left.<span class="support function rust">html</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span> <span class="keyword operator rust">=</span><span class="keyword operator rust">=</span> right.<span class="support function rust">html</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="31"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
+with this Cargo.toml:
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="2"></span>name <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>compare-html<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="3"></span>version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>0.1.0<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="4"></span>edition <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2024<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span><span class="meta group rust"><span class="punctuation section group begin rust">[</span>dependencies<span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="7"></span>scraper <span class="keyword operator rust">=</span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span> version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>0.27.0<span class="punctuation definition string end rust">&quot;</span></span> </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></pre></div></div>
+which produces this:
+<div class="highlight-wrapper"><div class="code-block no-buttons"><pre><span class="line-marker" data-line="1"></span><span class="text plain">Is Same HTML: true</span></pre></div></div>
+The whitespace in the middle of the
+`h1` element gets disregarded. So does
+the order of the attributes themselves. 
+Even though the order of the arguments
+is `class, id` in the `left` variable
+and `id, class` in the `right` the
+HTML still matches. This is exactly 
+what I'm looking for since those 
+two samples rendered the same even
+though their string representations
+are different. 
+<p>Test solution acquired. Back to
+parsing,</p>
+<p>-a</p>
+
+
+<div class="end-of-line"></div>
+
+
+
+</main>
+
+<footer class="default">
+  <div>
+    from <a href="https://bsky.app/profile/al9000.com">alan w smith</a>
+  </div>
+  <div>
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div>
+    and designed <a href="https://neodoc.style">neodoc</a>
+  </div>
+
+      
+</footer>
+
+
+    </div>
+
+
+    <div class="templates" hidden>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <script type="module" src="/bits/components.js"></script>
+
+
+
+    </div>
+  </body>
+</html>

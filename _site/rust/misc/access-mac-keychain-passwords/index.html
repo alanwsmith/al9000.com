@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Access Mac Keychain Access Passwords from a Rust App</title>
+<meta property="og:title" content="Access Mac Keychain Access Passwords from a Rust App" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;rust&#x2f;misc&#x2f;access-mac-keychain-passwords/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com&#x2f;rust&#x2f;misc&#x2f;access-mac-keychain-passwords/og-image-auto.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
+
+
+    
+    
+    
+    
+
+    
+
+
+    <style>
+    </style>
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+    <div class="payload">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> ~
+    <a href="https://bittyjs.com/">bitty</a> ~
+    <a href="https://neodoc.style/">neodoc</a>
+  </div>
+
+
+</header>
+
+
+<main class="default default-wrapper default-flow">
+
+  <hgroup class="default">
+      <div class="title-wrapper">
+        <h1>Access Mac Keychain Access Passwords from a Rust App</h1>
+      </div>
+        <div class="date">April 2026</div>
+  </hgroup>
+
+<p>I use the built-in macOS Keychain Access app to store credentials
+for my various scripts and tools. I start off by creating
+a <code>New Password Item...</code> from the Keychain Access menu
+and filling in the details:</p>
+<p><img src="images/raw/new-password.png" 
+alt="The new password prompt from the macOS KeyChain Access app" /></p>
+<p>Then, I use this rust code to pull in passwords
+when I need them:</p>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">security_framework<span class="punctuation accessor rust">::</span></span><span class="meta path rust">passwords<span class="punctuation accessor rust">::</span></span>get_generic_password<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="3"></span>
+<span class="line-marker" data-line="4"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span><span class="punctuation section group begin rust">(</span><span class="punctuation section group end rust">)</span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="5"></span>  <span class="storage type rust">let</span> retreived_password <span class="keyword operator rust">=</span> <span class="support function rust">get_password</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>al9000-post-example<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="6"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span><span class="constant other placeholder rust">{}</span><span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation separator rust">,</span> retreived_password<span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="7"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="8"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
+<span class="line-marker" data-line="9"></span>
+<span class="line-marker" data-line="10"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">get_password</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span><span class="variable parameter rust">key</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span><span class="storage type rust">str</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span>String<span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="11"></span>  <span class="storage type rust">let</span> account <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>alan<span class="punctuation definition string end rust">&quot;</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="12"></span>  <span class="storage type rust">let</span> response <span class="keyword operator rust">=</span> <span class="support function rust">get_generic_password</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span>key<span class="punctuation separator rust">,</span> account</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="13"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="support type rust">String</span><span class="meta path rust"><span class="punctuation accessor rust">::</span></span>from_utf8<span class="meta group rust"><span class="punctuation section group begin rust">(</span>response</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="14"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
+with this Cargo.toml:
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="2"></span>name <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>access-mac-keychain-passwords<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="3"></span>version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>0.1.0<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="4"></span>edition <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2024<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span><span class="meta group rust"><span class="punctuation section group begin rust">[</span>dependencies<span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="7"></span>anyhow <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>1.0.102<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="8"></span>security<span class="keyword operator rust">-</span>framework <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>3.7.0<span class="punctuation definition string end rust">&quot;</span></span></span></pre></div></div>
+When I run the app from the command line I get
+a prompt from Keychain Access to enter the
+keychain's main password to unlock it. 
+<p><img src="images/raw/keychain-access-prompt.png" 
+alt="They macOS Keychain Access app prompt for the main password." /></p>
+<p>Assuming I click &quot;Always Allow&quot; when I enter
+the proper password Keychain Access provides
+the requested password back to the app.
+From that point forward the app can get
+the password again without triggering
+the prompt.</p>
+<p>It's hard to beat.</p>
+<p>-a</p>
+<h2>Notes</h2>
+<ul>
+<li>
+<p>I've been using Keychain Access for ages. There's
+a new Passwords app too. The OS keeps prompting me
+to use it:</p>
+<p><img src="images/raw/open-passwords-prompt.png" 
+alt="They macOS prompt to open Passwords instead of Keychain Access." /></p>
+<p>I assume I'll be able to set up a similar system
+with it. I just haven't dug into it yet.</p>
+</li>
+<li>
+<p>I'm using the <a href="https://docs.rs/security-framework/latest/security_framework/index.html">security_framework crate</a>
+to handle communication between my app and
+Keychain Access. It's got north of
+<a href="https://crates.io/crates/security-framework">200 million downloads on crates.io</a>.
+I'm using that as social proof that it's
+a good library to go with.</p>
+</li>
+<li>
+<p>The security_framework crate works with Windows and Linux password
+managers too.</p>
+</li>
+<li>
+<p>The <code>correct-horse-battery-staple</code> password is from
+<a href="https://xkcd.com/936/">this XKCD comic</a> which shows
+you why passwords with words are better than ones
+with a bunch of random characters.</p>
+</li>
+</ul>
+<h3>References</h3>
+<ul class="d">
+<li><a href="https://crates.io/crates/security-framework">https://crates.io/crates/security-framework</a></li>
+<li><a href="https://docs.rs/security-framework/latest/security_framework/">https://docs.rs/security-framework/latest/security_framework/</a></li>
+<li><a href="https://docs.rs/security-framework/latest/security_framework/passwords/index.html">https://docs.rs/security-framework/latest/security_framework/passwords/index.html</a></li>
+</ul>
+
+
+
+<div class="end-of-line"></div>
+
+
+
+</main>
+
+<footer class="default">
+  <div>
+    from <a href="https://bsky.app/profile/al9000.com">alan w smith</a>
+  </div>
+  <div>
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div>
+    and designed <a href="https://neodoc.style">neodoc</a>
+  </div>
+
+      
+</footer>
+
+
+    </div>
+
+
+    <div class="templates" hidden>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <script type="module" src="/bits/components.js"></script>
+
+
+
+    </div>
+  </body>
+</html>

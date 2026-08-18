@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Split a File into Multiple Collections of Bytes</title>
+<meta property="og:title" content="Split a File into Multiple Collections of Bytes" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;rust&#x2f;misc&#x2f;split-a-file-into-collections-of-bytes/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com&#x2f;rust&#x2f;misc&#x2f;split-a-file-into-collections-of-bytes/og-image-auto.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
+
+
+    
+    
+    
+    
+
+    
+
+
+    <style>
+    </style>
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+    <div class="payload">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> ~
+    <a href="https://bittyjs.com/">bitty</a> ~
+    <a href="https://neodoc.style/">neodoc</a>
+  </div>
+
+
+</header>
+
+
+<main class="default default-wrapper default-flow">
+
+  <hgroup class="default">
+      <div class="title-wrapper">
+        <h1>Split a File into Multiple Collections of Bytes</h1>
+      </div>
+        <div class="date">April 2026</div>
+  </hgroup>
+
+<p>This started as an idea for how to
+split up files so they don't get ingested
+by scrapper bots. It turns one
+file into two with every other
+byte going to the alternate file
+from the one before it. These
+can then be reassembled in
+WASM on the front-end.</p>
+<p>Then, I realized I could just encrypt
+the files. They could be decoded
+automatically by simply including
+the password in the javascript
+on the page. Or, you could set up
+a form so that only folks with
+the password could get them.</p>
+<p>I really like that idea in general.
+Basically, a way to serve encrypted
+content on a static site.
+I built a prototype of that
+here: <a href="/rust/wasm/static-site-file-decryption/">Password Protecting Static Site Content with WASM</a>.</p>
+<p>In the mean time, here's the
+code that does the split.</p>
+
+
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="keyword other rust">use</span> <span class="meta path rust">anyhow<span class="punctuation accessor rust">::</span></span>Result<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="2"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span>fs<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="3"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">path<span class="punctuation accessor rust">::</span></span>Path<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="4"></span><span class="keyword other rust">use</span> <span class="meta path rust">std<span class="punctuation accessor rust">::</span></span><span class="meta path rust">path<span class="punctuation accessor rust">::</span></span>PathBuf<span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">main</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span><span class="punctuation section group begin rust">(</span><span class="punctuation section group end rust">)</span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="7"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Unzipping file bytes<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="8"></span>  <span class="storage type rust">let</span> input_file <span class="keyword operator rust">=</span> <span class="meta path rust">PathBuf<span class="punctuation accessor rust">::</span></span>from<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>samples/church-3818213.webm<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="9"></span>  <span class="storage type rust">let</span> output_dir <span class="keyword operator rust">=</span> <span class="meta path rust">PathBuf<span class="punctuation accessor rust">::</span></span>from<span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>samples/output<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="10"></span>  <span class="support function rust">unzip_file_bytes</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">&amp;</span>input_file<span class="punctuation separator rust">,</span> <span class="keyword operator rust">&amp;</span>output_dir</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="11"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="12"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span>
+<span class="line-marker" data-line="13"></span>
+<span class="line-marker" data-line="14"></span><span class="meta function rust"><span class="meta function rust"><span class="storage type function rust">fn</span> </span><span class="entity name function rust">unzip_file_bytes</span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">(</span>
+<span class="line-marker" data-line="15"></span>  <span class="variable parameter rust">input_file</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span>PathBuf,
+<span class="line-marker" data-line="16"></span>  <span class="variable parameter rust">output_dir</span><span class="punctuation separator rust">:</span> <span class="keyword operator rust">&amp;</span>Path,
+<span class="line-marker" data-line="17"></span></span><span class="meta function rust"><span class="meta function parameters rust"><span class="punctuation section parameters end rust">)</span></span></span></span><span class="meta function rust"> <span class="meta function return-type rust"><span class="punctuation separator rust">-&gt;</span> <span class="meta generic rust">Result<span class="punctuation definition generic begin rust">&lt;</span><span class="punctuation section group begin rust">(</span><span class="punctuation section group end rust">)</span><span class="punctuation definition generic end rust">&gt;</span></span></span> </span><span class="meta function rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="18"></span>  <span class="storage type rust">let</span> bytes <span class="keyword operator rust">=</span> <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>read<span class="meta group rust"><span class="punctuation section group begin rust">(</span>input_file</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="19"></span>
+<span class="line-marker" data-line="20"></span>  <span class="storage type rust">let</span> <span class="storage modifier rust">mut</span> alfa <span class="keyword operator rust">=</span> <span class="support macro rust">vec!</span><span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="punctuation section group end rust">]</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="21"></span>  <span class="storage type rust">let</span> <span class="storage modifier rust">mut</span> bravo <span class="keyword operator rust">=</span> <span class="support macro rust">vec!</span><span class="meta group rust"><span class="punctuation section group begin rust">[</span><span class="punctuation section group end rust">]</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="22"></span>  bytes.<span class="support function rust">iter</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">enumerate</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>.<span class="support function rust">for_each</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta function closure rust"><span class="meta function parameters rust"><span class="punctuation section parameters begin rust">|</span></span></span><span class="meta function closure rust"><span class="meta function parameters rust"><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="variable parameter rust">index</span><span class="punctuation separator rust">,</span> <span class="variable parameter rust">value</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation section parameters end rust">|</span></span> </span><span class="meta function closure rust"><span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="23"></span>    <span class="keyword control rust">if</span> index <span class="keyword operator rust">%</span> <span class="constant numeric integer decimal rust">2</span> <span class="keyword operator rust">=</span><span class="keyword operator rust">=</span> <span class="constant numeric integer decimal rust">0</span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="24"></span>      alfa.<span class="support function rust">push</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">*</span>value</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="25"></span>    </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span> <span class="keyword control rust">else</span> <span class="meta block rust"><span class="punctuation section block begin rust">{</span>
+<span class="line-marker" data-line="26"></span>      bravo.<span class="support function rust">push</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="keyword operator rust">*</span>value</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="27"></span>    </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span>
+<span class="line-marker" data-line="28"></span>  </span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="29"></span>
+<span class="line-marker" data-line="30"></span>  <span class="storage type rust">let</span> alfa_out <span class="keyword operator rust">=</span> output_dir.<span class="support function rust">join</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>alfa<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="31"></span>  <span class="storage type rust">let</span> bravo_out <span class="keyword operator rust">=</span> output_dir.<span class="support function rust">join</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>bravo<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="32"></span>  <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>write<span class="meta group rust"><span class="punctuation section group begin rust">(</span>alfa_out<span class="punctuation separator rust">,</span> alfa</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="33"></span>  <span class="meta path rust">fs<span class="punctuation accessor rust">::</span></span>write<span class="meta group rust"><span class="punctuation section group begin rust">(</span>bravo_out<span class="punctuation separator rust">,</span> bravo</span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="keyword operator rust">?</span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="34"></span>  <span class="support macro rust">println!</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>Done<span class="punctuation definition string end rust">&quot;</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span><span class="punctuation terminator rust">;</span>
+<span class="line-marker" data-line="35"></span>  <span class="support type rust">Ok</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span><span class="meta group rust"><span class="punctuation section group begin rust">(</span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span></span><span class="meta group rust"><span class="punctuation section group end rust">)</span></span>
+<span class="line-marker" data-line="36"></span></span><span class="meta block rust"><span class="punctuation section block end rust">}</span></span></span></span></pre></div></div>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source rust"><span class="meta group rust"><span class="punctuation section group begin rust">[</span>package<span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="2"></span>name <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>unzip_a_file<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="3"></span>version <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>0.1.0<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="4"></span>edition <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>2024<span class="punctuation definition string end rust">&quot;</span></span>
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span><span class="meta group rust"><span class="punctuation section group begin rust">[</span>dependencies<span class="punctuation section group end rust">]</span></span>
+<span class="line-marker" data-line="7"></span>anyhow <span class="keyword operator rust">=</span> <span class="string quoted double rust"><span class="punctuation definition string begin rust">&quot;</span>1.0.102<span class="punctuation definition string end rust">&quot;</span></span></span></pre></div></div>
+<p>I haven't written the re-assembly code yet
+since I'm going with encryption. I don't
+expect it to be difficult if I come back to it.</p>
+<p>-a</p>
+
+
+
+<div class="end-of-line"></div>
+
+
+
+</main>
+
+<footer class="default">
+  <div>
+    from <a href="https://bsky.app/profile/al9000.com">alan w smith</a>
+  </div>
+  <div>
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div>
+    and designed <a href="https://neodoc.style">neodoc</a>
+  </div>
+
+      
+</footer>
+
+
+    </div>
+
+
+    <div class="templates" hidden>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <script type="module" src="/bits/components.js"></script>
+
+
+
+    </div>
+  </body>
+</html>
