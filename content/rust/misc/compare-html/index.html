@@ -1,0 +1,205 @@
+== extends "/templates.inc/switches/default.html"
+
+
+== block toml
+title = "Compare HTML Fragments in Rust to See if They Match"
+created = 2026-08-18T18:53:22-04:00
+status = "done"
+id = "01/n8/9r/k2"
+== endblock 
+
+
+
+== block main
+== filter md
+
+I'm working on extracting [NeoDoc](https://neodoc.style)
+from my static site generator to
+pitch the format as an option for
+the [Atmosphere](https://atmosphere.community/) of
+[AT Proto](https://atproto.com/).
+Part of that process is making an 
+explicit spec for HTML output.
+The goal being to avoid a Markdown
+type situation where different parsers
+have different features that produces
+different outputs from the same input. 
+
+Validating the output is a little tricky. 
+The simplest way would be to just compare
+to strings.
+
+```
+is
+<strong>test</strong>
+the same as:
+<strong>test</strong>
+yes? you're good
+```
+
+The problem is whitespace. Take these
+two snippets for example:
+
+```
+<div>
+<strong>test</strong>
+</div>
+```
+and
+ 
+```
+<div>
+  <strong>test</strong>
+</div>
+```
+
+The only difference in them is the
+`strong` tag has a couple spaces
+in front of it in the second sample. 
+
+Both samples produce the exact
+same thing in the browser. And, 
+for testing purposes, they should
+be considered as matching. 
+
+But, thanks to the whitespace, the
+strings are different. So, the
+test would fail. 
+
+I've done simple testing before where
+I just yoinked all the spaces to
+collapse everything. That works
+great, as long as you don't 
+need to run tests that confirm
+what space that should show up does. 
+NeoDoc has some of those tests. 
+
+I'm using a rust crate called
+[scraper](https://docs.rs/scraper/latest/scraper/)
+to work around that. It parses
+HTML that can be compared more
+abstractly. 
+
+This is how I'm using it:
+
+== filter highlight("rust", "src/main.rs")  
+== include dir() + "/src/main.rs"
+== endfilter
+
+with this Cargo.toml:
+
+== filter highlight("rust", "Cargo.toml")  
+== include dir() + "/Cargo.toml"
+== endfilter
+
+which produces this:
+
+== filter highlight("txt", class="code-block no-buttons")  
+== include dir() + "/output.inc.txt"
+== endfilter
+
+The whitespace in the middle of the
+`h1` element gets disregarded. So does
+the order of the attributes themselves. 
+Even though the order of the arguments
+is `class, id` in the `left` variable
+and `id, class` in the `right` the
+HTML still matches. This is exactly 
+what I'm looking for since those 
+two samples rendered the same even
+though their string representations
+are different. 
+
+Test solution acquired. Back to 
+parsing, 
+
+-a
+
+
+== endfilter
+== endblock
+
+[#
+
+I use the built-in macOS Keychain Access app to store credentials
+for my various scripts and tools. I start off by creating
+a `New Password Item...` from the Keychain Access menu
+and filling in the details:
+
+<img src="images/raw/new-password.png" 
+alt="The new password prompt from the macOS KeyChain Access app" />
+
+
+Then, I use this rust code to pull in passwords
+when I need them:
+
+
+== filter highlight("rust", "src/main.rs")  
+== include dir() + "/src/main.rs"
+== endfilter
+
+with this Cargo.toml:
+
+== filter highlight("rust", "Cargo.toml")  
+== include dir() + "/Cargo.toml"
+== endfilter
+
+When I run the app from the command line I get
+a prompt from Keychain Access to enter the
+keychain's main password to unlock it. 
+
+
+<img src="images/raw/keychain-access-prompt.png" 
+alt="They macOS Keychain Access app prompt for the main password." />
+
+Assuming I click "Always Allow" when I enter
+the proper password Keychain Access provides 
+the requested password back to the app.
+From that point forward the app can get
+the password again without triggering
+the prompt.  
+
+It's hard to beat.
+
+-a
+
+## Notes
+
+- I've been using Keychain Access for ages. There's
+a new Passwords app too. The OS keeps prompting me
+to use it: 
+
+    <img src="images/raw/open-passwords-prompt.png" 
+alt="They macOS prompt to open Passwords instead of Keychain Access." />
+
+    I assume I'll be able to set up a similar system
+with it. I just haven't dug into it yet. 
+
+
+- I'm using the [security_framework crate](https://docs.rs/security-framework/latest/security_framework/index.html)
+to handle communication between my app and 
+Keychain Access. It's got north of
+[200 million downloads on crates.io](https://crates.io/crates/security-framework).
+I'm using that as social proof that it's
+a good library to go with. 
+
+- The security_framework crate works with Windows and Linux password
+managers too.
+
+- The `correct-horse-battery-staple` password is from 
+[this XKCD comic](https://xkcd.com/936/) which shows
+you why passwords with words are better than ones
+with a bunch of random characters. 
+
+
+
+### References 
+
+<ul class="d">
+<li><a href="https://crates.io/crates/security-framework">https://crates.io/crates/security-framework</a></li>
+<li><a href="https://docs.rs/security-framework/latest/security_framework/">https://docs.rs/security-framework/latest/security_framework/</a></li>
+<li><a href="https://docs.rs/security-framework/latest/security_framework/passwords/index.html">https://docs.rs/security-framework/latest/security_framework/passwords/index.html</a></li>
+</ul>
+
+
+#]
