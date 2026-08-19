@@ -135,7 +135,12 @@ b {
 blockquote {
   margin: var(--large-margin);
   padding: var(--default-padding);
-  background-color: var(--faded-reverse-color);
+  border: var(--faded-accent-border);
+  border-radius: var(--default-border-radius);
+
+  > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, var(--default-flow));
+  }
 }
 
 button {

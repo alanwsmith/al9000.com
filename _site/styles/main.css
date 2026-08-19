@@ -38,7 +38,7 @@
     --small-wdith: min(100vw - 2.0rem, 24rem);
     --default-border-radius: 0.5rem;
     --default-flow: 1.0rem;
-    --default-font-size: clamp(1.20rem, calc(1.2rem + 0.30vw), 1.4rem);
+    --default-font-size: clamp(1.02rem, calc(1.02rem + 0.30vw), 1.2rem);
     --default-font-weight: 500;
     --default-gap: 0.8rem;
     --default-line-height: 1.38;
@@ -694,7 +694,12 @@ b {
 blockquote {
   margin: var(--large-margin);
   padding: var(--default-padding);
-  background-color: var(--faded-reverse-color);
+  border: var(--faded-accent-border);
+  border-radius: var(--default-border-radius);
+
+  > :where(:not(:first-child)) {
+    margin-top: var(--flow-space, var(--default-flow));
+  }
 }
 
 button {

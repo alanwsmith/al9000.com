@@ -60,7 +60,7 @@
     "clamp(0.68rem, calc(0.67rem + 0.03vw), 0.7rem)",
     "clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem)",
     "clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem)",
-    "clamp(1.20rem, calc(1.2rem + 0.30vw), 1.4rem)",
+    "clamp(1.02rem, calc(1.02rem + 0.30vw), 1.2rem)",
     "clamp(1.32rem, calc(1.5rem + 0.58vw), 1.65rem)",
     "clamp(1.84rem, calc(1.77rem + 0.87vw), 2.14rem)",
     "clamp(2.8rem, calc(2rem + 1.25vw), 3.1rem)",

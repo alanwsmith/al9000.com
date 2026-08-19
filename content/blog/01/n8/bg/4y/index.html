@@ -1,0 +1,468 @@
+== extends "/templates.inc/switches/default.html"
+
+== block toml
+title = "AI/LLM Observations [Aug. 2026]"
+created = 2026-08-19T10:41:34-04:00
+tags = ["ai"]
+status = "done"
+id = "01/n8/bg/4y"
+== endblock
+
+
+== block main
+== filter md
+## In Response
+
+A [post from Thomas Fuchs](https://hachyderm.io/deck/@thomasfuchs/117122639321367550)
+went by on Mastodon asking for thoughts on 
+the ethics of AI/LLMs<sup class="footnote-link" id="footnote-link-terms"><a href="#footnote-ref-terms">terms</a></sup>. 
+The topic has been bubbling in the back of 
+my brain. While this post is 
+a response, it's more a place to write
+down my thoughts to help me think
+through them. 
+
+## Background Points
+
+I'm not at the point where trying
+to write a single, cohesive post makes
+sense. For now, it's bullet points. 
+
+- I write a lot of code. My point of view is coming
+from the perspective of a developer. 
+
+- I wonder how much variation folks have
+when they use the term "vibe coding". For
+me, it's when someone gives an LLM
+the ability to read and update their
+code directly. Something that still freaks me out. 
+Getting into why that is is a topic 
+for another day. 
+
+- The reason for the clarification of
+the term is because if someone asks
+me if I use AI to code, the answer is
+yes. I use [duck.ai](https://duck.ai/)
+to prompt in effectively the same
+way I use search engines. In fact, 
+I'm increasingly going to it as the
+first move. 
+
+  I read the code it gives me, then 
+place it into my codebase myself
+after thinking through what it's
+going to do and how it's going 
+to do it. Updating my mental map
+of the process I'm working on. 
+
+  (That may be one of the biggest things
+that freaks me out about full on 
+vibe coding. I don't feel like I'd
+have a mental map of what's going
+on if I'm not seeing everything myself)
+
+
+- I should point out that I start
+with documentation before going
+to either an AI/LLM or a search 
+engine. Especially if I've got
+some prior knowledge about 
+what I'm doing. 
+
+  For example, I'm working
+with rust's nom<sup class="footnote-link" id="footnote-link-nom"><a href="#footnote-ref-nom">nom</a></sup>
+parsing library. While there's
+a lot to it, I've spent a lot of time
+with it. It's easy for me to 
+find answers directly form the
+docs when I hit a sticking point. 
+
+- I've learned a bunch from using LLMs
+like a search engine. The code samples
+they return are generally much larger
+than I get on Stack 
+Overflow<sup class="footnote-link" id="footnote-link-so"><a href="#footnote-ref-so">so</a></sup>.
+That larger surface area has frequently 
+lead to second order learning where 
+I'm exposed so something new that's
+adjacent to the thing I was looking
+for. 
+
+  Again, this is not something I 
+would have been exposed to if
+I was doing straight vibe coding
+and not looking at the code produced. 
+And, even if I was looking, things
+don't really set in for me unless
+I type them in myself. 
+
+- Beyond my personal experience, I had
+photographer buddy (who's not a techie)
+build their own website with an LLM. 
+That's where things get the most 
+interesting to me. Using something
+to support creative work instead
+of trying to use it as a generator
+of something creative. 
+
+- I totally get the appeal of quick
+solutions to problems outside your
+field of expertise. Doubly so
+when there aren't even resources 
+available to assist. 
+For instance, I've started playing
+Magic. One of my favorite things about
+the game is the card art. Some of it's
+beautiful. Some of it, less so. Here's 
+two versions of the same card to give 
+you an idea. 
+
+  <div class="image-wrapper default-flow">
+  <style>
+  .image-wrapper img {
+    max-width: 12rem;
+    border-radius: 0.7rem;
+  }
+  </style>
+
+  ![An older printing of Giada from Magic the gathering. She's crouched looking to the side. The overall texture looks faded. The art is contained in a padded box area inside the edges of the card.]([@ dir("/giada-1.jpg") @])
+
+  And
+
+  ![A newer printing of Giada from Magic the gathering. She's flying a bit off the ground looking toward the viewer. The card is much more colorful with the art extending all the way to the edges of the card.]([@ dir("/giada-2.jpg") @])
+
+  </div>
+
+The first one is fine. The second is way better. 
+It's shaper, more vibrant, and the art extends
+to the edges of the card. 
+
+  Not every card has multiple options to 
+choose from. The result is collections 
+without a consistent look or feel<sup class="footnote-link" id="footnote-link-box"><a href="#footnote-ref-box">box</a></sup>. 
+I'd like to make custom card art to bring 
+everything into the ball-park. I don't
+have anywhere near the skill to do that
+though. 
+
+  The appeal of using AI tools to generate
+custom art is high. A three sentence prompt
+got me this in about twenty seconds. 
+
+
+  <div class="image-wrapper default-flow">
+
+  ![An AI Generated Ninja.]([@ dir("/ai-ninja.jpg") @])
+
+  </div>
+
+  It would work great as a replement
+for an inconsistent looking card in my 
+deck of ninjas<sup class="footnote-link" id="footnote-link-ninjas"><a href="#footnote-ref-ninjas">ninjas</a></sup>. 
+Just throw it in 
+a card maker<sup class="footnote-link" id="footnote-link-maker"><a href="#footnote-ref-maker">maker</a></sup>, 
+add the text, and off
+you go.
+
+  No one but me and the folks I play
+with would see the cards. I wouldn't be 
+presenting them as art I made
+any more than I would a piece of 
+stock art. 
+
+  If I didn't know more about
+AI generation tools, I'd do it in 
+a heartbeat. But, I do know about
+them. Weirdly, I'm less concerned
+about what they did (slurping up
+every image they could get their
+hands on regardless of copyright
+to feed to the machines) compared
+to what they're doing: making it
+even harder for artists to 
+make a living from their art. 
+
+  This is not dissimilar to what
+happened to the photography
+market when digital cameras
+came on the scene and migrated
+into high quality tools
+built in to the phones in our
+every day carry<sup class="footnote-link" id="footnote-link-photos"><a href="#footnote-ref-photos">photos</a></sup>. 
+
+  It's different though. The camera
+in a phone is a tool for making
+things. AI Gen tools do the making
+themselves. The distinction feels
+subtle to say out loud, but it's
+profound in impact. 
+
+  Sadly, artist seem to be getting
+hit just as hard as photographers
+who saw their market decimated
+by the new tech. 
+
+## Outro
+
+Where this all leaves me is:
+
+- I don't make my own Magic cards. 
+I don't know if that's as much 
+an ethical decision or more about
+wanting to support artists. It's
+some of each. I just don't know
+the ratio. Nor do I care. 
+I've made the decision. 
+Spending time unwrapping it further 
+is uninteresting. 
+
+- I'm in favor of tools that support
+folks doing more creative things.
+Being able to build a website to
+present your photos and then getting
+more excited about taking photos
+as a result is an improvement to
+the world. 
+  
+  As with just about everything, that
+means there's some utility to it
+that's within the general bounds of 
+ethical usage of the system
+as it exists. 
+
+- Part or talking about ethics of AI 
+feels like conversations of 
+separating art and artist. If
+what you get out of it is beneficial
+but the ingestion of raw material
+was out of bounds, where do you stand. 
+
+  In a much more extreme example,
+my understanding is a lot of our
+advancement in understanding the
+body and creating treatments 
+for it came from absolutely awful
+situations. 
+
+  Should we disregard life saving
+advancements because they were 
+discovered through horrors? 
+Does the answer change over time?
+
+
+- I'll continue to use LLMs as search
+tools. Even though LLMs slurped up
+code the same way they slurped up
+art, I have way less of a problem with
+that. 
+
+  The analogy that just occurred to 
+me is one of patents. If you've 
+genuinely created something new, it
+makes sense that you get some time
+with it to be just yours if that's
+the direction you want to take. 
+  
+  But, that time shouldn't be unlimited. 
+It also shouldn't bar folks who come
+up with the same idea/approach/whatever
+on their own from being able to do
+the thing as well. 
+
+  We've collectively put all this tooling
+into the open source world to make things. 
+I believe it would be a disservice to humanity
+to draw a hard line in the sand against
+using it in these new ways. 
+
+  The corporate capitalist capturing 
+of the tools is a bummer, but if more 
+folks can make more things that help
+them make more things, I don't want 
+to lose that. 
+
+- Thinking about my own code. 
+If something I made gets slurped up
+into an LLM which uses it to show
+someone how to do something new, 
+I'm cool with that. 
+
+  If an AI tool picks up my photography
+and uses it to generate images, they
+can fuck right off. 
+
+We're still in the very early days of
+all this. I'm not a big prediction maker
+but I've got this riff. It's on 
+Arthur C. Clarke's Third Law: 
+
+> Any sufficiently advanced technology is 
+indistinguishable from magic.
+
+My riff:
+
+> Any sufficiently distributed technology is
+indistinguishable from nature. 
+
+I don't see a world where AI and LLMs
+don't proliferate to the point where
+they become an envoronmental background. 
+Something you only notice if you
+decide to think about it. The ethical
+and moral considerations fading
+into the background the same way
+we rarely think about them in 
+terms of saw mills. 
+
+-a
+
+
+<div class="end-of-line"></div>
+
+### Endnotes
+
+- I'm not getting into the environmental
+issues at either the global or local level. 
+That's a shit show and one that should
+be considered in the overall conversation. 
+
+  But, it's important that we can talk about
+things at different levels and through different lenses. 
+Kinda like the [Six Thinking Hats](https://en.wikipedia.org/wiki/Six_Thinking_Hats).
+
+- Discussing ethics is both interesting and
+important. It's also a tough sell. Or, rather,
+a tough way to convince corporations to sell less. 
+The foundation of the world of publicly traded companies 
+is quarterly profits. For all intents and
+purposes, anything that increases them
+without lading the C-suite in jail should
+be expected. 
+
+  It reminds me of this piece from a former 
+CIA officer where he talks about the 
+most important character trait to being
+a good spy. His answer: 
+
+
+  > The most important thing CIS, or Mossad, or
+MI-6 look for when they make a possible 
+new spy, is somebody who seeks validation
+from an external source. They're looking
+for somebody who is so loyal and so
+dependent on external validation that they
+will lie, steal, cheat, commit crimes, 
+cross borders, change their name, and
+do anything they have to do in order
+to get validation and approval from
+that one, focused, external source. 
+  > 
+  > 
+  > And, when the CIA finds a person like
+that, they can train that person 
+to become dependent on the CIA. And then,
+the loyalty of that individual becomes
+so focused on the institution that they
+don't need any other attention from
+anywhere else. As long as they serve
+the one organization that validates
+and appreciates their work. 
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/X3vHJiPRLSo?si=gTV5JKLdZwWY4APn&amp;start=228" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+- Another aspect that's in my head is
+the use of AI/LLMs in medical practices. 
+My psychiatrist is looking at using 
+AI note taking tools. Right now, 
+he's asking for consent. I expect
+within five years it'll turn into
+one of those things where if you
+don't provide consent they won't see 
+you. If they even ask at all. 
+
+Right now, it's just summaries.
+Coming down the pipe is recommendations. 
+That weirds me out. Like, 
+I dig the idea of feeding a bunch of
+data in systems to look for patterns
+and run variations to advance
+cancer research. 
+
+I don't like idea of more personal notes
+from conversations being put in. 
+Some of that has to do with the
+idea of those notes being used to
+make determinations not about 
+treatments, but about undesirables
+who need to be removed from society. 
+
+The idea being that those conversations
+could already happen. But, a politician
+saying that themselves isn't
+as powerful rhetorically as a politician
+stating it as fact because it came
+from an AI. 
+
+
+### Footnotes
+
+<a class="footnote-ref" id="footnote-ref-nom" href="#footnote-link-nom">nom</a>
+Parser combinator, you say? WTF even is that, you ask? Basically, it's a tool
+to split out parts of files so you can use them independently. Grabbing
+the title of a document so you can use the text as a link on 
+another page, for example.
+
+One of those tools is [nom](https://docs.rs/nom/latest/nom/index.html). It's
+brain-bendy to learn, but super dope when you get the hang of it.  
+
+<a class="footnote-ref" id="footnote-ref-so" href="#footnote-link-so">so</a>
+Traditionally, the go to place for picking up the pieces
+you need to code the things you're coding if
+you don't already know how to do it: [Stack Overflow](https://stackoverflow.com/)
+
+
+<a class="footnote-ref" id="footnote-ref-box" href="#footnote-link-box">box</a>
+One of the biggest differences being full-bleed art that goes
+to the edges of the cards compared to the images
+that are constrained to an interior area. The first of
+the _Giada_ cards being an example. 
+
+<a class="footnote-ref" id="footnote-ref-ninjas" href="#footnote-link-ninjas">ninjas</a>
+My [Yuriko ninja deck](https://archidekt.com/decks/22850037/yuriko) was
+the first one I made myself. I've been tuning
+it ever since. It's not as great 1v1 but 
+does pretty well with more folks involved. 
+
+<a class="footnote-ref" id="footnote-ref-maker" href="#footnote-link-maker">maker</a>
+Want to make your own custom art for magic cards?
+There's
+[a tool for that](https://printmtg.com/mtg-card-maker/). 
+And more floating around if you search for them. 
+
+<a class="footnote-ref" id="footnote-ref-photos" href="#footnote-link-photos">photos</a>
+I'm working on a piece that looks at 
+AI through the historical lens of 
+technology advancing in photography. 
+Started it last year and it continues
+to hold course. 
+
+[AI's Inevitable Photographic Journey - Or, The Camera and the Violin](https://www.alanwsmith.com/en/33/ej/kh/zs/)
+
+
+
+
+
+
+
+<a class="footnote-ref" id="footnote-ref-term" href="#footnote-link-terms">terms</a>
+I'm using the terms "AI" and "LLM" here
+interchangeably. There are some definitions
+that would differentiate between
+the two, but they mean the same thing
+here. 
+
+
+
+
+== endfilter
+== endblock
