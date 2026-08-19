@@ -3,6 +3,7 @@ export const b = {
 };
 
 const names = `
+Humongous Fungus
 Darth Vader Egg
 Grippy Sock Hospital 
 Deterministic

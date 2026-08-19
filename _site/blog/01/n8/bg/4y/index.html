@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>AI/LLM Observations [Aug. 2026]</title>
+<meta property="og:title" content="AI/LLM Observations [Aug. 2026]" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;blog&#x2f;01&#x2f;n8&#x2f;bg&#x2f;4y/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
+
+
+    
+    
+    
+    
+
+    
+
+
+    <style>
+    </style>
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+    <div class="payload">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> ~
+    <a href="https://bittyjs.com/">bitty</a> ~
+    <a href="https://neodoc.style/">neodoc</a>
+  </div>
+
+
+</header>
+
+
+<main class="default default-wrapper default-flow">
+
+  <hgroup class="default">
+      <div class="title-wrapper">
+        <h1>AI&#x2f;LLM Observations [Aug. 2026]</h1>
+      </div>
+        <div class="date">August 2026</div>
+  </hgroup>
+
+<h2>In Response</h2>
+<p>A <a href="https://hachyderm.io/deck/@thomasfuchs/117122639321367550">post from Thomas Fuchs</a>
+went by on Mastodon asking for thoughts on
+the ethics of AI/LLMs<sup class="footnote-link" id="footnote-link-terms"><a href="#footnote-ref-terms">terms</a></sup>.
+The topic has been bubbling in the back of
+my brain. While this post is
+a response, it's more a place to write
+down my thoughts to help me think
+through them.</p>
+<h2>Background Points</h2>
+<p>I'm not at the point where trying
+to write a single, cohesive post makes
+sense. For now, it's bullet points.</p>
+<ul>
+<li>
+<p>I write a lot of code. My point of view is coming
+from the perspective of a developer.</p>
+</li>
+<li>
+<p>I wonder how much variation folks have
+when they use the term &quot;vibe coding&quot;. For
+me, it's when someone gives an LLM
+the ability to read and update their
+code directly. Something that still freaks me out.
+Getting into why that is is a topic
+for another day.</p>
+</li>
+<li>
+<p>The reason for the clarification of
+the term is because if someone asks
+me if I use AI to code, the answer is
+yes. I use <a href="https://duck.ai/">duck.ai</a>
+to prompt in effectively the same
+way I use search engines. In fact,
+I'm increasingly going to it as the
+first move.</p>
+<p>I read the code it gives me, then
+place it into my codebase myself
+after thinking through what it's
+going to do and how it's going
+to do it. Updating my mental map
+of the process I'm working on.</p>
+<p>(That may be one of the biggest things
+that freaks me out about full on
+vibe coding. I don't feel like I'd
+have a mental map of what's going
+on if I'm not seeing everything myself)</p>
+</li>
+<li>
+<p>I should point out that I start
+with documentation before going
+to either an AI/LLM or a search
+engine. Especially if I've got
+some prior knowledge about
+what I'm doing.</p>
+<p>For example, I'm working
+with rust's nom<sup class="footnote-link" id="footnote-link-nom"><a href="#footnote-ref-nom">nom</a></sup>
+parsing library. While there's
+a lot to it, I've spent a lot of time
+with it. It's easy for me to
+find answers directly form the
+docs when I hit a sticking point.</p>
+</li>
+<li>
+<p>I've learned a bunch from using LLMs
+like a search engine. The code samples
+they return are generally much larger
+than I get on Stack
+Overflow<sup class="footnote-link" id="footnote-link-so"><a href="#footnote-ref-so">so</a></sup>.
+That larger surface area has frequently
+lead to second order learning where
+I'm exposed so something new that's
+adjacent to the thing I was looking
+for.</p>
+<p>Again, this is not something I
+would have been exposed to if
+I was doing straight vibe coding
+and not looking at the code produced.
+And, even if I was looking, things
+don't really set in for me unless
+I type them in myself.</p>
+</li>
+<li>
+<p>Beyond my personal experience, I had
+photographer buddy (who's not a techie)
+build their own website with an LLM.
+That's where things get the most
+interesting to me. Using something
+to support creative work instead
+of trying to use it as a generator
+of something creative.</p>
+</li>
+<li>
+<p>I totally get the appeal of quick
+solutions to problems outside your
+field of expertise. Doubly so
+when there aren't even resources
+available to assist.
+For instance, I've started playing
+Magic. One of my favorite things about
+the game is the card art. Some of it's
+beautiful. Some of it, less so. Here's
+two versions of the same card to give
+you an idea.</p>
+<div class="image-wrapper default-flow">
+<style>
+.image-wrapper img {
+  max-width: 12rem;
+  border-radius: 0.7rem;
+}
+</style>
+<p><img src="/blog/01/n8/bg/4y/giada-1.jpg" alt="An older printing of Giada from Magic the gathering. She's crouched looking to the side. The overall texture looks faded. The art is contained in a padded box area inside the edges of the card." /></p>
+<p>And</p>
+<p><img src="/blog/01/n8/bg/4y/giada-2.jpg" alt="A newer printing of Giada from Magic the gathering. She's flying a bit off the ground looking toward the viewer. The card is much more colorful with the art extending all the way to the edges of the card." /></p>
+</div>
+</li>
+</ul>
+<p>The first one is fine. The second is way better.
+It's shaper, more vibrant, and the art extends
+to the edges of the card.</p>
+<p>Not every card has multiple options to
+choose from. The result is collections
+without a consistent look or feel<sup class="footnote-link" id="footnote-link-box"><a href="#footnote-ref-box">box</a></sup>.
+I'd like to make custom card art to bring
+everything into the ball-park. I don't
+have anywhere near the skill to do that
+though.</p>
+<p>The appeal of using AI tools to generate
+custom art is high. A three sentence prompt
+got me this in about twenty seconds.</p>
+  <div class="image-wrapper default-flow">
+<p><img src="/blog/01/n8/bg/4y/ai-ninja.jpg" alt="An AI Generated Ninja." /></p>
+  </div>
+<p>It would work great as a replement
+for an inconsistent looking card in my
+deck of ninjas<sup class="footnote-link" id="footnote-link-ninjas"><a href="#footnote-ref-ninjas">ninjas</a></sup>.
+Just throw it in
+a card maker<sup class="footnote-link" id="footnote-link-maker"><a href="#footnote-ref-maker">maker</a></sup>,
+add the text, and off
+you go.</p>
+<p>No one but me and the folks I play
+with would see the cards. I wouldn't be
+presenting them as art I made
+any more than I would a piece of
+stock art.</p>
+<p>If I didn't know more about
+AI generation tools, I'd do it in
+a heartbeat. But, I do know about
+them. Weirdly, I'm less concerned
+about what they did (slurping up
+every image they could get their
+hands on regardless of copyright
+to feed to the machines) compared
+to what they're doing: making it
+even harder for artists to
+make a living from their art.</p>
+<p>This is not dissimilar to what
+happened to the photography
+market when digital cameras
+came on the scene and migrated
+into high quality tools
+built in to the phones in our
+every day carry<sup class="footnote-link" id="footnote-link-photos"><a href="#footnote-ref-photos">photos</a></sup>.</p>
+<p>It's different though. The camera
+in a phone is a tool for making
+things. AI Gen tools do the making
+themselves. The distinction feels
+subtle to say out loud, but it's
+profound in impact.</p>
+<p>Sadly, artist seem to be getting
+hit just as hard as photographers
+who saw their market decimated
+by the new tech.</p>
+<h2>Outro</h2>
+<p>Where this all leaves me is:</p>
+<ul>
+<li>
+<p>I don't make my own Magic cards.
+I don't know if that's as much
+an ethical decision or more about
+wanting to support artists. It's
+some of each. I just don't know
+the ratio. Nor do I care.
+I've made the decision.
+Spending time unwrapping it further
+is uninteresting.</p>
+</li>
+<li>
+<p>I'm in favor of tools that support
+folks doing more creative things.
+Being able to build a website to
+present your photos and then getting
+more excited about taking photos
+as a result is an improvement to
+the world.</p>
+<p>As with just about everything, that
+means there's some utility to it
+that's within the general bounds of
+ethical usage of the system
+as it exists.</p>
+</li>
+<li>
+<p>Part or talking about ethics of AI
+feels like conversations of
+separating art and artist. If
+what you get out of it is beneficial
+but the ingestion of raw material
+was out of bounds, where do you stand.</p>
+<p>In a much more extreme example,
+my understanding is a lot of our
+advancement in understanding the
+body and creating treatments
+for it came from absolutely awful
+situations.</p>
+<p>Should we disregard life saving
+advancements because they were
+discovered through horrors?
+Does the answer change over time?</p>
+</li>
+<li>
+<p>I'll continue to use LLMs as search
+tools. Even though LLMs slurped up
+code the same way they slurped up
+art, I have way less of a problem with
+that.</p>
+<p>The analogy that just occurred to
+me is one of patents. If you've
+genuinely created something new, it
+makes sense that you get some time
+with it to be just yours if that's
+the direction you want to take.</p>
+<p>But, that time shouldn't be unlimited.
+It also shouldn't bar folks who come
+up with the same idea/approach/whatever
+on their own from being able to do
+the thing as well.</p>
+<p>We've collectively put all this tooling
+into the open source world to make things.
+I believe it would be a disservice to humanity
+to draw a hard line in the sand against
+using it in these new ways.</p>
+<p>The corporate capitalist capturing
+of the tools is a bummer, but if more
+folks can make more things that help
+them make more things, I don't want
+to lose that.</p>
+</li>
+<li>
+<p>Thinking about my own code.
+If something I made gets slurped up
+into an LLM which uses it to show
+someone how to do something new,
+I'm cool with that.</p>
+<p>If an AI tool picks up my photography
+and uses it to generate images, they
+can fuck right off.</p>
+</li>
+</ul>
+<p>We're still in the very early days of
+all this. I'm not a big prediction maker
+but I've got this riff. It's on
+Arthur C. Clarke's Third Law:</p>
+<blockquote>
+<p>Any sufficiently advanced technology is
+indistinguishable from magic.</p>
+</blockquote>
+<p>My riff:</p>
+<blockquote>
+<p>Any sufficiently distributed technology is
+indistinguishable from nature.</p>
+</blockquote>
+<p>I don't see a world where AI and LLMs
+don't proliferate to the point where
+they become an envoronmental background.
+Something you only notice if you
+decide to think about it. The ethical
+and moral considerations fading
+into the background the same way
+we rarely think about them in
+terms of saw mills.</p>
+<p>-a</p>
+<div class="end-of-line"></div>
+<h3>Endnotes</h3>
+<ul>
+<li>
+<p>I'm not getting into the environmental
+issues at either the global or local level.
+That's a shit show and one that should
+be considered in the overall conversation.</p>
+<p>But, it's important that we can talk about
+things at different levels and through different lenses.
+Kinda like the <a href="https://en.wikipedia.org/wiki/Six_Thinking_Hats">Six Thinking Hats</a>.</p>
+</li>
+<li>
+<p>Discussing ethics is both interesting and
+important. It's also a tough sell. Or, rather,
+a tough way to convince corporations to sell less.
+The foundation of the world of publicly traded companies
+is quarterly profits. For all intents and
+purposes, anything that increases them
+without lading the C-suite in jail should
+be expected.</p>
+<p>It reminds me of this piece from a former
+CIA officer where he talks about the
+most important character trait to being
+a good spy. His answer:</p>
+<blockquote>
+<p>The most important thing CIS, or Mossad, or
+MI-6 look for when they make a possible
+new spy, is somebody who seeks validation
+from an external source. They're looking
+for somebody who is so loyal and so
+dependent on external validation that they
+will lie, steal, cheat, commit crimes,
+cross borders, change their name, and
+do anything they have to do in order
+to get validation and approval from
+that one, focused, external source.</p>
+<p>And, when the CIA finds a person like
+that, they can train that person
+to become dependent on the CIA. And then,
+the loyalty of that individual becomes
+so focused on the institution that they
+don't need any other attention from
+anywhere else. As long as they serve
+the one organization that validates
+and appreciates their work.</p>
+</blockquote>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X3vHJiPRLSo?si=gTV5JKLdZwWY4APn&amp;start=228" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</li>
+<li>
+<p>Another aspect that's in my head is
+the use of AI/LLMs in medical practices.
+My psychiatrist is looking at using
+AI note taking tools. Right now,
+he's asking for consent. I expect
+within five years it'll turn into
+one of those things where if you
+don't provide consent they won't see
+you. If they even ask at all.</p>
+</li>
+</ul>
+<p>Right now, it's just summaries.
+Coming down the pipe is recommendations.
+That weirds me out. Like,
+I dig the idea of feeding a bunch of
+data in systems to look for patterns
+and run variations to advance
+cancer research.</p>
+<p>I don't like idea of more personal notes
+from conversations being put in.
+Some of that has to do with the
+idea of those notes being used to
+make determinations not about
+treatments, but about undesirables
+who need to be removed from society.</p>
+<p>The idea being that those conversations
+could already happen. But, a politician
+saying that themselves isn't
+as powerful rhetorically as a politician
+stating it as fact because it came
+from an AI.</p>
+<h3>Footnotes</h3>
+<p><a class="footnote-ref" id="footnote-ref-nom" href="#footnote-link-nom">nom</a>
+Parser combinator, you say? WTF even is that, you ask? Basically, it's a tool
+to split out parts of files so you can use them independently. Grabbing
+the title of a document so you can use the text as a link on
+another page, for example.</p>
+<p>One of those tools is <a href="https://docs.rs/nom/latest/nom/index.html">nom</a>. It's
+brain-bendy to learn, but super dope when you get the hang of it.</p>
+<p><a class="footnote-ref" id="footnote-ref-so" href="#footnote-link-so">so</a>
+Traditionally, the go to place for picking up the pieces
+you need to code the things you're coding if
+you don't already know how to do it: <a href="https://stackoverflow.com/">Stack Overflow</a></p>
+<p><a class="footnote-ref" id="footnote-ref-box" href="#footnote-link-box">box</a>
+One of the biggest differences being full-bleed art that goes
+to the edges of the cards compared to the images
+that are constrained to an interior area. The first of
+the <em>Giada</em> cards being an example.</p>
+<p><a class="footnote-ref" id="footnote-ref-ninjas" href="#footnote-link-ninjas">ninjas</a>
+My <a href="https://archidekt.com/decks/22850037/yuriko">Yuriko ninja deck</a> was
+the first one I made myself. I've been tuning
+it ever since. It's not as great 1v1 but
+does pretty well with more folks involved.</p>
+<p><a class="footnote-ref" id="footnote-ref-maker" href="#footnote-link-maker">maker</a>
+Want to make your own custom art for magic cards?
+There's
+<a href="https://printmtg.com/mtg-card-maker/">a tool for that</a>.
+And more floating around if you search for them.</p>
+<p><a class="footnote-ref" id="footnote-ref-photos" href="#footnote-link-photos">photos</a>
+I'm working on a piece that looks at
+AI through the historical lens of
+technology advancing in photography.
+Started it last year and it continues
+to hold course.</p>
+<p><a href="https://www.alanwsmith.com/en/33/ej/kh/zs/">AI's Inevitable Photographic Journey - Or, The Camera and the Violin</a></p>
+<p><a class="footnote-ref" id="footnote-ref-term" href="#footnote-link-terms">terms</a>
+I'm using the terms &quot;AI&quot; and &quot;LLM&quot; here
+interchangeably. There are some definitions
+that would differentiate between
+the two, but they mean the same thing
+here.</p>
+
+
+<div class="end-of-line"></div>
+
+
+
+</main>
+
+<footer class="default">
+  <div>
+    from <a href="https://bsky.app/profile/al9000.com">alan w smith</a>
+  </div>
+  <div>
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div>
+    and designed <a href="https://neodoc.style">neodoc</a>
+  </div>
+
+      
+</footer>
+
+
+    </div>
+
+
+    <div class="templates" hidden>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <script type="module" src="/bits/components.js"></script>
+
+
+
+    </div>
+  </body>
+</html>
