@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Emacs Notes</title>
+<meta property="og:title" content="Emacs Notes" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;emacs/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
+
+
+    
+    
+    
+    
+
+    
+
+
+    <style>
+    </style>
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+    <div class="payload">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> ~
+    <a href="https://bittyjs.com/">bitty</a> ~
+    <a href="https://neodoc.style/">neodoc</a>
+  </div>
+
+
+</header>
+
+
+<main class="default default-wrapper default-flow">
+
+  <hgroup class="default">
+      <div class="title-wrapper">
+        <h1>Emacs Notes</h1>
+      </div>
+        <div class="date">August 2026</div>
+  </hgroup>
+
+
+<pre class="tmp-neo">
+-- h2
+
+Doom Emacs
+
+I'm using Doom Emacs. I used Spacemacs before,
+but trying Doom this time.
+
+I'm making some updates to my config
+setup. Those are documented directly
+in the config file. Will post that
+at some point when I get symlinks
+sorted out.
+
+-- h2
+
+Tabs
+
+-- details
+-- label: Enable tab
+
+In ``init.el`` uncomment:
+
+``:ui`` -> ``tabs``
+
+
+-- details
+-- label: Switch tabs
+
+When in (evil) Normal mode:
+
+{{g}}{{t}}
+
+{{g}}{{T}}
+
+
+
+
+
+-- h2
+
+Windows
+
+-- details
+-- label: Create a new horizontal (stacked) window
+
+{{SPC}}{{w}}{{s}}
+
+
+-- details
+-- label: Cycle between windows
+
+{{SPC}}{{w}}{{w}}
+
+
+-- details
+-- label: Navigate to window
+
+{{C-w}}{{h}}
+
+{{C-w}}{{j}}
+
+{{C-w}}{{k}}
+
+{{C-w}}{{l}}
+
+
+
+
+
+
+-- h2
+
+Fundamentals
+
+-- details
+-- label: Abort partially typed or executing command
+
+{{C+x}}{{g}}
+
+
+-- details
+-- lable: Browser themes
+
+{{C+h}}{{t}}
+
+
+
+-- h2
+
+File Operations
+
+-- list
+
+- Open a specific file:
+
+{{C+x}}{{C-f}}
+
+
+- Safe current file:
+
+{{C-x}}{{C-s}}
+
+
+- Save all files:
+
+{{C-x}}{{s}}
+
+
+- Undo
+
+{{C-x}}{{u}}
+
+{{C-/}}
+
+
+- Change the current buffer
+
+{{C+x}}{{b}}
+
+
+- Kill a buffer
+
+{{C+x}}{{k}}
+
+
+- Write buffer to a specific file
+
+{{C+x}}{{C+w}}
+
+
+
+-- list
+-- h2: Cursor Movement
+
+- Looks like this jumps between
+parts of the window if more than
+one are opened:
+
+{{C+x}}{{o}}
+
+
+
+
+-- h2
+
+Project Stuff
+
+
+-- details
+-- label: Add a new project to the list of known projects
+
+{{Spc}}{{p}}{{a}}
+
+NOTE: I'm curreing having to
+restart emacs to pick up the
+new project. I'm sure there's
+a way to not have to do that.
+I haven't looked into it yet.
+
+
+-- details
+-- label: Open a known project
+
+{{Spc}}{{p}}{{p}}
+
+
+-- details
+-- label: Find a file in the current project
+
+{{Spc}}{{Spc}}
+
+
+-- details
+-- label: Remove a known project from the list
+
+{{Spc}}{{p}}{{r}}
+
+
+-- h2
+
+Treemacs
+
+-- details
+-- label: Open/Close Treemacs
+
+{{SPC}}{{o}}{{p}}
+
+-- details
+-- label: Switch to Treemacs from open file
+
+{{SPC}}{{w}}{{h}}
+
+(This is the standard move to the window
+to the left command. As long as Treemacs
+is on that side it'll get you there.)
+
+
+
+-- details
+-- label: Open selected file
+
+{{RET}}
+
+
+-- details
+-- label: Create a new file
+
+{{c}}{{f}}
+
+
+-- details
+-- label: Create a new directory
+
+{{c}}{{d}}
+
+
+-- details
+-- label: Delete selection (recursively)
+
+{{d}}
+
+
+-- details
+-- label: Renmae the selected item
+
+{{r}}
+
+
+
+
+-- h2
+
+Miscellaneous
+
+
+-- details
+-- label: Figure out what things set a particular variable
+
+Get the details aboute variable with:
+
+{{C-h}}{{v}} variable-name {{RET}}
+
+This includes a list of triggers
+when the varaible is set. (not sure
+this covers everything or not)
+
+
+-- details
+-- label: Don't use Customize
+
+The general guideline it to avoid using
+the Customize package to manage things
+and do things directly in the `config.el`
+file. (This is from the [System Crafters
+videos](https://www.youtube.com/@SystemCrafters)
+and some other notes I've seen.)
+
+
+
+
+
+-- details
+-- label: Window management via evil
+
+Look at {{C-w}}
+in evil more for window controls. 
+
+
+
+-- details
+-- label: Set up a hotkey
+
+- Look at general.el
+
+https://github.com/noctuid/general.el
+
+see: https://www.youtube.com/live/xaZMwNELaJY?si=34Zt8-Nosnh-MfSZ&t=1108
+
+
+
+OLDNOTES:
+
+use ``global-set-key`` for global
+stuff
+
+and 
+
+``define-key`` for setting things
+for a specific mode
+
+For example:
+
+(define-key emacs-lisp-mode-map (kbd "C-x M-t") 'load-theme)
+
+You can then use 
+``global-unset-key`` to remove it if you're
+just playing around. 
+
+
+-- details
+-- label: List key bindings for a mode
+
+Do: 
+
+{{C-h}}{v} MAP_NAME
+
+e.g.
+
+{{C-h}}{{v}} emacs-list-mode-map
+
+
+
+
+
+-- details
+-- label: Evaluate the current buffers
+
+{{M-x}} eval-buffer
+
+
+-- details
+-- label: Evaluate a specific function
+
+Go to the last paren of the function and do:
+
+{{C-x}}{{C-e}}
+
+
+
+-- details
+-- label: Display the value of a variable 
+
+Use Eval:
+
+{{M-:}} aka {{S-M-;}}
+
+
+-- details
+-- label: Remap a function to a new function
+
+TODO: Look at this and check the syntax
+
+([remap describe-function] . counsel-describe-function)
+
+
+
+
+-- details
+-- label: Turn on default emacs tabs
+
+{{M-x}} global-tab-line-mode 
+
+
+
+-- details
+-- label: Run a command
+
+{{M-x}} COMMAND_NAME
+
+If you want to see every command you can run, do
+{{M-x}}{{TAB}}
+
+
+-- details
+-- label: Get a list of key bindings
+
+{{M-x}} describe-bindings
+
+
+-- details
+-- label: Learn what a key combo does
+
+{{M-x}} describe-key 
+
+
+-- details
+-- label: Look up the state of a variable
+
+{{C-h}}{{v}}
+
+
+-- details
+-- label: Find parenthesis issues
+
+{{M-x}} check-parens
+
+
+
+
+-- list
+-- h2: Notes
+
+- {{C-x}} is the prefix for all primary Emacs
+bindings
+
+- {{C-c}} generally bindings from the active
+major mode, minor modes, and user bindings
+
+- Basic open file {{C-x}}{{C-f}} for finding
+a file
+
+- Save the current buffer you're looking at
+{{C-x}}{{C-s}}
+
+- Save As (to write a buffer to a different
+file location): {{C-x}}{{C-w}}
+
+- {{C-x}}{{b}} is the basic way to switch
+between buffers. 
+
+- {{C-x}}{{C-b}} opens list of open
+buffers
+
+- {{C-x}}{{left arrow}} and {{C-x}}{{right arrow}}
+switch between buffers
+
+- In the docs, "kill" is effectively "cut" 
+
+- {{C-SPC}} is how you mark regions (e.g. for
+killing)
+
+- {{C-w}} kills (cuts) the current selection
+that can be pasted elsewhere. The killed
+contents are put on the __kill ring__ which
+contains all the stuff that has been 
+killed previous. (TODO: Figure out how
+to keep passwords from being included
+in this if necessary)
+
+- {{C-y}} is for "yank" which is effectively
+"paste" (it yanks from the kill ring)
+
+- {{C-_}} is the default undo key combo
+{{C-/}} is an alternate one. 
+
+- To redo, use {{C-g}} to reverse the
+direction of the undo list and then
+do {{C-_}} or {{C-/}} again. This will
+keep working until you hit the end
+of the undo chain, then it will
+go back to undoing. (TODO: probably
+find something that doesn't require
+as much mental overhead for this)
+
+- {{C-g}} is also how you stop
+commands that are in progress
+
+- You can do customization with
+{{M-x}} customize. Or, do
+it in your <<path|init.el>> file. 
+
+- If emacs crashes there's a
+{{M-x}} recover-this-file that you can
+run on the file to get the unsaved
+changes
+
+
+- TODO: Look at command-log-mode for showing what
+keys your pressing and what they run. Useful
+for streaming but also maybe for figuring out
+what you hit accidentally?
+
+
+- You can use things like `doom-mode-line`
+without having to do the rest of doom.
+
+
+- Use `evil-commentary` for comment
+functionality in evil mode
+
+
+
+
+
+
+
+</pre>
+<div class="end-of-line"></div>
+
+
+
+</main>
+
+<footer class="default">
+  <div>
+    from <a href="https://bsky.app/profile/al9000.com">alan w smith</a>
+  </div>
+  <div>
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div>
+    and designed <a href="https://neodoc.style">neodoc</a>
+  </div>
+
+      
+  <div>
+    <button
+      class="default-wrapper text-align-center faded-base-color"
+      data-s="copyElement"
+      style="opacity: 0.20; padding-bottom: 0.3rem;"
+    >
+      <span>
+      id = "01/n8/xx/vr"
+      </span>
+    </button>
+  </div>
+      
+</footer>
+
+
+    </div>
+
+
+    <div class="templates" hidden>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <script type="module" src="/bits/components.js"></script>
+
+
+
+    </div>
+  </body>
+</html>

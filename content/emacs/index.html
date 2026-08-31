@@ -1,0 +1,492 @@
+== extends "/templates.inc/switches/default.html"
+
+== block toml
+title = "Emacs Notes"
+created = 2026-08-26T10:26:00-04:00
+status =  "draft"
+flags = ["skip"]
+== endblock
+
+== block content
+== filter neo
+
+-- h2
+
+Doom Emacs
+
+I'm using Doom Emacs. I used Spacemacs before,
+but trying Doom this time.
+
+I'm making some updates to my config
+setup. Those are documented directly
+in the config file. Will post that
+at some point when I get symlinks
+sorted out.
+
+-- h2
+
+Tabs
+
+-- details
+-- label: Enable tab
+
+In ``init.el`` uncomment:
+
+``:ui`` -> ``tabs``
+
+
+-- details
+-- label: Switch tabs
+
+When in (evil) Normal mode:
+
+{{g}}{{t}}
+
+{{g}}{{T}}
+
+
+
+
+
+-- h2
+
+Windows
+
+-- details
+-- label: Create a new horizontal (stacked) window
+
+{{SPC}}{{w}}{{s}}
+
+
+-- details
+-- label: Cycle between windows
+
+{{SPC}}{{w}}{{w}}
+
+
+-- details
+-- label: Navigate to window
+
+{{C-w}}{{h}}
+
+{{C-w}}{{j}}
+
+{{C-w}}{{k}}
+
+{{C-w}}{{l}}
+
+
+
+
+
+
+-- h2
+
+Fundamentals
+
+-- details
+-- label: Abort partially typed or executing command
+
+{{C+x}}{{g}}
+
+
+-- details
+-- lable: Browser themes
+
+{{C+h}}{{t}}
+
+
+
+-- h2
+
+File Operations
+
+-- list
+
+- Open a specific file:
+
+{{C+x}}{{C-f}}
+
+
+- Safe current file:
+
+{{C-x}}{{C-s}}
+
+
+- Save all files:
+
+{{C-x}}{{s}}
+
+
+- Undo
+
+{{C-x}}{{u}}
+
+{{C-/}}
+
+
+- Change the current buffer
+
+{{C+x}}{{b}}
+
+
+- Kill a buffer
+
+{{C+x}}{{k}}
+
+
+- Write buffer to a specific file
+
+{{C+x}}{{C+w}}
+
+
+
+-- list
+-- h2: Cursor Movement
+
+- Looks like this jumps between
+parts of the window if more than
+one are opened:
+
+{{C+x}}{{o}}
+
+
+
+
+-- h2
+
+Project Stuff
+
+
+-- details
+-- label: Add a new project to the list of known projects
+
+{{Spc}}{{p}}{{a}}
+
+NOTE: I'm curreing having to
+restart emacs to pick up the
+new project. I'm sure there's
+a way to not have to do that.
+I haven't looked into it yet.
+
+
+-- details
+-- label: Open a known project
+
+{{Spc}}{{p}}{{p}}
+
+
+-- details
+-- label: Find a file in the current project
+
+{{Spc}}{{Spc}}
+
+
+-- details
+-- label: Remove a known project from the list
+
+{{Spc}}{{p}}{{r}}
+
+
+-- h2
+
+Treemacs
+
+-- details
+-- label: Open/Close Treemacs
+
+{{SPC}}{{o}}{{p}}
+
+-- details
+-- label: Switch to Treemacs from open file
+
+{{SPC}}{{w}}{{h}}
+
+(This is the standard move to the window
+to the left command. As long as Treemacs
+is on that side it'll get you there.)
+
+
+
+-- details
+-- label: Open selected file
+
+{{RET}}
+
+
+-- details
+-- label: Create a new file
+
+{{c}}{{f}}
+
+
+-- details
+-- label: Create a new directory
+
+{{c}}{{d}}
+
+
+-- details
+-- label: Delete selection (recursively)
+
+{{d}}
+
+
+-- details
+-- label: Renmae the selected item
+
+{{r}}
+
+
+
+
+-- h2
+
+Miscellaneous
+
+
+-- details
+-- label: Figure out what things set a particular variable
+
+Get the details aboute variable with:
+
+{{C-h}}{{v}} variable-name {{RET}}
+
+This includes a list of triggers
+when the varaible is set. (not sure
+this covers everything or not)
+
+
+-- details
+-- label: Don't use Customize
+
+The general guideline it to avoid using
+the Customize package to manage things
+and do things directly in the `config.el`
+file. (This is from the [System Crafters
+videos](https://www.youtube.com/@SystemCrafters)
+and some other notes I've seen.)
+
+
+
+
+
+-- details
+-- label: Window management via evil
+
+Look at {{C-w}}
+in evil more for window controls. 
+
+
+
+-- details
+-- label: Set up a hotkey
+
+- Look at general.el
+
+https://github.com/noctuid/general.el
+
+see: https://www.youtube.com/live/xaZMwNELaJY?si=34Zt8-Nosnh-MfSZ&t=1108
+
+
+
+OLDNOTES:
+
+use ``global-set-key`` for global
+stuff
+
+and 
+
+``define-key`` for setting things
+for a specific mode
+
+For example:
+
+(define-key emacs-lisp-mode-map (kbd "C-x M-t") 'load-theme)
+
+You can then use 
+``global-unset-key`` to remove it if you're
+just playing around. 
+
+
+-- details
+-- label: List key bindings for a mode
+
+Do: 
+
+{{C-h}}{v} MAP_NAME
+
+e.g.
+
+{{C-h}}{{v}} emacs-list-mode-map
+
+
+
+
+
+-- details
+-- label: Evaluate the current buffers
+
+{{M-x}} eval-buffer
+
+
+-- details
+-- label: Evaluate a specific function
+
+Go to the last paren of the function and do:
+
+{{C-x}}{{C-e}}
+
+
+
+-- details
+-- label: Display the value of a variable 
+
+Use Eval:
+
+{{M-:}} aka {{S-M-;}}
+
+
+-- details
+-- label: Remap a function to a new function
+
+TODO: Look at this and check the syntax
+
+([remap describe-function] . counsel-describe-function)
+
+
+
+
+-- details
+-- label: Turn on default emacs tabs
+
+{{M-x}} global-tab-line-mode 
+
+
+
+-- details
+-- label: Run a command
+
+{{M-x}} COMMAND_NAME
+
+If you want to see every command you can run, do
+{{M-x}}{{TAB}}
+
+
+-- details
+-- label: Get a list of key bindings
+
+{{M-x}} describe-bindings
+
+
+-- details
+-- label: Learn what a key combo does
+
+{{M-x}} describe-key 
+
+
+-- details
+-- label: Look up the state of a variable
+
+{{C-h}}{{v}}
+
+
+-- details
+-- label: Find parenthesis issues
+
+{{M-x}} check-parens
+
+
+
+
+-- list
+-- h2: Notes
+
+- {{C-x}} is the prefix for all primary Emacs
+bindings
+
+- {{C-c}} generally bindings from the active
+major mode, minor modes, and user bindings
+
+- Basic open file {{C-x}}{{C-f}} for finding
+a file
+
+- Save the current buffer you're looking at
+{{C-x}}{{C-s}}
+
+- Save As (to write a buffer to a different
+file location): {{C-x}}{{C-w}}
+
+- {{C-x}}{{b}} is the basic way to switch
+between buffers. 
+
+- {{C-x}}{{C-b}} opens list of open
+buffers
+
+- {{C-x}}{{left arrow}} and {{C-x}}{{right arrow}}
+switch between buffers
+
+- In the docs, "kill" is effectively "cut" 
+
+- {{C-SPC}} is how you mark regions (e.g. for
+killing)
+
+- {{C-w}} kills (cuts) the current selection
+that can be pasted elsewhere. The killed
+contents are put on the __kill ring__ which
+contains all the stuff that has been 
+killed previous. (TODO: Figure out how
+to keep passwords from being included
+in this if necessary)
+
+- {{C-y}} is for "yank" which is effectively
+"paste" (it yanks from the kill ring)
+
+- {{C-_}} is the default undo key combo
+{{C-/}} is an alternate one. 
+
+- To redo, use {{C-g}} to reverse the
+direction of the undo list and then
+do {{C-_}} or {{C-/}} again. This will
+keep working until you hit the end
+of the undo chain, then it will
+go back to undoing. (TODO: probably
+find something that doesn't require
+as much mental overhead for this)
+
+- {{C-g}} is also how you stop
+commands that are in progress
+
+- You can do customization with
+{{M-x}} customize. Or, do
+it in your <<path|init.el>> file. 
+
+- If emacs crashes there's a
+{{M-x}} recover-this-file that you can
+run on the file to get the unsaved
+changes
+
+
+- TODO: Look at command-log-mode for showing what
+keys your pressing and what they run. Useful
+for streaming but also maybe for figuring out
+what you hit accidentally?
+
+
+- You can use things like `doom-mode-line`
+without having to do the rest of doom.
+
+
+- Use `evil-commentary` for comment
+functionality in evil mode
+
+
+
+
+
+
+
+== endfilter
+== endblock
+
+
