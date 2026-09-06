@@ -98,37 +98,145 @@
 <pre class="tmp-neo">
 -- h2
 
-Doom Emacs
 
-I'm using Doom Emacs. I used Spacemacs before,
-but trying Doom this time.
+Custom Config
 
-I'm making some updates to my config
-setup. Those are documented directly
-in the config file. Will post that
-at some point when I get symlinks
-sorted out.
-
--- h2
-
-Tabs
-
--- details
--- label: Enable tab
-
-In ``init.el`` uncomment:
-
-``:ui`` -> ``tabs``
+I'm using emacs with a custom, hand-rolled
+config. It's based mainly off
+[these videos from the System Crafters
+YouTube Channel](https://www.youtube.com/watch?v=74zOY-vgkyw&list=PLEoMzSkcN8oPH1au7H6B7bBJ4ZO7BXjSZ&index=1).
 
 
--- details
--- label: Switch tabs
+I used [Spacemacs](https://www.spacemacs.org/)
+the first time I tried emacs. I started this run
+with [Doom](https://en.wikipedia.org/wiki/Doom_Emacs),
+but got frustrated with
+some plugins fighing with each other.
+So, I've jumped out to making my
+own config.
 
-When in (evil) Normal mode:
+These are the notes for how I've
+got the environment set up. There's
+also a bunch of notes in my config
+files. I'll include them when
+I figure out how I'm going to do
+file inclusing from emacs. 
 
-{{g}}{{t}}
 
-{{g}}{{T}}
+-- list
+-- h2: Evil Mode
+
+- I'm using Evil mode to get Vim
+keybindings for movement.
+
+- My caps lock key is remapped
+to escape so that it works the
+way I'm used to in Vim mode.
+
+- My Enter key (which is under
+my left thumb on my moonlander)
+is set to switch to a control
+key when I hold it. That way
+I don't have to stretch to use
+my pinky for the control key
+and can keep my caps lock
+as escape for swithing vim modes. 
+
+
+-- list
+-- h2: Cheatsheet
+-- prelude: The main things to
+remember to move around.
+
+- {{SPC}}{{o}} - Search for an open a file in the
+current project (via projectile).
+
+- {{SPC}}{{p}}{{p}} - Switch projects
+(via projectile).
+
+- {{M-x}} - Type a function to execute. 
+
+- {{C-x}} - Open main function map.
+
+- {{C-c}} - Open current user function map. 
+
+- {{C-h}} - Open help map. 
+
+- {{C+x}}{{C+e}} - Execute the current elisp function
+in elisp files (e.g. ``init.el``).
+
+- {{M-x}} ``check-parens`` -
+Check that elisp parens are balanceed
+
+
+
+
+-- list
+-- h2: Leader Key
+
+The leader key is set to {{SPC}}.
+Basic things set up are:
+
+- TBD
+
+
+
+
+-- list
+-- h2: Control Keys (via Enter)
+-- prelude: These are control keys
+that can be triggered by holding down
+the Enter key on the moonlander. 
+
+
+- {{C-q}} - TBD (should not quit
+since emacs will bascially be open
+all the time. 
+
+- {{C+w}} - TODO: Save all files and
+close the current buffer. 
+
+- {{C+e}} - TODO: Open the file explorer
+tree.
+
+- {{C+r}} - TODO: Run current block.
+
+- {{C+t}} - TBD
+
+- {{C-a}} - TBD
+
+- {{C-s}} - Save all buffers
+
+- {{C-d}} - Move one tab to the left
+
+- {{C-f}} - Move one tab to the right 
+
+- {{C-g}} - TODO: Open grimoire
+in whatever format that takes in emacs. 
+
+- {{C-z}} - TBD
+
+- {{C-x}} - Main control key launch
+
+- {{C-c}} - User control key launch
+
+- {{C-v}} - TBD
+
+- {{C-b}} - TBD
+
+
+
+-- list
+-- h2: Contorl Key (non-enter)
+-- prelude: These are control keys
+that require hitting the actual control
+key since the hold-enter-for-control
+only works on the left side
+of the moonlander. 
+
+
+- {{C-h}} - Help
+
 
 
 
@@ -281,16 +389,12 @@ Treemacs
 -- details
 -- label: Open/Close Treemacs
 
-{{SPC}}{{o}}{{p}}
+TBD
 
 -- details
 -- label: Switch to Treemacs from open file
 
-{{SPC}}{{w}}{{h}}
-
-(This is the standard move to the window
-to the left command. As long as Treemacs
-is on that side it'll get you there.)
+TBD
 
 
 
@@ -567,7 +671,13 @@ without having to do the rest of doom.
 functionality in evil mode
 
 
+  -- todo
 
+  [] Look at: https://www.youtube.com/live/INTu30BHZGk?si=ENcjLAXlZBJJG2pw&t=1151
+  for setting variables at a per directory level
+  and for doing things like setting up run commands
+
+  
 
 
 
