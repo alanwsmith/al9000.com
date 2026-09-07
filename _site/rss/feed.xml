@@ -2,12 +2,92 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-08-31T09:59:19-04:00</updated>
+  <updated>2026-09-06T20:03:36-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
+  
+  <entry>
+    <title>Week Notes [2026 #35]</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;35/"/><id>urn:uuid:1f8e201e-a64a-5653-a151-bc9f618a1df3</id>
+    <updated>2026-08-31T10:31:00-04:00</updated>
+    <summary><![CDATA[
+
+<h2>Monday [Aug. 31]</h2>
+<ul>
+<li>
+<p>Doing some more setup of Emacs
+with a vanilla config. It's dope.</p>
+<p>Main thing set up is hotkey navigation
+between tabs.</p>
+</li>
+<li>
+<p>Updated my <a href="https://configure.zsa.io/moonlander/layouts/APODe/latest/0">moonlander keyboard
+config</a>
+so control keys are easier to hit. I'd
+been shifting to a layer that did
+like <code>Option+Shift+LETTER</code> for Neovim
+since it was hard to figure out what
+was mapped to what and that seemed
+the least likely to conflict.</p>
+<p>In emacs, I can just do <code>M-x</code> <code>describe-key</code>
+to see exactcly what key is mapped
+to what. So, I can confirm I'm note
+messing things up when I make changes.</p>
+</li>
+</ul>
+<h2>Sunday [Sept. 6]</h2>
+<ul>
+<li>
+<p>Spent a bunch of time working on my
+<a href="/emacs">emacs config</a>. The biggest
+thing I was working on was getting
+project/file navigation set up.
+Took a bit to figure out, but
+I've got a good first run in place.</p>
+<p>I'm really digging the experience.
+There's still a few things I want
+to tweak before I figure v1 is
+done, but it's gettint pretty close.</p>
+</li>
+<li>
+<p>I've been down that past few days.</p>
+<p>Not bad, but I just didn't do anything
+other than watch a ton or react
+videos. The good news is that
+I didn't just sleep the entire
+time.</p>
+<p>I think I'm through that for
+the most part. Getting back to
+working on the emacs config which
+will get me set up to work on stuff
+again.</p>
+<p>(A part of the reason I wasn't
+working is because my dev enviornment
+in emacs wasn't set up. I just
+didn't want ot deal with the friction
+of having to try to work without a
+good set up and didn't have the
+spoons to do the type of digging into
+stuff that it takes to actually
+get things set up)</p>
+</li>
+</ul>
+<h2>Outro</h2>
+<p>Overall, a down week. I wasn't really
+recharging. Just no energy/motiviation to
+work on stuff. Every time that
+happens I get a little worried that
+I won't pull out of it.</p>
+<p>I've gone through it enouhg times
+now that I know that's not the case.
+Just have to sit with it while
+things are offline in the brain.</p>
+<p>-a</p>
+
+]]></summary>
+  </entry>
   
   <entry>
     <title>Week Notes [2026 #34]</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;34/"/><id>urn:uuid:83b95515-2b12-5c31-9784-28ffadb65118</id>

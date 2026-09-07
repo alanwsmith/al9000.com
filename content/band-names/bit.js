@@ -3,6 +3,7 @@ export const b = {
 };
 
 const names = `
+Matrix Blaster
 Humongous Fungus
 Darth Vader Egg
 Grippy Sock Hospital 
