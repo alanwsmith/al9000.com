@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-09-06T22:01:48-04:00</updated>
+  <updated>2026-09-14T00:43:56-04:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -8387,6 +8387,9 @@ expect it to be difficult if I come back to it.</p>
   </li>
   <li>
     <a href="&#x2f;scratchpad&#x2f;line-numbers&#x2f;index.html">Line Numbers Scratchpad</a>
+  </li>
+  <li>
+    Untitled item
   </li>
   <li>
     Untitled item
