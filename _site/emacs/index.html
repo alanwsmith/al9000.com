@@ -98,6 +98,16 @@
 <pre class="tmp-neo">
 -- h2
 
+Videos 
+
+I'm digging this persons channel: 
+>>Portesilaos|https://www.youtube.com/@protesilaos>>
+They have recent videos that do a good job 
+of explaining specific parts of emacs. 
+
+
+-- h2
+
 Custom Config
 
 
@@ -105,7 +115,6 @@ I'm using emacs with a custom, hand-rolled
 config. It's based mainly off
 [these videos from the System Crafters
 YouTube Channel](https://www.youtube.com/watch?v=74zOY-vgkyw&list=PLEoMzSkcN8oPH1au7H6B7bBJ4ZO7BXjSZ&index=1).
-
 
 I used [Spacemacs](https://www.spacemacs.org/)
 the first time I tried emacs. I started this run
@@ -152,7 +161,7 @@ remember to move around.
 - {{SPC}}{{o}} - Search for an open a file in the
 current project (via projectile).
 
-- {{SPC}}{{p}}{{p}} - Switch projects
+- {{SPC}}{{p}} - Switch projects
 (via projectile).
 
 - {{M-x}} - Type a function to execute. 
@@ -170,6 +179,10 @@ in elisp files (e.g. ``init.el``).
 Check that elisp parens are balanceed
 
 
+- {{M-S-;}} - evaluate an expression. 
+
+
+
 
 
 -- list
@@ -179,6 +192,19 @@ The leader key is set to {{SPC}}.
 Basic things set up are:
 
 - TBD
+
+
+
+-- list
+-- h2: Projectile 
+
+- To add a project to projectile, just
+open a file in the project's directory 
+with {{C-x}}{{C-f}}. 
+
+Project directories are defined by having  
+``.git``, ``Cargo.toml``, ``.projectile``,
+etc. files in them. 
 
 
 

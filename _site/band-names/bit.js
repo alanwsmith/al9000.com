@@ -3,6 +3,8 @@ export const b = {
 };
 
 const names = `
+Booger Sugar
+Discourse Landmine
 Matrix Blaster
 Humongous Fungus
 Darth Vader Egg
