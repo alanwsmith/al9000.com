@@ -13,8 +13,22 @@
 </head>
 <body>
 
-  <div id="frameStatus">-x-</div>
+  <div id="frameStatus">-www-</div>
   
+<script>
+
+   window.addEventListener("message", (event) => {
+       const el = document.querySelector("#frameStatus");
+//       if (!event.data) {
+       el.innerHTML = el.innerHTML + JSON.stringify(event);
+	//   }
+       console.log("PING MESSAGE");
+       // player.playVideo();
+   })
+</script>
+
+ 
+<!-- 
 <div id="player"></div>
 
 <script>
@@ -39,17 +53,11 @@
       });
   }
       
-   window.addEventListener("message", (event) => {
-       const el = document.querySelector("#frameStatus");
-       if (!event.data) {
-       el.innerHTML = el.innerHTML + JSON.stringify(event);
-	   }
-       console.log("PING MESSAGE");
-       // player.playVideo();
-   })
       
   
 </script>
   
+-->
+
 </body>
 </html>
