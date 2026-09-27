@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-09-14T00:57:00-04:00</updated>
+  <updated>2026-09-27T18:21:46-05:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -11,7 +11,7 @@
   
   <entry>
     <title>Week Notes [2026 #35]</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;35/"/><id>urn:uuid:1f8e201e-a64a-5653-a151-bc9f618a1df3</id>
-    <updated>2026-08-31T10:31:00-04:00</updated>
+    <updated>2026-08-31T09:31:00-05:00</updated>
     <summary><![CDATA[
 
 <h2>Monday [Aug. 31]</h2>
@@ -146,7 +146,7 @@ football games.</p>
   
   <entry>
     <title>Week Notes [2026 #34]</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;34/"/><id>urn:uuid:83b95515-2b12-5c31-9784-28ffadb65118</id>
-    <updated>2026-08-25T08:26:00-04:00</updated>
+    <updated>2026-08-25T07:26:00-05:00</updated>
     <summary><![CDATA[
 
 <h2>Monday [Aug. 24, 2026]</h2>
@@ -400,7 +400,7 @@ back to emacs is very exciting.</p>
   
   <entry>
     <title>Week Notes [2026 #33]</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;33/"/><id>urn:uuid:145fc011-32bf-5fbc-a674-a58bf0fa47fb</id>
-    <updated>2026-08-17T11:34:00-04:00</updated>
+    <updated>2026-08-17T10:34:00-05:00</updated>
     <summary><![CDATA[
 
 <h2>Monday [Aug. 17th]</h2>
@@ -458,7 +458,7 @@ out.</p>
   
   <entry>
     <title>AI&#x2f;LLM Observations [Aug. 2026]</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n8&#x2f;bg&#x2f;4y/"/><id>urn:uuid:15e2d3b7-d1e0-503d-9bc1-cc559ad88c15</id>
-    <updated>2026-08-19T10:41:34-04:00</updated>
+    <updated>2026-08-19T09:41:34-05:00</updated>
     <summary><![CDATA[
 <h2>In Response</h2>
 <p>A <a href="https://hachyderm.io/deck/@thomasfuchs/117122639321367550">post from Thomas Fuchs</a>
@@ -873,7 +873,7 @@ here.</p>
   
   <entry>
     <title>Compare HTML Fragments in Rust to See if They Match</title><link href="https://al9000.com&#x2f;rust&#x2f;misc&#x2f;compare-html/"/><id>urn:uuid:d5fdabfb-14ef-5515-ac18-02fd23c4da65</id>
-    <updated>2026-08-18T18:53:22-04:00</updated>
+    <updated>2026-08-18T17:53:22-05:00</updated>
     <summary><![CDATA[
 <p>I'm working on extracting <a href="https://neodoc.style">NeoDoc</a>
 from my static site generator to
@@ -1001,7 +1001,7 @@ needs to be set up to go through them.</p>
   
   <entry>
     <title>How Creatives and Devs Can All Finally Escape the Control of the Silicon Valley of Evil and Make a Trillion Dollars, Audio Style</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n8&#x2f;1j&#x2f;nk/"/><id>urn:uuid:d8d025e0-7ef3-59dd-b4bd-f597b2e0b9b2</id>
-    <updated>2026-08-15T16:23:15-04:00</updated>
+    <updated>2026-08-15T15:23:15-05:00</updated>
     <summary><![CDATA[
 <h2>TL;DR</h2>
 <p>
@@ -1173,7 +1173,7 @@ if you're into that type of thing.</p>
   
   <entry>
     <title>Week Notes [2026 #32]</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;32/"/><id>urn:uuid:8c42182d-6347-5e1c-a07e-61c8db691a7a</id>
-    <updated>2026-08-10T01:00:00-04:00</updated>
+    <updated>2026-08-10T00:00:00-05:00</updated>
     <summary><![CDATA[
 
 <h2>Monday - Aug. 10, 2026</h2>
@@ -1370,7 +1370,7 @@ done. Just gotta do the last
   
   <entry>
     <title>AT Proto Lexicon Playground</title><link href="https://al9000.com&#x2f;atproto&#x2f;lexicons/"/><id>urn:uuid:f26d58f2-bc5a-5ac7-98be-ecc2eee4c995</id>
-    <updated>2026-08-12T11:04:00-04:00</updated>
+    <updated>2026-08-12T10:04:00-05:00</updated>
     <summary><![CDATA[
 
 <p>A place to prototype lexicons
@@ -1543,7 +1543,7 @@ it.</p>
   
   <entry>
     <title>Week Notes #31 - 2026</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;31/"/><id>urn:uuid:76c807f3-5347-5d43-b66e-522c18f0a2b7</id>
-    <updated>2026-08-04T21:00:00-04:00</updated>
+    <updated>2026-08-04T20:00:00-05:00</updated>
     <summary><![CDATA[
 
 <h2>Tuesday - Aug. 4th</h2>
@@ -1687,7 +1687,7 @@ let it get too sideways.</p>
   
   <entry>
     <title>Better nom Error Messages with nom_locate</title><link href="https://al9000.com&#x2f;rust&#x2f;nom&#x2f;better-error-messages/"/><id>urn:uuid:7841fc1d-c96d-5c8b-b21a-b5328694c922</id>
-    <updated>2026-08-02T14:02:00-04:00</updated>
+    <updated>2026-08-02T13:02:00-05:00</updated>
     <summary><![CDATA[<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -2248,7 +2248,7 @@ me sooo much time. It almost feels like cheating.</p>
   
   <entry>
     <title>Week Notes #30 - 2026</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;30/"/><id>urn:uuid:ae90736d-d0a4-5826-9157-d88dcc9d8cf2</id>
-    <updated>2026-07-27T07:53:00-04:00</updated>
+    <updated>2026-07-27T06:53:00-05:00</updated>
     <summary><![CDATA[
 
 <h2>Monday, July 27th</h2>
@@ -2363,7 +2363,7 @@ on top of it.</p>
   
   <entry>
     <title>CSS Sticky Sidebar</title><link href="https://al9000.com&#x2f;css&#x2f;sticky-sidebar/"/><id>urn:uuid:651421b9-b836-514d-9fbc-00731124811a</id>
-    <updated>2026-07-26T08:09:00-04:00</updated>
+    <updated>2026-07-26T07:09:00-05:00</updated>
     <summary><![CDATA[
 
 <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
@@ -2594,7 +2594,7 @@ The extra styles look like this:</p>
   
   <entry>
     <title>A CSS Only Tabs Prototype (No JavaScript Required)</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n6&#x2f;a8&#x2f;6j/"/><id>urn:uuid:da7607ba-0815-5430-bf31-43f72931a57c</id>
-    <updated>2026-07-25T16:47:14-04:00</updated>
+    <updated>2026-07-25T15:47:14-05:00</updated>
     <summary><![CDATA[
 
 <div class="warning-block">
@@ -2827,7 +2827,7 @@ CSS will get nothing but more powerful.</p>
   
   <entry>
     <title>Adding Copy Buttons with Bitty</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n6&#x2f;6r&#x2f;q5/"/><id>urn:uuid:b036d48b-70bb-5540-b49a-7c094701e075</id>
-    <updated>2026-07-24T09:04:37-04:00</updated>
+    <updated>2026-07-24T08:04:37-05:00</updated>
     <summary><![CDATA[
 
 <h2>Hitting a Single</h2>
@@ -2970,7 +2970,7 @@ provides the same functionality.</p>
   
   <entry>
     <title>Week Notes #29 - 2026</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;29/"/><id>urn:uuid:e22111ac-a070-50cf-8782-8f9c75348c9a</id>
-    <updated>2026-07-22T16:44:29-04:00</updated>
+    <updated>2026-07-22T15:44:29-05:00</updated>
     <summary><![CDATA[
 
 <h2>Monday - June 20</h2>
@@ -3176,7 +3176,7 @@ a better one in the week go come.</p>
   
   <entry>
     <title>Background Texture Maker - Give your site a little grit</title><link href="https://al9000.com&#x2f;texture-maker/"/><id>urn:uuid:b936489f-8c7a-5916-8683-845d3512447b</id>
-    <updated>2026-01-03T10:36:00-05:00</updated>
+    <updated>2026-01-03T09:36:00-06:00</updated>
     <summary><![CDATA[
 
 <bitty-9 data-connect="/texture-maker/bit.js"></bitty-9>
@@ -3273,7 +3273,7 @@ for the reader.</p>
   
   <entry>
     <title>Blog Post base32 ID Cleanup</title><link href="https://al9000.com&#x2f;rust&#x2f;apps&#x2f;base32_timestamp_cleanup/"/><id>urn:uuid:877fdc9f-6054-5489-baa4-31c24d2410ca</id>
-    <updated>2026-07-20T13:27:00-04:00</updated>
+    <updated>2026-07-20T12:27:00-05:00</updated>
     <summary><![CDATA[
 
 <p>The IDs for posts on this site
@@ -3471,7 +3471,7 @@ the timestamps I use look like this:</li>
   
   <entry>
     <title>Three Dates in a Trench Coat</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/"/><id>urn:uuid:49caaea3-78c2-53d3-a115-1ff56e26e45e</id>
-    <updated>2026-07-19T11:21:48-04:00</updated>
+    <updated>2026-07-19T10:21:48-05:00</updated>
     <summary><![CDATA[<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -3709,7 +3709,7 @@ want to check it out.
   
   <entry>
     <title>Full Site Links</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n5&#x2f;n7&#x2f;gg/"/><id>urn:uuid:f5fac119-f789-5fb4-ad7f-4ef2ac1f8b2f</id>
-    <updated>2026-07-17T17:26:40-04:00</updated>
+    <updated>2026-07-17T16:26:40-05:00</updated>
     <summary><![CDATA[
 
 <p>I'm doing something new with the structure of my
@@ -3741,7 +3741,7 @@ up in the chronological timeline.</p>
   
   <entry>
     <title>Week Notes #28 - 2026</title><link href="https://al9000.com&#x2f;weeknotes&#x2f;2026&#x2f;28/"/><id>urn:uuid:a8de8881-6dd0-5c0e-a832-7b81832ae62e</id>
-    <updated>2026-07-15T16:44:19-04:00</updated>
+    <updated>2026-07-15T15:44:19-05:00</updated>
     <summary><![CDATA[
 
 <h2>Intro</h2>
@@ -3789,7 +3789,7 @@ the new &quot;completed&quot; date.</p>
   
   <entry>
     <title>NeoDoc - Notes with Superpowers</title><link href="https://al9000.com&#x2f;neodoc/"/><id>urn:uuid:dd27b276-bd2f-526c-bb49-474af7001d30</id>
-    <updated>2026-07-13T08:41:29-04:00</updated>
+    <updated>2026-07-13T07:41:29-05:00</updated>
     <summary><![CDATA[
 
 <div class="warning">
@@ -4238,7 +4238,7 @@ something it can't handle.</p>
   
   <entry>
     <title>Stream Tools</title><link href="https://al9000.com&#x2f;stream-tools/"/><id>urn:uuid:d2f3e1bf-0d2d-5c6b-aeb1-3cd4b0a30f70</id>
-    <updated>2026-06-27T09:35:33-04:00</updated>
+    <updated>2026-06-27T08:35:33-05:00</updated>
     <summary><![CDATA[
 <h2>Overlays</h2>
 <ul>
@@ -4252,7 +4252,7 @@ something it can't handle.</p>
   
   <entry>
     <title>Pondering Standard.site and the Social Web</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n3&#x2f;t9&#x2f;nx/"/><id>urn:uuid:5e50e155-e974-5250-bb20-c57af43c82d6</id>
-    <updated>2026-06-25T09:01:49-04:00</updated>
+    <updated>2026-06-25T08:01:49-05:00</updated>
     <summary><![CDATA[
 
 <p>I've seen a bunch of references to Standard.site<sup class="footnoteLink" id="body-standard"><a href="#footnote-standard">standard</a></sup>.
@@ -4462,7 +4462,7 @@ own it.</p>
   
   <entry>
     <title>Konami</title><link href="https://al9000.com&#x2f;konami/"/><id>urn:uuid:0a1bbe0f-c170-523c-83a5-f17055a6dea6</id>
-    <updated>2026-06-23T19:29:25-04:00</updated>
+    <updated>2026-06-23T18:29:25-05:00</updated>
     <summary><![CDATA[
 
 <bitty-9 data-connect="/konami/bit.js"></bitty-9>
@@ -4507,7 +4507,7 @@ own it.</p>
   
   <entry>
     <title>Type Different: Changing the Keys on Your Keyboard</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n3&#x2f;g3&#x2f;x8/"/><id>urn:uuid:93677c41-e871-5424-8602-1fa52f3f4809</id>
-    <updated>2026-06-21T12:22:00-04:00</updated>
+    <updated>2026-06-21T11:22:00-05:00</updated>
     <summary><![CDATA[
 <h2>Keyboard Basics</h2>
 <p>There's a few things to know about
@@ -4661,7 +4661,7 @@ that's a different thing entirely.</p>
   
   <entry>
     <title>RSS Powers: Activated</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n3&#x2f;fm&#x2f;ag/"/><id>urn:uuid:2785568a-7ada-54a0-8cd1-a5f3596f3b7a</id>
-    <updated>2026-06-21T07:56:00-04:00</updated>
+    <updated>2026-06-21T06:56:00-05:00</updated>
     <summary><![CDATA[
 
 <p>I started moving my site from <a href="https://www.alanwsmith.com/">alanwsmith.com</a>
@@ -4735,7 +4735,7 @@ jumping to new frameworks.</p>
   
   <entry>
     <title>Unoffice Hours</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n3&#x2f;fk&#x2f;am/"/><id>urn:uuid:162046c8-1547-59e0-bcb6-4edf32841cee</id>
-    <updated>2026-06-21T07:39:00-04:00</updated>
+    <updated>2026-06-21T06:39:00-05:00</updated>
     <summary><![CDATA[
 <p>This is a fun concept. Folks who set aside a little time
 each week to take calls with whoever about whatever.</p>
@@ -4763,7 +4763,7 @@ conversations by ear and see where they go.</p>
   
   <entry>
     <title>Project Ideas</title><link href="https://al9000.com&#x2f;ideas/"/><id>urn:uuid:4e0342ef-1f09-5d77-a346-d2314750e31a</id>
-    <updated>2026-06-20T19:42:00-04:00</updated>
+    <updated>2026-06-20T18:42:00-05:00</updated>
     <summary><![CDATA[
 
 <p><bitty-9 data-connect="/ideas/bit.js"></bitty-9></p>
@@ -5939,7 +5939,7 @@ conversations by ear and see where they go.</p>
   
   <entry>
     <title>The Name(s) of My New Band</title><link href="https://al9000.com&#x2f;band-names/"/><id>urn:uuid:4a6eb3d2-040d-5245-ba1f-28d310471349</id>
-    <updated>2026-06-20T19:42:00-04:00</updated>
+    <updated>2026-06-20T18:42:00-05:00</updated>
     <summary><![CDATA[
   <div class="text-align-center xxxlarge-block-margin xxxlarge-block-padding">
     <div data-r="latest random" class="xxlarge-font-size xxlarge-font-weight"></div>
@@ -5955,7 +5955,7 @@ conversations by ear and see where they go.</p>
   
   <entry>
     <title>DAE - Digital to Analog Enlarger</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n3&#x2f;dd&#x2f;tw/"/><id>urn:uuid:bbdbb3e3-c932-5b3f-979b-c6a3ffd39fc6</id>
-    <updated>2026-06-20T11:53:00-04:00</updated>
+    <updated>2026-06-20T10:53:00-05:00</updated>
     <summary><![CDATA[
 
 <p>The sonic foundation of computers is the DAC,
@@ -5998,7 +5998,7 @@ your digital images.</p>
   
   <entry>
     <title>Manic Scroll</title><link href="https://al9000.com&#x2f;manic-scroll/"/><id>urn:uuid:5ca74181-a524-5145-aa83-fa3340469a32</id>
-    <updated>2026-06-19T22:16:00-04:00</updated>
+    <updated>2026-06-19T21:16:00-05:00</updated>
     <summary><![CDATA[
 
 
@@ -6406,7 +6406,7 @@ p {
   
   <entry>
     <title>QR Alice</title><link href="https://al9000.com&#x2f;qr-alice/"/><id>urn:uuid:846d81d0-adb5-5682-b02d-db83541797f2</id>
-    <updated>2026-06-19T10:22:00-04:00</updated>
+    <updated>2026-06-19T09:22:00-05:00</updated>
     <summary><![CDATA[
 
 <style>
@@ -6499,7 +6499,7 @@ h1 {
   
   <entry>
     <title>QR Clock</title><link href="https://al9000.com&#x2f;qr-clock/"/><id>urn:uuid:5d7c9261-a3dc-5090-9610-fdd1d5d2c2c8</id>
-    <updated>2026-06-18T18:22:00-04:00</updated>
+    <updated>2026-06-18T17:22:00-05:00</updated>
     <summary><![CDATA[
 
 <style>
@@ -6561,7 +6561,7 @@ a {
   
   <entry>
     <title>Tabletop Simulator Art</title><link href="https://al9000.com&#x2f;tts/"/><id>urn:uuid:6e835f9a-cdc1-5f00-b38d-0d99f68cdd4c</id>
-    <updated>2026-06-16T12:22:00-04:00</updated>
+    <updated>2026-06-16T11:22:00-05:00</updated>
     <summary><![CDATA[
 
 <bitty-9 data-connect="/tts/bit.js"></bitty-9>
@@ -7307,7 +7307,7 @@ of the source images doesn't matter.</p>
   
   <entry>
     <title>Fingers to Keys</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;my&#x2f;zm&#x2f;1g/"/><id>urn:uuid:e8d8efbc-f956-5f21-b4ed-dc6d5d047adf</id>
-    <updated>2026-04-27T17:08:00-04:00</updated>
+    <updated>2026-04-27T16:08:00-05:00</updated>
     <summary><![CDATA[
 
 <p>I need to write something.</p>
@@ -7407,7 +7407,7 @@ two years of major bipolar depression.</p>
   
   <entry>
     <title>The Good Place</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;my&#x2f;72&#x2f;tm/"/><id>urn:uuid:fbb02aad-94c7-554f-bc4b-f80701cd4d15</id>
-    <updated>2026-04-18T09:47:00-04:00</updated>
+    <updated>2026-04-18T08:47:00-05:00</updated>
     <summary><![CDATA[
 <p>I binged The Good Place over the past few days.
 All four seasons. It was all I did. I enjoyed it.
@@ -7519,7 +7519,7 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
   
   <entry>
     <title>Get the Stem of a File Name in bash</title><link href="https://al9000.com&#x2f;cli&#x2f;get-file-name-stem/"/><id>urn:uuid:1d7d2df4-9df0-59f5-9dcb-64fcae06a832</id>
-    <updated>2026-04-13T20:25:00-04:00</updated>
+    <updated>2026-04-13T19:25:00-05:00</updated>
     <summary><![CDATA[
 
 <div class="highlight-wrapper"><div class="title">bash</div><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
@@ -7538,7 +7538,7 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
   
   <entry>
     <title>Get the Name of the Current Directory in bash</title><link href="https://al9000.com&#x2f;cli&#x2f;get-current-directory-name/"/><id>urn:uuid:7550d3d0-ec1c-5a95-b6dd-0b8470099d7f</id>
-    <updated>2026-04-13T18:47:00-04:00</updated>
+    <updated>2026-04-13T17:47:00-05:00</updated>
     <summary><![CDATA[
 
 <div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source shell bash"><span class="comment line number-sign shell"><span class="punctuation definition comment begin shell">#</span></span><span class="comment line number-sign shell">!/bin/bash</span><span class="comment line number-sign shell">
@@ -7554,7 +7554,7 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
   
   <entry>
     <title>Doors</title><link href="https://al9000.com&#x2f;doors/"/><id>urn:uuid:a90d2ef7-7fd4-538d-a72e-c0adc7ae7056</id>
-    <updated>2026-04-12T14:33:00-04:00</updated>
+    <updated>2026-04-12T13:33:00-05:00</updated>
     <summary><![CDATA[
 
 
@@ -7571,7 +7571,7 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
   
   <entry>
     <title>I&#x27;m Not Ready to Start This Blog</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;mx&#x2f;qf&#x2f;ng/"/><id>urn:uuid:1d75ebeb-8282-5d79-9d04-609157bd169b</id>
-    <updated>2026-04-12T11:48:00-04:00</updated>
+    <updated>2026-04-12T10:48:00-05:00</updated>
     <summary><![CDATA[
 
 <p>Fuck it. We'll do it live.</p>
@@ -7624,7 +7624,7 @@ coming soon.</p>
   
   <entry>
     <title>Use Keyword Args in a Function</title><link href="https://al9000.com&#x2f;rust&#x2f;minijinja&#x2f;use_keyword_args/"/><id>urn:uuid:cb735269-6df7-5b17-89c4-fd22d59f6b76</id>
-    <updated>2026-04-11T12:52:12-04:00</updated>
+    <updated>2026-04-11T11:52:12-05:00</updated>
     <summary><![CDATA[
 
 <h3>Rust</h3>
@@ -7703,7 +7703,7 @@ coming soon.</p>
   
   <entry>
     <title>Capture Errors from Command Line Tools</title><link href="https://al9000.com&#x2f;cli&#x2f;capture-both-stdout-and-stderror/"/><id>urn:uuid:6d121163-1b63-5455-973b-428a13905056</id>
-    <updated>2026-04-11T09:58:51-04:00</updated>
+    <updated>2026-04-11T08:58:51-05:00</updated>
     <summary><![CDATA[
 
 
@@ -7738,7 +7738,7 @@ and <code>STDERR</code>.</p>
   
   <entry>
     <title>Access Mac Keychain Access Passwords from a Rust App</title><link href="https://al9000.com&#x2f;rust&#x2f;misc&#x2f;access-mac-keychain-passwords/"/><id>urn:uuid:68d2b415-3fdb-5f86-910b-b1e4159c1a1c</id>
-    <updated>2026-04-10T13:57:22-04:00</updated>
+    <updated>2026-04-10T12:57:22-05:00</updated>
     <summary><![CDATA[
 <p>I use the built-in macOS Keychain Access app to store credentials
 for my various scripts and tools. I start off by creating
@@ -7828,7 +7828,7 @@ with a bunch of random characters.</p>
   
   <entry>
     <title>Create an HLS Encrypted Video with ffmpeg</title><link href="https://al9000.com&#x2f;ffmpeg&#x2f;create-an-hls-encrypted-video/"/><id>urn:uuid:d0d11ca2-07a9-5f41-8afd-0dfddca92611</id>
-    <updated>2026-04-06T23:27:15-04:00</updated>
+    <updated>2026-04-06T22:27:15-05:00</updated>
     <summary><![CDATA[<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7914,7 +7914,7 @@ with a bunch of random characters.</p>
   
   <entry>
     <title>A Media Source Extensions (MSE) Video Player</title><link href="https://al9000.com&#x2f;javascript&#x2f;media-source-video-player/"/><id>urn:uuid:81647956-49d4-5bc4-ae9e-5c7ba88e5cd4</id>
-    <updated>2026-04-06T19:30:12-04:00</updated>
+    <updated>2026-04-06T18:30:12-05:00</updated>
     <summary><![CDATA[
 
 <h2>Overview</h2>
@@ -8237,7 +8237,7 @@ causing issues than to write up the player script.</p>
   
   <entry>
     <title>Split a File into Multiple Collections of Bytes</title><link href="https://al9000.com&#x2f;rust&#x2f;misc&#x2f;split-a-file-into-collections-of-bytes/"/><id>urn:uuid:0f6b2f7f-50a2-5edc-8290-1a423ecc1b38</id>
-    <updated>2026-04-01T14:01:23-04:00</updated>
+    <updated>2026-04-01T13:01:23-05:00</updated>
     <summary><![CDATA[
 <p>This started as an idea for how to
 split up files so they don't get ingested
@@ -8318,7 +8318,7 @@ expect it to be difficult if I come back to it.</p>
   
   <entry>
     <title>Hello, World in Rust WASM</title><link href="https://al9000.com&#x2f;rust&#x2f;wasm&#x2f;hello-world/"/><id>urn:uuid:81dedf75-44bf-550c-bd72-be9dac79432a</id>
-    <updated>2026-04-01T11:40:00-04:00</updated>
+    <updated>2026-04-01T10:40:00-05:00</updated>
     <summary><![CDATA[
 
 <p>
@@ -8378,7 +8378,7 @@ expect it to be difficult if I come back to it.</p>
   
   <entry>
     <title>Scratchpad</title><link href="https://al9000.com&#x2f;scratchpad/"/><id>urn:uuid:3d657954-64c0-50dd-a360-7eadd25f6012</id>
-    <updated>2026-01-01T11:12:12-05:00</updated>
+    <updated>2026-01-01T10:12:12-06:00</updated>
     <summary><![CDATA[
 
 <ul>
@@ -8404,7 +8404,7 @@ expect it to be difficult if I come back to it.</p>
   
   <entry>
     <title>The Clicky Sound</title><link href="https://al9000.com&#x2f;posts&#x2f;the-clicky-sound/"/><id>urn:uuid:9a00181b-dd35-54eb-a82e-2f7c73a3eddd</id>
-    <updated>2020-09-09T00:00:00-04:00</updated>
+    <updated>2020-09-08T23:00:00-05:00</updated>
     <summary><![CDATA[
 <p>Okay.</p>
 <p>Just make the clicky sound.</p>

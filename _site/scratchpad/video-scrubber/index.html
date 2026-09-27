@@ -13,27 +13,22 @@
 </head>
 <body>
 
-  <div id="frameStatus">-333-</div>
-  
-<script>
-
-   window.addEventListener("message", (event) => {
-       const el = document.querySelector("#frameStatus");
-//       if (!event.data) {
-       el.innerHTML = el.innerHTML + JSON.stringify(event);
-	//   }
-       console.log("PING MESSAGE");
-       // player.playVideo();
-   })
-</script>
-
+  <div id="frameStatus">-ddd-</div>
  
-<!-- 
+  <button id="playPause">Play/Pause</button>
 <div id="player"></div>
 
 <script>
 
   let player;
+  
+function playPauseVideo() {
+    if (player.getPlayerState() === 1) {
+	player.pauseVideo()
+    } else {
+	player.playVideo()
+    }
+}
   
   function onYouTubeIframeAPIReady() {
 //      document.getElementById("state").innerHTML = "iframe loaded";
@@ -43,8 +38,8 @@
   function loadVideo() {
       const videoId = "-91vymvIH0c";
       player = new YT.Player("player", {
-	  height: "400",
-	  width: "600",
+	  height: "220",
+	  width: "380",
 	  videoId: videoId,
 	  events: {
 	      // onReady: onPlayerReady,
@@ -53,11 +48,24 @@
       });
   }
       
-      
+  window.addEventListener("message", (event) => {
+      const el = document.querySelector("#frameStatus");
+      if (!event.data) {
+	  el.innerHTML = el.innerHTML + JSON.stringify(event);
+	  playPauseVideo();
+      }
+//      console.log("PING MESSAGE");
+  })
   
+
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#playPause").addEventListener(
+  "click", () => {
+  playPauseVideo();
+}
+)
+})
 </script>
-  
--->
 
 </body>
 </html>
