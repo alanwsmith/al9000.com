@@ -1,0 +1,97 @@
+== extends "/templates.inc/switches/default.html"
+
+
+== block toml
+title = "tmux notes"
+created = 2026-11-20T09:26:00-04:00
+status =  "draft"
+flags = ["skip"]
+== endblock
+
+
+
+== block content
+== filter neo
+
+These are the notes for my personal tmux setup. 
+
+-- h2
+
+CLI
+
+-- details
+-- summary: List Open Sessions
+
+``tmls``
+
+
+-- details
+-- summary: Attach to Existing Session
+
+
+``ta TITLE``
+
+Which is an alias for:
+
+
+``tmux a -t TITLE``
+
+
+-- h2
+
+Leader Key
+
+
+{{CTRL}}{{s}}
+
+
+
+-- h2
+
+tmux commands
+
+-- details
+-- summary: Detatch from session
+
+{{LEADER}}{{d}}
+
+
+-- details
+-- summary: New Horizontal Split
+
+{{LEADER}}{{"}}
+
+
+-- details
+-- summary: New Vertical Split
+
+{{LEADER}}{{%}}
+
+Which is {{SHIFT+5}}
+
+
+-- details
+-- summary: Rename Session
+
+
+{{LEADER}}{{$}}
+
+Which is: {{SHIFT+4}}
+
+
+-- details
+-- summary: Close a split
+
+Use the CLI ``exit`` command
+
+
+
+
+
+
+
+
+== endfilter
+== endblock
+
+

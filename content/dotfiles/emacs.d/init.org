@@ -1,0 +1,1366 @@
+#+property: header-args :tangle "~/.emacs.d/init.el" :results silent
+#+startup: content indent
+
+* Introduction
+
+This file generates the `~/.emacs.d/init.el` configuration
+file I use for emacs. It's maintained in Org Mode using
+Literate Coding (Documentation prose around indiviudual code 
+snippets. The snippets get combined into the config file
+without the surrounding text.)
+
+
+* Stuff To Do
+** Overview 
+
+- Set up a streamer mode toggle that sets up
+  the font and removes private things from
+  searches, etc.
+
+- Set up so that `org-babel-tangle` runs on
+  .org mode files when they are saved. 
+
+- Look at: `deft` for nvAlt style editing. 
+Probably won't use when you get your own 
+grimoire set up. 
+
+- Look at: Rainbow Delimetes - rainbow-delimiters
+
+- Look at: all-the-icons 
+
+
+* Notes
+
+** Updating 
+
+The contents of the source blocks in this file are
+automatcially tangled to the `~/.emacs.d/init.el`
+file when it's saved (if you need to tangle it
+manually for some reason, you can use `C-c C-v t`).
+
+In lots of cases you can jsut evaluate individual
+functions to add them to the mix. However, things
+getting removed might require a restart to
+see the effect take place. 
+
+** References 
+
+The emacs manaul is at:
+
+https://www.gnu.org/software/emacs/manual/
+
+
+* Prelude
+** Overview
+
+This is the start of the file that lets things
+now how to process the file. 
+
+** Setup
+
+#+begin_src emacs-lisp
+
+  ;;; -*- lexical-binding: t; -*-
+
+  ;; ----------------------------------------------
+  ;;
+  ;; DO NOTE EDIT THIS FIEL DIRECTLY
+  ;;
+  ;; ~/emacs.d/init.el is maintained in
+  ;; ~/workshop/al9000.com/dotfiles/emacs.d/init.org
+  ;;
+  ;; ----------------------------------------------
+
+#+end_src
+
+
+* AWS Functions
+
+** check-for-projectile-tab-names
+*** Overview
+
+Check to see if there's a .tab-name file and set the
+tab-bar-mode tab to it if there is one. This is
+done to define unique tab names when necessary
+to allow treemacs to associate the proper directories
+with each project. (It's only required if the default
+name for the tab would conflict with the directory
+name from another project.) 
+
+The second half of the mapping is done via:
+`treemacs-edit-workspaces`
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/check-for-projectile-tab-names ()
+    "Check for a .tab-name file to set the tab-bar-mode tab with"
+    (let ((path (aws/file-exists-in-project ".tab-name")))
+      (when path
+        (tab-bar-rename-tab 
+         (with-temp-buffer
+  	 (insert-file path)
+  	 (string-trim (buffer-string)))))))
+  (add-hook 'projectile-after-switch-project-hook #'aws/check-for-projectile-tab-names)
+#+end_src
+
+** create-file-with-mkdir
+*** Overview
+
+[x] Open a buffer pointing at the requested file
+location.
+
+[x] Make any direcotires necessary to place the file.
+
+[x] The buffer is empty (and the file isn't created
+yet) if the file does not exist.
+
+[x] The buffer has the contents of the file if
+the file exists. 
+
+[x] Return `t` if file is created or already exists.
+
+[] Return `nil` if there's a problem.
+
+[] Log messages if there are errors. 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/create-file-with-mkdir (path)
+    "Create a new file at the path and open it. Make dirs if necessary."
+    (interactive)
+    (let ((dir (file-name-parent-directory path)))
+      (unless (file-directory-p dir)
+        (message "Making directory: %s" dir)
+        (make-directory dir t))
+      (unless (file-exists-p path) 
+        (message "Making file: %s" path))
+      (find-file path)
+      )
+    t)
+#+end_src
+
+** create-journal-entry
+*** Overview
+
+Create a new journal entry (making the
+current year, month, and day folders
+if necessary)
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/create-journal-entry ()
+    "Create a new journal entry file and open it"
+    (interactive)
+    (message "TODO: Create journal entry")
+  )
+#+end_src
+
+** decrease-font-size 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/decrease-font-size ()
+    "decrease the font size"
+    (interactive)
+    (set-face-attribute
+     'default nil :height 
+     (round (*
+  	   (face-attribute 'default :height)
+  	   0.90))))
+#+end_src
+
+** file-exists-in-project 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/file-exists-in-project (filename)
+    "Return the full path to FILENAME in the current project root if it exists, else nil."
+    (let ((root (projectile-project-root)))
+      (when root
+        (let ((path (expand-file-name filename root)))
+          (when (file-exists-p path)
+            path)))))
+#+end_src
+
+** increase-font-size 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/increase-font-size ()
+    "increase the font size"
+    (interactive)
+    (set-face-attribute 'default nil :height 
+  		      (round
+  		       (*
+  			(face-attribute 'default :height)
+  			1.1))))
+#+end_src
+
+** create-new-blog-entry
+
+*** Overview
+
+[] Create a new blog entry.
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/create-new-blog-entry ()
+    (interactive)
+    (message "TODO: Implement create-new-blog-entry functionality")
+  )
+#+end_src
+
+** open-daily-file
+
+*** Overview
+
+[] Opens the current dialy log file in the grimoire
+site directory.
+
+[] The file (and parent dir) is created if it
+doesn't exist yet. 
+
+[] Only creates/opens the file if you're
+in the grimoire project. Otherwise, prints
+a message that you're not in the grimoire. 
+
+*** Setup
+
+#+begin_src emacs-lisp
+
+  (defun aws/open-daily-file ()
+    "open the current grimoire/site daily file (creating it if needed)"
+    (interactive)
+    (let ((path
+  	 (expand-file-name
+  	  (format-time-string "%Y/%-m/%-d.neo")
+  	  "~/workshop/grimoire/site/daily-notes")))
+      (if (file-exists-p path)
+  	(progn 
+  	  (find-file path)
+  	  (message "Opened daily file: %s" path))
+        (aws/create-file-with-mkdir path)
+
+        )
+      ))
+
+    ;; (aws/open-daily-file)
+
+
+    ;; (message "%s" (aws/open-daily-file))
+
+  	       
+#+end_src
+
+** run-source-block
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/run-source-block ()
+    "execute the current source block without confirmation"
+    (interactive)
+    (let ((org-confirm-babel-evaluate nil))
+      (org-babel-execute-src-block)))
+#+end_src
+
+** save-all
+
+*** Overview 
+
+Function to save all files that need it without
+attempting to save files that don't or buffers
+that aren't attached to files. 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/save-all ()
+    "save files with changes (skipping buffers without associated files)"
+    (interactive)
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf
+        (when (and buffer-file-name
+  		 (buffer-modified-p))
+  	(save-buffer)))))
+#+end_src
+
+** select-window
+*** Overview
+
+  This is the function that display-buffer-alist items 
+  use to select the window that's been opened instead 
+  of staying in the window where the funciton that opened
+  the new window was initially called. 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/select-window (window)
+  (select-window window))
+#+end_src
+
+** switch-to-buffer
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/switch-to-buffer ()
+  "Switch to a buffer (in new window if it's not already open)"
+    (interactive)
+    (let ((target (read-buffer "which buffer: ")))
+    (switch-to-buffer target)
+    )) 
+#+end_src
+
+** time-to-base32
+*** Overview
+
+Converts a time object to base32
+with second level precision.
+The initial use case if for IDs
+for blog posts. 
+
+*** Setup
+
+#+begin_src emacs-lisp
+
+;;  (require 'iso8601)
+;;  (require 'parse-time)
+;;  (defun my/time-to-base32 (time)
+;;   "Convert a timestamp to base32 with second level percision
+;;  using the Crockford base32 character set with lower case letters."
+;;    (let* ((crockford-base32 "0123456789abcdefghjkmnpqrstvwxyz")
+;;  	 (ts (logand (time-convert time 'integer)
+;;  		     (1- (ash 1 40))))
+;;  	 (chars nil))
+;;      (dotimes (_ 8)
+;;        (push (aref crockford-base32 (logand ts 31)) chars)
+;;        (setq ts (ash ts -5)))
+;;      (concat chars)))
+#+end_src
+
+
+* After Init
+** Overview
+
+Things to run with the after-init-hook
+
+** Setup
+
+#+begin_src emacs-lisp
+  (add-hook 'after-init-hook
+  	  (lambda ()
+  	    (projectile-mode +1)
+  	    (projectile-switch-project-by-name "~/workshop/grimoire")
+  	  (tab-bar-close-other-tabs)))
+#+end_src
+
+
+
+* Basics
+
+** Add breathing room
+
+#+begin_src emacs-lisp
+  (set-fringe-mode 10)
+#+end_src
+
+** Allow arbitrary tabs in HTML
+
+#+begin_src emacs-lisp
+  (add-hook 'html-mode-hook
+            (lambda ()
+  	    (electric-indent-local-mode -1) 
+              (local-set-key (kbd "TAB")
+  			   (lambda ()
+  			     (interactive)
+  			     (insert "  ")))))
+#+end_src
+
+** Auto Scrolling
+
+Set `scroll-conservatively` to a large number
+so the cursor point is effectively never centered. 
+
+#+begin_src emacs-lisp
+  (setopt scroll-margin 4)
+#+end_src
+
+Set `scroll-margin` so that a few lines are
+always shown above and below the cursor point. 
+
+#+begin_src emacs-lisp
+  (setopt scroll-margin 4)
+#+end_src
+
+** Disable tooltips
+
+#+begin_src emacs-lisp
+
+  (tooltip-mode -1)
+
+#+end_src
+
+** Execute Elisp in HTML
+
+*** Overview
+
+This sets up HTML files so that you can use
+`C-j` to execute elisp expressions and
+output their results below the expression. 
+Initial use case is for documenting elips
+snippets on al9000.com.
+
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (with-eval-after-load 'sgml-mode 
+    (define-key html-mode-map
+  	      (kbd "C-j")
+  	      #'eval-print-last-sexp))
+#+end_src
+
+
+** Make ESC quit prompts
+
+#+begin_src emacs-lisp
+
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+#+end_src
+
+** Make line numbers 4 character wide
+
+#+begin_src emacs-lisp
+
+  (setq-default display-line-numbers-width 4)
+
+#+end_src
+
+** Optimizaitons
+
+These lines were originally put in to help
+speed up LSP responses. There have
+been a lot of changes since they were
+first introduced. 
+
+TODO: Tests these to see if they are
+still needed
+
+#+begin_src emacs-lisp
+  (setq read-process-output-max (* 10 1024 1024))
+  (setq gc-cons-threshold 100000000)
+#+end_src
+
+** Persist history over restarts.
+
+This does stuff like allow vertico to preserve
+position history. 
+
+#+begin_src emacs-lisp
+
+  (use-package savehist
+    :init
+    (savehist-mode))
+
+#+end_src
+
+** Prevent overtaking windows
+*** Overview
+
+  Set up Occur to display in the current 
+  window instead of taking over another 
+  window. (This can be used for other things
+  as well if they take over other windows. 
+  The format is to start with a regex for 
+  matching the buffer, then functions to 
+  use for it.)
+  NOTE: This is based off the examples from
+  this video:
+  https://www.youtube.com/watch?v=1-UIzYPn38s 
+
+  You can use `or` for the `display-buffer-alist` 
+  instead of making matchers for each buffer. 
+  The example I saw in this video: https://www.youtube.com/watch?v=1-UIzYPn38s
+  didn't work as expected, but I probably copied
+  the code incrorrectly. Didn't bother to troubleshoot
+  since I don't need it right now. 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (setq display-buffer-alist
+        '((
+  	 ;; Buffer name matcher
+  	 "\\*Occur\\*"
+  	 ;; Functions to run
+  	 ;; These functions prevent the 
+  	 ;; Occur buffer from taking over the 
+  	 ;; other windows with open buffers in them.
+  	 (display-buffer-reuse-mode-window
+  	  display-buffer-below-selected)
+  	 ;; Parameters
+  	 ;; This ensures that if you open a new 
+  	 ;; buffer while occur is open the new 
+  	 ;; buffer doesn't load into the occur window. 
+  	 (dedicated . t)
+  	 ;; Call the function to select the window 
+  	 ;; instead of staying in the calling window. 
+  	 (body-function . aws/select-window)
+  	 ;; Don't add a mode line to the window. 
+  	 (window-parameters . ((mode-line-format . none))))))
+#+end_src
+
+** Remove "Custom" from the mix
+
+*** Overview
+
+This sets up so Custom config stuff goes to a file that's
+not loaded. This lets you explore things with
+Custom without changing your config directly. You
+can update the init.el (or whatever) when
+you have the settings you'd like. The reason
+I'm not using Custom is so 100% of the config
+is contained in the .el files I update myself. 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (setq custom-file (locate-user-emacs-file "custom-sink.el"))
+#+end_src
+
+** Show column number in modeline
+
+#+begin_src emacs-lisp
+
+  (column-number-mode)
+
+#+end_src
+
+** Theme
+
+#+begin_src emacs-lisp
+
+  (load-theme 'tango-dark)
+
+#+end_src
+
+** Turn off bell
+
+#+begin_src emacs-lisp
+  (setq ring-bell-function 'ignore)
+#+end_src
+
+** Turn off menu bar
+
+#+begin_src emacs-lisp
+
+  (menu-bar-mode -1)
+
+#+end_src
+
+** Turn off startup message
+
+this is how you turn off the start up message
+
+#+begin_src emacs-lisp
+
+  (setq inhibit-startup-message t)
+
+#+end_src
+
+** Turn off toolbar
+
+#+begin_src emacs-lisp
+
+  (tool-bar-mode -1)
+
+#+end_src
+
+** Turn off visible scrollbar
+
+#+begin_src emacs-lisp
+
+  (scroll-bar-mode -1)
+
+#+end_src
+
+** Turn on line numbers and make the relative
+
+#+begin_src emacs-lisp
+
+  (global-display-line-numbers-mode t)
+  (setopt display-line-numbers-type 'relative)
+
+#+end_src
+
+** Trun off line numbers for some modes
+
+#+begin_src emacs-lisp
+  
+  (dolist (mode '(term-mode-hook))
+    (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+#+end_src
+
+** Use spaces instead of tabs
+
+#+begin_src emacs-lisp
+
+  (setq indent-tabs-mode nil)
+
+#+end_src
+
+
+* LSP Stuff
+** Turn on rust mode for rust files
+
+#+begin_src emacs-lisp
+  (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
+#+end_src
+
+** Turn on treesitter for rust
+
+#+begin_src emacs-lisp
+  (setq treesit-language-source-alist
+        '((rust "https://github.com/tree-sitter/tree-sitter-rust")))
+  (unless (treesit-language-available-p 'rust)
+    (treesit-install-language-grammar 'rust))
+#+end_src
+
+
+* Minibuffer Config
+** Setup
+
+#+begin_src emacs-lisp
+
+
+  (use-package emacs
+    :custom
+
+    ;; ;; FROM: corfu
+    ;; ;; Enable indentation+completion using the TAB key.
+    ;; ;; `completion-at-point' is often bound to M-TAB.
+    ;; (tab-always-indent 'complete)
+    
+    ;; ;; FROM: corfu
+    ;; ;; Emacs 30 and newer: Disable Ispell completion function.
+    ;; ;; Try `cape-dict' as an alternative.
+    ;; (text-mode-ispell-word-completion nil)
+
+
+
+    ;; FROM: vertico
+    ;; Enable context menu. `vertico-multiform-mode'
+    ;; adds a menu in the minibuffer
+    ;; to switch display modes.
+    (context-menu-mode t)
+    ;; Support opening new minibuffers from inside existing minibuffers.
+    (enable-recursive-minibuffers t)
+    ;; Hide commands in M-x which do not work in the current mode.  Vertico
+    ;; commands are hidden in normal buffers. This setting is useful beyond
+    ;; Vertico.
+    (read-extended-command-predicate #'command-completion-default-include-p)
+    ;; Do not allow the cursor in the minibuffer prompt
+    (minibuffer-prompt-properties
+     '(read-only t cursor-intangible t face minibuffer-prompt)))
+
+#+end_src
+
+
+* Package| Initilaztion
+** Overview
+
+This is uses the built in `package`
+funcitonality to initialize `use-packge` which
+is what gets used in the rest of the
+config. 
+
+** Setup
+
+#+begin_src emacs-lisp
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+  (package-initialize)
+  (unless package-archive-contents
+    (package-refresh-contents))
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  (require 'use-package)
+  (setq use-package-always-ensure t)
+#+end_src
+
+
+* Package: cape
+** Overview
+
+Add cape to provide some completion
+loadouts since corfu doesn't come with
+any by default.
+
+Docs: https://github.com/minad/cape
+
+TOOD: Look at cape docs for doing 
+"Super completion at point" to pulling in the
+output from multiple completion at point functions. 
+
+** setup
+
+#+begin_src emacs-lisp
+  (use-package cape
+    :init
+    (add-hook 'completion-at-point-functions #'cape-dabbrev)
+    (add-hook 'completion-at-point-functions #'cape-file)
+    (add-hook 'completion-at-point-functions #'cape-elisp-block))
+#+end_src
+
+
+* Package: corfu
+** Overview
+
+Code Compleiton 
+
+corfu 
+
+Use corfu for code completion.
+
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package corfu
+    :custom
+    (corfu-auto t)        ;; automatcially start
+    (corfu-cycle t)       ;; cycle when you hit the bottom
+    :bind
+    (:map corfu-map
+  	("RET" . nil))  ;; don't use return to insert selection
+    :init
+    (global-corfu-mode))
+#+end_src
+
+
+Not using this right now, but it's a way to use
+tab to make a selection (with nothing pre-selected)
+and return to activate it. Saving it now to
+experiment with later. 
+
+#+begin_src emacs-lisp :tangle no 
+  (use-package corfu
+    :custom
+    (corfu-preselect 'prompt)            ;; don't preselect anything 
+    (corfu-cycle t)                      ;; optional: cycle through candidates
+    :bind
+    (:map corfu-map
+  	("TAB" . corfu-next)           ;; Move to next candidate with tab
+          ([tab] . corfu-next)           ;; Move to next candidate with tab
+          ("S-TAB" . corfu-previous)     ;; Move to prev candidate with shift-tab
+          ([backtab] . corfu-previous)   ;; Move to prev candidate with shift-tab
+          ("RET" . my/corfu-ret))        ;; Return uses selection
+    :init
+    (global-corfu-mode))
+
+  (defun my/corfu-ret ()
+    "Insert the selected candidate if one is chosen, otherwise newline."
+    (interactive)
+    (if (>= corfu--index 0)
+        ;; a candidate is actively selected -> insert it
+        (corfu-insert)
+      ;; nothing selected -> behave like normal RET
+      (progn
+        (corfu-quit)
+        (call-interactively (key-binding (kbd "RET"))))))
+
+#+end_src
+
+
+* Package: doom-modeline
+** Overview 
+
+- Use the doom modeline which is nicer
+  than the built-in default. 
+
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package doom-modeline
+    :init (doom-modeline-mode 1))
+#+end_src
+
+
+* Package: doom-themes
+** Overview
+
+- This is bugged out right now.
+  TODO: Figure out what's up and
+  why this isn't working.
+
+** Setup
+
+#+begin_src emacs-lisp
+  ;; (use-package doom-themes
+  ;;   :init (load-theme 'doom-oceanic-next t))
+#+end_src
+  
+
+* Package: eglot
+** Overview
+
+  Use eglot for LSP stuff
+
+** Setup
+
+Basis setup
+
+#+begin_src emacs-lisp
+  (use-package eglot
+    :ensure nil
+    :hook (rust-ts-mode . eglot-ensure)
+    :config
+    ;; only output one line so things don't jump
+    (setq eldoc-echo-area-use-multiline-p nil) 
+    (add-to-list 'eglot-server-programs
+                 '(rust-ts-mode . ("rust-analyzer")))
+    (add-hook 'eglot-managed-mode-hook
+              (lambda () (eglot-inlay-hints-mode 1))))
+#+end_src
+
+Prevent eglot messages from showing up in the minibuffer
+
+#+begin_src emacs-lisp
+  ;; stop `eglot-code-actions messages from the minibuffer
+  (with-eval-after-load 'eglot
+    (setq eglot-code-action-indications nil))
+#+end_src
+
+
+* Package: evil
+** Overview 
+
+- Evil mode is what sets up Vim key bindings
+  in Emacs. 
+
+- Check this out for some details:
+  https://www.youtube.com/live/xaZMwNELaJY?si=UFrHE08n7sG_2qrB&t=2553
+  
+- TODO: Look at:
+  (evil-set-initial-state 'messages-buffer-mode 'normal)
+
+- TODO: Look at:
+  (evil-set-initial-state 'dashboard-mode 'normal)
+  
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package evil
+    :init
+    (setq evil-want-integration t)
+    (setq evil-want-keybinding nil)
+    (setq evil-want-C-u-scroll t)
+    (setq evil-want-C-i-jump nil)
+    (setq evil-undo-system 'undo-redo)
+    :config
+    (evil-mode 1))
+#+end_src
+
+** Key bindings
+
+#+begin_src emacs-lisp
+  ;; Set up hotkeys for vim
+  (evil-define-key '(normal) 'global (kbd ".") 'hydra-file-menu/body)
+  (evil-define-key '(normal) 'global (kbd ",") 'hydra-main-menu/body)
+  (evil-define-key '(normal insert) 'global (kbd "C-S-d") 'tab-bar-switch-to-prev-tab)
+  (evil-define-key '(normal insert) 'global (kbd "C-d") 'tab-line-switch-to-prev-tab)
+  (evil-define-key '(normal insert) 'global (kbd "C-S-f") 'tab-bar-switch-to-next-tab)
+  (evil-define-key '(normal insert) 'global (kbd "C-f") 'tab-line-switch-to-next-tab)
+  (evil-define-key '(normal insert) 'global (kbd "C-s") 'aws/save-all)
+  (evil-define-key
+    '(normal insert)
+    'global (kbd "C-w")
+    '(lambda ()
+       (interactive)
+       (aws/save-all)
+       (kill-buffer (current-buffer))
+       :wk "save all and close current"))
+  (evil-define-key '(normal insert) 'global (kbd "C-e") 'treemacs-select-window)
+#+end_src
+
+
+* Package: evil-collection
+** Overview 
+
+Package to help work better across
+different modes, etc...
+
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package evil-collection
+    :after evil
+    :config
+    (evil-collection-init))
+#+end_src
+
+
+* Package: evil-commentary
+** Overview
+
+- Provides hotkeys to comment out sections
+  of code. (e.g. `g c a p` comments out
+  a paragraph size block. )
+
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package evil-commentary
+    :after evil
+    :config
+    (evil-commentary-mode))
+#+end_src
+
+
+* Package: general
+
+** Overview
+
+This is how I'm setting up key bindings for
+hotkeys. 
+
+Link: https://github.com/noctuid/general.el
+
+** Setup
+
+Set the leader key to `SPC` in normal and visual
+mode and to `C-SPC` in insert mode and
+emacs fallback. 
+
+#+begin_src emacs-lisp
+  (use-package general
+    :after evil
+    :config
+    (general-evil-setup)
+    (general-create-definer aws/leader-keys
+      :states '(normal insert visual emacs)
+      :keymaps 'override
+      :prefix "SPC"         
+      :global-prefix "C-SPC"))
+#+end_src
+
+** Leader Keys
+
+The `aws/leader-keys` function is set up via
+`general-create-definer` above. 
+
+#+begin_src emacs-lisp
+  (aws/leader-keys
+    "o" '(projectile-find-file :wk "open project file")
+    "p" '(projectile-switch-project :wk "switch project"))
+#+end_src
+
+
+* Package: helpful
+** Setup
+
+#+begin_src emacs-lisp
+  ;; better help messages
+  ;; https://github.com/Wilfred/helpful
+  (use-package helpful)
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key)
+  (global-set-key (kbd "C-h x") #'helpful-command)
+#+end_src
+
+
+* Package: hydra
+** Overview 
+
+- Hydra makes a menu of hotkeys you can use in a
+  repetative fashion (e.g. hitting `C-d` multiple times
+  moves to the previous project tab each time)
+
+- Link: https://github.com/abo-abo/hydra
+
+- REMINDER: Don't use `:color` in the main `defhydra` call.
+  It prevents closing the hydra window in some cases. 
+
+- The `:exit t` closes the hydra window after
+the command is run. 
+
+- The `:hint nil` in the main defun sets up so the
+  keys are duplicated on the last line.
+
+** Setup the menu
+
+Initialize the package
+
+#+begin_src emacs-lisp
+    (use-package hydra)
+#+end_src
+
+Create the main menu
+
+#+begin_src emacs-lisp
+  (defhydra hydra-main-menu (:hint nil)
+    "
+  [ c ] close file tab 
+  [ C ] close project tab
+  [ t ] tangle file 
+  [ r ] run org source block
+  [ 7 ] decrease font size
+  [ 8 ] increase font size 
+  "
+
+    ("c" tab-line-close-tab :exit t)
+    ("C" tab-bar-close-tab :exit t)
+    ("t" org-babel-tangle :exit t)
+    ("r" aws/run-source-block :exit t)
+    ("7" aws/decrease-font-size)
+    ("8" aws/increase-font-size)
+    ) 
+#+end_src
+
+Create the file menu
+
+#+begin_src emacs-lisp 
+  (defhydra hydra-file-menu (:hint nil)
+    "
+  [ b ] open buffer 
+  [ d ] open daily file
+  [ j ] create journal entry 
+  [ n ] new blog entry 
+  "
+    ("b" aws/switch-to-buffer :exit t)
+    ("d" aws/open-daily-file :exit t)
+    ("j" aws/create-journal-entry :exit t)
+    ("n" aws/create-new-blog-entry :exit t)
+    ) 
+#+end_src
+
+
+* Package: no-littering
+** Overview
+
+Clean up auto-save and related files. 
+
+Link: https://github.com/emacscollective/no-littering
+
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package no-littering
+    :config
+    (setq auto-save-file-name-transforms
+  	`((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
+#+end_src
+
+
+* Package: orderless
+
+** Overview
+
+Use orderless for the completion style
+
+Configure a custom style dispatcher (see the Consult wiki)
+TODO: Look at: (orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch))
+TODO: Look at: (orderless-component-separator #'orderless-escapable-split-on-space)
+
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package orderless
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-overrides '((file (styles partial-completion))))
+    ;; Disable defaults, use our settings
+    (completion-category-defaults nil)
+    ;; Emacs 31: partial-completion behaves like substring
+    (completion-pcm-leading-wildcard t))
+#+end_src
+
+
+* Package: projectile
+** Overview 
+** Setup
+
+Set up projectile for project management
+
+#+begin_src emacs-lisp
+  (use-package projectile
+    :diminish projectile-mode
+    :init (projectile-mode 1)
+    :config (projectile-mode))
+#+end_src
+
+Set up projectile to integrate with tab-bar so
+each project gets its own tab. 
+
+#+begin_src emacs-lisp
+  (projectile-session-mode +1)
+#+end_src
+
+
+* Package: treemacs
+
+** Overview
+
+Provides a file tree view
+
+** Setup
+
+Initialization 
+
+#+begin_src emacs-lisp
+  ;; https://github.com/Alexander-Miller/treemacs#state-of-development
+  ;; Add treemacs for file tree viewing. 
+  (use-package treemacs
+    :bind
+    (("C-e" . treemacs-quit))
+    :config
+    (progn (setq treemacs-position 'right)))
+#+end_src
+
+Close after a file is opened
+
+#+begin_src emacs-lisp
+  (with-eval-after-load 'treemacs
+    (treemacs-define-RET-action 'file-node-open  #'treemacs-visit-node-close-treemacs)
+    (treemacs-define-RET-action 'file-node-closed #'treemacs-visit-node-close-treemacs))
+#+end_src
+
+
+Close with `C-e` if you're inside the
+treemacs window
+
+#+begin_src emacs-lisp
+  (with-eval-after-load 'treemacs
+    (evil-define-key '(normal insert emacs treemacs) treemacs-mode-map
+      (kbd "C-e") 'treemacs-quit))
+#+end_src
+
+
+* Package: treemacs-evil
+
+** Overview
+
+Make treemacs play nice with evil mode
+
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package treemacs-evil
+    :after (treemacs evil))
+#+end_src
+
+
+* Package: treemacs-projectils
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package treemacs-projectile
+    :after (treemacs projectile))
+#+end_src
+
+
+* Package: treemacs-tab-bar
+
+** Overview
+
+Set up tab-bar for treemacs.
+
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package treemacs-tab-bar
+    :after (treemacs)
+    :config (treemacs-set-scope-type 'Tabs))
+#+end_src
+
+
+* Package: vertico 
+
+** Overview 
+This is for some nicer formatting
+including code completion popups. 
+
+** Setup
+
+#+begin_src emacs-lisp
+  (use-package vertico
+    :custom
+    (vertico-scroll-margin 1) ;; Different scroll margin
+    ;; (vertico-count 20) ;; Show more candidates
+    (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+    (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
+    :init
+    (vertico-mode))
+#+end_src
+
+
+* Package: which-key
+** Setup
+
+#+begin_src emacs-lisp
+
+  ;; TODO: It sounds like this may have been
+  ;; included in emacs 30. (The notes are
+  ;; from eariler, so see if it still
+  ;; needs to be set up here as a package
+  ;; this way.)
+  ;;
+  ;; Use which-key to show next possible key
+  ;; press options and what they do
+  (use-package which-key
+    :init (which-key-mode)
+    ;; :diminish witch-key-mode
+     :config
+     ;; Try to open the window on the right.
+     ;; Otherwise open it on the bottom.
+     ;; (which-key-setup-side-window-right-bottom)
+     (setq which-key-idle-delay 0.1))
+#+end_src
+
+
+* Package: yasnippet
+** Overview
+
+Template system for outputting
+templates. 
+
+Link: https://github.com/joaotavora/yasnippet
+
+Docs Link: http://joaotavora.github.io/yasnippet/
+
+** Setup
+
+Init 
+
+#+begin_src emacs-lisp
+  (use-package yasnippet
+    :config
+    (setopt yas-snippet-dirs '("~/workshop/grimoire/snippets"))
+    :init
+    (yas-global-mode 1))
+#+end_src
+
+
+
+
+* Require: autoinsert
+
+** Overview
+
+Set up to pre-populate new files
+with templates.
+
+
+** Setup
+
+#+begin_src emacs-lisp
+  (require 'autoinsert)
+  (setq auto-insert-query nil)
+  (auto-insert-mode 1)
+#+end_src
+
+#+begin_src emacs-lisp
+  (define-auto-insert
+    '("/Users/alan/workshop/grimoire/journal/entries/[0-9]\\{4\\}/[0-9]\\{2\\}/[0-9]\\{2\\}/.*\\.neo" . "journal file")
+    '(nil
+      "this is the output"))
+
+  (define-auto-insert
+    '("/Users/alan/workshop/grimoire/site/daily-notes/[0-9]\\{4\\}/[0-9]+/[0-9]+\\.neo" . "daily notes file")
+    '(lambda ()
+       (yas-expand-snippet
+        (yas-lookup-snippet "daily-note"))))
+#+end_src
+
+
+
+
+* Tabs
+
+** Save State
+
+Current turned off.
+
+This can be used to save state between
+restarts. It's been flaky which is
+why it's off. It might be becaues
+I'm messing around with configs so much. 
+TODO: TBD on turning this back on
+by removing `:tangle no`
+
+#+begin_src emacs-lisp :tangle no
+  (desktop-save-mode 1)
+  (setq desktop-restore-frames t) 
+#+end_src
+
+** Tab Bar Mode
+*** Setup
+
+#+begin_src emacs-lisp
+  (tab-bar-mode 1)
+#+end_src
+
+*** Hide new/close buttons for tab-bar tabs
+
+#+begin_src emacs-lisp
+  (setopt tab-bar-close-button-show nil)
+  (setopt tab-bar-new-button nil)
+#+end_src
+
+*** Set Colors
+
+#+begin_src emacs-lisp
+  (set-face-attribute 'tab-bar nil 
+                      :underline
+  		    '(:color "#444433" :style line :position below))
+  (set-face-attribute 'tab-bar-tab nil :foreground "#998877" :background "#444433")
+  (set-face-attribute 'tab-bar-tab-inactive nil :foreground "#444433")
+#+end_src
+
+** Tab Line Mode
+
+*** Setup
+
+#+begin_src emacs-lisp
+  ;; Turn on tabs and set them up to have
+  ;; directory names in addition to the file names
+  (global-tab-line-mode 1)
+  (setopt uniquify-buffer-name-style 'forward)
+  (setopt uniquify-min-dir-content 1)
+#+end_src
+
+
+#+begin_src emacs-lisp
+  (setopt tab-line-separator "  | ")
+  (setopt tab-line-new-button nil)
+  (setopt tab-line-close-button-show nil)
+#+end_src
+
+*** Colors
+
+#+begin_src emacs-lisp
+
+  (set-face-attribute 'tab-line nil 
+  		    :background "black"
+                      :underline '(:color "black" :style line :position below))
+  (set-face-attribute 'tab-line-tab-inactive nil :foreground "#445566" :background "black")
+  (set-face-attribute 'tab-line-tab-current nil :foreground "#ffeef2" :background "black")
+  (set-face-attribute 'tab-line-tab-modified nil
+  		    :inherit 'unspecified
+                      :slant 'italic)
+
+#+end_src
+

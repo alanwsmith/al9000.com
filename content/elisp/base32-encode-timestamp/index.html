@@ -1,0 +1,57 @@
+== extends "/templates.inc/switches/default.html" 
+== block toml
+title = "Base32 Encode a Timestamp"
+status = "draft"
+created = 2026-11-21T15:34:00-04:00
+id = "TKTKTK"
+flags = []
+== endblock
+
+== block main
+== filter neo
+
+
+-- details/
+-- summary: Basic Output
+
+-- code/
+-- elisp
+
+
+(require 'iso8601)
+(require 'parse-time)
+
+
+(defun my/time-to-base32 (time)
+  "Convert a timestamp to base32 with second level percision
+using the Crockford base32 character set with lower case letters."
+  (let* ((crockford-base32 "0123456789abcdefghjkmnpqrstvwxyz")
+	 (ts (logand (time-convert time 'integer)
+		     (1- (ash 1 40))))
+	 (chars nil))
+    (dotimes (_ 8)
+      (push (aref crockford-base32 (logand ts 31)) chars)
+      (setq ts (ash ts -5)))
+    (concat chars)))
+
+(my/time-to-base32 (current-time))
+
+
+-- output
+
+01ng42xx
+
+
+-- /details
+
+-- notes
+
+- This is what I use as the base
+for creating the IDs I use for blog
+posts on this site. 
+
+
+== endfilter
+== endblock
+
+

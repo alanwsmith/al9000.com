@@ -1,0 +1,29 @@
+== extends "/templates.inc/switches/default.html"
+
+== block toml
+title = "Elisp Notes"
+status = "done"
+created = 2026-11-21T14:57:00-04:00
+id = "TKTKTK"
+flags = ["skip", "no-date"]
+== endblock 
+
+== block content 
+<ul>
+== for folder in foldersInFolder(dir(), full=true) 
+  == set index_file = folder + "/index.html"
+
+<li>
+  <a href="[@ folder @]">
+    == if d[index_file]
+      [@ if(d[index_file].shortTitle, d[index_file].title, "Untitled Snippet") @]
+    == else
+      Untitled Snippet 
+    == endif
+  </a>
+</li>
+
+== endfor
+</ul>
+== endblock
+
