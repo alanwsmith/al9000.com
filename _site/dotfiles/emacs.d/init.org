@@ -113,31 +113,34 @@ The second half of the mapping is done via:
 *** Setup
 
 #+begin_src emacs-lisp
-  (defun my/create-blog-entry ()
-    (interactive)
-    (let ((time (current-time)))
-      (let ((id (my/time-to-base32 time)))
-        (let ((id-dir (mapconcat #'identity
-  			       (seq-partition id 2)
-  			       "/")))
 
-
-    (let ((path
-  	 (expand-file-name
-  	  id-dir
-  	  "~/workshop/al9000.com/content/blog")))
-
-        (message path)
-  	)
-    )
-
-  	)
-        )
-  )
-
-  (my/create-blog-entry)
+  ;; (defun my/create-blog-entry ()
+  ;;   (interactive)
+  ;;   (let ((time (current-time)))
+  ;;     (let ((id (my/time-to-base32 time)))
+  ;;       (let ((id-dir (mapconcat #'identity
+  ;; 			       (seq-partition id 2)
+  ;; 			       "/")))
+  ;; 	(let ((dir-path
+  ;; 	       (expand-file-name
+  ;; 		id-dir
+  ;; 		"~/workshop/al9000.com/content/blog")))
+  ;; 	  (let ((file-path (concat dir-path "/index.html")))
+  ;;     (if (file-exists-p file-path)
+  ;; 	(progn 
+  ;; 	  (find-file file-path)
+  ;; 	  (message "Opened daily file: %s" file-path))
+  ;;       (my/create-file-with-mkdir file-path)
+  ;; 	     )
+  ;; 	  )
+  ;; 	)
+  ;;       )
+  ;;     )
+  ;;   ))
+  ;; (my/create-blog-entry)
 
 #+end_src
+
 
 ** create-daily-file-or-open-it
 
@@ -206,7 +209,15 @@ that aren't attached to files.
 *** Setup
 
 #+begin_src emacs-lisp
-  (defun aws/save-all ()
+(defun aws/save-all ()
+    "save files with changes (skipping buffers without associated files)"
+    (interactive)
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf
+        (when (and buffer-file-name
+  		 (buffer-modified-p))
+  	(save-buffer)))))
+#+end_src
 
 ** create-file-with-mkdir
 *** Overview
@@ -263,15 +274,6 @@ if necessary)
   )
 #+end_src
 
-
-    "save files with changes (skipping buffers without associated files)"
-    (interactive)
-    (dolist (buf (buffer-list))
-      (with-current-buffer buf
-        (when (and buffer-file-name
-  		 (buffer-modified-p))
-  	(save-buffer)))))
-#+end_src
 
 ** select-window
 *** Overview
