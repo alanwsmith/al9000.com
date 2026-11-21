@@ -1289,6 +1289,15 @@ Init
 
 * Require: autoinsert
 
+
+** TODO
+
+See about deprecating this
+and just making the files by copying
+in templates during their creation
+since you need to have somethings
+set automatically (e.g. id and date)
+
 ** Overview
 
 Set up to pre-populate new files
@@ -1304,17 +1313,6 @@ with templates.
   (setq auto-insert-query nil)
   (auto-insert-mode 1)
 #+end_src
-
-**** Blog Entry
-
-#+begin_src emacs-lisp
-  (define-auto-insert
-    '("/Users/alan/workshop/al9000.com/content/blog/../../../../index\\.html" . "blog entry")
-    '(lambda ()
-       (yas-expand-snippet
-        (yas-lookup-snippet "blog-entry.html"))))
-#+end_src
-
 
 **** Daily Note
 
