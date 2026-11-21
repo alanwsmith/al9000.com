@@ -119,11 +119,17 @@ The second half of the mapping is done via:
       (let ((id (my/time-to-base32 time)))
         (let ((id-dir (mapconcat #'identity
   			       (seq-partition id 2)
-  			       "/")
+  			       "/")))
 
-  		     ))
-        (message id-dir)
+
+    (let ((path
+  	 (expand-file-name
+  	  id-dir
+  	  "~/workshop/al9000.com/content/blog")))
+
+        (message path)
   	)
+    )
 
   	)
         )
