@@ -104,106 +104,8 @@ The second half of the mapping is done via:
   (add-hook 'projectile-after-switch-project-hook #'aws/check-for-projectile-tab-names)
 #+end_src
 
-** create-file-with-mkdir
-*** Overview
 
-[x] Open a buffer pointing at the requested file
-location.
-
-[x] Make any direcotires necessary to place the file.
-
-[x] The buffer is empty (and the file isn't created
-yet) if the file does not exist.
-
-[x] The buffer has the contents of the file if
-the file exists. 
-
-[x] Return `t` if file is created or already exists.
-
-[] Return `nil` if there's a problem.
-
-[] Log messages if there are errors. 
-
-*** Setup
-
-#+begin_src emacs-lisp
-  (defun aws/create-file-with-mkdir (path)
-    "Create a new file at the path and open it. Make dirs if necessary."
-    (interactive)
-    (let ((dir (file-name-parent-directory path)))
-      (unless (file-directory-p dir)
-        (message "Making directory: %s" dir)
-        (make-directory dir t))
-      (unless (file-exists-p path) 
-        (message "Making file: %s" path))
-      (find-file path)
-      )
-    t)
-#+end_src
-
-** create-journal-entry
-*** Overview
-
-Create a new journal entry (making the
-current year, month, and day folders
-if necessary)
-
-*** Setup
-
-#+begin_src emacs-lisp
-  (defun aws/create-journal-entry ()
-    "Create a new journal entry file and open it"
-    (interactive)
-    (message "TODO: Create journal entry")
-  )
-#+end_src
-
-** decrease-font-size 
-
-*** Setup
-
-#+begin_src emacs-lisp
-  (defun aws/decrease-font-size ()
-    "decrease the font size"
-    (interactive)
-    (set-face-attribute
-     'default nil :height 
-     (round (*
-  	   (face-attribute 'default :height)
-  	   0.90))))
-#+end_src
-
-** file-exists-in-project 
-
-*** Setup
-
-#+begin_src emacs-lisp
-  (defun aws/file-exists-in-project (filename)
-    "Return the full path to FILENAME in the current project root if it exists, else nil."
-    (let ((root (projectile-project-root)))
-      (when root
-        (let ((path (expand-file-name filename root)))
-          (when (file-exists-p path)
-            path)))))
-#+end_src
-
-** increase-font-size 
-
-*** Setup
-
-#+begin_src emacs-lisp
-  (defun aws/increase-font-size ()
-    "increase the font size"
-    (interactive)
-    (set-face-attribute 'default nil :height 
-  		      (round
-  		       (*
-  			(face-attribute 'default :height)
-  			1.1))))
-#+end_src
-
-** create-new-blog-entry
-
+** create-blog-entry
 *** Overview
 
 [] Create a new blog entry.
@@ -211,13 +113,27 @@ if necessary)
 *** Setup
 
 #+begin_src emacs-lisp
-  (defun aws/create-new-blog-entry ()
+  (defun my/create-blog-entry ()
     (interactive)
-    (message "TODO: Implement create-new-blog-entry functionality")
+    (let ((time (current-time)))
+      (let ((id (my/time-to-base32 time)))
+        (let ((id-dir (mapconcat #'identity
+  			       (seq-partition id 2)
+  			       "/")
+
+  		     ))
+        (message id-dir)
+  	)
+
+  	)
+        )
   )
+
+  (my/create-blog-entry)
+
 #+end_src
 
-** open-daily-file
+** create-daily-file-or-open-it
 
 *** Overview
 
@@ -235,7 +151,7 @@ a message that you're not in the grimoire.
 
 #+begin_src emacs-lisp
 
-  (defun aws/open-daily-file ()
+  (defun my/create-daily-file-or-open-it ()
     "open the current grimoire/site daily file (creating it if needed)"
     (interactive)
     (let ((path
@@ -246,18 +162,20 @@ a message that you're not in the grimoire.
   	(progn 
   	  (find-file path)
   	  (message "Opened daily file: %s" path))
-        (aws/create-file-with-mkdir path)
+        (my/create-file-with-mkdir path)
 
         )
       ))
 
-    ;; (aws/open-daily-file)
+    ;; (my/create-daily-file-or-open-it)
 
-
-    ;; (message "%s" (aws/open-daily-file))
-
+    ;; (message "%s" (my/create-daily-file-or-open-it))
   	       
 #+end_src
+
+
+
+
 
 ** run-source-block
 
@@ -283,6 +201,63 @@ that aren't attached to files.
 
 #+begin_src emacs-lisp
   (defun aws/save-all ()
+
+** create-file-with-mkdir
+*** Overview
+
+[x] Open a buffer pointing at the requested file
+location.
+
+[x] Make any direcotires necessary to place the file.
+
+[x] The buffer is empty (and the file isn't created
+yet) if the file does not exist.
+
+[x] The buffer has the contents of the file if
+the file exists. 
+
+[x] Return `t` if file is created or already exists.
+
+[] Return `nil` if there's a problem.
+
+[] Log messages if there are errors. 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun my/create-file-with-mkdir (path)
+    "Create a new file at the path and open it. Make dirs if necessary."
+    (interactive)
+    (let ((dir (file-name-parent-directory path)))
+      (unless (file-directory-p dir)
+        (message "Making directory: %s" dir)
+        (make-directory dir t))
+      (unless (file-exists-p path) 
+        (message "Making file: %s" path))
+      (find-file path)
+      )
+    t)
+#+end_src
+
+
+** create-journal-entry
+*** Overview
+
+Create a new journal entry (making the
+current year, month, and day folders
+if necessary)
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun my/create-journal-entry ()
+    "Create a new journal entry file and open it"
+    (interactive)
+    (message "TODO: Create journal entry")
+  )
+#+end_src
+
+
     "save files with changes (skipping buffers without associated files)"
     (interactive)
     (dolist (buf (buffer-list))
@@ -332,19 +307,20 @@ for blog posts.
 
 #+begin_src emacs-lisp
 
-;;  (require 'iso8601)
-;;  (require 'parse-time)
-;;  (defun my/time-to-base32 (time)
-;;   "Convert a timestamp to base32 with second level percision
-;;  using the Crockford base32 character set with lower case letters."
-;;    (let* ((crockford-base32 "0123456789abcdefghjkmnpqrstvwxyz")
-;;  	 (ts (logand (time-convert time 'integer)
-;;  		     (1- (ash 1 40))))
-;;  	 (chars nil))
-;;      (dotimes (_ 8)
-;;        (push (aref crockford-base32 (logand ts 31)) chars)
-;;        (setq ts (ash ts -5)))
-;;      (concat chars)))
+  (require 'iso8601)
+  (require 'parse-time)
+  (defun my/time-to-base32 (time)
+   "Convert a timestamp to base32 with second level percision
+  using the Crockford base32 character set with lower case letters."
+    (let* ((crockford-base32 "0123456789abcdefghjkmnpqrstvwxyz")
+  	 (ts (logand (time-convert time 'integer)
+  		     (1- (ash 1 40))))
+  	 (chars nil))
+      (dotimes (_ 8)
+        (push (aref crockford-base32 (logand ts 31)) chars)
+        (setq ts (ash ts -5)))
+      (concat chars)))
+
 #+end_src
 
 
@@ -627,6 +603,51 @@ this is how you turn off the start up message
 #+begin_src emacs-lisp
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
   (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
+#+end_src
+
+
+** decrease-font-size 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/decrease-font-size ()
+    "decrease the font size"
+    (interactive)
+    (set-face-attribute
+     'default nil :height 
+     (round (*
+  	   (face-attribute 'default :height)
+  	   0.90))))
+#+end_src
+
+** file-exists-in-project 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/file-exists-in-project (filename)
+    "Return the full path to FILENAME in the current project root if it exists, else nil."
+    (let ((root (projectile-project-root)))
+      (when root
+        (let ((path (expand-file-name filename root)))
+          (when (file-exists-p path)
+            path)))))
+#+end_src
+
+** increase-font-size 
+
+*** Setup
+
+#+begin_src emacs-lisp
+  (defun aws/increase-font-size ()
+    "increase the font size"
+    (interactive)
+    (set-face-attribute 'default nil :height 
+  		      (round
+  		       (*
+  			(face-attribute 'default :height)
+  			1.1))))
 #+end_src
 
 ** Turn on treesitter for rust
@@ -1036,14 +1057,14 @@ Create the file menu
   (defhydra hydra-file-menu (:hint nil)
     "
   [ b ] open buffer 
-  [ d ] open daily file
+  [ d ] create/open daily file
   [ j ] create journal entry 
-  [ n ] new blog entry 
+  [ n ] create blog entry 
   "
     ("b" aws/switch-to-buffer :exit t)
-    ("d" aws/open-daily-file :exit t)
-    ("j" aws/create-journal-entry :exit t)
-    ("n" aws/create-new-blog-entry :exit t)
+    ("d" my/create-daily-file-or-open-it :exit t)
+    ("j" my/create-journal-entry :exit t)
+    ("n" my/create-blog-entry :exit t)
     ) 
 #+end_src
 
