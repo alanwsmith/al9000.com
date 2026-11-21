@@ -114,33 +114,35 @@ The second half of the mapping is done via:
 
 #+begin_src emacs-lisp
 
-  ;; (defun my/create-blog-entry ()
-  ;;   (interactive)
-  ;;   (let ((time (current-time)))
-  ;;     (let ((id (my/time-to-base32 time)))
-  ;;       (let ((id-dir (mapconcat #'identity
-  ;; 			       (seq-partition id 2)
-  ;; 			       "/")))
-  ;; 	(let ((dir-path
-  ;; 	       (expand-file-name
-  ;; 		id-dir
-  ;; 		"~/workshop/al9000.com/content/blog")))
-  ;; 	  (let ((file-path (concat dir-path "/index.html")))
-  ;;     (if (file-exists-p file-path)
-  ;; 	(progn 
-  ;; 	  (find-file file-path)
-  ;; 	  (message "Opened daily file: %s" file-path))
-  ;;       (my/create-file-with-mkdir file-path)
-  ;; 	     )
-  ;; 	  )
-  ;; 	)
-  ;;       )
-  ;;     )
-  ;;   ))
-  ;; (my/create-blog-entry)
+  (defun my/create-blog-entry ()
+    (interactive)
+    (let ((time (current-time)))
+      (let ((id (my/time-to-base32 time)))
+        (let ((id-dir (mapconcat #'identity
+  			       (seq-partition id 2)
+  			       "/")))
+  	(let ((dir-path
+  	       (expand-file-name
+  		id-dir
+  		"~/workshop/al9000.com/content/blog")))
+  	  (let ((file-path (concat dir-path "/index.html")))
+      (if (file-exists-p file-path)
+  	(progn 
+  	  (find-file file-path)
+  	  (message "Opened daily file: %s" file-path))
+        (my/create-file-with-mkdir file-path)
+  	     )
+  	  )
+  	)
+        )
+      )
+    ))
 
 #+end_src
 
+*** Test
+
+(my/create-blog-entry)
 
 ** create-daily-file-or-open-it
 
@@ -1295,23 +1297,43 @@ with templates.
 
 ** Setup
 
+**** Config
+
 #+begin_src emacs-lisp
   (require 'autoinsert)
   (setq auto-insert-query nil)
   (auto-insert-mode 1)
 #+end_src
 
+**** Blog Entry
+
 #+begin_src emacs-lisp
   (define-auto-insert
-    '("/Users/alan/workshop/grimoire/journal/entries/[0-9]\\{4\\}/[0-9]\\{2\\}/[0-9]\\{2\\}/.*\\.neo" . "journal file")
-    '(nil
-      "this is the output"))
+    '("/Users/alan/workshop/al9000.com/content/blog/../../../../index\\.html" . "blog entry")
+    '(lambda ()
+       (yas-expand-snippet
+        (yas-lookup-snippet "blog-entry.html"))))
+#+end_src
 
+
+**** Daily Note
+
+#+begin_src emacs-lisp
   (define-auto-insert
     '("/Users/alan/workshop/grimoire/site/daily-notes/[0-9]\\{4\\}/[0-9]+/[0-9]+\\.neo" . "daily notes file")
     '(lambda ()
        (yas-expand-snippet
         (yas-lookup-snippet "daily-note"))))
+#+end_src
+
+
+**** Journal Entry (TODO?)
+
+#+begin_src emacs-lisp
+  (define-auto-insert
+    '("/Users/alan/workshop/grimoire/journal/entries/[0-9]\\{4\\}/[0-9]\\{2\\}/[0-9]\\{2\\}/.*\\.neo" . "journal file")
+    '(nil
+      "this is the output"))
 #+end_src
 
 
