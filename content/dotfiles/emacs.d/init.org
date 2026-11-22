@@ -106,6 +106,7 @@ The second half of the mapping is done via:
 
 
 ** create-blog-entry
+
 *** Overview
 
 [] Create a new blog entry.
@@ -113,36 +114,37 @@ The second half of the mapping is done via:
 *** Setup
 
 #+begin_src emacs-lisp
-
   (defun my/create-blog-entry ()
     (interactive)
     (let ((time (current-time)))
       (let ((id (my/time-to-base32 time)))
-        (let ((id-dir (mapconcat #'identity
-  			       (seq-partition id 2)
-  			       "/")))
+        (let ((id-dir (mapconcat #'identity (seq-partition id 2) "/")))
   	(let ((dir-path
-  	       (expand-file-name
-  		id-dir
-  		"~/workshop/al9000.com/content/blog")))
+  	       (expand-file-name id-dir "~/workshop/al9000.com/content/blog")))
   	  (let ((file-path (concat dir-path "/index.html")))
       (if (file-exists-p file-path)
   	(progn 
   	  (find-file file-path)
   	  (message "Opened daily file: %s" file-path))
-        (my/create-file-with-mkdir file-path)
-  	     )
-  	  )
-  	)
-        )
-      )
-    ))
-
+        (with-temp-buffer
+  	(insert-file-contents "/Users/alan/workshop/al9000.com/content/blog/template.inc.html")
+  	(goto-char (point-min))
+  	(while (search-forward "TIMESTAMP_STRING" nil t)
+  	  (replace-match (format-time-string "%Y-%m-%dT%H:%M:%S%:z" time)))
+  	(goto-char (point-min))
+  	(while (search-forward "ID_STRING" nil t)
+  	  (replace-match id-dir t))
+    (unless (file-directory-p dir-path)
+      (make-directory dir-path t))
+  	   (write-region (point-min) (point-max) file-path nil 'silent)
+    (find-file file-path)))))))))
 #+end_src
 
 *** Test
 
 (my/create-blog-entry)
+
+
 
 ** create-daily-file-or-open-it
 
@@ -394,27 +396,6 @@ always shown above and below the cursor point.
   (tooltip-mode -1)
 
 #+end_src
-
-** Execute Elisp in HTML
-
-*** Overview
-
-This sets up HTML files so that you can use
-`C-j` to execute elisp expressions and
-output their results below the expression. 
-Initial use case is for documenting elips
-snippets on al9000.com.
-
-
-*** Setup
-
-#+begin_src emacs-lisp
-  (with-eval-after-load 'sgml-mode 
-    (define-key html-mode-map
-  	      (kbd "C-j")
-  	      #'eval-print-last-sexp))
-#+end_src
-
 
 ** Make ESC quit prompts
 

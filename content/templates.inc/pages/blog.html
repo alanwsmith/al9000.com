@@ -1,44 +1,50 @@
 == extends "/templates.inc/wrappers/default.html" 
 
-[# TODO: Deprecate this in favor of using 
-the default with flags if necessary #]
+== block payload 
+== include "/templates.inc/headers/default.html"
 
-
-== set subnav
-<div class="large-top-padding"><a href="/blog/">blog</a></div>
-== endset
-
-== block body
-== include "/templates.inc/includes/header.html"
-<main class="small-wrapper default-flow">
+<main class="default default-wrapper default-flow">
 
 == block title
-  <div class="title-block">
-    <hgroup>
-      == if p.title
+  == if "no-title" not in p.flags
+  <hgroup class="default">
+    == if p.title
+      <div class="title-wrapper">
         <h1>[@ p.title @]</h1>
         == if p.subtitle
           <div class="subtitle">[@ p.subtitle @]</div>
         == endif
-      == endif
-    </hgroup>
-    == if p.created and p.show_date != false
-    <div class="date">[@ date(p.created) @]</div>
-    == endif 
-  </div>
+      </div>
+      == if p.created and "no-date" not in p.flags
+        <div class="date">[@ date(p.created) @]</div>
+      == endif 
+    == endif
+  </hgroup>
+  == endif
 == endblock
 
+== block main
+== endblock
 
-[# TODO: Deprecate `block main` in favor of `block content` and `block backmatter #]
-[!- block main !][! endblock !]
-[!- block content !][! endblock !]
+== block content
+== endblock
+
 <div class="end-of-line"></div>
+
+== set captured
+[!- block backmatter -!][!- endblock -!]
+== endset
+
+== if captured|trim|length > 0
 <div class="backmatter default-flow">
-[!- block backmatter !][! endblock !]
+    [@ captured @]
 </div>
+== endif
 
 </main>
-== include "/templates.inc/includes/footer.html"
+
+== include "/templates.inc/footers/default.html"
 
 == endblock
+
 
