@@ -1,0 +1,29 @@
+-- title
+
+al9000.com README
+
+-- notes/
+
+- The site is currently built with the
+rust based ``ssg9000`` site builder. 
+(Eventually, a custom version will
+be rolled into the al9000.com project
+itself)
+
+- Starting the server is done with the
+``start-dev-server.bash`` script
+which fires up ssg9000 for a local build. 
+
+-- /notes
+
+
+-- todo/
+
+- Update the flag for skipping files in the
+feed streams and rss output from ``skip``
+to ``skip-feed``.
+
+
+
+-- /todo
+

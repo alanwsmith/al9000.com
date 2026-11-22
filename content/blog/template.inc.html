@@ -1,0 +1,24 @@
+== extends "/templates.inc/switches/blog.html"
+
+== block toml
+title = ""
+created = TIMESTAMP_STRING
+id = "ID_STRING"
+status = "draft"
+flags = []
+tags = []
+== endblock
+
+
+== block main
+== filter md
+
+<div class="end-of-line"></div>
+
+### Endnotes
+
+### Footnotes
+
+
+== endfilter
+== endblock

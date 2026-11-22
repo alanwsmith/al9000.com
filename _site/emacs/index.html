@@ -98,6 +98,71 @@
 <pre class="tmp-neo">
 -- h2
 
+Basics
+
+
+-- details/
+-- summary: Open a file via path
+
+{{C-x}} {{C-f}}
+
+
+-- details/
+-- summary: Run inline elisp expression
+
+-- list/
+
+- {{C-j}} - Execute and output result below expression 
+
+- {{C-x}} {{C-e}} - Execute and display in message area 
+
+- {{M-x}} ``eval-buffer`` - Evaluate the entire buffer. 
+
+
+
+
+
+
+
+-- /details
+
+
+
+-- h2
+
+Org Mode
+
+
+-- details/
+-- summary: Output an Org Mode file via tangle
+
+{{M-x}} org-babel-tangle
+
+or:
+
+{{C-c}} {{C-v}} {{t}}
+
+
+-- details/
+-- summary: Skip outputting a source code block
+
+
+-- code/
+
+#+begin_src emacs-lisp :tangle no
+(message "This will not be included in tangled files")
+#+end_src
+
+-- /code
+
+
+-- /details
+
+
+
+
+-- h2
+
 Videos 
 
 I'm digging this persons channel: 

@@ -1,0 +1,322 @@
+#+property: header-args :tangle "~/.zshrc" :results silent
+#+startup: content indent
+
+
+* Introduction
+
+This is the config I use for ZSH on my mac.  
+
+(Reminder: {{M-x}} `org-babel-tangle` is
+what genrates the output file until
+things are set up to auto generate
+on save.)
+
+
+* Basics
+
+** Edit Note
+
+
+#+begin_src bash
+
+  ## ----------------------------------------------
+  ##
+  ## DO NOTE EDIT THIS FIEL DIRECTLY
+  ## 
+  ## ~/.zshrc is maintained in
+  ## ~/workshop/al9000.com/dotfiles/zshrc.org
+  ## 
+  ## ----------------------------------------------
+
+#+end_src
+
+
+** Turn On Prompt Expansion
+
+#+begin_src bash
+
+  setopt PROMPT_SUBST
+
+#+end_src
+
+
+** Turn On autocd
+
+This sets up so you don't have to type ``cd`` to
+move into a directory. 
+
+
+#+begin_src bash
+
+  setopt autocd 
+  
+#+end_src
+
+
+** Don't Log Space Commands 
+
+This prevents commands that start with a space
+from being recorded in the command line log. 
+
+WARNING: Don't rely on this for security. It's
+too easy to forget to put a space in. I basically
+never use this, but like it being there for
+the once in a blue moon times when I find
+it useful. 
+
+#+begin_src bash
+
+  setopt HIST_IGNORE_SPACE
+
+#+end_src
+
+** Set up/down arrows based on existing text
+
+#+begin_src bash
+
+  bindkey '^[[A' up-line-or-search
+  bindkey '^[[B' down-line-or-search
+
+#+end_src
+
+
+** Use vim bindings
+
+#+begin_src bash
+
+  bindkey -v
+
+#+end_src
+
+
+* Display
+
+** Prompt Colors and Vars
+
+Sets up the variables used to make
+the dynamic prompt. 
+
+#+begin_src bash
+
+  BG_ON='%K{233}'
+  BG_OFF='%k'
+  FG_ON='%F{#6b560e}'
+  FG_OFF='%f'
+  FG_CARET='%F{242}'
+  FG_DOT='%F{239}'
+  FG_OK='%F{22}'
+  FG_ER='%F{124}'
+  NEWLINE=$'\n'
+  
+#+end_src
+
+
+** Colors for the `ls` Command
+
+The default colors for some of the themes I use
+don't read well when using the `ls` command.
+This sets them to some explicit values based
+off the ASCII Color table.
+
+Probably messes with some themes (guessing
+light mode themes specifically).
+
+#+begin_src bash
+
+  export CLICOLOR=1
+  export LS_COLORS='di=1:fi=34:ln=31:pi=5:so=5:bd=5:cd=5:or=31'
+
+#+end_src
+
+* Prompt Functions
+
+These functions are used to generate a dynamic CLI prompt.
+
+** Last Status
+
+Output a green OK or a red ERROR based on the return
+value of the last command. 
+
+#+begin_src bash
+
+  function prompt_previous_exit_code() {
+      if [[ $? -eq 0 ]]; then
+          echo " ${FG_DOT}· ${FG_OK}OK${FG_ON}"
+      else
+          echo " ${FG_DOT}· ${FG_ER}ERROR: $?${FG_ON}"
+      fi 
+  }
+
+#+end_src
+
+** Current Git Branch
+
+Show the name of the current git branch if you're
+in a repo. Otherwise, just output a separator dot. 
+
+#+begin_src bash
+
+  function prompt_git_branch() {
+      BRANCH_NAME=$(git branch --show-current 2> /dev/null)
+      if [ $? -eq 0 ]; then
+          echo -n " ${FG_DOT}· [$BRANCH_NAME]${FG_ON}"
+      else
+          echo -n "${FG_DOT}${FG_ON}"
+      fi 
+  }
+  
+#+end_src
+
+
+** Python VENV
+
+Indicate if you're in a Python VENV virtual
+environmnet. 
+
+#+begin_src bash
+  
+  function prompt_python_venv() {
+      if [ -n "$VIRTUAL_ENV" ]; then 
+          echo -n " ${FG_DOT}· VENV${FG_ON}"
+      else
+          echo -n "${FG_DOT}${FG_ON}"
+      fi
+  }
+
+#+end_src
+
+
+** Date String
+
+Basic date output. 
+
+#+begin_src bash
+
+  function prompt_date_string() {
+     echo " ${FG_DOT}· $(date "+%-I:%M%p" | tr '[:upper:]' '[:lower:]')"
+  }
+
+#+end_src
+
+
+** Domain Name For Streaming
+
+This is from when I was streaming to put
+my domain name on the command line so
+folks could see it (both live and
+in the VODs)
+
+#+begin_src bash
+
+  function bio_url() {
+      echo " ${FG_DOT}· al9000.com"
+  }
+
+#+end_src
+
+* Promot Setup
+
+
+This is the function that assembles the prompt. A
+few things are commented out right now. I play
+around with them periodically. 
+
+
+#+begin_src bash
+
+  function precmd() {
+     PROMPT_EXIT_STRING=$(prompt_previous_exit_code)
+     L1="${FG_CARET}> ${FG_ON}dojo $(dirs)"
+     L1="${L1}${PROMPT_EXIT_STRING}"
+     L1="${L1}$(prompt_python_venv)"
+     L1="${L1}$(prompt_git_branch)"
+     # L1="${L1}$(bio_url)"
+     # L1="${L1}$(prompt_date_string)"
+     # CHARCOUNT=${#L1}
+     # COLCOUNT=$(($(tput cols) * 1))
+     # for i in $( seq 1 $(( COLCOUNT - CHARCOUNT + 70)) ); do L1="$L1 "; done
+     L1="${L1} ${FG_DOT}${PROMPT_DATE_STRING}${FG_ON} "
+     PS1="${L1}${NEWLINE}${FG_CARET}>${FG_OFF} "
+  }
+  
+#+end_src
+
+
+* Exports
+
+
+#+begin_src bash
+
+  export NODE_PATH="$(npm root -g):$NODE_PATH"
+  export PATH="/Applications/Blender.app/Contents/MacOS:$PATH"
+  export PATH="/Users/alan/go/bin:$PATH"
+  export PATH="/Users/alan/binaries:$PATH"
+  export PATH="/Users/alan/commands/content/commands:$PATH"
+  export PATH="$HOME/.config/emacs/bin:$PATH"
+  export EDITOR=nvim
+
+#+end_src
+
+
+* Deprecated
+
+** chruby
+
+This is old as well as deprecated. Last
+time I used Ruby, I used `rbenv` instead of
+`chruby`. It's (also deprecated) setup is
+listed below. 
+
+#+begin_src bash :tangle no
+  
+  source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh 
+  source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh 
+  chruby ruby-3.1.2
+
+#+end_src
+
+
+** rbenv
+
+
+#+begin_src bash :tangle no
+
+  eval "$(rbenv init - zsh)"
+
+#+end_src
+
+
+** nvm
+
+I haven't done anything with nvm in a while. 
+This is a weird line to get things to work.
+Will re-examine it if I need to do nvm stuff
+in the future to see if there's a more
+susinct way. 
+
+
+#+begin_src bash :tangle no
+
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+#+end_src
+
+** compinit
+
+This was some competion stuff I was messing
+around with. It fought me a little so
+I turned it off. Might dig into it more
+at some point. 
+
+#+begin_src bash :tangle no
+  
+  # The following lines were added by compinstall
+  zstyle ':completion:*' completer _expand _complete _ignored
+  zstyle ':completion:*' format 'alfa %d'
+  zstyle :compinstall filename '/Users/alan/.zshrc'
+  autoload -Uz compinit
+  compinit
+  # End of lines added by compinstall
+
+#+end_src
