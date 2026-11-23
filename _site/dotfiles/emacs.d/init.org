@@ -116,16 +116,15 @@ The second half of the mapping is done via:
 #+begin_src emacs-lisp
   (defun my/create-blog-entry ()
     (interactive)
-    (let ((time (current-time)))
-      (let ((id (my/time-to-base32 time)))
-        (let ((id-dir (mapconcat #'identity (seq-partition id 2) "/")))
-  	(let ((dir-path
-  	       (expand-file-name id-dir "~/workshop/al9000.com/content/blog")))
-  	  (let ((file-path (concat dir-path "/index.html")))
+    (let* ((time (current-time))
+  	 (id (my/time-to-base32 time))
+  	 (id-dir (my/id-to-dir id))
+  	 (dir-path (expand-file-name id-dir "~/workshop/al9000.com/content/blog"))
+  	 (file-path (concat dir-path "/index.html")))
+      (unless (file-directory-p dir-path)
+        (make-directory dir-path t))
       (if (file-exists-p file-path)
-  	(progn 
-  	  (find-file file-path)
-  	  (message "Opened daily file: %s" file-path))
+  	(find-file file-path)
         (with-temp-buffer
   	(insert-file-contents "/Users/alan/workshop/al9000.com/content/blog/template.inc.html")
   	(goto-char (point-min))
@@ -134,11 +133,55 @@ The second half of the mapping is done via:
   	(goto-char (point-min))
   	(while (search-forward "ID_STRING" nil t)
   	  (replace-match id-dir t))
-    (unless (file-directory-p dir-path)
-      (make-directory dir-path t))
-  	   (write-region (point-min) (point-max) file-path nil 'silent)
-    (find-file file-path)))))))))
+  	(write-region (point-min) (point-max) file-path nil 'silent))
+        (find-file file-path)))
+    )
 #+end_src
+
+  ;;(message (my/create-blog-entry))
+   ;;         (if (file-exists-p file-path)
+   ;;     	(progn 
+   ;;     	  (find-file file-path)
+   ;;     	  (message "Opened daily file: %s" file-path))
+   ;;           (with-temp-buffer
+   ;;     	(insert-file-contents "/Users/alan/workshop/al9000.com/content/blog/template.inc.html")
+   ;;     	(goto-char (point-min))
+   ;;     	(while (search-forward "TIMESTAMP_STRING" nil t)
+   ;;     	  (replace-match (format-time-string "%Y-%m-%dT%H:%M:%S%:z" time)))
+   ;;     	(goto-char (point-min))
+   ;;     	(while (search-forward "ID_STRING" nil t)
+   ;;     	  (replace-match id-dir t))
+   ;;       (unless (file-directory-p dir-path)
+   ;;         (make-directory dir-path t))
+   ;;     	   (write-region (point-min) (point-max) file-path nil 'silent)
+   ;;       (find-file file-path)))))))))
+   	
+
+
+   ;;       (let ((time (current-time)))
+   ;;         (let ((id (my/time-to-base32 time)))
+   ;; 	  (let ((id-dir (my/id-to-dir id))
+   ;; ;  	(let ((id-dir (concat (substring id 0 3) "/" (substring id 3)))))
+   ;;   ;        (let ((id-dir (mapconcat #'identity (seq-partition id 2) "/")))
+   ;;     	(let ((dir-path
+   ;;     	       (expand-file-name id-dir "~/workshop/al9000.com/content/blog")))
+   ;;     	  (let ((file-path (concat dir-path "/index.html")))
+   ;;         (if (file-exists-p file-path)
+   ;;     	(progn 
+   ;;     	  (find-file file-path)
+   ;;     	  (message "Opened daily file: %s" file-path))
+   ;;           (with-temp-buffer
+   ;;     	(insert-file-contents "/Users/alan/workshop/al9000.com/content/blog/template.inc.html")
+   ;;     	(goto-char (point-min))
+   ;;     	(while (search-forward "TIMESTAMP_STRING" nil t)
+   ;;     	  (replace-match (format-time-string "%Y-%m-%dT%H:%M:%S%:z" time)))
+   ;;     	(goto-char (point-min))
+   ;;     	(while (search-forward "ID_STRING" nil t)
+   ;;     	  (replace-match id-dir t))
+   ;;       (unless (file-directory-p dir-path)
+   ;;         (make-directory dir-path t))
+   ;;     	   (write-region (point-min) (point-max) file-path nil 'silent)
+   ;;       (find-file file-path)))))))))
 
 *** Test
 
@@ -186,9 +229,25 @@ a message that you're not in the grimoire.
   	       
 #+end_src
 
+** id-to-dir
+*** Overview
 
+Takes a string and adds a slash between
+the thrid and fourght characters to turn
+a blog post id into a directory structure. 
 
+*** Setup
 
+#+begin_src emacs-lisp
+  (defun my/id-to-dir (s)
+    (concat (substring s 0 3) "/" (substring s 3)))
+#+end_src
+
+*** Test
+
+#+begin_src emacs-lisp
+  (message (my/id-to-dir "abc12345" ))
+#+end_src
 
 ** run-source-block
 
@@ -318,10 +377,10 @@ for blog posts.
 *** Setup
 
 #+begin_src emacs-lisp
-
   (require 'iso8601)
   (require 'parse-time)
   (defun my/time-to-base32 (time)
+    (interactive)
    "Convert a timestamp to base32 with second level percision
   using the Crockford base32 character set with lower case letters."
     (let* ((crockford-base32 "0123456789abcdefghjkmnpqrstvwxyz")
@@ -332,7 +391,6 @@ for blog posts.
         (push (aref crockford-base32 (logand ts 31)) chars)
         (setq ts (ash ts -5)))
       (concat chars)))
-
 #+end_src
 
 

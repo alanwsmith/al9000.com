@@ -2,12 +2,100 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-11-22T21:15:30-05:00</updated>
+  <updated>2026-11-23T18:01:44-05:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
+  
+  <entry>
+    <title>Blog Directory Structure 9000</title><link href="https://al9000.com&#x2f;blog&#x2f;01n&#x2f;g97zx/"/><id>urn:uuid:e440f277-b887-556b-b494-f2b886b9c4da</id>
+    <updated>2026-11-23T15:20:13-05:00</updated>
+    <summary><![CDATA[
+<h2>One, Two, Three</h2>
+<p>Naming things is one of the
+two hardest problems in computer science<sup>1</sup>.
+I go through half a dozen titles for blog
+posts. Changes
+after a page goes live happen more often
+than not.</p>
+<p>Blog apps like Wordpress use the title to
+create a page's address. An entry titled:</p>
+<pre><code>A Post About Names
+</code></pre>
+<p>would be at</p>
+<pre><code>al9000.com/blog/a-post-about-names
+</code></pre>
+<p>Makes sense, unless you change the title.</p>
+<p>There are a couple options when that happens. You could update
+the address, but then any links to the old
+address would break. You can deal with that by
+setting up the old addresses to bounce visits
+over to the new one.</p>
+<p>Or, you could just leave the page at the original
+address and only update the title on the page
+itself. You end up with something like a
+post titled:</p>
+<pre><code>The Naming of Posts is a Difficult Matter
+</code></pre>
+<p>that's still at the address:</p>
+<pre><code>al9000.com/blog/a-post-about-names
+</code></pre>
+<p>Not really a big deal. Page addresses matter
+much less now than they used to<sup>2</sup>. I
+don't like the disconnect, though.</p>
+<h2>Shifting Slashes</h2>
+<p>I've been avoiding the issue all together
+for years by using random characters
+for addresses<sup>3</sup>. Something like:</p>
+<pre><code>al9000.com/blog/01/ng/97/zx/
+</code></pre>
+<p>Purely functional with no regard for aesthetics.</p>
+<p>The reason for doing:</p>
+<pre><code>al9000.com/blog/01/ng/97/zx
+</code></pre>
+<p>Instead of:</p>
+<pre><code>al9000.com/blog/01ng97zx
+</code></pre>
+<p>is because my site is &quot;static&quot;. That means
+the addresses on the site map directly to
+folders on my computer (e.g. there is a
+<code>blog</code> folder that has a file named
+<code>01ng97zx.html</code> in it).</p>
+<p>Lots of apps have problems with folders
+that have more than a thousand file in them.
+I've got over three thousand posts. Putting
+them all in the same folder would bog things
+down. That's where all the slashes come in.
+Each one represents a new folder.</p>
+<p>That is, there's a top level <code>blog</code> folder
+that has a <code>01</code> folder in it that has
+a <code>ng</code> folder in it, etc...</p>
+<p>That process was splitting an eight
+character ID into four pairs of characters.
+Doing that ensured that</p>
+<div class="end-of-line"></div>
+<h3>Endnotes</h3>
+<h3>Footnotes</h3>
+<ol>
+<li>
+<p>The joke being: There are two hard problems in computer
+science: naming things, caching things, and off-by-one errors.</p>
+</li>
+<li>
+<p>TKTKTK URL history</p>
+</li>
+<li>
+<p>Basically, the first few characters represent a
+timestamp. They are followed by a collection of
+actually random characters.</p>
+</li>
+</ol>
+
+
+]]></summary>
+  </entry>
   
   <entry>
     <title>A Book Club Trio</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;ng&#x2f;72&#x2f;xg/"/><id>urn:uuid:72968bab-79f9-530e-928d-a01b2e958874</id>
