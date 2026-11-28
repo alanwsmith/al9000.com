@@ -11,10 +11,6 @@ def run():
     input_roots = get_input_roots(input_root)
     posts = get_posts(input_roots)
     copy_posts(posts)
-    # paths = set_dir_ids(input_roots)
-    # print(dir_ids)
-    # # copy_dirs(dir_ids)
-    # output_redirects(dir_ids)
     
 class Post():
     def __init__(self, source_dir, counter):
@@ -28,6 +24,7 @@ class Post():
         return Path(output_root / str(self._counter)).resolve()
 
 
+
 def copy_dir_contents(input_root, destination_dir):
     destination_dir.mkdir(parents=True, exist_ok=True)
     for item in input_root.iterdir():
@@ -39,13 +36,6 @@ def copy_dir_contents(input_root, destination_dir):
         print(f"Copied: {item}")
         print(f"    To: {target}")
         
-
-# def deprecated_copy_dirs(dir_ids):
-#     for dir_string, id in dir_ids.items():
-#         source_dir = Path(dir_string)
-#         destination_dir = output_root / str(id)
-#         copy_dir_contents(source_dir, destination_dir)
-
 
 def copy_posts(posts):
     for post in posts:
@@ -69,15 +59,6 @@ def get_posts(input_roots):
         posts.append(Post(dir, counter))
         counter += 1
     return posts 
-
-
-# def set_dir_ids(input_roots):
-#     dirs = {}
-#     counter = 4000
-#     for dir in sorted(input_roots):
-#         dirs[str(dir)] = counter
-#         counter += 1
-#     return dirs
 
 
 if __name__ == "__main__":
