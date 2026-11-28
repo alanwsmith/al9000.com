@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-11-28T11:44:36-05:00</updated>
+  <updated>2026-11-28T14:47:27-05:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
@@ -10,25 +10,176 @@
 
   
   <entry>
-    <title>Migrating Blog Entries to Numbered Addresses</title><link href="https://al9000.com&#x2f;blog&#x2f;4026/"/><id>urn:uuid:c9172ff5-4de9-58b8-8305-7b54fb2405f4</id>
-    <updated>2026-11-28T09:41:00-05:00</updated>
+    <title>Remove the Beginning of an Absolute Path to Make a Relative Path</title><link href="https://al9000.com&#x2f;python&#x2f;3/"/><id>urn:uuid:c00ba170-b585-5fe3-894e-2573448d6e04</id>
+    <updated>2026-11-28T13:10:00-05:00</updated>
     <summary><![CDATA[
-<p>TODO: Write up the process of moving files
-to the new locations and link up the script.</p>
-<div class="end-of-line"></div>
-<h3>Endnotes</h3>
-<h3>Footnotes</h3>
 
+<h2>The Code</h2>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source python"><span class="meta statement import python"><span class="keyword control import from python">from</span></span><span class="meta statement import python"><span class="meta import-source python"> <span class="meta import-path python"><span class="meta import-name python">pathlib</span></span> <span class="meta statement import python"><span class="keyword control import python">import</span></span></span></span><span class="meta statement import python"></span><span class="meta statement import python"> <span class="meta generic-name python">Path</span></span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span>
+<span class="line-marker" data-line="4"></span><span class="meta function python"><span class="storage type function python">def</span> <span class="entity name function python"><span class="meta generic-name python">absolute_to_relative</span></span></span><span class="meta function parameters python"><span class="punctuation section parameters begin python">(</span></span><span class="meta function parameters python"><span class="variable parameter python">absolute_path</span><span class="punctuation separator parameters python">,</span> <span class="variable parameter python">clip_path</span><span class="punctuation section parameters end python">)</span></span><span class="meta function python"><span class="punctuation section function begin python">:</span></span>
+<span class="line-marker" data-line="5"></span>    <span class="keyword control flow return python">return</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">absolute_path</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">relative_to</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">clip_path</span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="6"></span>
+<span class="line-marker" data-line="7"></span>
+<span class="line-marker" data-line="8"></span><span class="meta statement if python"><span class="keyword control flow conditional python">if</span> <span class="meta qualified-name python"><span class="support variable magic python">__name__</span></span> <span class="keyword operator comparison python">==</span> <span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">__main__<span class="punctuation definition string end python">&quot;</span></span></span><span class="punctuation section block conditional python">:</span></span>
+<span class="line-marker" data-line="9"></span>    <span class="meta qualified-name python"><span class="meta generic-name python">absolute_path</span></span> <span class="keyword operator assignment python">=</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="variable function python">Path</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">/some/absolute/path/to/file.txt<span class="punctuation definition string end python">&quot;</span></span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="10"></span>    <span class="meta qualified-name python"><span class="meta generic-name python">clip_path</span></span> <span class="keyword operator assignment python">=</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="variable function python">Path</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">/some/absolute<span class="punctuation definition string end python">&quot;</span></span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="11"></span>    <span class="meta qualified-name python"><span class="meta generic-name python">relative_path</span></span> <span class="keyword operator assignment python">=</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="variable function python">absolute_to_relative</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">absolute_path</span></span><span class="punctuation separator arguments python">,</span> <span class="meta qualified-name python"><span class="meta generic-name python">clip_path</span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="12"></span>    <span class="meta function-call python"><span class="meta qualified-name python"><span class="support function builtin python">print</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">relative_path</span></span></span><span class="punctuation section arguments end python">)</span></span></span></pre></div></div>
+<h2>Notes</h2>
+<ul>
+<li>
+<p>The <code>clip_path</code> can end with a <code>/</code>
+or not. In either case, the returned
+value is not absolute (i.e. it does
+not start with a leading <code>/</code>)</p>
+</li>
+</ul>
 
 ]]></summary>
   </entry>
   
   <entry>
-    <title>Migrating Blog Entries to Numbered Addresses</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01n&#x2f;g99dc/"/><id>urn:uuid:57aa9556-cb52-514a-a2ea-2252cd556858</id>
+    <title>Migrating Blog Entries to Numbered Addresses</title><link href="https://al9000.com&#x2f;blog&#x2f;4026/"/><id>urn:uuid:c9172ff5-4de9-58b8-8305-7b54fb2405f4</id>
     <updated>2026-11-28T09:41:00-05:00</updated>
     <summary><![CDATA[
 <p>TODO: Write up the process of moving files
 to the new locations and link up the script.</p>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">  from = &quot;/blog/01/mx/qf/ng/*&quot;
+<span class="line-marker" data-line="2"></span>  to = &quot;/blog/4000/&quot;
+<span class="line-marker" data-line="3"></span>  status = 301
+<span class="line-marker" data-line="4"></span>  force = true
+<span class="line-marker" data-line="5"></span>
+<span class="line-marker" data-line="6"></span>  from = &quot;/blog/01/my/72/tm/*&quot;
+<span class="line-marker" data-line="7"></span>  to = &quot;/blog/4001/&quot;
+<span class="line-marker" data-line="8"></span>  status = 301
+<span class="line-marker" data-line="9"></span>  force = true
+<span class="line-marker" data-line="10"></span>
+<span class="line-marker" data-line="11"></span>  from = &quot;/blog/01/my/zm/1g/*&quot;
+<span class="line-marker" data-line="12"></span>  to = &quot;/blog/4002/&quot;
+<span class="line-marker" data-line="13"></span>  status = 301
+<span class="line-marker" data-line="14"></span>  force = true
+<span class="line-marker" data-line="15"></span>
+<span class="line-marker" data-line="16"></span>  from = &quot;/blog/01/n3/dd/tw/*&quot;
+<span class="line-marker" data-line="17"></span>  to = &quot;/blog/4003/&quot;
+<span class="line-marker" data-line="18"></span>  status = 301
+<span class="line-marker" data-line="19"></span>  force = true
+<span class="line-marker" data-line="20"></span>
+<span class="line-marker" data-line="21"></span>  from = &quot;/blog/01/n3/dd/ym/*&quot;
+<span class="line-marker" data-line="22"></span>  to = &quot;/blog/4004/&quot;
+<span class="line-marker" data-line="23"></span>  status = 301
+<span class="line-marker" data-line="24"></span>  force = true
+<span class="line-marker" data-line="25"></span>
+<span class="line-marker" data-line="26"></span>  from = &quot;/blog/01/n3/fk/am/*&quot;
+<span class="line-marker" data-line="27"></span>  to = &quot;/blog/4005/&quot;
+<span class="line-marker" data-line="28"></span>  status = 301
+<span class="line-marker" data-line="29"></span>  force = true
+<span class="line-marker" data-line="30"></span>
+<span class="line-marker" data-line="31"></span>  from = &quot;/blog/01/n3/fm/ag/*&quot;
+<span class="line-marker" data-line="32"></span>  to = &quot;/blog/4006/&quot;
+<span class="line-marker" data-line="33"></span>  status = 301
+<span class="line-marker" data-line="34"></span>  force = true
+<span class="line-marker" data-line="35"></span>
+<span class="line-marker" data-line="36"></span>  from = &quot;/blog/01/n3/g3/x8/*&quot;
+<span class="line-marker" data-line="37"></span>  to = &quot;/blog/4007/&quot;
+<span class="line-marker" data-line="38"></span>  status = 301
+<span class="line-marker" data-line="39"></span>  force = true
+<span class="line-marker" data-line="40"></span>
+<span class="line-marker" data-line="41"></span>  from = &quot;/blog/01/n3/je/8p/*&quot;
+<span class="line-marker" data-line="42"></span>  to = &quot;/blog/4008/&quot;
+<span class="line-marker" data-line="43"></span>  status = 301
+<span class="line-marker" data-line="44"></span>  force = true
+<span class="line-marker" data-line="45"></span>
+<span class="line-marker" data-line="46"></span>  from = &quot;/blog/01/n3/t9/nx/*&quot;
+<span class="line-marker" data-line="47"></span>  to = &quot;/blog/4009/&quot;
+<span class="line-marker" data-line="48"></span>  status = 301
+<span class="line-marker" data-line="49"></span>  force = true
+<span class="line-marker" data-line="50"></span>
+<span class="line-marker" data-line="51"></span>  from = &quot;/blog/01/n5/n7/gg/*&quot;
+<span class="line-marker" data-line="52"></span>  to = &quot;/blog/4010/&quot;
+<span class="line-marker" data-line="53"></span>  status = 301
+<span class="line-marker" data-line="54"></span>  force = true
+<span class="line-marker" data-line="55"></span>
+<span class="line-marker" data-line="56"></span>  from = &quot;/blog/01/n5/st/wc/*&quot;
+<span class="line-marker" data-line="57"></span>  to = &quot;/blog/4011/&quot;
+<span class="line-marker" data-line="58"></span>  status = 301
+<span class="line-marker" data-line="59"></span>  force = true
+<span class="line-marker" data-line="60"></span>
+<span class="line-marker" data-line="61"></span>  from = &quot;/blog/01/n5/sz/sb/*&quot;
+<span class="line-marker" data-line="62"></span>  to = &quot;/blog/4012/&quot;
+<span class="line-marker" data-line="63"></span>  status = 301
+<span class="line-marker" data-line="64"></span>  force = true
+<span class="line-marker" data-line="65"></span>
+<span class="line-marker" data-line="66"></span>  from = &quot;/blog/01/n5/t0/04/*&quot;
+<span class="line-marker" data-line="67"></span>  to = &quot;/blog/4013/&quot;
+<span class="line-marker" data-line="68"></span>  status = 301
+<span class="line-marker" data-line="69"></span>  force = true
+<span class="line-marker" data-line="70"></span>
+<span class="line-marker" data-line="71"></span>  from = &quot;/blog/01/n5/t3/zj/*&quot;
+<span class="line-marker" data-line="72"></span>  to = &quot;/blog/4014/&quot;
+<span class="line-marker" data-line="73"></span>  status = 301
+<span class="line-marker" data-line="74"></span>  force = true
+<span class="line-marker" data-line="75"></span>
+<span class="line-marker" data-line="76"></span>  from = &quot;/blog/01/n5/t4/6z/*&quot;
+<span class="line-marker" data-line="77"></span>  to = &quot;/blog/4015/&quot;
+<span class="line-marker" data-line="78"></span>  status = 301
+<span class="line-marker" data-line="79"></span>  force = true
+<span class="line-marker" data-line="80"></span>
+<span class="line-marker" data-line="81"></span>  from = &quot;/blog/01/n5/t5/2f/*&quot;
+<span class="line-marker" data-line="82"></span>  to = &quot;/blog/4016/&quot;
+<span class="line-marker" data-line="83"></span>  status = 301
+<span class="line-marker" data-line="84"></span>  force = true
+<span class="line-marker" data-line="85"></span>
+<span class="line-marker" data-line="86"></span>  from = &quot;/blog/01/n5/w7/m4/*&quot;
+<span class="line-marker" data-line="87"></span>  to = &quot;/blog/4017/&quot;
+<span class="line-marker" data-line="88"></span>  status = 301
+<span class="line-marker" data-line="89"></span>  force = true
+<span class="line-marker" data-line="90"></span>
+<span class="line-marker" data-line="91"></span>  from = &quot;/blog/01/n6/6r/q5/*&quot;
+<span class="line-marker" data-line="92"></span>  to = &quot;/blog/4018/&quot;
+<span class="line-marker" data-line="93"></span>  status = 301
+<span class="line-marker" data-line="94"></span>  force = true
+<span class="line-marker" data-line="95"></span>
+<span class="line-marker" data-line="96"></span>  from = &quot;/blog/01/n6/a8/6j/*&quot;
+<span class="line-marker" data-line="97"></span>  to = &quot;/blog/4019/&quot;
+<span class="line-marker" data-line="98"></span>  status = 301
+<span class="line-marker" data-line="99"></span>  force = true
+<span class="line-marker" data-line="100"></span>
+<span class="line-marker" data-line="101"></span>  from = &quot;/blog/01/n8/1j/nk/*&quot;
+<span class="line-marker" data-line="102"></span>  to = &quot;/blog/4020/&quot;
+<span class="line-marker" data-line="103"></span>  status = 301
+<span class="line-marker" data-line="104"></span>  force = true
+<span class="line-marker" data-line="105"></span>
+<span class="line-marker" data-line="106"></span>  from = &quot;/blog/01/n8/bg/4y/*&quot;
+<span class="line-marker" data-line="107"></span>  to = &quot;/blog/4021/&quot;
+<span class="line-marker" data-line="108"></span>  status = 301
+<span class="line-marker" data-line="109"></span>  force = true
+<span class="line-marker" data-line="110"></span>
+<span class="line-marker" data-line="111"></span>  from = &quot;/blog/01/ng/4b/a0/*&quot;
+<span class="line-marker" data-line="112"></span>  to = &quot;/blog/4022/&quot;
+<span class="line-marker" data-line="113"></span>  status = 301
+<span class="line-marker" data-line="114"></span>  force = true
+<span class="line-marker" data-line="115"></span>
+<span class="line-marker" data-line="116"></span>  from = &quot;/blog/01/ng/6j/8j/*&quot;
+<span class="line-marker" data-line="117"></span>  to = &quot;/blog/4023/&quot;
+<span class="line-marker" data-line="118"></span>  status = 301
+<span class="line-marker" data-line="119"></span>  force = true
+<span class="line-marker" data-line="120"></span>
+<span class="line-marker" data-line="121"></span>  from = &quot;/blog/01/ng/72/xg/*&quot;
+<span class="line-marker" data-line="122"></span>  to = &quot;/blog/4024/&quot;
+<span class="line-marker" data-line="123"></span>  status = 301
+<span class="line-marker" data-line="124"></span>  force = true
+<span class="line-marker" data-line="125"></span>
+<span class="line-marker" data-line="126"></span>  from = &quot;/blog/01n/g97zx/*&quot;
+<span class="line-marker" data-line="127"></span>  to = &quot;/blog/4025/&quot;
+<span class="line-marker" data-line="128"></span>  status = 301
+<span class="line-marker" data-line="129"></span>  force = true
+<span class="line-marker" data-line="130"></span>
+<span class="line-marker" data-line="131"></span>  from = &quot;/blog/01n/g99dc/*&quot;
+<span class="line-marker" data-line="132"></span>  to = &quot;/blog/4026/&quot;
+<span class="line-marker" data-line="133"></span>  status = 301
+<span class="line-marker" data-line="134"></span>  force = true</span></pre></div></div>
 <div class="end-of-line"></div>
 <h3>Endnotes</h3>
 <h3>Footnotes</h3>
@@ -149,15 +300,20 @@ from the method.</p>
 <p>2 out of 4 stars</p>
 </li>
 <li>
-<p>Would I watch it again? No. (Unless I read
-the book first. Something I'm not likely
-to do since I already know the ending)</p>
+<p>Would I watch it again? No.</p>
+<p>(Unless I read
+the book first. It feel like a film that
+would benefit greatly from knowing the
+source material.)</p>
 </li>
 </ul>
 <h2>Details</h2>
 <ul>
 <li>
-<p>Released 2011</p>
+<p>Released: 2011</p>
+</li>
+<li>
+<p>Watched: Nov. 2026</p>
 </li>
 <li>
 <p>Directed by: Tomas Alfredson</p>
@@ -173,9 +329,6 @@ and Tom Hardy amoung them.</p>
 </ul>
 <h2>Notes</h2>
 <ul>
-<li>
-<p>Watched it in November or 2026.</p>
-</li>
 <li>
 <p>Recommended by a buddy as one of their favorite
 spy films.</p>
@@ -226,143 +379,6 @@ the story.</p>
   
   <entry>
     <title>Blog Directory Structure 9000.1</title><link href="https://al9000.com&#x2f;blog&#x2f;4025/"/><id>urn:uuid:d3519c19-a3b7-5002-aae3-49541cae6119</id>
-    <updated>2026-11-23T15:20:13-05:00</updated>
-    <summary><![CDATA[
-<h2>Preface</h2>
-<p>This is how I'm set up at the time of posting.
-It's gonna change really soon. See the
-endnote about that.</p>
-<h2>One, Two, Three</h2>
-<p>Naming things is one of the
-two hardest problems in computer science<sup>1</sup>.
-I go through half a dozen titles for blog
-posts. Changes
-after a page goes live happen more often
-than not.</p>
-<p>Blog apps like Wordpress use the title to
-create a page's address. An entry titled:</p>
-<pre><code>A Post About Names
-</code></pre>
-<p>would be at</p>
-<pre><code>al9000.com/blog/a-post-about-names
-</code></pre>
-<p>Makes sense, unless you change the title.</p>
-<p>There are a couple options when that happens. You could update
-the address, but then any links to the old
-address would break. You can deal with that by
-setting up the old addresses to bounce visits
-over to the new one.</p>
-<p>Or, you could just leave the page at the original
-address and only update the title on the page
-itself. You end up with something like a
-post titled:</p>
-<pre><code>The Naming of Posts is a Difficult Matter
-</code></pre>
-<p>that's still at the address:</p>
-<pre><code>al9000.com/blog/a-post-about-names
-</code></pre>
-<p>Not really a big deal. Page addresses matter
-much less now than they used to<sup>2</sup>. I
-don't like the disconnect, though.</p>
-<h2>Shifting Slashes</h2>
-<p>I've been avoiding the issue all together
-for years by using random characters
-for addresses<sup>3</sup>. Something like:</p>
-<pre><code>al9000.com/blog/01/ng/97/zx/
-</code></pre>
-<p>Purely functional with no regard for aesthetics.</p>
-<p>The reason for doing:</p>
-<pre><code>al9000.com/blog/01/ng/97/zx
-</code></pre>
-<p>Instead of:</p>
-<pre><code>al9000.com/blog/01ng97zx
-</code></pre>
-<p>is because my site is &quot;static&quot;. That means
-the addresses on the site map directly to
-folders on my computer (e.g. there is a
-<code>blog</code> folder that has a file named
-<code>01ng97zx.html</code> in it).</p>
-<p>Lots of apps have problems with folders
-that have more than a thousand file in them.
-I've got over three thousand posts. Putting
-them all in the same folder would bog things
-down. That's where all the slashes come in.
-Each one represents a new folder.</p>
-<p>That is, there's a top level <code>blog</code> folder
-that has a <code>01</code> folder in it that has
-a <code>ng</code> folder in it, etc...</p>
-<p>That process was splitting an eight
-character ID into four pairs of characters.
-Doing that ensured that</p>
-<div class="end-of-line"></div>
-<h3>Endnotes</h3>
-<p>After thinking about this some more. I'm
-probably gonna end up simplifying the structure.
-To just use a counter for blog posts and just
-manually limit a small set of sub folders
-to about a thousand files a piece.</p>
-<p>The reason I was using IDs in the first place
-is that I used to store all the content
-for my site in my Grimoire and had a process
-that copied everything over and that structure
-was all ID based since everything in the
-Grimoire was in a single directory.</p>
-<p>(Of course, thinking about it now, there's
-like 11,000 files in the Grimoire folder and
-I haven't had any noticable problems with
-tools bogging down working with it. It's
-looking a lot like the idea in my head
-about limiting the number of files in a
-folder is antiquated.</p>
-<p>So, yeah, I'll be moving to just an
-incrementing number for each post
-(I still don't want to have to use
-titles in the URLs most of the time).</p>
-<p>New posts will start at 4,000 which will
-give me enough space to add in the original
-~3,500 posts chronologically.</p>
-<h3>Footnotes</h3>
-<ol>
-<li>
-<p>The joke being: There are two hard problems in computer
-science: naming things, caching things, and off-by-one errors.</p>
-</li>
-<li>
-<p>There was a time when search engines would
-use the text of a pages address as part of
-the weight of the indexing score. For example,
-In the early 2000s, I vastly improved the ranking of
-pgatour.com's player pages simply
-by adding player names to the URLs (they had
-been nothing by numeric IDs before that).</p>
-<p>Anecdotal evidence suggest that people would
-look at URLs too. I'm one of those folks, but
-everything I've heard is that non-techies were
-less likely to glance at them. These days,
-if you're on your phone, you probably don't see
-them at all.</p>
-<p>For a brief time, desktop
-browsers hid everything but the site name
-as well (e.g. the page al9000.com/some/page/
-would only show up as <strong>al9000.com</strong> in your
-browser). That doesn't look like it's the
-case any more, but maybe I just changed
-a config on my site that makes the full
-addresses show up.</p>
-</li>
-<li>
-<p>Basically, the first few characters represent a
-timestamp. They are followed by a collection of
-actually random characters.</p>
-</li>
-</ol>
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>Blog Directory Structure 9000.1</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01n&#x2f;g97zx/"/><id>urn:uuid:87c53c93-2d39-5107-a835-6114c8b6eb85</id>
     <updated>2026-11-23T15:20:13-05:00</updated>
     <summary><![CDATA[
 <h2>Preface</h2>
@@ -584,91 +600,6 @@ central idea is the same.</li>
   </entry>
   
   <entry>
-    <title>A Book Club Trio</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;ng&#x2f;72&#x2f;xg/"/><id>urn:uuid:6f178f92-98e8-5d6a-ad9d-e38fc09a18d1</id>
-    <updated>2026-11-22T19:41:20-05:00</updated>
-    <summary><![CDATA[
-<p>Saw a <a href="https://bsky.app/profile/jacky.wtf/post/3n2trou4spk2i">post on my timeline</a> asking
-what titles I'd put on book club reading list if
-I could only pick three. I don't really keep
-top ten style lists in my head. I forget a ton
-of stuff as a result. Makes answering this
-kind of question hard.</p>
-<p>I love a bunch of fiction. The Peripheral
-and Dungeon Crawler Carl coming to mind.
-But, as much as a love a good story, the books
-I'd send up are non-fiction.
-Specifically:</p>
-<ul>
-<li>
-<p>Understanding Comics: The Invisible Art by Scott McCloud</p>
-<p>Don't let the fact that it's a comic book fool you.
-It's an amazing look at story telling.</p>
-</li>
-<li>
-<p>A Guide to the Good Life: The Ancient Art of Stoic Joy by William B. Irvine</p>
-<p>Probably the book that had the most impact on the way
-I think. Gets into <a href="https://en.wikipedia.org/wiki/Hedonic_treadmill">the hedonic treadmill</a>
-and how to get off it. Resetting your expectations
-of life so you apprecaite it more in the moment.</p>
-</li>
-<li>
-<p>[A book on personal finance goes here]</p>
-</li>
-</ul>
-<p>For the third one, I'm not sure what to pick. I've
-read a bunch in the category: A Random Walk Down Wall Street, The Bogleheads' Guide to Investing,
-The Motley Fool Investment Guide, Rich Dad Poor Dad, Think and Grow Rich,
-The Millionaire Next Door, The Total Money Makeover, The Richest Man in Babylon, etc...</p>
-<p>It's been a while since I've read any of them. They all kinda blend together.
-That's not a knock, though. It stems from the fact that the foundational advice is
-the same across all of them<sup>1</sup>.</p>
-<ul>
-<li>
-<p>First, debt is toxic. As long as you're under it, you're
-working for someone else. Your choices in life are
-limited dramatically as a result.</p>
-</li>
-<li>
-<p>Second, invest your money in a stock market
-index fund. The money will grow over the years and decades.
-Eventually, it'll get to the point where it grows enough
-each year that you can live off what it makes you instead
-of having to trade your time for money in a job.</p>
-</li>
-</ul>
-<p>Personal finance is one of the most important topics
-out there. The fact that we fail to teach folks
-the fundamentals is a fucking crime.</p>
-<p>-a</p>
-<div class="end-of-line"></div>
-<h3>Endnotes</h3>
-<ul>
-<li>
-<p>The personal finanace books I listed all have
-different tones that make more or less sense
-depending on where you are in life. I've started
-reading The Simple Path to Wealth, but it's
-kinda harsh at the start. Different strokes
-for differnet folks, but maybe not the best
-pick if you're already feeling the pressure
-of debt.</p>
-<p>Maybe start with The Millionaire Next Door (if memory serves
-it's less judgy feeling).</p>
-</li>
-</ul>
-<h3>Footnotes</h3>
-<ol>
-<li>The Richest Man in Babylon is a bunch
-of fables. Even though it doesn't get into the specifics of
-investing in a stock market fund, the
-central idea is the same.</li>
-</ol>
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
     <title>Dogs, Humans, and Elves</title><link href="https://al9000.com&#x2f;blog&#x2f;4023/"/><id>urn:uuid:8b9390b5-9b33-5d9a-92e3-33267771c94e</id>
     <updated>2026-11-22T14:57:06-05:00</updated>
     <summary><![CDATA[
@@ -713,145 +644,7 @@ as well.</li>
   </entry>
   
   <entry>
-    <title>Dogs, Humans, and Elves</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;ng&#x2f;6j&#x2f;8j/"/><id>urn:uuid:036bb8aa-fdba-53cf-b0fd-74358a1c7cad</id>
-    <updated>2026-11-22T14:57:06-05:00</updated>
-    <summary><![CDATA[
-<p>This is the text of a meme from
-r/wholesomememes. Putting it here
-so I can search for it more easily
-and in case <a href="https://www.reddit.com/r/wholesomememes/comments/5wz4gy/we_are_like_elves_to_dogs/">the original</a>
-disappears<sup>1</sup>.</p>
-<ul><li>
-  In the dog world, humans are elves that routinely live to be 500+ years old.
-  <ul><li>
-    "They live so long... but the good ones still bond with us for our entire lives."
-    <ul><li>
-	"Now I am old. The fur around my muzzle is grey and my joints ache when we walk together. 
-	Yet, she remains unchanged. Her hair is still glossy. Her skin still fresh. Her step still sprightly.
-	Time doesn't touch her and yet I love her still."
-	<ul><li>
-	    "For generations, he has guarded over my family. Since the days of my great-great-great-great-grandfather he has kept us safe.
-            For so long we thought him immortal. But, now I see differently. For just as my fur grows gray and my joins grow stiff, so too do his. He did not take in my children, but gave them away to his. 
-	    I will be the last that he cares for. My only hope is that I am able to last until his final moments. 
-	    The death of one of his kind is so rare.
-	    The ending of a life so long is such a tragedy. 
-	    He has seen so much. He knows so much. 
-	    I know he takes comfort in my presence.
-	    I only wish that I will be able to give him this comfort until the end."
-</li></ul>
-</li></ul>
-</li></ul>
-</li></ul>
-<div class="end-of-line"></div>
-<h3>Endnotes</h3>
-<h3>Footnotes</h3>
-<ol>
-<li>I'm working on the tools that build my
-site and don't have images working at the
-moment. Otherwise, I'd include the original here
-as well.</li>
-</ol>
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
     <title>Blogging Tools Are Back Online</title><link href="https://al9000.com&#x2f;blog&#x2f;4022/"/><id>urn:uuid:3335bf70-d293-53d1-ad6b-a9d86a6802e8</id>
-    <updated>2026-11-21T18:46:08-05:00</updated>
-    <summary><![CDATA[
-<p>I haven't written in a while.</p>
-<p>Part of that is becaue I haven't had the
-energy to. Part of <strong>that</strong> is because the
-tools I use to blog were in a state of
-disarray.</p>
-<p>Two things triggered the situation. First,
-I started the move from <a href="https://alanwsmith.com">alanwsmith.com</a>
-to this site (<a href="https://al9000.com">al9000.com</a>).
-An open-ended, ongoing process that I'll
-chip away at over time<sup>1</sup>.</p>
-<p>Second I switched my writing app from
-from Neovim to Emacs<sup>2</sup>.</p>
-<p>Combined, those changes introduced a lot
-of structural work to redo the way
-text goes from my computer to
-the internet. I started the work
-earlier this year. Then, as they say,
-life happened. Nothing bad, just
-stuff that required a lot of time,
-energy, and attention with a side
-helping of stress thrown in for good measure.</p>
-<p>I went for months without doing
-any of the work necessary to get things
-updated so I could post. The knock on
-effect was I wasn't writing
-or making new things for the site.
-That was fine for a while. Then, I hit
-a point where I wanted to make stuff
-but couldn't becaue the tools were borked.</p>
-<p>Working on tooling takes a differnet kind
-of mental energy and effort. I didn't
-have that in me.
-The problem is that not doing
-creative work is bad for my mental health.
-It's one of the ways I recharge. Since
-I couldn't make stuff because the tools were
-offline, I struggled to get the energy
-necessary to fix the tools.</p>
-<p>Energy deadlock.</p>
-<p>Today, I finally broke though. Having just
-enough energy to work on the tooling.
-Getting it to the point where I can
-make basic posts again<sup>3</sup>.</p>
-<p>Feels good to be back.</p>
-<p>-a</p>
-<div class="end-of-line"></div>
-<h3>Endnotes</h3>
-<p>Feels like I should link to
-my <a href="/posts/the-clicky-sound/">Clicky Sound</a>
-post here. It's a variation on the
-theme. Doing creative work is
-fundamental to my nature.</p>
-<h3>Footnotes</h3>
-<ol>
-<li>
-<p>There's a bunch of work to move
-everything from the old site to the new.
-I could have done it up front. That
-would have changed the way I'm building
-the new site. I'd have made decisions
-to make the transition easier. Adding
-technical debt before the first piece
-of content hit the new domain. I vastly
-prefer the clean slate approach.</p>
-</li>
-<li>
-<p><a href="https://neovim.io/">Neovim</a> and <a href="https://www.gnu.org/software/emacs/">Emacs</a>
-are text editors. They're old school. As in,
-&quot;don't use the mouse, just the keyboard&quot; old school.
-I find Emacs easier to hack new tools with. Something
-I'll be doing a lot of as part of hacking
-on my site.</p>
-<p>Incidentally, I don't have spellcheck
-installed in Emacs yet. Export more typos
-for the time being.</p>
-</li>
-<li>
-<p>Ok. I actually wrote this post the day
-after getting the tooling set up. I
-created the file on the day as the final
-check to make sure the tooling worked.
-But, I didn't put down the words until
-I'd had a good night sleep.</p>
-</li>
-</ol>
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>Blogging Tools Are Back Online</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;ng&#x2f;4b&#x2f;a0/"/><id>urn:uuid:2240eb3b-164f-581e-bb48-fdc21ad25f79</id>
     <updated>2026-11-21T18:46:08-05:00</updated>
     <summary><![CDATA[
 <p>I haven't written in a while.</p>
@@ -1807,421 +1600,6 @@ here.</p>
   </entry>
   
   <entry>
-    <title>AI&#x2f;LLM Observations [Aug. 2026]</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n8&#x2f;bg&#x2f;4y/"/><id>urn:uuid:98ed0d71-98e6-57b0-80a6-a19fc6e3a1ad</id>
-    <updated>2026-08-19T10:41:34-04:00</updated>
-    <summary><![CDATA[
-<h2>In Response</h2>
-<p>A <a href="https://hachyderm.io/deck/@thomasfuchs/117122639321367550">post from Thomas Fuchs</a>
-went by on Mastodon asking for thoughts on
-the ethics of AI/LLMs<sup class="footnote-link" id="footnote-link-terms"><a href="#footnote-ref-terms">terms</a></sup>.
-The topic has been bubbling in the back of
-my brain. While this post is
-a response, it's more a place to write
-down my thoughts to help me think
-through them.</p>
-<h2>Background Points</h2>
-<p>I'm not at the point where trying
-to write a single, cohesive post makes
-sense. For now, it's bullet points.</p>
-<ul>
-<li>
-<p>I write a lot of code. My point of view is coming
-from the perspective of a developer.</p>
-</li>
-<li>
-<p>I wonder how much variation folks have
-when they use the term &quot;vibe coding&quot;. For
-me, it's when someone gives an LLM
-the ability to read and update their
-code directly. Something that still freaks me out.
-Getting into why that is is a topic
-for another day.</p>
-</li>
-<li>
-<p>The reason for the clarification of
-the term is because if someone asks
-me if I use AI to code, the answer is
-yes. I use <a href="https://duck.ai/">duck.ai</a>
-to prompt in effectively the same
-way I use search engines. In fact,
-I'm increasingly going to it as the
-first move.</p>
-<p>I read the code it gives me, then
-place it into my codebase myself
-after thinking through what it's
-going to do and how it's going
-to do it. Updating my mental map
-of the process I'm working on.</p>
-<p>(That may be one of the biggest things
-that freaks me out about full on
-vibe coding. I don't feel like I'd
-have a mental map of what's going
-on if I'm not seeing everything myself)</p>
-</li>
-<li>
-<p>I should point out that I start
-with documentation before going
-to either an AI/LLM or a search
-engine. Especially if I've got
-some prior knowledge about
-what I'm doing.</p>
-<p>For example, I'm working
-with rust's nom<sup class="footnote-link" id="footnote-link-nom"><a href="#footnote-ref-nom">nom</a></sup>
-parsing library. While there's
-a lot to it, I've spent a lot of time
-with it. It's easy for me to
-find answers directly form the
-docs when I hit a sticking point.</p>
-</li>
-<li>
-<p>I've learned a bunch from using LLMs
-like a search engine. The code samples
-they return are generally much larger
-than I get on Stack
-Overflow<sup class="footnote-link" id="footnote-link-so"><a href="#footnote-ref-so">so</a></sup>.
-That larger surface area has frequently
-lead to second order learning where
-I'm exposed so something new that's
-adjacent to the thing I was looking
-for.</p>
-<p>Again, this is not something I
-would have been exposed to if
-I was doing straight vibe coding
-and not looking at the code produced.
-And, even if I was looking, things
-don't really set in for me unless
-I type them in myself.</p>
-</li>
-<li>
-<p>Beyond my personal experience, I had
-photographer buddy (who's not a techie)
-build their own website with an LLM.
-That's where things get the most
-interesting to me. Using something
-to support creative work instead
-of trying to use it as a generator
-of something creative.</p>
-</li>
-<li>
-<p>I totally get the appeal of quick
-solutions to problems outside your
-field of expertise. Doubly so
-when there aren't even resources
-available to assist.
-For instance, I've started playing
-Magic. One of my favorite things about
-the game is the card art. Some of it's
-beautiful. Some of it, less so. Here's
-two versions of the same card to give
-you an idea.</p>
-<div class="image-wrapper default-flow">
-<style>
-.image-wrapper img {
-  max-width: 12rem;
-  border-radius: 0.7rem;
-}
-</style>
-<p><img src="/blog-to-renumber/source/01/n8/bg/4y/giada-1.jpg" alt="An older printing of Giada from Magic the gathering. She's crouched looking to the side. The overall texture looks faded. The art is contained in a padded box area inside the edges of the card." /></p>
-<p>And</p>
-<p><img src="/blog-to-renumber/source/01/n8/bg/4y/giada-2.jpg" alt="A newer printing of Giada from Magic the gathering. She's flying a bit off the ground looking toward the viewer. The card is much more colorful with the art extending all the way to the edges of the card." /></p>
-</div>
-</li>
-</ul>
-<p>The first one is fine. The second is way better.
-It's shaper, more vibrant, and the art extends
-to the edges of the card.</p>
-<p>Not every card has multiple options to
-choose from. The result is collections
-without a consistent look or feel<sup class="footnote-link" id="footnote-link-box"><a href="#footnote-ref-box">box</a></sup>.
-I'd like to make custom card art to bring
-everything into the ball-park. I don't
-have anywhere near the skill to do that
-though.</p>
-<p>The appeal of using AI tools to generate
-custom art is high. A three sentence prompt
-got me this in about twenty seconds.</p>
-  <div class="image-wrapper default-flow">
-<p><img src="/blog-to-renumber/source/01/n8/bg/4y/ai-ninja.jpg" alt="An AI Generated Ninja." /></p>
-  </div>
-<p>It would work great as a replement
-for an inconsistent looking card in my
-deck of ninjas<sup class="footnote-link" id="footnote-link-ninjas"><a href="#footnote-ref-ninjas">ninjas</a></sup>.
-Just throw it in
-a card maker<sup class="footnote-link" id="footnote-link-maker"><a href="#footnote-ref-maker">maker</a></sup>,
-add the text, and off
-you go.</p>
-<p>No one but me and the folks I play
-with would see the cards. I wouldn't be
-presenting them as art I made
-any more than I would a piece of
-stock art.</p>
-<p>If I didn't know more about
-AI generation tools, I'd do it in
-a heartbeat. But, I do know about
-them. Weirdly, I'm less concerned
-about what they did (slurping up
-every image they could get their
-hands on regardless of copyright
-to feed to the machines) compared
-to what they're doing: making it
-even harder for artists to
-make a living from their art.</p>
-<p>This is not dissimilar to what
-happened to the photography
-market when digital cameras
-came on the scene and migrated
-into high quality tools
-built in to the phones in our
-every day carry<sup class="footnote-link" id="footnote-link-photos"><a href="#footnote-ref-photos">photos</a></sup>.</p>
-<p>It's different though. The camera
-in a phone is a tool for making
-things. AI Gen tools do the making
-themselves. The distinction feels
-subtle to say out loud, but it's
-profound in impact.</p>
-<p>Sadly, artist seem to be getting
-hit just as hard as photographers
-who saw their market decimated
-by the new tech.</p>
-<h2>Outro</h2>
-<p>Where this all leaves me is:</p>
-<ul>
-<li>
-<p>I don't make my own Magic cards.
-I don't know if that's as much
-an ethical decision or more about
-wanting to support artists. It's
-some of each. I just don't know
-the ratio. Nor do I care.
-I've made the decision.
-Spending time unwrapping it further
-is uninteresting.</p>
-</li>
-<li>
-<p>I'm in favor of tools that support
-folks doing more creative things.
-Being able to build a website to
-present your photos and then getting
-more excited about taking photos
-as a result is an improvement to
-the world.</p>
-<p>As with just about everything, that
-means there's some utility to it
-that's within the general bounds of
-ethical usage of the system
-as it exists.</p>
-</li>
-<li>
-<p>Part or talking about ethics of AI
-feels like conversations of
-separating art and artist. If
-what you get out of it is beneficial
-but the ingestion of raw material
-was out of bounds, where do you stand.</p>
-<p>In a much more extreme example,
-my understanding is a lot of our
-advancement in understanding the
-body and creating treatments
-for it came from absolutely awful
-situations.</p>
-<p>Should we disregard life saving
-advancements because they were
-discovered through horrors?
-Does the answer change over time?</p>
-</li>
-<li>
-<p>I'll continue to use LLMs as search
-tools. Even though LLMs slurped up
-code the same way they slurped up
-art, I have way less of a problem with
-that.</p>
-<p>The analogy that just occurred to
-me is one of patents. If you've
-genuinely created something new, it
-makes sense that you get some time
-with it to be just yours if that's
-the direction you want to take.</p>
-<p>But, that time shouldn't be unlimited.
-It also shouldn't bar folks who come
-up with the same idea/approach/whatever
-on their own from being able to do
-the thing as well.</p>
-<p>We've collectively put all this tooling
-into the open source world to make things.
-I believe it would be a disservice to humanity
-to draw a hard line in the sand against
-using it in these new ways.</p>
-<p>The corporate capitalist capturing
-of the tools is a bummer, but if more
-folks can make more things that help
-them make more things, I don't want
-to lose that.</p>
-</li>
-<li>
-<p>Thinking about my own code.
-If something I made gets slurped up
-into an LLM which uses it to show
-someone how to do something new,
-I'm cool with that.</p>
-<p>If an AI tool picks up my photography
-and uses it to generate images, they
-can fuck right off.</p>
-</li>
-</ul>
-<p>We're still in the very early days of
-all this. I'm not a big prediction maker
-but I've got this riff. It's on
-Arthur C. Clarke's Third Law:</p>
-<blockquote>
-<p>Any sufficiently advanced technology is
-indistinguishable from magic.</p>
-</blockquote>
-<p>My riff:</p>
-<blockquote>
-<p>Any sufficiently distributed technology is
-indistinguishable from nature.</p>
-</blockquote>
-<p>I don't see a world where AI and LLMs
-don't proliferate to the point where
-they become an envoronmental background.
-Something you only notice if you
-decide to think about it. The ethical
-and moral considerations fading
-into the background the same way
-we rarely think about them in
-terms of saw mills.</p>
-<p>-a</p>
-<div class="end-of-line"></div>
-<h3>Endnotes</h3>
-<ul>
-<li>
-<p>I'm not getting into the environmental
-issues at either the global or local level.
-That's a shit show and one that should
-be considered in the overall conversation.</p>
-<p>But, it's important that we can talk about
-things at different levels and through different lenses.
-Kinda like the <a href="https://en.wikipedia.org/wiki/Six_Thinking_Hats">Six Thinking Hats</a>.</p>
-</li>
-<li>
-<p>Discussing ethics is both interesting and
-important. It's also a tough sell. Or, rather,
-a tough way to convince corporations to sell less.
-The foundation of the world of publicly traded companies
-is quarterly profits. For all intents and
-purposes, anything that increases them
-without lading the C-suite in jail should
-be expected.</p>
-<p>It reminds me of this piece from a former
-CIA officer where he talks about the
-most important character trait to being
-a good spy. His answer:</p>
-<blockquote>
-<p>The most important thing CIS, or Mossad, or
-MI-6 look for when they make a possible
-new spy, is somebody who seeks validation
-from an external source. They're looking
-for somebody who is so loyal and so
-dependent on external validation that they
-will lie, steal, cheat, commit crimes,
-cross borders, change their name, and
-do anything they have to do in order
-to get validation and approval from
-that one, focused, external source.</p>
-<p>And, when the CIA finds a person like
-that, they can train that person
-to become dependent on the CIA. And then,
-the loyalty of that individual becomes
-so focused on the institution that they
-don't need any other attention from
-anywhere else. As long as they serve
-the one organization that validates
-and appreciates their work.</p>
-</blockquote>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/X3vHJiPRLSo?si=gTV5JKLdZwWY4APn&amp;start=228" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<p>I see corporate execs as fitting the mold.
-But, instead of doing the unethical
-in the name of national security, they
-do it in the name of the bottom line.</p>
-</li>
-<li>
-<p>Another aspect that's in my head is
-the use of AI/LLMs in medical practices.
-My psychiatrist is looking at using
-AI note taking tools. Right now,
-he's asking for consent. I expect
-within five years it'll turn into
-one of those things where if you
-don't provide consent they won't see
-you. If they even ask at all.</p>
-<p>Right now, it's just summaries.
-Coming down the pipe is recommendations.
-That weirds me out. Like,
-I dig the idea of feeding a bunch of
-data in systems to look for patterns
-and run variations to advance
-cancer research.</p>
-<p>I don't like idea of more personal notes
-from conversations being put in.
-Some of that has to do with the
-idea of those notes being used to
-make determinations not about
-treatments, but about undesirables
-who need to be removed from society.</p>
-<p>The idea being that those conversations
-could already happen. But, a politician
-saying that themselves isn't
-as powerful rhetorically as a politician
-stating it as fact because it came
-from an AI.</p>
-</li>
-</ul>
-<h3>Footnotes</h3>
-<p><a class="footnote-ref" id="footnote-ref-nom" href="#footnote-link-nom">nom</a>
-Parser combinator, you say? WTF even is that, you ask? Basically, it's a tool
-to split out parts of files so you can use them independently. Grabbing
-the title of a document so you can use the text as a link on
-another page, for example.</p>
-<p>One of those tools is <a href="https://docs.rs/nom/latest/nom/index.html">nom</a>. It's
-brain-bendy to learn, but super dope when you get the hang of it.</p>
-<p><a class="footnote-ref" id="footnote-ref-so" href="#footnote-link-so">so</a>
-Traditionally, the go to place for picking up the pieces
-you need to code the things you're coding if
-you don't already know how to do it: <a href="https://stackoverflow.com/">Stack Overflow</a></p>
-<p><a class="footnote-ref" id="footnote-ref-box" href="#footnote-link-box">box</a>
-One of the biggest differences being full-bleed art that goes
-to the edges of the cards compared to the images
-that are constrained to an interior area. The first of
-the <em>Giada</em> cards being an example.</p>
-<p><a class="footnote-ref" id="footnote-ref-ninjas" href="#footnote-link-ninjas">ninjas</a>
-My <a href="https://archidekt.com/decks/22850037/yuriko">Yuriko ninja deck</a> was
-the first one I made myself. I've been tuning
-it ever since. It's not as great 1v1 but
-does pretty well with more folks involved.</p>
-<p><a class="footnote-ref" id="footnote-ref-maker" href="#footnote-link-maker">maker</a>
-Want to make your own custom art for magic cards?
-There's
-<a href="https://printmtg.com/mtg-card-maker/">a tool for that</a>.
-And more floating around if you search for them.</p>
-<p><a class="footnote-ref" id="footnote-ref-photos" href="#footnote-link-photos">photos</a>
-I'm working on a piece that looks at
-AI through the historical lens of
-technology advancing in photography.
-Started it last year and it continues
-to hold course.</p>
-<p><a href="https://www.alanwsmith.com/en/33/ej/kh/zs/">AI's Inevitable Photographic Journey - Or, The Camera and the Violin</a></p>
-<p><a class="footnote-ref" id="footnote-ref-term" href="#footnote-link-terms">terms</a>
-I'm using the terms &quot;AI&quot; and &quot;LLM&quot; here
-interchangeably. There are some definitions
-that would differentiate between
-the two, but they mean the same thing
-here.</p>
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
     <title>Compare HTML Fragments in Rust to See if They Match</title><link href="https://al9000.com&#x2f;rust&#x2f;misc&#x2f;compare-html/"/><id>urn:uuid:d5fdabfb-14ef-5515-ac18-02fd23c4da65</id>
     <updated>2026-08-18T18:53:22-04:00</updated>
     <summary><![CDATA[
@@ -2351,178 +1729,6 @@ needs to be set up to go through them.</p>
   
   <entry>
     <title>How Creatives and Devs Can All Finally Escape the Control of the Silicon Valley of Evil and Make a Trillion Dollars, Audio Style</title><link href="https://al9000.com&#x2f;blog&#x2f;4020/"/><id>urn:uuid:b031c670-e55f-5809-a3de-5a7051e20005</id>
-    <updated>2026-08-15T16:23:15-04:00</updated>
-    <summary><![CDATA[
-<h2>TL;DR</h2>
-<p>
-  I recorded an audio version of
-  <a href="https://torrent-empress.leaflet.pub/3mskr4u3ouk2h">
-    How Creatives and Devs Can All 
-    Finally Escape the Control of the 
-    Silicon Valley of Evil and Make a 
-    Trillion Dollars</a> by 
-<a href="https://bsky.app/profile/torrent-empress.bsky.social">
-    Belle</a>.
-
-<p>You can listen to it here:</p>
-
-<figure>
-  <audio controls src="https://s3.us-east-1.amazonaws.com/alanwsmith.com-www/_transfer/belle-how-creatives.mp3"></audio>
-  <figcaption></figcaption>
-</figure>
-
-
-<p>Or, <a href="https://s3.us-east-1.amazonaws.com/alanwsmith.com-www/_transfer/belle-how-creatives.mp3">Download the mp3</a>.</p>
-
-<p>Or, do the YouTube version<sup class="footnote-link" id="footnote-link-1"><a href="#footnote-ref-1">1</a></sup>:</p>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RuI2GmDYbOI?si=DhtxB1VLEu4KjwGE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<p>
-  Two things to know before you get started:
-</p>
-
-<ol>
-  <li>
-    Belle gave the blessing to post this. 
-  </li>
-  <li>
-    There's no AI involved. It's all me<sup class="footnote-link" id="footnote-link-2"><a href="#footnote-ref-2">2</a></sup>.
-  </li>
-</ol>
-
-<h2>Outro</h2>
-
-<p>
-  I really dug the original post. I mean obviously, given 
-  I decided to record it. The framing makes a ton
-  of sense. I learned about 
-  <a href="https://en.wikipedia.org/wiki/The_Wretched_of_the_Earth">The Wretched of the Earth</a> and
-  <a href="https://en.wikipedia.org/wiki/Pedagogy_of_the_Oppressed">Pedagogy of the Oppressed</a>.
-  Both of which are now at the top of my non-fiction books to read list<sup class="footnote-link" id="footnote-link-3"><a href="#footnote-ref-3">3</a></sup>. 
-  I learned a little about Haiti and the Black Panthers too.
-  I better for the knowledge. 
-</p>
-
-<p>
-  Give it a listen if you're a dev or a creative. 
-Or, check out <a href="https://torrent-empress.leaflet.pub/3mskr4u3ouk2h">the
-    original post</a> if you prefer text.
-</p>
-
-<p>
-  -<a href="https://bsky.app/profile/al9000.com">a</a>
-</p>
-
-
-
-<div class="end-of-line"></div>
-
-
-
-<h3>Endnotes</h3>
-<ul>
-<li>
-<p>I've become a bit obsessed with the
-<a href="https://atmosphere.community/">Atmosphere</a>. The collective
-name for apps (like <a href="https://bsky.app/">Bluesky</a>)
-that ride on a tech called <a href="https://atproto.com/">AT Protocol</a>.
-You can make shit without having to
-build your own storage or login systems.
-The exact two things that have kept me
-from fucking around with all kinds of ideas.</p>
-<p>I haven't been this excited about new tech
-since I first started playing on the web
-in the 1900s. The post offers a solid lens
-to consider the environment through.</p>
-</li>
-<li>
-<p>A marquee feature of the Atmosphere is
-the ability to control your content.
-To move it from one service to another at
-will. The ability it built in at the
-foundation. But, the foundation doesn't
-deal with what's above it. The content itself.</p>
-<p>You can move your data between apps,
-but if the apps don't understand each
-other's content you're still effectively
-locked in. I designed a portable content format
-that addresses that. It's basically
-<a href="https://commonmark.org/help/">Markdown</a> on steroids.
-You can check it out at
-<a href="https://neodoc.style/">neodoc.style</a>
-if you're into that type of thing.</p>
-</li>
-</ul>
-
-
-
-
-
-
-
-
-
-
-
-<h3>Footnotes</h3>
-
-<p>
-<a class="footnote-ref" id="footnote-ref-1" href="#footnote-link-1">1</a>
-  I spent a solid day working on the audio visualizer for the video. I had one going
-  that I really liked that looked like this:
-</p>
-
-<div>
-  <img src="waveform-prototype.jpg" alt="a traslucent ochre audio waveform on top of a background of mid sized hexagons with light blue and purple shading" />
-</div>
-
-<p>
-  Only problem is that it was gonna take 10 hours to render on my
-  several year old macbook (which has no discrete graphics card). 
-  I spun up a computer in the cloud with a beefy GPU. It didn't
-  help. Turns out the 
-  <a href="https://gitlab.com/WeSuckLess/Reactor/-/blob/master/Atoms/com.JiPi.AudioWaveform/Fuses/Miscellaneous/AudioWaveform.fuse">Waveform generator I was using</a>
-  uses the CPU, not the GPU. 
-</p>
-
-<p>
-  I have started looking at <a href="https://www.shadertoy.com/">shaders</a>
-  and <a href="https://docs.isf.video/primer_chapter_8.html">Audio Visualizers</a>
-  and <a href="https://www.vidvox.net/">VDMX6</a>. 
-  I don't have spoons for that rabbit hole right now. 
-  Ended up with an <a href="https://ffmpeg.org/">ffmpeg</a> + 
-  <a href="http://gnuplot.info/">gnuplot</a> approach
-  that's fine for now I'll write it up  if I get the opportunity. 
-  (And yeah, I tried ffmepg's <em>showwaves</em>. It was meh.) 
-</p>
-
-
-<p>
-<a class="footnote-ref" id="footnote-ref-2" href="#footnote-link-2">2</a>
-  There's three hours of raw tape for the fifty minute end result. 
-  I spent north of eight hours editing it down. 
-  I realize now that I should be nuking bad takes
-  during the recording. If it wasn't for the ability to
-  remap hotkeys for faster edits I'd still be doing
-  it.
-</p>
-
-
-<p>
-  <a class="footnote-ref" id="footnote-ref-3" href="#footnote-link-3">3</a>
-  The Wretched of the Earth and Pedagogy of the Oppressed are also
-  two of the favorite books of a professor of rhetoric buddy.
-  That intimidates me a bit, but nothing ventured, etc.
-</p>
-
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>How Creatives and Devs Can All Finally Escape the Control of the Silicon Valley of Evil and Make a Trillion Dollars, Audio Style</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n8&#x2f;1j&#x2f;nk/"/><id>urn:uuid:3f5f86c4-35aa-536a-8fc6-d8b088d009ac</id>
     <updated>2026-08-15T16:23:15-04:00</updated>
     <summary><![CDATA[
 <h2>TL;DR</h2>
@@ -4348,239 +3554,6 @@ CSS will get nothing but more powerful.</p>
   </entry>
   
   <entry>
-    <title>A CSS Only Tabs Prototype (No JavaScript Required)</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n6&#x2f;a8&#x2f;6j/"/><id>urn:uuid:42f2176e-f17d-59c5-9a67-828b71e2543c</id>
-    <updated>2026-07-25T16:47:14-04:00</updated>
-    <summary><![CDATA[
-
-<div class="warning-block">
-  <p>
-    Head's Up
-  </p>
-  <p>
-    This is prototype testing code to see how
-    this could work. According to <a href="https://adrianroselli.com/2023/03/css-only-widgets-are-inaccessible.html#Tabs">this post</a>
-    it's not accessible. That's not really a surprise. 
-    So, treat this as an interesting experiment instead
-    of something to actually implement.
-    I got pointed to 
-    <a href="https://inclusive-components.design/tabbed-interfaces/">
-      Tabbed Interfaces on inclusive-components.design</a>
-    for an actual alternative.
-  </p>
-</div>
-<h2>Component Kickoff</h2>
-<p>I was listening to an episode of <a href="https://shoptalkshow.com/">Shop Talk Show</a>
-that discussed putting native HTML elements inside
-web components instead of having
-the component insert them. For example,
-a <em>fancy-checkbox</em> component could contain
-a checkbox element:</p>
-<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">fancy-checkbox</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="2"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">for</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>checkbox-x<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Show Example<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="3"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">checkbox-x</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>checkbox<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
-<span class="line-marker" data-line="4"></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">fancy-checkbox</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
-<p>Or, it could be empty, pushing the responsibility
-for adding the checkbox element into
-the component itself.</p>
-<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">fancy-checkbox</span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">fancy-checkbox</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
-With the first one, a checkbox shows up even if JavaScript
-or the web component fails to load. Not so with the second.
-<h2>Modal Pondering</h2>
-<p>The conversation got me wondering what you can do
-with a checkbox if there's no JavaScript running on the
-page. Specifically, I was wondering if you could do something
-like make a dark mode switcher using only
-HTML and CSS. The answer is, yes, you can.</p>
-<p>Check this out:</p>
-<div class="mode-wrapper-x">
-  <label for="mode-checkbox-x">
-    Activate Dark Mode:
-  </label>
-  <input id="mode-checkbox-x" type="checkbox" />
-</div>
-<p>There's no JavaScript involved. Everything happens
-thanks to this HTML:</p>
-<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value class html"><span class="entity other attribute-name class html">class</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value class html"><span class="string quoted double html"><span class="meta class-name html">mode-wrapper-x</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="2"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">for</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>mode-checkbox-x<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="3"></span>    Activate Dark Mode:
-<span class="line-marker" data-line="4"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="5"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">mode-checkbox-x</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>checkbox<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
-<span class="line-marker" data-line="6"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
-<p>and this CSS:</p>
-<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="source css"><span class="meta selector css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>root</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
-<span class="line-marker" data-line="2"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-background-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant color w3c-standard-color-name css">white</span></span><span class="punctuation terminator rule css">;</span>
-<span class="line-marker" data-line="3"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-color-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant color w3c-standard-color-name css">black</span></span><span class="punctuation terminator rule css">;</span>
-<span class="line-marker" data-line="4"></span></span><span class="punctuation section property-list css">}</span>
-<span class="line-marker" data-line="5"></span>
-<span class="line-marker" data-line="6"></span><span class="meta selector css"><span class="entity other attribute-name class css"><span class="punctuation definition entity css">.</span>mode-wrapper-x</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
-<span class="line-marker" data-line="7"></span>  <span class="meta property-name css"><span class="support type property-name css">background-color</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-background-x</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
-<span class="line-marker" data-line="8"></span>  <span class="meta property-name css"><span class="support type property-name css">color</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-color-x</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
-<span class="line-marker" data-line="9"></span></span><span class="punctuation section property-list css">}</span>
-<span class="line-marker" data-line="10"></span>
-<span class="line-marker" data-line="11"></span><span class="meta selector css"><span class="entity name tag css">body</span><span class="meta function-call css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>has</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>mode-checkbox-x</span><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>checked</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
-<span class="line-marker" data-line="12"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-background-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant color w3c-standard-color-name css">black</span></span><span class="punctuation terminator rule css">;</span>
-<span class="line-marker" data-line="13"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">mode-wrapper-color-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant color w3c-standard-color-name css">white</span></span><span class="punctuation terminator rule css">;</span>
-<span class="line-marker" data-line="14"></span></span><span class="punctuation section property-list css">}</span></span></pre></div></div>
-<p>The magic is the <code>:has()</code> pseudo-class on the
-body element on line 11. It watches the <code>#mode-checkbox-x</code> element
-to see if it's check. When it is, it overrides
-the default property variables to do the switch.</p>
-<h2>Tab Coded</h2>
-<p>Of course, the dark mode switcher doesn't set
-anything on the browser to maintain the mode
-between pages. You would need JavaScript for that.</p>
-<p>However, there are other things that
-don't require keeping track of state
-across pages. Tabs come to mind.
-For example:</p>
-
-<div class="tabs-wrapper-x">
-<div>
-  <input id="tab1" type="radio" name="tabSwtich" checked />
-  <label for="tab1" >Tab 1</label>
-
-  <input id="tab2" type="radio" name="tabSwtich" />
-  <label for="tab2">Tab 2</label>
-
-  <input id="tab3" type="radio" name="tabSwtich" />
-  <label for="tab3">Tab 3</label>
-</div>
-
-<div id="content1">Content 1</div>
-<div id="content2">Content 2</div>
-<div id="content3">Content 3</div></div>
-
-<p>Again, no JavaScript. Just this HTML:</p>
-<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="2"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">tab1</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>radio<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">name</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tabSwtich<span class="punctuation definition string end html">&quot;</span></span></span> <span class="entity other attribute-name html">checked</span><span class="punctuation definition tag end html"> /&gt;</span></span>
-<span class="line-marker" data-line="3"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">for</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tab1<span class="punctuation definition string end html">&quot;</span></span></span> <span class="punctuation definition tag end html">&gt;</span></span>Tab 1<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="4"></span>
-<span class="line-marker" data-line="5"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">tab2</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>radio<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">name</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tabSwtich<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
-<span class="line-marker" data-line="6"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">for</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tab2<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Tab 2<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="7"></span>
-<span class="line-marker" data-line="8"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">input</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">tab3</span><span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">type</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>radio<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">name</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tabSwtich<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html"> /&gt;</span></span>
-<span class="line-marker" data-line="9"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">label</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">for</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>tab3<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Tab 3<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">label</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="10"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="11"></span>
-<span class="line-marker" data-line="12"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">content1</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Content 1<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="13"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">content2</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Content 2<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="14"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span> <span class="meta attribute-with-value id html"><span class="entity other attribute-name id html">id</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span></span></span><span class="meta attribute-with-value id html"><span class="string quoted double html"><span class="meta toc-list id html">content3</span><span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Content 3<span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div>
-<p>and this CSS:</p>
-<div class="highlight-wrapper"><div class="code-block no-copy numbers"><pre><span class="line-marker" data-line="1"></span><span class="source css"><span class="meta selector css"><span class="entity name tag css">body</span><span class="meta function-call css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>has</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>tab1</span><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>checked</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="meta property-list css"><span class="punctuation section property-list css">{</span> 
-<span class="line-marker" data-line="2"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-1-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">block</span></span><span class="punctuation terminator rule css">;</span> 
-<span class="line-marker" data-line="3"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-2-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
-<span class="line-marker" data-line="4"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-3-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
-<span class="line-marker" data-line="5"></span></span><span class="punctuation section property-list css">}</span>
-<span class="line-marker" data-line="6"></span>
-<span class="line-marker" data-line="7"></span><span class="meta selector css"><span class="entity name tag css">body</span><span class="meta function-call css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>has</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>tab2</span><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>checked</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="meta property-list css"><span class="punctuation section property-list css">{</span> 
-<span class="line-marker" data-line="8"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-1-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
-<span class="line-marker" data-line="9"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-2-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">block</span></span><span class="punctuation terminator rule css">;</span> 
-<span class="line-marker" data-line="10"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-3-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
-<span class="line-marker" data-line="11"></span></span><span class="punctuation section property-list css">}</span>
-<span class="line-marker" data-line="12"></span>
-<span class="line-marker" data-line="13"></span><span class="meta selector css"><span class="entity name tag css">body</span><span class="meta function-call css"><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>has</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>tab3</span><span class="entity other pseudo-class css"><span class="punctuation definition entity css">:</span>checked</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="meta property-list css"><span class="punctuation section property-list css">{</span> 
-<span class="line-marker" data-line="14"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-1-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
-<span class="line-marker" data-line="15"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-2-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">none</span></span><span class="punctuation terminator rule css">;</span> 
-<span class="line-marker" data-line="16"></span>  <span class="meta property-name css"><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-3-display-x</span></span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="support constant property-value css">block</span></span><span class="punctuation terminator rule css">;</span> 
-<span class="line-marker" data-line="17"></span></span><span class="punctuation section property-list css">}</span>
-<span class="line-marker" data-line="18"></span>
-<span class="line-marker" data-line="19"></span>
-<span class="line-marker" data-line="20"></span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>content1</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
-<span class="line-marker" data-line="21"></span>  <span class="meta property-name css"><span class="support type property-name css">display</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-1-display-x</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
-<span class="line-marker" data-line="22"></span></span><span class="punctuation section property-list css">}</span>
-<span class="line-marker" data-line="23"></span>
-<span class="line-marker" data-line="24"></span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>content2</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
-<span class="line-marker" data-line="25"></span>  <span class="meta property-name css"><span class="support type property-name css">display</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-2-display-x</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
-<span class="line-marker" data-line="26"></span></span><span class="punctuation section property-list css">}</span>
-<span class="line-marker" data-line="27"></span>
-<span class="line-marker" data-line="28"></span><span class="meta selector css"><span class="entity other attribute-name id css"><span class="punctuation definition entity css">#</span>content3</span> </span><span class="meta property-list css"><span class="punctuation section property-list css">{</span>
-<span class="line-marker" data-line="29"></span>  <span class="meta property-name css"><span class="support type property-name css">display</span></span><span class="punctuation separator key-value css">:</span><span class="meta property-value css"> </span><span class="meta property-value css"><span class="meta function-call css"><span class="support function var css">var</span><span class="meta group css"><span class="punctuation definition group begin css">(</span><span class="support type custom-property css"><span class="punctuation definition custom-property css">--</span><span class="support type custom-property name css">content-3-display-x</span></span></span><span class="meta group css"><span class="punctuation definition group end css">)</span></span></span></span><span class="punctuation terminator rule css">;</span>
-<span class="line-marker" data-line="30"></span></span><span class="punctuation section property-list css">}</span></span></pre></div></div>
-<h2>First Try</h2>
-<p>To be clear: this is a prototype. It's
-purpose is a first test to see what's
-possible. There's several things
-to investigate, including:</p>
-<ul>
-<li>
-<p>What's the accessibility of this like?
-Is it dead on arrival? Are there
-adjustments that can be made to bring
-it in line?</p>
-</li>
-<li>
-<p>The radio buttons themselves being visible
-is pretty ugly. I'm pretty sure they
-can be hidden. TBD on what that does
-to accessibility.</p>
-</li>
-<li>
-<p>The CSS is pretty verbose. It does an explicit
-check for each radio button and updates all
-the variables inside each check. I wouldn't
-be surprised to learn there's a more
-efficient way to do that.</p>
-</li>
-</ul>
-<p>Overall, it's very exciting.
-Even if there are reasons not to do
-it now, the continuing march of
-CSS makes me think it won't be long.</p>
-<p>-a</p>
-
-<h2>References</h2>
-<ul>
-<li>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:has">CSS :has() pseudo-class</a>
-which provides the horsepower for the functionality. It hit <em>Baseline Widely Available</em>
-in December 2023.</li>
-</ul>
-<h2>Endnotes</h2>
-<ul>
-<li>
-<p>Thanks to <a href="https://alex.party/">Alex</a> for introducing
-me to <code>:has()</code> and showing me how to use it.</p>
-</li>
-<li>
-<p>If you've got feedback on the
-accessibility aspects of this approach
-please hit me up on <a href="https://bsky.app/profile/alanwsmith.com">Bluesky</a>
-or <a href="https://hachyderm.io/deck/@TheIdOfAlan">Mastodon</a></p>
-</li>
-<li>
-<p>Another thing I learned about
-is <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#command">command and commandfor</a>
-for buttons. Feels like there's a lot of potential
-there in future updates.</p>
-</li>
-<li>
-<p>Another episode of Shop Talk Show was
-<a href="https://shoptalkshow.com/724/">an interview</a> with
-<a href="https://danabra.mov/">Dan Abramov</a> about
-<a href="https://atproto.com/">AT Proto</a>. I'd been
-toying with the idea of creating a
-<a href="https://atproto.com/specs/lexicon">lexicon</a> for
-<a href="neopolitan/">Neopolitan</a> (my markdown replacement
-format). After the episode, I'm absolutely
-gonna do it. The goal being to provide
-a nice way to created pages and posts
-using less than HTML but more than
-Markdown.</p>
-<p>One of the biggest considerations is if
-JavaScript will be allowed. I love
-the idea of providing for interaction.
-I hate the idea of introducing the
-security issues that come with the
-language. Seeing this prototype seals
-the deal. Current CSS can do so much
-the reward of introducing the JavaScript risk
-isn't worth it. And, I expect
-CSS will get nothing but more powerful.</p>
-</li>
-</ul>
-]]></summary>
-  </entry>
-  
-  <entry>
     <title>Adding Copy Buttons with Bitty</title><link href="https://al9000.com&#x2f;blog&#x2f;4018/"/><id>urn:uuid:e141c29b-dd23-546f-92dd-50a01f519fad</id>
     <updated>2026-07-24T09:04:37-04:00</updated>
     <summary><![CDATA[
@@ -4644,149 +3617,6 @@ with the help of a <code>data-key</code> attribute:</p>
 <span class="line-marker" data-line="5"></span>    <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">copy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="6"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
 <span class="line-marker" data-line="7"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog/4018/examples/example-2/bit.js"></bitty-9>
-<div>
-  <button data-s="copyWithKey" data-key="alfa">
-    Copy
-  </button>
-  <span data-r="copyWithKey" data-key="alfa">
-    The quick brown fox
-  </span>
-</div>
-<div>
-  <button data-s="copyWithKey" data-key="bravo">
-    Copy
-  </button>
-  <span data-r="copyWithKey" data-key="bravo">
-    The lazy dog
-  </span>
-</div></div></div></div>
-<h2>How It Works</h2>
-<ul>
-<li>
-<p>The <code>data-s</code> attributes on the buttons
-sets them up to send a signal named <code>copyWithKey</code>.</p>
-</li>
-<li>
-<p>When the signal comes in, bitty
-loops through all the elements with a
-<code>data-r</code> attribute whose value matches
-the <code>copyWithKey</code> signal name.</p>
-<p>Each element is passed to the <code>copyWithKey</code>
-function as the <code>el</code> argument. The <code>sender</code>
-argument is populated by the button
-that sent the signal.</p>
-</li>
-<li>
-<p>Since there are multiple elements
-with the <code>data-r=&quot;copyWithKey&quot;</code> attribute
-we need a way to filter them down to just the
-one we want. The approach used here does the filtering
-by comparing the <code>data-key</code> values of
-the sending and receiving elements
-via the <code>.key()</code> method that bitty
-adds to the incoming elements.</p>
-<p>When they match, the function calls
-the <code>.copy()</code> method with the elements
-to run the process.</p>
-</li>
-</ul>
-<h2>Outro</h2>
-<p>Most of bitty is about setting up functions to
-add your own features. The <code>.copy()</code>
-method is an exception. It's fully baked.
-I found myself adding the functionality
-so often it made since to include
-it directly. Check it out if your
-site has content you want to make it
-easier for your visitors to grab.</p>
-<p>-a</p>
-
-<h2>References</h2>
-<ul>
-<li>
-<p>Bitty is a signals based framework rolled
-into a web component. You can find
-out more about it at
-<a href="https://bittyjs.com">bittyjs.com</a>.</p>
-</li>
-</ul>
-<h2>Endnotes</h2>
-<ul>
-<li>
-<p>This example is using <code>bitty-9</code>. At the
-time of this writing, that version is
-a private beta. The current production
-version of bitty is <code>bitty-8</code>. It
-provides the same functionality.</p>
-</li>
-</ul>
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>Adding Copy Buttons with Bitty</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n6&#x2f;6r&#x2f;q5/"/><id>urn:uuid:15f0c356-124d-5f18-bb3b-7bd164dec2c1</id>
-    <updated>2026-07-24T09:04:37-04:00</updated>
-    <summary><![CDATA[
-
-<h2>Hitting a Single</h2>
-<p><a href="https://bittyjs.com">Bitty</a> has a <code>.copy()</code>
-method. It does two things:</p>
-<ol>
-<li>
-<p>Copies the content of the target element.</p>
-</li>
-<li>
-<p>Updates the text of the Copy button
-to say &quot;Copied&quot; for two seconds then reverts it.</p>
-</li>
-</ol>
-<p>For example:</p>
-<div class="example-container">
-<div class="highlight-wrapper"><div class="title">content.html</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">bitty-9</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-connect</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/blog-to-renumber/source/01/n6/6r/q5/examples/example-1/bit.js<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">bitty-9</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="2"></span>
-<span class="line-marker" data-line="3"></span><span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">button</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-s</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>basicCopy<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Copy<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">button</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="4"></span><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">span</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-r</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>basicCopy<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="5"></span>  The quick brown fox
-<span class="line-marker" data-line="6"></span><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">span</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div><div class="highlight-wrapper"><div class="title">bit.js</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="source js"><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="storage type js">const</span> <span class="variable other readwrite js">b</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span><span class="punctuation section block js">}</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker" data-line="2"></span>
-<span class="line-marker" data-line="3"></span><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="variable other readwrite js">function</span> </span><span class="meta function-call js"><span class="variable function js">basicCopy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">_</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">el</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
-<span class="line-marker" data-line="4"></span>  <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">copy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker" data-line="5"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog-to-renumber/source/01/n6/6r/q5/examples/example-1/bit.js"></bitty-9>
-<p><button data-s="basicCopy">Copy</button>
-<span data-r="basicCopy">
-The quick brown fox
-</span></p>
-</div></div></div>
-<h2>Connecting Keys</h2>
-<p>You can put multiple buttons on a
-page that all use the same copy function
-with the help of a <code>data-key</code> attribute:</p>
-<div class="example-container">
-<div class="highlight-wrapper"><div class="title">content.html</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">bitty-9</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-connect</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/blog-to-renumber/source/01/n6/6r/q5/examples/example-2/bit.js<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">bitty-9</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="2"></span>
-<span class="line-marker" data-line="3"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="4"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">button</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-s</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>copyWithKey<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-key</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>alfa<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="5"></span>    Copy
-<span class="line-marker" data-line="6"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">button</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="7"></span>  <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">span</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-r</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>copyWithKey<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-key</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>alfa<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="8"></span>    The quick brown fox
-<span class="line-marker" data-line="9"></span>  <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">span</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="10"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="11"></span>
-<span class="line-marker" data-line="12"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="13"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">button</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-s</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>copyWithKey<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-key</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>bravo<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="14"></span>    Copy
-<span class="line-marker" data-line="15"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">button</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="16"></span>  <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">span</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-r</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>copyWithKey<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-key</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>bravo<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="17"></span>    The lazy dog
-<span class="line-marker" data-line="18"></span>  <span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline any html">span</span><span class="punctuation definition tag end html">&gt;</span></span>
-<span class="line-marker" data-line="19"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span></span></pre></div></div><div class="highlight-wrapper"><div class="title">bit.js</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="source js"><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="storage type js">const</span> <span class="variable other readwrite js">b</span> <span class="keyword operator assignment js">=</span> <span class="meta object-literal js"><span class="punctuation section block js">{</span><span class="punctuation section block js">}</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker" data-line="2"></span>
-<span class="line-marker" data-line="3"></span><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="variable other readwrite js">function</span> </span><span class="meta function-call js"><span class="variable function js">copyWithKey</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">_</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">el</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
-<span class="line-marker" data-line="4"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">sender</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">key</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>key<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="keyword operator comparison js">===</span> <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">key</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>key<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
-<span class="line-marker" data-line="5"></span>    <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">copy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker" data-line="6"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
-<span class="line-marker" data-line="7"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog-to-renumber/source/01/n6/6r/q5/examples/example-2/bit.js"></bitty-9>
 <div>
   <button data-s="copyWithKey" data-key="alfa">
     Copy
@@ -5606,277 +4436,7 @@ want to check it out.
   </entry>
   
   <entry>
-    <title>Three Dates in a Trench Coat</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/"/><id>urn:uuid:7d10c3a1-3ad7-5664-a197-87fda95800a2</id>
-    <updated>2026-07-19T11:21:48-04:00</updated>
-    <summary><![CDATA[<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/main.css" />
-
-    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
-
-
-
-
-
-
-
-
-
-
-
-<link rel="shortcut icon" href="/favicon.ico" />
-<title>Three Dates in a Trench Coat</title>
-<meta property="og:title" content="Three Dates in a Trench Coat" />
-<meta name="description" content="the online home of alan w smith" />
-<meta property="og:description" content="the online home of alan w smith" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/
-" />
-<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/og-image.jpg" />
-<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
-<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
-<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
-<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
-<link
-  rel="site.standard.publication"
-  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
-/>
-
-
-
-
-    
-    
-    
-    
-
-    
-
-
-    <style>
-    </style>
-    
-  </head>
-  <body class="page">
-<noscript>
-  <p>
-    NOTE: Some pages on this site rely on JavaScript. 
-    It's not currently available in your
-    browser/reader. Depending on the page,
-    some or all of the content may not
-    work correctly without it. 
-  </p>
-
-</noscript>
-
-    <div class="payload">
-      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
-<noscript>
-  <p>
-    NOTE: This site use JavaScript which appears to be turned off. 
-    Some content will be fine, but some things won't work.
-  </p>
-
-</noscript>
-  <div class="top-nav">
-    <a href="/">home</a>
-    <a href="/tools">tools</a>
-    <a href="/rss/">rss</a> ~
-    <a href="https://bittyjs.com/">bitty</a> ~
-    <a href="https://neodoc.style/">neodoc</a>
-  </div>
-
-
-</header>
-
-
-<main class="default default-wrapper default-flow">
-
-  <hgroup class="default">
-      <div class="title-wrapper">
-        <h1>Three Dates in a Trench Coat [python]</h1>
-      </div>
-        <div class="date">July 2026</div>
-  </hgroup>
-
-
-<h2>An Initial Pair</h2>
-<p>Two dates isn't enough.</p>
-<p>At least, when it comes to blog posts. For years, I've used <strong>created</strong>
-and <strong>updated</strong> as the only dates for my
-writing. It makes sense for pages that are
-written and deployed in one shot.
-Not so much when a draft sticks around for a few days,
-weeks, or years before seeing the light of day.</p>
-<p>Neither <strong>created</strong> or <strong>updated</strong> feels right
-for a post started last October but didn't
-go out until today. I want to keep the
-<strong>created</strong> date locked in to when I first
-started the piece. But, using <strong>updated</strong>
-doesn't make sense for the first time
-the status of a page goes from
-<strong>draft</strong> to <strong>done</strong>.</p>
-<h2>Introducing: completed</h2>
-<p>The solution: a third date. Our new
-friend <strong>completed</strong>.</p>
-<p>Posts start out with metadata that
-looks like this:</p>
-<div class="highlight-wrapper"><div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created = 2026-06-02T12:21:48-04:00
-<span class="line-marker" data-line="2"></span>status  = &quot;draft&quot;</span></pre></div></div>
-<p>They get worked on for however
-long then need. When they're
-ready, the metadata gets updated
-with the completed timestamp
-and the status is set to &quot;done&quot;.</p>
-<div class="highlight-wrapper"><div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
-<span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
-<span class="line-marker" data-line="3"></span>status    = &quot;done&quot;</span></pre></div></div>
-<p>The &quot;done&quot; status is what makes the page
-show up on the home page and the
-RSS feed. It's sorted in based
-on the <strong>completed</strong> date, but
-I don't lose the metadata for
-when the scribbling started.</p>
-<p>If the piece has major changes
-an <strong>updated</strong> datetime is added:</p>
-<div class="highlight-wrapper"><div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
-<span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
-<span class="line-marker" data-line="3"></span>updated   = 2026-07-19T12:21:48-04:00
-<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></pre></div></div>
-<p>The status stays as <strong>done</strong>. That
-keeps the page in the list of links
-and RSS feed. The <strong>updated</strong> value
-is used to re-slot it into a
-corresponding position on the timeline.</p>
-<h2>Words Mean Things</h2>
-<p>I just put this feature in place
-today. I already love it. It removes
-that little bit of friction that
-came from trying to decided which
-of the two original dates to use
-when an old draft got polished
-enough to be release into the wild.</p>
-<p>-a</p>
-
-<div class="end-of-line"></div>
-
-
-<div class="backmatter default-flow">
-    <h2>Endnotes</h2>
-
-<ul class="endnotes">
-
-  <li>Adding the <strong>completed</strong> timestamp isn't required. 
-    A page with <strong>status = "done"</strong> and nothing
-    more than a <strong>created</strong> datetime will show up
-    on the site. The <strong>completed</strong> (and <strong>updated</strong>)
-values simply shift the position in the chronology 
-    of the lists. </li>
-
-<li>I'm still updating dates manually. It's not much 
-more work with the third option in play. The 
-date for when the piece goes lives has to be
-added/edited either way. It's a little friction
-though. I've got an item on the todo list
-for a tool that'll let me update the values
-    with a button press.</li>
-
-  <li><p>I briefly debated making the <strong>updated</strong>
-metadata an array that could store the dates
-  for multiple changes. Something like this:</p>
-
-<div class="highlight-wrapper"><div class="output-block"><pre><span class="line-marker" data-line="1"></span><span class="text plain">created   = 2025-10-02T12:21:48-04:00
-<span class="line-marker" data-line="2"></span>completed = 2026-03-11T12:21:48-04:00
-<span class="line-marker" data-line="3"></span>updated   = [2026-04-19T12:21:48-04:00, 2026-07-07T12:21:48-04:00]
-<span class="line-marker" data-line="4"></span>status    = &quot;done&quot;</span></pre></div></div>
-
-<p>
-That's more work than I want to do. Especially
-because I'm unlikely to ever show anything
-other than the latest change. The source
-content for my site is stored in a 
-version control system that lets me
-see when changes occur if I ever really
-want to check it out. 
-</p>
-  </li>
-</ul>
-
-
-
-</div>
-
-</main>
-
-<footer class="default">
-  <div>
-    from <a href="https://bsky.app/profile/al9000.com">alan w smith</a>
-  </div>
-  <div>
-    who also makes <a href="https://bittyjs.com">bitty</a>
-  </div>
-  <div>
-    and designed <a href="https://neodoc.style">neodoc</a>
-  </div>
-
-      
-</footer>
-
-
-    </div>
-
-
-    <div class="templates" hidden>
-      <bitty-9 data-connect="/bits/default.js"></bitty-9>
-      <script type="module" src="/bits/components.js"></script>
-
-
-
-    </div>
-  </body>
-</html>
-]]></summary>
-  </entry>
-  
-  <entry>
     <title>Full Site Links</title><link href="https://al9000.com&#x2f;blog&#x2f;4010/"/><id>urn:uuid:64cff925-a7e1-529c-a279-d7bdd93c4c5d</id>
-    <updated>2026-07-17T17:26:40-04:00</updated>
-    <summary><![CDATA[
-
-<p>I'm doing something new with the structure of my
-site. Or, something old, really. While
-I've got a <code>blog</code> folder to hold general
-posts, the r
-est of the site is
-made up of arbitrary folders and files
-scattered to the four winds. I can
-throw stuff anywhere. It's liberating.</p>
-<p>The approach did cause a complication.
-Aggregating content from across the
-site into a single list is more complicated
-than processing a single directory of
-files. I fixed that today during
-a few hours of live streaming.
-I was going to post it until I realized
-I jacked up settings at some point
-and haven't been recording audio.</p>
-<p>Alas, such is life. And, the more
-important thing is that the
-work is done. I can drop pages
-anywhere and they'll show
-up in the chronological timeline.</p>
-<p>-a</p>
-
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>Full Site Links</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n5&#x2f;n7&#x2f;gg/"/><id>urn:uuid:d72d6005-4196-5cf8-8f82-0d81057685b5</id>
     <updated>2026-07-17T17:26:40-04:00</updated>
     <summary><![CDATA[
 
@@ -6629,216 +5189,6 @@ own it.</p>
   </entry>
   
   <entry>
-    <title>Pondering Standard.site and the Social Web</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n3&#x2f;t9&#x2f;nx/"/><id>urn:uuid:3a499992-dae5-5f81-a7c2-18c12bd445eb</id>
-    <updated>2026-06-25T09:01:49-04:00</updated>
-    <summary><![CDATA[
-
-<p>I've seen a bunch of references to Standard.site<sup class="footnoteLink" id="body-standard"><a href="#footnote-standard">standard</a></sup>.
-It's an approach to publishing long-form content
-with/in AT Protocol<sup class="footnoteLink" id="body-at"><a href="#footnote-at">at</a></sup>. The same protocol that powers bluesky<sup class="footnoteLink" id="body-bs"><a href="#footnote-bs">bs</a></sup>.
-My first reaction was &quot;why would I do that when I have a website?&quot;
-I didn't give it much thought<sup class="footnoteLink" id="body-posse"><a href="#footnote-posse">posse</a></sup>.</p>
-<p>A post called &quot;Integrating your Atmosphere account content
-in your web projects<sup class="footnoteLink" id="body-post"><a href="#footnote-post">post</a></sup>&quot; came across today.
-Instead of publishing, it's about storing your content in
-AT Protocol to use it as a CMS for your site.
-I'm not interested in that<sup class="footnoteLink" id="body-cms"><a href="#footnote-cms">cms</a></sup>.
-What caught my eye was the comments at the bottom
-of the page. Some of were direct
-responses. Some were attached via reference
-to the posts.</p>
-<p>My eyebrow went up. Spock style.</p>
-<h2>Manifesto Made Real</h2>
-<p>Thinking about how to make the web a better
-place is my favorite pastime. To the point
-where I've begun my manifesto<sup class="footnoteLink" id="body-manifesto"><a href="#footnote-manifesto">manifesto</a></sup>.
-A key focus is making it easier
-to share and connect web content.
-The link I hit for &quot;Integrating your Atmosphere account...&quot;
-is on a site called Standard Reader<sup class="footnoteLink" id="body-sr"><a href="#footnote-sr">sr</a></sup>.
-It aggregates Standard.site long-form
-content from across the AT Protocol
-network. If you squint your eyes, it's an
-RSS reader with two way communication<sup class="footnoteLink" id="body-rss"><a href="#footnote-rss">rss</a></sup>.
-Damn close to what I've been thinking about.</p>
-<p>If that's really what it provides,
-we have a chance to vastly improve the
-web. Using it to break away from
-corporate controlled social media
-networks<sup class="footnoteLink" id="body-break"><a href="#footnote-break">break</a></sup>.
-Doing that would make the
-world a better place<sup class="footnoteLink" id="body-better"><a href="#footnote-better">better</a></sup>.</p>
-<p>-a</p>
-<p>[aka <a href="https://bsky.app/profile/alanwsmith.com">@alanwsmith.com</a> on bluesky]</p>
-
-<h3>Endnotes</h3>
-<ul>
-<li>
-<p>Standard.site includes some
-basic theming (in site.standard.theme.basic).
-It's only four colors at the moment: foreground, background,
-accent, and accentForeground.
-That they have it at all is what's encouraging.
-It points to the possibility for more advanced
-CSS. The idea being that folks should be able to
-send a CSS payload that consumers can choose
-to use fully, partially, or completely ignore
-at their own discretion.</p>
-</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/ActivityPub">ActivityPub</a> is a sibling of AT Protocol.
-It's what behind <a href="https://joinmastodon.org/">Mastodon</a>.
-I <a href="https://hachyderm.io/deck/@TheIdOfAlan">use it too</a>.
-Nothing like Standard.site has come across my
-feed from there. Would love to know if there's
-something like it. (The way I look at it,
-the more swings we take at breaking down corporate
-social media networks the better.)</p>
-</li>
-<li>
-<p>This post does not get into moderation.
-There's an entire category of work to be
-done there. Bluesky has some tools in place.
-Possibly some of those can be repurposed.
-Either way, there's a lot to tackle.</p>
-</li>
-</ul>
-<h3>References</h3>
-<ul>
-<li>
-<p><a href="https://chriscoyier.net/2026/06/01/social-rss-2/">Social RSS(?)</a> from Chris Coyier.
-Just one example of other folks who are thinking about and
-after the same idea.</p>
-</li>
-<li>
-<p><a href="https://leaflet.pub/">Leaflet</a>, <a href="https://pckt.blog/">pckt</a>, and
-<a href="https://offprint.app/">offprint</a> - Three services that
-that provide ways to publish that use Standard.site.
-I'm more interested in integrating this into my site,
-but not everyone will want to do that.</p>
-<p>I've only scanned the home pages of each, but the feeling
-is absolutely the idea of a social web.</p>
-<p>All three are paid services. I like that because
-I it when I'm interacting with a business where
-I'm the customer and not the commodity that's
-being sold. Notes like this on the offprint home page
-are great:
-&quot;Funded by writers, not investors - We’re paid by
-the writers who use Offprint, not advertisers or
-investors. The writers remain our priority.&quot;</p>
-<p>I'm coming at this from the perspective
-of someone with a website looking to use
-the protocol to enhance what I have. Doing
-everything entirely on AT Protocol (which is
-the approach these services take) is equally
-valid. I wouldn't be surprise to see
-it being the majority use case.</p>
-</li>
-<li>
-<p><a href="https://sequoia.pub/blog/introducing-sequoia">Sequoia</a> -
-An app that's designed to publish static sites to
-ATProto. Details in <a href="https://sequoia.pub/quickstart/">the quickstart</a>.</p>
-<p>This is the thing that I'm most interested in looking
-at since I want to have the source of truth be
-my website instead of one of the other services.
-I wrote my own site builder. I expect I'll mimic
-what sequoia does internally. Especially since
-I use a <a href="https://neopolitan.alanwsmith.com/">custom text format</a> I designed instead
-of markdown for my content. The good news
-is <a href="https://docs.rs/atproto-client/0.14.5/atproto_client/index.html">there's a rust create</a>
-to get me started.</p>
-</li>
-</ul>
-<h3>Footnotes</h3>
-<div class="footnote-wrapper">
-<ul>
-<li>
-<p><a class="footnoteId" id="footnote-standard" href="#body-standard">standard</a></p>
-<p><a href="https://standard.site/">Standard.site</a> - A standardized
-approach to publishing long form content on AT Protocol
-designed to to make it easier to discover and share.
-Here's <a href="https://standard.site/docs/introduction/">the introduction page</a>.</p>
-</li>
-<li>
-<p><a class="footnoteId" id="footnote-at" href="#body-at">at</a></p>
-<p><a href="https://atproto.com/">AT Protocol</a> - The tag line on the home page is literally: Building the Social Internet.
-I'm into that.</p>
-</li>
-<li>
-<p><a class="footnoteId" id="footnote-bs" href="#body-bs">bs</a></p>
-<p><a href="https://bsky.app/">Bluesky</a> - The social media platform built
-on the AT Protocol.</p>
-</li>
-<li>
-<p><a class="footnoteId" id="footnote-posse" href="#body-posse">posse</a></p>
-<p>I didn't give it enough though to consider it from an
-<a href="https://indieweb.org/">IndieWeb</a> <a href="https://indieweb.org/POSSE">POSSE</a>
-perspective: Publish on your Own Site. Syndicate Everywhere.</p>
-</li>
-<li>
-<p><a class="footnoteId" id="footnote-post" href="#body-post">post</a></p>
-<p><a href="https://standard-reader.app/a/did:plc:s2rczyxit2v5vzedxqs326ri/3m56tzfj5pc2a">Integrating your Atmosphere account content in your web projects</a> - the
-post that got me thinking about standard.site again.</p>
-</li>
-<li>
-<p><a class="footnoteId" id="footnote-cms" href="#body-cms">cms</a></p>
-<p>I'm one of those hacker types who ignores the general advice against
-writing your web site builders. (<a href="/blog/1e/nr/w0/">This post</a> is a
-draft at press time, but it'll give you an idea.)</p>
-</li>
-<li>
-<p><a class="footnoteId" id="footnote-manifesto" href="#body-manifesto">manifesto</a></p>
-<p><a href="https://www.alanwsmith.com/en/2v/xa/cn/vj/">A Vision for the Web</a> (originally
-titled &quot;A Website Manifesto&quot;. Despite still being a draft made up mainly
-of scratch notes the ideas are all there.</p>
-</li>
-<li>
-<p><a class="footnoteId" id="footnote-sr" href="#body-sr">sr</a></p>
-<p><a href="https://standard-reader.app/">standard-reader.app</a> A site
-that aggregates long-form content from the AT Protocol network.
-Very much in line with what I'm thinking about for
-make the web a better place.</p>
-</li>
-<li>
-<p><a class="footnoteId" id="footnote-rss" href="#body-rss">rss</a></p>
-<p>Of course, this isn't RSS. It's AT Protocol. I'm
-referring only to the user experience of
-an RSS reader.</p>
-</li>
-<li>
-<p><a class="footnoteId" id="footnote-break" href="#body-break">break</a></p>
-<p>Engaging with readers and customers is tough on traditional
-websites. Setting up account management (and its customer
-support), interaction, and moderation are a lot of work.
-Social media sites handle all that. It's easy to
-see why individuals and companies follow that
-path of least resistance. Something like
-Standard.site offers removing the burden of
-account management and interaction. Moderation
-won't come out of the box. I expect services
-will pop-up to assist with that as well.</p>
-</li>
-<li>
-<p><a class="footnoteId" id="footnote-better" href="#body-better">better</a></p>
-<p>Corporate social networks aren't made
-for us. They're made to make money.
-They turn our time, attention, and
-content into chum to feed their algorithms
-designed to maximize shareholder value.
-Standard.site and the services using
-it offer a way to regain control
-of our content and, by extension,
-our time and attention.</p>
-<p>Corporations will still participate
-in social media. They just won't
-own it.</p>
-</li>
-</ul>
-</div>
-]]></summary>
-  </entry>
-  
-  <entry>
     <title>Konami</title><link href="https://al9000.com&#x2f;konami/"/><id>urn:uuid:0a1bbe0f-c170-523c-83a5-f17055a6dea6</id>
     <updated>2026-06-23T19:29:25-04:00</updated>
     <summary><![CDATA[
@@ -6885,160 +5235,6 @@ own it.</p>
   
   <entry>
     <title>Type Different: Changing the Keys on Your Keyboard</title><link href="https://al9000.com&#x2f;blog&#x2f;4007/"/><id>urn:uuid:27a75ddb-a9ad-545a-85ea-2173b5c8d1ef</id>
-    <updated>2026-06-21T12:22:00-04:00</updated>
-    <summary><![CDATA[
-<h2>Keyboard Basics</h2>
-<p>There's a few things to know about
-keyboards you plug into your computer:</p>
-<ol>
-<li>
-<p>They have little computers
-in them.</p>
-</li>
-<li>
-<p>When you press a key, the little
-computer in the keyboard sends a
-signal to your actual computer telling
-it what key you pressed.</p>
-</li>
-<li>
-<p>The little computer in your keyboard
-is programmed with a map that defines
-which keys send what signals to your computer
-(i.e. when you press the &quot;a&quot; it sends
-and &quot;a&quot; signal).</p>
-</li>
-<li>
-<p>Some keyboards let you reprogram
-the map to change the signals
-each key sends (e.g. you can set it
-up so the &quot;a&quot; key sends the &quot;z&quot; signal).</p>
-</li>
-</ol>
-<p>(Keyboards built into laptops work
-the same way. It's just a little easier
-to think about them as separate things
-for this post.)</p>
-<h2>Good Defaults</h2>
-<p>Each keyboard come with a default map
-that defines the signal each
-physical key sends to your computer.
-That map is what lets different keyboards
-lay out keys in different ways. For example, the
-&quot;Alt&quot; key on this keyboard is the
-third one from the left.</p>
-<p><img src="keyboard-1-37044873_cac84b17f7_o.jpg"
-alt="A close up of the lower left corner of black keyboard with white lettering. The first three keys on the bottom row are 'Ctrl', 'Fn', and 'Alt'."
-/></p>
-<p>On this one, (where it's labeled both &quot;alt&quot; and &quot;option&quot;)
-it's the second from the left.</p>
-<p><img src="keyboard-2-4389417539_ec4be54c14_k.jpg"
-alt="A view of the lower left corder of a white keyboard with black lettering. The first three keys on the bottom row are 'control', 'alt / option', and 'command'."
-/></p>
-<p>Thanks to the maps, the computer
-receives the same &quot;Alt&quot; signal regardless
-of where the key sits on the keyboard.</p>
-<h2>Change-Up</h2>
-<p>You can change things around if you're
-keyboard has a way to reprogram the mapping.
-For example, you could reverse the letters of the alphabet.
-So, pressing an &quot;a&quot; sends the signal for a &quot;z&quot;, &quot;b&quot; does &quot;y&quot;, etc...
-Probably a bad idea, but totally possible.</p>
-<p>A more practical example is moving frequently used keys
-so they are easier to reach. As an example,
-I use parenthesis all the time when I'm programming.
-By default, the &quot;(&quot; and &quot;)&quot; keys are mapped so you
-have to reach up to the number row and
-hold shift to type them.</p>
-<p>I updated the map on my keyboard so it sends
-the signal for &quot;(&quot; when I hit the &quot;j&quot; key
-while holding down the &quot;control&quot; (aka &quot;Ctrl&quot;) key.
-The &quot;l&quot; key does the &quot;)&quot;.</p>
-<h2>Landing Changes</h2>
-<p>I use a keyboard called a Moonlander. It looks
-like this:</p>
-<p><img src="moonlander-white.png"
-alt="A white moonlander keyboard. It's a split keyboard with a wire that connects the left and right pieces."
-/></p>
-<p>Here's how the keys are mapped for the right half:</p>
-<p><img src="moonlander-right-1.jpg"
-alt="A graphic showing the right half of a moonlander keyboard with letters in their stander positions."
-/></p>
-<p>When I press the &quot;control&quot; key, they switch to this:</p>
-<p><img src="moonlander-right-2.jpg"
-alt="A graphic showing the right half of a moonlander keyboard. It shows various symbols like '(' and '{' that are on or closer to the home row than a standard keyboard layout."
-/></p>
-<p>That's how I get the parenthesis under &quot;j&quot; and &quot;l&quot;.</p>
-<p>The keys are mapped specifically to reduce
-how far I have to reach when programming.
-The goal is to reduce the risk of repetitive
-strain injury (RSI) issues.</p>
-<h2>The Rabbit Hole</h2>
-<p>In theory, you can update the mapping
-layout on any keyboard. In practice,
-that's not the case. You can only
-do it if the manufacturer provides
-an app that let you do it<sup>1</sup>.</p>
-<p>Lots of &quot;mechanical keyboards&quot; provide
-that software. Start looking into those
-if you want to change things up.
-Fair warning though, there are a billion
-options and even more opinions.</p>
-<p>Totally worth it, though.</p>
-<p>-a</p>
-<div class="xxlarge-top-margin xxlarge-bottom-margin xsmall-font-size faded-reverse-color text-align-right faded-reverse-block-border">end of line</div>
-<h3>Endnotes</h3>
-<ul>
-<li>
-<p>I glossed over some of the complexities
-of how keyboards work. For example,
-the signal that's sent when you press a
-specific key is a code instead of
-an actual character.</p>
-</li>
-<li>
-<p>It's also possible to update some
-computers so they do different things
-when they receive given signals. For example,
-you press the &quot;a&quot; key and your keyboard
-sends the &quot;a&quot; signal, but the computer
-acts like it received a &quot;z&quot; signal
-and types that. It's been a while
-since I've looked into that. Last
-time I did, the options weren't great.</p>
-</li>
-<li>
-<p>The full keyboard layout mapping
-for my moonlander is
-<a href="https://configure.zsa.io/moonlander/layouts/APODe/latest/0">on this page</a>.</p>
-</li>
-</ul>
-<h3>Footnotes</h3>
-<ul>
-<li>
-<p><sup>1</sup> you can also get into hardware hacking, but
-that's a different thing entirely.</p>
-</li>
-</ul>
-<h3>Image Sources</h3>
-<ul>
-<li>
-<p><a href="https://www.flickr.com/photos/ozzzie/37044873/in/photolist-4gS9H-37iJVd-3w9mE-26jA6Jk-6bitL-uE7wS-MLHsd-gsxYB-569niC-oqisgw-9VfpC-b1qMG-bGGgo-4WrmRD-Lrcg5R-4myiwF-9BVHmk-xAMYw-6sHJFL-5tSaJe-5tWxV3-cRGCnh-7dcFo-kZo7LT-cRGCD1-cRJxT1-8jqLdc-kZpw1q-b1qNV-c55zTU-7bNZYS-bFxRCV-b1qEA-7FSUUK-b1qXQ-7edja8-J3igiF-8jbB6-d8auR5-obNw2V-JY2ip-b1qYP-8oZRpA-L9DJUs-avL4Y-BYwmWW-7FWR7U-a7yGeX-jKTfVv-4nMqXb">keyboard 1</a></p>
-</li>
-<li>
-<p><a href="https://www.flickr.com/photos/njtechteacher/4389417539/in/photolist-b1qNV-c55zTU-7bNZYS-bFxRCV-b1qEA-7FSUUK-b1qXQ-7edja8-J3igiF-8jbB6-d8auR5-obNw2V-JY2ip-b1qYP-8oZRpA-L9DJUs-avL4Y-BYwmWW-7FWR7U-a7yGeX-jKTfVv-4nMqXb-e9Kru-vezru-7vqNu2-3eYMc3-HdeRa-knMJ6Z-4GBua3-KysRnh-8j4dT1-9kUmhm-9JfDUW-4QvoK8-6QXd7-7r56jn-aNXewX-cyoJC-c55ztQ-5Ba1U-qC8NDY-9U4Zua-SpyDDs-6YJ7Mv-7DMSG1-66ygcE-4tXpkE-9a378S-TVfw-8TuUUz">keyboard 2</a></p>
-</li>
-<li>
-<p><a href="https://www.zsa.io/moonlander">moonlander</a></p>
-</li>
-</ul>
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>Type Different: Changing the Keys on Your Keyboard</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n3&#x2f;g3&#x2f;x8/"/><id>urn:uuid:0f60079f-3314-523f-ac92-4b7116e7b425</id>
     <updated>2026-06-21T12:22:00-04:00</updated>
     <summary><![CDATA[
 <h2>Keyboard Basics</h2>
@@ -7266,109 +5462,7 @@ jumping to new frameworks.</p>
   </entry>
   
   <entry>
-    <title>RSS Powers: Activated</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n3&#x2f;fm&#x2f;ag/"/><id>urn:uuid:e759b0aa-7fc7-5eb5-9220-7da5977b4df3</id>
-    <updated>2026-06-21T07:56:00-04:00</updated>
-    <summary><![CDATA[
-
-<p>I started moving my site from <a href="https://www.alanwsmith.com/">alanwsmith.com</a>
-over here to <a href="https://al9000.com/">al9000.com</a> earlier this year.
-I started with basic pages. The first blog post came in April.
-That post is called <em>I'm Not Ready to Start This Blog</em><sup>1</sup>.
-One of the reasons I wasn't ready was I hadn't built
-an RSS feed for the site yet<sup>2</sup>.</p>
-<p>As of yesterday, the RSS feed is operational. There's
-still work to do. Things like adding
-a little header to posts that feature JavaScript
-based features that won't work in most feed readers.
-All that stuff will come in time. The important
-part is the basics are in place and ingestible now.</p>
-<p>You can pick it up <a href="/rss/">on this page</a>.</p>
-<p>-a</p>
-
-<h2>Endnotes</h2>
-<ul>
-<li>
-<p>Right now, the feed only contains blog posts.
-One feature on the TODO list is to provide a way
-to include other pages into it as well. For example,
-I don't want to have to make a separate blog post
-for projects (e.g. my <a href="/qr-clock/">QR Code Clock</a>).
-I just want them to show up in feed.</p>
-</li>
-<li>
-<p>Careful observers will note: the feed isn't
-actually RSS. It's Atom. I'm using that format
-because it <a href="https://datatracker.ietf.org/doc/html/rfc4287">has an RFC</a>.
-As far as I can tell, RSS does not. With the vastness
-of technology, I'm sure there are cases where
-the difference matters. I'm not aware of them.
-Nor am I worried about them.</p>
-<p>Past me worried about the fact that I called it
-an RSS feed even though it's Atom. I've grown
-less pedantic. Folks are more familiar with
-the term RSS. Atom works in readers.
-That's all I need.</p>
-</li>
-</ul>
-<h2>Footnotes</h2>
-<ul>
-<li>
-<p><sup>1</sup> <a href="/blog/1e/bk/0i/">I'm Not Ready To Start This Blog</a> - in
-which I make the first post on this site just to get started.
-The only thing I really had set up for it was the folder and
-the naming convention I'm using for the page addresses/urls.</p>
-<p>I could have waited until I was &quot;more ready&quot;. That way
-lies dragons. The big one of paralysis by perfection,
-in particular.</p>
-</li>
-<li>
-<p><sup>2</sup> this site is built from
-a custom site builder I'm building specifically
-for it. The builder is very much an early
-work in progress. The general advice is not
-to make your on site builders. After a decade
-and a half working on the web I disagree
-with that for those with the skill set
-to make their own.</p>
-<p>It's slower to start, but the time you spend
-on it is like compounding interest over time.
-Especially compared to the never ending treadmill of
-jumping to new frameworks.</p>
-</li>
-</ul>
-]]></summary>
-  </entry>
-  
-  <entry>
     <title>Unoffice Hours</title><link href="https://al9000.com&#x2f;blog&#x2f;4005/"/><id>urn:uuid:7e428f52-3291-5942-ae85-fa5f42a79974</id>
-    <updated>2026-06-21T07:39:00-04:00</updated>
-    <summary><![CDATA[
-<p>This is a fun concept. Folks who set aside a little time
-each week to take calls with whoever about whatever.</p>
-<p><a href="https://unofficehours.com/">unoficehours.com</a></p>
-<p>I've got a bunch of traveling to do. Setting
-up calls with some folks is on the list
-for when I get back.</p>
-<p>-a</p>
-<h3>Endnotes</h3>
-<ul>
-<li>
-<p>I'll totally be using this to talk with
-techy folks about bitty to get feedback from
-them.</p>
-</li>
-<li>
-<p>For the non-techy folks, we'll play the
-conversations by ear and see where they go.</p>
-</li>
-</ul>
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>Unoffice Hours</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n3&#x2f;fk&#x2f;am/"/><id>urn:uuid:e1586bcd-f5ee-5498-9c47-bd2bbb6b0a0c</id>
     <updated>2026-06-21T07:39:00-04:00</updated>
     <summary><![CDATA[
 <p>This is a fun concept. Folks who set aside a little time
@@ -8589,49 +6683,6 @@ conversations by ear and see where they go.</p>
   
   <entry>
     <title>DAE - Digital to Analog Enlarger</title><link href="https://al9000.com&#x2f;blog&#x2f;4003/"/><id>urn:uuid:52579b84-aacc-5de1-bc6d-346a9a0c4f0c</id>
-    <updated>2026-06-20T11:53:00-04:00</updated>
-    <summary><![CDATA[
-
-<p>The sonic foundation of computers is the DAC,
-or Digital-to-Audio Converter. It's the hardware
-that turns digital files into the signal that goes
-down the wires of your speakers to make them make sound.</p>
-<p>What if we made a Digital to Analog Enlarger
-for photographs? I mean, this already exists in some
-ways. Any time you get a digital photo
-printed there's a process that does it that
-can output to various sizes. That's not what I'm
-talking about.</p>
-<p>I'm talking about one that looks like this:</p>
-<figure class="default"><img src="/blog/4003/enlarger-4856357201.jpg" alt="Two photography film enlargers side by side on a worktop desk. There&#x27;s a collection of trays for processing beside them" /></figure>
-<p>Ones that project light onto a piece of paper covered with
-a light sensitive emulsion. The next step
-being to run the paper through a series of
-chemicals to produce the image.</p>
-<p>It's a bit of a ridiculous way to
-go about it, but it would give you
-the chemical experience from
-your digital images.</p>
-<h3>Endnotes</h3>
-<ul>
-<li>
-<p>The source of the enlarger photo
-<a href="https://www.flickr.com/photos/ccdoh1/4856357201/in/photolist-8p96Nz-2nMeAaJ-2mQwA1E-2pnhQEK-2mYAL47-2n4AieV-2gf6FGd-dwMELp-2oDmvPL-2n2bBmS-2mVuvsY-2kTC6w2-2ocEgtt-ecUrw-f7Dqe-2hhKuw8-2m6CpsK-2nQ94vf-DxToxa-2gwA5Ai-2kTHMfC-2g6NeZz-2oBNNbT-2krKtfC-4ukokA-4RRb62-2hfRYPQ-2fan8hz-2iRxZGR-4ugkBP-2gcydSB-2nrctwb-GRQR7G-2mJULsD-VF4ay7-PAv2Uq-2gZyDLJ-2oBD7F5-2iVhpwb-2hfRYx7-6xrrGU-6xru2C-4c8MHp-2kinsnR-2nRcpPC-2oifdep-oC2vr4-2o7U4Ci-QKGmwB-2qdBpxH">here</a>.</p>
-</li>
-<li>
-<p>Probably someone has already built one of these.</p>
-</li>
-<li>
-<p>It's unlikely I'll ever try, but the idea is fun.</p>
-</li>
-</ul>
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>DAE - Digital to Analog Enlarger</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;n3&#x2f;dd&#x2f;tw/"/><id>urn:uuid:5242007a-f797-5715-9860-6015e9ed909b</id>
     <updated>2026-06-20T11:53:00-04:00</updated>
     <summary><![CDATA[
 
@@ -10083,219 +8134,7 @@ two years of major bipolar depression.</p>
   </entry>
   
   <entry>
-    <title>Fingers to Keys</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;my&#x2f;zm&#x2f;1g/"/><id>urn:uuid:c747d1f2-8ee3-5d83-a4e6-720f5b109c9d</id>
-    <updated>2026-04-27T17:08:00-04:00</updated>
-    <summary><![CDATA[
-
-<p>I need to write something.</p>
-<p>Notice I did not say, I <em>want</em> to write something.
-I need to.</p>
-<p>My brain has been offline for a couple weeks.
-Not too bad. Not full on depressions. I expect
-it might have been if it weren't for the meds.
-Or, if I had to go to a day job.</p>
-<p>That's maybe the most interesting thing for me.
-How much less do I get impacted by the swings
-of bipolar disorder without having the pressure
-of a gig.</p>
-<p>I don't think there would be a difference on the
-mania side. The depressions side? It feels like I
-would have spiralled down if I'd had to deal
-with a 9 to 5 over the past few weeks.</p>
-<p>Struggling with one during my big depression
-was the major reasons I ended up in the hospital
-A measure that was necessary because I'd
-become a danger to myself.</p>
-<p>I got stuck in this cycle of thinking that I
-couldn't get my brain moving which meant that
-I couldn't do my job which meant that I'd get
-fired which meant I'd lose everything which
-led the rest of the way down the dark
-path.</p>
-<h2>TODO List</h2>
-<p>I've got stuff I want to work on right now.
-That's better than the past few days
-where I didn't want to do anything beyond
-watching youtube.</p>
-<p>I don't have any momentum though. I'm at
-a stand still.</p>
-<p>The purpose of this post is to get a little.
-It's not much more than leaning forward a
-bit. Not much. Just enough to take
-a first step.</p>
-<p>Hopefully, that'll be enough. It always
-has been so far. Even as ever time it
-feels like the fire might not re-ignite.</p>
-<h2>Support Notes</h2>
-<p>Ok.</p>
-<p>Things are better now.</p>
-<p>Looking at the time stamps, it took me 16
-minutes to write down to this point.</p>
-<p>It's fucking magic.</p>
-<p>It gave me enough to clear the fog. Like
-turning on a kitchen fan to clear the
-smoke after you burned something in the
-frying pan.</p>
-<p>It also let me put music back in my ears.
-I haven't really been listening to anything.
-It's tough to hear tunes over
-react videos of folks watching Doctor Who.</p>
-<p>But, I need music as much as I do writing.</p>
-<p>Input from one. Output of the other.
-Balance between.</p>
-<p>It's cranked now.</p>
-<p>Goose's &quot;Give It Time&quot; on repeat.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DF2QKZ823HY?si=-wPDXd_C5lvvCMla" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<h2>Outro</h2>
-<p>I don't have the energy to do
-an edit pass on this post. It would
-be nice. It would also be pushing
-it.</p>
-<p>This time is fragile. Nothing more
-than an ember.</p>
-<p>I'm not exactly sure how to land
-this post either. This wasn't
-an exercise in prose. It was
-a stretch. A warm up.</p>
-<p>It's done now.</p>
-<p>I'm not sure what's next.
-But, I know it'll be something.
-A vast improvement over an hour
-ago when the part of my
-brain that does things wasn't
-with me.</p>
-<p>-a</p>
-
-<h2>Endnotes</h2>
-<ul>
-<li>
-<p>I've written variations of this
-post a few different times. I've
-written it even more in my journal.
-Back when I did that.</p>
-<p>The most concise iteration was
-<a href="/the-clicky-sound">The Clicky Sound</a>.
-The one where I finally dug out of
-two years of major bipolar depression.</p>
-</li>
-</ul>
-]]></summary>
-  </entry>
-  
-  <entry>
     <title>The Good Place</title><link href="https://al9000.com&#x2f;blog&#x2f;4001/"/><id>urn:uuid:3c7aa75d-0a47-5b48-aa3d-a23752b4f87b</id>
-    <updated>2026-04-18T09:47:00-04:00</updated>
-    <summary><![CDATA[
-<p>I binged The Good Place over the past few days.
-All four seasons. It was all I did. I enjoyed it.
-I also think there's been some depression over
-the past week or so. Though, it might have just
-been ennui. It's tough for me to tell. I still
-don't have baselines for what's what.</p>
-<p>It's been nine years since I had my manic episode
-and started taking meds for bipolar disorder. The
-first two or three of those years were going
-though the depression along with my brain healing
-from the episodes. The thing I'm wondering now is
-how much of the way I was feeling was depression
-and how much was healing.</p>
-<p>Like, maybe I don't know what depression actually
-feels like because a bunch of what I was feeling beat
-up by was the physical impact on my brain and the
-recovery from that. It would be nice if most of it
-was the healing. That would mean the depression
-wasn't as bad. I doubt that's the case based on
-the clinical descriptions of depression.</p>
-<p>It would be nice though.</p>
-<p>Whatever, that was what it was and will be what it will be.</p>
-<p>Anyway, The Good Place was a nice way to spend
-the past few days. Kristen Bell is a delight.
-It was a lot of fun to see Ted Danson. Those are the
-two I was familiar with. William Jackson Harper
-and D'Arcy Carden were great. Manny Jacinto was
-good in his own way, though I wasn't a fan of his
-character. He was the most Networky one. Too far on
-the caricature side of a character.</p>
-<p>-- h2</p>
-<p>Kant and Crew</p>
-<p>I give credit to the writers for the amount
-of philosophy they threw in. I'd heard of half
-the philosophers before thanks to J. The recurring
-joke about everyone hating moral philosophers
-landed for me more than most because J has told
-me before that she didn't trust them. I can't
-imagine most folks have either known a moral
-philosopher either first or second hand. The
-riff felt like an inside joke that I knew just
-enough about to appreciate.</p>
-<p>-- h2</p>
-<p>The Exit</p>
-<p>When I saw there were four seasons and the
-last one ended six years ago I wondered how
-they were going to wrap it up. This was in the
-middle of the second season where it was clear
-how much effort the writers put into the
-philosophy. I was really hoping the series
-would have an explicit end instead of just
-ending because the show didn't get renewed.
-I'm glad they got to complete it. They landed
-it wonderfully. The humans walking through walk
-into the universe and ceasing to be was... powerful.</p>
-<p>I don't have the words to describe it. It was
-very affecting. I'm crying right now thinking
-about it. Not because it was bad, or sad. And, not
-because it was beautiful. It was that, and it wasn't.</p>
-<p>I don't know. I really don't know how to
-describe it. Something like catharsis.</p>
-<p>The word sublime comes to mind too. Not in the
-way most folks use it. Not an ecstasy. An impact.
-An intensity.</p>
-<p>The thing that got me the most was the way they
-described knowing it was time to move on. The
-characters each recognized when they'd done
-what they needed to do.</p>
-<p>I get that.</p>
-<p>I'm at a time when I feel like I've done enough.
-What I've needed to do. If there were a door,
-I could see myself walking through it. I expect
-that feeling will pass. Possibly it's some
-depressions. It doesn't feel like it though.
-It really does feel more like I've done what
-I've needed to do. That I've had enough
-experiences that I've covered the enough
-of them that I'm content. There will always
-be more to see, but I've seen enough that
-I'd be happy if it's all I got.</p>
-<p>-a</p>
-<p>-- endnote/</p>
-<p>I'm not suicidal right now. I've been there.
-This isn't that. It's weird to think I might
-be again. Doubly so now that I've got the
-analogy from the end of the show in my head.
-The idea of the wave and the water. The wave
-is a thing, but when it crashes on the shore
-it ceases to be. It's just water again.
-Part of the ocean.</p>
-<p>-- youtube
--- l1IchzbtNj0</p>
-<p>-- /endnote</p>
-<p>-- endnote</p>
-<p>With The Good Place and Everything Everywhere
-All at Once I'm super impressed with the stories
-in film and television. They are new high marks
-for putting big thought narratives in play for
-wider audiences. Love the evolution.</p>
-<p>-- endnote</p>
-<p>As always happens after a period of being kinda
-offline, writing this has helped start me up.
-I'll have to link up &quot;The Clicky Sound&quot;.</p>
-
-
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>The Good Place</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;my&#x2f;72&#x2f;tm/"/><id>urn:uuid:9d9372d4-93b7-5b00-ae90-9128a4335b19</id>
     <updated>2026-04-18T09:47:00-04:00</updated>
     <summary><![CDATA[
 <p>I binged The Good Place over the past few days.
@@ -10497,59 +8336,6 @@ necessary.</p>
   
   <entry>
     <title>I&#x27;m Not Ready to Start This Blog</title><link href="https://al9000.com&#x2f;blog&#x2f;4000/"/><id>urn:uuid:e0ce2d30-42f0-5dc9-adc9-03b43263e767</id>
-    <updated>2026-04-12T11:48:00-04:00</updated>
-    <summary><![CDATA[
-
-<p>Fuck it. We'll do it live.</p>
-<p>Welcome to the al9000.com blog!</p>
-<p>Things to know:</p>
-<ul>
-<li>
-<p>I've used <a href="https://www.alanwsmith.com/">alanwsmith.com</a>
-as my website since the 1900's. It's always
-been formal sounding and more syllables than
-I'd like. It finally bugged me enough that
-I bought this one and am moving everything
-here.</p>
-</li>
-<li>
-<p>There's a few thousand pages on alanwsmith.com.
-Migration is gonna take a while.</p>
-</li>
-<li>
-<p>If I keep blogging there, I'll keep putting
-off the work to migrate here. It's similar to
-&quot;broken gets fixed, shoddy is forever&quot;. Not
-that the old site is shoddy or broken.
-It's just that considering it no longer viable
-pushes me to work here.</p>
-</li>
-</ul>
-<p>So, I'm making the leap. I've got to hand code
-a lot. Things are barely styled. Links
-and pages break all the time as I
-figure out where to put things.
-But, the basic framework is in place.
-Enough that I can start putting down words.</p>
-<p>As bumpy as it's going to be, I'm
-looking forward to the ride.
-Even if it doesn't feel like I'm ready
-to start.</p>
-<p>-a</p>
-
-<p>P.S. I've been posting other content.
-You can get to it from the <a href="/">home page</a>.
-It's just not what I consider blog content.
-Though, the more I'm thinking about what
-I want to do with the site the less that
-distinction is going to matter.</p>
-<p>P.P.S. I haven't built the RSS feed yet. It's
-coming soon.</p>
-]]></summary>
-  </entry>
-  
-  <entry>
-    <title>I&#x27;m Not Ready to Start This Blog</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;source&#x2f;01&#x2f;mx&#x2f;qf&#x2f;ng/"/><id>urn:uuid:5bb001e6-8f1b-531f-b9a5-96d65766dd27</id>
     <updated>2026-04-12T11:48:00-04:00</updated>
     <summary><![CDATA[
 

@@ -4,17 +4,17 @@ import shutil
 from pprint import pprint
 from pathlib import Path
 
-input_root = Path("../../../source")
-output_root = Path("../../../../blog")
+
+input_root = Path("../../../source").resolve()
+output_root = Path("../../../../blog").resolve()
+
 
 def run():
     input_roots = get_input_roots(input_root)
     posts = get_posts(input_roots)
     copy_posts(posts)
-    # paths = set_dir_ids(input_roots)
-    # print(dir_ids)
-    # # copy_dirs(dir_ids)
-    # output_redirects(dir_ids)
+    make_redirects(posts)
+
     
 class Post():
     def __init__(self, source_dir, counter):
@@ -27,11 +27,17 @@ class Post():
     def destination_dir(self):
         return Path(output_root / str(self._counter)).resolve()
 
+    def original_url(self):
+        return f"{Path('/blog' / self.source_dir().relative_to(input_root))}/*"
 
-def copy_dir_contents(input_root, destination_dir):
-    destination_dir.mkdir(parents=True, exist_ok=True)
-    for item in input_root.iterdir():
-        target = destination_dir / item.name
+    def redirect_url(self):
+        return f"{Path('/blog' / self.destination_dir().relative_to(output_root))}/"
+
+    
+def copy_dir_contents(source, destination):
+    destination.mkdir(parents=True, exist_ok=True)
+    for item in source.iterdir():
+        target = destination / item.name
         if item.is_dir():
             shutil.copytree(item, target, dirs_exist_ok=True)
         else:
@@ -40,21 +46,14 @@ def copy_dir_contents(input_root, destination_dir):
         print(f"    To: {target}")
         
 
-# def deprecated_copy_dirs(dir_ids):
-#     for dir_string, id in dir_ids.items():
-#         source_dir = Path(dir_string)
-#         destination_dir = output_root / str(id)
-#         copy_dir_contents(source_dir, destination_dir)
-
-
 def copy_posts(posts):
     for post in posts:
         copy_dir_contents(post.source_dir(), post.destination_dir())
 
         
-def get_input_roots(root):
+def get_input_roots(dir):
     dirs = set()
-    for dirpath, dirnames, filenames in Path(root).resolve().walk():
+    for dirpath, dirnames, filenames in Path(dir).resolve().walk():
         dirnames[:] = [d for d in dirnames if not d.startswith('.')]
         for name in filenames:
             if name == "index.html":
@@ -62,23 +61,24 @@ def get_input_roots(root):
     return list(dirs)
 
 
-def get_posts(input_roots):
+def get_posts(roots):
     counter = 4000
     posts = []
-    for dir in sorted(input_roots):
+    for dir in sorted(roots):
         posts.append(Post(dir, counter))
         counter += 1
     return posts 
 
 
-# def set_dir_ids(input_roots):
-#     dirs = {}
-#     counter = 4000
-#     for dir in sorted(input_roots):
-#         dirs[str(dir)] = counter
-#         counter += 1
-#     return dirs
-
+def make_redirects(posts):
+    with open("redirects-output.txt", "w") as _out:
+        for post in posts:
+            _out.write(f"  from = \"{post.original_url()}\"\n")
+            _out.write(f"  to = \"{post.redirect_url()}\"\n")
+            _out.write(f"  status = 301\n")
+            _out.write(f"  force = true\n")
+            _out.write(f"\n")
+        
 
 if __name__ == "__main__":
     run()
