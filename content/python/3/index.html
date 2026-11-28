@@ -1,0 +1,32 @@
+== extends "/templates.inc/switches/python.html"
+
+== block toml
+title = "Remove the Beginning of an Absolute Path to Make a Relative Path"
+status = "done"
+created = 2026-11-28T14:10:00-04:00
+flags = ["no-date"]
+== endblock 
+
+== block content 
+== filter md
+
+## The Code
+
+== filter highlight("python")  
+[@ rawFile(p.dir + "/source.inc.py") @]
+== endfilter
+
+
+## Notes
+
+- The `clip_path` can end with a `/` 
+or not. In either case, the returned
+value is not absolute (i.e. it does
+not start with a leading `/`)
+
+
+
+== endfilter
+== endblock
+
+
