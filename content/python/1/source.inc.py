@@ -2,7 +2,7 @@ from pathlib import Path
 
 def list_files(dir):
     result = []
-    for dirpath, dirnames, filenames in Path(dir).walk():
+    for dirpath, dirnames, filenames in Path(dir).resolve().walk():
         dirnames[:] = [d for d in dirnames if not d.startswith('.')]
         for name in filenames:
             if not (name.startswith('.') or name.endswith('~')):

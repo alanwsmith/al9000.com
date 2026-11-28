@@ -1,4 +1,4 @@
-examples.inc/alfa.txt
-examples.inc/dir-1/bravo.txt
-examples.inc/dir-2/charlie.txt
-examples.inc/dir-2/subdir/delta.txt
+/Users/alan/workshop/al9000.com/content/python/1/examples.inc/alfa.txt
+/Users/alan/workshop/al9000.com/content/python/1/examples.inc/dir-1/bravo.txt
+/Users/alan/workshop/al9000.com/content/python/1/examples.inc/dir-2/charlie.txt
+/Users/alan/workshop/al9000.com/content/python/1/examples.inc/dir-2/subdir/delta.txt

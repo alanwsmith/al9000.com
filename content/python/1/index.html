@@ -30,6 +30,11 @@ flags = ["no-date"]
 Path objects are returned instead of strings. 
 This requires python 3.12 or later. 
 
+- Full paths are returned. 
+
+- You can get relative paths by removing the `.resolve()`
+method from the `Path(dir)` call. 
+
 - This skips hidden direcotires that start
 with a dot and temporary files that end with a `~`. 
 
