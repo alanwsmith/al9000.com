@@ -1,17 +1,21 @@
 == extends "/templates.inc/switches/blog.html"
 
 == block toml
-title = "Blog Directory Structure 9000"
+title = "Blog Directory Structure 9000.1"
 created = 2026-11-23T15:20:13-05:00
-id = "01n/g97zx"
 status = "done"
-flags = []
-tags = []
 == endblock
 
 
 == block main
 == filter md
+
+## Preface
+
+This is how I'm set up at the time of posting. 
+It's gonna change really soon. See the
+endnote about that.  
+
 
 ## One, Two, Three
 
@@ -95,24 +99,70 @@ Doing that ensured that
 
 
 
-
-
-
-
-
-
-
 <div class="end-of-line"></div>
 
 ### Endnotes
+
+After thinking about this some more. I'm 
+probably gonna end up simplifying the structure. 
+To just use a counter for blog posts and just
+manually limit a small set of sub folders
+to about a thousand files a piece. 
+
+The reason I was using IDs in the first place
+is that I used to store all the content
+for my site in my Grimoire and had a process
+that copied everything over and that structure
+was all ID based since everything in the 
+Grimoire was in a single directory. 
+
+(Of course, thinking about it now, there's
+like 11,000 files in the Grimoire folder and
+I haven't had any noticable problems with
+tools bogging down working with it. It's
+looking a lot like the idea in my head
+about limiting the number of files in a
+folder is antiquated.  
+
+So, yeah, I'll be moving to just an
+incrementing number for each post 
+(I still don't want to have to use 
+titles in the URLs most of the time).
+
+New posts will start at 4,000 which will
+give me enough space to add in the original 
+~3,500 posts chronologically. 
+
 
 ### Footnotes
 
 1. The joke being: There are two hard problems in computer
 science: naming things, caching things, and off-by-one errors. 
 
+2. There was a time when search engines would 
+use the text of a pages address as part of
+the weight of the indexing score. For example, 
+In the early 2000s, I vastly improved the ranking of 
+pgatour.com's player pages simply
+by adding player names to the URLs (they had
+been nothing by numeric IDs before that). 
 
-2. TKTKTK URL history
+    Anecdotal evidence suggest that people would
+look at URLs too. I'm one of those folks, but
+everything I've heard is that non-techies were
+less likely to glance at them. These days, 
+if you're on your phone, you probably don't see
+them at all. 
+
+    For a brief time, desktop
+browsers hid everything but the site name
+as well (e.g. the page al9000.com/some/page/
+would only show up as __al9000.com__ in your
+browser). That doesn't look like it's the
+case any more, but maybe I just changed
+a config on my site that makes the full
+addresses show up. 
+
 
 3. Basically, the first few characters represent a 
 timestamp. They are followed by a collection of
