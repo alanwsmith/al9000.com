@@ -3,6 +3,8 @@ export const b = {
 };
 
 const names = `
+Space Manga
+Spit Valve
 Booger Sugar
 Discourse Landmine
 Matrix Blaster

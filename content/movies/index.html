@@ -1,0 +1,24 @@
+== extends "/templates.inc/switches/default.html"
+
+== block toml
+title = "Movies"
+created = 2026-11-27T22:21:00-04:00
+== endblock 
+
+== block content 
+<ul>
+    == for subfolder in foldersInFolder(dir(), full=true) 
+    <li>
+    <a href="[@ subfolder @]">
+    == set sub_index_file = subfolder + "/index.html"
+    == if exists(sub_index_file)
+	[@ if(d[sub_index_file].shortTitle, d[sub_index_file].title, "Untitled Example") @]
+    == else 
+	Untitled Example
+    == endif
+	</a>
+    </li>
+    == endfor
+</ul>
+== endblock
+

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Blog Directory Structure 9000.1</title>
+<meta property="og:title" content="Blog Directory Structure 9000.1" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;blog&#x2f;01n&#x2f;g97zx/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
+
+
+    
+    
+    
+    
+
+    
+
+
+    <style>
+    </style>
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+    <div class="payload">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> ~
+    <a href="https://bittyjs.com/">bitty</a> ~
+    <a href="https://neodoc.style/">neodoc</a>
+  </div>
+
+
+</header>
+
+
+<main class="default default-wrapper default-flow">
+
+  <hgroup class="default">
+      <div class="title-wrapper">
+        <h1>Blog Directory Structure 9000.1</h1>
+      </div>
+        <div class="date">November 2026</div>
+  </hgroup>
+
+<h2>Preface</h2>
+<p>This is how I'm set up at the time of posting.
+It's gonna change really soon. See the
+endnote about that.</p>
+<h2>One, Two, Three</h2>
+<p>Naming things is one of the
+two hardest problems in computer science<sup>1</sup>.
+I go through half a dozen titles for blog
+posts. Changes
+after a page goes live happen more often
+than not.</p>
+<p>Blog apps like Wordpress use the title to
+create a page's address. An entry titled:</p>
+<pre><code>A Post About Names
+</code></pre>
+<p>would be at</p>
+<pre><code>al9000.com/blog/a-post-about-names
+</code></pre>
+<p>Makes sense, unless you change the title.</p>
+<p>There are a couple options when that happens. You could update
+the address, but then any links to the old
+address would break. You can deal with that by
+setting up the old addresses to bounce visits
+over to the new one.</p>
+<p>Or, you could just leave the page at the original
+address and only update the title on the page
+itself. You end up with something like a
+post titled:</p>
+<pre><code>The Naming of Posts is a Difficult Matter
+</code></pre>
+<p>that's still at the address:</p>
+<pre><code>al9000.com/blog/a-post-about-names
+</code></pre>
+<p>Not really a big deal. Page addresses matter
+much less now than they used to<sup>2</sup>. I
+don't like the disconnect, though.</p>
+<h2>Shifting Slashes</h2>
+<p>I've been avoiding the issue all together
+for years by using random characters
+for addresses<sup>3</sup>. Something like:</p>
+<pre><code>al9000.com/blog/01/ng/97/zx/
+</code></pre>
+<p>Purely functional with no regard for aesthetics.</p>
+<p>The reason for doing:</p>
+<pre><code>al9000.com/blog/01/ng/97/zx
+</code></pre>
+<p>Instead of:</p>
+<pre><code>al9000.com/blog/01ng97zx
+</code></pre>
+<p>is because my site is &quot;static&quot;. That means
+the addresses on the site map directly to
+folders on my computer (e.g. there is a
+<code>blog</code> folder that has a file named
+<code>01ng97zx.html</code> in it).</p>
+<p>Lots of apps have problems with folders
+that have more than a thousand file in them.
+I've got over three thousand posts. Putting
+them all in the same folder would bog things
+down. That's where all the slashes come in.
+Each one represents a new folder.</p>
+<p>That is, there's a top level <code>blog</code> folder
+that has a <code>01</code> folder in it that has
+a <code>ng</code> folder in it, etc...</p>
+<p>That process was splitting an eight
+character ID into four pairs of characters.
+Doing that ensured that</p>
+<div class="end-of-line"></div>
+<h3>Endnotes</h3>
+<p>After thinking about this some more. I'm
+probably gonna end up simplifying the structure.
+To just use a counter for blog posts and just
+manually limit a small set of sub folders
+to about a thousand files a piece.</p>
+<p>The reason I was using IDs in the first place
+is that I used to store all the content
+for my site in my Grimoire and had a process
+that copied everything over and that structure
+was all ID based since everything in the
+Grimoire was in a single directory.</p>
+<p>(Of course, thinking about it now, there's
+like 11,000 files in the Grimoire folder and
+I haven't had any noticable problems with
+tools bogging down working with it. It's
+looking a lot like the idea in my head
+about limiting the number of files in a
+folder is antiquated.</p>
+<p>So, yeah, I'll be moving to just an
+incrementing number for each post
+(I still don't want to have to use
+titles in the URLs most of the time).</p>
+<p>New posts will start at 4,000 which will
+give me enough space to add in the original
+~3,500 posts chronologically.</p>
+<h3>Footnotes</h3>
+<ol>
+<li>
+<p>The joke being: There are two hard problems in computer
+science: naming things, caching things, and off-by-one errors.</p>
+</li>
+<li>
+<p>There was a time when search engines would
+use the text of a pages address as part of
+the weight of the indexing score. For example,
+In the early 2000s, I vastly improved the ranking of
+pgatour.com's player pages simply
+by adding player names to the URLs (they had
+been nothing by numeric IDs before that).</p>
+<p>Anecdotal evidence suggest that people would
+look at URLs too. I'm one of those folks, but
+everything I've heard is that non-techies were
+less likely to glance at them. These days,
+if you're on your phone, you probably don't see
+them at all.</p>
+<p>For a brief time, desktop
+browsers hid everything but the site name
+as well (e.g. the page al9000.com/some/page/
+would only show up as <strong>al9000.com</strong> in your
+browser). That doesn't look like it's the
+case any more, but maybe I just changed
+a config on my site that makes the full
+addresses show up.</p>
+</li>
+<li>
+<p>Basically, the first few characters represent a
+timestamp. They are followed by a collection of
+actually random characters.</p>
+</li>
+</ol>
+
+
+<div class="end-of-line"></div>
+
+
+
+</main>
+
+<footer class="default">
+  <div>
+    from <a href="https://bsky.app/profile/al9000.com">alan w smith</a>
+  </div>
+  <div>
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div>
+    and designed <a href="https://neodoc.style">neodoc</a>
+  </div>
+
+      
+  <div>
+    <button
+      class="default-wrapper text-align-center faded-base-color"
+      data-s="copyElement"
+      style="opacity: 0.20; padding-bottom: 0.3rem;"
+    >
+      <span>
+      id = "01/ng/97/zx"
+      </span>
+    </button>
+  </div>
+      
+</footer>
+
+
+    </div>
+
+
+    <div class="templates" hidden>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <script type="module" src="/bits/components.js"></script>
+
+
+
+    </div>
+  </body>
+</html>
