@@ -1,0 +1,44 @@
+== extends "/templates.inc/switches/python.html"
+
+== block toml
+title = "List All Files in a Directory Recursively with Full Paths"
+status = "done"
+created = 2026-11-28T09:05:00-04:00
+flags = ["no-date"]
+== endblock 
+
+== block content 
+== filter md
+
+## The Code
+
+== filter highlight("python")  
+[@ rawFile(p.dir + "/source.inc.py") @]
+== endfilter
+
+
+## The Output
+
+== filter highlight("txt")  
+[@ rawFile(p.dir + "/output.inc.txt") @]
+== endfilter
+
+
+## Notes
+
+- This skips hidden direcotires that start
+with a dot and temporary files that end with a `~`. 
+
+- The `dirnames[:] = [d for d in dirnames if not d.startswith('.')]`
+line updates the directory name in place so that `os.walk` skips
+the hidden directories entirely instead of decending into them. 
+
+- The results are sorted before returning them
+from the method.
+
+
+
+== endfilter
+== endblock
+
+

@@ -2,12 +2,58 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>al9000.com</title>
   <link href="https://al9000.com/"/>
-  <updated>2026-11-28T07:51:07-05:00</updated>
+  <updated>2026-11-28T09:29:10-05:00</updated>
   <author>
     <name>alan w smith</name>
   </author>
   <id>urn:uuid:39128ebc-da76-4085-a176-9e52ca29bddc</id>
 
+  
+  <entry>
+    <title>List All Files in a Directory Recursively with Full Paths</title><link href="https://al9000.com&#x2f;python&#x2f;1/"/><id>urn:uuid:2c814314-a936-59e5-83b6-a263f49b6f51</id>
+    <updated>2026-11-28T08:05:00-05:00</updated>
+    <summary><![CDATA[
+
+<h2>The Code</h2>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source python"><span class="meta statement import python"><span class="keyword control import python">import</span> <span class="meta qualified-name python"><span class="meta generic-name python">os</span></span></span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta function python"><span class="storage type function python">def</span> <span class="entity name function python"><span class="meta generic-name python">list_files</span></span></span><span class="meta function parameters python"><span class="punctuation section parameters begin python">(</span></span><span class="meta function parameters python"><span class="variable parameter python">dir</span><span class="punctuation section parameters end python">)</span></span><span class="meta function python"><span class="punctuation section function begin python">:</span></span>
+<span class="line-marker" data-line="4"></span>    <span class="meta qualified-name python"><span class="meta generic-name python">result</span></span> <span class="keyword operator assignment python">=</span> <span class="meta structure list python"><span class="punctuation section list begin python">[</span><span class="punctuation section list end python">]</span></span>
+<span class="line-marker" data-line="5"></span>    <span class="meta statement for python"><span class="keyword control flow for python">for</span> <span class="meta generic-name python">dirpath</span><span class="punctuation separator target-list python">,</span> <span class="meta generic-name python">dirnames</span><span class="punctuation separator target-list python">,</span> <span class="meta generic-name python">filenames</span> <span class="meta statement for python"><span class="keyword control flow for in python">in</span></span></span><span class="meta statement for python"> <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">os</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">walk</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="support function builtin python">dir</span></span></span><span class="punctuation section arguments end python">)</span></span><span class="punctuation section block for python">:</span></span>
+<span class="line-marker" data-line="6"></span>        <span class="meta item-access python"><span class="meta qualified-name python"><span class="meta generic-name python">dirnames</span></span></span><span class="meta item-access python"><span class="punctuation section brackets begin python">[</span></span><span class="meta item-access arguments python"><span class="punctuation separator slice python">:</span></span><span class="meta item-access python"><span class="punctuation section brackets end python">]</span></span> <span class="keyword operator assignment python">=</span> <span class="meta structure list python"><span class="punctuation section list begin python">[</span><span class="meta qualified-name python"><span class="meta generic-name python">d</span></span> <span class="meta expression generator python"><span class="keyword control flow for generator python">for</span> <span class="meta generic-name python">d</span> <span class="keyword control flow for in python">in</span></span> <span class="meta qualified-name python"><span class="meta generic-name python">dirnames</span></span> <span class="keyword control flow if inline python">if</span> <span class="keyword operator logical python">not</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">d</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">startswith</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted single python"><span class="punctuation definition string begin python">&#39;</span></span></span><span class="meta string python"><span class="string quoted single python">.<span class="punctuation definition string end python">&#39;</span></span></span></span><span class="punctuation section arguments end python">)</span></span><span class="punctuation section list end python">]</span></span>
+<span class="line-marker" data-line="7"></span>        <span class="meta statement for python"><span class="keyword control flow for python">for</span> <span class="meta generic-name python">name</span> <span class="meta statement for python"><span class="keyword control flow for in python">in</span></span></span><span class="meta statement for python"> <span class="meta qualified-name python"><span class="meta generic-name python">filenames</span></span><span class="punctuation section block for python">:</span></span>
+<span class="line-marker" data-line="8"></span>            <span class="meta statement if python"><span class="keyword control flow conditional python">if</span> <span class="keyword operator logical python">not</span> <span class="meta group python"><span class="punctuation section group begin python">(</span><span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">name</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">startswith</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted single python"><span class="punctuation definition string begin python">&#39;</span></span></span><span class="meta string python"><span class="string quoted single python">.<span class="punctuation definition string end python">&#39;</span></span></span></span><span class="punctuation section arguments end python">)</span></span> <span class="keyword operator logical python">or</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">name</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">endswith</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted single python"><span class="punctuation definition string begin python">&#39;</span></span></span><span class="meta string python"><span class="string quoted single python">~<span class="punctuation definition string end python">&#39;</span></span></span></span><span class="punctuation section arguments end python">)</span></span><span class="punctuation section group end python">)</span></span><span class="punctuation section block conditional python">:</span></span>
+<span class="line-marker" data-line="9"></span>                <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">result</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">append</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">os</span><span class="punctuation accessor dot python">.</span><span class="meta generic-name python">path</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">join</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">dirpath</span></span><span class="punctuation separator arguments python">,</span> <span class="meta qualified-name python"><span class="meta generic-name python">name</span></span></span><span class="punctuation section arguments end python">)</span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="10"></span>    <span class="keyword control flow return python">return</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="support function builtin python">sorted</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">result</span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="11"></span>
+<span class="line-marker" data-line="12"></span><span class="meta statement if python"><span class="keyword control flow conditional python">if</span> <span class="meta qualified-name python"><span class="support variable magic python">__name__</span></span> <span class="keyword operator comparison python">==</span> <span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">__main__<span class="punctuation definition string end python">&quot;</span></span></span><span class="punctuation section block conditional python">:</span></span>
+<span class="line-marker" data-line="13"></span>    <span class="meta statement with python"><span class="keyword control flow with python">with</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="support function builtin python">open</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">output.inc.txt<span class="punctuation definition string end python">&quot;</span></span></span><span class="punctuation separator arguments python">,</span> <span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">w<span class="punctuation definition string end python">&quot;</span></span></span></span><span class="punctuation section arguments end python">)</span></span> <span class="meta statement with python"><span class="keyword control flow with as python">as</span></span></span><span class="meta statement with python"> <span class="meta generic-name python">_out</span><span class="punctuation section block with python">:</span></span>
+<span class="line-marker" data-line="14"></span>        <span class="meta statement for python"><span class="keyword control flow for python">for</span> <span class="meta generic-name python">f</span> <span class="meta statement for python"><span class="keyword control flow for in python">in</span></span></span><span class="meta statement for python"> <span class="meta function-call python"><span class="meta qualified-name python"><span class="variable function python">list_files</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">examples.inc<span class="punctuation definition string end python">&quot;</span></span></span></span><span class="punctuation section arguments end python">)</span></span><span class="punctuation section block for python">:</span></span>
+<span class="line-marker" data-line="15"></span>            <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">_out</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">write</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="storage type string python">f</span><span class="meta string interpolated python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string interpolated python"><span class="meta interpolation python"><span class="punctuation section interpolation begin python">{</span><span class="source python embedded"><span class="meta function-call python"><span class="meta qualified-name python"><span class="support type python">str</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">f</span></span></span><span class="punctuation section arguments end python">)</span></span></span></span><span class="meta interpolation python"><span class="punctuation section interpolation end python">}</span></span><span class="string quoted double python"><span class="constant character escape python">\n</span><span class="punctuation definition string end python">&quot;</span></span></span></span><span class="punctuation section arguments end python">)</span></span></span></pre></div></div>
+<h2>The Output</h2>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">examples.inc/alfa.txt
+<span class="line-marker" data-line="2"></span>examples.inc/dir-1/bravo.txt
+<span class="line-marker" data-line="3"></span>examples.inc/dir-2/charlie.txt
+<span class="line-marker" data-line="4"></span>examples.inc/dir-2/subdir/delta.txt</span></pre></div></div>
+<h2>Notes</h2>
+<ul>
+<li>
+<p>This skips hidden direcotires that start
+with a dot and temporary files that end with a <code>~</code>.</p>
+</li>
+<li>
+<p>The <code>dirnames[:] = [d for d in dirnames if not d.startswith('.')]</code>
+line updates the directory name in place so that <code>os.walk</code> skips
+the hidden directories entirely instead of decending into them.</p>
+</li>
+<li>
+<p>The results are sorted before returning them
+from the method.</p>
+</li>
+</ul>
+
+]]></summary>
+  </entry>
   
   <entry>
     <title>Tinker Tailor Soldier Spy</title><link href="https://al9000.com&#x2f;movies&#x2f;tinker-tailor-soldier-spy/"/><id>urn:uuid:c4c30168-e8f4-5af0-a20d-ff3afae50877</id>
@@ -96,7 +142,7 @@ the story.</p>
   </entry>
   
   <entry>
-    <title>Blog Directory Structure 9000.1</title><link href="https://al9000.com&#x2f;blog&#x2f;01n&#x2f;g97zx/"/><id>urn:uuid:e440f277-b887-556b-b494-f2b886b9c4da</id>
+    <title>Blog Directory Structure 9000.1</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01n&#x2f;g97zx/"/><id>urn:uuid:5519b8cd-7a9b-5397-a3e8-5a73d472d8e6</id>
     <updated>2026-11-23T15:20:13-05:00</updated>
     <summary><![CDATA[
 <h2>Preface</h2>
@@ -233,7 +279,7 @@ actually random characters.</p>
   </entry>
   
   <entry>
-    <title>A Book Club Trio</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;ng&#x2f;72&#x2f;xg/"/><id>urn:uuid:72968bab-79f9-530e-928d-a01b2e958874</id>
+    <title>A Book Club Trio</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;ng&#x2f;72&#x2f;xg/"/><id>urn:uuid:f67c3716-aaca-5b66-9a15-ae27dd03a913</id>
     <updated>2026-11-22T19:41:20-05:00</updated>
     <summary><![CDATA[
 <p>Saw a <a href="https://bsky.app/profile/jacky.wtf/post/3n2trou4spk2i">post on my timeline</a> asking
@@ -318,7 +364,7 @@ central idea is the same.</li>
   </entry>
   
   <entry>
-    <title>Dogs, Humans, and Elves</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;ng&#x2f;6j&#x2f;8j/"/><id>urn:uuid:623e1e0f-d7b9-5c99-946b-001a640198e0</id>
+    <title>Dogs, Humans, and Elves</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;ng&#x2f;6j&#x2f;8j/"/><id>urn:uuid:ab55e2cf-62da-54bc-8b12-5d30666f03b0</id>
     <updated>2026-11-22T14:57:06-05:00</updated>
     <summary><![CDATA[
 <p>This is the text of a meme from
@@ -362,7 +408,7 @@ as well.</li>
   </entry>
   
   <entry>
-    <title>Blogging Tools Are Back Online</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;ng&#x2f;4b&#x2f;a0/"/><id>urn:uuid:35121529-05fe-590e-9d4b-7f7706cd96e0</id>
+    <title>Blogging Tools Are Back Online</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;ng&#x2f;4b&#x2f;a0/"/><id>urn:uuid:70b4f460-dfdb-5324-ac7e-48d1e571a62a</id>
     <updated>2026-11-21T18:46:08-05:00</updated>
     <summary><![CDATA[
 <p>I haven't written in a while.</p>
@@ -903,7 +949,7 @@ out.</p>
   </entry>
   
   <entry>
-    <title>AI&#x2f;LLM Observations [Aug. 2026]</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n8&#x2f;bg&#x2f;4y/"/><id>urn:uuid:15e2d3b7-d1e0-503d-9bc1-cc559ad88c15</id>
+    <title>AI&#x2f;LLM Observations [Aug. 2026]</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n8&#x2f;bg&#x2f;4y/"/><id>urn:uuid:426ab54e-1c08-5c6d-96e1-6a65b121fc7b</id>
     <updated>2026-08-19T10:41:34-04:00</updated>
     <summary><![CDATA[
 <h2>In Response</h2>
@@ -1017,9 +1063,9 @@ you an idea.</p>
   border-radius: 0.7rem;
 }
 </style>
-<p><img src="/blog/01/n8/bg/4y/giada-1.jpg" alt="An older printing of Giada from Magic the gathering. She's crouched looking to the side. The overall texture looks faded. The art is contained in a padded box area inside the edges of the card." /></p>
+<p><img src="/blog-to-renumber/01/n8/bg/4y/giada-1.jpg" alt="An older printing of Giada from Magic the gathering. She's crouched looking to the side. The overall texture looks faded. The art is contained in a padded box area inside the edges of the card." /></p>
 <p>And</p>
-<p><img src="/blog/01/n8/bg/4y/giada-2.jpg" alt="A newer printing of Giada from Magic the gathering. She's flying a bit off the ground looking toward the viewer. The card is much more colorful with the art extending all the way to the edges of the card." /></p>
+<p><img src="/blog-to-renumber/01/n8/bg/4y/giada-2.jpg" alt="A newer printing of Giada from Magic the gathering. She's flying a bit off the ground looking toward the viewer. The card is much more colorful with the art extending all the way to the edges of the card." /></p>
 </div>
 </li>
 </ul>
@@ -1037,7 +1083,7 @@ though.</p>
 custom art is high. A three sentence prompt
 got me this in about twenty seconds.</p>
   <div class="image-wrapper default-flow">
-<p><img src="/blog/01/n8/bg/4y/ai-ninja.jpg" alt="An AI Generated Ninja." /></p>
+<p><img src="/blog-to-renumber/01/n8/bg/4y/ai-ninja.jpg" alt="An AI Generated Ninja." /></p>
   </div>
 <p>It would work great as a replement
 for an inconsistent looking card in my
@@ -1446,7 +1492,7 @@ needs to be set up to go through them.</p>
   </entry>
   
   <entry>
-    <title>How Creatives and Devs Can All Finally Escape the Control of the Silicon Valley of Evil and Make a Trillion Dollars, Audio Style</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n8&#x2f;1j&#x2f;nk/"/><id>urn:uuid:d8d025e0-7ef3-59dd-b4bd-f597b2e0b9b2</id>
+    <title>How Creatives and Devs Can All Finally Escape the Control of the Silicon Valley of Evil and Make a Trillion Dollars, Audio Style</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n8&#x2f;1j&#x2f;nk/"/><id>urn:uuid:602585be-1d30-59f1-8ae3-e7abcb7ae277</id>
     <updated>2026-08-15T16:23:15-04:00</updated>
     <summary><![CDATA[
 <h2>TL;DR</h2>
@@ -2225,7 +2271,7 @@ let it get too sideways.</p>
 
   <hgroup class="default">
       <div class="title-wrapper">
-        <h1>Better nom Error Messages with nom_locate</h1>
+        <h1>Better nom Error Messages with nom_locate [python]</h1>
       </div>
         <div class="date">August 2026</div>
   </hgroup>
@@ -3039,7 +3085,7 @@ The extra styles look like this:</p>
   </entry>
   
   <entry>
-    <title>A CSS Only Tabs Prototype (No JavaScript Required)</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n6&#x2f;a8&#x2f;6j/"/><id>urn:uuid:da7607ba-0815-5430-bf31-43f72931a57c</id>
+    <title>A CSS Only Tabs Prototype (No JavaScript Required)</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n6&#x2f;a8&#x2f;6j/"/><id>urn:uuid:b8029477-aa3c-5c6d-a8f7-00ca0df7d7de</id>
     <updated>2026-07-25T16:47:14-04:00</updated>
     <summary><![CDATA[
 
@@ -3272,7 +3318,7 @@ CSS will get nothing but more powerful.</p>
   </entry>
   
   <entry>
-    <title>Adding Copy Buttons with Bitty</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n6&#x2f;6r&#x2f;q5/"/><id>urn:uuid:b036d48b-70bb-5540-b49a-7c094701e075</id>
+    <title>Adding Copy Buttons with Bitty</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n6&#x2f;6r&#x2f;q5/"/><id>urn:uuid:68c26958-55d1-5f93-ad84-690a59c03f82</id>
     <updated>2026-07-24T09:04:37-04:00</updated>
     <summary><![CDATA[
 
@@ -3290,7 +3336,7 @@ to say &quot;Copied&quot; for two seconds then reverts it.</p>
 </ol>
 <p>For example:</p>
 <div class="example-container">
-<div class="highlight-wrapper"><div class="title">content.html</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">bitty-9</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-connect</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/blog/01/n6/6r/q5/examples/example-1/bit.js<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">bitty-9</span><span class="punctuation definition tag end html">&gt;</span></span>
+<div class="highlight-wrapper"><div class="title">content.html</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">bitty-9</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-connect</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/blog-to-renumber/01/n6/6r/q5/examples/example-1/bit.js<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">bitty-9</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">button</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-s</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>basicCopy<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>Copy<span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag inline form html">button</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="4"></span><span class="meta tag inline any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline any html">span</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-r</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>basicCopy<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
@@ -3299,7 +3345,7 @@ to say &quot;Copied&quot; for two seconds then reverts it.</p>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta export js"><span class="keyword control import-export js">export</span> <span class="variable other readwrite js">function</span> </span><span class="meta function-call js"><span class="variable function js">basicCopy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">_</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">el</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
 <span class="line-marker" data-line="4"></span>  <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">copy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
-<span class="line-marker" data-line="5"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog/01/n6/6r/q5/examples/example-1/bit.js"></bitty-9>
+<span class="line-marker" data-line="5"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog-to-renumber/01/n6/6r/q5/examples/example-1/bit.js"></bitty-9>
 <p><button data-s="basicCopy">Copy</button>
 <span data-r="basicCopy">
 The quick brown fox
@@ -3310,7 +3356,7 @@ The quick brown fox
 page that all use the same copy function
 with the help of a <code>data-key</code> attribute:</p>
 <div class="example-container">
-<div class="highlight-wrapper"><div class="title">content.html</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">bitty-9</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-connect</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/blog/01/n6/6r/q5/examples/example-2/bit.js<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">bitty-9</span><span class="punctuation definition tag end html">&gt;</span></span>
+<div class="highlight-wrapper"><div class="title">content.html</div><div class="code-block numbers no-copy"><pre><span class="line-marker" data-line="1"></span><span class="text html basic"><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag custom html">bitty-9</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-connect</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>/blog-to-renumber/01/n6/6r/q5/examples/example-2/bit.js<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span><span class="meta tag custom html"><span class="punctuation definition tag begin html">&lt;/</span><span class="entity name tag custom html">bitty-9</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="2"></span>
 <span class="line-marker" data-line="3"></span><span class="meta tag block any html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag block any html">div</span><span class="punctuation definition tag end html">&gt;</span></span>
 <span class="line-marker" data-line="4"></span>  <span class="meta tag inline form html"><span class="punctuation definition tag begin html">&lt;</span><span class="entity name tag inline form html">button</span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-s</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>copyWithKey<span class="punctuation definition string end html">&quot;</span></span></span> <span class="meta attribute-with-value html"><span class="entity other attribute-name html">data-key</span><span class="punctuation separator key-value html">=</span></span><span class="meta attribute-with-value html"><span class="string quoted double html"><span class="punctuation definition string begin html">&quot;</span>alfa<span class="punctuation definition string end html">&quot;</span></span></span><span class="punctuation definition tag end html">&gt;</span></span>
@@ -3334,7 +3380,7 @@ with the help of a <code>data-key</code> attribute:</p>
 <span class="line-marker" data-line="4"></span>  <span class="meta conditional js"><span class="keyword control conditional js">if</span> <span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other object js">sender</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">key</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>key<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span> <span class="keyword operator comparison js">===</span> <span class="variable other object js">el</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">key</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="string quoted double js"><span class="punctuation definition string begin js">&quot;</span>key<span class="punctuation definition string end js">&quot;</span></span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation section group js">)</span></span> <span class="meta block js"><span class="punctuation section block js">{</span>
 <span class="line-marker" data-line="5"></span>    <span class="variable other object js">b</span><span class="punctuation accessor js">.</span><span class="meta function-call method js"><span class="variable function js">copy</span><span class="meta group js"><span class="punctuation section group js">(</span><span class="variable other readwrite js">el</span><span class="punctuation separator comma js">,</span> <span class="variable other readwrite js">sender</span></span><span class="meta group js"><span class="punctuation section group js">)</span></span></span><span class="punctuation terminator statement js">;</span>
 <span class="line-marker" data-line="6"></span>  </span><span class="meta block js"><span class="punctuation section block js">}</span></span></span>
-<span class="line-marker" data-line="7"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog/01/n6/6r/q5/examples/example-2/bit.js"></bitty-9>
+<span class="line-marker" data-line="7"></span><span class="punctuation section block js">}</span></span></span></pre></div></div><div class="example-wrapper"><div class="title">Output</div><div class="example-block"><bitty-9 data-connect="/blog-to-renumber/01/n6/6r/q5/examples/example-2/bit.js"></bitty-9>
 <div>
   <button data-s="copyWithKey" data-key="alfa">
     Copy
@@ -3916,7 +3962,7 @@ the timestamps I use look like this:</li>
   </entry>
   
   <entry>
-    <title>Three Dates in a Trench Coat</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/"/><id>urn:uuid:49caaea3-78c2-53d3-a115-1ff56e26e45e</id>
+    <title>Three Dates in a Trench Coat</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/"/><id>urn:uuid:fc4e0762-eb7d-55fd-aff0-789012e6b653</id>
     <updated>2026-07-19T11:21:48-04:00</updated>
     <summary><![CDATA[<!DOCTYPE html>
 <html lang="en">
@@ -3943,9 +3989,9 @@ the timestamps I use look like this:</li>
 <meta name="description" content="the online home of alan w smith" />
 <meta property="og:description" content="the online home of alan w smith" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;blog&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/
 " />
-<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com&#x2f;blog&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/og-image.jpg" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n5&#x2f;st&#x2f;wc/og-image.jpg" />
 <link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
@@ -4009,7 +4055,7 @@ the timestamps I use look like this:</li>
 
   <hgroup class="default">
       <div class="title-wrapper">
-        <h1>Three Dates in a Trench Coat</h1>
+        <h1>Three Dates in a Trench Coat [python]</h1>
       </div>
         <div class="date">July 2026</div>
   </hgroup>
@@ -4154,7 +4200,7 @@ want to check it out.
   </entry>
   
   <entry>
-    <title>Full Site Links</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n5&#x2f;n7&#x2f;gg/"/><id>urn:uuid:f5fac119-f789-5fb4-ad7f-4ef2ac1f8b2f</id>
+    <title>Full Site Links</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n5&#x2f;n7&#x2f;gg/"/><id>urn:uuid:012f21b4-549f-5f84-9fdb-7afee50fab5a</id>
     <updated>2026-07-17T17:26:40-04:00</updated>
     <summary><![CDATA[
 
@@ -4697,7 +4743,7 @@ something it can't handle.</p>
   </entry>
   
   <entry>
-    <title>Pondering Standard.site and the Social Web</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n3&#x2f;t9&#x2f;nx/"/><id>urn:uuid:5e50e155-e974-5250-bb20-c57af43c82d6</id>
+    <title>Pondering Standard.site and the Social Web</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n3&#x2f;t9&#x2f;nx/"/><id>urn:uuid:2e606530-9349-5395-94e0-94588fb555a4</id>
     <updated>2026-06-25T09:01:49-04:00</updated>
     <summary><![CDATA[
 
@@ -4952,7 +4998,7 @@ own it.</p>
   </entry>
   
   <entry>
-    <title>Type Different: Changing the Keys on Your Keyboard</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n3&#x2f;g3&#x2f;x8/"/><id>urn:uuid:93677c41-e871-5424-8602-1fa52f3f4809</id>
+    <title>Type Different: Changing the Keys on Your Keyboard</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n3&#x2f;g3&#x2f;x8/"/><id>urn:uuid:04978603-e45f-5b74-8a7e-2140b48acd3f</id>
     <updated>2026-06-21T12:22:00-04:00</updated>
     <summary><![CDATA[
 <h2>Keyboard Basics</h2>
@@ -5106,7 +5152,7 @@ that's a different thing entirely.</p>
   </entry>
   
   <entry>
-    <title>RSS Powers: Activated</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n3&#x2f;fm&#x2f;ag/"/><id>urn:uuid:2785568a-7ada-54a0-8cd1-a5f3596f3b7a</id>
+    <title>RSS Powers: Activated</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n3&#x2f;fm&#x2f;ag/"/><id>urn:uuid:ba57d2e9-b992-5da5-afaf-bb1ddb5a435d</id>
     <updated>2026-06-21T07:56:00-04:00</updated>
     <summary><![CDATA[
 
@@ -5180,7 +5226,7 @@ jumping to new frameworks.</p>
   </entry>
   
   <entry>
-    <title>Unoffice Hours</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n3&#x2f;fk&#x2f;am/"/><id>urn:uuid:162046c8-1547-59e0-bcb6-4edf32841cee</id>
+    <title>Unoffice Hours</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n3&#x2f;fk&#x2f;am/"/><id>urn:uuid:0e1cd052-8090-5321-88ff-d9115ce98585</id>
     <updated>2026-06-21T07:39:00-04:00</updated>
     <summary><![CDATA[
 <p>This is a fun concept. Folks who set aside a little time
@@ -6400,7 +6446,7 @@ conversations by ear and see where they go.</p>
   </entry>
   
   <entry>
-    <title>DAE - Digital to Analog Enlarger</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;n3&#x2f;dd&#x2f;tw/"/><id>urn:uuid:bbdbb3e3-c932-5b3f-979b-c6a3ffd39fc6</id>
+    <title>DAE - Digital to Analog Enlarger</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;n3&#x2f;dd&#x2f;tw/"/><id>urn:uuid:bd1ec825-6195-5096-85d5-4f4ed3f22b56</id>
     <updated>2026-06-20T11:53:00-04:00</updated>
     <summary><![CDATA[
 
@@ -6415,7 +6461,7 @@ printed there's a process that does it that
 can output to various sizes. That's not what I'm
 talking about.</p>
 <p>I'm talking about one that looks like this:</p>
-<figure class="default"><img src="/blog/01/n3/dd/tw/enlarger-4856357201.jpg" alt="Two photography film enlargers side by side on a worktop desk. There&#x27;s a collection of trays for processing beside them" /></figure>
+<figure class="default"><img src="/blog-to-renumber/01/n3/dd/tw/enlarger-4856357201.jpg" alt="Two photography film enlargers side by side on a worktop desk. There&#x27;s a collection of trays for processing beside them" /></figure>
 <p>Ones that project light onto a piece of paper covered with
 a light sensitive emulsion. The next step
 being to run the paper through a series of
@@ -7752,7 +7798,7 @@ of the source images doesn't matter.</p>
   </entry>
   
   <entry>
-    <title>Fingers to Keys</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;my&#x2f;zm&#x2f;1g/"/><id>urn:uuid:e8d8efbc-f956-5f21-b4ed-dc6d5d047adf</id>
+    <title>Fingers to Keys</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;my&#x2f;zm&#x2f;1g/"/><id>urn:uuid:df46dba1-0593-53e7-a0be-9367c24a8a52</id>
     <updated>2026-04-27T17:08:00-04:00</updated>
     <summary><![CDATA[
 
@@ -7852,7 +7898,7 @@ two years of major bipolar depression.</p>
   </entry>
   
   <entry>
-    <title>The Good Place</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;my&#x2f;72&#x2f;tm/"/><id>urn:uuid:fbb02aad-94c7-554f-bc4b-f80701cd4d15</id>
+    <title>The Good Place</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;my&#x2f;72&#x2f;tm/"/><id>urn:uuid:e8920827-30a1-5b85-a279-7be478344fd6</id>
     <updated>2026-04-18T09:47:00-04:00</updated>
     <summary><![CDATA[
 <p>I binged The Good Place over the past few days.
@@ -7964,7 +8010,44 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
   </entry>
   
   <entry>
-    <title>Get the Stem of a File Name in bash</title><link href="https://al9000.com&#x2f;cli&#x2f;get-file-name-stem/"/><id>urn:uuid:1d7d2df4-9df0-59f5-9dcb-64fcae06a832</id>
+    <title>Watch a Folder and Run a Process when Things Change with watchexe </title><link href="https://al9000.com&#x2f;cli&#x2f;6/"/><id>urn:uuid:6a2cf360-7584-5250-afbb-f738e21699e4</id>
+    <updated>2026-04-13T20:25:00-04:00</updated>
+    <summary><![CDATA[
+<p>Use <a href="https://watchexec.github.io/">watchexec</a> to watch files
+in a directory and run a process when they change.</p>
+<h2>Basic Example</h2>
+<pre><code class="language-bash">watchexec -c -r -e py,html ./process.py
+</code></pre>
+<h2>Details</h2>
+<ul>
+<li>
+<p><code>-c</code> clears the screen before each run</p>
+</li>
+<li>
+<p><code>-r</code> kills and restarts the process if it's still running</p>
+</li>
+<li>
+<p><code>-e ext1,etc2</code> sets the file extensions to watch</p>
+</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>
+<p>watchexec does some shenanigans with looking for
+parent git repos to determine which directory
+to start watching in.</p>
+<p>TODO: Add more notes about the root directory
+that gets watched and how to change it if
+necessary.</p>
+</li>
+</ul>
+
+
+]]></summary>
+  </entry>
+  
+  <entry>
+    <title>Get the Stem of a File Name in bash</title><link href="https://al9000.com&#x2f;cli&#x2f;5/"/><id>urn:uuid:0b85cd79-b37d-5149-8ef3-2bd05f812b27</id>
     <updated>2026-04-13T20:25:00-04:00</updated>
     <summary><![CDATA[
 
@@ -7983,7 +8066,7 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
   </entry>
   
   <entry>
-    <title>Get the Name of the Current Directory in bash</title><link href="https://al9000.com&#x2f;cli&#x2f;get-current-directory-name/"/><id>urn:uuid:7550d3d0-ec1c-5a95-b6dd-0b8470099d7f</id>
+    <title>Get the Name of the Current Directory in bash</title><link href="https://al9000.com&#x2f;cli&#x2f;4/"/><id>urn:uuid:3ad85773-00f7-5f98-9280-6ecd7695d412</id>
     <updated>2026-04-13T18:47:00-04:00</updated>
     <summary><![CDATA[
 
@@ -8016,7 +8099,7 @@ I'll have to link up &quot;The Clicky Sound&quot;.</p>
   </entry>
   
   <entry>
-    <title>I&#x27;m Not Ready to Start This Blog</title><link href="https://al9000.com&#x2f;blog&#x2f;01&#x2f;mx&#x2f;qf&#x2f;ng/"/><id>urn:uuid:1d75ebeb-8282-5d79-9d04-609157bd169b</id>
+    <title>I&#x27;m Not Ready to Start This Blog</title><link href="https://al9000.com&#x2f;blog-to-renumber&#x2f;01&#x2f;mx&#x2f;qf&#x2f;ng/"/><id>urn:uuid:52e1bbf9-df1a-5997-a5fa-8c4032ff4a2b</id>
     <updated>2026-04-12T11:48:00-04:00</updated>
     <summary><![CDATA[
 
@@ -8148,7 +8231,7 @@ coming soon.</p>
   </entry>
   
   <entry>
-    <title>Capture Errors from Command Line Tools</title><link href="https://al9000.com&#x2f;cli&#x2f;capture-both-stdout-and-stderror/"/><id>urn:uuid:6d121163-1b63-5455-973b-428a13905056</id>
+    <title>Capture Errors from Command Line Tools</title><link href="https://al9000.com&#x2f;cli&#x2f;3/"/><id>urn:uuid:9dad72ec-81d6-5e80-b50a-1faf6f1229de</id>
     <updated>2026-04-11T09:58:51-04:00</updated>
     <summary><![CDATA[
 

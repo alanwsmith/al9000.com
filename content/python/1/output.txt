@@ -1,0 +1,1 @@
+examples.inc/alfa.txtexamples.inc/dir-2/charlie.txtexamples.inc/dir-2/subdir/delta.txtexamples.inc/dir-1/bravo.txt

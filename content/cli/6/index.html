@@ -1,0 +1,49 @@
+== extends "/templates.inc/switches/cli.html"
+
+== block toml
+title = "Watch a Folder and Run a Process when Things Change with watchexe "
+created = 2026-04-13T20:25:00-04:00
+status = "done"
+flags = ["no-date"]
+== endblock
+
+== block main
+== filter md
+
+
+Use [watchexec](https://watchexec.github.io/) to watch files
+in a directory and run a process when they change. 
+
+## Basic Example
+
+```bash
+watchexec -c -r -e py,html ./process.py
+```
+
+## Details
+
+- `-c` clears the screen before each run
+
+- `-r` kills and restarts the process if it's still running
+
+- `-e ext1,etc2` sets the file extensions to watch
+
+
+## Notes
+
+- watchexec does some shenanigans with looking for
+parent git repos to determine which directory 
+to start watching in. 
+
+    TODO: Add more notes about the root directory
+that gets watched and how to change it if 
+necessary. 
+
+
+
+
+== endfilter
+== endblock
+
+
+
