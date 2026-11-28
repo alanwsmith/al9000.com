@@ -31,7 +31,7 @@ class Post():
         return f"{Path('/blog' / self.source_dir().relative_to(input_root))}/*"
 
     def redirect_url(self):
-        return f"{Path('/blog' / self.destination_dir().relative_to(output_root))}/"
+        return f"{Path('/blog' / self.destination_dir().relative_to(output_root))}/:splat"
 
     
 def copy_dir_contents(source, destination):
@@ -73,6 +73,7 @@ def get_posts(roots):
 def make_redirects(posts):
     with open("redirects-output.txt", "w") as _out:
         for post in posts:
+            _out.write(f"[[redirects]]\n")
             _out.write(f"  from = \"{post.original_url()}\"\n")
             _out.write(f"  to = \"{post.redirect_url()}\"\n")
             _out.write(f"  status = 301\n")
