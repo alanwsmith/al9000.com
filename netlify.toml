@@ -8,137 +8,164 @@
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/mx/qf/ng/*"
-  to = "/blog/4000/"
+  to = "/blog/4000/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/my/72/tm/*"
-  to = "/blog/4001/"
+  to = "/blog/4001/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/my/zm/1g/*"
-  to = "/blog/4002/"
+  to = "/blog/4002/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n3/dd/tw/*"
-  to = "/blog/4003/"
+  to = "/blog/4003/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n3/dd/ym/*"
-  to = "/blog/4004/"
+  to = "/blog/4004/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n3/fk/am/*"
-  to = "/blog/4005/"
+  to = "/blog/4005/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n3/fm/ag/*"
-  to = "/blog/4006/"
+  to = "/blog/4006/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n3/g3/x8/*"
-  to = "/blog/4007/"
+  to = "/blog/4007/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n3/je/8p/*"
-  to = "/blog/4008/"
+  to = "/blog/4008/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n3/t9/nx/*"
-  to = "/blog/4009/"
+  to = "/blog/4009/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n5/n7/gg/*"
-  to = "/blog/4010/"
+  to = "/blog/4010/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n5/st/wc/*"
-  to = "/blog/4011/"
+  to = "/blog/4011/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n5/sz/sb/*"
-  to = "/blog/4012/"
+  to = "/blog/4012/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n5/t0/04/*"
-  to = "/blog/4013/"
+  to = "/blog/4013/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n5/t3/zj/*"
-  to = "/blog/4014/"
+  to = "/blog/4014/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n5/t4/6z/*"
-  to = "/blog/4015/"
+  to = "/blog/4015/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n5/t5/2f/*"
-  to = "/blog/4016/"
+  to = "/blog/4016/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n5/w7/m4/*"
-  to = "/blog/4017/"
+  to = "/blog/4017/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n6/6r/q5/*"
-  to = "/blog/4018/"
+  to = "/blog/4018/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n6/a8/6j/*"
-  to = "/blog/4019/"
+  to = "/blog/4019/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n8/1j/nk/*"
-  to = "/blog/4020/"
+  to = "/blog/4020/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/n8/bg/4y/*"
-  to = "/blog/4021/"
+  to = "/blog/4021/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/ng/4b/a0/*"
-  to = "/blog/4022/"
+  to = "/blog/4022/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/ng/6j/8j/*"
-  to = "/blog/4023/"
+  to = "/blog/4023/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01/ng/72/xg/*"
-  to = "/blog/4024/"
+  to = "/blog/4024/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01n/g97zx/*"
-  to = "/blog/4025/"
+  to = "/blog/4025/:splat"
   status = 301
   force = true
 
+[[redirects]]
   from = "/blog/01n/g99dc/*"
-  to = "/blog/4026/"
+  to = "/blog/4026/:splat"
   status = 301
   force = true
