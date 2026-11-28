@@ -1,0 +1,174 @@
+== extends "/templates.inc/switches/blog.html"
+
+== block toml
+title = "Blog Directory Structure 9000.1"
+created = 2026-11-23T15:20:13-05:00
+status = "done"
+== endblock
+
+
+== block main
+== filter md
+
+## Preface
+
+This is how I'm set up at the time of posting. 
+It's gonna change really soon. See the
+endnote about that.  
+
+
+## One, Two, Three
+
+Naming things is one of the 
+two hardest problems in computer science<sup>1</sup>. 
+I go through half a dozen titles for blog
+posts. Changes
+after a page goes live happen more often 
+than not. 
+
+Blog apps like Wordpress use the title to 
+create a page's address. An entry titled:
+
+    A Post About Names
+
+would be at
+
+    al9000.com/blog/a-post-about-names
+
+Makes sense, unless you change the title. 
+
+There are a couple options when that happens. You could update
+the address, but then any links to the old 
+address would break. You can deal with that by
+setting up the old addresses to bounce visits 
+over to the new one. 
+
+Or, you could just leave the page at the original 
+address and only update the title on the page
+itself. You end up with something like a 
+post titled:
+
+    The Naming of Posts is a Difficult Matter
+
+that's still at the address:
+
+    al9000.com/blog/a-post-about-names
+
+Not really a big deal. Page addresses matter
+much less now than they used to<sup>2</sup>. I 
+don't like the disconnect, though.
+
+## Shifting Slashes
+
+I've been avoiding the issue all together
+for years by using random characters 
+for addresses<sup>3</sup>. Something like:
+
+    al9000.com/blog/01/ng/97/zx/
+
+Purely functional with no regard for aesthetics. 
+
+The reason for doing:
+
+    al9000.com/blog/01/ng/97/zx
+
+Instead of:
+
+    al9000.com/blog/01ng97zx
+
+is because my site is "static". That means
+the addresses on the site map directly to 
+folders on my computer (e.g. there is a 
+`blog` folder that has a file named 
+`01ng97zx.html` in it). 
+
+Lots of apps have problems with folders
+that have more than a thousand file in them. 
+I've got over three thousand posts. Putting
+them all in the same folder would bog things
+down. That's where all the slashes come in. 
+Each one represents a new folder. 
+
+That is, there's a top level `blog` folder
+that has a `01` folder in it that has 
+a `ng` folder in it, etc...
+
+That process was splitting an eight
+character ID into four pairs of characters. 
+Doing that ensured that
+
+
+
+<div class="end-of-line"></div>
+
+### Endnotes
+
+After thinking about this some more. I'm 
+probably gonna end up simplifying the structure. 
+To just use a counter for blog posts and just
+manually limit a small set of sub folders
+to about a thousand files a piece. 
+
+The reason I was using IDs in the first place
+is that I used to store all the content
+for my site in my Grimoire and had a process
+that copied everything over and that structure
+was all ID based since everything in the 
+Grimoire was in a single directory. 
+
+(Of course, thinking about it now, there's
+like 11,000 files in the Grimoire folder and
+I haven't had any noticable problems with
+tools bogging down working with it. It's
+looking a lot like the idea in my head
+about limiting the number of files in a
+folder is antiquated.  
+
+So, yeah, I'll be moving to just an
+incrementing number for each post 
+(I still don't want to have to use 
+titles in the URLs most of the time).
+
+New posts will start at 4,000 which will
+give me enough space to add in the original 
+~3,500 posts chronologically. 
+
+
+### Footnotes
+
+1. The joke being: There are two hard problems in computer
+science: naming things, caching things, and off-by-one errors. 
+
+2. There was a time when search engines would 
+use the text of a pages address as part of
+the weight of the indexing score. For example, 
+In the early 2000s, I vastly improved the ranking of 
+pgatour.com's player pages simply
+by adding player names to the URLs (they had
+been nothing by numeric IDs before that). 
+
+    Anecdotal evidence suggest that people would
+look at URLs too. I'm one of those folks, but
+everything I've heard is that non-techies were
+less likely to glance at them. These days, 
+if you're on your phone, you probably don't see
+them at all. 
+
+    For a brief time, desktop
+browsers hid everything but the site name
+as well (e.g. the page al9000.com/some/page/
+would only show up as __al9000.com__ in your
+browser). That doesn't look like it's the
+case any more, but maybe I just changed
+a config on my site that makes the full
+addresses show up. 
+
+
+3. Basically, the first few characters represent a 
+timestamp. They are followed by a collection of
+actually random characters. 
+
+
+
+== endfilter
+== endblock

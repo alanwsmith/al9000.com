@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Remove the Beginning of an Absolute Path to Make a Relative Path</title>
+<meta property="og:title" content="Remove the Beginning of an Absolute Path to Make a Relative Path" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;python&#x2f;3/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
+
+
+    
+    
+    
+    
+
+    
+
+
+    <style>
+    </style>
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+    <div class="payload">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> ~
+    <a href="https://bittyjs.com/">bitty</a> ~
+    <a href="https://neodoc.style/">neodoc</a>
+  </div>
+
+
+</header>
+
+
+<main class="default default-wrapper default-flow">
+
+  <hgroup class="default">
+      <div class="title-wrapper">
+        <h1>Remove the Beginning of an Absolute Path to Make a Relative Path [python]</h1>
+      </div>
+  </hgroup>
+
+
+<h2>The Code</h2>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source python"><span class="meta statement import python"><span class="keyword control import from python">from</span></span><span class="meta statement import python"><span class="meta import-source python"> <span class="meta import-path python"><span class="meta import-name python">pathlib</span></span> <span class="meta statement import python"><span class="keyword control import python">import</span></span></span></span><span class="meta statement import python"></span><span class="meta statement import python"> <span class="meta generic-name python">Path</span></span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span>
+<span class="line-marker" data-line="4"></span><span class="meta function python"><span class="storage type function python">def</span> <span class="entity name function python"><span class="meta generic-name python">absolute_to_relative</span></span></span><span class="meta function parameters python"><span class="punctuation section parameters begin python">(</span></span><span class="meta function parameters python"><span class="variable parameter python">absolute_path</span><span class="punctuation separator parameters python">,</span> <span class="variable parameter python">clip_path</span><span class="punctuation section parameters end python">)</span></span><span class="meta function python"><span class="punctuation section function begin python">:</span></span>
+<span class="line-marker" data-line="5"></span>    <span class="keyword control flow return python">return</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">absolute_path</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">relative_to</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">clip_path</span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="6"></span>
+<span class="line-marker" data-line="7"></span>
+<span class="line-marker" data-line="8"></span><span class="meta statement if python"><span class="keyword control flow conditional python">if</span> <span class="meta qualified-name python"><span class="support variable magic python">__name__</span></span> <span class="keyword operator comparison python">==</span> <span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">__main__<span class="punctuation definition string end python">&quot;</span></span></span><span class="punctuation section block conditional python">:</span></span>
+<span class="line-marker" data-line="9"></span>    <span class="meta qualified-name python"><span class="meta generic-name python">absolute_path</span></span> <span class="keyword operator assignment python">=</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="variable function python">Path</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">/some/absolute/path/to/file.txt<span class="punctuation definition string end python">&quot;</span></span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="10"></span>    <span class="meta qualified-name python"><span class="meta generic-name python">clip_path</span></span> <span class="keyword operator assignment python">=</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="variable function python">Path</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">/some/absolute<span class="punctuation definition string end python">&quot;</span></span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="11"></span>    <span class="meta qualified-name python"><span class="meta generic-name python">relative_path</span></span> <span class="keyword operator assignment python">=</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="variable function python">absolute_to_relative</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">absolute_path</span></span><span class="punctuation separator arguments python">,</span> <span class="meta qualified-name python"><span class="meta generic-name python">clip_path</span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="12"></span>    <span class="meta function-call python"><span class="meta qualified-name python"><span class="support function builtin python">print</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">relative_path</span></span></span><span class="punctuation section arguments end python">)</span></span></span></pre></div></div>
+<h2>Notes</h2>
+<ul>
+<li>
+<p>The <code>clip_path</code> can end with a <code>/</code>
+or not. In either case, the returned
+value is not absolute (i.e. it does
+not start with a leading <code>/</code>)</p>
+</li>
+</ul>
+
+<div class="end-of-line"></div>
+
+
+
+</main>
+
+<footer class="default">
+  <div>
+    from <a href="https://bsky.app/profile/al9000.com">alan w smith</a>
+  </div>
+  <div>
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div>
+    and designed <a href="https://neodoc.style">neodoc</a>
+  </div>
+
+      
+  <div>
+    <button
+      class="default-wrapper text-align-center faded-base-color"
+      data-s="copyElement"
+      style="opacity: 0.20; padding-bottom: 0.3rem;"
+    >
+      <span>
+      id = "01/ng/p6/7r"
+      </span>
+    </button>
+  </div>
+      
+</footer>
+
+
+    </div>
+
+
+    <div class="templates" hidden>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <script type="module" src="/bits/components.js"></script>
+
+
+
+    </div>
+  </body>
+</html>

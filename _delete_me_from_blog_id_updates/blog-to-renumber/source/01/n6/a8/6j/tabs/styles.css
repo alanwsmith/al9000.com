@@ -1,0 +1,30 @@
+body:has(#tab1:checked){ 
+  --content-1-display-x: block; 
+  --content-2-display-x: none; 
+  --content-3-display-x: none; 
+}
+
+body:has(#tab2:checked){ 
+  --content-1-display-x: none; 
+  --content-2-display-x: block; 
+  --content-3-display-x: none; 
+}
+
+body:has(#tab3:checked){ 
+  --content-1-display-x: none; 
+  --content-2-display-x: none; 
+  --content-3-display-x: block; 
+}
+
+
+#content1 {
+  display: var(--content-1-display-x);
+}
+
+#content2 {
+  display: var(--content-2-display-x);
+}
+
+#content3 {
+  display: var(--content-3-display-x);
+}

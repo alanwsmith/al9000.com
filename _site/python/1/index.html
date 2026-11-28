@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+
+    <script src="&#x2f;scripts.raw&#x2f;bitty&#x2f;bitty-9.0.0-beta1.source.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>List All Files in a Directory Recursively with Full Paths</title>
+<meta property="og:title" content="List All Files in a Directory Recursively with Full Paths" />
+<meta name="description" content="the online home of alan w smith" />
+<meta property="og:description" content="the online home of alan w smith" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https:&#x2f;&#x2f;al9000.com&#x2f;python&#x2f;1/
+" />
+<meta property="og:image" content="https:&#x2f;&#x2f;al9000.com/og-image.jpg" />
+<link rel="apple-touch-icon" sizes="180x180" href="&#x2f;favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="&#x2f;favicons/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="&#x2f;favicons/favicon-32x32.png" />
+<link rel="manifest" href="&#x2f;favicons/site.webmanifest" />
+<link rel="mask-icon" href="&#x2f;favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<link rel="alternate" type="application/atom+xml" title="al9000.com" href="/rss/feed.xml" />
+<link
+  rel="site.standard.publication"
+  href="at://did:plc:hehia4csii5iipebsgolxxal/site.standard.publication&#x2f;3mp5l453r552a"
+/>
+
+
+
+
+    
+    
+    
+    
+
+    
+
+
+    <style>
+    </style>
+    
+  </head>
+  <body class="page">
+<noscript>
+  <p>
+    NOTE: Some pages on this site rely on JavaScript. 
+    It's not currently available in your
+    browser/reader. Depending on the page,
+    some or all of the content may not
+    work correctly without it. 
+  </p>
+
+</noscript>
+
+    <div class="payload">
+      <header class="default-wrapper xlarge-bottom-margin xlarge-bottom-padding small-font-size">
+<noscript>
+  <p>
+    NOTE: This site use JavaScript which appears to be turned off. 
+    Some content will be fine, but some things won't work.
+  </p>
+
+</noscript>
+  <div class="top-nav">
+    <a href="/">home</a>
+    <a href="/tools">tools</a>
+    <a href="/rss/">rss</a> ~
+    <a href="https://bittyjs.com/">bitty</a> ~
+    <a href="https://neodoc.style/">neodoc</a>
+  </div>
+
+
+</header>
+
+
+<main class="default default-wrapper default-flow">
+
+  <hgroup class="default">
+      <div class="title-wrapper">
+        <h1>List All Files in a Directory Recursively with Full Paths [python]</h1>
+      </div>
+  </hgroup>
+
+
+<h2>The Code</h2>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="source python"><span class="meta statement import python"><span class="keyword control import from python">from</span></span><span class="meta statement import python"><span class="meta import-source python"> <span class="meta import-path python"><span class="meta import-name python">pathlib</span></span> <span class="meta statement import python"><span class="keyword control import python">import</span></span></span></span><span class="meta statement import python"></span><span class="meta statement import python"> <span class="meta generic-name python">Path</span></span>
+<span class="line-marker" data-line="2"></span>
+<span class="line-marker" data-line="3"></span><span class="meta function python"><span class="storage type function python">def</span> <span class="entity name function python"><span class="meta generic-name python">list_files</span></span></span><span class="meta function parameters python"><span class="punctuation section parameters begin python">(</span></span><span class="meta function parameters python"><span class="variable parameter python">dir</span><span class="punctuation section parameters end python">)</span></span><span class="meta function python"><span class="punctuation section function begin python">:</span></span>
+<span class="line-marker" data-line="4"></span>    <span class="meta qualified-name python"><span class="meta generic-name python">result</span></span> <span class="keyword operator assignment python">=</span> <span class="meta structure list python"><span class="punctuation section list begin python">[</span><span class="punctuation section list end python">]</span></span>
+<span class="line-marker" data-line="5"></span>    <span class="meta statement for python"><span class="keyword control flow for python">for</span> <span class="meta generic-name python">dirpath</span><span class="punctuation separator target-list python">,</span> <span class="meta generic-name python">dirnames</span><span class="punctuation separator target-list python">,</span> <span class="meta generic-name python">filenames</span> <span class="meta statement for python"><span class="keyword control flow for in python">in</span></span></span><span class="meta statement for python"> <span class="meta function-call python"><span class="meta qualified-name python"><span class="variable function python">Path</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="support function builtin python">dir</span></span></span><span class="punctuation section arguments end python">)</span></span><span class="meta function-call python"><span class="meta qualified-name python"><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">resolve</span></span><span class="punctuation section arguments begin python">(</span><span class="punctuation section arguments end python">)</span></span><span class="meta function-call python"><span class="meta qualified-name python"><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">walk</span></span><span class="punctuation section arguments begin python">(</span><span class="punctuation section arguments end python">)</span></span><span class="punctuation section block for python">:</span></span>
+<span class="line-marker" data-line="6"></span>        <span class="meta item-access python"><span class="meta qualified-name python"><span class="meta generic-name python">dirnames</span></span></span><span class="meta item-access python"><span class="punctuation section brackets begin python">[</span></span><span class="meta item-access arguments python"><span class="punctuation separator slice python">:</span></span><span class="meta item-access python"><span class="punctuation section brackets end python">]</span></span> <span class="keyword operator assignment python">=</span> <span class="meta structure list python"><span class="punctuation section list begin python">[</span><span class="meta qualified-name python"><span class="meta generic-name python">d</span></span> <span class="meta expression generator python"><span class="keyword control flow for generator python">for</span> <span class="meta generic-name python">d</span> <span class="keyword control flow for in python">in</span></span> <span class="meta qualified-name python"><span class="meta generic-name python">dirnames</span></span> <span class="keyword control flow if inline python">if</span> <span class="keyword operator logical python">not</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">d</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">startswith</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted single python"><span class="punctuation definition string begin python">&#39;</span></span></span><span class="meta string python"><span class="string quoted single python">.<span class="punctuation definition string end python">&#39;</span></span></span></span><span class="punctuation section arguments end python">)</span></span><span class="punctuation section list end python">]</span></span>
+<span class="line-marker" data-line="7"></span>        <span class="meta statement for python"><span class="keyword control flow for python">for</span> <span class="meta generic-name python">name</span> <span class="meta statement for python"><span class="keyword control flow for in python">in</span></span></span><span class="meta statement for python"> <span class="meta qualified-name python"><span class="meta generic-name python">filenames</span></span><span class="punctuation section block for python">:</span></span>
+<span class="line-marker" data-line="8"></span>            <span class="meta statement if python"><span class="keyword control flow conditional python">if</span> <span class="keyword operator logical python">not</span> <span class="meta group python"><span class="punctuation section group begin python">(</span><span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">name</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">startswith</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted single python"><span class="punctuation definition string begin python">&#39;</span></span></span><span class="meta string python"><span class="string quoted single python">.<span class="punctuation definition string end python">&#39;</span></span></span></span><span class="punctuation section arguments end python">)</span></span> <span class="keyword operator logical python">or</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">name</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">endswith</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted single python"><span class="punctuation definition string begin python">&#39;</span></span></span><span class="meta string python"><span class="string quoted single python">~<span class="punctuation definition string end python">&#39;</span></span></span></span><span class="punctuation section arguments end python">)</span></span><span class="punctuation section group end python">)</span></span><span class="punctuation section block conditional python">:</span></span>
+<span class="line-marker" data-line="9"></span>                <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">result</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">append</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">dirpath</span></span> <span class="keyword operator arithmetic python">/</span> <span class="meta qualified-name python"><span class="meta generic-name python">name</span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="10"></span>    <span class="keyword control flow return python">return</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="support function builtin python">sorted</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">result</span></span></span><span class="punctuation section arguments end python">)</span></span>
+<span class="line-marker" data-line="11"></span>
+<span class="line-marker" data-line="12"></span><span class="meta statement if python"><span class="keyword control flow conditional python">if</span> <span class="meta qualified-name python"><span class="support variable magic python">__name__</span></span> <span class="keyword operator comparison python">==</span> <span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">__main__<span class="punctuation definition string end python">&quot;</span></span></span><span class="punctuation section block conditional python">:</span></span>
+<span class="line-marker" data-line="13"></span>    <span class="meta statement with python"><span class="keyword control flow with python">with</span> <span class="meta function-call python"><span class="meta qualified-name python"><span class="support function builtin python">open</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">output.inc.txt<span class="punctuation definition string end python">&quot;</span></span></span><span class="punctuation separator arguments python">,</span> <span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">w<span class="punctuation definition string end python">&quot;</span></span></span></span><span class="punctuation section arguments end python">)</span></span> <span class="meta statement with python"><span class="keyword control flow with as python">as</span></span></span><span class="meta statement with python"> <span class="meta generic-name python">_out</span><span class="punctuation section block with python">:</span></span>
+<span class="line-marker" data-line="14"></span>        <span class="meta statement for python"><span class="keyword control flow for python">for</span> <span class="meta generic-name python">f</span> <span class="meta statement for python"><span class="keyword control flow for in python">in</span></span></span><span class="meta statement for python"> <span class="meta function-call python"><span class="meta qualified-name python"><span class="variable function python">list_files</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta string python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string python"><span class="string quoted double python">examples.inc<span class="punctuation definition string end python">&quot;</span></span></span></span><span class="punctuation section arguments end python">)</span></span><span class="punctuation section block for python">:</span></span>
+<span class="line-marker" data-line="15"></span>            <span class="meta function-call python"><span class="meta qualified-name python"><span class="meta generic-name python">_out</span><span class="punctuation accessor dot python">.</span></span><span class="meta qualified-name python"><span class="variable function python">write</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="storage type string python">f</span><span class="meta string interpolated python"><span class="string quoted double python"><span class="punctuation definition string begin python">&quot;</span></span></span><span class="meta string interpolated python"><span class="meta interpolation python"><span class="punctuation section interpolation begin python">{</span><span class="source python embedded"><span class="meta function-call python"><span class="meta qualified-name python"><span class="support type python">str</span></span><span class="punctuation section arguments begin python">(</span><span class="meta function-call arguments python"><span class="meta qualified-name python"><span class="meta generic-name python">f</span></span></span><span class="punctuation section arguments end python">)</span></span></span></span><span class="meta interpolation python"><span class="punctuation section interpolation end python">}</span></span><span class="string quoted double python"><span class="constant character escape python">\n</span><span class="punctuation definition string end python">&quot;</span></span></span></span><span class="punctuation section arguments end python">)</span></span></span></pre></div></div>
+<h2>The Output</h2>
+<div class="highlight-wrapper"><div class="code-block numbers copy-button"><pre><span class="line-marker" data-line="1"></span><span class="text plain">/Users/alan/workshop/al9000.com/content/python/1/examples.inc/alfa.txt
+<span class="line-marker" data-line="2"></span>/Users/alan/workshop/al9000.com/content/python/1/examples.inc/dir-1/bravo.txt
+<span class="line-marker" data-line="3"></span>/Users/alan/workshop/al9000.com/content/python/1/examples.inc/dir-2/charlie.txt
+<span class="line-marker" data-line="4"></span>/Users/alan/workshop/al9000.com/content/python/1/examples.inc/dir-2/subdir/delta.txt</span></pre></div></div>
+<h2>Notes</h2>
+<ul>
+<li>
+<p>This uses Path's .walk instead of os.walk so that
+Path objects are returned instead of strings.
+This requires python 3.12 or later.</p>
+</li>
+<li>
+<p>Full paths are returned.</p>
+</li>
+<li>
+<p>You can get relative paths by removing the <code>.resolve()</code>
+method from the <code>Path(dir)</code> call.</p>
+</li>
+<li>
+<p>This skips hidden direcotires that start
+with a dot and temporary files that end with a <code>~</code>.</p>
+</li>
+<li>
+<p>The <code>dirnames[:] = [d for d in dirnames if not d.startswith('.')]</code>
+line updates the directory name in place so that <code>os.walk</code> skips
+the hidden directories entirely instead of decending into them.</p>
+</li>
+<li>
+<p>The results are sorted before returning them
+from the method.</p>
+</li>
+</ul>
+
+<div class="end-of-line"></div>
+
+
+
+</main>
+
+<footer class="default">
+  <div>
+    from <a href="https://bsky.app/profile/al9000.com">alan w smith</a>
+  </div>
+  <div>
+    who also makes <a href="https://bittyjs.com">bitty</a>
+  </div>
+  <div>
+    and designed <a href="https://neodoc.style">neodoc</a>
+  </div>
+
+      
+  <div>
+    <button
+      class="default-wrapper text-align-center faded-base-color"
+      data-s="copyElement"
+      style="opacity: 0.20; padding-bottom: 0.3rem;"
+    >
+      <span>
+      id = "01/ng/nm/bw"
+      </span>
+    </button>
+  </div>
+      
+</footer>
+
+
+    </div>
+
+
+    <div class="templates" hidden>
+      <bitty-9 data-connect="/bits/default.js"></bitty-9>
+      <script type="module" src="/bits/components.js"></script>
+
+
+
+    </div>
+  </body>
+</html>

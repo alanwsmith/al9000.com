@@ -10,7 +10,7 @@
   <hgroup class="default">
     == if p.title
       <div class="title-wrapper">
-        <h1>[@ p.title @]</h1>
+        <h1>[@ p.title @][! if append_to_title !] [@ append_to_title @][! endif !]</h1>
         == if p.subtitle
           <div class="subtitle">[@ p.subtitle @]</div>
         == endif

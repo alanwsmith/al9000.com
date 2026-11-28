@@ -1,0 +1,29 @@
+== extends "/templates.inc/switches/blog.html"
+
+== block toml
+title = "Migrating Blog Entries to Numbered Addresses"
+created = 2026-11-28T10:41:00-04:00
+status = "done"
+== endblock
+
+== block main
+== filter md
+
+TODO: Write up the process of moving files
+to the new locations and link up the script. 
+
+== filter highlight()
+[@ rawFile(p.dir + "/redirects-output.txt") @]
+== endfilter
+
+
+<div class="end-of-line"></div>
+
+### Endnotes
+
+### Footnotes
+
+
+== endfilter
+== endblock
+

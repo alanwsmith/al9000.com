@@ -1,0 +1,16 @@
+:root {
+  --mode-wrapper-background-x: white;
+  --mode-wrapper-color-x: black;
+}
+
+.mode-wrapper-x {
+  background-color: var(--mode-wrapper-background-x);
+  color: var(--mode-wrapper-color-x);
+}
+
+body:has(#mode-checkbox-x:checked) {
+  --mode-wrapper-background-x: black;
+  --mode-wrapper-color-x: white;
+}
+
+
