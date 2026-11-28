@@ -26,6 +26,10 @@ flags = ["no-date"]
 
 ## Notes
 
+- This uses Path's .walk instead of os.walk so that
+Path objects are returned instead of strings. 
+This requires python 3.12 or later. 
+
 - This skips hidden direcotires that start
 with a dot and temporary files that end with a `~`. 
 
@@ -35,7 +39,6 @@ the hidden directories entirely instead of decending into them.
 
 - The results are sorted before returning them
 from the method.
-
 
 
 == endfilter

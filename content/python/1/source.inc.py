@@ -1,12 +1,12 @@
-import os
+from pathlib import Path
 
 def list_files(dir):
     result = []
-    for dirpath, dirnames, filenames in os.walk(dir):
+    for dirpath, dirnames, filenames in Path(dir).walk():
         dirnames[:] = [d for d in dirnames if not d.startswith('.')]
         for name in filenames:
             if not (name.startswith('.') or name.endswith('~')):
-                result.append(os.path.join(dirpath, name))
+                result.append(dirpath / name)
     return sorted(result)
 
 if __name__ == "__main__":
